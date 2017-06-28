@@ -21,10 +21,14 @@
                 </div>
               </div>
               <div class="item">
-                <div class="ui primary button">Sign up</div>
+                <div class="ui primary button" @click="signUp">
+                  Sign up
+                </div>
               </div>
               <div class="item">
-                <div class="ui button">Sign in</div>
+                <div class="ui button" @click="signIn">
+                  Sign in
+                </div>
               </div>
             </div>
           </div>
@@ -44,6 +48,15 @@ export default {
     return {
       name: 'cookbook inc.',
       content: 'content here'
+    }
+  },
+  methods: {
+    // a computed getter
+    signIn: function () {
+      return alert('signing in')
+    },
+    signUp: function () {
+      return alert('signing up')
     }
   }
 }
