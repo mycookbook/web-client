@@ -1,5 +1,6 @@
 <template>
     <div class="ui grid" style="margin:auto">
+      <Header></Header>
       <div class="four wide column centered grid">
           <h1>Log in to your account</h1>
           <p>Don't have account? <a href="">Sign Up</a></p>
@@ -33,6 +34,7 @@
   </template>
 
   <script>
+    import Header from './Header.vue'
     import auth from '../auth'
     export default {
       data () {
@@ -56,7 +58,9 @@
           // to properly make use of http in the auth service
           auth.login(this, credentials, 'secretquote')
         }
+      },
+      components: {
+        'Header': Header
       }
-
     }
     </script>

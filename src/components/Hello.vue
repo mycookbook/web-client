@@ -1,38 +1,7 @@
 <template>
   <div class="hello">
-    <div class="tvn page">
-
-      <!-- fixed menu -->
-      <div class="ui top fixed menu grid">
-        <div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
-            <!-- brand -->
-            <div class="tvn fade clipped brand">
-              <img class="logo" src="../assets/logo.png">
-              <h1 class="name ui large header">{{ name }}</h1>
-            </div>
-            <!-- end brand -->
-          </div>
-          <div class="ui secondary menu">
-            <div class="right menu">
-              <div class="item">
-                <div class="ui icon input">
-                  <input type="text" placeholder="search cookbooks..." @keyup.enter="search">
-                  <i class="search link icon"></i>
-                </div>
-              </div>
-              <div class="item">
-                <button class="ui button" @click="signIn">
-                  Sign in
-                </button>
-              </div>
-            </div>
-          </div>
-        <!-- end fixed top menu -->
-      </div>
-    </div>
-
+    <Header></Header>
       <!-- content -->
-
     <div class="ui grid" style="margin:auto">
 
       <div class="eight wide column">
@@ -74,7 +43,7 @@
           </div>
           <!-- <button class="ui button" type="submit">Submit</button> -->
           <div class="item">
-            <button class="ui primary button" @click="signUp">
+            <button class="ui primary button" @click="signUp()">
               Create Account
             </button>
           </div>
@@ -91,10 +60,11 @@
 </template>
 
 <script>
+import auth from '../auth'
+import Header from './Header.vue'
 export default {
   data () {
     return {
-      name: 'Cookbook Inc.',
       content: '',
       tnc: 'terms',
       'drp': 'data-rententin-policy',
@@ -102,12 +72,17 @@ export default {
     }
   },
   methods: {
-    // a computed getter
+    signUp () {
+      var credentials = {
+        username: this.credentials.username,
+        password: this.credentials.password
+      }
+      // We need to pass the component's this context
+      // to properly make use of http in the auth service
+      auth.login(this, credentials, 'secretquote')
+    },
     signIn: function () {
       location.href = '/#/signin'
-    },
-    signUp: function () {
-      return alert('signing up')
     },
     search: function () {
       return alert('searching')
@@ -115,6 +90,9 @@ export default {
     seeTnc: function () {
       return alert(this.tnc)
     }
+  },
+  components: {
+    'Header': Header
   }
 }
 </script>

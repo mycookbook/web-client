@@ -5,6 +5,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import SignIn from './components/SignIn.vue'
+// import SignOut from './components/SignOut.vue'
 
 Vue.config.productionTip = false
 
@@ -15,3 +17,18 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+// Vue.use(VueRouter)
+//
+// let router = new VueRouter()
+//
+// router.map({
+//   '/login': {
+//     component: SignIn
+//   },
+//   'logout': {
+//     component: SignOut
+//   }
+// })
+//
+// router.start(App, 'body')
