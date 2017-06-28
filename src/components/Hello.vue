@@ -1,31 +1,36 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="tvn page">
+
+      <!-- fixed menu -->
+      <div class="ui top fixed menu grid">
+        <div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
+            <!-- brand -->
+            <div class="tvn fade clipped brand">
+              <img class="logo" src="../assets/logo.png">
+              <h1 class="name ui large header">{{ name }}</h1>
+            </div>
+            <!-- end brand -->
+          </div>
+          <h3>
+            <a href="/login">LOGIN</a>
+          </h3>
+        </div>
+        <!-- end fixed top menu -->
+      </div>
+      <!-- content -->
+    <p>
+      {{ content }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      name: 'Cookbook Inc.',
+      content: 'content here'
     }
   }
 }
@@ -48,6 +53,6 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #00688B;
 }
 </style>
