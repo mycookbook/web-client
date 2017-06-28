@@ -33,14 +33,17 @@
 
       <!-- content -->
 
-    <p>
-      <h1>Create a new account</h1>
-      <p>It's free and always will be.</p>
-    </p>
-
     <div class="ui grid" style="margin:auto">
-      <div class="four wide column"></div>
+
+      <div class="eight wide column">
+        <img src="../assets/bg.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/>
+      </div>
+
       <div class="four wide column centered grid">
+        <p>
+          <h1>Create a new account</h1>
+          <p>It's free and always will be.</p>
+        </p>
         <form class="ui form">
           <div class="field">
             <label>First Name</label>
@@ -61,7 +64,7 @@
 
           <div class="two column row">
             <div class="column">
-              <small>By clicking Create Account, you agree to our <a href="">Terms & Agreements</a>.
+              <small>By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms and Agreements</a>.
               You may receive SMS message notifications from Cookbook and can opt out at any time.</small>
             </div>
             <br><br>
@@ -73,8 +76,13 @@
             </button>
           </div>
         </form>
+        <br><br><br><br><br><br><br><br><br><br>
+        <section class="bottom aligned">
+          <span v-for="link in links">
+            <a v-bind:href="content"> {{ link }} </a>
+          </span>
+        </section>
       </div>
-      <div class="four wide column"></div>
     </div>
   </div>
 </template>
@@ -84,7 +92,9 @@ export default {
   data () {
     return {
       name: 'Cookbook inc.',
-      content: ''
+      content: '',
+      tnc: 'This is our terms and agreements',
+      links: ['Find Cookbooks', 'Sign in', 'Sign Up', 'Terms & Conditions', 'API']
     }
   },
   methods: {
@@ -97,6 +107,9 @@ export default {
     },
     search: function () {
       return alert('searching')
+    },
+    seeTnc: function () {
+      return alert(this.tnc)
     }
   }
 }
@@ -104,5 +117,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+span {
+  padding: 10px;
+}
 </style>
