@@ -21,9 +21,9 @@
                 </div>
               </div>
               <div class="item">
-                <div class="ui button" @click="signIn">
+                <button class="ui button" @click="signIn">
                   Sign in
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
       <div class="four wide column centered grid">
         <p>
           <h1>Create a new account</h1>
-          <p>It's free and always will be.</p>
+          <p>It's absolutely free and always will be.</p>
         </p>
         <form class="ui form">
           <div class="field">
@@ -59,13 +59,16 @@
           </div>
           <div class="field">
             <label>Password</label>
-            <input type="text" name="password" placeholder="New pasword">
+            <input type="password" name="password" placeholder="New pasword">
           </div>
 
           <div class="two column row">
             <div class="column">
-              <small>By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms and Agreements</a>.
-              You may receive SMS message notifications from Cookbook and can opt out at any time.</small>
+              <small>
+                By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
+                Cookbook and can opt out at any time.
+              </small>
             </div>
             <br><br>
           </div>
@@ -76,7 +79,7 @@
             </button>
           </div>
         </form>
-        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br>
         <section class="bottom aligned">
           <span v-for="link in links">
             <a v-bind:href="content"> {{ link }} </a>
@@ -91,16 +94,17 @@
 export default {
   data () {
     return {
-      name: 'Cookbook inc.',
+      name: 'Cookbook Inc.',
       content: '',
-      tnc: 'This is our terms and agreements',
-      links: ['Find Cookbooks', 'Sign in', 'Sign Up', 'Terms & Conditions', 'API']
+      tnc: 'terms',
+      'drp': 'data-rententin-policy',
+      links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API']
     }
   },
   methods: {
     // a computed getter
     signIn: function () {
-      return alert('signing in')
+      location.href = '/#/signin'
     },
     signUp: function () {
       return alert('signing up')
