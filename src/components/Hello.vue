@@ -12,17 +12,12 @@
             </div>
             <!-- end brand -->
           </div>
-          <div class="ui secondary  menu">
+          <div class="ui secondary menu">
             <div class="right menu">
               <div class="item">
                 <div class="ui icon input">
-                  <input type="text" placeholder="Search...">
+                  <input type="text" placeholder="search cookbooks..." @keyup.enter="search">
                   <i class="search link icon"></i>
-                </div>
-              </div>
-              <div class="item">
-                <div class="ui primary button" @click="signUp">
-                  Sign up
                 </div>
               </div>
               <div class="item">
@@ -34,11 +29,53 @@
           </div>
         <!-- end fixed top menu -->
       </div>
-</div>
+    </div>
+
       <!-- content -->
+
     <p>
-      {{ content }}
+      <h1>Create a new account</h1>
+      <p>It's free and always will be.</p>
     </p>
+
+    <div class="ui grid" style="margin:auto">
+      <div class="four wide column"></div>
+      <div class="four wide column centered grid">
+        <form class="ui form">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" name="first-name" placeholder="First Name">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>email</label>
+            <input type="text" name="email" placeholder="Mobile number or email address">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="text" name="password" placeholder="New pasword">
+          </div>
+
+          <div class="two column row">
+            <div class="column">
+              <small>By clicking Create Account, you agree to our <a href="">Terms & Agreements</a>.
+              You may receive SMS message notifications from Cookbook and can opt out at any time.</small>
+            </div>
+            <br><br>
+          </div>
+          <!-- <button class="ui button" type="submit">Submit</button> -->
+          <div class="item">
+            <button class="ui primary button" @click="signUp">
+              Create Account
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="four wide column"></div>
+    </div>
   </div>
 </template>
 
@@ -46,8 +83,8 @@
 export default {
   data () {
     return {
-      name: 'cookbook inc.',
-      content: 'content here'
+      name: 'Cookbook inc.',
+      content: ''
     }
   },
   methods: {
@@ -57,6 +94,9 @@ export default {
     },
     signUp: function () {
       return alert('signing up')
+    },
+    search: function () {
+      return alert('searching')
     }
   }
 }
@@ -64,21 +104,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #00688B;
-}
 </style>
