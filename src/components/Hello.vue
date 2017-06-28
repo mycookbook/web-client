@@ -12,12 +12,22 @@
             </div>
             <!-- end brand -->
           </div>
-          <h3>
-            <a href="/login">LOGIN</a>
-          </h3>
-        </div>
+          <div class="ui secondary  menu">
+            <div class="right menu">
+              <div class="item">
+                <div class="ui icon input">
+                  <input type="text" placeholder="Search...">
+                  <i class="search link icon"></i>
+                </div>
+              </div>
+              <a class="ui item">
+                Login
+              </a>
+            </div>
+          </div>
         <!-- end fixed top menu -->
       </div>
+</div>
       <!-- content -->
     <p>
       {{ content }}
@@ -29,7 +39,7 @@
 export default {
   data () {
     return {
-      name: 'Cookbook Inc.',
+      name: 'cookbook inc.',
       content: 'content here'
     }
   }
