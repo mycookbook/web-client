@@ -20,9 +20,12 @@
                   <i class="search link icon"></i>
                 </div>
               </div>
-              <a class="ui item">
-                Login
-              </a>
+              <div class="item">
+                <div class="ui primary button">Sign up</div>
+              </div>
+              <div class="item">
+                <div class="ui button">Sign in</div>
+              </div>
             </div>
           </div>
         <!-- end fixed top menu -->
