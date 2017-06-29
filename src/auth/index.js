@@ -1,9 +1,9 @@
 import {router} from '../main'
-import Axios from 'axios'
+// import Axios from 'axios'
 
 // URL and endpoint constants
 const API_URL = 'http://localhost:8080/'
-// const LOGIN_URL = API_URL + 'user/create#/'
+const LOGIN_URL = API_URL + 'user/create/'
 const SIGNUP_URL = API_URL + 'users/'
 
 export default {
@@ -15,15 +15,19 @@ export default {
 
   // Send a request to the login URL and save the returned JWT
   login (context, creds, redirect) {
-    console.log(router)
-    Axios.post('/user', { creds
-    }).then(function (response) {
-      localStorage.setItem('id_token', response.id_token)
-      localStorage.setItem('access_token', response.access_token)
-      console.log('success')
-    }).catch(function (error) {
-      console.log('problem2')
-      console.log(error)
+    context.$http.post(LOGIN_URL, creds, (data) => {
+      console.log(data)
+      localStorage.setItem('id_token', data.id_token)
+      localStorage.setItem('access_token', data.access_token)
+
+      this.user.authenticated = true
+
+      // Redirect to a specified route
+      if (redirect) {
+        router.go(redirect)
+      }
+    }).error((err) => {
+      context.error = err
     })
   },
 

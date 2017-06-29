@@ -3,7 +3,7 @@
       <Header></Header>
       <div class="four wide column centered grid">
           <h1>Log in to your account</h1>
-          <p>Don't have account? <a href="">Sign Up</a></p>
+          <p>Don't have an account? <a href="">Sign Up</a></p>
         </p>
         <form class="ui form">
           <div class="field">
