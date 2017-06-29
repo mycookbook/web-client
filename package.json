@@ -23,7 +23,7 @@
     "shelljs": "^0.7.6",
     "opn": "^4.0.2",
     "ora": "^1.2.0",
-    "rimraf": "^2.6.0",
+    "rimraf": "^2.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
