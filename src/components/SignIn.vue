@@ -1,9 +1,10 @@
 <template>
     <div class="ui grid" style="margin:auto">
-      <Header></Header>
+      <Navigation></Navigation>
       <div class="four wide column centered grid">
           <h1>Log in to your account</h1>
-          <p>Don't have an account? <a href="">Sign Up</a></p>
+          <p>Don't have an account?
+            <router-link to="/">Sign Up</router-link>
         </p>
         <form class="ui form">
           <div class="field">
@@ -26,7 +27,7 @@
           </div>
           <!-- <button class="ui button" type="submit">Submit</button> -->
           <div class="item">
-            <button class="ui primary button" @click="submit()">Log In</button>
+            <button class="ui primary button" @click="logIn">Log In</button>
           </div>
         </form>
       </div>
@@ -34,7 +35,7 @@
   </template>
 
   <script>
-    import Header from './Header.vue'
+    import Navigation from './Navigation.vue'
     import auth from '../auth'
     export default {
       data () {
@@ -49,18 +50,20 @@
         }
       },
       methods: {
-        submit () {
+        logIn: function (e) {
+          e.preventDefault()
           var credentials = {
             username: this.credentials.username,
             password: this.credentials.password
           }
+
           // We need to pass the component's this context
           // to properly make use of http in the auth service
           auth.login(this, credentials, 'secretquote')
         }
       },
       components: {
-        'Header': Header
+        'Navigation': Navigation
       }
     }
     </script>

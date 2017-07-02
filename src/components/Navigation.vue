@@ -19,8 +19,8 @@
               </div>
             </div>
             <div class="item">
-              <button class="ui button" @click="signIn">
-                Sign in
+              <button class="ui button">
+                <router-link to="/signin">Sign in</router-link>
               </button>
             </div>
           </div>

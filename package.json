@@ -81,6 +81,7 @@
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.6.1",
+     "webpack-dev-server": "^1.12.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
@@ -93,5 +94,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "browser": {
+    "vue": "vue/dist/vue.common.js"
+  }
 }

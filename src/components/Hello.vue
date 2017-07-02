@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <Header></Header>
+    <Navigation></Navigation>
       <!-- content -->
     <div class="ui grid" style="margin:auto">
 
@@ -61,7 +61,7 @@
 
 <script>
 import auth from '../auth'
-import Header from './Header.vue'
+import Navigation from './Navigation.vue'
 export default {
   data () {
     return {
@@ -72,15 +72,18 @@ export default {
     }
   },
   methods: {
-    signUp () {
+    signUp: function (e) {
+      e.preventDefault()
       var credentials = {
         username: this.credentials.username,
         password: this.credentials.password
       }
+
       // We need to pass the component's this context
       // to properly make use of http in the auth service
-      auth.login(this, credentials, 'secretquote')
+      auth.signup(this, credentials, 'secretquote')
     },
+
     signIn: function () {
       location.href = '/#/signin'
     },
@@ -92,7 +95,7 @@ export default {
     }
   },
   components: {
-    'Header': Header
+    'Navigation': Navigation
   }
 }
 </script>
