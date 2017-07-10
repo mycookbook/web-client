@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import Hello from '@/components/Hello'
 import SignIn from '../components/SignIn.vue'
-import SignOut from '../components/SignOut.vue'
+import User from '../components/User.vue'
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -18,11 +18,17 @@ export default new Router({
     name: 'SignIn',
     component: SignIn
   }, {
-    path: '/signout',
-    name: 'Signout',
-    component: SignOut
+    path: '/user/:username',
+    name: 'user.profile',
+    component: User
   }, {
-    path: '/user/create',
-    name: 'user.create'
+    path: '*',
+    component: {
+      template:
+      '<div>' +
+        '<h1>404</h1>' +
+        'Page Not Found' +
+      '</div>'
+    }
   }]
 })
