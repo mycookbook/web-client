@@ -19,9 +19,16 @@
               </div>
             </div>
             <div class="item">
-              <button class="ui button">
-                <router-link to="/signin">Sign in</router-link>
-              </button>
+              <span>
+                <button class="ui button">
+                  <router-link to="/signin">Sign in</router-link>
+                </button>
+              </span>
+              <span>
+                <button class="ui button">
+                  <router-link to="/">Sign out</router-link>
+                </button>
+              </span>
             </div>
           </div>
         </div>
@@ -38,9 +45,6 @@ export default {
     }
   },
   methods: {
-    signIn: function () {
-      location.href = '/#/signin'
-    },
     search: function () {
       return alert('searching')
     },
