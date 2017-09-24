@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     signUp: function (e) {
-      this.$http.post(this.prod, {
+      this.$http.post(this.dev, {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password

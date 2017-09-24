@@ -75,7 +75,7 @@
       },
       methods: {
         logIn: function (e) {
-          this.$http.post(this.prod, {
+          this.$http.post(this.dev, {
             email: this.credentials.email,
             password: this.credentials.password
           }).then((response) => {
