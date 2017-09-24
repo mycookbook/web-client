@@ -15,19 +15,19 @@
         </p>
         <template>
           <form class="ui form" v-on:submit.prevent="signUp">
-            <div class="field">
-              <div class="ui negative message" v-if="info">
-                <div class="header">
-                  There were some errors with your submission
-                </div>
-                <p>
-                  <ul class="list">
-                    <li v-for="error in errors">
-                      {{error}}
-                    </li>
-                  </ul>
-                </p>
+            <div class="ui negative message" v-if="info">
+              <div class="header">
+                There were some errors with your submission
               </div>
+              <p>
+                <ul class="list">
+                  <li v-for="error in errors">
+                    {{error}}
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div class="field">
               <label>First Name</label>
               <input v-model="firstName" placeholder="First Name" required>
             </div>
@@ -43,11 +43,18 @@
               <label>Password</label>
               <input type="password" v-model.trim="password" placeholder="Pasword" required>
             </div>
-
+            <section class="bottom aligned">
+              <span>
+                <small>
+                  Already have an account? <router-link to="/signin">Sign in</router-link>
+                </small>
+              </span>
+            </section>
+            <br>
             <div class="two column row">
               <div class="column">
                 <small>
-                  By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                  By clicking <b>Create Account</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
                   and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
                   Cookbook and can opt out at any time.
                 </small>
@@ -62,7 +69,8 @@
             </div>
           </form>
         </template>
-        <br><br><br><br>
+        <br><br>
+
         <section class="bottom aligned">
           <span v-for="link in links">
             <a v-bind:href="content"> {{ link }} </a>
@@ -89,19 +97,20 @@ export default {
       'drp': 'data-rentention-policy',
       links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API'],
       info: false,
-      errors: []
+      errors: [],
+      prod: 'https://lit-eyrie-53695.herokuapp.com/api/v1/signup',
+      dev: 'http://api.dev/api/v1/signup'
     }
   },
   methods: {
     signUp: function (e) {
-      this.$http.post('https://lit-eyrie-53695.herokuapp.com/api/v1/signup', {
+      this.$http.post(this.dev, {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
       }).then((response) => {
-
+        this.$router.push('/signin')
       }, (response) => {
-        console.log(response)
         this.info = true
         this.errors = JSON.parse(response.bodyText)
       })
