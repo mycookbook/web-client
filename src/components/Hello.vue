@@ -13,41 +13,55 @@
           <h1>Create a new account</h1>
           <p>It's absolutely free and always will be.</p>
         </p>
-        <form class="ui form">
-          <div class="field">
-            <label>First Name</label>
-            <input v-model="firstName" placeholder="First Name">
-          </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input v-model="lastName" placeholder="Last Name">
-          </div>
-          <div class="field">
-            <label>email</label>
-            <input v-model="email" placeholder="Mobile number or email address">
-          </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password" v-model="password" placeholder="New pasword">
-          </div>
-
-          <div class="two column row">
-            <div class="column">
-              <small>
-                By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
-                and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
-                Cookbook and can opt out at any time.
-              </small>
+        <template>
+          <form class="ui form" v-on:submit.prevent="signUp">
+            <div class="field">
+              <div class="ui negative message" v-if="info">
+                <div class="header">
+                  There were some errors with your submission
+                </div>
+                <p>
+                  <ul class="list">
+                    <li v-for="error in errors">
+                      {{error}}
+                    </li>
+                  </ul>
+                </p>
+              </div>
+              <label>First Name</label>
+              <input v-model="firstName" placeholder="First Name" required>
             </div>
-            <br><br>
-          </div>
-          <!-- <button class="ui button" type="submit">Submit</button> -->
-          <div class="item">
-            <button class="ui primary button" @click="signUp">
-              Create Account
-            </button>
-          </div>
-        </form>
+            <div class="field">
+              <label>Last Name</label>
+              <input v-model="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="field">
+              <label>email</label>
+              <input v-model.trim="email" placeholder="Email address" required>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" v-model.trim="password" placeholder="Pasword" required>
+            </div>
+
+            <div class="two column row">
+              <div class="column">
+                <small>
+                  By clicking Create Account, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                  and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
+                  Cookbook and can opt out at any time.
+                </small>
+              </div>
+              <br><br>
+            </div>
+            <!-- <button class="ui button" type="submit">Submit</button> -->
+            <div class="item">
+              <button class="ui primary button">
+                Create Account
+              </button>
+            </div>
+          </form>
+        </template>
         <br><br><br><br>
         <section class="bottom aligned">
           <span v-for="link in links">
@@ -60,7 +74,7 @@
 </template>
 
 <script>
-import auth from '../auth'
+// import auth from '../auth'
 import Navigation from './Navigation.vue'
 export default {
   data () {
@@ -72,22 +86,25 @@ export default {
       username: '',
       password: '',
       tnc: 'terms',
-      'drp': 'data-rententin-policy',
-      links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API']
+      'drp': 'data-rentention-policy',
+      links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API'],
+      info: false,
+      errors: []
     }
   },
   methods: {
     signUp: function (e) {
-      e.preventDefault()
-      var credentials = {
+      this.$http.post('http://api.dev/api/v1/signup', {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
-      }
+      }).then((response) => {
 
-      // We need to pass the component's this context
-      // to properly make use of http in the auth service
-      auth.signup(credentials)
+      }, (response) => {
+        console.log(response)
+        this.info = true
+        this.errors = JSON.parse(response.bodyText)
+      })
     },
     search: function () {
       return alert('searching')
