@@ -36,7 +36,9 @@
 
   <script>
     import Navigation from './Navigation.vue'
-    import auth from '../auth'
+    // import auth from '../auth'
+    const API_URL = 'http://localhost:3031/'
+    const LOGIN_URL = API_URL + 'user/create/'
     export default {
       data () {
         return {
@@ -59,7 +61,13 @@
 
           // We need to pass the component's this context
           // to properly make use of http in the auth service
-          auth.login(this, credentials, 'secretquote')
+          // auth.login(this, credentials, 'secretquote')
+
+          this.$http.post(LOGIN_URL, {credentials}).then((response) => {
+            console.log(response, 'success')
+          }, (response) => {
+            console.log(response, 'error')
+          })
         }
       },
       components: {

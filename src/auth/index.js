@@ -1,9 +1,12 @@
-import {router} from '../main'
+// import {router} from '../main'
+import Vue from 'vue'
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 
 // URL and endpoint constants
-const API_URL = 'http://localhost:8080/'
+const API_URL = 'http://localhost:3031/'
 const LOGIN_URL = API_URL + 'user/create/'
-// const SIGNUP_URL = API_URL + 'users/'
+const SIGNUP_URL = 'https://lit-eyrie-53695.herokuapp.com/api/v1/signup'
 
 export default {
 
@@ -13,35 +16,42 @@ export default {
   },
 
   // Send a request to the login URL and save the returned JWT
-  login (context, creds, redirect) {
-    context.$http.post(LOGIN_URL, creds, (data) => {
-      console.log(data)
-      localStorage.setItem('id_token', data.id_token)
-      localStorage.setItem('access_token', data.access_token)
-      this.user.authenticated = true
-      // Redirect to a specified route
-      if (redirect) {
-        router.go(redirect)
-      }
-    }).error((err) => {
-      context.error = err
-    })
-  },
-
-  signup (context, creds, redirect) {
-    alert('signing up')
-    // context.$http.post(SIGNUP_URL, creds, (data) => {
+  signin (context, creds, redirect) {
+    // context.$http.post(LOGIN_URL, creds, (data) => {
     //   localStorage.setItem('id_token', data.id_token)
     //   localStorage.setItem('access_token', data.access_token)
-    //
     //   this.user.authenticated = true
-    //
+    //   // Redirect to a specified route
     //   if (redirect) {
     //     router.go(redirect)
     //   }
     // }).error((err) => {
     //   context.error = err
     // })
+
+    context.$http.post(LOGIN_URL, {creds}).then((response) => {
+      console.log(response, 'success')
+    }, (response) => {
+      console.log(response, 'error')
+    })
+  },
+
+  signup (creds) {
+    // console.log(creds.name)
+    // Vue.http.post(SIGNUP_URL, creds, (data) => {
+    //   console.log(data.body)
+    // }).error((err) => {
+    //   console.log('error', err)
+    // })
+
+    Vue.http.post(SIGNUP_URL, creds).then(response => {
+      if (response.body.response.created) {
+        // router.go(redirect) redirect to feeds page
+        console.log('success')
+      }
+    }, response => {
+      console.log(response.bodyText)
+    })
   },
 
   // To log out, we just need to remove the token

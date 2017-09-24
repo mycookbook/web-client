@@ -16,19 +16,19 @@
         <form class="ui form">
           <div class="field">
             <label>First Name</label>
-            <input type="text" name="first-name" placeholder="First Name">
+            <input v-model="firstName" placeholder="First Name">
           </div>
           <div class="field">
             <label>Last Name</label>
-            <input type="text" name="last-name" placeholder="Last Name">
+            <input v-model="lastName" placeholder="Last Name">
           </div>
           <div class="field">
             <label>email</label>
-            <input type="text" name="email" placeholder="Mobile number or email address">
+            <input v-model="email" placeholder="Mobile number or email address">
           </div>
           <div class="field">
             <label>Password</label>
-            <input type="password" name="password" placeholder="New pasword">
+            <input type="password" v-model="password" placeholder="New pasword">
           </div>
 
           <div class="two column row">
@@ -43,7 +43,7 @@
           </div>
           <!-- <button class="ui button" type="submit">Submit</button> -->
           <div class="item">
-            <button class="ui primary button" @click="signUp()">
+            <button class="ui primary button" @click="signUp">
               Create Account
             </button>
           </div>
@@ -66,6 +66,11 @@ export default {
   data () {
     return {
       content: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      username: '',
+      password: '',
       tnc: 'terms',
       'drp': 'data-rententin-policy',
       links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API']
@@ -75,17 +80,14 @@ export default {
     signUp: function (e) {
       e.preventDefault()
       var credentials = {
-        username: this.credentials.username,
-        password: this.credentials.password
+        name: this.firstName + ' ' + this.lastName,
+        email: this.email,
+        password: this.password
       }
 
       // We need to pass the component's this context
       // to properly make use of http in the auth service
-      auth.signup(this, credentials, 'secretquote')
-    },
-
-    signIn: function () {
-      location.href = '/#/signin'
+      auth.signup(credentials)
     },
     search: function () {
       return alert('searching')
