@@ -51,7 +51,7 @@
   <script>
     import Navigation from './Navigation.vue'
     import router from '@/router'
-    // import store from 'store'
+    import store from '@/store'
     export default {
       data () {
         return {
@@ -68,15 +68,23 @@
           errors: ['one', 'two']
         }
       },
+      beforeCreate () {
+        if (!store.state.isLogged) {
+          router.push('/login')
+        }
+      },
       methods: {
         logIn: function (e) {
           this.$http.post(this.dev, {
             email: this.credentials.email,
             password: this.credentials.password
           }).then((response) => {
+            var jwtDecode = require('jwt-decode')
+            var decoded = jwtDecode(response.body.token)
+            console.log(decoded)
             localStorage.setItem('token', response.body.token)
-            // store.commit('LOGIN_USER')
-            router.push('/')
+            store.commit('LOGIN_USER')
+            router.push('/' + decoded.sub + '/feeds')
           }, (response) => {
             this.info = true
             this.errors = JSON.parse(response.bodyText)
