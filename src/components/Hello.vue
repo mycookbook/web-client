@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     signUp: function (e) {
-      this.$http.post('http://api.dev/api/v1/signup', {
+      this.$http.post('https://lit-eyrie-53695.herokuapp.com/api/v1/signup', {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
