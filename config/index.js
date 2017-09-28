@@ -1,6 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-var port = process.env.PORT || 5000
 
 module.exports = {
   build: {
@@ -24,7 +23,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: port,
+    port: 4140,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
