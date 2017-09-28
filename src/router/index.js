@@ -14,11 +14,11 @@ export default new Router({
     name: 'Hello',
     component: Hello
   }, {
-    path: '/login',
+    path: '/signin',
     name: 'SignIn',
     component: SignIn
   }, {
-    path: '/u:id/feeds',
+    path: '/:id/feeds',
     name: 'user.feeds',
     component: Feeds
   }, {
