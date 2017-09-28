@@ -24,11 +24,11 @@
                   <router-link to="/signin">Sign in</router-link>
                 </button>
               </span>
-              <span>
+              <!-- <span>
                 <button class="ui button">
                   <router-link to="/">Sign out</router-link>
                 </button>
-              </span>
+              </span> -->
             </div>
           </div>
         </div>
