@@ -70,7 +70,7 @@
       },
       beforeCreate () {
         if (!store.state.isLogged) {
-          router.push('/login')
+          router.push('/signin')
         }
       },
       methods: {
