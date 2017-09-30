@@ -2,7 +2,7 @@
     <div class="ui grid" style="margin:auto">
       <Navigation></Navigation>
       <div class="four wide column centered grid">
-          <h1>Log in</h1>
+          <h1>Sign in</h1>
           <p>Don't have an account?
             <router-link to="/">Sign Up</router-link>
         </p>
@@ -75,7 +75,7 @@
       },
       methods: {
         logIn: function (e) {
-          this.$http.post(this.prod, {
+          this.$http.post(this.dev, {
             email: this.credentials.email,
             password: this.credentials.password
           }).then((response) => {
@@ -84,7 +84,7 @@
             console.log(decoded)
             localStorage.setItem('token', response.body.token)
             store.commit('LOGIN_USER')
-            router.push('/' + decoded.sub + '/feeds')
+            router.push('/feeds')
           }, (response) => {
             this.info = true
             this.errors = JSON.parse(response.bodyText)

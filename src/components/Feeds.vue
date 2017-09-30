@@ -7,10 +7,12 @@
 
   <script>
     import Navigation from './Navigation.vue'
+    import router from '@/router'
+    import store from '@/store'
     export default {
-      data () {
-        return {
-
+      beforeCreate () {
+        if (!store.state.isLogged) {
+          router.push('/signin')
         }
       },
       methods: {

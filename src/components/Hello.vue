@@ -84,7 +84,14 @@
 <script>
 // import auth from '../auth'
 import Navigation from './Navigation.vue'
+import router from '@/router'
+import store from '@/store'
 export default {
+  beforeCreate () {
+    if (store.state.isLogged) {
+      router.push('/feeds')
+    }
+  },
   data () {
     return {
       content: '',
@@ -104,7 +111,7 @@ export default {
   },
   methods: {
     signUp: function (e) {
-      this.$http.post(this.prod, {
+      this.$http.post(this.dev, {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
