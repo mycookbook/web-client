@@ -4,9 +4,9 @@
       <!-- content -->
     <div class="ui grid" style="margin:auto">
 
-      <div class="seven wide column centered grid">
+      <div class="eight wide column centered grid">
         <!-- <img src="../assets/1.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/> -->
-        <carousel-3d :autoplay="true" :autoplay-timeout="5000" :width="500" :height="500">
+        <carousel-3d :autoplay="true" :autoplay-timeout="5000" :width="600" :height="600">
           <slide :index="0">
             <figure>
               <img src="../assets/efo-riro-1.png"/>
@@ -58,7 +58,7 @@
         </carousel-3d>
       </div>
 
-      <div class="five wide column centered grid" :class="{'is-waiting': loader}">
+      <div class="four wide column centered grid" :class="{'is-waiting': loader}">
         <p>
           <h1>Create a new account</h1>
           <p>Avail yourself an unlimited access to millions of recipes from around the world It's absolutely free and always will be.</p>
@@ -198,6 +198,10 @@ span {
 .carousel-3d-container {
   width: 100%;
   margin: 10%;
+}
+.carousel-3d-slide {
+  border-width: 0;
+  border-color: transparent!important;
 }
 .carousel-3d-slide img {
   width: 190%;
