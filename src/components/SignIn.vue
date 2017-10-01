@@ -63,10 +63,7 @@
             password: ''
           },
           info: false,
-          error: '',
-          dev: 'http://api.dev/api/v1/signin',
-          prod: 'https://lit-eyrie-53695.herokuapp.com/api/v1/signin',
-          errors: ['one', 'two']
+          errors: []
         }
       },
       beforeCreate () {
@@ -77,7 +74,7 @@
       methods: {
         logIn: function (e) {
           this.loader = true
-          this.$http.post(this.prod, {
+          this.$http.post(this.getApiServerUrl(), {
             email: this.credentials.email,
             password: this.credentials.password
           }).then((response) => {
@@ -92,6 +89,11 @@
             this.loader = false
             this.errors = JSON.parse(response.bodyText)
           })
+        },
+        getApiServerUrl: function () {
+          let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/signin'
+          let dev = 'http://api.dev/api/v1/signin'
+          return (process.env.NODE_ENV === 'production') ? prod : dev
         }
       },
       components: {

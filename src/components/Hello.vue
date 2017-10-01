@@ -105,15 +105,13 @@ export default {
       'drp': 'data-rentention-policy',
       links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API'],
       info: false,
-      errors: [],
-      prod: 'https://lit-eyrie-53695.herokuapp.com/api/v1/signup',
-      dev: 'http://api.dev/api/v1/signup'
+      errors: []
     }
   },
   methods: {
     signUp: function (e) {
       this.loader = true
-      this.$http.post(this.prod, {
+      this.$http.post(this.getApiServerUrl(), {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
@@ -125,8 +123,10 @@ export default {
         this.errors = JSON.parse(response.bodyText)
       })
     },
-    search: function () {
-      return alert('searching')
+    getApiServerUrl: function () {
+      let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/signup'
+      let dev = 'http://api.dev/api/v1/signup'
+      return (process.env.NODE_ENV === 'production') ? prod : dev
     },
     seeTnc: function () {
       return alert(this.tnc)
