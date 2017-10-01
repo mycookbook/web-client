@@ -1,7 +1,7 @@
 <template>
     <div class="ui grid" style="margin:auto">
       <Navigation></Navigation>
-      I am feeds
+      welcome
     </div>
   </template>
 
