@@ -4,14 +4,64 @@
       <!-- content -->
     <div class="ui grid" style="margin:auto">
 
-      <div class="eight wide column">
-        <img src="../assets/bg.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/>
+      <div class="seven wide column centered grid">
+        <!-- <img src="../assets/1.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/> -->
+        <carousel-3d :autoplay="true" :autoplay-timeout="5000" :width="500" :height="500">
+          <slide :index="0">
+            <figure>
+              <img src="../assets/efo-riro-1.png"/>
+              <figcaption>
+                <h3>Efo Riro Recipe</h3>
+                A very popular Yoruba soup in Nigeria, a widely loved Nigerian soup because of its health benefits.
+                The name 'efo' means vegetables, hence it is a Yoruba rich vegetable soup/stew.
+              </figcaption>
+            </figure>
+          </slide>
+          <slide :index="1">
+            <figure>
+              <img src="../assets/ofada-stew.jpg"/>
+              <figcaption>
+                <h3>Prepare Plain Ofada Rice Sauce "Obe Ata Iru"</h3>
+                Join this online community of cookbook users, learn and collaborate with recipe submissions you love.
+                Learn how to make this ketogenic delight with pictures and step by step how-tos
+              </figcaption>
+            </figure>
+          </slide>
+          <slide :index="2">
+            <figure>
+              <img src="../assets/egusi-soup.jpg"/>
+              <figcaption>
+                <h3>Prepare Egusi Soup</h3>
+                Learn how to make this ketogenic delight with pictures and step by step how-tos
+              </figcaption>
+            </figure>
+          </slide>
+          <slide :index="3">
+            <figure>
+              <img src="../assets/minced-meatballs-with-tomato-sauce.jpg"/>
+              <figcaption>
+                <h3>Prepare Capsicum tomato sauce with meatballs</h3>
+                Learn How to prepare Capsicum tomato sauce with meatballs
+              </figcaption>
+            </figure>
+          </slide>
+          <slide :index="4">
+            <figure>
+              <img src="../assets/ketogenic-flat-tummy-water.jpg"/>
+              <figcaption>
+                <h3>Ketogenic - Flat Tummy Water</h3>
+                Learn How to prepare your own flat tummy water from submissions of
+                other cookbook users in the ketogenic cookbook. Make your own submissions too
+              </figcaption>
+            </figure>
+          </slide>
+        </carousel-3d>
       </div>
 
-      <div class="four wide column centered grid" :class="{'is-waiting': loader}">
+      <div class="five wide column centered grid" :class="{'is-waiting': loader}">
         <p>
           <h1>Create a new account</h1>
-          <p>It's absolutely free and always will be.</p>
+          <p>Avail yourself an unlimited access to millions of recipes from around the world It's absolutely free and always will be.</p>
         </p>
         <template>
           <form class="ui form" v-on:submit.prevent="signUp">
@@ -54,7 +104,7 @@
             <div class="two column row">
               <div class="column">
                 <small>
-                  By clicking <b>Create Account</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                  By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
                   and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
                   Cookbook and can opt out at any time.
                 </small>
@@ -64,13 +114,12 @@
             <!-- <button class="ui button" type="submit">Submit</button> -->
             <div class="item">
               <button class="ui primary button">
-                Create Account
+                Submit
               </button>
             </div>
           </form>
         </template>
         <br><br>
-
         <section class="bottom aligned">
           <span v-for="link in links">
             <a v-bind:href="content"> {{ link }} </a>
@@ -86,6 +135,7 @@
 import Navigation from './Navigation.vue'
 import router from '@/router'
 import store from '@/store'
+import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
   beforeCreate () {
     if (store.state.isLogged) {
@@ -133,7 +183,9 @@ export default {
     }
   },
   components: {
-    'Navigation': Navigation
+    'Navigation': Navigation,
+    Carousel3d,
+    Slide
   }
 }
 </script>
@@ -142,7 +194,29 @@ export default {
 <style lang="scss" type="text/scss" scoped>
 span {
   padding: 10px;
-},
+}
+.carousel-3d-container {
+  width: 100%;
+  margin: 10%;
+}
+.carousel-3d-slide img {
+  width: 190%;
+}
+.carousel-3d-container figure {
+  margin:0;
+}
+.carousel-3d-container figcaption {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  bottom: 0;
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  font-size: 12px;
+  min-width: 100%;
+  box-sizing: border-box;
+}
 .is-waiting {
     position: relative;
     transition-duration: .3s;
