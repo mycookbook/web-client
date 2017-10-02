@@ -12,6 +12,7 @@
         </div>
         <div class="ui secondary menu">
           <div class="right menu">
+            <Stats></Stats>
             <div class="item">
               <div class="ui icon input">
                 <input type="text" placeholder="search recipes" @keyup.enter="search">
@@ -60,6 +61,7 @@
 
 <script>
 import store from '@/store'
+import Stats from '../components/Stats.vue'
 export default {
   created () {
     if (store.state.isLogged) {
@@ -94,6 +96,9 @@ export default {
     updateStatus: function () {
       this.isLoggedIn = true
     }
+  },
+  components: {
+    'Stats': Stats
   }
 }
 </script>
