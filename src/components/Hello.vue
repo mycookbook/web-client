@@ -122,7 +122,7 @@ export default {
       }, {
         name: 'Delight your inlaws with Egusi Soup',
         flag: 'ng flag',
-        url: '/static/egusi-soup.jpg',
+        url: '/static/egusi.jpg',
         caption: 'Egusi is the name for the fat- and protein-rich seeds of certain cucurbitaceous plants, which after being dried and ground are used as a major ingredient in West African cuisine'
       }, {
         name: 'Ketogenic lifestyle - Flat Tummy Water',
