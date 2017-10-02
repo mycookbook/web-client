@@ -4,7 +4,10 @@ import VueResource from 'vue-resource'
 import Hello from '@/components/Hello'
 import SignIn from '../components/SignIn.vue'
 import SignOut from '../components/SignOut.vue'
-import Feeds from '../components/Feeds.vue'
+import Dashboard from '../components/Dashboard.vue'
+import UserProfile from '../components/UserProfile.vue'
+import Cookbook from '../components/Cookbook.vue'
+import Recipe from '../components/Recipe.vue'
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -25,9 +28,21 @@ export default new Router({
     name: 'SignOut',
     component: SignOut
   }, {
-    path: '/feeds',
-    name: 'user.feeds',
-    component: Feeds
+    path: '/dashboard',
+    name: 'user.dashboard',
+    component: Dashboard
+  }, {
+    path: '/account',
+    name: 'user.account',
+    component: UserProfile
+  }, {
+    path: '/cookbook',
+    name: 'user.create.cookbook',
+    component: Cookbook
+  }, {
+    path: '/recipe',
+    name: 'user.create.recipe',
+    component: Recipe
   }, {
     path: '*',
     component: {
