@@ -61,7 +61,8 @@
       <div class="four wide column centered grid" :class="{'is-waiting': loader}">
         <p>
           <h1>Create a new account</h1>
-          <p>Avail yourself an unlimited access to millions of recipes from around the world It's absolutely free and always will be.</p>
+          <p>Have unlimited access to millions of recipes<br>
+            It's absolutely free and always will be.</p>
         </p>
         <template>
           <form class="ui form" v-on:submit.prevent="signUp">
@@ -119,27 +120,23 @@
             </div>
           </form>
         </template>
-        <br><br>
-        <section class="bottom aligned">
-          <span v-for="link in links">
-            <a v-bind:href="content"> {{ link }} </a>
-          </span>
-        </section>
       </div>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 // import auth from '../auth'
 import Navigation from './Navigation.vue'
+import Footer from './Footer.vue'
 import router from '@/router'
 import store from '@/store'
 import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
   beforeCreate () {
     if (store.state.isLogged) {
-      router.push('/feeds')
+      router.push('/dashboard')
     }
   },
   data () {
@@ -152,8 +149,7 @@ export default {
       username: '',
       password: '',
       tnc: 'terms',
-      'drp': 'data-rentention-policy',
-      links: ['About', 'User Stories', 'Find Cookbooks', 'Terms & Conditions', 'Data Retention Policy', 'API'],
+      drp: 'data-rentention-policy',
       info: false,
       errors: []
     }
@@ -184,6 +180,7 @@ export default {
   },
   components: {
     'Navigation': Navigation,
+    'Footer': Footer,
     Carousel3d,
     Slide
   }
