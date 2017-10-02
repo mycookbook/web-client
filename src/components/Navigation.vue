@@ -67,23 +67,14 @@ export default {
     if (store.state.isLogged) {
       this.isLoggedIn = true
     }
-    var jwtDecode = require('jwt-decode')
-    var decoded = jwtDecode(localStorage.getItem('token'))
-    let dev = 'http://api.dev/api/v1/user'
-
-    this.$http.get(dev + '/' + decoded.sub, {
-    }).then((response) => {
-      console.log(JSON.parse(response.bodyText).response.data.name)
-      this.displayName = JSON.parse(response.bodyText).response.data.name
-    }, (response) => {
-      console.log('error')
-    })
   },
   data () {
     return {
       name: 'Cookbook Inc.',
       isLoggedIn: false,
-      displayName: ''
+      displayName: '',
+      prod: 'https://lit-eyrie-53695.herokuapp.com/api/v1/user',
+      dev: 'http://api.dev/api/v1/user'
     }
   },
   methods: {
@@ -95,7 +86,22 @@ export default {
     },
     updateStatus: function () {
       this.isLoggedIn = true
+    },
+    getApiServerUrl: function () {
+      return (process.env.NODE_ENV === 'production') ? this.prod : this.dev
     }
+  },
+  mounted () {
+    var jwtDecode = require('jwt-decode')
+    var decoded = jwtDecode(localStorage.getItem('token'))
+
+    this.$http.get(this.getApiServerUrl() + '/' + decoded.sub, {
+    }).then((response) => {
+      console.log(JSON.parse(response.bodyText).response.data.name)
+      this.displayName = JSON.parse(response.bodyText).response.data.name
+    }, (response) => {
+      console.log('error')
+    })
   },
   components: {
     'Stats': Stats
