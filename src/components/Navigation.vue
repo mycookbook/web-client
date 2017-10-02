@@ -20,13 +20,13 @@
             </div>
             <div class="item">
               <span v-if="isLoggedIn">
-                <a class="ui blue circular label">2</a>
+                <a class="ui blue circular label">20</a>
                 <div class="ui simple dropdown list">
                   <div class="item">
                     <img class="ui mini circular image" src="../assets/chef.png">
                     <div class="content">
                       <div class="ui sub header">{{ displayName }}</div>
-                      Explorer
+                      <i class="circular green trophy icon"></i> verified chef
                     </div>
                   </div>
                   <div class="menu">
