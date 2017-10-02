@@ -63,6 +63,6 @@ export default {
 </script>
 <style>
 .sta {
-  padding-top: 25px;
+  padding-top: 24px;
 }
 </style>
