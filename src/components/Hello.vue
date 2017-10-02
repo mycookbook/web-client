@@ -6,7 +6,7 @@
 
       <div class="eight wide column centered grid">
         <!-- <img src="../assets/1.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/> -->
-        <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="600" :height="600">
+        <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="600" :height="530">
           <slide v-for="(slide, i) in slides" :index="i">
             <figure>
               <img :src="slide.url" />
