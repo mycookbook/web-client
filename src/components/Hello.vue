@@ -122,14 +122,14 @@
         </template>
       </div>
     </div>
-    <Footer></Footer>
+    <Copyright></Copyright>
   </div>
 </template>
 
 <script>
 // import auth from '../auth'
 import Navigation from './Navigation.vue'
-import Footer from './Footer.vue'
+import Copyright from './Copyright.vue'
 import router from '@/router'
 import store from '@/store'
 import { Carousel3d, Slide } from 'vue-carousel-3d'
@@ -180,7 +180,7 @@ export default {
   },
   components: {
     'Navigation': Navigation,
-    'Footer': Footer,
+    'Copyright': Copyright,
     Carousel3d,
     Slide
   }
