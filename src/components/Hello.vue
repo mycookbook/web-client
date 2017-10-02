@@ -6,58 +6,20 @@
 
       <div class="eight wide column centered grid">
         <!-- <img src="../assets/1.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/> -->
-        <carousel-3d :autoplay="true" :autoplay-timeout="5000" :width="600" :height="600">
-          <slide :index="0">
+        <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="600" :height="600">
+          <slide v-for="(slide, i) in slides" :index="i">
             <figure>
-              <img src="../assets/efo-riro-1.png"/>
+              <img :src="slide.url" />
               <figcaption>
-                <h3>Efo Riro Recipe</h3>
-                A very popular Yoruba soup in Nigeria, a widely loved Nigerian soup because of its health benefits.
-                The name 'efo' means vegetables, hence it is a Yoruba rich vegetable soup/stew.
-              </figcaption>
-            </figure>
-          </slide>
-          <slide :index="1">
-            <figure>
-              <img src="../assets/ofada-stew.jpg"/>
-              <figcaption>
-                <h3>Prepare Plain Ofada Rice Sauce "Obe Ata Iru"</h3>
-                Join this online community of cookbook users, learn and collaborate with recipe submissions you love.
-                Learn how to make this ketogenic delight with pictures and step by step how-tos
-              </figcaption>
-            </figure>
-          </slide>
-          <slide :index="2">
-            <figure>
-              <img src="../assets/egusi-soup.jpg"/>
-              <figcaption>
-                <h3>Prepare Egusi Soup</h3>
-                Learn how to make this ketogenic delight with pictures and step by step how-tos
-              </figcaption>
-            </figure>
-          </slide>
-          <slide :index="3">
-            <figure>
-              <img src="../assets/minced-meatballs-with-tomato-sauce.jpg"/>
-              <figcaption>
-                <h3>Prepare Capsicum tomato sauce with meatballs</h3>
-                Learn How to prepare Capsicum tomato sauce with meatballs
-              </figcaption>
-            </figure>
-          </slide>
-          <slide :index="4">
-            <figure>
-              <img src="../assets/ketogenic-flat-tummy-water.jpg"/>
-              <figcaption>
-                <h3>Ketogenic - Flat Tummy Water</h3>
-                Learn How to prepare your own flat tummy water from submissions of
-                other cookbook users in the ketogenic cookbook. Make your own submissions too
+                <h3>
+                  <i :class="slide.flag"></i> {{ slide.name }}
+                </h3>
+                {{ slide.caption }}
               </figcaption>
             </figure>
           </slide>
         </carousel-3d>
       </div>
-
       <div class="four wide column centered grid" :class="{'is-waiting': loader}">
         <p>
           <h1>Create a new account</h1>
@@ -151,7 +113,33 @@ export default {
       tnc: 'terms',
       drp: 'data-rentention-policy',
       info: false,
-      errors: []
+      errors: [],
+      slides: [{
+        name: 'Efo Riro Recipe',
+        flag: 'ng flag',
+        url: '/static/efo-riro-1.png',
+        caption: 'A very popular Yoruba soup in Nigeria, a widely loved Nigerian soup because of its health benefits. The name efo means vegetables, hence it is a Yoruba rich vegetable soup/stew.'
+      }, {
+        name: 'Delight your inlaws with Egusi Soup',
+        flag: 'ng flag',
+        url: '/static/egusi-soup.jpg',
+        caption: 'Egusi is the name for the fat- and protein-rich seeds of certain cucurbitaceous plants, which after being dried and ground are used as a major ingredient in West African cuisine'
+      }, {
+        name: 'Ketogenic lifestyle - Flat Tummy Water',
+        flag: 'ng flag',
+        url: '/static/ketogenic-flat-tummy-water.jpg',
+        caption: 'Learn How to prepare your own flat tummy water from submissions of other cookbook users in the ketogenic lifestyle cookbook. Make your own submissions too'
+      }, {
+        name: 'Ewa Agoyin and plantain',
+        flag: 'ng flag',
+        url: '/static/ewa-agoyin.jpg',
+        caption: 'Learn How to prepare your own flat tummy water from submissions of other cookbook users in the ketogenic lifestyle cookbook. Make your own submissions too'
+      }, {
+        name: 'Ghana Jollof Rice',
+        flag: 'gh flag',
+        url: '/static/ghana-jollof-rice.jpg',
+        caption: 'Nof of Nigerian Jollof rice rant! Learn how to prepare Ghana Jollof rice your self. The uniquely colored rice is often enjoyed at dinnertime, and also served at various parties, engagements and weddings.'
+      }]
     }
   },
   methods: {
@@ -201,7 +189,7 @@ span {
   border-color: transparent!important;
 }
 .carousel-3d-slide img {
-  width: 190%;
+  width: 170%;
 }
 .carousel-3d-container figure {
   margin:0;
