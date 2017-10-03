@@ -139,6 +139,21 @@ export default {
         flag: 'gh flag',
         url: '/static/ghana-jollof-rice.jpg',
         caption: 'Nof of Nigerian Jollof rice rant! Learn how to prepare Ghana Jollof rice your self. The uniquely colored rice is often enjoyed at dinnertime, and also served at various parties, engagements and weddings.'
+      }, {
+        name: 'Amala ati ewedu',
+        flag: 'ng flag',
+        url: '/static/amala-ati-ewedu.jpg',
+        caption: 'Treat your yoruba demon to a feast of amala and ewedu soup. Go from zero to pro with following the simple steps here in this recipe book. Tell your friends how you discovered this.'
+      }, {
+        name: 'Ugandan Samosa',
+        flag: 'ug flag',
+        url: '/static/samosa.png',
+        caption: 'The samosas are a fried or baked pastry with a savoury filling, such as spiced potatoes, onions, peas, lentils, and minced meat (lamb, beef or chicken).'
+      }, {
+        name: 'Nyama Choma',
+        flag: 'ke flag',
+        url: '/static/nyama-choma.jpg',
+        caption: 'If you know Nigerian Suya, now meet Nyama Choma, Kenyan suya. Learn how to make this in simple to follow steps, tell your friends how you discovered this.'
       }]
     }
   },
