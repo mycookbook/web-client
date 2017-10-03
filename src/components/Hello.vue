@@ -12,7 +12,8 @@
               <img :src="slide.url" />
               <figcaption>
                 <h3>
-                  <i :class="slide.flag"></i> {{ slide.name }}
+                  <i :class="slide.flag"></i>
+                  {{ slide.name }}
                 </h3>
                 {{ slide.caption }}
               </figcaption>
@@ -120,7 +121,7 @@ export default {
         url: '/static/efo-riro-1.png',
         caption: 'A very popular Yoruba soup in Nigeria, a widely loved Nigerian soup because of its health benefits. The name efo means vegetables, hence it is a Yoruba rich vegetable soup/stew.'
       }, {
-        name: 'Delight your inlaws with Egusi Soup',
+        name: 'Delight your inlaws with Egusi Soup - ',
         flag: 'ng flag',
         url: '/static/egusi.jpg',
         caption: 'Egusi is the name for the fat- and protein-rich seeds of certain cucurbitaceous plants, which after being dried and ground are used as a major ingredient in West African cuisine'
@@ -154,6 +155,11 @@ export default {
         flag: 'ke flag',
         url: '/static/nyama-choma.jpg',
         caption: 'If you know Nigerian Suya, now meet Nyama Choma, Kenyan suya. Learn how to make this in simple to follow steps, tell your friends how you discovered this.'
+      }, {
+        name: 'Fisherman Braised Pork',
+        flag: 'cn flag',
+        url: '/static/filletmash.jpg',
+        caption: 'This is the perfect dinner-party dish. It is easy to make and not at all fiddly, provided you move quickly, keep everything piping-hot and buy the very best matured fillet and and the pepperiest, freshest rocket and sharpest Parmesan. This recipe serves 10, but is easily halved.'
       }]
     }
   },
