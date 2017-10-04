@@ -130,6 +130,11 @@ export default {
         url: '/static/ketogenic-flat-tummy-water.jpg',
         caption: 'Learn How to prepare your own flat tummy water from submissions of other cookbook users in the ketogenic lifestyle cookbook. Make your own submissions too'
       }, {
+        name: 'Ketogenic lifestyle - Cabbage Moi-moi',
+        flag: 'ng flag',
+        url: '/static/cabbage-moi-moi.jpg',
+        caption: 'Learn How to prepare your own flat tummy water from submissions of other cookbook users in the ketogenic lifestyle cookbook. Make your own submissions too'
+      }, {
         name: 'Ewa Agoyin and plantain',
         flag: 'ng flag',
         url: '/static/ewa-agoyin.jpg',
