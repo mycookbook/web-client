@@ -140,7 +140,7 @@ export default {
         url: '/static/ghana-jollof-rice.jpg',
         caption: 'Nof of Nigerian Jollof rice rant! Learn how to prepare Ghana Jollof rice your self. The uniquely colored rice is often enjoyed at dinnertime, and also served at various parties, engagements and weddings.'
       }, {
-        name: 'Amala ati ewedu',
+        name: 'Gbegiri ati ewedu soup',
         flag: 'ng flag',
         url: '/static/amala-ati-ewedu.jpg',
         caption: 'Treat your yoruba demon to a feast of amala and ewedu soup. Go from zero to pro with following the simple steps here in this recipe book. Tell your friends how you discovered this.'
