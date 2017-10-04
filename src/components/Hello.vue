@@ -5,7 +5,6 @@
     <div class="ui grid" style="margin:auto">
 
       <div class="eight wide column centered grid">
-        <!-- <img src="../assets/1.jpg" class="ui image middle aligned" style="left:20%; marginTop: 4%;"/> -->
         <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="600" :height="530">
           <slide v-for="(slide, i) in slides" :index="i">
             <figure>
@@ -121,7 +120,7 @@ export default {
         url: '/static/efo-riro-1.png',
         caption: 'A very popular Yoruba soup in Nigeria, a widely loved Nigerian soup because of its health benefits. The name efo means vegetables, hence it is a Yoruba rich vegetable soup/stew.'
       }, {
-        name: 'Delight your inlaws with Egusi Soup - ',
+        name: 'Delight your inlaws with Egusi Soup',
         flag: 'ng flag',
         url: '/static/egusi.jpg',
         caption: 'Egusi is the name for the fat- and protein-rich seeds of certain cucurbitaceous plants, which after being dried and ground are used as a major ingredient in West African cuisine'
@@ -208,7 +207,7 @@ span {
 }
 .carousel-3d-container {
   width: 100%;
-  margin: 10%;
+  margin: 10%!important;
 }
 .carousel-3d-slide {
   border-width: 0;
