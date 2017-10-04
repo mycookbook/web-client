@@ -160,6 +160,11 @@ export default {
         flag: 'cn flag',
         url: '/static/filletmash.jpg',
         caption: 'This is the perfect dinner-party dish. It is easy to make and not at all fiddly, provided you move quickly, keep everything piping-hot and buy the very best matured fillet and and the pepperiest, freshest rocket and sharpest Parmesan. This recipe serves 10, but is easily halved.'
+      }, {
+        name: 'Spaghetti Squash',
+        flag: 'us flag',
+        url: '/static/spaghetti-squash.jpg',
+        caption: 'Looking to cut down on the carbs intake? Spaghetti Squash is a great great alternative to pasta or rice. Learn how to make your very own Spaghetti Squash with this recipe'
       }]
     }
   },
