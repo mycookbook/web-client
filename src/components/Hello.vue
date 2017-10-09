@@ -1,90 +1,91 @@
 <template>
   <div class="hello">
-    <Navigation></Navigation>
-      <!-- content -->
     <div class="ui grid" style="margin:auto">
-
-      <div class="eight wide column centered grid">
-        <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="600" :height="530">
-          <slide v-for="(slide, i) in slides" :index="i">
-            <figure>
-              <img :src="slide.url" />
-              <figcaption>
-                <h3>
-                  <i :class="slide.flag"></i>
-                  {{ slide.name }}
-                </h3>
-                {{ slide.caption }}
-              </figcaption>
-            </figure>
-          </slide>
-        </carousel-3d>
-      </div>
-      <div class="four wide column centered grid" :class="{'is-waiting': loader}">
-        <p>
-          <h1>Create a new account</h1>
-          <p>Have unlimited access to millions of recipes<br>
-            It's absolutely free and always will be.</p>
-        </p>
-        <template>
-          <form class="ui form" v-on:submit.prevent="signUp">
-            <div class="ui negative message" v-if="info">
-              <div class="header">
-                There were some errors with your submission
-              </div>
-              <p>
-                <ul class="list">
-                  <li v-for="error in errors">
-                    {{error}}
-                  </li>
-                </ul>
+      <!-- <Navigation></Navigation> -->
+      <div class="row">
+        <div class="ten wide column">
+          <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="500" :height="500">
+            <slide v-for="(slide, i) in slides" :index="i">
+              <figure>
+                <img :src="slide.url" />
+                <figcaption>
+                  <h3>
+                    <i :class="slide.flag"></i>
+                    {{ slide.name }}
+                  </h3>
+                  {{ slide.caption }}
+                </figcaption>
+              </figure>
+            </slide>
+          </carousel-3d>
+        </div>
+        <div class="five wide column">
+          <div class="four wide column" :class="{'is-waiting': loader}">
+            <p>
+              <h1>Create a new account</h1>
+              <p>Have unlimited access to millions of recipes<br>
+                  It's absolutely free and always will be.
               </p>
-            </div>
-            <div class="field">
-              <label>First Name</label>
-              <input v-model="firstName" placeholder="First Name" required>
-            </div>
-            <div class="field">
-              <label>Last Name</label>
-              <input v-model="lastName" placeholder="Last Name" required>
-            </div>
-            <div class="field">
-              <label>email</label>
-              <input v-model.trim="email" placeholder="Email address" required>
-            </div>
-            <div class="field">
-              <label>Password</label>
-              <input type="password" v-model.trim="password" placeholder="Pasword" required>
-            </div>
-            <section class="bottom aligned">
-              <span>
-                <small>
-                  Already have an account? <router-link to="/signin">Sign in</router-link>
-                </small>
-              </span>
-            </section>
-            <br>
-            <div class="two column row">
-              <div class="column">
-                <small>
-                  By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
-                  and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
-                  Cookbook and can opt out at any time.
-                </small>
-              </div>
-              <br><br>
-            </div>
-            <!-- <button class="ui button" type="submit">Submit</button> -->
-            <div class="item">
-              <button class="ui primary button">
-                Submit
-              </button>
-            </div>
-          </form>
-        </template>
+            </p>
+            <template>
+              <form class="ui form" v-on:submit.prevent="signUp">
+                <div class="ui negative message" v-if="info">
+                  <div class="header">
+                    There were some errors with your submission
+                  </div>
+                  <p>
+                    <ul class="list">
+                      <li v-for="error in errors">
+                        {{error}}
+                      </li>
+                    </ul>
+                  </p>
+                </div>
+                <div class="field">
+                  <label>First Name</label>
+                  <input v-model="firstName" placeholder="First Name" required>
+                </div>
+                <div class="field">
+                  <label>Last Name</label>
+                  <input v-model="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="field">
+                  <label>email</label>
+                  <input v-model.trim="email" placeholder="Email address" required>
+                </div>
+                <div class="field">
+                  <label>Password</label>
+                  <input type="password" v-model.trim="password" placeholder="Pasword" required>
+                </div>
+                <section class="bottom aligned">
+                  <span>
+                    <small>
+                      Already have an account? <router-link to="/signin">Sign in</router-link>
+                    </small>
+                  </span>
+                </section><br>
+                <div class="two column row">
+                  <div class="column">
+                    <small>
+                      By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                      and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
+                      Cookbook and can opt out at any time.
+                    </small>
+                  </div>
+                  <br><br>
+                </div>
+                <div class="item">
+                  <button class="ui primary button">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </template>
+          </div>
+        </div>
       </div>
+      <Copyright></Copyright>
     </div>
-    <Copyright></Copyright>
   </div>
 </template>
 
@@ -98,7 +99,7 @@ import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
   beforeCreate () {
     if (store.state.isLogged) {
-      router.push('/dashboard')
+      router.push('/recipes')
     }
   },
   data () {
@@ -212,7 +213,6 @@ span {
 }
 .carousel-3d-container {
   width: 100%;
-  margin: 10%!important;
 }
 .carousel-3d-slide {
   border-width: 0;

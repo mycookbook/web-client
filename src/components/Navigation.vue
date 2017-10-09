@@ -1,7 +1,6 @@
 <template>
-  <div class="tvn page">
+  <div class="ui top fixed menu grid">
     <!-- fixed menu -->
-    <div class="ui top fixed menu grid">
       <div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
           <!-- brand -->
           <div class="tvn fade clipped brand">
@@ -35,7 +34,7 @@
                       <router-link to="/cookbook">Create cookbook</router-link>
                     </div>
                     <div class="item">
-                      <router-link to="/recipe">Create recipe</router-link>
+                      <router-link to="/recipes">Create recipe</router-link>
                     </div>
                     <div class="item">
                       <router-link to="/account">Manage account</router-link>
@@ -47,15 +46,18 @@
                 </div>
               </span>
               <span v-else>
-                <button class="ui button">
-                  <router-link to="/signin">Sign in</router-link>
-                </button>
+                <div class="ui buttons">
+                  <div class="ui small blue button">
+                    <i class=""></i>Add Your Own Recipe
+                  </div>
+                  <div class="ui button">
+                    <router-link to="/signin">Sign in</router-link>
+                  </div>
+                </div>
               </span>
             </div>
           </div>
         </div>
-      <!-- end fixed top menu -->
-    </div>
   </div>
 </template>
 

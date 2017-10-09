@@ -1,19 +1,33 @@
 <template>
-  <div class="ui grid" style="margin:auto">
-    <Navigation></Navigation>
-    create recipe form
-  </div>
+<div>
+  <Navigation></Navigation>
+  
+</div>
 </template>
-<script>
-import Navigation from './Navigation.vue'
-export default {
-  data () {
-    return {
 
+<script>
+  import Navigation from './Navigation.vue'
+  import router from '@/router'
+  import store from '@/store'
+  import Copyright from './Copyright.vue'
+  export default {
+    beforeCreate () {
+      if (!store.state.isLogged) {
+        router.push('/signin')
+      }
+    },
+    methods: {
+    },
+    components: {
+      'Navigation': Navigation,
+      'Copyright': Copyright
     }
-  },
-  components: {
-    'Navigation': Navigation
   }
-}
 </script>
+<style>
+.ui.segment {
+  background: transparent!important;
+  border: 0!important;
+  box-shadow: none!important;
+}
+</style>

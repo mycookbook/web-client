@@ -83,7 +83,7 @@
             console.log(decoded)
             localStorage.setItem('token', response.body.token)
             store.commit('LOGIN_USER')
-            router.push('/dashboard')
+            router.push('/recipes')
           }, (response) => {
             this.info = true
             this.loader = false

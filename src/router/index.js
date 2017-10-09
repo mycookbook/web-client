@@ -4,7 +4,6 @@ import VueResource from 'vue-resource'
 import Hello from '@/components/Hello'
 import SignIn from '../components/SignIn.vue'
 import SignOut from '../components/SignOut.vue'
-import Dashboard from '../components/Dashboard.vue'
 import UserProfile from '../components/UserProfile.vue'
 import Cookbook from '../components/Cookbook.vue'
 import Recipe from '../components/Recipe.vue'
@@ -28,10 +27,6 @@ export default new Router({
     name: 'SignOut',
     component: SignOut
   }, {
-    path: '/dashboard',
-    name: 'user.dashboard',
-    component: Dashboard
-  }, {
     path: '/account',
     name: 'user.account',
     component: UserProfile
@@ -40,7 +35,7 @@ export default new Router({
     name: 'user.create.cookbook',
     component: Cookbook
   }, {
-    path: '/recipe',
+    path: '/recipes',
     name: 'user.create.recipe',
     component: Recipe
   }, {

@@ -20,4 +20,4 @@ export default {
   margin-top: 120px;
 }
 </style>
-<style src="./assets/css/style.css"></style>
+<!-- <style src="./assets/css/style.css"></style> -->
