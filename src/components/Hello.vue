@@ -27,66 +27,68 @@
                         four wide computer
                         column">
           <div class="four wide column" :class="{'is-waiting': loader}">
-            <p>
-              <h1>Create a new account</h1>
-              <p>Have unlimited access to millions of recipes<br>
-                  It's absolutely free and always will be.
+            <div class="ui center aligned container">
+              <p>
+                <h1>Create a new account</h1>
+                <p>Have unlimited access to millions of recipes<br>
+                    It's absolutely free and always will be.
+                </p>
               </p>
-            </p>
-            <template>
-              <form class="ui form" v-on:submit.prevent="signUp">
-                <div class="ui negative message" v-if="info">
-                  <div class="header">
-                    There were some errors with your submission
+              <template>
+                <form class="ui form" v-on:submit.prevent="signUp">
+                  <div class="ui negative message" v-if="info">
+                    <div class="header">
+                      There were some errors with your submission
+                    </div>
+                    <p>
+                      <ul class="list">
+                        <li v-for="error in errors">
+                          {{error}}
+                        </li>
+                      </ul>
+                    </p>
                   </div>
-                  <p>
-                    <ul class="list">
-                      <li v-for="error in errors">
-                        {{error}}
-                      </li>
-                    </ul>
-                  </p>
-                </div>
-                <div class="field">
-                  <label>First Name</label>
-                  <input v-model="firstName" placeholder="First Name" required>
-                </div>
-                <div class="field">
-                  <label>Last Name</label>
-                  <input v-model="lastName" placeholder="Last Name" required>
-                </div>
-                <div class="field">
-                  <label>email</label>
-                  <input v-model.trim="email" placeholder="Email address" required>
-                </div>
-                <div class="field">
-                  <label>Password</label>
-                  <input type="password" v-model.trim="password" placeholder="Pasword" required>
-                </div>
-                <section class="bottom aligned">
-                  <span>
-                    <small>
-                      Already have an account? <router-link to="/signin">Sign in</router-link>
-                    </small>
-                  </span>
-                </section><br>
-                <div class="two column row">
-                  <div class="column">
-                    <small>
-                      By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
-                      and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
-                      Cookbook and can opt out at any time.
-                    </small>
+                  <div class="field">
+                    <label>First Name</label>
+                    <input v-model="firstName" placeholder="First Name" required>
                   </div>
-                  <br><br>
-                </div>
-                <div class="item">
-                  <button class="ui primary button">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </template>
+                  <div class="field">
+                    <label>Last Name</label>
+                    <input v-model="lastName" placeholder="Last Name" required>
+                  </div>
+                  <div class="field">
+                    <label>email</label>
+                    <input v-model.trim="email" placeholder="Email address" required>
+                  </div>
+                  <div class="field">
+                    <label>Password</label>
+                    <input type="password" v-model.trim="password" placeholder="Pasword" required>
+                  </div>
+                  <section class="bottom aligned">
+                    <span>
+                      <small>
+                        Already have an account? <router-link to="/signin">Sign in</router-link>
+                      </small>
+                    </span>
+                  </section><br>
+                  <div class="two column row">
+                    <div class="column">
+                      <small>
+                        By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                        and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
+                        Cookbook and can opt out at any time.
+                      </small>
+                    </div>
+                    <br><br>
+                  </div>
+                  <div class="item centered ">
+                    <button class="ui primary button">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </template>
+            </div>
           </div>
         </div>
       </div>
