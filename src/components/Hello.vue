@@ -3,7 +3,10 @@
     <div class="ui grid" style="margin:auto">
       <!-- <Navigation></Navigation> -->
       <div class="row">
-        <div class="ten wide column">
+        <div class="sixteen wide mobile
+                        sixteen wide tablet
+                        ten wide computer
+                        column">
           <carousel-3d :count="slides.length" :autoplay="true" :autoplay-timeout="5000" :width="500" :height="500">
             <slide v-for="(slide, i) in slides" :index="i">
               <figure>
@@ -19,7 +22,10 @@
             </slide>
           </carousel-3d>
         </div>
-        <div class="five wide column">
+        <div class="sixteen wide mobile
+                        sixteen wide tablet
+                        four wide computer
+                        column">
           <div class="four wide column" :class="{'is-waiting': loader}">
             <p>
               <h1>Create a new account</h1>
@@ -84,7 +90,7 @@
           </div>
         </div>
       </div>
-      <Copyright></Copyright>
+      <!-- <Copyright></Copyright> -->
     </div>
   </div>
 </template>
