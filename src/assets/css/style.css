@@ -944,7 +944,8 @@ body {
 
 html, body, #app, .tvn.page, .pushable.content, .sidebar, .pusher {
   height: 100%;
-  overflow-y: hidden; }
+  /*overflow-y: hidden; */
+}
 
 .main {
   height: 100%;

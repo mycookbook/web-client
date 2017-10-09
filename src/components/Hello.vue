@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
-    <div class="ui grid" style="margin:auto">
-      <!-- <Navigation></Navigation> -->
+  <div>
+    <Navigation></Navigation>
+    <div class="ui grid centered" style="margin:auto">
       <div class="row">
         <div class="sixteen wide mobile
                         sixteen wide tablet
@@ -90,8 +90,8 @@
           </div>
         </div>
       </div>
-      <!-- <Copyright></Copyright> -->
     </div>
+    <Copyright></Copyright>
   </div>
 </template>
 

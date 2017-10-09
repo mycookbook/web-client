@@ -1,6 +1,7 @@
 <template>
-  <div class="ui top fixed menu grid">
+  <div class="tvn page">
     <!-- fixed menu -->
+    <div class="ui top fixed menu grid">
       <div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
           <!-- brand -->
           <div class="tvn fade clipped brand">
@@ -46,18 +47,15 @@
                 </div>
               </span>
               <span v-else>
-                <div class="ui buttons">
-                  <div class="ui small blue button">
-                    <i class=""></i>Add Your Own Recipe
-                  </div>
-                  <div class="ui button">
-                    <router-link to="/signin">Sign in</router-link>
-                  </div>
-                </div>
+                <button class="ui button">
+                  <router-link to="/signin">Sign in</router-link>
+                </button>
               </span>
             </div>
           </div>
         </div>
+      <!-- end fixed top menu -->
+    </div>
   </div>
 </template>
 
