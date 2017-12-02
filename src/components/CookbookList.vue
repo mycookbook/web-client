@@ -32,28 +32,28 @@ export default {
   data () {
     return {
       cookbooks: [{
-        imgUrl: '../assets/img/ketogenic.jpg',
+        imgUrl: 'static/ketogenic.jpg',
         name: 'Ketogenic Lifestyle',
-        recipes: '30k',
+        recipes: '30K',
         descr: 'HEALTH & LIFESTYLE',
         flag: 'ng flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
+        imgUrl: 'static/auntie-yemisi.jpg',
         name: 'Aunty Yemisi Kitchen',
-        recipes: '60k',
+        recipes: '60K',
         descr: 'HOBBIST MANUAL',
         flag: 'us flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Naija Party Foods',
-        recipes: '2',
-        descr: 'NO DESCRIPTION',
+        imgUrl: 'static/naija-party.jpg',
+        name: 'Nigerian Party Specials',
+        recipes: '20K',
+        descr: 'A.K.A OWAMBE',
         flag: 'ng flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
+        imgUrl: 'static/indian-cocktail.jpg',
         name: 'Indian cocktails',
         recipes: '1k',
-        descr: 'NO DESCRIPTION',
+        descr: 'YUM YUM',
         flag: 'in flag'
       }]
     }
