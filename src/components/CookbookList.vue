@@ -6,8 +6,8 @@
     <span class="see">
         <a href="/#/">see all</a>
     </span>
-    <br><br>
-    <div class="ui container">
+    <br>
+    <div class="ui container images-wrapper">
       <div v-for="cookbook in cookbooks">
         <!-- <div class="ui images"> -->
           <Cookbook
@@ -56,8 +56,13 @@ export default {
 .subtitle {
   font-size: 25px;
   font-weight: 900;
+  padding-left:15px;
 }
 .see {
   float: right;
+}
+.images-wrapper {
+  display: flex!important;
+  flex-direction: row!important;
 }
 </style>
