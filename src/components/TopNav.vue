@@ -5,8 +5,8 @@
       <div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
           <!-- brand -->
           <div class="tvn fade clipped brand">
-            <img class="logo" src="../assets/logo.png" @click="goHome">
-            <h1 class="name ui large header">{{ name }}</h1>
+            <img class="logo" src="../assets/logo2.png" @click="goHome">
+            <!-- <h1 class="name ui large header">{{ name }}</h1> -->
           </div>
           <!-- end brand -->
         </div>
@@ -14,10 +14,10 @@
           <div class="right menu">
             <!-- <Stats></Stats> -->
             <div class="item">
-              <div class="ui icon input">
+              <!-- <div class="ui icon input">
                 <input type="text" placeholder="search recipes" @keyup.enter="search">
                 <i class="search link icon"></i>
-              </div>
+              </div> -->
             </div>
             <div class="item">
               <span v-if="isLoggedIn">
@@ -47,9 +47,24 @@
                 </div>
               </span>
               <span v-else>
-                <button class="ui button">
+                <!-- <button class="ui button">
                   <router-link to="/signin">Sign in</router-link>
-                </button>
+                </button> -->
+
+                <div class="ui menu">
+                  <a class="item">
+                    Discover cookbooks
+                  </a>
+                  <a class="item">
+                    Help
+                  </a>
+                  <a class="item">
+                    Sign Up
+                  </a>
+                  <a class="item">
+                    <router-link to="/signin">Log In</router-link>
+                  </a>
+                </div>
               </span>
             </div>
           </div>
@@ -108,3 +123,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .ui.menu {
+    border: none!important;
+    box-shadow: none!important
+  }
+</style>

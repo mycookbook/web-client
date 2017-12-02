@@ -1,11 +1,11 @@
 <template>
     <div class="ui grid" style="margin:auto">
-      <Navigation></Navigation>
+      <TopNav></TopNav>
       <div class="four wide column centered grid" :class="{'is-waiting': loader}">
           <h1>Sign in</h1>
           <p>Don't have an account?
             <router-link to="/">Sign Up</router-link>
-        </p>
+          </p>
         <template>
           <form class="ui form" v-on:submit.prevent="logIn">
             <div class="ui negative message" v-if="info">
@@ -49,7 +49,7 @@
   </template>
 
   <script>
-    import Navigation from './Navigation.vue'
+    import TopNav from './TopNav.vue'
     import router from '@/router'
     import store from '@/store'
     export default {
@@ -91,13 +91,13 @@
           })
         },
         getApiServerUrl: function () {
-          let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/signin'
-          let dev = 'http://api.dev/api/v1/signin'
+          let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signin'
+          let dev = 'http://cookbook-api.dev/api/v1/auth/signin'
           return (process.env.NODE_ENV === 'production') ? prod : dev
         }
       },
       components: {
-        'Navigation': Navigation
+        'TopNav': TopNav
       }
     }
     </script>

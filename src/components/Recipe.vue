@@ -1,33 +1,30 @@
 <template>
-<div>
-  <Navigation></Navigation>
-  
-</div>
+  <div>
+    <div>
+      <img src="../assets/img/jollof-rice.jpg" class="ui medium image">
+    </div>
+    <div>
+      {{ name }}
+    </div>
+  </div>
 </template>
 
 <script>
-  import Navigation from './Navigation.vue'
-  import router from '@/router'
-  import store from '@/store'
-  import Copyright from './Copyright.vue'
-  export default {
-    beforeCreate () {
-      if (!store.state.isLogged) {
-        router.push('/signin')
-      }
+export default {
+  props: {
+    imgUrl: {
+      type: String,
+      required: true
     },
-    methods: {
-    },
-    components: {
-      'Navigation': Navigation,
-      'Copyright': Copyright
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  data () {
+    return {
+
     }
   }
-</script>
-<style>
-.ui.segment {
-  background: transparent!important;
-  border: 0!important;
-  box-shadow: none!important;
 }
-</style>
+</script>

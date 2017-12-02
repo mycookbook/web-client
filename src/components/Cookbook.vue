@@ -1,19 +1,35 @@
 <template>
-  <div class="ui grid" style="margin:auto">
-    <Navigation></Navigation>
-    create cookbook form
+  <div>
+    <div>
+      <img src="../assets/img/ketogenic.jpg" class="ui medium image">
+    </div>
+    <div>
+      {{ name }} <br>
+      {{ recipes }} + recipes
+    </div>
   </div>
 </template>
+
 <script>
-import Navigation from './Navigation.vue'
 export default {
+  props: {
+    imgUrl: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    recipes: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
 
     }
-  },
-  components: {
-    'Navigation': Navigation
   }
 }
 </script>

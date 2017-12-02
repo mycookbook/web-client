@@ -41,7 +41,7 @@ export default {
       recipes: 0,
       cookbooks: 0,
       prod: 'https://lit-eyrie-53695.herokuapp.com/api/v1/stats',
-      dev: 'http://api.dev/api/v1/stats'
+      dev: 'http://cookbook-api.dev/api/v1/stats'
     }
   },
   mounted () {
