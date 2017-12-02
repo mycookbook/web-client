@@ -2,14 +2,19 @@
   <div>
     <h1 class="subtitle">
       Browse recipes<br>
-      It's absolutely free of charge
+      It's absolutely free of charge <br
     </h1>
     <div>
       <Autocomplete />
     </div>
     <div class="note">
-      <small>You know a recipe but couldn't find it?
-        <a href="/#/">&nbsp; Create it</a>
+      <small>
+        <b>
+          Couldn't find the recipe you are looking for?
+          <a href="/#/">
+            &nbsp; Create it
+          </a>
+        </b>
       </small>
     </div>
   </div>
