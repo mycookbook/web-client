@@ -1,10 +1,12 @@
 <template>
   <div>
     <span class="subtitle">
-      COOKBOOKS
+      Explore
     </span>
     <span class="see">
-        <a href="/#/">see all</a>
+      <a href="/#/">
+        see all <i class="chevron right icon"></i>
+      </a>
     </span>
     <br>
     <div class="ui container images-wrapper">
@@ -14,6 +16,8 @@
             :imgUrl="cookbook.imgUrl"
             :name="cookbook.name"
             :recipes="cookbook.recipes"
+            :descr="cookbook.descr"
+            :flag="cookbook.flag"
           />
         <!-- </div> -->
       </div>
@@ -30,19 +34,27 @@ export default {
       cookbooks: [{
         imgUrl: '../assets/img/ketogenic.jpg',
         name: 'Ketogenic Lifestyle',
-        recipes: '30m'
+        recipes: '30k',
+        descr: 'HEALTH & LIFESTYLE',
+        flag: 'ng flag'
       }, {
         imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Aunty Yemisis Kitchen',
-        recipes: '30m'
+        name: 'Aunty Yemisi Kitchen',
+        recipes: '60k',
+        descr: 'HOBBIST MANUAL',
+        flag: 'us flag'
       }, {
         imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Naija Prty Foods',
-        recipes: '30m'
+        name: 'Naija Party Foods',
+        recipes: '2',
+        descr: 'NO DESCRIPTION',
+        flag: 'ng flag'
       }, {
         imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Bar cocktails',
-        recipes: '30m'
+        name: 'Indian cocktails',
+        recipes: '1k',
+        descr: 'NO DESCRIPTION',
+        flag: 'in flag'
       }]
     }
   },
