@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="ui massive fluid action input top">
-      <input type="text" placeholder="Try  'Flat belly water'">
+      <input type="text" placeholder="Try 'Flat belly water'">
       <div class="ui blue button">Search</div>
     </div>
   </div>
