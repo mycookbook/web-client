@@ -4,7 +4,6 @@
     <br><br><br>
     <br><br><br>
     <br><br><br>
-    <br><br><br>
 
     <Search />
     <br><br><br>
@@ -13,7 +12,7 @@
     <CookbookList />
     <br><br><br>
     <div class="ui horizontal divider">
-      recipes
+      top recipes
     </div>
     <RecipeList />
     <br><br><br>
