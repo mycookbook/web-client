@@ -4,7 +4,9 @@
       RECIPES
     </span> -->
     <span class="see">
-        <a href="/#/">see all</a>
+      <a href="/#/">
+        see all <i class="chevron right icon"></i>
+      </a>
     </span>
     <br><br>
     <div class="ui container images-wrapper">
