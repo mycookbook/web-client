@@ -15,6 +15,7 @@
           <Recipe
             :imgUrl="recipe.imgUrl"
             :name="recipe.name"
+            :flag="recipe.flag"
           />
         <!-- </div> -->
       </div>
@@ -29,17 +30,21 @@ export default {
   data () {
     return {
       recipes: [{
-        imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Nigerian jollof rice'
+        imgUrl: 'static/naija-indomie.jpg',
+        name: 'Nigerian Indomie meal',
+        flag: 'ng flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Banga soup'
+        imgUrl: 'static/ghana-jollof-rice.jpg',
+        name: 'Ghanian Jollof Rice',
+        flag: 'gh flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'Akara and pap (ogi)'
+        imgUrl: 'static/akara-and-pap.jpeg',
+        name: 'Akara and pap (ogi)',
+        flag: 'ng flag'
       }, {
-        imgUrl: '../assets/img/ketogenic.jpg',
-        name: 'fish moi-moi'
+        imgUrl: 'static/puff-puff.jpeg',
+        name: 'Puff puff',
+        flag: 'ng flag'
       }]
     }
   },
