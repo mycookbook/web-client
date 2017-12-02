@@ -12,7 +12,9 @@
 
     <CookbookList />
     <br><br><br>
-
+    <div class="ui horizontal divider">
+      recipes
+    </div>
     <RecipeList />
     <br><br><br>
 
