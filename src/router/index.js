@@ -2,14 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
 // import Hello from '@/components/Hello'
-import SignIn from '../components/SignIn.vue'
-import SignOut from '../components/SignOut.vue'
-// import UserProfile from '../components/UserProfile.vue'
-import Cookbook from '../components/Cookbook.vue'
-import Recipe from '../components/Recipe.vue'
+import LogIn from '@/components/auth/Login.vue'
+import SignUp from '@/components/auth/Signup.vue'
+import SignOut from '@/components/SignOut.vue'
+// import UserProfile from '@/components/UserProfile.vue'
+import Cookbook from '@/components/Cookbook.vue'
+import Recipe from '@/components/Recipe.vue'
 import LandingPage from '@/components/LandingPage'
 import Cookbooks from '@/components/CookbookList'
 import Recipes from '@/components/RecipeList'
+import Discover from '@/components/Discover'
+import Help from '@/components/Help'
 
 Vue.use(VueResource)
 Vue.use(Router)
@@ -22,9 +25,13 @@ export default new Router({
     name: 'Hello',
     component: LandingPage
   }, {
-    path: '/signin/',
-    name: 'SignIn',
-    component: SignIn
+    path: '/login',
+    name: 'LogIn',
+    component: LogIn
+  }, {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
   }, {
     path: '/signout',
     name: 'SignOut',
@@ -53,5 +60,13 @@ export default new Router({
       'Page Not Found' +
       '</div>'
     }
+  }, {
+    path: '/discover',
+    name: 'Discover',
+    component: Discover
+  }, {
+    path: '/help',
+    name: 'Help',
+    component: Help
   }]
 })

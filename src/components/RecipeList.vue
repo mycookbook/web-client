@@ -31,20 +31,16 @@ export default {
     return {
       recipes: [{
         imgUrl: 'static/naija-indomie.jpg',
-        name: 'Nigerian Indomie meal',
-        flag: 'ng flag'
+        name: 'Nigerian Indomie meal'
       }, {
         imgUrl: 'static/ghana-jollof-rice.jpg',
-        name: 'Ghanian Jollof Rice',
-        flag: 'gh flag'
+        name: 'Ghanian Jollof Rice'
       }, {
         imgUrl: 'static/akara-and-pap.jpeg',
-        name: 'Akara and pap (ogi)',
-        flag: 'ng flag'
+        name: 'Akara and pap (ogi)'
       }, {
         imgUrl: 'static/puff-puff.jpeg',
-        name: 'Puff puff',
-        flag: 'ng flag'
+        name: 'Puff puff'
       }]
     }
   },

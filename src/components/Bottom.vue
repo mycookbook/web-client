@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="ui footer">
+    <br><br><br>
     <footer>
       <div>
         <ul class="items">
+          <h3>Cookbook</h3>
           <li>
             <a href="/#">
               About
@@ -15,23 +17,30 @@
           </li>
           <li>
             <a href="/#">
-              Terms and conditions
+              Terms and Conditions
             </a>
           </li>
           <li>
             <a href="/#">
-              retention Policy
+              Data Retention Policy
             </a>
           </li>
           <li>
             <a href="/#">
-              FAQs
+              Frequently Asked Questions
             </a>
           </li>
         </ul>
       </div>
-      <div class="note">
-        <small>Copyright 2017</small>
+      <div class="note copyright">
+        <small>
+          <span>
+            <img src="../assets/logo2.png" style="width:1.2%; height:auto;"/>
+          </span>
+          <span style="color:#999999;">
+            © Cookbook, Inc.
+          </span>
+        </small>
       </div>
     </footer>
   </div>
@@ -46,10 +55,23 @@ export default {
 </script>
 
 <style>
+footer {
+  border-top: 1px solid #eee;
+  padding: 20px 0px;
+}
 .items {
   list-style-type: none;
 }
 .items li {
   padding: 8px;
+}
+a {
+  color: #333!important;
+}
+.copyright {
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+  margin-bottom: 50px;
+  font-size: 20px;
 }
 </style>

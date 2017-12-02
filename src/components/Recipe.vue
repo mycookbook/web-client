@@ -8,9 +8,6 @@
       <div class="segments">
         <div class="title">
           {{ name }}
-          <span class="flag">
-            <i :class="flag"></i>
-          </span>
         </div>
       </div>
     </div>
@@ -27,10 +24,6 @@ export default {
     name: {
       type: String,
       required: true
-    },
-    flag: {
-      type: String,
-      required: false
     }
   },
   data () {
@@ -54,8 +47,5 @@ export default {
   font-size: 18px;
   margin-top: 0px;
   margin-left: -1px;
-}
-.flag {
-  margin-right:20px;
 }
 </style>
