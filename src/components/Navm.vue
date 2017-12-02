@@ -5,7 +5,7 @@
     </div>
     <div class="right menu">
       <a class="active item">
-        Discover more
+        Discover
       </a>
       <a class="item">
         Help
