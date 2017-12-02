@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div>
+    <div class="img-container">
       <img src="../assets/img/jollof-rice.jpg" class="ui medium image">
-    </div>
-    <div>
       {{ name }}
     </div>
   </div>
@@ -28,3 +26,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.img-container img {
+  /*opacity: 0.5;*/
+  padding:10px;
+}
+</style>
