@@ -1,13 +1,13 @@
 <template>
   <div>
-    <span class="subtitle">
+    <!-- <span class="subtitle">
       RECIPES
-    </span>
+    </span> -->
     <span class="see">
         <a href="/#/">see all</a>
     </span>
     <br><br>
-    <div class="ui container">
+    <div class="ui container images-wrapper">
       <div v-for="recipe in recipes">
         <!-- <div class="ui images"> -->
           <Recipe
@@ -54,5 +54,9 @@ export default {
 }
 .see {
   float: right;
+}
+.images-wrapper {
+  display: flex!important;
+  flex-direction: row!important;
 }
 </style>
