@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="img-container">
-      <img src="../assets/img/ketogenic.jpg" class="ui medium image">
+      <img
+        v-bind:src="imgUrl"
+        class="ui medium image"
+      />
       <div class="segments">
         <div class="descr">
           {{ descr }}
