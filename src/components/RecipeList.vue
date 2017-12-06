@@ -38,6 +38,18 @@ export default {
       }, {
         imgUrl: 'static/puff-puff.jpg',
         name: 'Puff puff'
+      }, {
+        imgUrl: 'static/ofada-rice.jpg',
+        name: 'Ofada Rice'
+      }, {
+        imgUrl: 'static/ghana-jollof-rice.png',
+        name: 'Ghanian Jollof Rice'
+      }, {
+        imgUrl: 'static/akara-and-pap.jpg',
+        name: 'Akara and pap (ogi)'
+      }, {
+        imgUrl: 'static/puff-puff.jpg',
+        name: 'Puff puff'
       }]
     }
   },
