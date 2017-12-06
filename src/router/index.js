@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import LandingPage from '@/components/LandingPage'
 import Register from '@/components/auth/Register'
 import Login from '@/components/auth/Login'
+import Signout from '@/components/auth/Signout'
 
 Vue.use(Router)
 
@@ -21,6 +22,10 @@ export default new Router({
       name: 'Login',
       component: Login
     }, {
+      path: '/signout',
+      name: 'Signout',
+      component: Signout
+    }, {
       path: '/discover',
       name: 'Discover',
       component: {
@@ -31,6 +36,12 @@ export default new Router({
       name: 'Help',
       component: {
         template: '<div> Help </div>'
+      }
+    }, {
+      path: '/recipes/all',
+      name: 'view.recipes',
+      component: {
+        template: '<div>see all recipes</div>'
       }
     }, {
       path: '*',

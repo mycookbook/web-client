@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       cookbooks: [{
-        imgUrl: 'static/akara-and-pap.jpg',
+        imgUrl: 'static/ketogenic-lifestyle.jpg',
         name: 'Ketogenic Lifestyle',
         recipes: '30K',
         descr: 'HEALTH & LIFESTYLE',

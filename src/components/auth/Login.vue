@@ -1,18 +1,21 @@
 <template>
-  <div class="ui grid" style="margin:auto">
+  <div>
     <Navigation />
-    <div class="ui six wide column centered grid" :class="{'is-waiting': loader}">
-      <br><br><br><br><br>
-      <h1>Log in</h1>
-      <p>Don't have an account?
-        <router-link :to="{
+    <div class="ui middle aligned center aligned grid" :class="{'is-waiting': loader}">
+      <div class="column">
+        <h1 class="ui teal image header">
+          <div class="content">
+            Login to your account
+          </div>
+        </h1>
+        <p>Don't have an account?
+          <router-link :to="{
             name: 'Register'
-          }" class="item">
+            }" class="item">
             Sign Up
-        </router-link>
-      </p>
-      <template>
-        <form class="ui form" @submit.prevent>
+          </router-link>
+        </p>
+        <form class="ui large form" v-on:submit.prevent="logIn">
           <div class="ui negative message" v-if="info">
             <div class="header">
               There were some errors with your submission
@@ -25,29 +28,46 @@
               </ul>
             </p>
           </div>
-          <div class="field">
-            <label>Email</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your email"
-              v-model="credentials.email"
-            />
+          <div class="ui segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  v-model="credentials.email"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  v-model="credentials.password"
+                >
+              </div>
+            </div>
+            <button class="ui primary button" @click="logIn">
+              Log In
+            </button>
           </div>
-          <div class="field">
-            <label>Password</label>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Enter your password"
-                v-model="credentials.password"
-              >
-          </div>
-          <div class="item">
-            <button class="ui primary button" @click="logIn">Log In</button>
-          </div>
+          <div class="ui error message"></div>
         </form>
-      </template>
+        <br><br>
+        <div class="ui horizontal divider">
+          or
+        </div>
+        <br><br>
+        <div>
+          <a href="" class="ui facebook massive button">
+            <i class="facebook icon"></i> Login with Facebook
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -61,8 +81,6 @@ export default {
   data () {
     return {
       loader: false,
-      // We need to initialize the component with any
-      // properties that will be used in it
       credentials: {
         email: '',
         password: ''
@@ -103,6 +121,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" type="text/scss">
 .is-waiting {
     position: relative;
