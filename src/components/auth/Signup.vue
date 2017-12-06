@@ -4,7 +4,7 @@
     <br><br><br><br><br><br><br><br><br>
     <div class="ui centered grid">
         <a href="" class="ui facebook massive button">
-          <i class="facebook icon"></i> Log in with Facebook
+          <i class="facebook icon"></i> Sign Up with Facebook
         </a>
       </div>
 <br><br>
