@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="banner">
     <span class="subtitle">
       Explore
     </span>
@@ -40,7 +40,7 @@ export default {
         imgUrl: 'static/ghana-jollof-rice.png',
         name: 'Aunty Dolapo',
         recipes: '60K',
-        descr: 'HOBBIST MANUAL',
+        descr: 'FOOD GOALS',
         flag: 'us flag'
       }, {
         imgUrl: 'static/ofada-rice.jpg',
@@ -75,5 +75,8 @@ export default {
 .images-wrapper {
   display: flex!important;
   flex-direction: row!important;
+}
+.banner {
+  margin: 10% 0;
 }
 </style>

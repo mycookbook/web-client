@@ -1,5 +1,5 @@
 <template>
-  <div class="ui footer">
+  <div class="ui fluid footer">
     <br><br><br>
     <footer>
       <div>

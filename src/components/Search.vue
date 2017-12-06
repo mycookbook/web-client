@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-banner">
     <h1 class="subtitle">
       Browse recipes<br>
       It's absolutely free of charge <br
@@ -41,5 +41,8 @@ export default {
 }
 .subtitle {
   font-size: 60px;
+}
+.search-banner {
+  margin-bottom: 9%;
 }
 </style>

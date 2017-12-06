@@ -1,15 +1,11 @@
 <template>
   <div>
-    <!-- <span class="subtitle">
-      RECIPES
-    </span> -->
     <span class="see">
       <a href="/#/">
         see all <i class="chevron right icon"></i>
       </a>
     </span>
     <br><br>
-
     <div class="ui medium images">
       <div class="ui fluid image" v-for="recipe in recipes">
         <Recipe
@@ -19,7 +15,8 @@
         />
       </div>
     </div>
-
+    <br><br>
+    <br><br>
   </div>
 </template>
 
@@ -50,16 +47,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.subtitle {
-  font-size: 25px;
-  font-weight: 900;
-}
+<style>
 .see {
   float: right;
-}
-.images-wrapper {
-  display: flex!important;
-  flex-direction: row!important;
 }
 </style>

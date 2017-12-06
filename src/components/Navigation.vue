@@ -1,4 +1,5 @@
 <template>
+  <div class="nav-banner">
   <div class="ui top fixed menu grid">
     <div class="item borderless" style="margin-left: 250px; height:75px;">
       <img src="/static/logo.png" />
@@ -46,6 +47,7 @@
       </router-link>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -72,6 +74,6 @@ export default {
 
 <style>
 .nav-banner {
-  background-color: #4484C2;
+  margin-bottom: 14%;
 }
 </style>

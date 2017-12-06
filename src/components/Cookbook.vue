@@ -16,7 +16,6 @@
         <br>
         <b class="recipes">{{ recipes }}</b> Recipes
       </div>
-
   </div>
 </template>
 
@@ -71,6 +70,5 @@ export default {
 }
 .flag {
   float: right;
-  margin-right:10px;
 }
 </style>

@@ -1,23 +1,13 @@
 <template>
-  <div class="site-content">
+  <div>
     <Navigation />
-    <br><br><br>
-    <br><br><br>
-    <br><br><br><br>
-
     <Search />
-    <br><br><br>
-    <br><br><br>
-
     <CookbookList />
-    <br><br><br>
     <div class="ui horizontal divider">
       top recipes
     </div>
     <RecipeList />
-    <br><br><br>
-
-    <Bottom />
+    <!-- <Bottom /> -->
   </div>
 </template>
 
