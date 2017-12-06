@@ -2,7 +2,11 @@
   <div class="nav-banner">
   <div class="ui top fixed menu grid">
     <div class="item borderless" style="margin-left: 250px; height:75px;">
-      <img src="/static/logo.png" />
+      <router-link :to="{
+          name: 'Home'
+        }" class="item">
+          <img src="/static/logo.png" />
+      </router-link>
     </div>
     <div class="right menu" v-if="!isLoggedIn">
       <router-link :to="{
@@ -38,7 +42,7 @@
           Help
       </router-link>
       <router-link :to="{
-          name: 'SignUp'
+          name: 'Dashboard'
         }" class="item">
           Dashboard
       </router-link>
