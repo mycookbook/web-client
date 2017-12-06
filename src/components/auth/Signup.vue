@@ -17,7 +17,7 @@
           <h1>Create a new account</h1>
         </p>
         <template>
-          <form class="ui form" v-on:submit.prevent="signUp">
+          <form class="ui form" @submit.prevent>
             <div class="ui negative message" v-if="info">
               <div class="header">
                 There were some errors with your submission

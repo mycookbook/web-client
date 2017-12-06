@@ -8,7 +8,7 @@
         <router-link to="/#/signup">Sign Up</router-link>
       </p>
       <template>
-        <form class="ui form" v-on:submit.prevent="logIn">
+        <form class="ui form" @submit.prevent>
           <div class="ui negative message" v-if="info">
             <div class="header">
               There were some errors with your submission
