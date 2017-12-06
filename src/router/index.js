@@ -32,6 +32,12 @@ export default new Router({
         template: '<div> Discover </div>'
       }
     }, {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: {
+        template: '<div> Dashboard, welcome </div>'
+      }
+    }, {
       path: '/help',
       name: 'Help',
       component: {
