@@ -17,3 +17,7 @@ h1, h2, h3, h4, h5, h6, a, p, div, input, span, small {
 .site-content {
   flex: 1;
 }
+
+#app {
+  width: 110%!important;
+}

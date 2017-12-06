@@ -9,17 +9,17 @@
       </a>
     </span>
     <br><br>
-    <div class="ui container images-wrapper">
-      <div v-for="recipe in recipes">
-        <!-- <div class="ui images"> -->
-          <Recipe
-            :imgUrl="recipe.imgUrl"
-            :name="recipe.name"
-            :flag="recipe.flag"
-          />
-        <!-- </div> -->
+
+    <div class="ui medium images">
+      <div class="ui fluid image" v-for="recipe in recipes">
+        <Recipe
+          :imgUrl="recipe.imgUrl"
+          :name="recipe.name"
+          :flag="recipe.flag"
+        />
       </div>
     </div>
+
   </div>
 </template>
 
@@ -30,16 +30,16 @@ export default {
   data () {
     return {
       recipes: [{
-        imgUrl: 'static/naija-indomie.jpg',
-        name: 'Nigerian Indomie meal'
+        imgUrl: 'static/ofada-rice.jpg',
+        name: 'Ofada Rice'
       }, {
-        imgUrl: 'static/ghana-jollof-rice.jpg',
+        imgUrl: 'static/ghana-jollof-rice.png',
         name: 'Ghanian Jollof Rice'
       }, {
-        imgUrl: 'static/akara-and-pap.jpeg',
+        imgUrl: 'static/akara-and-pap.jpg',
         name: 'Akara and pap (ogi)'
       }, {
-        imgUrl: 'static/puff-puff.jpeg',
+        imgUrl: 'static/puff-puff.jpg',
         name: 'Puff puff'
       }]
     }

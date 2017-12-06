@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div class="img-container">
       <img
         v-bind:src="imgUrl"
-        class="ui medium image"
       />
       <div class="segments">
         <div class="descr">
@@ -18,7 +16,7 @@
         <br>
         <b class="recipes">{{ recipes }}</b> Recipes
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -55,13 +53,6 @@ export default {
 </script>
 
 <style>
-.img-container img {
-  /*opacity: 0.5;*/
-  padding:10px;
-}
-.medium {
-  border-radius: 13px;
-}
 .segments {
   padding-left: 15px;
 }

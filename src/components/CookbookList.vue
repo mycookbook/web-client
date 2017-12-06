@@ -8,20 +8,19 @@
         see all <i class="chevron right icon"></i>
       </a>
     </span>
-    <br>
-    <div class="ui container images-wrapper">
-      <div v-for="cookbook in cookbooks">
-        <!-- <div class="ui images"> -->
-          <Cookbook
-            :imgUrl="cookbook.imgUrl"
-            :name="cookbook.name"
-            :recipes="cookbook.recipes"
-            :descr="cookbook.descr"
-            :flag="cookbook.flag"
-          />
-        <!-- </div> -->
+    <br><br>
+    <div class="ui medium images">
+      <div class="ui fluid image" v-for="cookbook in cookbooks">
+        <Cookbook
+          :imgUrl="cookbook.imgUrl"
+          :name="cookbook.name"
+          :recipes="cookbook.recipes"
+          :descr="cookbook.descr"
+          :flag="cookbook.flag"
+        />
       </div>
     </div>
+
   </div>
 </template>
 
@@ -32,25 +31,25 @@ export default {
   data () {
     return {
       cookbooks: [{
-        imgUrl: 'static/ketogenic.jpg',
+        imgUrl: 'static/akara-and-pap.jpg',
         name: 'Ketogenic Lifestyle',
         recipes: '30K',
         descr: 'HEALTH & LIFESTYLE',
         flag: 'ng flag'
       }, {
-        imgUrl: 'static/auntie-yemisi.jpg',
-        name: 'Aunty Yemisi Kitchen',
+        imgUrl: 'static/ghana-jollof-rice.png',
+        name: 'Aunty Dolapo',
         recipes: '60K',
         descr: 'HOBBIST MANUAL',
         flag: 'us flag'
       }, {
-        imgUrl: 'static/naija-party.jpg',
+        imgUrl: 'static/ofada-rice.jpg',
         name: 'Nigerian Party Specials',
         recipes: '20K',
         descr: 'A.K.A OWAMBE',
         flag: 'ng flag'
       }, {
-        imgUrl: 'static/indian-cocktail.jpg',
+        imgUrl: 'static/puff-puff.jpg',
         name: 'Indian cocktails',
         recipes: '1k',
         descr: 'YUM YUM',

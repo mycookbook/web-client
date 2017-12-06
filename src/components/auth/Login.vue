@@ -5,7 +5,11 @@
       <br><br><br><br><br>
       <h1>Log in</h1>
       <p>Don't have an account?
-        <router-link to="/#/signup">Sign Up</router-link>
+        <router-link :to="{
+            name: 'Register'
+          }" class="item">
+            Sign Up
+        </router-link>
       </p>
       <template>
         <form class="ui form" @submit.prevent>
