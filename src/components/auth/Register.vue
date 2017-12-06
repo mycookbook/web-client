@@ -7,17 +7,17 @@
           <i class="facebook icon"></i> Sign Up with Facebook
         </a>
       </div>
-<br><br>
-        <div class="ui horizontal divider">
-          or
-        </div>
-        <br><br>
-    <div class="four wide column centered grid" :class="{'is-waiting': loader}">
+      <br><br>
+      <div class="ui horizontal divider">
+        or
+      </div>
+      <br><br>
+      <div class="four wide column centered grid" :class="{'is-waiting': loader}">
         <p>
           <h1>Create a new account</h1>
         </p>
         <template>
-          <form class="ui form" @submit.prevent>
+          <form class="ui form" v-on:submit.prevent="register">
             <div class="ui negative message" v-if="info">
               <div class="header">
                 There were some errors with your submission
@@ -32,19 +32,19 @@
             </div>
             <div class="field">
               <label>First Name</label>
-              <input v-model="firstName" placeholder="First Name" required>
+              <input v-model="firstName" placeholder="First Name">
             </div>
             <div class="field">
               <label>Last Name</label>
-              <input v-model="lastName" placeholder="Last Name" required>
+              <input v-model="lastName" placeholder="Last Name">
             </div>
             <div class="field">
               <label>email</label>
-              <input v-model.trim="email" placeholder="Email address" required>
+              <input v-model.trim="email" placeholder="Email address">
             </div>
             <div class="field">
               <label>Password</label>
-              <input type="password" v-model.trim="password" placeholder="Pasword" required>
+              <input type="password" v-model.trim="password" placeholder="Pasword">
             </div>
             <section class="bottom aligned">
               <span>
@@ -103,13 +103,14 @@ export default {
     }
   },
   methods: {
-    signUp: function (e) {
+    register: function (e) {
       this.loader = true
       this.$http.post(this.registerUrl(), {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
       }).then((response) => {
+        console.log('loggin user in')
         this.loginUser()
       }, (response) => {
         this.info = true
