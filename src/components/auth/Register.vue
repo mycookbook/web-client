@@ -54,7 +54,7 @@
               <div class="column">
                 <small>
                   By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
-                  and <a v-bind:href="drp">Data Retention Policy</a>. You may receive SMS message notifications from
+                  and <a v-bind:href="drp">Data Retention Policy</a>. <br>You may receive SMS message notifications from
                   Cookbook and can opt out at any time.
                 </small>
               </div>
