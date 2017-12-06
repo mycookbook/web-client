@@ -1,59 +1,53 @@
 <template>
   <div>
     <Navigation />
-    <br><br><br><br><br><br><br><br><br>
-    <div class="ui centered grid">
-        <a href="" class="ui facebook massive button">
-          <i class="facebook icon"></i> Sign Up with Facebook
-        </a>
-      </div>
-      <br><br>
-      <div class="ui horizontal divider">
-        or
-      </div>
-      <br><br>
-      <div class="four wide column centered grid" :class="{'is-waiting': loader}">
+    <div class="ui middle aligned center aligned grid" :class="{'is-waiting': loader}">
+      <div class="column">
+        <h1 class="ui teal image header">
+          <div class="content">
+            Sign up for an account
+          </div>
+        </h1>
         <p>
-          <h1>Create a new account</h1>
+          Already have an account?
+          <router-link to="/signin">
+            Sign in
+          </router-link>
         </p>
-        <template>
-          <form class="ui form" v-on:submit.prevent="register">
-            <div class="ui negative message" v-if="info">
-              <div class="header">
-                There were some errors with your submission
+        <form class="ui large form" v-on:submit.prevent="register">
+          <div class="ui negative message" v-if="info">
+            <div class="header">
+              There were some errors with your submission
+            </div>
+            <p>
+              <ul class="list">
+                <li v-for="error in errors">
+                  {{error}}
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div class="ui segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <input v-model="firstName" placeholder="First Name">
               </div>
-              <p>
-                <ul class="list">
-                  <li v-for="error in errors">
-                    {{error}}
-                  </li>
-                </ul>
-              </p>
             </div>
             <div class="field">
-              <label>First Name</label>
-              <input v-model="firstName" placeholder="First Name">
+              <div class="ui left icon input">
+                <input v-model="lastName" placeholder="Last Name">
+              </div>
             </div>
             <div class="field">
-              <label>Last Name</label>
-              <input v-model="lastName" placeholder="Last Name">
+              <div class="ui left icon input">
+                <input v-model.trim="email" placeholder="Email address">
+              </div>
             </div>
             <div class="field">
-              <label>email</label>
-              <input v-model.trim="email" placeholder="Email address">
+              <div class="ui left icon input">
+                <input type="password" v-model.trim="password" placeholder="Pasword">
+              </div>
             </div>
-            <div class="field">
-              <label>Password</label>
-              <input type="password" v-model.trim="password" placeholder="Pasword">
-            </div>
-            <section class="bottom aligned">
-              <span>
-                <small>
-                  Already have an account? <router-link to="/signin">Sign in</router-link>
-                </small>
-              </span>
-            </section>
-            <br>
             <div class="two column row">
               <div class="column">
                 <small>
@@ -64,15 +58,23 @@
               </div>
               <br><br>
             </div>
-            <!-- <button class="ui button" type="submit">Submit</button> -->
-            <div class="item">
-              <button class="ui primary button">
-                Submit
-              </button>
-            </div>
-          </form>
-        </template>
+            <button class="ui primary button" @click="register">
+              Submit
+            </button>
+          </div>
+        </form>
+        <br><br>
+        <div class="ui horizontal divider">
+          or
+        </div>
+        <br><br>
+        <div>
+          <a href="" class="ui facebook massive button">
+            <i class="facebook icon"></i> Sign Up with Facebook
+          </a>
+        </div>
       </div>
+    </div>
   </div>
 </template>
 

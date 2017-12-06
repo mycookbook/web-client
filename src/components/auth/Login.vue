@@ -55,7 +55,6 @@
               Log In
             </button>
           </div>
-          <div class="ui error message"></div>
         </form>
         <br><br>
         <div class="ui horizontal divider">
