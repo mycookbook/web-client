@@ -91,6 +91,8 @@ export default {
   beforeCreate () {
     if (!store.state.isLogged) {
       router.push('/login')
+    } else {
+      router.push('/dashboard')
     }
   },
   methods: {
