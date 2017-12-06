@@ -1,7 +1,7 @@
 <template>
   <div class="ui top fixed menu grid">
     <div class="item borderless" style="margin-left: 250px; height:75px;">
-      <img src="../assets/logo.png" />
+      <img src="/static/logo.png" />
     </div>
     <div class="right menu" v-if="!isLoggedIn">
       <router-link :to="{
@@ -15,12 +15,12 @@
           Help
       </router-link>
       <router-link :to="{
-          name: 'SignUp'
+          name: 'Register'
         }" class="item">
           Sign Up
       </router-link>
       <router-link :to="{
-          name: 'LogIn'
+          name: 'Login'
         }" class="item">
           Log In
       </router-link>
@@ -50,8 +50,6 @@
 
 <script>
 import store from '@/store'
-import Menui from './NavLinks.vue'
-import Logo from './logos/main/Default.vue'
 
 export default {
   created () {
@@ -68,10 +66,6 @@ export default {
     updateStatus: function () {
       this.isLoggedIn = true
     }
-  },
-  components: {
-    Logo: Logo,
-    Menui: Menui
   }
 }
 </script>
