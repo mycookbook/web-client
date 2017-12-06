@@ -10,8 +10,10 @@
         </h1>
         <p>
           Already have an account?
-          <router-link to="/signin">
-            Sign in
+          <router-link :to="{
+              name: 'Login'
+            }" class="item">
+              Log In
           </router-link>
         </p>
         <form class="ui large form" v-on:submit.prevent="register">
