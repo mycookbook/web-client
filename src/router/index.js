@@ -15,10 +15,12 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  hashbang: true,
+  history: true,
   base: '/',
   routes: [{
     path: '/',
-    name: 'Hello',
+    name: 'Home',
     component: LandingPage
   }, {
     path: '/login',

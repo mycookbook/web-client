@@ -41,7 +41,6 @@
         }" class="item">
           Dashboard
       </router-link>
-
       <router-link to="/signout" @click="updateStatus" class="item">
         Logout
       </router-link>
