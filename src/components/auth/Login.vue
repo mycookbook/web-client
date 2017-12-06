@@ -1,6 +1,6 @@
 <template>
   <div class="ui grid" style="margin:auto">
-    <Navm />
+    <Navigation />
     <div class="ui six wide column centered grid" :class="{'is-waiting': loader}">
       <br><br><br><br><br>
       <h1>Log in</h1>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Navm from '../Navm.vue'
+import Navigation from '../Navigation.vue'
 import router from '@/router'
 import store from '@/store'
 
@@ -79,12 +79,9 @@ export default {
         email: this.credentials.email,
         password: this.credentials.password
       }).then((response) => {
-        var jwtDecode = require('jwt-decode')
-        var decoded = jwtDecode(response.body.token)
-        console.log(decoded)
-        localStorage.setItem('token', response.body.token)
+        localStorage.setItem('token', response.data.token)
         store.commit('LOGIN_USER')
-        router.push('/recipes')
+        router.push('/recipes/all')
       }, (response) => {
         this.info = true
         this.loader = false
@@ -98,7 +95,7 @@ export default {
     }
   },
   components: {
-    'Navm': Navm
+    'Navigation': Navigation
   }
 }
 </script>

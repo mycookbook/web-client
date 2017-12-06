@@ -1,6 +1,6 @@
 <template>
   <div class="site-content">
-    <Navm />
+    <Navigation />
     <br><br><br>
     <br><br><br>
     <br><br><br><br>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Navm from './Navm.vue'
+import Navigation from './Navigation.vue'
 import Search from './Search.vue'
 import CookbookList from './CookbookList.vue'
 import RecipeList from './RecipeList.vue'
@@ -33,11 +33,11 @@ export default {
     return {}
   },
   components: {
-    Navm: Navm,
     Search: Search,
-    CookbookList: CookbookList,
+    Bottom: Bottom,
     RecipeList: RecipeList,
-    Bottom: Bottom
+    Navigation: Navigation,
+    CookbookList: CookbookList
   }
 }
 </script>

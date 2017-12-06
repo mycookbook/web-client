@@ -64,10 +64,7 @@ footer {
 }
 .items li {
   padding: 8px;
-}
-a {
-  color: #333!important;
-}
+}``
 .copyright {
   border-top: 1px solid #eee;
   padding-top: 25px;

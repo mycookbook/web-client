@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navm />
+    <Navigation />
     <br><br><br><br><br><br><br><br><br>
     <div class="ui centered grid">
         <a href="" class="ui facebook massive button">
@@ -77,11 +77,9 @@
 </template>
 
 <script>
-// import auth from '../auth'
 import router from '@/router'
 import store from '@/store'
-import { Carousel3d, Slide } from 'vue-carousel-3d'
-import Navm from '../Navm.vue'
+import Navigation from '../Navigation.vue'
 
 export default {
   beforeCreate () {
@@ -107,31 +105,49 @@ export default {
   methods: {
     signUp: function (e) {
       this.loader = true
-      this.$http.post(this.getApiServerUrl(), {
+      this.$http.post(this.registerUrl(), {
         name: this.firstName + ' ' + this.lastName,
         email: this.email,
         password: this.password
       }).then((response) => {
-        this.$router.push('/signin')
+        this.loginUser()
       }, (response) => {
         this.info = true
         this.loader = false
         this.errors = JSON.parse(response.bodyText)
       })
     },
-    getApiServerUrl: function () {
-      let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/signup'
-      let dev = 'http://cookbook-api.dev/api/v1/signup'
+    registerUrl: function () {
+      let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signup'
+      let dev = 'http://cookbook-api.dev/api/v1/auth/signup'
+      return (process.env.NODE_ENV === 'production') ? prod : dev
+    },
+    loginUrl: function () {
+      let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signin'
+      let dev = 'http://cookbook-api.dev/api/v1/auth/signin'
       return (process.env.NODE_ENV === 'production') ? prod : dev
     },
     seeTnc: function () {
       return alert(this.tnc)
+    },
+    loginUser: function () {
+      this.$http.post(this.loginUrl(), {
+        email: this.email,
+        password: this.password
+      }).then((response) => {
+        this.loader = false
+        var jwtDecode = require('jwt-decode')
+        var decoded = jwtDecode(response.data.token)
+        localStorage.setItem('token', decoded)
+        store.commit('LOGIN_USER')
+        router.push('/')
+      }, (response) => {
+        this.errors = JSON.parse(response.bodyText)
+      })
     }
   },
   components: {
-    'Navm': Navm,
-    Carousel3d,
-    Slide
+    'Navigation': Navigation
   }
 }
 </script>

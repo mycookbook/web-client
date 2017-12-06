@@ -35,7 +35,9 @@ export default {
 
 <style>
 .note {
-  padding: 3px 25px;
+  padding: 3px 9px;
+  letter-spacing: 0.03rem;
+  font-weight: 100;
 }
 .subtitle {
   font-size: 60px;
