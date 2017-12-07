@@ -16,7 +16,7 @@
               Log In
           </router-link>
         </p>
-        <form class="ui large form" v-on:submit.prevent="register">
+        <form class="ui large form" @submit.prevent>
           <div class="ui negative message" v-if="info">
             <div class="header">
               There were some errors with your submission
@@ -114,7 +114,7 @@ export default {
         email: this.email,
         password: this.password
       }).then((response) => {
-        console.log('loggin user in')
+        console.log('logging user in')
         this.loginUser()
       }, (response) => {
         this.info = true
