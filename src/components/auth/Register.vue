@@ -24,7 +24,7 @@
             <p>
               <ul class="list">
                 <li v-for="error in errors">
-                  {{error}}
+                  {{ error[0] }}
                 </li>
               </ul>
             </p>
@@ -32,12 +32,7 @@
           <div class="ui segment">
             <div class="field">
               <div class="ui left icon input">
-                <input v-model="firstName" placeholder="First Name">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <input v-model="lastName" placeholder="Last Name">
+                <input v-model="fullName" placeholder="Full Name">
               </div>
             </div>
             <div class="field">
@@ -95,8 +90,7 @@ export default {
     return {
       loader: false,
       content: '',
-      firstName: '',
-      lastName: '',
+      fullName: '',
       email: '',
       username: '',
       password: '',
@@ -110,7 +104,7 @@ export default {
     register: function (e) {
       this.loader = true
       this.$http.post(this.registerUrl(), {
-        name: this.firstName + ' ' + this.lastName,
+        name: this.fullName,
         email: this.email,
         password: this.password
       }).then((response) => {
