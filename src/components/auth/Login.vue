@@ -15,15 +15,18 @@
             Sign Up
           </router-link>
         </p>
-        <form class="ui large form" v-on:submit.prevent="logIn">
+        <form class="ui large form" @submit.prevent>
           <div class="ui negative message" v-if="info">
             <div class="header">
               There were some errors with your submission
             </div>
             <p>
               <ul class="list">
-                <li v-for="error in errors">
-                  {{error}}
+                <li v-if="errors.length === 1">
+                  {{errors[0]}}
+                </li>
+                <li v-else v-for="error in errors">
+                  {{ error[0] }}
                 </li>
               </ul>
             </p>
