@@ -1,3 +1,12 @@
+<!--
+@Author: Okosun Florence <florenceokosun>
+@Date:   02-12-2017
+@Email:  okosunuzflorence@gmail.com
+@Filename: Navigation.vue
+@Last modified by:   florenceokosun
+@Last modified time: 01-01-2018
+-->
+
 <template>
   <div class="nav-banner">
   <div class="ui top fixed menu grid">
@@ -31,6 +40,9 @@
       </router-link>
     </div>
     <div class="right menu" v-else>
+      <div class="item">
+          {{ displayName }}
+      </div>
       <router-link :to="{
           name: 'Discover'
         }" class="item">
@@ -61,16 +73,22 @@ export default {
   created () {
     if (store.state.isLogged) {
       this.isLoggedIn = true
+      this.displayName = this.getDisplayName()
     }
   },
   data () {
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      displayName: ''
     }
   },
   methods: {
     updateStatus: function () {
       this.isLoggedIn = true
+    },
+    getDisplayName: function () {
+      let displayname = localStorage.getItem('displayName')
+      return displayname[0].toUpperCase() + displayname.slice(1)
     }
   }
 }

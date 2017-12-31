@@ -1,3 +1,14 @@
+<!--
+@Author: Okosun Florence <florenceokosun>
+@Date:   02-12-2017
+@Email:  okosunuzflorence@gmail.com
+@Filename: Register.vue
+@Last modified by:   florenceokosun
+@Last modified time: 01-01-2018
+-->
+
+
+
 <template>
   <div>
     <Navigation />
@@ -138,6 +149,7 @@ export default {
         var jwtDecode = require('jwt-decode')
         var decoded = jwtDecode(response.data.token)
         localStorage.setItem('token', decoded)
+        localStorage.setItem('displayName', response.data.user)
         store.commit('LOGIN_USER')
         router.push('/')
       }, (response) => {

@@ -1,3 +1,14 @@
+<!--
+@Author: Okosun Florence <florenceokosun>
+@Date:   02-12-2017
+@Email:  okosunuzflorence@gmail.com
+@Filename: Login.vue
+@Last modified by:   florenceokosun
+@Last modified time: 01-01-2018
+-->
+
+
+
 <template>
   <div>
     <Navigation />
@@ -100,11 +111,13 @@ export default {
   },
   methods: {
     logIn: function (e) {
+      console.log('tryona post')
       this.loader = true
       this.$http.post(this.getApiServerUrl(), {
         email: this.credentials.email,
         password: this.credentials.password
       }).then((response) => {
+        localStorage.setItem('displayName', response.data.user)
         localStorage.setItem('token', response.data.token)
         store.commit('LOGIN_USER')
         router.push('/recipes/all')
