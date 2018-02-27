@@ -12,73 +12,75 @@
 <template>
   <div>
     <Navigation />
-    <div class="ui middle aligned center aligned grid" :class="{'is-waiting': loader}">
-      <div class="column">
-        <h1 class="ui teal image header">
-          <div class="content">
-            Login to your account
-          </div>
-        </h1>
-        <p>Don't have an account?
-          <router-link :to="{
-            name: 'Register'
-            }" class="item">
-            Sign Up
-          </router-link>
-        </p>
-        <form class="ui large form" @submit.prevent>
-          <div class="ui negative message" v-if="info">
-            <div class="header">
-              There were some errors with your submission
+    <div class="main ui container">
+      <div class="ui centered grid" :class="{'is-waiting': loader}">
+        <div class="column centered row">
+          <h1 class="ui teal image header">
+            <div class="content">
+              Login to your account
             </div>
-            <p>
-              <ul class="list">
-                <li v-if="errors.length === 1">
-                  {{errors[0]}}
-                </li>
-                <li v-else v-for="error in errors">
-                  {{ error[0] }}
-                </li>
-              </ul>
-            </p>
-          </div>
-          <div class="ui segment">
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter your email"
-                  v-model="credentials.email"
-                />
+          </h1>
+          <p>Don't have an account?
+            <router-link :to="{
+              name: 'Register'
+              }" class="item">
+              Sign Up
+            </router-link>
+          </p>
+          <form class="ui large form" @submit.prevent>
+            <div class="ui negative message" v-if="info">
+              <div class="header">
+                There were some errors with your submission
               </div>
+              <p>
+                <ul class="list">
+                  <li v-if="errors.length === 1">
+                    {{errors[0]}}
+                  </li>
+                  <li v-else v-for="error in errors">
+                    {{ error[0] }}
+                  </li>
+                </ul>
+              </p>
             </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Enter your password"
-                  v-model="credentials.password"
-                >
+            <div class="ui segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    v-model="credentials.email"
+                  />
+                </div>
               </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    v-model="credentials.password"
+                  >
+                </div>
+              </div>
+              <button class="ui primary button" @click="logIn">
+                Log In
+              </button>
             </div>
-            <button class="ui primary button" @click="logIn">
-              Log In
-            </button>
+          </form>
+          <br><br>
+          <div class="ui horizontal divider">
+            or
           </div>
-        </form>
-        <br><br>
-        <div class="ui horizontal divider">
-          or
-        </div>
-        <br><br>
-        <div>
-          <a href="" class="ui facebook massive button">
-            <i class="facebook icon"></i> Login with Facebook
-          </a>
+          <br><br>
+          <div>
+            <a href="" class="ui facebook massive button">
+              <i class="facebook icon"></i> Login with Facebook
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import 'semantic-ui-css/semantic.css'
+import 'semantic-ui-css'
 
 Vue.config.productionTip = false
 
@@ -17,5 +19,3 @@ new Vue({
 })
 
 window.$ = window.jQuery = require('jquery')
-require('semantic-ui-css/semantic.css')
-require('semantic-ui-css/semantic.js')
