@@ -1,3 +1,12 @@
+/**
+ * @Author: Okosun Florence <florenceokosun>
+ * @Date:   28-02-2018
+ * @Email:  okosunuzflorence@gmail.com
+ * @Filename: main.js
+ * @Last modified by:   florenceokosun
+ * @Last modified time: 01-03-2018
+ */
+
 // app entry file
 
 // The Vue build version to load with the `import` command
@@ -18,4 +27,4 @@ new Vue({
   components: { App }
 })
 
-window.$ = window.jQuery = require('jquery')
+// window.$ = window.jQuery = require('jquery')
