@@ -12,12 +12,14 @@
 <template>
   <div>
     <Navigation />
-    <Search />
-    <CookbookList />
-    <div class="ui horizontal divider">
-      top recipes
+    <div class="main ui container">
+      <Search />
+      <CookbookList />
+      <div class="ui horizontal divider">
+        top recipes
+      </div>
+      <RecipeList />
     </div>
-    <RecipeList />
     <!-- <Bottom /> -->
   </div>
 </template>

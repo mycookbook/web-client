@@ -12,74 +12,76 @@
 <template>
   <div>
     <Navigation />
-    <div class="ui middle aligned center aligned grid" :class="{'is-waiting': loader}">
-      <div class="column">
-        <h1 class="ui teal image header">
-          <div class="content">
-            Sign up for an account
+    <div class="main ui container">
+      <div class="ui centered grid" :class="{'is-waiting': loader}">
+        <div class="column centered row">
+          <h1 class="ui teal image header">
+            <div class="content">
+              Sign up for an account
+            </div>
+          </h1>
+          <p>
+            Already have an account?
+            <router-link :to="{
+                name: 'Login'
+              }" class="item">
+                Log In
+            </router-link>
+          </p>
+          <form class="ui large form" @submit.prevent>
+            <div class="ui negative message" v-if="info">
+              <div class="header">
+                There were some errors with your submission
+              </div>
+              <p>
+                <ul class="list">
+                  <li v-for="error in errors">
+                    {{ error[0] }}
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div class="ui segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <input v-model="fullName" placeholder="Full Name">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <input v-model.trim="email" placeholder="Email address">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <input type="password" v-model.trim="password" placeholder="Pasword">
+                </div>
+              </div>
+              <div class="two column row">
+                <div class="column">
+                  <small>
+                    By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
+                    and <a v-bind:href="drp">Data Retention Policy</a>. <br>You may receive SMS message notifications from
+                    Cookbook and can opt out at any time.
+                  </small>
+                </div>
+                <br><br>
+              </div>
+              <button class="ui primary button" @click="register">
+                Submit
+              </button>
+            </div>
+          </form>
+          <br><br>
+          <div class="ui horizontal divider">
+            or
           </div>
-        </h1>
-        <p>
-          Already have an account?
-          <router-link :to="{
-              name: 'Login'
-            }" class="item">
-              Log In
-          </router-link>
-        </p>
-        <form class="ui large form" @submit.prevent>
-          <div class="ui negative message" v-if="info">
-            <div class="header">
-              There were some errors with your submission
-            </div>
-            <p>
-              <ul class="list">
-                <li v-for="error in errors">
-                  {{ error[0] }}
-                </li>
-              </ul>
-            </p>
+          <br><br>
+          <div>
+            <a href="" class="ui facebook massive button">
+              <i class="facebook icon"></i> Sign Up with Facebook
+            </a>
           </div>
-          <div class="ui segment">
-            <div class="field">
-              <div class="ui left icon input">
-                <input v-model="fullName" placeholder="Full Name">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <input v-model.trim="email" placeholder="Email address">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <input type="password" v-model.trim="password" placeholder="Pasword">
-              </div>
-            </div>
-            <div class="two column row">
-              <div class="column">
-                <small>
-                  By clicking <b>Submit</b>, you agree to our <a v-bind:href="tnc" @click="seeTnc">Terms</a>
-                  and <a v-bind:href="drp">Data Retention Policy</a>. <br>You may receive SMS message notifications from
-                  Cookbook and can opt out at any time.
-                </small>
-              </div>
-              <br><br>
-            </div>
-            <button class="ui primary button" @click="register">
-              Submit
-            </button>
-          </div>
-        </form>
-        <br><br>
-        <div class="ui horizontal divider">
-          or
-        </div>
-        <br><br>
-        <div>
-          <a href="" class="ui facebook massive button">
-            <i class="facebook icon"></i> Sign Up with Facebook
-          </a>
         </div>
       </div>
     </div>
