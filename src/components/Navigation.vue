@@ -4,7 +4,7 @@
 @Email:  okosunuzflorence@gmail.com
 @Filename: Navigation.vue
 @Last modified by:   florenceokosun
-@Last modified time: 01-01-2018
+@Last modified time: 12-02-2018
 -->
 
 <template>
@@ -17,31 +17,9 @@
           <img src="/static/logo.png" />
       </router-link>
     </div>
-    <div class="right menu" v-if="!isLoggedIn">
-      <router-link :to="{
-          name: 'Discover'
-        }" class="item">
-          Discover
-      </router-link>
-      <router-link :to="{
-          name: 'Help'
-        }" class="item">
-          Help
-      </router-link>
-      <router-link :to="{
-          name: 'Register'
-        }" class="item">
-          Sign Up
-      </router-link>
-      <router-link :to="{
-          name: 'Login'
-        }" class="item">
-          Log In
-      </router-link>
-    </div>
-    <div class="right menu" v-else>
-      <div class="item">
-          {{ displayName }}
+    <div class="right menu">
+      <div class="item" v-if="isLoggedIn">
+          <b>{{ displayName }}</b>
       </div>
       <router-link :to="{
           name: 'Discover'
@@ -58,8 +36,13 @@
         }" class="item">
           Dashboard
       </router-link>
-      <router-link to="/signout" @click="updateStatus" class="item">
+      <router-link to="/signout" @click="updateStatus" class="item" v-if="isLoggedIn">
         Logout
+      </router-link>
+      <router-link :to="{
+          name: 'Login'
+        }" class="item" v-else>
+          Log In
       </router-link>
     </div>
   </div>

@@ -4,7 +4,7 @@
 @Email:  okosunuzflorence@gmail.com
 @Filename: Login.vue
 @Last modified by:   florenceokosun
-@Last modified time: 01-01-2018
+@Last modified time: 12-02-2018
 -->
 
 
@@ -111,7 +111,6 @@ export default {
   },
   methods: {
     logIn: function (e) {
-      console.log('tryona post')
       this.loader = true
       this.$http.post(this.getApiServerUrl(), {
         email: this.credentials.email,
@@ -124,12 +123,16 @@ export default {
       }, (response) => {
         this.info = true
         this.loader = false
-        this.errors = JSON.parse(response.bodyText)
+        if (response.status === 0) {
+          this.errors = ['Server Error.']
+        } else {
+          this.errors = JSON.parse(response.bodyText)
+        }
       })
     },
     getApiServerUrl: function () {
       let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signin'
-      let dev = 'http://cookbook-api.dev/api/v1/auth/signin'
+      let dev = 'http://localhost:8000/api/v1/auth/signin'
       return (process.env.NODE_ENV === 'production') ? prod : dev
     }
   },

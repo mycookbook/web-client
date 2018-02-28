@@ -4,7 +4,7 @@
 @Email:  okosunuzflorence@gmail.com
 @Filename: Register.vue
 @Last modified by:   florenceokosun
-@Last modified time: 01-01-2018
+@Last modified time: 12-02-2018
 -->
 
 
@@ -124,17 +124,18 @@ export default {
       }, (response) => {
         this.info = true
         this.loader = false
+        console.log('hi i am errors', response)
         this.errors = JSON.parse(response.bodyText)
       })
     },
     registerUrl: function () {
       let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signup'
-      let dev = 'http://cookbook-api.dev/api/v1/auth/signup'
+      let dev = 'http://localhost:8000/api/v1/auth/signup'
       return (process.env.NODE_ENV === 'production') ? prod : dev
     },
     loginUrl: function () {
       let prod = 'https://lit-eyrie-53695.herokuapp.com/api/v1/auth/signin'
-      let dev = 'http://cookbook-api.dev/api/v1/auth/signin'
+      let dev = 'http://localhost:8000/api/v1/auth/signin'
       return (process.env.NODE_ENV === 'production') ? prod : dev
     },
     seeTnc: function () {
@@ -153,7 +154,8 @@ export default {
         store.commit('LOGIN_USER')
         router.push('/')
       }, (response) => {
-        this.errors = JSON.parse(response.bodyText)
+        console.log('error', response)
+        // this.errors = JSON.parse(response.bodyText)
       })
     }
   },

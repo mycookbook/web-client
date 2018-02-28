@@ -1,3 +1,14 @@
+<!--
+@Author: Okosun Florence <florenceokosun>
+@Date:   02-12-2017
+@Email:  okosunuzflorence@gmail.com
+@Filename: LandingPage.vue
+@Last modified by:   florenceokosun
+@Last modified time: 01-01-2018
+-->
+
+
+
 <template>
   <div>
     <Navigation />
