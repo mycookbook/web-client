@@ -7,13 +7,12 @@
 @Last modified time: 01-01-2018
 -->
 
-
-
 <template>
   <div>
     <Navigation />
     <div class="main ui container">
       <Search />
+      <Taverna />
       <CookbookList />
       <div class="ui horizontal divider">
         top recipes
@@ -27,6 +26,7 @@
 <script>
 import Navigation from './Navigation.vue'
 import Search from './Search.vue'
+import Taverna from './Taverna.vue';
 import CookbookList from './CookbookList.vue'
 import RecipeList from './RecipeList.vue'
 import Bottom from './Bottom.vue'
@@ -36,8 +36,8 @@ export default {
     return {}
   },
   components: {
+    Taverna: Taverna,
     Search: Search,
-    Bottom: Bottom,
     RecipeList: RecipeList,
     Navigation: Navigation,
     CookbookList: CookbookList

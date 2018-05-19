@@ -1,8 +1,8 @@
 <template>
   <div class="search-banner">
     <h1 class="subtitle">
-      Browse recipes<br>
-      It's absolutely free of charge <br
+      Find recipes<br>
+      Join the Community
     </h1>
     <div>
       <AutoComplete />
@@ -38,11 +38,12 @@ export default {
   padding: 3px 9px;
   letter-spacing: 0.03rem;
   font-weight: 100;
+  font-size: 0.8rem;
 }
 .subtitle {
   font-size: 60px;
 }
 .search-banner {
-  margin-bottom: 9%;
+  margin: 9% 0 0 0;
 }
 </style>
