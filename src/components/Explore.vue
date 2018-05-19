@@ -9,31 +9,29 @@
         <div class="buffer"></div>
         <div class="content">
           <div class="headers">
-            <div class="ui sub header">Option 1</div>
+            <div class="ui sub header">Side bar</div>
             <div class="ui large header">Ofada Rice garnished with Fish Stew and Vegetable Salad</div>
             <div class="meta">Served by <span class="tvn weight bold">Mama Peace Catering Services</span></div>
             <div class="ui huge star rating" data-rating="4"></div>
-          </div> <!-- end headers -->
+          </div>
           <div class="ui accordion">
-
             <div class="tvn collapsible title active">
               <div class="tvn horizontal stroke"></div>
               <div class="ui sub header">Description</div>
               <div class="tvn horizontal stroke"></div>
               <div class="toggle"><svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg></div>
-            </div> <!-- end title -->
+            </div>
             <div class="content active">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.<br>
                 Consectetur  ---     24 mCal<br>
                 Hhsmodfdr   ---     6.8 mCal<br>
-            </div> <!-- end content -->
-
+            </div>
             <div class="tvn collapsible title active">
               <div class="tvn horizontal stroke"></div>
               <div class="ui sub header">Add a Review</div>
               <div class="tvn horizontal stroke"></div>
               <div class="toggle"><svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg></div>
-            </div> <!-- end title -->
+            </div>
             <div class="content active">
               <div id="review-form">
                 <p>How do you rate this meal? *</p>
@@ -46,17 +44,15 @@
                   <button class="ui basic button" type="submit">Submit Review</button>
                 </div>
               </div>
-            </div> <!-- end content -->
-
+            </div>
             <div class="tvn collapsible title active">
               <div class="tvn horizontal stroke"></div>
               <div class="ui sub header">All Reviews (23)</div>
               <div class="tvn horizontal stroke"></div>
               <div class="toggle"><svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg></div>
-            </div> <!-- end title -->
+            </div>
             <div class="content active">
               <div id="reviews-list" class="ui items">
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Susan Onibalusi</a>
@@ -67,7 +63,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Tony Nwachukwu</a>
@@ -78,7 +73,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Torhee Chirou</a>
@@ -89,7 +83,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Anonymous</a>
@@ -100,7 +93,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Hauwa Ibrahim</a>
@@ -109,7 +101,6 @@
                     <div class="description"></div>
                   </div>
                 </div>
-
                 <div class="item">
                   <div class="content">
                     <a class="header">Mabel Rosenberg</a>
@@ -120,33 +111,27 @@
                     </div>
                   </div>
                 </div>
-
               </div>
-            </div> <!-- end content -->
-
-          </div> <!-- end accordion -->
+            </div>
+          </div>
         </div>
       </div>
       <button class="close button">
         <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
       </button>
-    </div> <!-- end sidebar -->
+    </div>
 
+    <!-- loop through items here -->
     <div class="pusher">
       <div class="main">
-
-        <!-- meals -->
         <div class="ui meals container">
           <div class="meal section">
-
             <div class="tvn vertical stroke"></div>
             <div class="tvn sonar on">
               <div class="wave"></div>
             </div>
             <div class="ui title header">Explore</div>
-
             <div class="ui courses accordion">
-
               <div class="tvn collapsible title active">
                 <div class="tvn horizontal stroke"></div>
                 <div class="ui sub header">less/more</div>
@@ -154,10 +139,9 @@
                 <div class="toggle">
                   <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
                 </div>
-              </div> <!-- end course title -->
+              </div>
               <div class="content active">
                 <div class="ui grid">
-
                   <div class="sixteen wide mobile column
                                 sixteen wide tablet column
                                 eight wide computer column
@@ -180,9 +164,8 @@
                           <div class="ui right floated basic button">Add Review</div>
                         </div>
                       </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
+                    </div>
+                  </div>
                   <div class="sixteen wide mobile column
                                 sixteen wide tablet column
                                 eight wide computer column
@@ -205,9 +188,8 @@
                           <div class="ui right floated basic button">Add Review</div>
                         </div>
                       </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
+                    </div>
+                  </div>
                   <div class="sixteen wide mobile column
                                 sixteen wide tablet column
                                 eight wide computer column
@@ -217,7 +199,7 @@
                         <div class="image" style="background-image: url('/static/img/ofada.jpg')"></div>
                       </div>
                       <div class="content">
-                        <div class="ui sub header">Option 2</div>
+                        <div class="ui sub header">Owambe special</div>
                         <div class="ui medium header">Ofada Rice garnished with Fish Stew and Vegetable Salad</div>
                         <div class="tvn vertical fade clipped description">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
@@ -230,9 +212,8 @@
                           <div class="ui right floated basic button">Add Review</div>
                         </div>
                       </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
+                    </div>
+                  </div>
                   <div class="sixteen wide mobile column
                                 sixteen wide tablet column
                                 eight wide computer column
@@ -255,197 +236,17 @@
                           <div class="ui right floated basic button">Add Review</div>
                         </div>
                       </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
-                </div> <!-- end cards -->
-              </div> <!-- end course content -->
-
-            </div> <!-- end courses -->
-
-            <div class="tvn horizontal stroke"></div>
-          </div> <!-- end meal section -->
-          <div class="meal section">
-
-            <div class="tvn vertical stroke"></div>
-            <div class="tvn sonar">
-              <div class="wave"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="ui schedule sub header">7:00 - 8:30 AM</div>
-            <div class="ui title header">Lunch</div>
-
-            <div class="ui courses accordion">
-
-              <div class="tvn collapsible title active">
-                <div class="tvn horizontal stroke"></div>
-
-                <div class="toggle">
-                  <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
-                </div>
-              </div> <!-- end course title -->
-              <div class="content active">
-                <div class="ui grid">
-
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/yam.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Option 1</div>
-                        <div class="ui medium header">Afang Soup and Goat Meat with Semovita</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Served by <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="3"></div>
-                          <div class="ui right floated basic review button">Add Review</div>
-                        </div>
-                      </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/ofada.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Option 2</div>
-                        <div class="ui medium header">Ofada Rice garnished with Fish Stew and Vegetable Salad</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Served by <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="4"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/ewa.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Option 3</div>
-                        <div class="ui medium header">Ewa Ganyin and Fish with Bread</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Served by <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="5"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
-                </div> <!-- end cards -->
-              </div> <!-- end course content -->
-
-              <div class="tvn collapsible title active">
-                <div class="tvn horizontal stroke"></div>
-                <div class="ui sub header">Desserts</div>
-                <div class="tvn horizontal stroke"></div>
-                <div class="toggle">
-                  <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
-                </div>
-              </div> <!-- end course title -->
-              <div class="content active">
-                <div class="ui grid">
-
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/icecream.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Option 1</div>
-                        <div class="ui medium header">Ice cream</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Served by <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="0"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div> <!-- serving card -->
-                  </div><!-- end column-->
-
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/fruitsalad.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Option 2</div>
-                        <div class="ui medium header">Fruit Salad</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Served by <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="2"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div> <!-- serving card -->
-                  </div> <!-- end column-->
-
-                </div> <!-- end cards -->
-              </div> <!-- end course content -->
-
-            </div> <!-- end courses -->
-
             <div class="tvn horizontal stroke"></div>
-          </div> <!-- end meal section -->
-        </div> <!-- end meals -->
-
-        <!-- footer -->
-        <div class="ui footer container">
-          <div class="signature">
-            <svg class="tvn icon"><use xlink:href="#icon-taverna"></use></svg>
-            <div>Powered by the <a href="https://github.com/teamtaverna/taverna/" target="_blank" class="tvn link weight bold" >Taverna Project</a></div>
           </div>
-        </div> <!-- end footer -->
-
-      </div> <!-- end main -->
-    </div> <!-- end pusher -->
-
-  </div> <!-- end pushable content -->
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

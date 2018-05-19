@@ -1,5 +1,11 @@
 <template>
   <div class="ui fluid footer">
+    <div class="ui footer container">
+      <div class="signature">
+        <svg class="tvn icon"><use xlink:href="#icon-taverna"></use></svg>
+        <div>Powered by the <a href="https://github.com/teamtaverna/taverna/" target="_blank" class="tvn link weight bold" >Taverna Project</a></div>
+      </div>
+    </div> <!-- end footer -->
     <br><br><br>
     <footer>
       <div>

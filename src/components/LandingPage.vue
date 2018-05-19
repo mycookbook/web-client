@@ -12,12 +12,11 @@
     <Navigation />
     <div class="main ui container">
       <Search />
-      <Taverna />
-      <CookbookList />
+      <Explore />
       <div class="ui horizontal divider">
         top recipes
       </div>
-      <RecipeList />
+      <!-- <RecipeList /> -->
     </div>
     <!-- <Bottom /> -->
   </div>
@@ -26,9 +25,8 @@
 <script>
 import Navigation from './Navigation.vue'
 import Search from './Search.vue'
-import Taverna from './Taverna.vue';
-import CookbookList from './CookbookList.vue'
-import RecipeList from './RecipeList.vue'
+import Explore from './Explore.vue';
+// import RecipeList from './RecipeList.vue'
 import Bottom from './Bottom.vue'
 
 export default {
@@ -36,11 +34,10 @@ export default {
     return {}
   },
   components: {
-    Taverna: Taverna,
-    Search: Search,
-    RecipeList: RecipeList,
-    Navigation: Navigation,
-    CookbookList: CookbookList
+    Explore,
+    Search,
+    // RecipeList: RecipeList,
+    Navigation,
   }
 }
 </script>

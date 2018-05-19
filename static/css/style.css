@@ -2,7 +2,7 @@ body, html {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 /* Mobile */
