@@ -13,10 +13,11 @@
     <div class="main ui container">
       <Search />
       <Explore />
-      <div class="ui horizontal divider">
+      <div class="ui horizontal divider" style="margin-top:15%;">
         top recipes
       </div>
       <!-- <RecipeList /> -->
+      <Recipes />
     </div>
     <!-- <Bottom /> -->
   </div>
@@ -26,7 +27,7 @@
 import Navigation from './Navigation.vue'
 import Search from './Search.vue'
 import Explore from './Explore.vue';
-// import RecipeList from './RecipeList.vue'
+import Recipes from './Recipes.vue'
 import Bottom from './Bottom.vue'
 
 export default {
@@ -36,7 +37,7 @@ export default {
   components: {
     Explore,
     Search,
-    // RecipeList: RecipeList,
+    Recipes,
     Navigation,
   }
 }
