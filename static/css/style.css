@@ -340,14 +340,15 @@ body {
 .top.menu .selector, .top.menu .selector:hover .top.menu .selector {
   height: 100%;
   width: calc(100% / 3);
-  max-width: 360px;
+  /* max-width: 360px; */
+  max-width: 120px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
   background-color: #FFFFFF; }
   .top.menu .selector, .top.menu .selector:hover .top.menu .selector, .top.menu .selector .header, .top.menu .selector:hover .top.menu .selector .header {
     color: #000000; }
   .top.menu .selector .tvn.icon {
-    fill: #000000;
+    fill: #ffffff;
     stroke: #000000; }
   .top.menu .selector .tvn.stroke {
     background-color: #E4E4E4; }
@@ -358,7 +359,7 @@ body {
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease; }
     .top.menu .selector:hover.tvn.themed, .top.menu .selector:hover .tvn.themed {
-      background-color: #28905A; }
+      background-color: #2173A6; }
       .top.menu .selector:hover.tvn.themed, .top.menu .selector:hover.tvn.themed .header, .top.menu .selector:hover .tvn.themed, .top.menu .selector:hover .tvn.themed .header {
         color: #FFFFFF; }
       .top.menu .selector:hover.tvn.themed .tvn.icon, .top.menu .selector:hover .tvn.themed .tvn.icon {
@@ -373,6 +374,8 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    justify-content: center;
+    background-color: #2173A6;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;

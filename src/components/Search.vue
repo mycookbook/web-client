@@ -35,6 +35,6 @@ export default {
 
 <style>
 .search-banner {
-  margin: 11% 0 0 0;
+  margin: 15% 0 0 0;
 }
 </style>
