@@ -10,80 +10,57 @@
 <template>
   <!-- fixed menu -->
   <div class="ui top fixed menu grid">
-
     <div class="eight wide mobile
                   four wide tablet
                   six wide computer
                   left floated column
                   tvn no padding">
-  
-      <div class="tvn fade clipped brand">
-        <img class="logo" src="/static/logo.png">
-        <!-- <h1 class="name
-                     ui large header
-                     ">Cookbook inc.</h1> -->
+      <div class="tvn clipped brand">
+        <img class="logo" src="/static/logo.png" />
+        <div class="ui secondary  menu">
+          <a class="item">
+            About
+          </a>
+          <a class="item">
+            Help
+          </a>
+          <a class="item">
+            Go Pro
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <div class="ui icon input">
+                <input type="text" placeholder="Quick Search...">
+                <i class="search link icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
     <div class="eight wide mobile
                   twelve wide tablet
                   ten wide computer
                   right floated column
                   tvn no padding">
-      <!-- selectors -->
       <div class="selectors">
-
-
-
-        <!-- vendor selector -->
-        <div class="fitted item selector
-                      ui simple dropdown">
-          <!-- tab -->
-          <div class="tab
-                        tvn themed
-                        positioning
-                        ">
+        <div class="fitted item selector ui simple dropdown">
+          <div class="tab tvn themed positioning">
             <div class="icon section">
-              <div class="icon header">
-                <svg class="tvn icon"><use xlink:href="#icon-vendor"></use></svg>
+              <div class="icon header mobile hidden">
+                <svg class="tvn icon" viewBox="0 0 512 512">
+                  <path d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"/>
+                </svg>
               </div>
-              <div class="ui mobile only sub header">MPC</div>
-            </div>
-
-            <div class="mobile hidden info section
-                          tvn fade clipped">
-              <h3 class="ui medium header">Mama Peace Catering Services</h3>
-              <div class="ui sub header
-                            tvn regular weight">Vendor</div>
-            </div>
-
-            <div class="dropdown toggle
-                          tablet or lower hidden
-                          tvn right middle positioned
-                          ">
-              <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
-            </div>
-          </div> <!-- end tab -->
-
-          <!-- dropdown menu -->
-          <div class="ui dropdown menu">
-            <div class="content list">
-              <div class="tvn fade clipped item">
-                <h3 class="ui medium header">Mama Peace Catering Services</h3>
-                <div class="description">Cafeteria Management</div>
-              </div>
-              <div class="tvn fade clipped item">
-                <h3 class="ui medium header">Wade Confectioneries</h3>
-                <div class="description">Pastries Vendor</div>
+              <div class="ui mobile only sub header">
+                <i class="align justify icon"></i>
               </div>
             </div>
-          </div> <!-- end dropdown menu -->
-        </div><!-- end vendor selector -->
-
-      </div> <!-- selectors -->
+          </div>
+        </div>
+      </div>
     </div>
-
-  </div> <!-- end fixed top menu -->
+  </div>
 </template>
 
 <script>
