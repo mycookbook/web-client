@@ -14,3 +14,8 @@ export default {
   }
 }
 </script>
+<style>
+.button {
+  background-color: #2173A6!important;
+}
+</style>
