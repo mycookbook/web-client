@@ -1,52 +1,20 @@
 <template>
   <div class="ui fluid footer">
-    <div class="ui footer container">
-      <div class="signature">
-        <svg class="tvn icon"><use xlink:href="#icon-taverna"></use></svg>
-        <div>Powered by the <a href="https://github.com/teamtaverna/taverna/" target="_blank" class="tvn link weight bold" >Taverna Project</a></div>
-      </div>
-    </div> <!-- end footer -->
-    <br><br><br>
     <footer>
-      <div>
-        <ul class="items">
-          <h3>Cookbook</h3>
-          <li>
-            <a href="/#">
-              About
+      <div class="ui footer container">
+        <div class="signature">
+          <svg class="tvn icon"><use xlink:href="#icon-taverna"></use></svg>
+          <div>Powered by the
+            <a href="#" target="_blank" class="tvn link weight bold" >
+              Cookbook Community
             </a>
-          </li>
-          <li>
-            <a href="/#">
-              Help
+          </div>
+          <div>
+            <a href="#" target="_blank" class="tvn link weight bold" >
+              © Cookbook, Inc. All rights reserved.
             </a>
-          </li>
-          <li>
-            <a href="/#">
-              Terms and Conditions
-            </a>
-          </li>
-          <li>
-            <a href="/#">
-              Data Retention Policy
-            </a>
-          </li>
-          <li>
-            <a href="/#">
-              Frequently Asked Questions
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="note copyright">
-        <small>
-          <span>
-            <img src="../assets/logo2.png" style="width:1.2%; height:auto;"/>
-          </span>
-          <span style="color:#999999;">
-            © Cookbook, Inc.
-          </span>
-        </small>
+          </div>
+        </div>
       </div>
     </footer>
   </div>

@@ -151,7 +151,7 @@
                         <div class="image" style="background-image: url('static/ketogenic-lifestyle.jpg')"></div>
                       </div>
                       <div class="content">
-                        <div class="ui sub header">health &amp; lifestyle</div>
+                        <div class="ui sub header">health &amp; wellness</div>
                         <div class="ui medium header">Cabbage Swallow with Egusi Soup</div>
                         <div class="tvn vertical fade clipped description">
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal

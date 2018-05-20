@@ -2,14 +2,14 @@
   <div class="search-banner">
     <h3 class="ui huge header">
       <div class="ui sub header">
-        Find recipes<br>
-        Join the Community
+        Browse recipes<br>
+        It's absolutely free of charge
       </div>
     </h3>
     <div>
       <AutoComplete />
     </div>
-    <div class="">
+    <div class="note">
       <small>
           Couldn't find the recipe you are looking for?
           <a href="/#/">
@@ -36,5 +36,9 @@ export default {
 <style>
 .search-banner {
   margin: 15% 0 0 0;
+}
+.note {
+  padding-left: 12px;
+  color: rgba(0, 0, 0, 0.6);
 }
 </style>

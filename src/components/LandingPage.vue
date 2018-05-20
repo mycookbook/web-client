@@ -18,8 +18,8 @@
       </div>
       <!-- <RecipeList /> -->
       <Recipes />
+      <Bottom />
     </div>
-    <!-- <Bottom /> -->
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default {
     Search,
     Recipes,
     Navigation,
+    Bottom,
   }
 }
 </script>
