@@ -339,7 +339,7 @@ body {
 
 .top.menu .selector, .top.menu .selector:hover .top.menu .selector {
   height: 100%;
-  width: calc(100% / 3);
+  /* width: calc(100% / 3); */
   /* max-width: 360px; */
   max-width: 120px;
   -webkit-transition: 0.2s ease;
@@ -424,7 +424,9 @@ body {
       .top.menu .selector .tab, .top.menu .selector:hover .top.menu .selector .tab {
         -webkit-box-pack: center;
             -ms-flex-pack: center;
-                justify-content: center; } }
+                justify-content: center;
+        }
+    }
     @media only screen and (max-width: 480px) {
       .top.menu .selector .tab .icon.section .icon.header > .tvn.icon {
         width: 30px;
