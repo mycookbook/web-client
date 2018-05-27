@@ -142,94 +142,25 @@
               </div>
               <div class="content active">
                 <div class="ui grid">
-                  <div class="sixteen wide mobile column
+                  <div v-if="cookbooks" class="sixteen wide mobile column
                                 sixteen wide tablet column
                                 eight wide computer column
-                                eight wide large screen column">
+                                eight wide large screen column" v-for="cookbook in cookbooks">
                     <div class="serving card">
                       <div class="image wrapper">
-                        <div class="image" style="background-image: url('static/ketogenic-lifestyle.jpg')"></div>
+                        <div class="image"
+                          v-bind:style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }">
+                        </div>
                       </div>
                       <div class="content">
-                        <div class="ui sub header">health &amp; wellness</div>
-                        <div class="ui medium header">Cabbage Swallow with Egusi Soup</div>
+                        <div class="ui sub header">
+                           {{ cookbook.recipes.length }}k+ Recipes
+                        </div>
+                        <div class="ui medium header">
+                           {{ cookbook.name }}
+                        </div>
                         <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Cookbook <span class="tvn weight bold">Ketogenic Lifestyle</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="5"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('static/ghana-jollof-rice.png')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Dolapo Grays'</div>
-                        <div class="ui medium header">Yam and Sweet Potatoes garnished with   Fish Stew </div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Cookbook <span class="tvn weight bold">Dolapo Grays'</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="4"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('/static/img/ofada.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">Owambe special</div>
-                        <div class="ui medium header">Ofada Rice garnished with Fish Stew and Vegetable Salad</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Cookbook <span class="tvn weight bold">Mama Peace Catering Services</span>
-                        </div>
-                        <div class="footer options">
-                          <div class="ui huge star rating" data-rating="2"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" style="background-image: url('static/ofada-rice.jpg')"></div>
-                      </div>
-                      <div class="content">
-                        <div class="ui sub header">DIY Pizza</div>
-                        <div class="ui medium header">Roasted Pizza</div>
-                        <div class="tvn vertical fade clipped description">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt.<br>Consectetur  ---   26 mCal
-                        </div>
-                        <div class="meta">
-                          Cookbook <span class="tvn weight bold">My DIYs</span>
+                          {{ cookbook.description }}
                         </div>
                         <div class="footer options">
                           <div class="ui huge star rating" data-rating="5"></div>
@@ -252,8 +183,20 @@
 <script>
 
 export default {
+  mounted () {
+    let url = process.env.BASE_URL + '/cookbooks'
+    this.$http.get(url)
+    .then((response) => {
+      this.cookbooks = response.body.data;
+      console.log('vm cookbooks', this.cookbooks)
+    }, (response) => {
+      console.log('error', response)
+    })
+  },
   data () {
-    return {}
+    return {
+      cookbooks: {}
+    }
   }
 }
 </script>

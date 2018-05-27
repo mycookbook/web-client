@@ -90,7 +90,16 @@ export default {
       return displayname[0].toUpperCase() + displayname.slice(1)
     },
     login: function () {
-      console.log(process.env.DEV_URL)
+      let url = process.env.BASE_URL + '/auth/signup'
+      this.$http.post(url, {
+        name: 'anthony',
+        email: 'mygarri@yahooo.com',
+        password: 'woooooooooooo'
+      }).then((response) => {
+        console.log('was a huge success', response)
+      }, (response) => {
+        console.log('hi i am errors', response)
+      })
     }
   },
   mounted: function () {

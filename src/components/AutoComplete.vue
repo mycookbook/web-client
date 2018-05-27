@@ -20,6 +20,6 @@ export default {
 
 #searchbar::placeholder {
   font-size: 20px !important;
-  line-height: 15px !important;
+  line-height: 22px !important;
 }
 </style>

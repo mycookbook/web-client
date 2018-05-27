@@ -16,7 +16,6 @@
       <div class="ui horizontal divider" style="margin-top:15%;">
         top recipes
       </div>
-      <!-- <RecipeList /> -->
       <Recipes />
       <Bottom />
     </div>
