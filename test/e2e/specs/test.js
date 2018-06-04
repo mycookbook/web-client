@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'Expect title to be Cookbook inc.': function (browser) {
+  'Expect title to be Cookbook inc2.': function (browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080
     // see nightwatch.conf.js
