@@ -10,7 +10,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .assert.title('Cookbook pojiuhouljknm.')
+      .assert.title('Cookbook inc876785t67iuyytfg.')
       .end()
   }
 }
