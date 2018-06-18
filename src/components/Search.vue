@@ -1,20 +1,20 @@
 <template>
   <div class="search-banner">
-    <h3 class="ui huge header">
-      <div class="ui sub header">
-        Browse recipes<br>
-        It's absolutely free of charge
-      </div>
-    </h3>
+    <h1 class="subtitle">
+      Browse recipes<br>
+      It's absolutely free of charge <br
+    </h1>
     <div>
       <AutoComplete />
     </div>
     <div class="note">
       <small>
+        <b>
           Couldn't find the recipe you are looking for?
           <a href="/#/">
             &nbsp; Create it
           </a>
+        </b>
       </small>
     </div>
   </div>
@@ -34,11 +34,15 @@ export default {
 </script>
 
 <style>
+.note {
+  padding: 3px 9px;
+  letter-spacing: 0.03rem;
+  font-weight: 100;
+}
+.subtitle {
+  font-size: 60px;
+}
 .search-banner {
   margin: 15% 0 0 0;
-}
-.note {
-  padding-left: 12px;
-  color: rgba(0, 0, 0, 0.6);
 }
 </style>
