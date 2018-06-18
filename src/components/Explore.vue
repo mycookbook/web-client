@@ -17,7 +17,9 @@
                 <div class="ui sub header">less/more</div>
                 <div class="tvn horizontal stroke"></div>
                 <div class="toggle">
-                  <svg class="tvn icon"><use xlink:href="#icon-expand"></use></svg>
+                  <svg class="tvn icon">
+                    <use xlink:href="#icon-expand"></use>
+                  </svg>
                 </div>
               </div>
               <div class="content active">
@@ -29,12 +31,15 @@
                     <div class="serving card">
                       <div class="image wrapper">
                         <div class="image"
-                          v-bind:style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }">
+                          :style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }">
                         </div>
                       </div>
                       <div class="content">
                         <div class="ui sub header">
-                           {{ cookbook.recipes.length }}k+ Recipes
+                           {{ cookbook.recipes.length }} Recipe(s)
+                           <span>
+                             <i :class="generateFlagClass(cookbook.flag)"></i>
+                           </span>
                         </div>
                         <div class="ui medium header">
                            {{ cookbook.name }}
@@ -76,6 +81,12 @@ export default {
   data () {
     return {
       cookbooks: {}
+    }
+  },
+  methods: {
+    generateFlagClass: function (code) {
+      let class_ = code + " flag";
+      return class_;
     }
   }
 }
