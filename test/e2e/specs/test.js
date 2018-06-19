@@ -10,8 +10,7 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.title('Cookbook inc.')
+      .assert.title('Cookbook inc876785t67iuyytfg.')
       .end()
   }
 }

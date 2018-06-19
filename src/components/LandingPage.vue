@@ -7,28 +7,26 @@
 @Last modified time: 01-01-2018
 -->
 
-
-
 <template>
   <div>
     <Navigation />
     <div class="main ui container">
       <Search />
-      <CookbookList />
-      <div class="ui horizontal divider">
+      <Explore />
+      <div class="ui horizontal divider" style="margin-top:15%;">
         top recipes
       </div>
-      <RecipeList />
+      <Recipes />
+      <Bottom />
     </div>
-    <!-- <Bottom /> -->
   </div>
 </template>
 
 <script>
 import Navigation from './Navigation.vue'
 import Search from './Search.vue'
-import CookbookList from './CookbookList.vue'
-import RecipeList from './RecipeList.vue'
+import Explore from './Explore.vue';
+import Recipes from './Recipes.vue'
 import Bottom from './Bottom.vue'
 
 export default {
@@ -36,11 +34,11 @@ export default {
     return {}
   },
   components: {
-    Search: Search,
-    Bottom: Bottom,
-    RecipeList: RecipeList,
-    Navigation: Navigation,
-    CookbookList: CookbookList
+    Explore,
+    Search,
+    Recipes,
+    Navigation,
+    Bottom,
   }
 }
 </script>

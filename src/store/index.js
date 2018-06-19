@@ -7,6 +7,7 @@ Vue.use(VueResource);
 
 const state = {
   isLogged: !!localStorage.getItem('token'),
+  explore: {}
 };
 
 const mutations = {

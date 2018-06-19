@@ -43,6 +43,6 @@ export default {
   font-size: 60px;
 }
 .search-banner {
-  margin-bottom: 9%;
+  margin: 15% 0 0 0;
 }
 </style>
