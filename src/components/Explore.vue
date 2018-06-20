@@ -1,7 +1,6 @@
 <template>
   <!-- content -->
   <div class="pushable content">
-    <!-- loop through items here -->
     <div class="pusher">
       <div class="main">
         <div class="ui meals container">
@@ -37,7 +36,7 @@
                       <div class="content">
                         <div class="ui sub header">
                            {{ cookbook.recipes.length }} Recipe(s)
-                           <span>
+                           <span :style="{ 'float': 'right' }">
                              <i :class="generateFlagClass(cookbook.flag)"></i>
                            </span>
                         </div>
