@@ -42,9 +42,6 @@
             Contact us
           </a>
           <a class="item">
-            Help
-          </a>
-          <a class="item">
             Sign up
           </a>
           <a class="item">
