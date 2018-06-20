@@ -9,6 +9,23 @@
 
 <template>
   <div>
+    <div class="ui small modal">
+      <i class="close icon"></i>
+        <div class="ui massive facebook button" style="margin:15px; width:96%;">
+          <i class="facebook icon"></i>
+          Sign up with Facebook
+        </div>
+        <div class="ui sub centered header">Or</div>
+        <div class="ui massive google plus button" style="margin:2px 15px 10px; width:96%;">
+          <i class="google plus icon"></i>
+          Sign up with Email
+        </div>
+        <div class="actions">
+          <div class="description">
+            Already have an account? <a href="/login"> Log in</a>
+          </div>
+        </div>
+      </div>
     <Navigation />
     <div class="main ui container">
       <Search />

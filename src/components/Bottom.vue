@@ -15,6 +15,14 @@
             </a>
           </div>
         </div>
+        <div class="ui labels">
+          <a class="ui label">
+            Terms &amp; Conditions
+          </a>
+          <a class="ui label">
+            Data Rention Policy
+          </a>
+        </div>
       </div>
     </footer>
   </div>
@@ -31,14 +39,14 @@ export default {
 <style>
 footer {
   border-top: 1px solid #eee;
-  padding: 20px 0px;
+  padding: 20px 0px 0px;
 }
 .items {
   list-style-type: none;
 }
 .items li {
   padding: 8px;
-}``
+}
 .copyright {
   border-top: 1px solid #eee;
   padding-top: 25px;
