@@ -288,8 +288,8 @@ body {
   position: fixed !important;
   height: 90px;
   background-color: rgba(255, 255, 255, 0.9);
-  border-bottom: 0.5px solid #E4E4E4;
-  box-shadow: 0 1px 10px 0 rgba(34, 36, 38, 0.14); }
+  border-bottom: 1px solid rgb(228, 228, 228) !important;
+  box-shadow: none !important; }
   .top.fixed.menu > .column, .top.menu .selector:hover .top.fixed.menu > .column {
     height: 100%; }
   .top.fixed.menu .brand, .top.menu .selector:hover .top.fixed.menu .brand {
