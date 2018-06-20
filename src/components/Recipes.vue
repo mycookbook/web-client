@@ -13,38 +13,30 @@
               <div class="content active">
                 <div class="ui grid">
                   <div class="sixteen wide mobile column
-                                sixteen wide tablet column
-                                eight wide computer column
-                                eight wide large screen column" v-for="recipe in recipes.data">
-                    <div class="serving card">
-                      <div class="image wrapper">
-                        <div class="image" :style="{ 'background-image': 'url(' + recipe.imgUrl + ')' }">
-                        </div>
+                  sixteen wide tablet column
+                  four wide computer column
+                  four wide large screen column" v-for="recipe in recipes.data">
+                  <div class="ui link cards">
+                    <div class="card">
+                      <div class="image">
+                        <img :src="recipe.imgUrl">
                       </div>
                       <div class="content">
-                        <div class="ui sub header">
+                        <div class="header">
                           {{ recipe.name }}
                         </div>
-                        <div class="ui medium header">
-                          Ingredients:
+                        <div class="meta">
+                          <a>
+                            {{ recipe.nutritional_detail}}
+                          </a>
                         </div>
-                        <div style="display:flex;">
-                          <div class="ui sub heading" v-for="ingr, i in recipe.ingredients">
-                            <div class="ingr">
-                              <p>{{ ingr }}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tvn vertical fade clipped description">
-                        </div>
-                        <div class="footer options">
-                          <div class="ui right floated basic button">
-                            how to prepare
-                          </div>
+                        <div class="description">
+                          {{ recipe.summary }}
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
