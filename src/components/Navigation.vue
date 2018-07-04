@@ -86,7 +86,7 @@ export default {
         password: 'str()nger1'
       }).then((response) => {
         console.log('successful login', response)
-      }, (error) => {
+      }, (error) => {                                             
         console.log('error loggin in', error.bodyText)
       })
     }
