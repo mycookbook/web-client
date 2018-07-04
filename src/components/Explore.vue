@@ -47,7 +47,7 @@
                           {{ cookbook.description }}
                         </div>
                         <div class="footer options">
-                          <div class="ui huge star rating" data-rating="5"></div>
+                          <div class="ui huge star rating" data-rating="1"></div>
                           <div class="ui right floated basic button">Add Review</div>
                         </div>
                       </div>
