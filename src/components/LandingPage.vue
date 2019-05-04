@@ -27,7 +27,7 @@
         </div>
       </div>
     <Navigation />
-    <div class="main ui container">
+    <div class="ui container">
       <Search />
       <Explore />
       <div class="ui horizontal divider" style="margin-top:15%;">

@@ -37,7 +37,7 @@ export default {
   border-top: none!important;
   border-left: none!important;
   border-right: none!important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 80px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   background-color: #ffffff!important;
   font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }

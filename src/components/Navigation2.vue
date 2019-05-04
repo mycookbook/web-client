@@ -16,7 +16,12 @@
                   left floated column
                   tvn no padding">
       <div class="tvn clipped brand">
-        <img class="logo" src="/static/logo_white.png" style="min-width: unset;height: 5.5em; !important"/>
+        <img
+        class="logo"
+        src="/static/logo_white.png"
+        alt="cookbookinc brand logo"
+        style="min-width: unset;height: 5.5em; !important"
+        >
       </div>
     </div>
     <div class="eight wide mobile
@@ -109,6 +114,7 @@ export default {
 }
 .top.fixed.menu {
   border-bottom:none!important;
+  padding-top:50px!important;
 }
 body {
   background: transparent!important;
