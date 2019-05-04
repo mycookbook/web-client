@@ -5,7 +5,7 @@
       It's absolutely free of charge <br
     </h1>
     <div>
-      <AutoComplete />
+      <!-- <AutoComplete /> -->
     </div>
     <div class="note">
       <small>
@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import AutoComplete from './AutoComplete.vue'
+// import AutoComplete from './AutoComplete.vue'
 
 export default {
   data () {
     return {}
   },
   components: {
-    AutoComplete: AutoComplete
+    // AutoComplete: AutoComplete
   }
 }
 </script>

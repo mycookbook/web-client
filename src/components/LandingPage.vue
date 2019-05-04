@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import Navigation from './Navigation.vue'
-import Search from './Search.vue'
+import Navigation from './Navigation2.vue'
+import Search from './Search2.vue'
 import Explore from './Explore.vue';
 import Recipes from './Recipes.vue'
 import Bottom from './Bottom.vue'
