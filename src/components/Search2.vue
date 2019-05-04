@@ -1,7 +1,7 @@
 <template>
   <div class="search-banner">
-    <div class="caption-text">
-      <span class="explore">Explore hundreds of</span>
+    <div class="seven wide column mobile hidden caption-text">
+      <span class="explore">Explore unlimited</span>
       <span class="food-recipes">food recipes</span>
     </div>
     <div class="action-text">
@@ -38,10 +38,12 @@ export default {
   font-weight: 900;
   text-align: center;
 }
+/* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
 .action-text {
   font-size: 40px;
   font-weight: 300;
   text-align: center;
   padding: 65px;
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 </style>

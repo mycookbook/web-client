@@ -34,6 +34,7 @@
         top recipes
       </div>
       <Recipes />
+      <Contact />
       <Bottom />
     </div>
   </div>
@@ -44,6 +45,7 @@ import Navigation from './Navigation2.vue'
 import Search from './Search2.vue'
 import Explore from './Explore.vue';
 import Recipes from './Recipes.vue'
+import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
@@ -55,6 +57,7 @@ export default {
     Search,
     Recipes,
     Navigation,
+    Contact,
     Bottom,
   }
 }
