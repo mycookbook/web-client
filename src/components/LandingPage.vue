@@ -29,14 +29,11 @@ import Bottom from './Bottom.vue'
 
 export default {
   name: "LandingPage",
-  created () {
+  mounted () {
     console.log('onMounted', store.state.cookbooks)
     if (store.state.cookbooks === null) {
       store.dispatch('load_cookbooks')
     }
-  },
-  updated() {
-
   },
   data () {
     return {
