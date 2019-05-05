@@ -3,9 +3,6 @@
   <div class="pushable content">
     <div class="pusher">
       <div class="">
-        <p style="text-align:center!important;" v-if="cookbooks">
-          <i class="trophy icon"></i> 5,320 RECIPES
-        </p>
         <div class="ui meals container">
           <div class="meal section">
               <div class="content active">
@@ -21,6 +18,7 @@
                           eight wide computer column
                           eight wide large screen column"
                           v-for="cookbook in cookbooks"
+                          :id="cookbook.id"
                     >
                     <div class="serving card">
                       <div class="image wrapper">
@@ -73,22 +71,14 @@
 <script>
 import store from '@/store'
 export default {
-  mounted () {
-    if (store.state.cookbooks === null) {
-      let url = process.env.BASE_URL + '/cookbooks'
-      this.$http.get(url)
-      .then((response) => {
-        this.cookbooks = response.body.data;
-        // store.state.cookbooks = response.body.data
-      }, (response) => {
-        console.log('error', response)
-      })
-    }
-  },
+  name: "Latest",
   data () {
     return {
-      cookbooks: store.state.cookbooks
+      // cookbooks: store.state.cookbooks
     }
+  },
+  props: {
+    cookbooks: Array
   },
   methods: {
     generateFlagClass: function (code) {
