@@ -8,17 +8,13 @@
       <div class="action-text">
         food &amp; drink.
       </div>
-      <div>
-        <AutoComplete :filters="filters"/>
-      </div>
+      <AutoComplete />
     </div>
-    <Results :cookbooks="cookbooks"/>
 </div>
 </template>
 
 <script>
 import AutoComplete from './AutoComplete.vue'
-import Results from './Results.vue';
 
 export default {
   data () {
@@ -29,8 +25,7 @@ export default {
     cookbooks: Array
   },
   components: {
-    AutoComplete: AutoComplete,
-    Results: Results
+    AutoComplete: AutoComplete
   }
 }
 </script>
