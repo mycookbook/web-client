@@ -28,8 +28,7 @@
       </div>
     <Navigation />
     <div class="ui container">
-      <Search />
-      <Latest />
+      <Search :filters="filters" :cookbooks="cookbooks"/>
       <!-- <div class="ui horizontal divider" style="margin-top:15%;">
         top recipes
       </div>
@@ -41,24 +40,56 @@
 </template>
 
 <script>
+import store from '@/store'
 import Navigation from './Navigation2.vue'
 import Search from './Search2.vue'
-import Latest from './Latest.vue';
 // import Recipes from './Recipes.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
+  name: "LandingPage",
+  mounted () {
+    console.log('onMounted', store.state.cookbooks)
+    if (store.state.cookbooks === null) {
+      store.dispatch('load_cookbooks')
+    }
+  },
+  updated() {
+
+  },
   data () {
-    return {}
+    return {
+      cookbooks: store.state.cookbooks,
+      filters: [
+        {
+          'id': 'ketogenic',
+          'name': 'Ketogenic'
+        },
+        {
+          'id': 'fitfam',
+          'name': 'FitFam Family'
+        },
+        {
+          'id': 'vegan',
+          'name': 'Vegan'
+        },
+        {
+          'id': 'health-and-wellness',
+          'name': 'Health & Wellness'
+        },
+        {
+          'id': 'nationality',
+          'name': 'Nationality'
+        }
+      ]
+    }
   },
   components: {
-    Latest,
     Search,
-    // Recipes,
     Navigation,
     Contact,
-    Bottom,
+    Bottom
   }
 }
 </script>

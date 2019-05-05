@@ -1,27 +1,36 @@
 <template>
-  <div class="search-banner">
-    <div class="seven wide column mobile hidden caption-text">
-      <span class="explore">Discover thousands of</span>
-      <span class="food-recipes">Recipes</span>
+  <div>
+    <div class="search-banner">
+      <div class="seven wide column mobile hidden caption-text">
+        <span class="explore">Discover thousands of</span>
+        <span class="food-recipes">Recipes</span>
+      </div>
+      <div class="action-text">
+        food &amp; drink.
+      </div>
+      <div>
+        <AutoComplete :filters="filters"/>
+      </div>
     </div>
-    <div class="action-text">
-      food &amp; drink.
-    </div>
-    <div>
-      <AutoComplete />
-    </div>
-  </div>
+    <Results :cookbooks="cookbooks"/>
+</div>
 </template>
 
 <script>
 import AutoComplete from './AutoComplete.vue'
+import Results from './Results.vue';
 
 export default {
   data () {
     return {}
   },
+  props: {
+    filters: Array,
+    cookbooks: Array
+  },
   components: {
-    AutoComplete: AutoComplete
+    AutoComplete: AutoComplete,
+    Results: Results
   }
 }
 </script>

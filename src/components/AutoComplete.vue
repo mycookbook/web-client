@@ -5,7 +5,7 @@
       <i class="search icon sicon"></i>
     </div>
     <div class="results"></div>
-    <Explorer />
+    <Explorer :filters="filters"/>
 </div>
 </template>
 
@@ -15,6 +15,9 @@ import Explorer from './Explorer.vue'
 export default {
   data () {
     return {}
+  },
+  props: {
+    filters: Array
   },
   components: {
     Explorer
