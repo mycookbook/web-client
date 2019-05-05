@@ -1,11 +1,11 @@
 <template>
   <div class="search-banner">
     <div class="seven wide column mobile hidden caption-text">
-      <span class="explore">Explore unlimited</span>
-      <span class="food-recipes">food recipes</span>
+      <span class="explore">Discover thousands of</span>
+      <span class="food-recipes">Recipes</span>
     </div>
     <div class="action-text">
-      with just one click.
+      food &amp; drink.
     </div>
     <div>
       <AutoComplete />

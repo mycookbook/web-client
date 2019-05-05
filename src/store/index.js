@@ -7,7 +7,7 @@ Vue.use(VueResource);
 
 const state = {
   isLogged: !!localStorage.getItem('token'),
-  explore: {}
+  cookbooks: null
 };
 
 const mutations = {
@@ -18,6 +18,10 @@ const mutations = {
   LOGOUT_USER(state) {
     state.isLogged = false;
   },
+
+  SAVE_COOKBOOKS(state) {
+    state.cookbooks = state.cookbooks //how to pass data along from the instance
+  }
 };
 
 export default new Vuex.Store({

@@ -29,11 +29,11 @@
     <Navigation />
     <div class="ui container">
       <Search />
-      <Explore />
-      <div class="ui horizontal divider" style="margin-top:15%;">
+      <Latest />
+      <!-- <div class="ui horizontal divider" style="margin-top:15%;">
         top recipes
       </div>
-      <Recipes />
+      <Recipes /> -->
       <Contact />
       <Bottom />
     </div>
@@ -43,8 +43,8 @@
 <script>
 import Navigation from './Navigation2.vue'
 import Search from './Search2.vue'
-import Explore from './Explore.vue';
-import Recipes from './Recipes.vue'
+import Latest from './Latest.vue';
+// import Recipes from './Recipes.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
@@ -53,9 +53,9 @@ export default {
     return {}
   },
   components: {
-    Explore,
+    Latest,
     Search,
-    Recipes,
+    // Recipes,
     Navigation,
     Contact,
     Bottom,

@@ -35,10 +35,10 @@
             Featured Recipes
           </a>
           <a class="item">
-            Blog
+            Usage Policy
           </a>
           <a class="item">
-            About
+            Subscribe
           </a>
           <a class="item">
             <button class="ui button tbb">
