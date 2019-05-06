@@ -32,7 +32,7 @@
       <div class="selectors">
         <div class="ui right floated secondary menu">
           <a class="item" title="Unlock more features and capabilities">
-            Become Premium
+            + Feature Request
           </a>
           <a class="item" title="Find out how to use this website">
             Usage Policy

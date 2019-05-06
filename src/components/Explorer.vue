@@ -3,8 +3,11 @@
     <p>Quick sort by categories</p>
     <div class="ui secondary menu flex-container">
       <a class="active item tbb" id="all" @click="getCategoryName('all')">All</a>
-      <a class="item" :id="filter.id" @click="getCategoryName(filter.id)"  v-for="filter in filters" :title="filter.title">
+      <a class="item" :id="filter.id" @click="getCategoryName(filter.id)" v-for="filter in filters" :title="filter.title">
         {{ filter.name }}
+      </a>
+      <a class="item" title="view all">
+        <i class="ellipsis horizontal icon"></i>
       </a>
     </div>
   </div>
@@ -22,10 +25,7 @@ export default {
   methods: {
     getCategoryName: function(category) {
       this.selectActive(category)
-      let sortBy = category
-      // store.dispatch('sort', store.state.cookbooks[0])
-      // let cookbooks = store.state.cookbooks
-      // console.log("cookbooks", cookbooks)
+      this.$store.dispatch('sort', category)
     },
     selectActive: function(category) {
       $(".item").removeClass("active")

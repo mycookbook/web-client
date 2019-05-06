@@ -8,8 +8,10 @@ Vue.use(VueResource);
 
 const state = {
   isLogged: !!localStorage.getItem('token'),
-  cookbooks: null,
-  name: 'amaka'
+  cookbooks: [],
+  allCookbooks: [],
+  sorted: [],
+  currentSort: '',
 };
 
 const mutations = { // Mutate the current state
@@ -23,14 +25,27 @@ const mutations = { // Mutate the current state
 
   STORE_COOKBOOKS(state, cookbooks) {
     state.cookbooks = cookbooks //how to pass data along from the instance
+    state.allCookbooks = cookbooks
   },
 
-  CLEAR(state) {
-    state.cookbooks = {}
+  RESET(state) {
+    state.cookbooks = allCookbooks
   },
 
-  SORT(state, sorted) {
-    state.cookbooks = sorted
+  SORT(state, payload) {
+    if (payload === 'all') {
+      state.cookbooks = state.allCookbooks
+    } else if (payload === 'nationality') {
+      state.cookbooks = state.allCookbooks
+      const filtered = state.cookbooks.sort()
+      state.cookbooks = filtered
+    } else {
+      state.cookbooks = state.allCookbooks
+      const filtered = state.cookbooks.filter((c) => {
+        return c.category.slug === payload;
+      })
+      state.cookbooks = filtered
+    }
   }
 };
 
@@ -50,13 +65,9 @@ const actions = { // Get data from server and send that to mutations to mutate t
       // always executed
     });
   },
-  sort(context, sorted) {
-    context.commit('SORT', sorted)
-  }
-};
-
-const getters = {
-  // Compute derived state based on the current state. More like computed property.
+  sort(context, payload) {
+    context.commit('SORT', payload)
+  },
 };
 
 export default new Vuex.Store({
@@ -64,5 +75,5 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  getters
+  // getters
 });

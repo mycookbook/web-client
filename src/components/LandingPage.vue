@@ -30,14 +30,17 @@ import Bottom from './Bottom.vue'
 export default {
   name: "LandingPage",
   mounted () {
-    console.log('onMounted', store.state.cookbooks)
-    if (store.state.cookbooks === null) {
+    if (store.state.cookbooks.length == 0 || store.state.cookbooks === null) {
       store.dispatch('load_cookbooks')
+    }
+  },
+  computed: {
+    cookbooks() {
+      return this.$store.state.cookbooks
     }
   },
   data () {
     return {
-      cookbooks: store.state.cookbooks,
       filters: [
         {
           'id': 'ketogenic',
@@ -73,6 +76,6 @@ export default {
     Contact,
     Bottom,
     QuickSort
-  }
+  },
 }
 </script>

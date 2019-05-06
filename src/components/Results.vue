@@ -3,16 +3,11 @@
   <div class="pushable content">
     <div class="pusher">
       <div class="">
-        <div class="ui meals container">
+        <div class="ui meals container" v-if="cookbooks.length > 0">
           <div class="meal section">
-              <div class="content active">
-                <a href="/" v-if="cookbooks">
-                  <button class="ui ui right floated basic button">
-                    View All
-                  </button>
-                </a>
+            <div class="content active">
                 <div class="ui grid">
-                  <div v-if="cookbooks"
+                  <div
                   class="sixteen wide mobile column
                           sixteen wide tablet column
                           eight wide computer column
@@ -37,7 +32,7 @@
                         <div class="ui sub header">
                            {{ cookbook.recipes.length }} Recipe(s)
                            <span :style="{ 'float': 'right' }">
-                             proudly <i :class="generateFlagClass(cookbook.flag)" title="Ugandan"></i>
+                             proudly <i :class="generateFlagClass(cookbook.flag.flag)" :title="cookbook.flag.nationality"></i>
                            </span>
                         </div>
                         <div class="ui medium header">
@@ -46,10 +41,10 @@
                         <div class="tvn vertical fade clipped description">
                           {{ cookbook.description }}
                         </div>
-                        <!-- <div class="footer options">
-                          <div class="ui huge star rating" data-rating="1"></div>
-                          <div class="ui right floated basic button">Add Review</div>
-                        </div> -->
+                        <div class="footer options">
+                          <div class="ui huge star rating"></div>
+                          <button class="ui primary right floated basic button">view recipes</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -57,10 +52,9 @@
               </div>
             </div>
             <div class="tvn horizontal stroke"></div>
-            <div style="text-align:center!important;" v-if="!cookbooks">
-              <!-- <i class="bell slash outline icon"></i> -->
-              <p class="ui item button">Reload page</p>
-            </div>
+          </div>
+          <div style="text-align:center!important;" v-else>
+            <p class="ui item button">Ooops!</p>
           </div>
         </div>
       </div>
