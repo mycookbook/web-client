@@ -9,31 +9,10 @@
 
 <template>
   <div>
-    <div class="ui small modal">
-      <i class="close icon"></i>
-        <div class="ui massive facebook button" style="margin:15px; width:96%;">
-          <i class="facebook icon"></i>
-          Sign up with Facebook
-        </div>
-        <div class="ui sub centered header">Or</div>
-        <div class="ui massive google plus button" style="margin:2px 15px 10px; width:96%;">
-          <i class="google plus icon"></i>
-          Sign up with Email
-        </div>
-        <div class="actions">
-          <div class="description">
-            Already have an account? <a href="/login"> Log in</a>
-          </div>
-        </div>
-      </div>
-    <Navigation />
     <div class="ui container">
+      <Navigation />
       <Search />
-      <Explore />
-      <div class="ui horizontal divider" style="margin-top:15%;">
-        top recipes
-      </div>
-      <Recipes />
+      <QuickSort :filters="filters" :cookbooks="cookbooks" />
       <Contact />
       <Bottom />
     </div>
@@ -41,24 +20,62 @@
 </template>
 
 <script>
+import store from '@/store'
 import Navigation from './Navigation2.vue'
 import Search from './Search2.vue'
-import Explore from './Explore.vue';
-import Recipes from './Recipes.vue'
+import QuickSort from './QuickSort.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
+  name: "LandingPage",
+  mounted () {
+    if (store.state.cookbooks.length == 0 || store.state.cookbooks === null) {
+      store.dispatch('load_cookbooks')
+    }
+  },
+  computed: {
+    cookbooks() {
+      return this.$store.state.cookbooks
+    }
+  },
   data () {
-    return {}
+    return {
+      filters: [
+        {
+          'id': 'ketogenic',
+          'name': 'Ketogenic',
+          'title': 'The ketogenic road map to healthy living'
+        },
+        {
+          'id': 'fitfam',
+          'name': 'FitFam Family',
+          'title': 'Low carbs, calorie counts healthy foods'
+        },
+        {
+          'id': 'vegan',
+          'name': 'Vegan',
+          'title': 'Nigerian vegan or American Vegan'
+        },
+        {
+          'id': 'health-and-wellness',
+          'name': 'Health & Wellness',
+          'title': 'Cardio, healthy living, homemade recipes'
+        },
+        {
+          'id': 'nationality',
+          'name': 'Nationality',
+          'title': 'Categorises Cookbooks from different countries'
+        }
+      ]
+    }
   },
   components: {
-    Explore,
     Search,
-    Recipes,
     Navigation,
     Contact,
     Bottom,
-  }
+    QuickSort
+  },
 }
 </script>

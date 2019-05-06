@@ -1,16 +1,16 @@
 <template>
-  <div class="search-banner">
-    <div class="seven wide column mobile hidden caption-text">
-      <span class="explore">Explore unlimited</span>
-      <span class="food-recipes">food recipes</span>
-    </div>
-    <div class="action-text">
-      with just one click.
-    </div>
-    <div>
+  <div>
+    <div class="search-banner">
+      <div class="seven wide column mobile hidden caption-text">
+        <span class="explore">Discover thousands of</span>
+        <span class="food-recipes">Recipes</span>
+      </div>
+      <div class="action-text">
+        food &amp; drink.
+      </div>
       <AutoComplete />
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -19,6 +19,10 @@ import AutoComplete from './AutoComplete.vue'
 export default {
   data () {
     return {}
+  },
+  props: {
+    filters: Array,
+    cookbooks: Array
   },
   components: {
     AutoComplete: AutoComplete

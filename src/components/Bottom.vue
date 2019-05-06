@@ -5,6 +5,12 @@
         <a class="item" href="/">Home</a>
         <a class="item">Terms &amp; Conditions</a>
         <a class="item">Data Retention Policy</a>
+        <a class="item" style="color:red!important;">Disclaimer</a>
+        <!-- disclaimer:
+        contents are submitted by users of this platform. cookbook does not provide the contents and therefore is <noscript>
+          liable to misleading content or .... cookbook owns the content provided and will take the accolades and share it with
+          best and consistent contributors by way of appreciating them my lawyer help me complete it
+        </noscript> -->
         <a class="item">
           <i class="facebook f icon"></i>
         </a>

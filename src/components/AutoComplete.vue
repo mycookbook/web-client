@@ -5,8 +5,7 @@
       <i class="search icon sicon"></i>
     </div>
     <div class="results"></div>
-    <Explorer />
-</div>
+  </div>
 </template>
 
 <script>
@@ -16,8 +15,8 @@ export default {
   data () {
     return {}
   },
-  components: {
-    Explorer
+  props: {
+    filters: Array
   }
 }
 </script>

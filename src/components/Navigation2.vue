@@ -31,16 +31,16 @@
                   tvn no padding">
       <div class="selectors">
         <div class="ui right floated secondary menu">
-          <a class="item">
-            Featured Recipes
+          <a class="item" title="Unlock more features and capabilities">
+            + Feature Request
           </a>
-          <a class="item">
-            Blog
+          <a class="item" title="Find out how to use this website">
+            Usage Policy
           </a>
-          <a class="item">
-            About
+          <a class="item" title="Customize what you want to be notified about">
+            Subscribe
           </a>
-          <a class="item">
+          <a class="item" title="Become a contributor">
             <button class="ui button tbb">
               + Submit
             </button>
@@ -56,52 +56,14 @@
 import store from '@/store'
 
 export default {
-  created () {
-    if (store.state.isLogged) {
-      this.isLoggedIn = true
-      this.displayName = this.getDisplayName()
-    }
-  },
   data () {
-    return {
-      isLoggedIn: false,
-      displayName: '',
-      submenu: store.state.isLogged
-    }
+    return {}
   },
-  methods: {
-    updateStatus: function () {
-      this.isLoggedIn = true
-    },
-    getDisplayName: function () {
-      let displayname = localStorage.getItem('displayName')
-      return displayname[0].toUpperCase() + displayname.slice(1)
-    },
-    login: function () {
-      let url = process.env.BASE_URL + '/auth/signup'
-      this.$http.post(url, {
-        name: 'Florence Okosun',
-        email: 'okosunuzflorence@gmail.com',
-        password: 'str()nger1'
-      }).then((response) => {
-        console.log('successful login', response)
-      }, (error) => {
-        console.log('error loggin in', error.bodyText)
-      })
-    }
-  },
-  mounted: function () {
-    $('.navbar-mobile.ui.dropdown').dropdown()
-    $('.navbar.overlay').visibility({type: 'fixed', offset: 0 // give some space from top of screen
-    })
-  }
+  methods: {}
 }
 </script>
 
 <style>
-.nav-banner {
-  margin-bottom: 14%;
-}
 .tbb {
   background-color: #0160CC!important;
   color: white !important;

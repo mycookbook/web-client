@@ -1,5 +1,6 @@
 <template>
   <div class="sign-up-container">
+    <footer>
     <div class="ui grid">
       <div class="eight wide column">
           <img
@@ -16,9 +17,9 @@
         </div>
       </div>
     </div>
+  </footer>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -29,6 +30,7 @@ export default {
 </script>
 <style>
 .sign-up-container {
+  /* border-top: 1px solid #cccccc!important; */
   margin-top: 3%;
   width: 100%;
 }
