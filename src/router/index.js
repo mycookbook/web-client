@@ -4,6 +4,9 @@ import LandingPage from '@/components/LandingPage';
 import Register from '@/components/auth/Register';
 import Login from '@/components/auth/Login';
 import Signout from '@/components/auth/Signout';
+import Cookbook from '@/components/Cookbook';
+import Recipe from '@/components/Recipe';
+import FeatureRequest from '@/components/FeatureRequest';
 
 Vue.use(Router);
 
@@ -17,6 +20,18 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register,
+    }, {
+      path: '/cookbook/:id',
+      name: 'Cookbook',
+      component: Cookbook,
+    }, {
+      path: '/cookbook/:cookbookId/recipe/:recipeId',
+      name: 'Recipe',
+      component: Recipe,
+    }, {
+      path: '/feature-request',
+      name: 'FeatureRequest',
+      component: FeatureRequest,
     }, {
       path: '/login',
       name: 'Login',

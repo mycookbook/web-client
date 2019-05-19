@@ -16,12 +16,14 @@
                   left floated column
                   tvn no padding">
       <div class="tvn clipped brand">
-        <img
-        class="logo"
-        src="/static/logo_white.png"
-        alt="cookbookinc brand logo"
-        style="min-width: unset;height: 5.5em; !important"
-        >
+        <a href="/" class="ui medium image">
+          <img
+          class="logo"
+          src="/static/logo_white.png"
+          alt="cookbookinc brand logo"
+          style="min-width: unset;height: 5.5em; !important"
+          >
+        </a>
       </div>
     </div>
     <div class="eight wide mobile
@@ -31,9 +33,15 @@
                   tvn no padding">
       <div class="selectors">
         <div class="ui right floated secondary menu">
-          <a class="item" title="Unlock more features and capabilities">
-            + Feature Request
-          </a>
+          <router-link :to="{
+            name: 'FeatureRequest'
+            }">
+            <a
+            class="item rl-fix"
+            title="Unlock more features and capabilities">
+              + Feature Request
+            </a>
+          </router-link>
           <a class="item" title="Find out how to use this website">
             Usage Policy
           </a>
@@ -77,6 +85,9 @@ export default {
 .top.fixed.menu {
   border-bottom:none!important;
   padding-top:50px!important;
+}
+.rl-fix {
+  margin-top: 2.6%!important;
 }
 body {
   background: transparent!important;

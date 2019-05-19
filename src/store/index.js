@@ -11,7 +11,7 @@ const state = {
   cookbooks: [],
   allCookbooks: [],
   sorted: [],
-  currentSort: '',
+  currentSort: 'cccc',
 };
 
 const mutations = { // Mutate the current state
@@ -26,10 +26,6 @@ const mutations = { // Mutate the current state
   STORE_COOKBOOKS(state, cookbooks) {
     state.cookbooks = cookbooks //how to pass data along from the instance
     state.allCookbooks = cookbooks
-  },
-
-  RESET(state) {
-    state.cookbooks = allCookbooks
   },
 
   SORT(state, payload) {
@@ -55,6 +51,7 @@ const actions = { // Get data from server and send that to mutations to mutate t
 
     axios.get(url)
     .then(function (response) {// handle success
+      localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
       context.commit('STORE_COOKBOOKS', response.data.data)
     })
     .catch(function (error) {
@@ -67,7 +64,20 @@ const actions = { // Get data from server and send that to mutations to mutate t
   },
   sort(context, payload) {
     context.commit('SORT', payload)
+  }
+};
+
+const getters = {
+  get_cookbook: (state) => (id) => {
+    let cookbooks = localStorage.getItem('cookbooks')
+    return JSON.parse(cookbooks).find(x => (x.id === parseInt(id)))
   },
+  get_recipe: (state) => (cookbookId, recipeId) => {
+    let cookbooks = localStorage.getItem('cookbooks')
+    let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
+
+    return cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
+  }
 };
 
 export default new Vuex.Store({
@@ -75,5 +85,5 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  // getters
+  getters
 });
