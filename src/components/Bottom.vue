@@ -3,9 +3,34 @@
     <footer>
       <div class="ui secondary menu flex-container footer-contents">
         <a class="item" href="/">Home</a>
-        <a class="item">Terms &amp; Conditions</a>
-        <a class="item">Data Retention Policy</a>
-        <a class="item" style="color:red!important;">Disclaimer</a>
+        <router-link :to="{
+          name: 'TermsAndConditions'
+          }">
+          <a
+            class="item rl-fix"
+            title="Find out how to use this website">
+            Terms &amp; Conditions
+          </a>
+        </router-link>
+        <router-link :to="{
+          name: 'DataRetentionPolicy'
+          }">
+          <a
+            class="item rl-fix"
+            title="Find out how to use this website">
+            Data Retention Policy
+          </a>
+        </router-link>
+        <router-link :to="{
+          name: 'Disclaimer'
+          }">
+          <a
+            class="item rl-fix"
+            title="Find out how to use this website">
+            Disclaimer
+          </a>
+        </router-link>
+
         <!-- disclaimer:
         contents are submitted by users of this platform. cookbook does not provide the contents and therefore is <noscript>
           liable to misleading content or .... cookbook owns the content provided and will take the accolades and share it with

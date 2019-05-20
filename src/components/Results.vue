@@ -38,7 +38,8 @@
                           <div class="ui sub header">
                              {{ cookbook.recipes.length }} Recipe(s)
                              <span :style="{ 'float': 'right' }">
-                               proudly <i :class="generateFlagClass(cookbook.flag.flag)" :title="cookbook.flag.nationality"></i>
+                               proudly
+                               <i :class="generateFlagClass(cookbook.flag.flag)" :title="cookbook.flag.nationality"></i>
                              </span>
                           </div>
                           <div class="ui medium header">

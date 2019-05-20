@@ -42,9 +42,15 @@
               + Feature Request
             </a>
           </router-link>
-          <a class="item" title="Find out how to use this website">
-            Usage Policy
-          </a>
+          <router-link :to="{
+            name: 'UsagePolicy'
+            }">
+            <a
+            class="item rl-fix" 
+            title="Find out how to use this website">
+              Usage Policy
+            </a>
+          </router-link>
           <a class="item" title="Customize what you want to be notified about">
             Subscribe
           </a>
