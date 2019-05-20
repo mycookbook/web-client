@@ -2,37 +2,95 @@
   <div>
       <Navigation />
       <div class="ui container" style="margin-top:7%!important;">
-        <div class="title segments">
+        <h2 class="cookbook-title">
           {{ recipe.name }}
+        </h2>
+      <img
+        class="ui fluid image"
+        :src="recipe.imgUrl"
+      >
+      <div class="ui five statistics info message">
+        <div class="statistic">
+          <div class="value">
+            1/5
+          </div>
+          <div class="label">
+            difficulty
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            15
+          </div>
+          <div class="label">
+            prep time (mins)
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            8
+          </div>
+          <div class="label">
+            cook time (mins)
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            {{ recipe.calorie_count }}
+          </div>
+          <div class="label">
+            calorie count
+          </div>
+        </div>
+        <div class="statistic">
+          <div class="value">
+            2-4
+          </div>
+          <div class="label">
+            serves
+          </div>
         </div>
       </div>
-      <img class="ui tiny image" :src="recipe.imgUrl">
-      <div>
-        {{ recipe.ingredients }}
+      <div class="ui container" style="margin-top:4%!important;">
+        <div>
+          created: 2 days ago
+        </div>
+        <div>
+          <span class="item">
+            ---- Ingredients ----
+          </span>
+          <div>
+            {{ recipe.ingredients }}
+          </div>
+        </div>
+        <div>
+          <span class="item">
+            ---- Preparation ----
+          </span>
+          <div>
+            {{ recipe.description }}
+          </div>
+        </div>
+        <div>
+          nutritional details: {{ recipe.nutritional_detail }}
+        </div>
+        <div>
+          summary: {{ recipe.summary }}
+        </div>
+        <div>
+          created by: stanley
+        </div>
+        <Contact />
+        <Bottom />
       </div>
-      <div>
-        calorie count: {{ recipe.calorie_count }}
-      </div>
-      <div>
-        created: 2 days ago
-      </div>
-      <div>
-        description: {{ recipe.description }}
-      </div>
-      <div>
-        nutritional details: {{ recipe.nutritional_detail }}
-      </div>
-      <div>
-        summary: {{ recipe.summary }}
-      </div>
-      <div>
-        created by: stanley
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Navigation from './Navigation2'
+import Contact from './Contact.vue'
+import Bottom from './Bottom.vue'
 
 export default {
   mounted() {
@@ -52,12 +110,14 @@ export default {
     }
   },
   components: {
-    Navigation
+    Navigation,
+    Contact,
+    Bottom
   }
 }
 </script>
 
-<style>
+<style scoped>
 .title {
   font-weight: 900;
   margin-top: 0px;

@@ -8,7 +8,7 @@
         <div class="ui three statistics info message">
           <div class="statistic">
             <div class="value">
-              {{ cookbook.recipes.length }}
+              {{ typeof cookbook.recipes === 'undefined' ? 0 : cookbook.recipes.length }}
             </div>
             <div class="label">
               Recipes
@@ -32,74 +32,95 @@
             </div>
           </div>
         </div>
-        <div v-if="cookbook.recipes.length > 0">
+        <div v-if="cookbook">
           <div class="ui description">
             <div class="ui message">
               <p>{{ cookbook.description }}</p>
             </div>
           </div>
           <br><br>
-          <div class="ui special cards">
-            <div class="card" v-for="recipe in cookbook.recipes">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
-                    <div class="center">
-                      <div class="ui inverted button">VIEW RECIPE</div>
+          <div class="pushable content">
+            <div class="pusher">
+              <div class="">
+                <div class="ui meals container" v-if="typeof cookbook.recipes != 'undefined'">
+                  <div class="meal section">
+                    <div class="content active">
+                        <div class="ui grid">
+                          <div
+                          class="sixteen wide mobile column
+                                  sixteen wide tablet column
+                                  eight wide computer column
+                                  eight wide large screen column"
+                                  v-for="recipe in cookbook.recipes"
+                                  :id="recipe.id"
+                            >
+                            <router-link :to="{
+                              name: 'Recipe',
+                              params: {
+                                  cookbookId: cookbook.id,
+                                  recipeId: recipe.id
+                                }
+                              }">
+                              <div class="serving card">
+                                <div class="image wrapper">
+                                  <div class="image"
+                                    :style="{ 'background-image': 'url(' + recipe.imgUrl + ')' }">
+                                  </div>
+                                </div>
+                                <div class="content">
+                                  <div class="ui medium header">
+                                     {{ recipe.name }}
+                                  </div>
+                                  <div class="tvn vertical fade clipped description">
+                                    {{ recipe.description }}
+                                  </div>
+                                  <div class="footer options">
+                                    <span class="left floated">
+                                      <a href="/" title="download recipe">
+                                        <i class="download icon"></i>
+                                        5k+ Downloads
+                                      </a>
+                                    </span>
+                                    <router-link :to="{
+                                      name: 'Recipe',
+                                      params: {
+                                          cookbookId: cookbook.id,
+                                          recipeId: recipe.id
+                                        }
+                                      }">
+                                      <button class="ui primary right floated basic button">
+                                        view recipe
+                                      </button>
+                                    </router-link>
+                                  </div>
+                                </div>
+                              </div>
+                            </router-link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tvn horizontal stroke"></div>
+                  </div>
+                  <div v-if="cookbook.recipes.length === 0">
+                    No recipes yet? Know a recipe?
+                    <a href="/">Add Recipe</a>
+                    <div class="ui ignored info message">
+                      Go on about how this is community, how you might benefit how you might help save the world from poverty  and cancer.
+                      We appreciate your contribution! Like mentioned earlier,
+                      these requests are based on a pool system and the highest number
+                      of requests gets prioritized. Click <code>Submit request</code>
+                      button to send in your request and be notified if this request
+                      makes it to our priority list. Please note that if we find your request very convincing,
+                      we will schedule a skype meeting with you just for quality check. We like you and you know it!<br />
                     </div>
                   </div>
                 </div>
-                <img :src="recipe.imgUrl">
-              </div>
-              <div class="content">
-                <div class="header">
-                  {{ recipe.name }}
-                </div>
-                <div class="meta">
-                  <span class="date">Created in Sep 2014</span>
-                </div>
-                <div class="description">
-                  {{ recipe.summary }}
-                </div>
-                <div class="description">
-                  <br><br>
-                  <div class="item">---- INGREDIENTS ----</div>
-                  <div class="ui list" v-for="ingredient in recipe.ingredients">
-                    <div>{{ ingredient }}</div>
-                  </div>
-                </div>
-                <div class="description">
-                  <div class="item">---- PREPARATION ----</div>
-                  <div class="ui list">
-                    <div>{{ recipe.description | truncate(180) }}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="extra content">
-                <span class="left floated">
-                  <a href="/" title="download recipe">
-                    <i class="download icon"></i>
-                  </a>
-                </span>
-                <span class="right floated">
-                  5k+ Downloads
-                </span>
               </div>
             </div>
           </div>
-        </div>
-        <div v-else>
-          No recipes yet? Know a recipe?
-          <a href="/">Add Recipe</a>
-          <div class="ui ignored info message">
-            Go on about how this is community, how you might benefit how you might help save the world from poverty  and cancer.
-            We appreciate your contribution! Like mentioned earlier,
-            these requests are based on a pool system and the highest number
-            of requests gets prioritized. Click <code>Submit request</code>
-            button to send in your request and be notified if this request
-            makes it to our priority list. Please note that if we find your request very convincing,
-            we will schedule a skype meeting with you just for quality check. We like you and you know it!<br />
-          </div>
+          <Contact />
+          <Bottom />
         </div>
       </div>
   </div>
@@ -107,6 +128,8 @@
 
 <script>
 import Navigation from './Navigation2'
+import Contact from './Contact.vue'
+import Bottom from './Bottom.vue'
 
 export default {
   mounted() {
@@ -119,7 +142,9 @@ export default {
     }
   },
   components: {
-    Navigation
+    Navigation,
+    Contact,
+    Bottom
   },
   methods: {
     generateFlagClass: function (code) {

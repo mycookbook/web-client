@@ -11,6 +11,7 @@ $(function() {
     maxRating: 5,
     interactive: false,
   });
+
   $('.ui.rating.interactive').rating({
     interactive: true,
   });
@@ -28,5 +29,11 @@ $(function() {
   // or the sidebar's close button:
   $('.serving.card, .sidebar .close.button').click(function() {
     $('.sidebar').sidebar('toggle');
+  });
+
+  $(".rating").rating();
+
+  $('.special.cards .image').dimmer({
+    on: 'hover'
   });
 });

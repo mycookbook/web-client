@@ -49,7 +49,7 @@ export default {
         },
         {
           'id': 'fitfam',
-          'name': 'FitFam Family',
+          'name': 'FitFam',
           'title': 'Low carbs, calorie counts healthy foods'
         },
         {
@@ -63,9 +63,9 @@ export default {
           'title': 'Cardio, healthy living, homemade recipes'
         },
         {
-          'id': 'nationality',
-          'name': 'Nationality',
-          'title': 'Categorises Cookbooks from different countries'
+          'id': 'location',
+          'name': 'Current Location',
+          'title': 'See cookbooks from your current Location only'
         }
       ]
     }

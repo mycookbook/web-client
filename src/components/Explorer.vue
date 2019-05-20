@@ -15,7 +15,12 @@
 
 <script>
 import store from '@/store'
+
 export default {
+  mounted () {
+    let sortKey = localStorage.getItem('sortBy')
+    //todo: simulate a click event on that element
+  },
   data () {
     return {}
   },
@@ -37,7 +42,8 @@ export default {
   }
 }
 </script>
-<style>
+
+<style scoped>
 .categories-quick-search-wrapper {
   margin-top: 5%!important;
   background-color: #fcfcfc!important;

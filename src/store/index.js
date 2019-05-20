@@ -11,7 +11,7 @@ const state = {
   cookbooks: [],
   allCookbooks: [],
   sorted: [],
-  currentSort: 'cccc',
+  sortBy: 'all',
 };
 
 const mutations = { // Mutate the current state
@@ -31,9 +31,11 @@ const mutations = { // Mutate the current state
   SORT(state, payload) {
     if (payload === 'all') {
       state.cookbooks = state.allCookbooks
-    } else if (payload === 'nationality') {
+    } else if (payload === 'location') {
       state.cookbooks = state.allCookbooks
-      const filtered = state.cookbooks.sort()
+      const filtered = state.cookbooks.filter((c) => {
+        return c.flag.flag === 'ng';
+      })
       state.cookbooks = filtered
     } else {
       state.cookbooks = state.allCookbooks
@@ -42,6 +44,7 @@ const mutations = { // Mutate the current state
       })
       state.cookbooks = filtered
     }
+    localStorage.setItem('sortBy', payload)
   }
 };
 
