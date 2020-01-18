@@ -29,11 +29,11 @@
                         </div>
                         <div class="content">
                           <div class="ui labels">
-                            <label
+                            <!-- <label
                             class="item"
                             :style="{ 'background-color': getBgColor(cookbook.category.color)}">
                               {{ cookbook.category.name }}
-                            </label>
+                            </label> -->
                           </div>
                           <div class="ui sub header">
                              {{ cookbook.recipes.length }} Recipe(s)
