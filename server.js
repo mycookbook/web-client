@@ -3,7 +3,7 @@ var path = require('path')
 var serveStatic = require('serve-static')
 const elasticsearch = require('elasticsearch');
 const fs = require('fs');
-onst cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 var app = express()
