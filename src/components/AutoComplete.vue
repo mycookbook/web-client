@@ -1,7 +1,13 @@
 <template>
   <div class="ui massive search" style="margin:auto;width:83%;">
     <div class="ui icon large fluid input top">
-      <input class="prompt" type="text" placeholder="Try &quot;Flat tummy water recipe&quot; ">
+      <input
+        class="prompt"
+        type="text"
+        placeholder="Try &quot;Flat tummy water recipe&quot;"
+        @keyup.prevent="search"
+        v-model="query"
+      />
       <i class="search icon sicon"></i>
     </div>
     <div class="results"></div>
@@ -13,10 +19,32 @@ import Explorer from './Explorer.vue'
 
 export default {
   data () {
-    return {}
+    return {
+      query: ''
+    }
   },
   props: {
     filters: Array
+  },
+  methods: {
+    search() {
+      // this.axios.get('http://localhost:5000/search?q='+this.query)
+      // .then(response => {
+      //   this.data = response.data;
+      // })
+
+      this.$http.get('http://localhost:8080/search?q='+this.query, {})
+      .then((response) => {
+        this.data = response.data;
+      }, (response) => {
+        console.log('herror', response)
+        if (response.status === 0) {
+          this.errors = ['Server Error.']
+        } else {
+          this.errors = JSON.parse(response.bodyText)
+        }
+      })
+    }
   }
 }
 </script>
