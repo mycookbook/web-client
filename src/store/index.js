@@ -34,7 +34,10 @@ const mutations = { // Mutate the current state
     } else if (payload === 'location') {
       state.cookbooks = state.allCookbooks
       const filtered = state.cookbooks.filter((c) => {
-        return c.flag.flag === 'ng';
+        axios
+        .get('https://ipinfo.io?token=13838312c2e092')
+        .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
+        return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
       })
       state.cookbooks = filtered
     } else {
