@@ -29,11 +29,9 @@
                         </div>
                         <div class="content">
                           <div class="ui labels">
-                            <label
-                            class="item"
-                            :style="{ 'background-color': getBgColor(cookbook.category.color)}">
-                              {{ cookbook.category.name }}
-                            </label>
+								<a class="ui tiny label" v-for="category in cookbook.categories" :style="{ 'background-color': getBgColor(category.color)}">
+									{{ category.name }}
+								</a>
                           </div>
                           <div class="ui sub header">
                              {{ cookbook.recipes.length }} Recipe(s)

@@ -5,46 +5,43 @@
         class="prompt"
         type="text"
         placeholder="Try &quot;Flat tummy water recipe&quot;"
-        @keyup.prevent="search"
-        v-model="query"
+        @keyup.enter="search"
       />
       <i class="search icon sicon"></i>
     </div>
-    <div class="results"></div>
+    <div class="">
+      <ul>
+        <li v-for="result in results" :bind="results">
+          <a href="https:://google.com">{{ result.name }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import Explorer from './Explorer.vue'
+import axios from 'axios';
 
 export default {
   data () {
     return {
-      query: ''
+      results: []
     }
   },
   props: {
     filters: Array
   },
   methods: {
-    search() {
-      // this.axios.get('http://localhost:5000/search?q='+this.query)
-      // .then(response => {
-      //   this.data = response.data;
-      // })
-
-      this.$http.get('http://localhost:8080/search?q='+this.query, {})
-      .then((response) => {
-        this.data = response.data;
-      }, (response) => {
-        console.log('herror', response)
-        if (response.status === 0) {
-          this.errors = ['Server Error.']
-        } else {
-          this.errors = JSON.parse(response.bodyText)
-        }
-      })
-    }
+    search: function (event) {
+      let url = process.env.BASE_URL + '/search'
+      let query = event.target.value
+      axios.post(url, {
+        query: query,
+        }).then((response) => {
+          this.results = response.data
+        })
+    },
   }
 }
 </script>

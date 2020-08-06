@@ -58,6 +58,7 @@ const actions = { // Get data from server and send that to mutations to mutate t
     axios.get(url)
     .then(function (response) {// handle success
       localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
+      console.log('fefe', response.data.data)
       context.commit('STORE_COOKBOOKS', response.data.data)
     })
     .catch(function (error) {

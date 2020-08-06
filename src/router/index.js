@@ -11,6 +11,7 @@ import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import Disclaimer from '@/components/legal/Disclaimer';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
+import SearchResults from '@/components/SearchResults';
 
 Vue.use(Router);
 
@@ -48,6 +49,10 @@ export default new Router({
       path: '/cookbook/:cookbookId/recipe/:recipeId',
       name: 'Recipe',
       component: Recipe,
+    }, {
+      path: '/search-results',
+      name: 'SearchResults',
+      component: SearchResults,
     }, {
       path: '/feature-request',
       name: 'FeatureRequest',
