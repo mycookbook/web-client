@@ -12,6 +12,7 @@ const state = {
   allCookbooks: [],
   sorted: [],
   sortBy: 'all',
+  error: false
 };
 
 const mutations = { // Mutate the current state
@@ -58,7 +59,18 @@ const mutations = { // Mutate the current state
       state.cookbooks = filtered
     }
     localStorage.setItem('sortBy', payload)
-  }
+  },
+  SUBSCRIPTION_ERROR() {
+	  state.error = true
+	  $("#contact-card").addClass("error");
+	  $("#loading-btn").removeClass("loading")
+  },
+  SUBSCRIPTION_SUCCESS() {
+	  state.error = false
+	  $("#contact-card").removeClass("error");
+	  $("#subscription-succeeded").removeClass("hidden")
+	  $("#loading-btn").removeClass("loading")
+	}
 };
 
 const actions = { // Get data from server and send that to mutations to mutate the current state
@@ -80,7 +92,21 @@ const actions = { // Get data from server and send that to mutations to mutate t
   },
   sort(context, payload) {
     context.commit('SORT', payload)
-  }
+  },
+  subscribeUser(context, payload) {
+	  let url = process.env.BASE_URL + '/subscriptions'
+	  
+	  axios.post(url, {
+		  email: payload
+		}).then(function (response) {// handle success
+			context.commit('SUBSCRIPTION_SUCCESS')
+		}).catch(function (error) {
+			// handle error
+			context.commit('SUBSCRIPTION_ERROR')
+		}).then(function () {
+			// always executed
+		});
+	}
 };
 
 const getters = {

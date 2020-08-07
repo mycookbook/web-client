@@ -34,15 +34,6 @@
       <div class="selectors">
         <div class="ui right floated secondary menu">
           <router-link :to="{
-            name: 'FeatureRequest'
-            }">
-            <a
-            class="item rl-fix"
-            title="Unlock more features and capabilities">
-              + Feature Request
-            </a>
-          </router-link>
-          <router-link :to="{
             name: 'UsagePolicy'
             }">
             <a
@@ -56,7 +47,7 @@
           </a>
           <a class="item" title="Become a contributor">
             <button class="ui button tbb">
-              + Submit
+              + Submit A Recipe
             </button>
           </a>
           <a class="item"></a>
