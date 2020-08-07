@@ -43,11 +43,11 @@
             </a>
           </router-link>
           <a class="item" title="Customize what you want to be notified about">
-            Subscribe
+            Subscriptions
           </a>
-          <a class="item" title="Become a contributor">
+          <a class="item" title="Contribute by submitting a recipe">
             <button class="ui button tbb">
-              + Submit A Recipe
+              + Add your recipe
             </button>
           </a>
           <a class="item"></a>
