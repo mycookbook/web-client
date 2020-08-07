@@ -24,11 +24,13 @@
 		<div class="ui grid">
 			<div class="eleven wide column"></div>
 			<div class="five wide column">
-				<div class="ui success message hidden" id="subscription-succeeded" style="position:relative;bottom:55%;right:-14px;">
-					<div class="header">
+				<div class="ui success message hidden" id="subscription-state" style="position:relative;bottom:55%;right:-14px;">
+					<div class="header" id="status-header">
 						Thank you for subscribing!
 					</div>
-					<p>You will now recieve weekly updates in your email.</p>
+					<p id="status-msg">
+						You will now recieve weekly updates in your email.
+					</p>
 				</div>
 			</div>
 		</div>

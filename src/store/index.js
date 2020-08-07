@@ -67,8 +67,11 @@ const mutations = { // Mutate the current state
   },
   SUBSCRIPTION_SUCCESS() {
 	  state.error = false
+	  $("#status-header").show()
+	  $("#status-msg").text('You will now recieve weekly updates in your email.')
+	  $("#subscription-state").addClass("success")
 	  $("#contact-card").removeClass("error");
-	  $("#subscription-succeeded").removeClass("hidden")
+	  $("#subscription-state").removeClass("hidden")
 	  $("#loading-btn").removeClass("loading")
 	}
 };
@@ -102,6 +105,12 @@ const actions = { // Get data from server and send that to mutations to mutate t
 			context.commit('SUBSCRIPTION_SUCCESS')
 		}).catch(function (error) {
 			// handle error
+			console.log("ERORR", error.response.data.email)
+			$("#subscription-state").removeClass("hidden")
+			$("#subscription-state").removeClass("success")
+			$("#subscription-state").addClass("error")
+			$("#status-header").hide()
+			$("#status-msg").text(error.response.data.email)
 			context.commit('SUBSCRIPTION_ERROR')
 		}).then(function () {
 			// always executed
