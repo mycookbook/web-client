@@ -41,9 +41,19 @@ const mutations = { // Mutate the current state
       })
       state.cookbooks = filtered
     } else {
-      state.cookbooks = state.allCookbooks
+	  state.cookbooks = state.allCookbooks
+	  
       const filtered = state.cookbooks.filter((c) => {
-        return c.category.slug === payload;
+		  
+		  if(c.categories.length > 0) {
+			  let filteredCategories = JSON.parse(JSON.stringify(c.categories))
+			  
+			  for (let i=0; i < filteredCategories.length; i++){
+				if(filteredCategories[i].slug === payload) {
+					return filteredCategories
+				}
+			  }
+		  }
       })
       state.cookbooks = filtered
     }
@@ -58,7 +68,6 @@ const actions = { // Get data from server and send that to mutations to mutate t
     axios.get(url)
     .then(function (response) {// handle success
       localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
-      console.log('fefe', response.data.data)
       context.commit('STORE_COOKBOOKS', response.data.data)
     })
     .catch(function (error) {
