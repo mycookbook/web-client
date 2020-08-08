@@ -47,10 +47,15 @@
 										<div>
 											<i class="clock outline icon"></i> 
 											1hr 15 mins
+											<span style="float:right">
+												<em>
+													NUTRITIONAL INFO
+												</em>
+											</span>
 										</div>
 										<div>
 											<small>
-												<em>{{ recipe.nutritional_detail}}</em>
+												
 											</small>
 										</div>
 										<div class="ui grid">
@@ -63,11 +68,11 @@
 															recipeId: recipe.id
 															}
 														}">
-														<img class="ui medium image" :src="recipe.imgUrl">
+														<img class="ui medium image" :src="recipe.imgUrl" style="margin-left: -12px!important">
 													</router-link>	
 												</div>
 												<div class="eleven wide column">
-													{{ recipe.description }}
+													{{ recipe.summary }}
 												</div>
 											</div>
 										</div>
@@ -76,6 +81,16 @@
 												<h6 class="ui blue header" style="text-transform: uppercase; position: absolute; top: -10%">
 													by {{ recipe.user.name }}
 												</h6>
+												<span>
+													<p>
+														{{ recipe.variations.length }} varieties
+													</p>
+												</span>
+												<span>
+													<a class="ui tiny default button" @click=addVariety()>
+														+ Add variety
+													</a>
+												</span>
 											</div>
 											<div class="ui thirteen wide column labels">
 												<div class="ui blue label" v-for="ingredient in recipe.ingredients">
@@ -143,7 +158,10 @@ export default {
     generateFlagClass: function (code) {
       let class_ = code + " flag";
       return class_;
-    }
+	},
+	addVariety: function () {
+		alert('adding variety ...')
+	}
   },
   filters: {
     truncate: function(value, limit) {
