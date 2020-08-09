@@ -46,7 +46,7 @@
 										</router-link>
 										<div>
 											<i class="clock outline icon"></i> 
-											1hr 15 mins
+											{{ recipe.cook_time }}
 											<span style="float:right">
 												<em>
 													NUTRITIONAL INFO
