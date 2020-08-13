@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="ui massive search" style="margin:auto;width:83%;">
+    <div class="ui massive search">
       <Explorer :filters="filters"/>
     </div>
     <Results :cookbooks="cookbooks"/>

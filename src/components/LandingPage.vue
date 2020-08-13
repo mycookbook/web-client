@@ -30,45 +30,26 @@ import Bottom from './Bottom.vue'
 export default {
   name: "LandingPage",
   mounted () {
-    if (this.$store.state.cookbooks.length == 0 || this.$store.state.cookbooks === null) {
-      store.dispatch('load_cookbooks')
-    }
+	  
+	  if (this.$store.state.cookbooks.length == 0 || this.$store.state.cookbooks === null) 
+	  {
+		  store.dispatch('load_cookbooks')
+		  store.dispatch('load_definitions')
+	  }
+	  
   },
   computed: {
     cookbooks() {
-      return this.$store.state.cookbooks
-    }
+		return this.$store.state.cookbooks
+	},
+	filters() {
+		if (this.$store.state.definitions.categories.contents) {
+			return JSON.parse(this.$store.state.definitions.categories.contents)
+		}
+	}
   },
   data () {
-    return {
-      filters: [
-        {
-          'id': 'ketogenic',
-          'name': 'Ketogenic',
-          'title': 'The ketogenic road map to healthy living'
-        },
-        {
-          'id': 'fitfam',
-          'name': 'FitFam',
-          'title': 'Low carbs, calorie counts healthy foods'
-        },
-        {
-          'id': 'vegan',
-          'name': 'Vegan',
-          'title': 'Nigerian vegan or American Vegan'
-        },
-        {
-          'id': 'health-and-wellness',
-          'name': 'Health & Wellness',
-          'title': 'Cardio, healthy living, homemade recipes'
-        },
-        {
-          'id': 'location',
-          'name': 'Current Location',
-          'title': 'See cookbooks from your current Location only'
-        }
-      ]
-    }
+    return {}
   },
   components: {
     Search,

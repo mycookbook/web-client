@@ -9,6 +9,11 @@ Vue.use(VueResource);
 const state = {
   isLogged: !!localStorage.getItem('token'),
   cookbooks: [],
+  definitions: {
+	  categories: [],
+	  nutritional_details: []
+	  
+  },
   allCookbooks: [],
   sorted: [],
   sortBy: 'all',
@@ -28,6 +33,10 @@ const mutations = { // Mutate the current state
     state.cookbooks = cookbooks //how to pass data along from the instance
     state.allCookbooks = cookbooks
   },
+  STORE_DEFINITIONS(state, definitions) {
+	  state.definitions.categories = definitions[0]
+	  state.definitions.nutritional_details = definitions[1]
+  },
 
   SORT(state, payload) {
     if (payload === 'all') {
@@ -42,11 +51,12 @@ const mutations = { // Mutate the current state
       })
       state.cookbooks = filtered
     } else {
+		
 	  state.cookbooks = state.allCookbooks
 	  
       const filtered = state.cookbooks.filter((c) => {
 		  
-		  if(c.categories.length > 0) {
+		  if (c.categories.length > 0) {
 			  let filteredCategories = JSON.parse(JSON.stringify(c.categories))
 			  
 			  for (let i=0; i < filteredCategories.length; i++){
@@ -77,7 +87,7 @@ const mutations = { // Mutate the current state
 };
 
 const actions = { // Get data from server and send that to mutations to mutate the current state
-  load_cookbooks(context) {
+	load_cookbooks(context) {
     let url = process.env.BASE_URL + '/cookbooks'
 
     axios.get(url)
@@ -113,6 +123,21 @@ const actions = { // Get data from server and send that to mutations to mutate t
 			$("#status-msg").text(error.response.data.email)
 			context.commit('SUBSCRIPTION_ERROR')
 		}).then(function () {
+			// always executed
+		});
+	},
+	load_definitions(context) {
+		let url = process.env.BASE_URL + '/definitions'
+
+		axios.get(url)
+		.then(function (response) {// handle success
+			context.commit('STORE_DEFINITIONS', response.data)
+		})
+		.catch(function (error) {
+			// handle error
+			console.log(error);
+		})
+			.then(function () {
 			// always executed
 		});
 	}

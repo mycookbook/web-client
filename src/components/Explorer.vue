@@ -3,9 +3,10 @@
     <p>Quick sort by categories</p>
     <div class="ui secondary menu flex-container">
       <a class="active item tbb" id="all" @click="getCategoryName('all')">All</a>
-      <a class="item" :id="filter.id" @click="getCategoryName(filter.id)" v-for="filter in filters" :title="filter.title">
+      <a class="item" :id="filter.slug" @click="getCategoryName(filter.slug)" v-for="filter in filters" :title="filter.name">
         {{ filter.name }}
       </a>
+      <a class="item" id="location" @click="getCategoryName('location')">Current Location</a>
       <a class="item" title="view all">
         <i class="ellipsis horizontal icon"></i>
       </a>
