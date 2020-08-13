@@ -55,27 +55,50 @@
 													</em>
 													<i class="caret square down icon"></i>
 												</div>
-												<div class="ui flowing popup top left transition hidden">
-													<div class="ui four column divided center aligned grid">
+												<div class="ui flowing popup transition hidden">
+													<div class="ui four column divided center">
 														<div class="column">
-															<h4 class="ui header">Calories</h4>
-															<p><b>2</b> projects, $10 a month</p>
-															<div class="ui button">Choose</div>
+															<span>
+																<h3>
+																{{ calories }} kCal
+															</h3>
+															</span>
+															<span>
+																<h3 class="ui teal header">Calories</h3>
+															</span>	
+															<hr />													
 														</div>
 														<div class="column">
-															<h4 class="ui header">Carbs</h4>
-															<p><b>5</b> projects, $20 a month</p>
-															<div class="ui button">Choose</div>
+															<span>
+																<h3>
+																	{{ carbs }}g
+																</h3>
+															</span>
+															<span>
+																<h3 class="ui header">Carbs</h3>
+															</span>	
+															<hr />
 														</div>
 														<div class="column">
-															<h4 class="ui header">Protein</h4>
-															<p><b>5</b> projects, $20 a month</p>
-															<div class="ui button">Choose</div>
+															<span>
+																<h3>
+																	{{ protein }}g
+																</h3>
+															</span>
+															<span>
+																<h3 class="ui purple header">Protein</h3>
+															</span>	
+															<hr />
 														</div>
 														<div class="column">
-															<h4 class="ui header">Fat</h4>
-															<p><b>8</b> projects, $25 a month</p>
-														<div class="ui button">Choose</div>
+															<span>
+																<h3>
+																	{{ fat }}g
+																</h3>
+															</span>
+															<span>
+																<h3 class="ui orange header">Fat</h3>
+															</span>	
 													</div>
 												</div>
 											</div>
@@ -166,7 +189,20 @@ export default {
   mounted() {
     this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
   },
-
+  computed: {
+	  calories() {
+		return 459
+	},
+	carbs() {
+		return 49
+	},
+	fat() {
+		return 20
+	},
+	protein() {
+		return 40
+	}
+  },
   data () {
     return {
       cookbook: {}
