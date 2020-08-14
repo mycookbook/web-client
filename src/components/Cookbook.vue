@@ -75,7 +75,7 @@
 																</h3>
 															</span>
 															<span>
-																<h3 class="ui header">Carbs</h3>
+																<h3 class="ui grey header">Carbs</h3>
 															</span>	
 															<hr />
 														</div>
@@ -187,7 +187,7 @@ import Bottom from './Bottom.vue'
 
 export default {
   mounted() {
-    this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
+	this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
   },
   computed: {
 	  calories() {
