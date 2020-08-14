@@ -38,7 +38,9 @@
 												  }
 											}">
 											<div class="ui header">
-												<h2>{{ recipe.name }}</h2>
+												<h3>
+													{{ transformRecipeName(recipe.name) }}
+												</h3>
 											</div>
 										</router-link>
 										<div>
@@ -120,6 +122,11 @@
 											</div>
 											<div class="twelve wide column">
 												{{ recipe.summary }}
+												<div class="twelve wide column" style="position: absolute;bottom: 0;left: 0;">
+													<div class="ui light blue label" v-for="ingredient in recipe.ingredients">
+														{{ ingredient }}
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -140,9 +147,7 @@
 											</span>
 										</div>
 										<div class="ui thirteen wide column labels">
-											<div class="ui light blue label" v-for="ingredient in recipe.ingredients">
-												{{ ingredient }}
-											</div>
+											<!-- ingredients -->
 										</div>
 									</div>
 								</div>
@@ -222,6 +227,10 @@ export default {
 		},
 		parseJson: function(i) {
 			return JSON.parse(i)
+		},
+		transformRecipeName: function(name) {
+			let t = name
+			return t.toUpperCase()
 		}
 	}
 }
