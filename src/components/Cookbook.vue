@@ -242,4 +242,7 @@ export default {
 .description p {
 	text-align: center!important;
 }
+.nut_info {
+	cursor: pointer;
+}
 </style>
