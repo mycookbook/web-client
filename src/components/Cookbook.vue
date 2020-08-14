@@ -190,52 +190,41 @@ import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
-  mounted() {
-	this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
-  },
-  data () {
-	  return {
-		  cookbook: {}}
+	mounted() {
+		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
+	},
+	data () {
+		return {
+			cookbook: {}
+		}
+	},
+	components: {
+		Navigation,
+		Contact,
+		Bottom
+	},
+	methods: {
+		addVariety: function () {
+			alert('adding variety ...')
 		},
-		components: {
-			Navigation,
-			Contact,
-			Bottom
+		computeCalories: function (val) {
+			let calVal = JSON.parse(val).cal
+			return calVal ? (calVal + ' kCal') : (0 + ' kCal')
 		},
-		methods: {
-			generateFlagClass: function (code) {
-				let class_ = code + " flag";
-				return class_;
-			},
-			addVariety: function () {
-				alert('adding variety ...')
-			},
-			computeCalories: function (val) {
-				let calVal = JSON.parse(val).cal
-				return calVal ? (calVal + ' kCal') : (0 + ' kCal')
-			},
-			computeCarbs: function (val) {
-				let carbVal = JSON.parse(val).carbs
-				return  carbVal ? (carbVal + 'g') : (0 + 'g')
-			},
-			computeProtein: function (val) {
-				let proteinVal = JSON.parse(val).protein
-				return proteinVal ? (proteinVal + 'g') : (0 + 'g')
-			},
-			computeFat: function (val) {
-				let fatVal = JSON.parse(val).fat
-				return fatVal ? (fatVal + 'g') : (0 + 'g')
-			}
-  		},
-		filters: {
-			truncate: function(value, limit) {
-				if (value.length > limit) {
-					value = value.substring(0, (limit - 3)) + '...';
-				}
-				return value
-			}
+		computeCarbs: function (val) {
+			let carbVal = JSON.parse(val).carbs
+			return  carbVal ? (carbVal + 'g') : (0 + 'g')
+		},
+		computeProtein: function (val) {
+			let proteinVal = JSON.parse(val).protein
+			return proteinVal ? (proteinVal + 'g') : (0 + 'g')
+		},
+		computeFat: function (val) {
+			let fatVal = JSON.parse(val).fat
+			return fatVal ? (fatVal + 'g') : (0 + 'g')
 		}
 	}
+}
 </script>
 
 <style scoped="">
@@ -243,9 +232,6 @@ export default {
 	font-weight: 300;
 	text-align: center;
 	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-	}
-.statistics {
-	margin-bottom: 2%!important;
 }
 .description {
 	font-weight: 400!important;
