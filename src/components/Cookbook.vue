@@ -60,8 +60,8 @@
 														<div class="column">
 															<span>
 																<h3>
-																{{ calories }}
-															</h3>
+																	{{ computeCalories(recipe.nutritional_detail) }}
+																</h3>
 															</span>
 															<span>
 																<h3 class="ui teal header">Calories</h3>
@@ -71,7 +71,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ carbs }}
+																	{{ computeCarbs(recipe.nutritional_detail) }}
 																</h3>
 															</span>
 															<span>
@@ -82,7 +82,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ protein }}
+																	{{ computeProtein(recipe.nutritional_detail) }}
 																</h3>
 															</span>
 															<span>
@@ -93,7 +93,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ fat }}
+																	{{ computeFat(recipe.nutritional_detail) }}
 																</h3>
 															</span>
 															<span>
@@ -193,40 +193,6 @@ export default {
   mounted() {
 	this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
   },
-  computed: {
-	  calories: {
-		  get: function () {
-			  return this.calorie_count +  ' kCal'
-			},
-			set: function (value) {
-				this.calorie_count = value
-			}
-		},
-		carbs: {
-			get: function () {
-				return this.carbs_count + 'g'
-			},
-			set: function (value) {
-				this.carbs_count = value
-			}
-		},
-		fat: {
-			get: function () {
-				return this.fat_count + 'g'
-			},
-			set: function (value) {
-				this.fat_count = value
-			}
-		},
-		protein: {
-			get: function () {
-				return this.protein_count + 'g'
-			},
-			set: function (value) {
-				this.protein_count = value
-			}
-		},
-  },
   data () {
     return {
 	  cookbook: {},
@@ -248,6 +214,18 @@ export default {
 	},
 	addVariety: function () {
 		alert('adding variety ...')
+	},
+	computeCalories: function (val) {
+		return JSON.parse(val).cal + ' kCal'
+	},
+	computeCarbs: function (val) {
+		return JSON.parse(val).carbs + 'g'
+	},
+	computeProtein: function (val) {
+		return JSON.parse(val).protein + 'g'
+	},
+	computeFat: function (val) {
+		return JSON.parse(val).fat + 'g'
 	}
   },
   filters: {
