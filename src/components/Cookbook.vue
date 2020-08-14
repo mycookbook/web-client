@@ -25,7 +25,7 @@
                         <div>
                           <div 
 						  	  class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column"
-							  :for="recipe in cookbook.recipes"
+							  v-for="recipe in cookbook.recipes"
 							  :id="recipe.id">
 							  <div class="ui grid">
 								  <div class="two column row">
@@ -35,7 +35,7 @@
 											  params: {
 												  cookbookId: cookbook.id,
 												  recipeId: recipe.id
-												}
+												  }
 											}">
 											<div class="ui header">
 												<h2>{{ recipe.name }}</h2>
@@ -140,7 +140,7 @@
 											</span>
 										</div>
 										<div class="ui thirteen wide column labels">
-											<div class="ui light blue label" :for="ingredient in recipe.ingredients">
+											<div class="ui light blue label" v-for="ingredient in recipe.ingredients">
 												{{ ingredient }}
 											</div>
 										</div>
