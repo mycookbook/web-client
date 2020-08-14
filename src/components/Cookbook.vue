@@ -140,7 +140,7 @@
 											</span>
 										</div>
 										<div class="ui thirteen wide column labels">
-											<div class="ui light blue label" v-for="ingredient in recipe.ingredients">
+											<div class="ui light blue label" :for="ingredient in recipe.ingredients">
 												{{ ingredient }}
 											</div>
 										</div>
