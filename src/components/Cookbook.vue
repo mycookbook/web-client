@@ -23,21 +23,18 @@
                   <div>
                     <div>
                         <div>
-                          <div class="sixteen wide mobile column
-                                  sixteen wide tablet column
-                                  eight wide computer column
-                                  eight wide large screen column"
-                                  v-for="recipe in cookbook.recipes"
-                                  :id="recipe.id"
-                            >
-							<div class="ui grid">
-								<div class="two column row">
-									<div class="fifteen wide column">
-										<router-link :to="{
-											name: 'Recipe',
-											params: {
-												cookbookId: cookbook.id,
-												recipeId: recipe.id
+                          <div 
+						  	  class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column"
+							  :for="recipe in cookbook.recipes"
+							  :id="recipe.id">
+							  <div class="ui grid">
+								  <div class="two column row">
+									  <div class="fifteen wide column">
+										  <router-link :to="{
+											  name: 'Recipe',
+											  params: {
+												  cookbookId: cookbook.id,
+												  recipeId: recipe.id
 												}
 											}">
 											<div class="ui header">
