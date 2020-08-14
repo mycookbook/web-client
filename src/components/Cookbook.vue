@@ -194,49 +194,48 @@ export default {
 	this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
   },
   data () {
-    return {
-	  cookbook: {},
-	  calorie_count: 0,
-	  fat_count: 0,
-	  protein_count: 0,
-	  carbs_count: 0
-    }
-  },
-  components: {
-    Navigation,
-    Contact,
-    Bottom
-  },
-  methods: {
-    generateFlagClass: function (code) {
-      let class_ = code + " flag";
-      return class_;
-	},
-	addVariety: function () {
-		alert('adding variety ...')
-	},
-	computeCalories: function (val) {
-		return JSON.parse(val).cal + ' kCal'
-	},
-	computeCarbs: function (val) {
-		return JSON.parse(val).carbs + 'g'
-	},
-	computeProtein: function (val) {
-		return JSON.parse(val).protein + 'g'
-	},
-	computeFat: function (val) {
-		return JSON.parse(val).fat + 'g'
+	  return {
+		  cookbook: {}}
+		},
+		components: {
+			Navigation,
+			Contact,
+			Bottom
+		},
+		methods: {
+			generateFlagClass: function (code) {
+				let class_ = code + " flag";
+				return class_;
+			},
+			addVariety: function () {
+				alert('adding variety ...')
+			},
+			computeCalories: function (val) {
+				let calVal = JSON.parse(val).cal
+				return calVal ? (calVal + ' kCal') : (0 + ' kCal')
+			},
+			computeCarbs: function (val) {
+				let carbVal = JSON.parse(val).carbs
+				return  carbVal ? (carbVal + 'g') : (0 + 'g')
+			},
+			computeProtein: function (val) {
+				let proteinVal = JSON.parse(val).protein
+				return proteinVal ? (proteinVal + 'g') : (0 + 'g')
+			},
+			computeFat: function (val) {
+				let fatVal = JSON.parse(val).fat
+				return fatVal ? (fatVal + 'g') : (0 + 'g')
+			}
+  		},
+		filters: {
+			truncate: function(value, limit) {
+				if (value.length > limit) {
+					value = value.substring(0, (limit - 3)) + '...';
+				}
+				return value
+			}
+		}
 	}
-  },
-  filters: {
-    truncate: function(value, limit) {
-      if (value.length > limit) {
-        value = value.substring(0, (limit - 3)) + '...';
-      }
-      return value
-    }
-  }
-}
 </script>
 
 <style scoped="">
