@@ -46,7 +46,7 @@
 										</router-link>
 										<div>
 											<label class="ui light yellow ribbon label">
-												Prep & cook Time: {{ recipe.cook_time }}
+												Prep &#38; cook Time: {{ recipe.cook_time }}
 											</label>
 											<span style="float:right">
 												<div class="nut_info">
@@ -60,7 +60,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																{{ calories }} kCal
+																{{ calories }}
 															</h3>
 															</span>
 															<span>
@@ -71,7 +71,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ carbs }}g
+																	{{ carbs }}
 																</h3>
 															</span>
 															<span>
@@ -82,7 +82,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ protein }}g
+																	{{ protein }}
 																</h3>
 															</span>
 															<span>
@@ -93,7 +93,7 @@
 														<div class="column">
 															<span>
 																<h3>
-																	{{ fat }}g
+																	{{ fat }}
 																</h3>
 															</span>
 															<span>
@@ -190,22 +190,46 @@ export default {
 	this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
   },
   computed: {
-	  calories() {
-		return 459
-	},
-	carbs() {
-		return 49
-	},
-	fat() {
-		return 20
-	},
-	protein() {
-		return 40
-	}
+	  calories: {
+		  get: function () {
+			  return this.calorie_count +  ' kCal'
+			},
+			set: function (value) {
+				this.calorie_count = value
+			}
+		},
+		carbs: {
+			get: function () {
+				return this.carbs_count + 'g'
+			},
+			set: function (value) {
+				this.carbs_count = value
+			}
+		},
+		fat: {
+			get: function () {
+				return this.fat_count + 'g'
+			},
+			set: function (value) {
+				this.fat_count = value
+			}
+		},
+		protein: {
+			get: function () {
+				return this.protein_count + 'g'
+			},
+			set: function (value) {
+				this.protein_count = value
+			}
+		},
   },
   data () {
     return {
-      cookbook: {}
+	  cookbook: {},
+	  calorie_count: 0,
+	  fat_count: 0,
+	  protein_count: 0,
+	  carbs_count: 0
     }
   },
   components: {
