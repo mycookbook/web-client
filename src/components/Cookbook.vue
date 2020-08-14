@@ -114,7 +114,11 @@
 														recipeId: recipe.id
 														}
 													}">
-													<img class="ui large image" :src="recipe.imgUrl" style="margin-left: -12px!important">
+													<img 
+														class="ui large image" 
+														:src="recipe.imgUrl" 
+														:alt="recipe.name"
+														style="margin-left: -12px!important">
 												</router-link>	
 											</div>
 											<div class="twelve wide column">
@@ -259,20 +263,20 @@ export default {
 
 <style scoped="">
 .cookbook-title {
-  font-weight: 300;
-  text-align: center;
-  font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-}
+	font-weight: 300;
+	text-align: center;
+	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+	}
 .statistics {
-  margin-bottom: 2%!important;
+	margin-bottom: 2%!important;
 }
 .description {
-  font-weight: 400!important;
-  margin-bottom: 2%!important;
-  font-size: 17px;
-  line-height: 1.43;
+	font-weight: 400!important;
+	margin-bottom: 2%!important;
+	font-size: 17px;
+	line-height: 1.43;
 }
 .description p {
-  text-align: center!important;
+	text-align: center!important;
 }
 </style>
