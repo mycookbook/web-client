@@ -208,20 +208,23 @@ export default {
 			alert('adding variety ...')
 		},
 		computeCalories: function (val) {
-			let calVal = JSON.parse(val).cal
+			let calVal = this.parseJson(val).cal
 			return calVal ? (calVal + ' kCal') : (0 + ' kCal')
 		},
 		computeCarbs: function (val) {
-			let carbVal = JSON.parse(val).carbs
+			let carbVal = this.parseJson(val).carbs
 			return  carbVal ? (carbVal + 'g') : (0 + 'g')
 		},
 		computeProtein: function (val) {
-			let proteinVal = JSON.parse(val).protein
+			let proteinVal = this.parseJson(val).protein
 			return proteinVal ? (proteinVal + 'g') : (0 + 'g')
 		},
 		computeFat: function (val) {
-			let fatVal = JSON.parse(val).fat
+			let fatVal = this.parseJson(val).fat
 			return fatVal ? (fatVal + 'g') : (0 + 'g')
+		},
+		parseJson: function(i) {
+			return JSON.parse(i)
 		}
 	}
 }
