@@ -123,7 +123,7 @@
 											<div class="twelve wide column">
 												{{ recipe.summary }}
 												<div class="twelve wide column" style="position: absolute;bottom: 0;left: 0;">
-													<div class="ui light blue label" v-for="ingredient in recipe.ingredients">
+													<div class="ui light blue label" v-for="ingredient in recipe.ingredients" style="margin-top: 1%;">
 														{{ ingredient }}
 													</div>
 												</div>
