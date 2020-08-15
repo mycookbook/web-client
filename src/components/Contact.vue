@@ -42,26 +42,35 @@
 import store from '@/store'
 
 export default {
-  data () {
-    return {
-		email: '',
-		isErrored: false,
-		isLoading: false
+	data () {
+		return {
+			email: '',
+			isErrored: false,
+			isLoading: false
+		}
+	},
+	methods: {
+		getSubscribed: function() {
+			if (!this.email) {
+				this.toggleErrorState(true)
+				this.toggleLoadingState(false)
+
+				// store.dispatch('has_error') TODO: use the store to toggle class and style bindings states
+			} else {
+				this.toggleErrorState(false)
+				this.toggleLoadingState(true)
+				
+				store.dispatch('subscribeUser', this.email)
+			 }
+			},
+			toggleErrorState: function(status) {
+				this.isErrored = status
+			},
+			toggleLoadingState: function(status) {
+				this.isLoading = status
+			}
+		}
 	}
-  },
-  methods: {
-	  getSubscribed: function() {
-		  if (!this.email) {
-			  this.isErrored = true
-			  this.isLoading = false
-		  } else {
-			  this.isLoading = true
-			  this.isErrored = false
-			  store.dispatch('subscribeUser', this.email)
-		  }
-	  }
-  }
-}
 </script>
 
 <style>

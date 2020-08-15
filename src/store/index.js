@@ -15,8 +15,7 @@ const state = {
 	},
 	allCookbooks: [],
 	sorted: [],
-	sortBy: 'all',
-	error: false
+	sortBy: 'all'
 };
 
 const mutations = { // Mutate the current state
@@ -109,7 +108,7 @@ const actions = { // Get data from server and send that to mutations to mutate t
 			$("#subscription-state").addClass("error")
 			$("#status-header").hide()
 			$("#status-msg").text(error.response.data.email)
-			
+
 			context.commit('SUBSCRIPTION_ERROR')
 		})
 		.then(function () {
