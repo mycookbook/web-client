@@ -9,7 +9,7 @@
 				>
 			</div>
 			<div class="eight wide column">
-				<div id="contact-card" class="ui action input">
+				<div id="contact-card" class="ui action input" v-bind:class="{ error: isErrored }">
 					<input type="text" placeholder="Your email address" v-model="email">
 					<button 
 						id="loading-btn"
@@ -44,14 +44,13 @@ export default {
   data () {
     return {
 		email: '',
-		error: false
+		isErrored: false
 	}
   },
   methods: {
 	  getSubscribed: function() {
 		  if (!this.email) {
-			  this.error = true
-			  $("#contact-card").addClass("error");
+			  this.isErrored = true
 		  } else {
 			  $("#loading-btn").addClass("loading")
 			  store.dispatch('subscribeUser', this.email)
