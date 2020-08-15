@@ -30,18 +30,18 @@ import Bottom from './Bottom.vue'
 export default {
   name: "LandingPage",
   mounted () {
-	  if (this.$store.state.cookbooks.length == 0 || this.$store.state.cookbooks === null) {
+	  if (this.$store.state.cookbookStore.cookbooks.length == 0 || this.$store.state.cookbookStore.cookbooks === null) {
 		  store.dispatch('load_cookbooks')
 		  store.dispatch('load_definitions')
 	  } 
   },
   computed: {
     cookbooks() {
-		return this.$store.state.cookbooks
+		return this.$store.state.cookbookStore.cookbooks
 	},
 	filters() {
-		if (this.$store.state.definitions.categories.contents) {
-			return JSON.parse(this.$store.state.definitions.categories.contents)
+		if (this.$store.state.cookbookStore.definitions.categories.contents) {
+			return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
 		}
 	}
   },
