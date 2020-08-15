@@ -123,7 +123,6 @@
 											<div class="twelve wide column">
 												{{ recipe.summary }}
 												<div class="twelve wide column" style="position: absolute;bottom: 0;left: 0;">
-													<!-- {{ parseIngredientsData(recipe.ingredients) }}  -->
 													<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin-top: 1%;">
 														{{ ingredient }}
 													</div>
@@ -234,7 +233,6 @@ export default {
 			return t.toUpperCase()
 		},
 		recipeIngredients: function(data) {
-			// console.log(JSON.parse(JSON.parse(data)).data)
 			return JSON.parse(JSON.parse(data)).data
 		}
 	}
