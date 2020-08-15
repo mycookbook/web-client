@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import LandingPage from '@/components/LandingPage';
 import Register from '@/components/auth/Register';
-import Login from '@/components/auth/Login';
-import Signout from '@/components/auth/Signout';
 import Cookbook from '@/components/Cookbook';
 import Recipe from '@/components/Recipe';
 import FeatureRequest from '@/components/FeatureRequest';
@@ -11,7 +9,6 @@ import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import Disclaimer from '@/components/legal/Disclaimer';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
-import SearchResults from '@/components/SearchResults';
 
 Vue.use(Router);
 
@@ -50,21 +47,9 @@ export default new Router({
       name: 'Recipe',
       component: Recipe,
     }, {
-      path: '/search-results',
-      name: 'SearchResults',
-      component: SearchResults,
-    }, {
       path: '/feature-request',
       name: 'FeatureRequest',
       component: FeatureRequest,
-    }, {
-      path: '/login',
-      name: 'Login',
-      component: Login,
-    }, {
-      path: '/signout',
-      name: 'Signout',
-      component: Signout,
     }, {
       path: '/discover',
       name: 'Discover',
