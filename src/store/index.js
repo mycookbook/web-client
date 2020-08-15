@@ -109,9 +109,11 @@ const actions = { // Get data from server and send that to mutations to mutate t
 			$("#subscription-state").addClass("error")
 			$("#status-header").hide()
 			$("#status-msg").text(error.response.data.email)
+			
 			context.commit('SUBSCRIPTION_ERROR')
 		})
-		.then(function () {// always executed
+		.then(function () {
+			// always executed
 		});
 	},
 	load_definitions(context) {
@@ -122,7 +124,7 @@ const actions = { // Get data from server and send that to mutations to mutate t
 		})
 		.catch(function (error) {
 			// handle error
-			console.log(error);
+			console.log('There was an error: ', error);
 		})
 			.then(function () {
 			// always executed

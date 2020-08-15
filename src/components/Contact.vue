@@ -6,15 +6,14 @@
 				<img class="logo"
 				src="/static/signup-img.png"
 				alt="enter your email address to be the first to get notified of about new recipes"
-				style="min-width:unset;height:8.5em; !important">
+				>
 			</div>
-			<div class="eight wide column" style="position:relative!important;">
-				<div id="contact-card" class="ui action input" style="position:absolute;bottom:35%;right:0;">
+			<div class="eight wide column">
+				<div id="contact-card" class="ui action input">
 					<input type="text" placeholder="Your email address" v-model="email">
 					<button 
 						id="loading-btn"
 						class="ui button tbb" 
-						style="padding:20px;padding-right:40px;" 
 						@click="getSubscribed()">
 							Get started now
 					</button>
@@ -24,7 +23,7 @@
 		<div class="ui grid">
 			<div class="eleven wide column"></div>
 			<div class="five wide column">
-				<div class="ui success message hidden" id="subscription-state" style="position:relative;bottom:55%;right:-14px;">
+				<div class="ui success message hidden" id="subscription-state">
 					<div class="header" id="status-header">
 						Thank you for subscribing!
 					</div>
@@ -50,7 +49,7 @@ export default {
   },
   methods: {
 	  getSubscribed: function() {
-		  if(!this.email) {
+		  if (!this.email) {
 			  this.error = true
 			  $("#contact-card").addClass("error");
 		  } else {
@@ -61,10 +60,28 @@ export default {
   }
 }
 </script>
+
 <style>
+img {
+	min-width:unset;
+	height:8.5em;
+}
 .sign-up-container {
-  /* border-top: 1px solid #cccccc!important; */
   margin-top: 3%;
   width: 100%;
+}
+#subscription-state {
+	position:relative;
+	bottom:55%;
+	right:-14px;
+}
+#loading-btn {
+	padding:20px;
+	padding-right:40px;
+}
+#contact-card {
+	position:absolute;
+	bottom:35%;
+	right:0;
 }
 </style>
