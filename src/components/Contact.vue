@@ -13,7 +13,8 @@
 					<input type="text" placeholder="Your email address" v-model="email">
 					<button 
 						id="loading-btn"
-						class="ui button tbb" 
+						class="ui button tbb"
+						v-bind:class="{ loading: isLoading }"
 						@click="getSubscribed()">
 							Get started now
 					</button>
@@ -44,15 +45,18 @@ export default {
   data () {
     return {
 		email: '',
-		isErrored: false
+		isErrored: false,
+		isLoading: false
 	}
   },
   methods: {
 	  getSubscribed: function() {
 		  if (!this.email) {
 			  this.isErrored = true
+			  this.isLoading = false
 		  } else {
-			  $("#loading-btn").addClass("loading")
+			  this.isLoading = true
+			  this.isErrored = false
 			  store.dispatch('subscribeUser', this.email)
 		  }
 	  }
