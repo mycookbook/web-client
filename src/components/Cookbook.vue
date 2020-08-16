@@ -1,6 +1,7 @@
 <template>
 <div>
 	<Navigation />
+	<!-- TODO: Implement lazy loading for cookbooks recipes on this page: load only 20 at one time -->
 	<div class="ui main-container container">
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
 			<h2 class="cookbook-title">
@@ -146,9 +147,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="three wide center aligned column ad-space">
+				<div class="three wide center aligned column">
+					<small>ad space</small>
 					<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
-					<b>ad space</b>
+					<small>ad space</small>
 				</div>
 				<div class="tvn horizontal stroke"></div>
 			</div>
