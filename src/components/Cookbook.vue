@@ -16,149 +16,140 @@
 				</div>
 			</div>
 			<br><br>
-			<div>
-				<div>
-					<div>
-						<div v-if="hasRecipes(cookbook)">
-							<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column" v-for="recipe in cookbook.recipes" :id="recipe.id">
+			<div v-if="hasRecipes(cookbook)">
+				<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column" v-for="recipe in cookbook.recipes" :id="recipe.id">
+					<div class="ui grid">
+						<div class="two column row">
+							<div class="fifteen wide column">
+								<router-link :to="{
+									name: 'Recipe',
+									params: {
+										cookbookId: cookbook.id,
+										recipeId: recipe.id
+									}}">
+									<div class="ui header">
+										<h3>
+											{{ transformRecipeName(recipe.name) }}
+										</h3>
+									</div>
+								</router-link>
+								<div>
+									<label class="ui light yellow ribbon label">
+										Prep &#38; cook Time: {{ recipe.cook_time }}
+									</label>
+									<span style="float:right">
+										<div class="nut_info">
+											<em>NUTRITIONAL INFO</em>
+											<i class="caret square down icon"></i>
+										</div>
+										<div class="ui flowing popup transition hidden">
+											<div class="ui four column divided center">
+												<div class="column">
+													<span>
+														<h3>{{ computeCalories(recipe.nutritional_detail) }}</h3>
+													</span>
+													<span>
+														<h3 class="ui teal header">Calories</h3>
+													</span> <hr />
+												</div>
+												<div class="column">
+													<span>
+														<h3>
+															{{ computeCarbs(recipe.nutritional_detail) }}
+														</h3>
+													</span>
+													<span>
+														<h3 class="ui grey header">Carbs</h3>
+													</span>	<hr />
+												</div>
+												<div class="column">
+													<span>
+														<h3>
+															{{ computeProtein(recipe.nutritional_detail) }}
+														</h3>
+													</span>
+													<span>
+														<h3 class="ui purple header">Protein</h3>
+													</span>	<hr />
+												</div>
+												<div class="column">
+													<span>
+														<h3>
+															{{ computeFat(recipe.nutritional_detail) }}
+														</h3>
+													</span>
+													<span>
+														<h3 class="ui orange header">Fat</h3>
+													</span>	
+												</div>
+											</div>
+										</div>
+									</span>
+								</div>
 								<div class="ui grid">
-									<div class="two column row">
-										<div class="fifteen wide column">
+									<div class="three column row">
+										<div class="four wide column">
 											<router-link :to="{
 												name: 'Recipe',
 												params: {
 													cookbookId: cookbook.id,
 													recipeId: recipe.id
-												}}">
-												<div class="ui header">
-													<h3>
-														{{ transformRecipeName(recipe.name) }}
-													</h3>
-												</div>
-											</router-link>
-											<div>
-												<label class="ui light yellow ribbon label">
-													Prep &#38; cook Time: {{ recipe.cook_time }}
-												</label>
-												<span style="float:right">
-													<div class="nut_info">
-														<em>NUTRITIONAL INFO</em>
-														<i class="caret square down icon"></i>
-													</div>
-													<div class="ui flowing popup transition hidden">
-														<div class="ui four column divided center">
-															<div class="column">
-																<span>
-																	<h3>{{ computeCalories(recipe.nutritional_detail) }}</h3>
-																</span>
-																<span>
-																	<h3 class="ui teal header">Calories</h3>
-																</span> <hr />
-															</div>
-															<div class="column">
-																<span>
-																	<h3>
-																		{{ computeCarbs(recipe.nutritional_detail) }}
-																	</h3>
-																</span>
-																<span>
-																	<h3 class="ui grey header">Carbs</h3>
-																</span>	<hr />
-															</div>
-															<div class="column">
-																<span>
-																	<h3>
-																		{{ computeProtein(recipe.nutritional_detail) }}
-																	</h3>
-																</span>
-																<span>
-																	<h3 class="ui purple header">Protein</h3>
-																</span>	<hr />
-															</div>
-															<div class="column">
-																<span>
-																	<h3>
-																		{{ computeFat(recipe.nutritional_detail) }}
-																	</h3>
-																</span>
-																<span>
-																	<h3 class="ui orange header">Fat</h3>
-																</span>	
-															</div>
-														</div>
-													</div>
-												</span>
-											</div>
-											<div class="ui grid">
-												<div class="three column row">
-													<div class="four wide column">
-														<router-link :to="{
-															name: 'Recipe',
-															params: {
-																cookbookId: cookbook.id,
-																recipeId: recipe.id
-																}
-															}">
-															<img 
-																class="ui large image" 
-																:src="recipe.imgUrl" 
-																:alt="recipe.name"
-																style="margin-left: -12px!important">
-														</router-link>	
-													</div>
-													<div class="twelve wide column">
-														{{ recipe.summary }}
-														<div class="twelve wide column" style="position: absolute;bottom: 0;left: 0;">
-															<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin-top: 1%;">
-																{{ ingredient }}
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="ui grid">
-												<div class="ui three wide column">
-													<h6 class="ui blue header" style="text-transform: uppercase; position: absolute; top: -10%">
-														by {{ recipe.user.name }}
-													</h6>
-													<span>
-														<p>
-															{{ recipe.variations.length }} varieties
-														</p>
-													</span>
-													<span>
-														<a class="ui tiny default button" @click=addVariety() :title="addRecipeTitleText">
-															+ Add variety
-														</a>
-													</span>
-												</div>
-											</div>
+													}
+												}">
+												<img 
+													class="ui large image" 
+													:src="recipe.imgUrl" 
+													:alt="recipe.name"
+													style="margin-left: -12px!important">
+											</router-link>	
 										</div>
-										<div class="ui one wide column">
-											<b>ad space</b>
+										<div class="twelve wide column">
+											{{ recipe.summary }}
+											<div class="twelve wide column" style="position: absolute;bottom: 0;left: 0;">
+												<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin-top: 1%;">
+													{{ ingredient }}
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-                    		</div>
-                			<div class="tvn horizontal stroke"></div>
-						</div>
-						<div v-else>
-							<p>No recipes yet? Know a recipe? 
-								<a href="/">Add Recipe</a>
-							</p>
-							<div class="ui ignored info message">
-								Go on about how this is community, how you might benefit how you might help save the world from poverty  and cancer.
-								We appreciate your contribution! Like mentioned earlier,
-								these requests are based on a pool system and the highest number
-								of requests gets prioritized. Click <code>Submit request</code>
-								button to send in your request and be notified if this request
-								makes it to our priority list. Please note that if we find your request very convincing,
-								we will schedule a skype meeting with you just for quality check. We like you and you know it!<br />
+								<div class="ui grid">
+									<div class="ui three wide column">
+										<h6 class="ui blue header" style="text-transform: uppercase; position: absolute; top: -10%">
+											by {{ recipe.user.name }}
+										</h6>
+										<span>
+											<p>
+												{{ recipe.variations.length }} varieties
+											</p>
+										</span>
+										<span>
+											<a class="ui tiny default button" @click=addVariety() :title="addRecipeTitleText">
+												+ Add variety
+											</a>
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="tvn horizontal stroke"></div>
 			</div>
+			<div v-else>
+				<p>No recipes yet? Know a recipe? 
+					<a href="/">Add Recipe</a>
+				</p>
+				<div class="ui ignored info message">
+					Go on about how this is community, how you might benefit how you might help save the world from poverty  and cancer.
+					We appreciate your contribution! Like mentioned earlier,
+					these requests are based on a pool system and the highest number
+					of requests gets prioritized. Click <code>Submit request</code>
+					button to send in your request and be notified if this request
+					makes it to our priority list. Please note that if we find your request very convincing,
+					we will schedule a skype meeting with you just for quality check. We like you and you know it!<br />
+				</div>
+			</div>	
 		</div>
 	<Contact />
 	<Bottom />
