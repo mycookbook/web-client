@@ -1,9 +1,9 @@
 <template>
 <div>
 	<Navigation />
-      <div class="ui container" style="margin-top:7%!important;">
-        <h2 class="cookbook-title">
-          {{ cookbook.name }}
+	<div class="ui main-container container">
+		<h2 class="cookbook-title">
+			{{ cookbook.name }}
         </h2>
         <div v-if="cookbook">
           <div class="ui description">
@@ -146,9 +146,6 @@
 												</a>
 											</span>
 										</div>
-										<div class="ui thirteen wide column labels">
-											<!-- ingredients -->
-										</div>
 									</div>
 								</div>
 								<div class="one wide column">
@@ -245,6 +242,9 @@ export default {
 </script>
 
 <style scoped="">
+.main-container {
+	margin-top:7%!important;
+}
 .cookbook-title {
 	font-weight: 300;
 	text-align: center;
