@@ -378,7 +378,7 @@
 </template>
 
 <script>
-import Navigation from './Navigation2.vue'
+import Navigation from './Navigation.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 

@@ -160,7 +160,7 @@
 </template>
 
 <script>
-import Navigation from './Navigation2'
+import Navigation from './Navigation'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 

@@ -21,7 +21,7 @@
 
 <script>
 import store from '@/store'
-import Navigation from './Navigation2.vue'
+import Navigation from './Navigation.vue'
 import Search from './Search2.vue'
 import QuickSort from './QuickSort.vue'
 import Contact from './Contact.vue'
