@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import LandingPage from '@/components/LandingPage';
-import Register from '@/components/auth/Register';
 import Cookbook from '@/components/Cookbook';
 import Recipe from '@/components/Recipe';
 import FeatureRequest from '@/components/FeatureRequest';
@@ -18,10 +17,6 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: LandingPage,
-    }, {
-      path: '/register',
-      name: 'Register',
-      component: Register,
     }, {
       path: '/usage-policy',
       name: 'UsagePolicy',
