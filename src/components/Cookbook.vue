@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <Navigation />
+<div>
+	<Navigation />
       <div class="ui container" style="margin-top:7%!important;">
         <h2 class="cookbook-title">
           {{ cookbook.name }}
@@ -19,7 +19,7 @@
           <div>
             <div>
               <div>
-                <div v-if="typeof cookbook.recipes != 'undefined'">
+                <div v-if="hasRecipes(cookbook)">
                   <div>
                     <div>
                         <div>
@@ -162,7 +162,7 @@
         </div>
         <div class="tvn horizontal stroke"></div>
     </div>
-    <div v-if="cookbook.recipes.length === 0">
+    <div v-else>
 		No recipes yet? Know a recipe?
         <a href="/">Add Recipe</a>
         <div class="ui ignored info message">
@@ -234,6 +234,11 @@ export default {
 		},
 		recipeIngredients: function(data) {
 			return JSON.parse(JSON.parse(data)).data
+		},
+		hasRecipes: function (cookbook) {
+			if (cookbook.recipes) {
+				return !(cookbook.recipes.length == 0)
+			}
 		}
 	}
 }
