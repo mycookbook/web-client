@@ -1,10 +1,10 @@
 <template>
 <div class="sign-up-container">
 	<div class="ui grid">
-		<div class="twelve wide computer column sixteen wide mobile column">
-		<img class="ui large image logo" src="/static/signup-img.png" alt="enter your email address to be the first to get notified of about new recipes">
-	</div>
-	<div class="four wide computer column sixteen wide mobile column">
+		<div class="ten wide computer column sixteen wide mobile column">
+			<img class="ui large image logo" src="/static/signup-img.png" alt="enter your email address to be the first to get notified of about new recipes">
+		</div>
+		<div class="six wide computer column sixteen wide mobile column">
 		<div id="contact-card" class="ui action input" v-bind:class="{ error: isErrored }">
 			<input type="text" placeholder="Your email address" v-model="email">
 			<button id="loading-btn" class="ui button tbb" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
@@ -67,7 +67,7 @@ export default {
 <style>
 
 .sign-up-container {
-	width: 97%;
+	/* width: 97%; */
 	margin-top: 5%!important;
 	padding-top: 50px;
 	border-top: 1px solid #eee;
