@@ -1,48 +1,53 @@
 <template>
-  <div class="search-banner">
-    <h1 class="subtitle">
-      Browse recipes<br>
-      It's absolutely free of charge <br
-    </h1>
-    <div>
-      <!-- <AutoComplete /> -->
+  <div>
+    <div class="search-banner">
+      <div class="seven wide column mobile hidden caption-text">
+        <span class="explore">Discover thousands of</span>
+        <span class="food-recipes">Recipes</span>
+      </div>
+      <div class="action-text">
+        food &amp; drink.
+      </div>
+      <AutoComplete />
     </div>
-    <div class="note">
-      <small>
-        <b>
-          Couldn't find the recipe you are looking for?
-          <a href="/#/">
-            &nbsp; Create it
-          </a>
-        </b>
-      </small>
-    </div>
-  </div>
+</div>
 </template>
 
 <script>
-// import AutoComplete from './AutoComplete.vue'
+import AutoComplete from './AutoComplete.vue'
 
 export default {
   data () {
     return {}
   },
+  props: {
+    filters: Array,
+    cookbooks: Array
+  },
   components: {
-    // AutoComplete: AutoComplete
+    AutoComplete: AutoComplete
   }
 }
 </script>
 
 <style>
-.note {
-  padding: 3px 9px;
-  letter-spacing: 0.03rem;
-  font-weight: 100;
-}
-.subtitle {
-  font-size: 60px;
-}
 .search-banner {
-  margin: 15% 0 0 0;
+  margin: 25% 0 0 0;
+}
+.food-recipes {
+  color: #0160CC!important;
+}
+.caption-text {
+  font-size: 60px;
+  font-weight: 900;
+  text-align: center;
+}
+/* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
+.action-text {
+  /* font-size: 40px; */
+  font-weight: 300;
+  text-align: center;
+  padding: 65px;
+  font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 </style>
