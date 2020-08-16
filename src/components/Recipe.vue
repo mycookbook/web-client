@@ -11,7 +11,7 @@
 				 <i class="yellow star icon"></i>
 				 <i class="yellow star half icon"></i><br> <hr />
 				 <i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
-				 Nutritional details <br> 
+				 <b>Nutritional details</b> <br> 
 				 <small>
 					 Calories: 416 kCal
 				 </small>
@@ -28,12 +28,13 @@
 					 Carbs: 4g
 				 </small>
 				 <hr />
-				 Servings 3<br> <hr />
-				 <a href="">
-					 <span class="left floated">
-						 Varieties
+				 <b>Servings: </b> 3<br> <hr />
+				 <span class="left floated">
+						 <b>Varieties: </b>
 					 </span>
-					 <span class="right foated">
+				 <a href="/#/recipes/13/varieties">
+					 
+					 <span class="right foated" title="Follow link to view all varieties for this recipe">
 						 {{ getRecipeVaritiesCount(recipe.variations) }} 
 					 </span>
 				</a> <br> <hr />
@@ -47,7 +48,7 @@
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
 						<div class="item">
-							<img class="ui mini circular image" src="https://semantic-ui.com/images/avatar2/small/eve.png">
+							<img class="ui mini circular image" src="https://www.simplyrecipes.com/wp-content/uploads/2019/11/newheadshot-1-300x300.jpg">
 							<div class="content">
 								<div class="ui sub header">
 									submitted by: {{ recipe.user.name }} (He/Him)
@@ -64,7 +65,7 @@
 					</div>
 				</div>
 				<div class="sixteen wide column" style="margin-top:2%;">
-					<img class="ui large image" :src="recipe.imgUrl" style="width:769px;!important">
+					<img class="ui large image" :src="recipe.imgUrl" style="width:766px;!important">
 				</div>
 				<div class="sixteen wide column">
 					<h3 class="ui header" style="padding:8px;">
