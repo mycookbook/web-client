@@ -31,7 +31,7 @@
 				 Servings 3<br> <hr />
 				 <a href="">
 					 <span class="left floated">
-						 Varities
+						 Varieties
 					 </span>
 					 <span class="right foated">
 						 {{ getRecipeVaritiesCount(recipe.variations) }} 
@@ -40,7 +40,7 @@
 			</div>
 			<div class="ui eleven wide colum">
 				 <div class="sixteen wide column">
-					 <h3>
+					 <h3 id="recipe-name">
 						{{ recipe.name }}
 					 </h3>
 				</div>
@@ -64,7 +64,7 @@
 					</div>
 				</div>
 				<div class="sixteen wide column" style="margin-top:2%;">
-					<img class="ui large image" :src="recipe.imgUrl" style="width:705px;!important">
+					<img class="ui large image" :src="recipe.imgUrl" style="width:769px;!important">
 				</div>
 				<div class="sixteen wide column">
 					<h3 class="ui header" style="padding:8px;">
@@ -137,5 +137,8 @@ export default {
 	font-weight: 900;
 	margin-top: 0px;
 	margin-left: -1px;
+}
+#recipe-name {
+	text-transform: uppercase;
 }
 </style>
