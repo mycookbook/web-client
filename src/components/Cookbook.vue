@@ -146,7 +146,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="three wide center aligned column ad-space" style="display: flex;align-items: center;justify-content: center;text-align:center;!important">
+				<div class="three wide center aligned column ad-space">
+					<img class="ui massive image" src="https://chainlinkmarketing-closetheloopadve.netdna-ssl.com/wp-content/uploads/2019/07/Google-Display-Ad-Example-UGG.jpg" />
 					<b>ad space</b>
 				</div>
 				<div class="tvn horizontal stroke"></div>
