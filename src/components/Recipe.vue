@@ -36,7 +36,7 @@
 							<img class="ui mini circular image" src="https://www.simplyrecipes.com/wp-content/uploads/2019/11/newheadshot-1-300x300.jpg">
 							<div class="content">
 								<div class="ui sub header">
-									submitted by: {{ recipe.user.name }} (He/Him)
+									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> (He/Him)
 								</div>
 								Professional Bartender at Tim Hortons <br>
 								<small> Member since 2012 | 44K+ contributions | <i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i></small>
@@ -54,14 +54,16 @@
 				</div>
 				<div class="sixteen wide column">
 					<h3 class="ui header" style="padding:8px;">
-						How to prepare
+						HOW TO PREPARE
 					</h3>
 				</div>
 				<div class="ui sixteen wide column container">
-					{{ recipe.description }}
+					<h3>Step 1:</h3>{{ recipe.description }}
+					<h3>Step 2:</h3>{{ recipe.description }}
+					<h3>Step 3:</h3>{{ recipe.description }}
 				</div>
 			</div>
-			<div class="ui three wide center computer column mobile hidden">
+			<div class="ui three wide center aligned right floated column mobile hidden">
 				<small>ad space</small>
 				<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
 				<small>ad space</small>
@@ -131,3 +133,4 @@ export default {
 	margin-top: 18vh;
 }
 </style>
+
