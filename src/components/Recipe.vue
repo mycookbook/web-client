@@ -8,15 +8,30 @@
 				<i class="yellow star icon"></i>
 				<i class="yellow star icon"></i>
 				<i class="yellow star half icon"></i><br> <hr />
-				<i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
-				<b>Nutritional details</b> <br> 
-				<small>Calories: 416 kCal</small><br>
-				<small>Fat: 16g</small><br>
-				<small>Protein: 41g</small><br>
-				<small>Carbs: 4g</small><hr />
+				Pred & Cook time: {{ recipe.cook_time }} <br> <hr />
+				<b>Nutritional details</b> 
+				<small>
+					<h5 class="ui teal header">
+						Calories: 416 kCal
+					</h5>
+				</small>
+				<small>
+					<h5 class="ui orange header">Fat: 16g </h5>
+				</small>
+				<small>
+					<h5 class="ui purple header">
+						Protein: 41g
+					</h5>
+				</small>
+				<small>
+					<h5 class="ui grey header">
+						Carbs: 4g
+					</h5>
+				</small>
+				<hr />
 				<b>Servings: </b> 3<br> <hr />
 				<span class="left floated">
-					<b>Varieties:</b>
+					<b>Submitted Varieties:</b>
 				</span>
 				<a href="/#/recipes/13/varieties">
 					<span class="right foated" title="Follow link to view all varieties for this recipe">
