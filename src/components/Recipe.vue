@@ -1,7 +1,7 @@
 <template>
 <div>
 	 <Navigation />
-	 <div class="ui container" style="margin-top:10%!important;">
+	 <div class="ui container main-content">
 		 <div class="ui grid">
 			 <div class="ui two wide colum">
 				 <h3>User Ratings</h3>
@@ -139,5 +139,8 @@ export default {
 }
 #recipe-name {
 	text-transform: uppercase;
+}
+.main-content {
+	margin-top: 18vh;
 }
 </style>

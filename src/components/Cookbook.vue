@@ -2,7 +2,7 @@
 <div>
 	<Navigation />
 	<!-- TODO: Implement lazy loading for cookbooks recipes on this page: load only 20 at one time -->
-	<div class="ui main-container container">
+	<div class="ui cookbook-container container">
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
 			<h2 class="cookbook-title">
 				{{ cookbook.name }}
@@ -225,8 +225,8 @@ export default {
 </script>
 
 <style scoped="">
-.main-container {
-	margin-top:7%!important;
+.cookbook-container {
+	margin-top:25vh!important;
 }
 .cookbook-title {
 	font-weight: 300;
