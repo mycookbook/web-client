@@ -4,17 +4,44 @@
 	 <div class="ui container" style="margin-top:10%!important;">
 		 <div class="ui grid">
 			 <div class="ui two wide colum">
-				 Ratings 5 stars<br> <hr />
-				 Created Yesterday<br> <hr />
-				 Prep & cooktime 1Hr 30mins<br> <hr />
-				 Nutritional details <br> <hr />
+				 <h3>User Ratings</h3>
+				 <i class="yellow star icon"></i>
+				 <i class="yellow star icon"></i>
+				 <i class="yellow star icon"></i>
+				 <i class="yellow star icon"></i>
+				 <i class="yellow star half icon"></i><br> <hr />
+				 <i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
+				 Nutritional details <br> 
+				 <small>
+					 Calories: 416 kCal
+				 </small>
+				 <br>
+				 <small>
+					 Fat: 16g
+				 </small>
+				 <br>
+				 <small>
+					 Protein: 41g
+				 </small>
+				 <br>
+				 <small>
+					 Carbs: 4g
+				 </small>
+				 <hr />
 				 Servings 3<br> <hr />
-				 <a href="">Varities 5+</a> <br> <hr />
+				 <a href="">
+					 <span class="left floated">
+						 Varities
+					 </span>
+					 <span class="right foated">
+						 {{ getRecipeVaritiesCount(recipe.variations) }} 
+					 </span>
+				</a> <br> <hr />
 			</div>
 			<div class="ui eleven wide colum">
 				 <div class="sixteen wide column">
 					 <h3>
-						{{ recipe.name.toUpperCase() }}
+						{{ recipe.name }}
 					 </h3>
 				</div>
 				<div class="sixteen wide column">
@@ -72,18 +99,29 @@ export default {
 			this.$route.params.recipeId
 		)
 	},
+	created() {
+		this.recipeName = this.recipe.name
+	},
 	data () {
 		return {
 			recipe: {
 				id: '',
 				coverImg: '',
-				description: ''
+				description: '',
+				recipeName: ''
 			}
 		}
 	},
 	methods: {
 		recipeIngredients: function(data) {
 			return JSON.parse(JSON.parse(data)).data
+		},
+		getRecipeVaritiesCount(varieties) {
+			return (varieties) ? varieties.length : 0
+		},
+		computeCarbs: function (val) {
+			let carbVal = this.parseJson(val).carbs
+			return  carbVal ? (carbVal + 'g') : (0 + 'g')
 		},
 	},
 	components: {
