@@ -7,8 +7,6 @@
 				 <h3>User Ratings</h3>
 				 <i class="yellow star icon"></i>
 				 <i class="yellow star icon"></i>
-				 <i class="yellow star icon"></i>
-				 <i class="yellow star icon"></i>
 				 <i class="yellow star half icon"></i><br> <hr />
 				 <i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
 				 <b>Nutritional details</b> <br> 
@@ -53,7 +51,7 @@
 								<div class="ui sub header">
 									submitted by: {{ recipe.user.name }} (He/Him)
 								</div>
-								Professional chef at Macys <br>
+								Professional Bartender at Tim Hortons <br>
 								<small> Member since 2012 | 44K+ contributions | <i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i></small>
 							</div>
 						</div>

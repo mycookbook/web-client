@@ -41,13 +41,49 @@
 		</div>
   	</div>
 	<div class="ui top fixed hidden menu grid mobile only">
-		<!-- TODO: implement mobile menu -->
-		<div class="sixteen wide">
+		<!-- WIP -->
+		<div class="sixteen wide" id="hamburger-icon" @click="toggleMobileMenu()">
 			<i class="large bars icon"></i>
+		</div>
+		<div class="sixteen wide hidden column">
+			<a class="ui secondary menu item">
+				<router-link :to="{
+						name: 'UsagePolicy'
+					}">
+					Usage Policy
+					</router-link>
+			</a>
+			<a class="ui secondary menu item">
+				Subscriptions
+			</a>
+			<a class="ui secondary menu item">
+				<button class="ui button tbb">
+					+ Add your recipe
+				</button>
+			</a>
 		</div>
 	</div>
 </div>
 </template>
+
+<script>
+export default {
+	data() {
+		return {
+			isMobileView: false
+		}
+	},
+	methods: {
+		toggleMobileMenu: function() {
+			if (this.isMobileView == true) {
+				this.isMobileView = false
+			} else {
+				this.isMobileView = true
+			}
+		}
+	}
+};
+</script>
 
 <style>
 .tbb {
@@ -69,5 +105,8 @@
 }
 body {
 	background: transparent!important;
+}
+#hamburger-icon {
+	cursor: pointer;
 }
 </style>
