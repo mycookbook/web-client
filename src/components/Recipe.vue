@@ -1,47 +1,34 @@
 <template>
 <div>
-	 <Navigation />
-	 <div class="ui container main-content">
-		 <div class="ui grid">
-			 <div class="ui two wide colum">
-				 <h3>User Ratings</h3>
-				 <i class="yellow star icon"></i>
-				 <i class="yellow star icon"></i>
-				 <i class="yellow star half icon"></i><br> <hr />
-				 <i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
-				 <b>Nutritional details</b> <br> 
-				 <small>
-					 Calories: 416 kCal
-				 </small>
-				 <br>
-				 <small>
-					 Fat: 16g
-				 </small>
-				 <br>
-				 <small>
-					 Protein: 41g
-				 </small>
-				 <br>
-				 <small>
-					 Carbs: 4g
-				 </small>
-				 <hr />
-				 <b>Servings: </b> 3<br> <hr />
-				 <span class="left floated">
-						 <b>Varieties: </b>
-					 </span>
-				 <a href="/#/recipes/13/varieties">
-					 
-					 <span class="right foated" title="Follow link to view all varieties for this recipe">
-						 {{ getRecipeVaritiesCount(recipe.variations) }} 
-					 </span>
-				</a> <br> <hr />
+	<Navigation />
+	<div class="ui container main-content">
+		<div class="ui grid">
+			<div class="ui two wide computer colum sixteen wide mobile column">
+				<h3>User Ratings</h3>
+				<i class="yellow star icon"></i>
+				<i class="yellow star icon"></i>
+				<i class="yellow star half icon"></i><br> <hr />
+				<i class="clock outline icon"></i> {{ recipe.cook_time }} <br> <hr />
+				<b>Nutritional details</b> <br> 
+				<small>Calories: 416 kCal</small><br>
+				<small>Fat: 16g</small><br>
+				<small>Protein: 41g</small><br>
+				<small>Carbs: 4g</small><hr />
+				<b>Servings: </b> 3<br> <hr />
+				<span class="left floated">
+					<b>Varieties:</b>
+				</span>
+				<a href="/#/recipes/13/varieties">
+					<span class="right foated" title="Follow link to view all varieties for this recipe">
+						{{ getRecipeVaritiesCount(recipe.variations) }} 
+					</span>
+				</a> <br /> <hr />
 			</div>
-			<div class="ui eleven wide colum">
-				 <div class="sixteen wide column">
-					 <h3 id="recipe-name">
+			<div class="ui eleven wide computer column sixteen wide mobile column">
+				<div class="sixteen wide column">
+					<h3 id="recipe-name">
 						{{ recipe.name }}
-					 </h3>
+					</h3>
 				</div>
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
@@ -70,11 +57,11 @@
 						How to prepare
 					</h3>
 				</div>
-				<div class="sixteen wide column">
-					description
+				<div class="ui sixteen wide column container">
+					{{ recipe.description }}
 				</div>
 			</div>
-			<div class="three wide center aligned right floated column">
+			<div class="ui three wide center computer column mobile hidden">
 				<small>ad space</small>
 				<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
 				<small>ad space</small>
