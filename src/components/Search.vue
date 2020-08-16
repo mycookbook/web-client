@@ -59,6 +59,6 @@ export default {
 	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 .search-banner {
-	margin-top: 30vh!important;
+	margin-top: 25vh!important;
 }
 </style>

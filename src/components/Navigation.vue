@@ -40,27 +40,28 @@
 			</div>
 		</div>
   	</div>
+	<div class="ui top fixed menu grid mobile only" id="mobile-menu">
+		<div class="sixteen wide column">
+			<div class="ui grid">
+				<div class="ui sixteen wide white menu column">
+					<a class="ui secondary menu item">
+						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
+					</a>
+					<a class="ui secondary menu item">Subscriptions</a>
+					<a class="ui secondary menu item">Another Link</a>
+					<a class="ui secondary menu item">Another Link</a>
+					<a class="ui secondary menu item">
+						<button class="ui button tbb">
+							+ Add your recipe
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="ui top fixed hidden menu grid mobile only">
-		<!-- WIP -->
 		<div class="sixteen wide" id="hamburger-icon" @click="toggleMobileMenu()">
 			<i class="large bars icon"></i>
-		</div>
-		<div class="sixteen wide hidden column">
-			<a class="ui secondary menu item">
-				<router-link :to="{
-						name: 'UsagePolicy'
-					}">
-					Usage Policy
-					</router-link>
-			</a>
-			<a class="ui secondary menu item">
-				Subscriptions
-			</a>
-			<a class="ui secondary menu item">
-				<button class="ui button tbb">
-					+ Add your recipe
-				</button>
-			</a>
 		</div>
 	</div>
 </div>
@@ -69,17 +70,12 @@
 <script>
 export default {
 	data() {
-		return {
-			isMobileView: false
-		}
+		return {}
 	},
 	methods: {
 		toggleMobileMenu: function() {
-			if (this.isMobileView == true) {
-				this.isMobileView = false
-			} else {
-				this.isMobileView = true
-			}
+			// alert('toggle on/off') //TODO: toggle mobile menu
+			$('#mobile-menu').show()
 		}
 	}
 };
@@ -108,5 +104,9 @@ body {
 }
 #hamburger-icon {
 	cursor: pointer;
+}
+#mobile-menu {
+	margin-top:5vh;
+	display:none;
 }
 </style>
