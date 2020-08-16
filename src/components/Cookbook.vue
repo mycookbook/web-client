@@ -141,7 +141,7 @@
 												</p>
 											</span>
 											<span>
-												<a class="ui tiny default button" @click=addVariety()>
+												<a class="ui tiny default button" @click=addVariety() :title="addRecipeTitleText">
 													+ Add variety
 												</a>
 											</span>
@@ -191,6 +191,11 @@ import Bottom from './Bottom.vue'
 export default {
 	mounted() {
 		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
+	},
+	computed: {
+		addRecipeTitleText() {
+			return "Know a nice little tweak to this recipe? Make it your own, add it!"
+		}
 	},
 	data () {
 		return {
