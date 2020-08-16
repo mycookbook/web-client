@@ -60,7 +60,7 @@ export default {
 				this.toggleErrorState(false)
 				this.toggleLoadingState(true)
 				
-				store.dispatch('subscribeUser', this.email)
+				store.dispatch('subscribeUser', this.email) //TODO: refactor this to work with appropriate store dispatcher/event
 			 }
 			},
 			toggleErrorState: function(status) {

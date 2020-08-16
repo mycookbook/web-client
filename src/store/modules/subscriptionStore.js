@@ -15,7 +15,6 @@ export const subscriptionStore = {
             $("#loading-btn").removeClass("loading")
         },
         SUBSCRIPTION_SUCCESS() {
-            state.error = false
             $("#status-header").show()
             $("#status-msg").text('You will now recieve weekly updates in your email.')
             $("#subscription-state").addClass("success")
@@ -34,11 +33,12 @@ export const subscriptionStore = {
                 context.commit('SUBSCRIPTION_SUCCESS')
             })
             .catch(function (error) {// handle error
+                console.log(error)
                 $("#subscription-state").removeClass("hidden")
                 $("#subscription-state").removeClass("success")
                 $("#subscription-state").addClass("error")
                 $("#status-header").hide()
-                $("#status-msg").text(error.response.data.email)
+                // $("#status-msg").text(error.response.data.email)
     
                 context.commit('SUBSCRIPTION_ERROR')
             })
