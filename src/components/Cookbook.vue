@@ -147,7 +147,7 @@
 					</div>
 				</div>
 				<div class="three wide center aligned column ad-space">
-					<img class="ui massive image" src="https://chainlinkmarketing-closetheloopadve.netdna-ssl.com/wp-content/uploads/2019/07/Google-Display-Ad-Example-UGG.jpg" />
+					<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
 					<b>ad space</b>
 				</div>
 				<div class="tvn horizontal stroke"></div>
