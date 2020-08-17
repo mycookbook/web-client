@@ -42,7 +42,9 @@
 				</div>
 				<hr />
 				<div>
-					<b>Servings: </b> 3<br>
+					<b>Servings: </b> 
+					{{ recipe.servings }}
+					<br>
 				</div>
 				<hr />
 				<div>
@@ -90,11 +92,7 @@
 						HOW TO PREPARE
 					</h3>
 				</div>
-				<div class="ui sixteen wide column container">
-					<h3>Step 1:</h3>{{ recipe.description }}
-					<h3>Step 2:</h3>{{ recipe.description }}
-					<h3>Step 3:</h3>{{ recipe.description }}
-				</div>
+				<div class="ui sixteen wide column container" v-html="recipe.description"></div>
 			</div>
 			<div class="ui three wide center aligned right floated column mobile hidden">
 				<small>ad space</small>
