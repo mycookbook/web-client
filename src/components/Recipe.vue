@@ -4,40 +4,58 @@
 	<div class="ui container main-content">
 		<div class="ui grid">
 			<div class="ui two wide computer colum sixteen wide mobile column">
-				<h3>User Ratings</h3>
-				<i class="yellow star icon"></i>
-				<i class="yellow star icon"></i>
-				<i class="yellow star half icon"></i><br> <hr />
-				Pred & Cook time: {{ recipe.cook_time }} <br> <hr />
-				<b>Nutritional details</b> 
-				<small>
-					<h5 class="ui teal header">
-						Calories: 416 kCal
-					</h5>
-				</small>
-				<small>
-					<h5 class="ui orange header">Fat: 16g </h5>
-				</small>
-				<small>
-					<h5 class="ui purple header">
-						Protein: 41g
-					</h5>
-				</small>
-				<small>
-					<h5 class="ui grey header">
-						Carbs: 4g
-					</h5>
-				</small>
+				<div>
+					<div class="ui red button">
+						Add Rating & review
+					</div>
+					<div class="ui rating item">
+						<i class="yellow star icon"></i>
+						<i class="yellow star icon"></i>
+						<i class="yellow star half icon"></i>
+					</div>
+				</div>
 				<hr />
-				<b>Servings: </b> 3<br> <hr />
-				<span class="left floated">
-					<b>Submitted Varieties:</b>
-				</span>
-				<a href="/#/recipes/13/varieties">
-					<span class="right foated" title="Follow link to view all varieties for this recipe">
-						{{ getRecipeVaritiesCount(recipe.variations) }} 
+				<div>
+					Prep & Cook time: {{ recipe.cook_time }}
+				</div>
+				<hr />
+				<div>
+					<b>Nutritional details</b> 
+					<small>
+						<h5 class="ui teal header">
+							Calories: 416 kCal
+						</h5>
+					</small>
+					<small>
+						<h5 class="ui orange header">Fat: 16g </h5>
+					</small>
+					<small>
+						<h5 class="ui purple header">
+							Protein: 41g
+						</h5>
+					</small>
+					<small>
+						<h5 class="ui grey header">
+							Carbs: 4g
+						</h5>
+					</small>
+				</div>
+				<hr />
+				<div>
+					<b>Servings: </b> 3<br>
+				</div>
+				<hr />
+				<div>
+					<span>
+						<b>Submitted Varieties:</b>
 					</span>
-				</a> <br /> <hr />
+					<a href="/#/recipes/13/varieties">
+						<span class="right foated" title="Follow link to view all varieties for this recipe">
+							{{ getRecipeVaritiesCount(recipe.variations) }} 
+						</span>
+					</a>
+				</div>
+				<hr />
 			</div>
 			<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
