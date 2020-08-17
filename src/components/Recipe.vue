@@ -6,7 +6,7 @@
 			<div class="ui two wide computer colum sixteen wide mobile column">
 				<div>
 					<div class="ui red button">
-						Add Rating & review
+						Add Rating &#38; review
 					</div>
 					<div class="ui rating item">
 						<i class="yellow star icon"></i>
@@ -16,7 +16,7 @@
 				</div>
 				<hr />
 				<div>
-					Prep & Cook time: {{ recipe.cook_time }}
+					Prep &#38; Cook time: {{ recipe.cook_time }}
 				</div>
 				<hr />
 				<div>
