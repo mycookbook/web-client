@@ -59,11 +59,11 @@
 				</div>
 				<hr />
 				<div class="ui red button">
-					Report
+					Report it!
 				</div>
 				<div>
 					<small>
-						Report this recipe if you think this content is not original, is stolen, or is a duplicate. 
+						Report this recipe if you think this content is not original, is stolen or is a duplicate. 
 						If this is your original content, kindly provide as much detail as possible to enable us 
 						investigate and delete the content from our servers. Alternatively, you can signup and become a cookbook contributor
 						and ask this content's ownership to be transferred to you.
