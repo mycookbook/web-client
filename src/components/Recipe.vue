@@ -139,11 +139,7 @@ export default {
 		},
 		getRecipeVaritiesCount(varieties) {
 			return (varieties) ? varieties.length : 0
-		},
-		computeCarbs: function (val) {
-			let carbVal = this.parseJson(val).carbs
-			return  carbVal ? (carbVal + 'g') : (0 + 'g')
-		},
+		}
 	},
 	components: {
 		Navigation,
