@@ -93,12 +93,6 @@
 					</h3>
 				</div>
 				<div class="ui sixteen wide column container" v-html="recipe.description"></div>
-				<br /><hr />
-				<div>
-					<div class="ui red button add-rating" @click="addRating()">
-						Add Rating &#38; Review
-					</div>
-				</div>
 			</div>
 			<div class="ui three wide center aligned right floated column mobile hidden">
 				<small>ad space</small>
