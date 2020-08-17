@@ -5,7 +5,7 @@
 		<div class="ui grid">
 			<div class="ui two wide computer column sixteen wide mobile column">
 				<div>
-					<div class="ui red button">
+					<div class="ui red button add-rating" @click="addRating()">
 						Add Rating &#38; Review
 					</div>
 					<div class="ui rating" style="padding-top:5px;">
@@ -93,6 +93,12 @@
 					</h3>
 				</div>
 				<div class="ui sixteen wide column container" v-html="recipe.description"></div>
+				<br /><hr />
+				<div>
+					<div class="ui red button add-rating" @click="addRating()">
+						Add Rating &#38; Review
+					</div>
+				</div>
 			</div>
 			<div class="ui three wide center aligned right floated column mobile hidden">
 				<small>ad space</small>
@@ -135,8 +141,11 @@ export default {
 		recipeIngredients: function(data) {
 			return JSON.parse(JSON.parse(data)).data
 		},
-		getRecipeVaritiesCount(varieties) {
+		getRecipeVaritiesCount: function (varieties) {
 			return (varieties) ? varieties.length : 0
+		},
+		addRating: function() {
+			alert('adding rating')
 		}
 	},
 	components: {
