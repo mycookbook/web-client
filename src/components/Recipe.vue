@@ -3,10 +3,10 @@
 	<Navigation />
 	<div class="ui container main-content">
 		<div class="ui grid">
-			<div class="ui two wide computer colum sixteen wide mobile column">
+			<div class="ui two wide computer column sixteen wide mobile column">
 				<div>
 					<div class="ui red button">
-						Add Rating &#38; review
+						Add Rating &#38; Review
 					</div>
 					<div class="ui rating" style="padding-top:5px;">
 						<i class="yellow star icon"></i>
@@ -66,10 +66,10 @@
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
 						<div class="item">
-							<img class="ui mini circular image" src="https://www.simplyrecipes.com/wp-content/uploads/2019/11/newheadshot-1-300x300.jpg">
+							<img class="ui mini circular image" :src="recipe.user.avatar">
 							<div class="content">
 								<div class="ui sub header">
-									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> (He/Him)
+									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> {{ recipe.user.pronouns }}
 								</div>
 								Professional Bartender at Tim Hortons <br>
 								<small> Member since 2012 | 44K+ contributions | <i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i></small>
