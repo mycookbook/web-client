@@ -5,22 +5,22 @@
 		<div class="ui grid">
 			<div class="ui two wide computer column sixteen wide mobile column">
 				<div>
-					<div class="ui red button add-rating" @click="addRating()">
-						Add Rating &#38; Review
-					</div>
-					<div class="ui rating" style="padding-top:5px;">
-						<i class="yellow star icon"></i>
-						<i class="yellow star icon"></i>
-						<i class="yellow star half icon"></i>
+					<div class="add-clap" @click="addClap()">
+						<b>Add Clap 2.8K</b>
 					</div>
 				</div>
 				<hr />
 				<div>
-					Prep &#38; Cook time: {{ recipe.cook_time }}
+					Prep &#38; Cook time: 
 				</div>
 				<hr />
 				<div>
-					<b>Nutritional details</b> 
+					<b> {{ recipe.cook_time }} </b>
+				</div>
+				<hr />
+				<div>
+					<div>Nutritional details</div> 
+					<hr />
 					<small>
 						<h5 class="ui teal header">
 							Calories: 416 kCal
@@ -144,7 +144,7 @@ export default {
 		getRecipeVaritiesCount: function (varieties) {
 			return (varieties) ? varieties.length : 0
 		},
-		addRating: function() {
+		addClap: function() {
 			alert('adding rating')
 		}
 	},
