@@ -8,7 +8,7 @@
 					<div class="ui red button">
 						Add Rating &#38; review
 					</div>
-					<div class="ui rating item">
+					<div class="ui rating" style="padding-top:5px;">
 						<i class="yellow star icon"></i>
 						<i class="yellow star icon"></i>
 						<i class="yellow star half icon"></i>
