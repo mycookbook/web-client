@@ -58,7 +58,7 @@
 					</a>
 				</div>
 				<hr />
-				<div class="ui red button">
+				<div class="ui red button" @click="reportIt()">
 					Report it!
 				</div>
 				<div>
@@ -85,8 +85,16 @@
 								<div class="ui sub header">
 									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> {{ recipe.user.pronouns }}
 								</div>
-								Professional Bartender at Tim Hortons <br>
-								<small> Member since 2012 | 44K+ contributions | <i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i><i class="yellow star icon"></i></small>
+								Professional Bartender at Tim Hortons 
+								<br>
+								<small> Member since {{ getMembershipYear(recipe.user.created_at) }} 
+									| {{ userContributionsCount }} 
+									| <i class="yellow star icon"></i>
+									<i class="yellow star icon"></i>
+									<i class="yellow star icon"></i>
+									<i class="yellow star icon"></i>
+									<i class="yellow star icon"></i>
+								</small>
 							</div>
 						</div>
 					</div>
@@ -122,6 +130,7 @@
 import Navigation from './Navigation'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
+import axios from 'axios';
 
 export default {
 	mounted() {
@@ -132,6 +141,13 @@ export default {
 	},
 	created() {
 		this.recipeName = this.recipe.name
+	},
+	computed: {
+		userContributionsCount() {
+			let count = 44000
+			count = this.formatCount(count)
+			return count
+		}
 	},
 	data () {
 		return {
@@ -152,6 +168,33 @@ export default {
 		},
 		addClap: function() {
 			alert('adding rating')
+		},
+		reportIt: function() {
+			alert('Reporting it...')
+		},
+		getMembershipYear: function(date_time_string) {
+			let dateTimeObject = new Date(date_time_string)
+			let year = dateTimeObject.toDateString()
+			return year
+		},
+		formatCount: function(number) {
+			let i = 0
+			switch (number.toString().length)
+			{
+				case 1:
+					return number + 'contribution';
+				case 2:
+				case 3:
+					return number + 'contributions';
+				default:
+					return this.numberFormatter(number);
+			}
+		},
+		numberFormatter: function(number) {
+			let strVal = number.toString();
+			strVal = strVal.slice(0, -3);
+			let numVal = parseInt(strVal);
+			return numVal + 'K+ contributions';
 		}
 	},
 	components: {
