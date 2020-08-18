@@ -67,7 +67,7 @@
 						If you think this content was stolen and is your original content, kindly provide as much detail as possible to enable us 
 						investigate and delete the content from our servers. Alternatively, you can 
 						<a href="/#/registration-link">register</a> to become a cookbook contributor
-						and ask this content's ownership to be transferred to you.
+						and then ownership will be transffered to you upon request.
 					</small>
 				</div>
 			</div>
