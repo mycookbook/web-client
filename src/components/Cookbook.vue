@@ -119,15 +119,6 @@
 				<p>No recipes yet? Know a recipe? 
 					<a href="/">Add Recipe</a>
 				</p>
-				<div class="ui ignored info message">
-					Go on about how this is community, how you might benefit how you might help save the world from poverty  and cancer.
-					We appreciate your contribution! Like mentioned earlier,
-					these requests are based on a pool system and the highest number
-					of requests gets prioritized. Click <code>Submit request</code>
-					button to send in your request and be notified if this request
-					makes it to our priority list. Please note that if we find your request very convincing,
-					we will schedule a skype meeting with you just for quality check. We like you and you know it!<br />
-				</div>
 			</div>
 		</div>
 		<div class="two wide computer column sixteen wide mobile column">
