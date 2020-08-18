@@ -18,7 +18,7 @@
 				</p>
 				<p>
 					A contributor is a user that has to be authenticated before they can access the admin app. As a contributor, 
-					you are expected to only submit your original content. Copying contents verbatim from another recipe website is 
+					you are expected to only submit your original content. Copying contents you don't own from another recipe website is 
 					unacceptable and a complete violation of our code of conduct. You must strive to be authentic with your submissions. 
 					The more authentic you are, the better this site becomes, and more users trust us. If any of your contents is reported as a duplicate, 
 					inappropriate or stolen, on our part, we will carry out an investigation and send you an email. You have the right to defend your content. 
