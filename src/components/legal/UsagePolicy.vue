@@ -11,6 +11,7 @@
 			<div class="sixteen wide column">
 				<p>
 					This policy describes expected users' code of conduct either as an anonymous user or as a contributor. 
+					It also describes some key features and functionalities of the app and advises where user's discretion is required.
 					By using this site, you have agreed to adhere to the <a href="/#/terms-and-conditions" :title="getDefaultTAndCContents">Terms & Conditions</a>, 
 					Usage Policy and <a href="/#/data-retention-policy" :title="getDefaultDataRententionPolicyContents">Data Retention Policy</a>. 
 					We retain the right to delete your contents, block your contributor account or take any legal 
