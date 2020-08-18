@@ -19,7 +19,7 @@
 					A contributor is a user that has to be authenticated before they can access the admin app. As a contributor, you are expected to only submit your original content. 
 					Copying contents verbatim from another recipe website is unacceptable and a complete violation of our code of conduct. You must strive to be authentic with your submissions. 
 					The more authentic you are the better this site becomes and more users trust us. If any of your contents is reported as a duplicate, 
-					inappropriate or copied, on our part we will carry out an investigation and send you an email. You have the right to defend your content. 
+					inappropriate or stolen, on our part we will carry out an investigation and send you an email. You have the right to defend your content. 
 					But if you are found wanting, the content may be deleted from our servers or any other action may be taken as we deem fit. 
 					If your contents get reported up to a total of 3 times throughout your lifecycle as a contributor on this platform, we will have to take appropriate 
 					actions as we deem fit. This may involve deleting your account.
