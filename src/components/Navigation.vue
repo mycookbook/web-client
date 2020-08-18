@@ -30,7 +30,7 @@
 					<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com">
 						Subscriptions
 					</a>
-					<a class="item" title="Become a contribute by submitting a recipe. You can create custom cookbooks or contribute to existing cookbooks. Property of cookbookshq.com">
+					<a class="item" title="Become a contributor by filling the sign up form and start submitting recipes. You can create custom cookbooks or contribute to existing cookbooks. Property of cookbookshq.com">
 						<button class="ui button tbb">
 							+ Add your recipe
 						</button>
