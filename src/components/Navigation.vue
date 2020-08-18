@@ -45,7 +45,7 @@
 	<div class="ui top fixed menu grid mobile only" v-show="isMobile">
 		<div class="sixteen wide column">
 			<div class="ui grid">
-				<div class="ui stopixteen wide white menu column" style="margin-top:3vh;"> 
+				<div class="ui sixteen wide white menu column" style="margin-top:3vh;"> 
 					<a class="ui secondary menu item">
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
@@ -59,15 +59,17 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui top fixed hidden menu grid mobile only">
-		<div class="sixteen wide" id="hamburger-icon" @click="toggleMobileMenu()">
+	<div class="ui top fixed hidden menu mobile only">
+		<div class="ui grid container">
+			<div class="ui two wide column" id="hamburger-icon" @click="toggleMobileMenu()">
 			<i class="large bars icon"></i>
 		</div>
-		<div class="brand">
-				<a href="/" class="ui medium image" title="cookbookshq brand logo">
-					<img class="logo" src="/static/logo_white.png" alt="cookbookinc brand logo" style="min-width: unset;height: 5.5em; margin:30%; !important">
-				</a>
-			</div>
+		<div class="ui fourteen wide column brand">
+			<a href="/" class="ui medium image" title="cookbookshq brand logo">
+				<img class="logo" src="/static/logo_white.png" alt="cookbookinc brand logo" style="margin-top:-2vh;margin-left:9%;">
+			</a>
+		</div>
+		</div>
 	</div>
 </div>
 </template>
