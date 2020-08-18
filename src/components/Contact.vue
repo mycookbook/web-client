@@ -5,13 +5,13 @@
 			<img class="ui large image logo" src="/static/signup-img.png" alt="enter your email address to be the first to get notified of about new recipes">
 		</div>
 		<div class="six wide computer column sixteen wide mobile column">
-		<div id="contact-card" class="ui action input" v-bind:class="{ error: isErrored }">
-			<input type="text" placeholder="Your email address" v-model="email">
-			<button id="loading-btn" class="ui button tbb" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
-				Get started now
-			</button>
+			<div class="ui action input grid" id="contact-card" v-bind:class="{ error: isErrored }">
+				<input class="eight wide column" type="text" placeholder="Your email address" v-model="email">
+				<button id="loading-btn" class="ui button tbb eight wide column" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
+					Get started now
+				</button>
+			</div>
 		</div>
-	</div>
 	</div>
 	<div class="ui grid">
 		<div class="eleven wide column"></div>
