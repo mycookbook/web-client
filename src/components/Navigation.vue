@@ -42,10 +42,10 @@
 			</div>
 		</div>
   	</div>
-	<div class="ui top fixed menu grid mobile only" id="mobile-menu">
+	<div class="ui top fixed menu grid mobile only" v-show="isMobile">
 		<div class="sixteen wide column">
 			<div class="ui grid">
-				<div class="ui sixteen wide white menu column">
+				<div class="ui stopixteen wide white menu column" style="margin-top:3vh;"> 
 					<a class="ui secondary menu item">
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
@@ -75,12 +75,13 @@
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			isMobile: false
+		}
 	},
 	methods: {
 		toggleMobileMenu: function() {
-			// alert('toggle on/off') //TODO: toggle mobile menu
-			$('#mobile-menu').show()
+			this.isMobile = !this.isMobile
 		}
 	}
 };
@@ -109,9 +110,5 @@ body {
 }
 #hamburger-icon {
 	cursor: pointer;
-}
-#mobile-menu {
-	margin-top:5vh;
-	display:none;
 }
 </style>
