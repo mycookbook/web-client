@@ -20,13 +20,6 @@
 						  Data Retention Policy
 					</a>
 				</router-link>
-				<router-link :to="{
-					name: 'Disclaimer'
-				}">
-					<a class="item rl-fix" itle="Find out how to use this website">
-						Disclaimer
-					</a>
-				</router-link>
 			</div>
 		</div>
 		<div class="ui four wide computer column sixteen wide mobile column secondary menu">

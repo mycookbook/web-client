@@ -29,14 +29,14 @@
 					You have a right to decide which varieties should be approved or not. When you decline a variety, it gets permanently deleted from our servers. 
 					However, per our <a href="/#/data-retention-policy">data retention policy</a>, we have the right to keep your contributions on our servers as any 
 					submissions made to this platform is technically our property. You can request for your contents including your user account to be permanently deleted. 
-					Note that this request may take up to 90 days to fully reflect.
+					Note that this request may take up to 90 days to fully take effect.
 				</p>
 				<p>
 					An anonymous user is a user that does not have to be authenticated to search for any recipes on this platform. You also cannot access the admin app. If you
 					wish to make a submission, hit the register link to create an account.
 				</p>
 				<p>
-					As an anonymous user, you have access to all the cookbooks, recipes and varities on this platform and you can access them for no fee atall. 
+					As an anonymous user, you have access to all the cookbooks, recipes and varieties on this platform and you can access them for no fee atall. 
 					You have the right to submit varieties too without the need to be authenticated. You have the right also to report a recipe that you deem inappropriate, not original, 
 					a duplicate or stolen by using the <a href="/#/report-it">report it</a> form.
 				</p>

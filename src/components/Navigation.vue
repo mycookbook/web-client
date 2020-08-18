@@ -48,8 +48,6 @@
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
 					<a class="ui secondary menu item">Subscriptions</a>
-					<a class="ui secondary menu item">Another Link</a>
-					<a class="ui secondary menu item">Another Link</a>
 					<a class="ui secondary menu item">
 						<button class="ui button tbb">
 							+ Add your recipe
