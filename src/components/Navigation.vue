@@ -27,14 +27,14 @@
 						Usage Policy
 					</a>
 					</router-link>
-					<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com">
+					<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com" @click="showSubscriptionsChannels">
 						Subscriptions
 					</a>
 					<a 
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
-						<button class="ui button tbb">
-							+ Add your recipe
+						<button class="ui button tbb" @click="register">
+							+ Register
 						</button>
 					</a>
 					<a class="item"></a>
@@ -51,8 +51,8 @@
 					</a>
 					<a class="ui secondary menu item">Subscriptions</a>
 					<a class="ui secondary menu item">
-						<button class="ui button tbb">
-							+ Add your recipe
+						<button class="ui button tbb" @click="register">
+							+ Register
 						</button>
 					</a>
 				</div>
@@ -84,6 +84,12 @@ export default {
 	methods: {
 		toggleMobileMenu: function() {
 			this.isMobile = !this.isMobile
+		},
+		register: function() {
+			alert('register to become a contributor')
+		},
+		showSubscriptionsChannels: function() {
+			alert('subscribe to notifications')
 		}
 	}
 };
