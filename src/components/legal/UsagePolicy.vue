@@ -40,8 +40,41 @@
 				</p>
 				<p>
 					As an anonymous user, you have access to all the cookbooks, recipes and varieties on this platform and you can access them anonymously and for no fee atall. 
-					You have the right to submit varieties too without the need to be authenticated. You have the right also to report a recipe that you deem inappropriate, 
-					not original, a duplicate or stolen by using the <a href="/#/report-it" :title="getReportItToolInfo">report it</a> tool.
+					You have the right to submit varieties too without the need to be authenticated.
+				</p>
+				<div class="ui small header">
+					Calorie counter
+				</div>
+				<p>The calorie count for each recipe submitted is calculated using our internal <span title="Property of cookbookshq.com">calorie counter tool</span>. It takes into consideration the calorie count in each
+					of the ingredients provided by the author of the recipe and returns the sum/average. About 90% of the time this value will be true however it is highly dependent on
+					the ingredients provided by the author. It may not reflect the true calorie count if: 
+					<ol>
+						<li>
+							There was a spelling error in the name of the ingredient.
+						</li>
+						<li>
+							The ingredients list is incomplete.
+						</li>
+						<li>
+							The ingredients list is not a true reflection of what actually went into preparing the recipe. 
+						</li>
+					</ol>
+					In these scenarios, user's discretion is advised. The CookbookHQ admin app provides a way to help contributors provide accurate information regarding a submission they are making.
+				</p>
+				<div class="ui small header">
+					Comparisons
+				</div>
+				<p>
+					Recipe or varieties comparisons are only possible for recipes that belong to the same cookbook and varieties that belong to the same recipe. Comparisons are based 
+					on the calories count of the items being compared. This helps the user have a quick glance at the nutritional detail of different recipes or varieties of a recipe. Again,
+					user's discretion is advised.
+				</p>
+				<div class="ui small header">
+					Reporting
+				</div>
+				<p>
+					You have the right to report a recipe that you deem inappropriate, stolen or a duplicate by using the 
+					<a href="/#/report-it" :title="getReportItToolInfo">report it</a> tool.
 				</p>
 			</div>
 		</div>

@@ -3,8 +3,13 @@
 	<div class="ui massive search">
 		<Explorer :filters="filters"/>
 	</div>
-    <Results :cookbooks="cookbooks"/>
-  </div>
+	<div>
+		<Results :cookbooks="cookbooks"/>
+	</div>
+	<div>
+		<!-- Featured: Coming soon. -->
+	</div>
+</div>
 </template>
 
 <script>
@@ -14,7 +19,8 @@ import Explorer from './Explorer.vue'
 export default {
 	props: {
 		filters: Array,
-		cookbooks: Array
+		cookbooks: Array,
+		featured: Ob
 	},
 	components: {
 		Results: Results,
@@ -22,9 +28,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-.categories-quick-search-wrapper {
-	width: 102%!important;
-}
-</style>
