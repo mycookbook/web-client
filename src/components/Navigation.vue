@@ -23,14 +23,14 @@
 					<router-link :to="{
 						name: 'UsagePolicy'
 					}">
-					<a class="item rl-fix"  title="cookbookshq usage policy">
+					<a class="item rl-fix"  title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
 						Usage Policy
 					</a>
 					</router-link>
-					<a class="item" title="Customize what you want to be notified about">
+					<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com">
 						Subscriptions
 					</a>
-					<a class="item" title="Contribute by submitting a recipe">
+					<a class="item" title="Become a contribute by submitting a recipe. You can create custom cookbooks or contribute to existing cookbooks. Property of cookbookshq.com">
 						<button class="ui button tbb">
 							+ Add your recipe
 						</button>
