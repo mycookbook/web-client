@@ -85,16 +85,12 @@
 								<div class="ui sub header">
 									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> {{ recipe.user.pronouns }}
 								</div>
-								Professional Bartender at Tim Hortons 
-								<br>
-								<small> Member since {{ getMembershipYear(recipe.user.created_at) }} 
-									| {{ userContributionsCount }} 
-									| <i class="yellow star icon"></i>
-									<i class="yellow star icon"></i>
-									<i class="yellow star icon"></i>
-									<i class="yellow star icon"></i>
-									<i class="yellow star icon"></i>
-								</small>
+								<div class="capitalize">
+									{{ recipe.user.expertise_level }}
+								</div>
+								<div class="ui tiny label"> 
+									<b>Member since</b> {{ getMembershipYear(recipe.user.created_at) }} | {{ userContributionsCount }} 
+								</div>
 							</div>
 						</div>
 					</div>
@@ -144,7 +140,7 @@ export default {
 	},
 	computed: {
 		userContributionsCount() {
-			let count = 44000
+			let count = 157051
 			count = this.formatCount(count)
 			return count
 		}
@@ -216,6 +212,9 @@ export default {
 }
 .main-content {
 	margin-top: 18vh;
+}
+.capitalize {
+	text-transform: capitalize;
 }
 </style>
 
