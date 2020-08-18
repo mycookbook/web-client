@@ -24,7 +24,7 @@
 					inappropriate or stolen, on our part, we will carry out an investigation and send you an email. You have the right to defend your content. 
 					But if you are found wanting, the content may be deleted from our servers or any other action may be taken as we deem fit. 
 					If your contents get reported up to a total of 3 times throughout your lifecycle as a contributor on this platform, we will have to take 
-					appropriate actions as we deem fit. This may involve deleting your account.
+					appropriate actions as we deem fit. This may involve deleting your account permanently and barring you from using this platform in the future.
 				</p>
 				<p>
 					As a contributor, other users might submit varieties to your recipes. These will be in a pending state and will not show up on the 
