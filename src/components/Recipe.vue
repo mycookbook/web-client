@@ -63,11 +63,10 @@
 				</div>
 				<div>
 					<small>
-						Report this recipe if you think this content is not original, is stolen or is a duplicate. 
-						If you think this content was stolen and is your original content, kindly provide as much detail as possible to enable us 
-						investigate and delete the content from our servers. Alternatively, you can 
-						<a href="/#/registration-link">register</a> to become a cookbook contributor
-						and then ownership will be transffered to you upon request.
+						Use this tool if you think this recipe is any of the following; inappropriate, unauthentic, not original, stolen or a duplicate. 
+						If you think this content was stolen and you can prove it, kindly provide as much detail as possible to enable us 
+						investigate and delete the content from our servers. Alternatively, you can <a href="/#/registration-link">register</a> to become a cookbook 
+						contributor and then ownership will be transffered to you upon request.
 					</small>
 				</div>
 			</div>

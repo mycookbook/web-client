@@ -63,7 +63,7 @@
 		<div class="sixteen wide" id="hamburger-icon" @click="toggleMobileMenu()">
 			<i class="large bars icon"></i>
 		</div>
-		<div class="tvn clipped brand">
+		<div class="brand">
 				<a href="/" class="ui medium image" title="cookbookshq brand logo">
 					<img class="logo" src="/static/logo_white.png" alt="cookbookinc brand logo" style="min-width: unset;height: 5.5em; margin:30%; !important">
 				</a>
