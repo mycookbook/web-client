@@ -6,7 +6,6 @@ import Recipe from '@/components/Recipe';
 import FeatureRequest from '@/components/FeatureRequest';
 import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
-import Disclaimer from '@/components/legal/Disclaimer';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
 
 Vue.use(Router);
@@ -25,10 +24,6 @@ export default new Router({
       path: '/data-retention-policy',
       name: 'DataRetentionPolicy',
       component: DataRetentionPolicy,
-    }, {
-      path: '/disclaimer',
-      name: 'Disclaimer',
-      component: Disclaimer,
     }, {
       path: '/terms-and-conditions',
       name: 'TermsAndConditions',
