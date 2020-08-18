@@ -9,7 +9,7 @@
 				</div>
 			</div>
           	<div class="sixteen wide column">
-				<p class="ui container info message">
+				<p class="ui info message">
 					Food photography is an important part of every restaurant’s website,
 					social media design and marketing material. Good food is what attracts
 					most people to a restaurant in the first place. However, most restaurant

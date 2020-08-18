@@ -1,61 +1,59 @@
 <template>
-  <div>
-    <Navigation />
-    <div class="ui container" style="margin-top:200px;">
-      <div class="pg-information">
-        <div class="ui grid">
-          <div class="twelve wide centered column">
-            <div class="ui ignored warning message" style="text-align:center;">
-              <code><h3>Data Retention Policy</h3></code>
-              </a>
-            </div>
-          </div>
-          <div>
-            <p class="ui container info message" style="width:74%;">
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-              Food photography is an important part of every restaurant’s website,
-              social media design and marketing material. Good food is what attracts
-              most people to a restaurant in the first place. However, most restaurant
-              owners don’t have the photography skills, equipment or money to produce
-              high-quality food photography for their restaurant. While a photo-shoot
-              by a professional photographer can cost thousands.
-            </p>
-          </div>
-        </div>
-      </div>
-      <Contact />
-      <Bottom />
-    </div>
-  </div>
+<div>
+	<Navigation />
+	<div class="ui container" style="margin-top:18vh;">
+		<div class="ui grid">
+			<div class="sixteen wide column">
+				<div class="ui ignored warning message" style="text-align:center;">
+					<h3>Data Retention Policy</h3>
+				</div>
+			</div>
+          	<div class="sixteen wide column">
+				<p class="ui info message">
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					Food photography is an important part of every restaurant’s website,
+					social media design and marketing material. Good food is what attracts
+					most people to a restaurant in the first place. However, most restaurant
+					owners don’t have the photography skills, equipment or money to produce
+					high-quality food photography for their restaurant. While a photo-shoot
+					by a professional photographer can cost thousands.
+					<b>By using this website, you have agreed to our terms and conditions.</b>
+				</p>
+			</div>
+		</div>
+		<Contact />
+		<Bottom />
+	</div>
+</div>
 </template>
 
 <script>
@@ -71,4 +69,3 @@ export default {
   }
 }
 </script>
-<style></style>
