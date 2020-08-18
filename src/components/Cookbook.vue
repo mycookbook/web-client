@@ -35,7 +35,7 @@
 										recipeId: recipe.id
 									}}">
 									<img 
-										class="ui large image" 
+										class="ui massive image" 
 										:src="recipe.imgUrl" 
 										:alt="recipe.name"
 										>

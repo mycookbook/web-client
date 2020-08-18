@@ -10,7 +10,10 @@
 			</div>
           	<div class="sixteen wide column">
 				<p>
-					By using our website, you have agreed to adhere to our Terms and Conditions, <a href="/#/usage-policy">Usage Policy</a> and <a href="/#/usage-policy">Data Rentention Policy</a>
+					By using our website, you have agreed to adhere to our Terms and Conditions, <a href="/#/usage-policy" :title="getDefaultUsagePolicyContents">Usage Policy</a> and <a href="/#/usage-policy" :title="getDefaultDataRententionPolicyContents">Data Rentention Policy</a>
+				</p>
+				<p>
+					Use the <a href="/#/report-it" :title="getReportItToolInfo">report it</a> tool to report a content that is inappropriate, stolen or a duplicate.
 				</p>
 			</div>
 		</div>
@@ -26,10 +29,21 @@ import Contact from '../Contact.vue'
 import Bottom from '../Bottom.vue'
 
 export default {
-  components: {
-    Navigation,
-    Contact,
-    Bottom
-  }
+	computed: {
+		getDefaultDataRententionPolicyContents() {
+			return 'Cookbooks HQ Data Retention Policy. Property of cookbookshq.com'
+		},
+		getDefaultUsagePolicyContents() {
+			return 'Cookbooks HQ Usage Policy. Property of cookbookshq.com'
+		},
+		getReportItToolInfo() {
+			return 'Use this tool to report a recipe that is inappropriate, stolen or a duplicate. Property of cookbookshq.com'
+		}
+	},
+	components: {
+		Navigation,
+		Contact,
+		Bottom
+	}
 }
 </script>

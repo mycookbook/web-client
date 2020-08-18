@@ -10,35 +10,38 @@
 			</div>
 			<div class="sixteen wide column">
 				<p>
-					This policy describes expected users' code of conduct either as an anonymous user or as a contributor.
-					By using this site, you have agreed to adhere to the <a href="/#/terms-and-conditions">terms of use</a>, 
-					usage policy and <a href="/#/data-retention-policy">data retention policy</a>. We retain the right to delete
-					your contents, block your contributor account or take any legal actions as we deem fit upon any violation of any part of this policy.
+					This policy describes expected users' code of conduct either as an anonymous user or as a contributor. 
+					By using this site, you have agreed to adhere to the <a href="/#/terms-and-conditions" :title="getDefaultTAndCContents">terms of use</a>, 
+					usage policy and <a href="/#/data-retention-policy" :title="getDefaultDataRententionPolicyContents">data retention policy</a>. 
+					We retain the right to delete your contents, block your contributor account or take any legal 
+					actions as we deem fit upon any violation of any part of this policy.
 				</p>
 				<p>
-					A contributor is a user that has to be authenticated before they can access the admin app. As a contributor, you are expected to only submit your original content. 
-					Copying contents verbatim from another recipe website is unacceptable and a complete violation of our code of conduct. You must strive to be authentic with your submissions. 
-					The more authentic you are the better this site becomes and more users trust us. If any of your contents is reported as a duplicate, 
-					inappropriate or stolen, on our part we will carry out an investigation and send you an email. You have the right to defend your content. 
+					A contributor is a user that has to be authenticated before they can access the admin app. As a contributor, 
+					you are expected to only submit your original content. Copying contents verbatim from another recipe website is 
+					unacceptable and a complete violation of our code of conduct. You must strive to be authentic with your submissions. 
+					The more authentic you are, the better this site becomes, and more users trust us. If any of your contents is reported as a duplicate, 
+					inappropriate or stolen, on our part, we will carry out an investigation and send you an email. You have the right to defend your content. 
 					But if you are found wanting, the content may be deleted from our servers or any other action may be taken as we deem fit. 
-					If your contents get reported up to a total of 3 times throughout your lifecycle as a contributor on this platform, we will have to take appropriate 
-					actions as we deem fit. This may involve deleting your account.
+					If your contents get reported up to a total of 3 times throughout your lifecycle as a contributor on this platform, we will have to take 
+					appropriate actions as we deem fit. This may involve deleting your account.
 				</p>
 				<p>
-					As a contributor, other users might submit varieties to your recipes. These will be in a pending state and will not show up on the platform unless you approve them. 
-					You have a right to decide which varieties should be approved or not. When you decline a variety, it gets permanently deleted from our servers. 
-					However, per our <a href="/#/data-retention-policy">data retention policy</a>, we have the right to keep your contributions on our servers as any 
-					submissions made to this platform is technically our property. You can request for your contents including your user account to be permanently deleted. 
-					Note that this request may take up to 90 days to fully take effect.
+					As a contributor, other users might submit varieties to your recipes. These will be in a pending state and will not show up on the 
+					platform unless you approve them. You have a right to decide which varieties should be approved or not. When you decline a variety, 
+					it gets permanently deleted from our servers. However, regarding our <a href="/#/data-retention-policy" :title="getDefaultDataRententionPolicyContents">data retention policy</a>, 
+					we have the right to keep your contributions on our servers as any submissions made to this platform is technically our property. 
+					You can request for your contents including your user account to be permanently deleted. Note that this request may take up to 
+					90 days to take effect fully.
 				</p>
 				<p>
-					An anonymous user is a user that does not have to be authenticated to search for any recipes on this platform. You also cannot access the admin app. If you
-					wish to make a submission, hit the register link to create an account.
+					An anonymous user is a user that does not have to be authenticated to search for any recipes on this platform. 
+					You also cannot access the admin app. If you wish to make a submission, hit the register link to create an account.
 				</p>
 				<p>
 					As an anonymous user, you have access to all the cookbooks, recipes and varieties on this platform and you can access them anonymously and for no fee atall. 
-					You have the right to submit varieties too without the need to be authenticated. You have the right also to report a recipe that you deem inappropriate, not original, 
-					a duplicate or stolen by using the <a href="/#/report-it">report it</a> form.
+					You have the right to submit varieties too without the need to be authenticated. You have the right also to report a recipe that you deem inappropriate, 
+					not original, a duplicate or stolen by using the <a href="/#/report-it" :title="getReportItToolInfo">report it</a> tool.
 				</p>
 			</div>
 		</div>
@@ -54,10 +57,21 @@ import Contact from '../Contact.vue'
 import Bottom from '../Bottom.vue'
 
 export default {
-  components: {
-    Navigation,
-    Contact,
-    Bottom
-  }
+	computed: {
+		getDefaultTAndCContents() {
+			return 'CookbooksHQ Terms & Conditions. Property of cookbookshq.com'
+		},
+		getDefaultDataRententionPolicyContents() {
+			return 'Cookbooks HQ Data Retention Policy. Property of cookbookshq.com'
+		},
+		getReportItToolInfo() {
+			return 'Use this tool to report a recipe that is inappropriate, stolen or a duplicate. Property of cookbookshq.com'
+		}
+	},
+	components: {
+		Navigation,
+		Contact,
+		Bottom
+	}
 }
 </script>
