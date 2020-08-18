@@ -6,7 +6,7 @@
 				<router-link :to="{
 					name: 'TermsAndConditions'
 				}">
-					<a class="item rl-fix" title="CookbooksHQ Terms And Conditinos. Property of cookbookshq.com">
+					<a class="item rl-fix" title="CookbooksHQ Terms And Conditions. Property of cookbookshq.com">
 						Terms &amp; Conditions
 					</a>
         		</router-link>
