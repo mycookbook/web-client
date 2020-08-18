@@ -36,7 +36,7 @@
 					wish to make a submission, hit the register link to create an account.
 				</p>
 				<p>
-					As an anonymous user, you have access to all the cookbooks, recipes and varieties on this platform and you can access them for no fee atall. 
+					As an anonymous user, you have access to all the cookbooks, recipes and varieties on this platform and you can access them anonymously and for no fee atall. 
 					You have the right to submit varieties too without the need to be authenticated. You have the right also to report a recipe that you deem inappropriate, not original, 
 					a duplicate or stolen by using the <a href="/#/report-it">report it</a> form.
 				</p>
