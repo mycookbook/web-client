@@ -20,7 +20,7 @@ export default {
 	props: {
 		filters: Array,
 		cookbooks: Array,
-		featured: Ob
+		featured: Object
 	},
 	components: {
 		Results: Results,
