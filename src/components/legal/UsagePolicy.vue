@@ -57,7 +57,7 @@
 							The ingredients list is incomplete.
 						</li>
 						<li>
-							The ingredients list is not a true reflection of what actually went into preparing the recipe. 
+							The ingredients list is not a true reflection of what actually went into preparing the recipe/variety. 
 						</li>
 					</ol>
 					In these scenarios, user's discretion is advised. The CookbookHQ admin app provides a way to help contributors provide accurate information regarding a submission they are making.
