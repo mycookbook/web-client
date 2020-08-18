@@ -11,8 +11,8 @@
 			<div class="sixteen wide column">
 				<p>
 					This policy describes expected users' code of conduct either as an anonymous user or as a contributor. 
-					By using this site, you have agreed to adhere to the <a href="/#/terms-and-conditions" :title="getDefaultTAndCContents">terms of use</a>, 
-					usage policy and <a href="/#/data-retention-policy" :title="getDefaultDataRententionPolicyContents">data retention policy</a>. 
+					By using this site, you have agreed to adhere to the <a href="/#/terms-and-conditions" :title="getDefaultTAndCContents">Terms & Conditions</a>, 
+					Usage Policy and <a href="/#/data-retention-policy" :title="getDefaultDataRententionPolicyContents">Data Retention Policy</a>. 
 					We retain the right to delete your contents, block your contributor account or take any legal 
 					actions as we deem fit upon any violation of any part of this policy.
 				</p>
