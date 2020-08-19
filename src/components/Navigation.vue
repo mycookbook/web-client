@@ -33,6 +33,13 @@
 					<a 
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+						<button class="ui light red button">
+							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
+						</button>
+					</a>
+					<a 
+					class="item" 
+					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
 						<button class="ui button tbb" @click="register">
 							+ Register
 						</button>
@@ -50,6 +57,11 @@
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
 					<a class="ui secondary menu item">Subscriptions</a>
+					<a class="ui secondary menu item">
+						<button class="ui light red button">
+							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
+						</button>
+					</a>
 					<a class="ui secondary menu item">
 						<button class="ui button tbb" @click="register">
 							+ Register

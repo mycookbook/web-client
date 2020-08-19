@@ -122,9 +122,17 @@
 			</div>
 		</div>
 		<div class="two wide computer column sixteen wide mobile column">
-			<small>ad space</small>
-			<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
-			<small>ad space</small>
+			<div>
+				<div class="ui blue button" @click="compareRecipes()">
+					Compare
+				</div>
+			</div>
+			<br />
+			<div>
+				<small>ad space</small>
+				<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
+				<small>ad space</small>
+			</div>
 		</div>
 	</div>
 	<div class="tvn horizontal stroke"></div>
@@ -191,6 +199,9 @@ export default {
 			if (cookbook.recipes) {
 				return !(cookbook.recipes.length == 0)
 			}
+		},
+		compareRecipes: function () {
+			alert('coming soon')
 		}
 	}
 }
