@@ -17,7 +17,7 @@
 	<div class="ui grid" >
 		<div class="ui ten wide computer column sixteen wide mobile column"></div>
 			<div class="ui six wide computer column sixteen wide mobile column">
-				<ErrorMessage :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+				<Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
 			</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 
 <script>
 import store from '@/store'
-import ErrorMessage from './alerts/ErrorMessage.vue'
+import Alert from './Alert.vue'
 
 export default {
 	computed: {
@@ -57,7 +57,7 @@ export default {
 		}
 	},
 	components: {
-		ErrorMessage
+		Alert
 	}
 }
 </script>

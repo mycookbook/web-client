@@ -11,8 +11,10 @@ export const subscriptionStore = {
         loadingBtn: {
             state: false
         },
+        completed: false,
         hasError: false,
-        errorMsg: []
+        errorMsg: [],
+        successMsg: 'Qapla! You will now recieve weekly updates in your email.'
     }),
     mutations: {
         SET_BTN_LOADING_STATE(state) {
@@ -22,11 +24,12 @@ export const subscriptionStore = {
             state.loadingBtn.state = false
             state.hasError = true
             state.errorMsg = msg
+            state.completed = true
         },
         SUBSCRIPTION_SUCCESS(state) {
             state.loadingBtn.state = false
-            // state.hasError = false
-            state.errorMsg = ['Qapla!']
+            state.hasError = false
+            state.completed = true
         }
     },
     actions: {
