@@ -7,7 +7,7 @@
                 <form class="ui form">
                     <div class="field">
                         <label>Full Name</label>
-                        <input type="text" name="full-name" placeholder="Full Name" v-model="fullname">
+                        <input type="text" name="full-name" placeholder="Full Name" v-model="fullName">
                     </div>
                     <div class="field">
                         <label>Email</label>

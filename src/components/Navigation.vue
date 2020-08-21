@@ -41,6 +41,7 @@
 						name: 'Register'
 					}">
 					<a 
+					v-if="!isRegistrationRoute"
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
 						<button class="ui button tbb">
@@ -69,7 +70,8 @@
 					<router-link :to="{
 						name: 'Register'
 					}">
-					<a 
+					<a
+					v-if="!isRegistrationRoute" 
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
 						<button class="ui button tbb">
@@ -98,6 +100,11 @@
 
 <script>
 export default {
+	computed: {
+		isRegistrationRoute() {
+			return (this.$router.currentRoute.name == 'Register')
+		}
+	},
 	data() {
 		return {
 			isMobile: false
