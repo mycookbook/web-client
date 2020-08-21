@@ -19,24 +19,22 @@
                     </div>
                     <div class="field">
                         <label>
-                            Signing up to CookbooksHQ means you have agreed to our <a href="">Terms and Conditions, </a>
-                            <a href="">Usage Policy</a> and 
-                            <a href="">Data Retention Policy</a>
-                            </label>
+                            Signing up to CookbooksHQ means you have agreed to our <a href="/#/terms-and-conditions">Terms and Conditions, </a>
+                        <a href="/#/usage-policy">Usage Policy</a> and 
+                        <a href="/#/data-retention-policy">Data Retention Policy</a>
+                        </label>
                     </div>
-                    <button class="ui tbb button" id="loading-btn" v-bind:class="{ loading: isLoading }" @click="register()">
-                        Submit
-                    </button>
                 </form>
+                <button class="ui tbb button" id="loading-btn" v-bind:class="{ loading: isLoading }" @click="register()">
+                    Submit
+                </button>
             </div>
             <div class="ui grid">
-		        <div class="ui ten wide computer column sixteen wide mobile column"></div>
-			        <div class="ui six wide computer column sixteen wide mobile column">
-				        <Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
-			        </div>
-		        </div>
-	        </div>
-        </div>
+                <div class="ui sixteen wide computer column sixteen wide mobile column">
+                    <Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+			    </div>
+		    </div>
+	    </div>
     </div>
 </div>
 </template>
@@ -52,19 +50,19 @@ export default {
     name: "Register",
     computed: {
 		isLoading() {
-			return false
+			return this.$store.state.registerStore.loadingBtn.state
 		},
 		hasError() {
-			return false
+			return this.$store.state.registerStore.hasError
 		},
 		errors() {
-			return []
+			return this.$store.state.registerStore.errorMsg
 		},
 		success() {
-			return ''
+			return this.$store.state.registerStore.successMsg
 		},
 		completed() {
-			return false
+			return this.$store.state.registerStore.completed
 		}
 	},
     data() {
@@ -84,7 +82,7 @@ export default {
 		register: function() {
             let payload = {
                 email: this.email,
-                fullName: this.fullname,
+                fullName: this.fullName,
                 password: this.password
             }
 
@@ -93,3 +91,10 @@ export default {
 	},
 };
 </script>
+
+<style>
+#loading-btn {
+	padding:20px;
+	padding-right:40px;
+}
+</style>
