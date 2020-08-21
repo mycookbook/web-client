@@ -17,7 +17,7 @@
 	<div class="ui grid" >
 	<div class="ui ten wide computer column sixteen wide mobile column"></div>
 		<div class="ui six wide computer column sixteen wide mobile column">
-			<ErrorMessage :errorMessage="errorMessage" :hasError="hasError" :isError="hasError"  />
+			<ErrorMessage :errors="errors" :hasError="hasError" :errorClass="hasError"  />
 		</div>
 	</div>
 </div>
@@ -37,7 +37,7 @@ export default {
 		hasError() {
 			return this.$store.state.subscriptionStore.hasError
 		},
-		errorMessage() {
+		errors() {
 			return this.$store.state.subscriptionStore.errorMsg
 		}
 	},

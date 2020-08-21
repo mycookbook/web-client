@@ -1,9 +1,11 @@
 <template>
 <div v-show="hasError">
-	<div class="ui message" v-bind:class="{ error: isError }" >
-		<p id="status-msg" v-for="error in errorMessage">
-			{{ error }}
-		</p>
+	<div class="ui message" v-bind:class="{ error: errorClass }" >
+		<ul v-for="error in errors">
+			<li>
+				{{ error }}
+			</li>
+		</ul>
 	</div>
 </div>
 </template>
@@ -13,8 +15,7 @@ export default {
     name: "ErrorMessage",
     props: {
 		hasError: Boolean,
-		isError: Boolean,
-		errorMessage: Array,
+		errorClass: Boolean,
 		errors: Array
     },
     data () {
