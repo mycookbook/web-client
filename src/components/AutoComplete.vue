@@ -1,10 +1,10 @@
 <template>
-  <div class="ui massive search" style="margin:auto;width:83%;">
-    <div class="ui icon large fluid input top">
+  <div class="ui massive search">
+    <div class="ui icon large fluid input">
       <input
         class="prompt"
         type="text"
-        placeholder="Try &quot;Flat tummy water recipe&quot;"
+        placeholder="Try &quot;flat tummy water recipe&quot;"
         @keyup.enter="search"
       />
       <i class="search icon sicon"></i>
@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     search: function (event) {
+		alert('elo gugura and epa')
       let url = process.env.BASE_URL + '/search'
       let query = event.target.value
       axios.post(url, {
