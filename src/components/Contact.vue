@@ -14,7 +14,14 @@
 			</div>
 		</div>
 	</div>
-	<ErrorMessage :errorMessage="errorMessage" :hasError="hasError" :isError="hasError"  />
+	<div class="ui grid" >
+	<div class="ui ten wide computer column sixteen wide mobile column"></div>
+		<div class="ui six wide computer column sixteen wide mobile column">
+			<ErrorMessage :errorMessage="errorMessage" :hasError="hasError" :isError="hasError"  />
+		</div>
+	</div>
+</div>
+	
 </div>
 </template>
 
