@@ -7,45 +7,43 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 
 export const subscriptionStore = {
-    state: () => ({}),
-    mutations: {
-        SUBSCRIPTION_ERROR() {
-            state.error = true
-            $("#contact-card").addClass("error");
-            $("#loading-btn").removeClass("loading")
+    state: () => ({
+        loadingBtn: {
+            state: false
         },
-        SUBSCRIPTION_SUCCESS() {
-            $("#status-header").show()
-            $("#status-msg").text('You will now recieve weekly updates in your email.')
-            $("#subscription-state").addClass("success")
-            $("#contact-card").removeClass("error");
-            $("#subscription-state").removeClass("hidden")
-            $("#loading-btn").removeClass("loading")
+        hasError: false,
+        errorMsg: []
+    }),
+    mutations: {
+        SET_BTN_LOADING_STATE(state) {
+            state.loadingBtn.state = true
+        },
+        ERROR_HAS_OCCURRED(state, msg) {
+            state.loadingBtn.state = false
+            state.hasError = true
+            state.errorMsg = msg
+        },
+        SUBSCRIPTION_SUCCESS(state) {
+            state.loadingBtn.state = false
+            // state.hasError = false
+            state.errorMsg = ['Qapla!']
         }
     },
     actions: {
         subscribeUser(context, payload) {
+            context.commit('SET_BTN_LOADING_STATE')
+
             let url = process.env.BASE_URL + '/subscriptions'
             axios.post(url, {
                 email: payload
             })
-            .then(function (response) {// handle success
+            .then(function (response) { // handle success
                 context.commit('SUBSCRIPTION_SUCCESS')
             })
-            .catch(function (error) {// handle error
+            .catch(function (error) { // handle error
                 console.log(error)
-                $("#subscription-state").removeClass("hidden")
-                $("#subscription-state").removeClass("success")
-                $("#subscription-state").addClass("error")
-                $("#status-header").hide()
-                // $("#status-msg").text(error.response.data.email)
-    
-                context.commit('SUBSCRIPTION_ERROR')
+                context.commit('ERROR_HAS_OCCURRED', error.response.data.email)
             })
-            .then(function () {
-                // always executed
-            });
         }
-    },
-    getters: {}
+    }
 }

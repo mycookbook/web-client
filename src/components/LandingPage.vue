@@ -8,15 +8,15 @@
 -->
 
 <template>
-  <div>
-    <div class="ui container">
-      <Navigation />
-      <Search />
-      <QuickSort :filters="filters" :cookbooks="cookbooks" />
-      <Contact />
-      <Bottom />
-    </div>
-  </div>
+<div>
+	<div class="ui container">
+		<Navigation />
+		<Search />
+		<QuickSort :filters="filters" :cookbooks="cookbooks" />
+		<Contact />
+		<Bottom />
+	</div>
+</div>
 </template>
 
 <script>
