@@ -77,25 +77,23 @@
 
 <script>
 import router from '@/router'
+
 export default {
-  name: "Latest",
-  data () {
-    return {}
-  },
-  props: {
-    cookbooks: Array
-  },
-  methods: {
-    generateFlagClass: function (code) {
-      let class_ = code + " flag";
-      return class_;
-    },
-    getBgColor: function(code) {
-      return "#" + code;
-    }
-  }
+	name: "Latest",
+	data () {
+		return {}
+	},
+	props: {
+		cookbooks: Array
+	},
+	methods: {
+		generateFlagClass: function (code) {
+			let class_ = code + " flag";
+			return class_;
+		},
+		getBgColor: function(code) {
+			return "#" + code;
+		}
+	}
 }
 </script>
-
-<style>
-</style>
