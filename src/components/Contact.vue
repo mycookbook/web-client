@@ -15,13 +15,12 @@
 		</div>
 	</div>
 	<div class="ui grid" >
-	<div class="ui ten wide computer column sixteen wide mobile column"></div>
-		<div class="ui six wide computer column sixteen wide mobile column">
-			<ErrorMessage :errors="errors" :hasError="hasError" :errorClass="hasError"  />
+		<div class="ui ten wide computer column sixteen wide mobile column"></div>
+			<div class="ui six wide computer column sixteen wide mobile column">
+				<ErrorMessage :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+			</div>
 		</div>
 	</div>
-</div>
-	
 </div>
 </template>
 
@@ -39,6 +38,12 @@ export default {
 		},
 		errors() {
 			return this.$store.state.subscriptionStore.errorMsg
+		},
+		success() {
+			return this.$store.state.subscriptionStore.successMsg
+		},
+		completed() {
+			return this.$store.state.subscriptionStore.completed
 		}
 	},
 	data () {
