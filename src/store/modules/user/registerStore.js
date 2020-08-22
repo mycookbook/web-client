@@ -14,7 +14,7 @@ export const registerStore = {
         hasError: false,
         errorMsg: [],
         completed: false,
-        successMsg: 'Congratulations, you have successfully created an account. A confirmation email is coming to your inbox soon. Make sure you click the link to confirm your email so you can start creating those very special recipes.'
+        successMsg: ''
     }),
     mutations: {
         SET_BTN_LOADING_STATE(state) {
@@ -23,13 +23,21 @@ export const registerStore = {
         ERROR_HAS_OCCURRED(state, msg) {
             state.loadingBtn.state = false
             state.hasError = true
-            state.errorMsg = msg
+            state.errorMsg = Object.values(msg)
             state.completed = true
         },
         REGISTRATION_SUCCESS(state) {
             state.loadingBtn.state = false
             state.hasError = false
             state.completed = true
+            state.successMsg = 'Congratulations, you have successfully created an account. A confirmation email is coming to your inbox soon. Make sure you click the link to confirm your email so you can start creating those very special recipes.'
+        },
+        RESET_STORE_STATES(state) {
+            state.loadingBtn.state = false
+            state.hasError = false
+            state.errorMsg = []
+            state.successMsg = ''
+            state.completed = false
         }
     },
     actions: {
@@ -48,6 +56,9 @@ export const registerStore = {
             .catch(function (error) { // handle error
                 context.commit('ERROR_HAS_OCCURRED', error.response.data)
             })
+        },
+        reset_states(context) {
+            context.commit('RESET_STORE_STATES');
         }
     }
 }

@@ -14,7 +14,7 @@ export const subscriptionStore = {
         completed: false,
         hasError: false,
         errorMsg: [],
-        successMsg: 'Qapla! You will now recieve weekly updates in your email.'
+        successMsg: ''
     }),
     mutations: {
         SET_BTN_LOADING_STATE(state) {
@@ -23,13 +23,21 @@ export const subscriptionStore = {
         ERROR_HAS_OCCURRED(state, msg) {
             state.loadingBtn.state = false
             state.hasError = true
-            state.errorMsg = msg
+            state.errorMsg = Object.values(msg)
             state.completed = true
         },
         SUBSCRIPTION_SUCCESS(state) {
             state.loadingBtn.state = false
             state.hasError = false
             state.completed = true
+            state.successMsg = 'Qapla! You will now recieve weekly updates in your email.'
+        },
+        RESET_STORE_STATES(state) {
+            state.loadingBtn.state = false
+            state.hasError = false
+            state.errorMsg = []
+            state.successMsg = ''
+            state.completed = false
         }
     },
     actions: {
@@ -47,6 +55,9 @@ export const subscriptionStore = {
                 console.log(error)
                 context.commit('ERROR_HAS_OCCURRED', error.response.data)
             })
+        },
+        reset_states(context) {
+            context.commit('RESET_STORE_STATES');
         }
     }
 }

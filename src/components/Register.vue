@@ -35,7 +35,7 @@
             </div>
             <div class="ui grid">
                 <div class="ui sixteen wide computer column sixteen wide mobile column">
-                    <Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+                    <Alert :completed="completed" :hasError="hasError" :errors="errors" :successMsg="successMsg" />
 			    </div>
 		    </div>
 	    </div>
@@ -74,11 +74,7 @@ import Navigation from './Navigation.vue'
 export default {
     name: "Register",
     created () {
-        this.$store.state.registerStore.loadingBtn.state = false
-        this.$store.state.registerStore.hasError = false
-        this.$store.state.registerStore.errorMsg = []
-        this.$store.state.registerStore.successMsg = ''
-        this.$store.state.registerStore.completed = false
+        this.resetStates()
     },
     computed: {
 		isLoading() {
@@ -90,7 +86,7 @@ export default {
 		errors() {
 			return this.$store.state.registerStore.errorMsg
 		},
-		success() {
+		successMsg() {
 			return this.$store.state.registerStore.successMsg
 		},
 		completed() {
@@ -117,7 +113,10 @@ export default {
             }
 
 			store.dispatch('register', payload)
-		}
+        },
+        resetStates: function() {
+            store.dispatch('reset_states')
+        }
 	},
 };
 </script>

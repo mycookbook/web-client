@@ -17,7 +17,7 @@
 	<div class="ui grid" >
 		<div class="ui ten wide computer column sixteen wide mobile column"></div>
 			<div class="ui six wide computer column sixteen wide mobile column">
-				<Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+				<Alert :completed="completed" :hasError="hasError" :errors="errors" :successMsg="successMsg" />
 			</div>
 		</div>
 	</div>
@@ -30,11 +30,7 @@ import Alert from './Alert.vue'
 
 export default {
 	created () {
-        this.$store.state.subscriptionStore.loadingBtn.state = false
-        this.$store.state.subscriptionStore.hasError = false
-        this.$store.state.subscriptionStore.errorMsg = []
-        this.$store.state.subscriptionStore.successMsg = ''
-        this.$store.state.subscriptionStore.completed = false
+        this.resetStates()
     },
 	computed: {
 		isLoading() {
@@ -46,7 +42,7 @@ export default {
 		errors() {
 			return this.$store.state.subscriptionStore.errorMsg
 		},
-		success() {
+		successMsg() {
 			return this.$store.state.subscriptionStore.successMsg
 		},
 		completed() {
@@ -61,7 +57,10 @@ export default {
 	methods: {
 		getSubscribed: function() {
 			store.dispatch('subscribeUser', this.email)
-		}
+		},
+		resetStates: function() {
+            store.dispatch('reset_states')
+        }
 	},
 	components: {
 		Alert

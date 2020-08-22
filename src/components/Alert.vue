@@ -1,15 +1,15 @@
 <template>
 <div v-show="completed">
-	<div class="ui message error" v-if="hasError">
+	<div class="ui message error" v-show="hasError">
 		<ul v-for="error in errors">
 			<li>
 				{{ error[0] }}
 			</li>
 		</ul>
 	</div>
-	<div class="ui message success" v-else>
+	<div class="ui message success" v-show="!hasError">
 		<ul>
-			{{ success }}
+			{{ successMsg }}
 		</ul>
 	</div>
 </div>
@@ -22,7 +22,7 @@ export default {
 		hasError: Boolean,
 		completed: Boolean,
 		errors: Array,
-		success: String
+		successMsg: String
     },
     data () {
 		return {}
