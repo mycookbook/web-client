@@ -13,7 +13,8 @@ export const registerStore = {
         },
         hasError: false,
         errorMsg: [],
-        completed: false
+        completed: false,
+        successMsg: 'Congratulations, you have successfully created an account. A confirmation email is coming to your inbox soon. Make sure you click the link to confirm your email so you can start creating those very special recipes.'
     }),
     mutations: {
         SET_BTN_LOADING_STATE(state) {
