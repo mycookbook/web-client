@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: "ErrorMessage",
+    name: "Alert",
     props: {
 		hasError: Boolean,
 		completed: Boolean,

@@ -8,7 +8,7 @@
 		<div class="ui six wide computer column sixteen wide mobile column" style="margin:auto;">
 			<div class="ui action centered input">
 				<input type="text" placeholder="Your email address" v-model="email">
-				<button class="ui tbb button" id="loading-btn" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
+				<button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
 					Get started now
 				</button>
 			</div>
@@ -17,7 +17,7 @@
 	<div class="ui grid" >
 		<div class="ui ten wide computer column sixteen wide mobile column"></div>
 			<div class="ui six wide computer column sixteen wide mobile column">
-				<ErrorMessage :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
+				<Alert :completed="completed" :hasError="hasError" :errors="errors" :success="success" />
 			</div>
 		</div>
 	</div>
@@ -26,9 +26,16 @@
 
 <script>
 import store from '@/store'
-import ErrorMessage from './alerts/ErrorMessage.vue'
+import Alert from './Alert.vue'
 
 export default {
+	created () {
+        this.$store.state.subscriptionStore.loadingBtn.state = false
+        this.$store.state.subscriptionStore.hasError = false
+        this.$store.state.subscriptionStore.errorMsg = []
+        this.$store.state.subscriptionStore.successMsg = ''
+        this.$store.state.subscriptionStore.completed = false
+    },
 	computed: {
 		isLoading() {
 			return this.$store.state.subscriptionStore.loadingBtn.state
@@ -57,14 +64,7 @@ export default {
 		}
 	},
 	components: {
-		ErrorMessage
+		Alert
 	}
 }
 </script>
-
-<style>
-#loading-btn {
-	padding:20px;
-	padding-right:40px;
-}
-</style>

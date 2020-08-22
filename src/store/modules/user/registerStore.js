@@ -6,15 +6,15 @@ import axios from 'axios';
 Vue.use(Vuex);
 Vue.use(VueResource);
 
-export const subscriptionStore = {
+export const registerStore = {
     state: () => ({
         loadingBtn: {
-            state: false
+            state: false,
         },
-        completed: false,
         hasError: false,
         errorMsg: [],
-        successMsg: 'Qapla! You will now recieve weekly updates in your email.'
+        completed: false,
+        successMsg: 'Congratulations, you have successfully created an account. A confirmation email is coming to your inbox soon. Make sure you click the link to confirm your email so you can start creating those very special recipes.'
     }),
     mutations: {
         SET_BTN_LOADING_STATE(state) {
@@ -26,26 +26,27 @@ export const subscriptionStore = {
             state.errorMsg = msg
             state.completed = true
         },
-        SUBSCRIPTION_SUCCESS(state) {
+        REGISTRATION_SUCCESS(state) {
             state.loadingBtn.state = false
             state.hasError = false
             state.completed = true
         }
     },
     actions: {
-        subscribeUser(context, payload) {
+        register(context, payload) {
             context.commit('SET_BTN_LOADING_STATE')
 
-            let url = process.env.BASE_URL + '/subscriptions'
+            let url = process.env.BASE_URL + '/auth/register'
             axios.post(url, {
-                email: payload
+                name: payload.fullName,
+                email: payload.email,
+                password: payload.password
             })
             .then(function (response) { // handle success
-                context.commit('SUBSCRIPTION_SUCCESS')
+                context.commit('REGISTRATION_SUCCESS')
             })
             .catch(function (error) { // handle error
-                console.log(error)
-                context.commit('ERROR_HAS_OCCURRED', error.response.data.email)
+                context.commit('ERROR_HAS_OCCURRED', error.response.data)
             })
         }
     }

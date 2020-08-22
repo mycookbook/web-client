@@ -37,13 +37,18 @@
 							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
 						</button>
 					</a>
+					<router-link :to="{
+						name: 'Register'
+					}">
 					<a 
+					v-if="!isRegistrationRoute"
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
-						<button class="ui button tbb" @click="register">
+						<button class="ui button tbb">
 							+ Register
 						</button>
 					</a>
+					</router-link>
 					<a class="item"></a>
 				</div>
 			</div>
@@ -62,11 +67,18 @@
 							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
 						</button>
 					</a>
-					<a class="ui secondary menu item">
-						<button class="ui button tbb" @click="register">
+					<router-link :to="{
+						name: 'Register'
+					}">
+					<a
+					v-if="!isRegistrationRoute" 
+					class="item" 
+					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+						<button class="ui button tbb">
 							+ Register
 						</button>
 					</a>
+					</router-link>
 				</div>
 			</div>
 		</div>
@@ -88,6 +100,11 @@
 
 <script>
 export default {
+	computed: {
+		isRegistrationRoute() {
+			return (this.$router.currentRoute.name == 'Register')
+		}
+	},
 	data() {
 		return {
 			isMobile: false
@@ -96,9 +113,6 @@ export default {
 	methods: {
 		toggleMobileMenu: function() {
 			this.isMobile = !this.isMobile
-		},
-		register: function() {
-			alert('register to become a contributor')
 		},
 		showSubscriptionsChannels: function() {
 			alert('subscribe to notifications')

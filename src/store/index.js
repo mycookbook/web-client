@@ -7,6 +7,7 @@ import VueResource from 'vue-resource';
 import { cookbookStore } from './modules/cookbookStore.js'
 import { recipeStore } from './modules/recipeStore.js'
 import { subscriptionStore } from './modules/subscriptionStore.js'
+import { registerStore } from './modules/user/registerStore.js'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -16,6 +17,7 @@ export default new Vuex.Store({
 	modules: {
 		cookbookStore,
 		recipeStore,
-		subscriptionStore
+		subscriptionStore,
+		registerStore
 	}
 });
