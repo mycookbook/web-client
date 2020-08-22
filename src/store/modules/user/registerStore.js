@@ -33,7 +33,7 @@ export const registerStore = {
         }
     },
     actions: {
-        registerUser(context, payload) {
+        register(context, payload) {
             context.commit('SET_BTN_LOADING_STATE')
 
             let url = process.env.BASE_URL + '/auth/register'

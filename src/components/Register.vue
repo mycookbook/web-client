@@ -29,7 +29,7 @@
                     </div>
                 </form>
                 <br />
-                <button class="ui tbb button" id="registration-loading-btn" v-bind:class="{ loading: isLoading }" @click="register()">
+                <button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="register()">
                     Submit
                 </button>
             </div>
@@ -40,9 +40,7 @@
 		    </div>
 	    </div>
     </div>
-    <br><br>
-    <hr />
-    <br />
+    <Contact />
     <Bottom />
 </div>
 </template>
@@ -51,6 +49,7 @@
 import store from '@/store'
 import Alert from './Alert.vue'
 import Navigation from './Navigation.vue'
+import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
@@ -82,7 +81,8 @@ export default {
     components: {
         Navigation,
         Alert,
-        Bottom
+        Bottom,
+        Contact
     },
     methods: {
 		register: function() {
@@ -92,15 +92,8 @@ export default {
                 password: this.password
             }
 
-			store.dispatch('registerUser', payload)
+			store.dispatch('register', payload)
 		}
 	},
 };
 </script>
-
-<style>
-#registration-loading-btn {
-	padding:20px;
-	padding-right:40px;
-}
-</style>
