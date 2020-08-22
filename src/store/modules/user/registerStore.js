@@ -25,6 +25,11 @@ export const registerStore = {
             state.errorMsg = msg
             state.completed = true
         },
+        REGISTRATION_SUCCESS(state) {
+            state.loadingBtn.state = false
+            state.hasError = false
+            state.completed = true
+        }
     },
     actions: {
         registerUser(context, payload) {
