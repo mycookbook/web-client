@@ -45,7 +45,7 @@ export const subscriptionStore = {
             })
             .catch(function (error) { // handle error
                 console.log(error)
-                context.commit('ERROR_HAS_OCCURRED', error.response.data.email)
+                context.commit('ERROR_HAS_OCCURRED', error.response.data)
             })
         }
     }

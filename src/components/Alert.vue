@@ -3,7 +3,7 @@
 	<div class="ui message error" v-if="hasError">
 		<ul v-for="error in errors">
 			<li>
-				{{ error }}
+				{{ error[0] }}
 			</li>
 		</ul>
 	</div>
