@@ -53,7 +53,7 @@
 					<span>
 						<b>Submitted Varieties:</b>
 					</span>
-					<a href="/#/recipes/13/varieties">
+					<a :href="varietiesLink">
 						<span class="right foated" title="Follow link to view all varieties for this recipe">
 							{{ getRecipeVaritiesCount(recipe.variations) }} 
 						</span>
@@ -136,6 +136,7 @@ export default {
 			this.$route.params.recipeId
 		)
 		this.parseNutritionalDetails(this.recipe.nutritional_detail)
+		this.getLinkToRecipeVarietiesPage(this.recipe.id)
 	},
 	created() {
 		this.recipeName = this.recipe.name
@@ -160,7 +161,8 @@ export default {
 				fat: 0,
 				protein: 0,
 				carbs: 0
-			}
+			},
+			varietiesLink: '/#/'
 		}
 	},
 	methods: {
@@ -202,11 +204,14 @@ export default {
 		},
 		parseNutritionalDetails: function(details) {
 			let parsed_data = JSON.parse(details)
-			
+
 			this.nutritional_detail.cal = parsed_data.cal
 			this.nutritional_detail.carbs = parsed_data.carbs
 			this.nutritional_detail.fat = parsed_data.fat
 			this.nutritional_detail.protein = parsed_data.protein
+		},
+		getLinkToRecipeVarietiesPage: function(id) {
+			this.varietiesLink = this.varietiesLink + id + '/varieties'
 		}
 	},
 	components: {
