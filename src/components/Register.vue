@@ -40,8 +40,29 @@
 		    </div>
 	    </div>
     </div>
-    <Contact />
-    <Bottom />
+    <div>
+        <div class="ui container" style="margin-top:6vh; border-top:1px solid #cccccc">
+            <div class="ui grid">
+                <div class="ui ten wide computer column sixteen wide mobile column">
+                    <img class="ui large left floated image" src="/static/signup-img.png" 
+                    alt="property of cookbookshq.com">
+                </div>
+                <div class="ui six wide computer column sixteen wide mobile column" style="margin:auto;">
+                    <div class="ui secondary menu flex-container">
+                        <a class="item" title="Get fresh updates about new submissions, events and more by following our facebook page. Property of cookbookshq.com">
+                            <i class="facebook f icon"></i>
+                        </a>
+                        <a class="item" title="Get latest updates from our global recipes base in real time by following our Twitter handle. Property of cookbookshq.com">
+                            <i class="twitter t icon"></i>
+                        </a>
+                        <a class="item" title="Get latest updates from our global recipes base in real time by following our Instagram handle. Property of cookbookshq.com">
+                            <i class="instagram icon"></i>
+                        </a>
+                    </div>
+		        </div>
+	        </div>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -49,8 +70,6 @@
 import store from '@/store'
 import Alert from './Alert.vue'
 import Navigation from './Navigation.vue'
-import Contact from './Contact.vue'
-import Bottom from './Bottom.vue'
 
 export default {
     name: "Register",
@@ -80,9 +99,7 @@ export default {
     },
     components: {
         Navigation,
-        Alert,
-        Bottom,
-        Contact
+        Alert
     },
     methods: {
 		register: function() {

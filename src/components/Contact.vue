@@ -8,7 +8,7 @@
 		<div class="ui six wide computer column sixteen wide mobile column" style="margin:auto;">
 			<div class="ui action centered input">
 				<input type="text" placeholder="Your email address" v-model="email">
-				<button class="ui tbb button" id="loading-btn" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
+				<button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
 					Get started now
 				</button>
 			</div>
@@ -61,10 +61,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-#loading-btn {
-	padding:20px;
-	padding-right:40px;
-}
-</style>
