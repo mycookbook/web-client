@@ -29,6 +29,13 @@ import store from '@/store'
 import Alert from './Alert.vue'
 
 export default {
+	created () {
+        this.$store.state.subscriptionStore.loadingBtn.state = false
+        this.$store.state.subscriptionStore.hasError = false
+        this.$store.state.subscriptionStore.errorMsg = []
+        this.$store.state.subscriptionStore.successMsg = ''
+        this.$store.state.subscriptionStore.completed = false
+    },
 	computed: {
 		isLoading() {
 			return this.$store.state.subscriptionStore.loadingBtn.state
