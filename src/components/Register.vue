@@ -4,6 +4,9 @@
     <div class="ui container" style="margin-top:18vh;">
         <div class="ui grid">
             <div class="ui sixteen wide computer column sixteen wide mobile column">
+                <div class="ui tiny info message">
+                    Already have a contributor account? <a href="">Login</a>
+                </div>
                 <form class="ui form">
                     <div class="field">
                         <label>Full Name</label>
@@ -17,14 +20,15 @@
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Password" v-model="password">
                     </div>
-                    <div class="field">
+                    <div class="ui tiny message">
                         <label>
-                            Signing up to CookbooksHQ means you have agreed to our <a href="/#/terms-and-conditions">Terms and Conditions, </a>
+                            By hitting the submit button, you have agreed to our <a href="/#/terms-and-conditions">Terms and Conditions, </a>
                         <a href="/#/usage-policy">Usage Policy</a> and 
                         <a href="/#/data-retention-policy">Data Retention Policy</a>
                         </label>
                     </div>
                 </form>
+                <br />
                 <button class="ui tbb button" id="loading-btn" v-bind:class="{ loading: isLoading }" @click="register()">
                     Submit
                 </button>
