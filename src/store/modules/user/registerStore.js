@@ -20,10 +20,10 @@ export const registerStore = {
         SET_BTN_LOADING_STATE(state) {
             state.loadingBtn.state = true
         },
-        ERROR_HAS_OCCURRED(state, msg) {
+        ERROR_HAS_OCCURRED(state, errObj) {
             state.loadingBtn.state = false
             state.hasError = true
-            state.errorMsg = Object.values(msg)
+            state.errorMsg = Object.values(errObj)
             state.completed = true
         },
         REGISTRATION_SUCCESS(state) {

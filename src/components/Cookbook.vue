@@ -43,12 +43,19 @@
 
 							</div>
 							<div>
+								<div class="ui compact menu" style="width:100%;">
+									<a class="ui tiny item">
+										<small>
+											Varieties submitted
+										</small>
+										<div class="ui orange label">
+											{{ recipe.variations.length }}
+										</div>
+									</a>
+								</div>
 								<span>
-									<p>{{ recipe.variations.length }} varieties</p>
-								</span>
-								<span>
-									<a class="ui tiny default button" @click=addVariety() :title="addRecipeTitleText">
-										+ Add variety
+									<a class="ui tiny teal button" @click=addVariety() :title="addRecipeTitleText">
+										+ Add
 									</a>
 								</span>
 							</div>			
