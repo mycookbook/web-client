@@ -73,6 +73,13 @@ import Navigation from './Navigation.vue'
 
 export default {
     name: "Register",
+    created () {
+        this.$store.state.registerStore.loadingBtn.state = false
+        this.$store.state.registerStore.hasError = false
+        this.$store.state.registerStore.errorMsg = []
+        this.$store.state.registerStore.successMsg = ''
+        this.$store.state.registerStore.completed = false
+    },
     computed: {
 		isLoading() {
 			return this.$store.state.registerStore.loadingBtn.state
