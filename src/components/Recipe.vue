@@ -23,20 +23,22 @@
 					<hr />
 					<small>
 						<h5 class="ui teal header">
-							Calories: 416 kCal
+							Calories: {{ nutritional_detail.cal }} kCal
 						</h5>
 					</small>
 					<small>
-						<h5 class="ui orange header">Fat: 16g </h5>
+						<h5 class="ui orange header">
+							Fat: {{ nutritional_detail.fat }}g 
+						</h5>
 					</small>
 					<small>
 						<h5 class="ui purple header">
-							Protein: 41g
+							Protein: {{ nutritional_detail.protein }}g
 						</h5>
 					</small>
 					<small>
 						<h5 class="ui grey header">
-							Carbs: 4g
+							Carbs: {{ nutritional_detail.carbs }}g
 						</h5>
 					</small>
 				</div>
@@ -133,6 +135,7 @@ export default {
 			this.$route.params.cookbookId,
 			this.$route.params.recipeId
 		)
+		this.parseNutritionalDetails(this.recipe.nutritional_detail)
 	},
 	created() {
 		this.recipeName = this.recipe.name
@@ -151,6 +154,12 @@ export default {
 				coverImg: '',
 				description: '',
 				recipeName: ''
+			},
+			nutritional_detail: {
+				cal: 0,
+				fat: 0,
+				protein: 0,
+				carbs: 0
 			}
 		}
 	},
@@ -190,6 +199,14 @@ export default {
 			strVal = strVal.slice(0, -3);
 			let numVal = parseInt(strVal);
 			return numVal + 'K+ contributions';
+		},
+		parseNutritionalDetails: function(details) {
+			let parsed_data = JSON.parse(details)
+			
+			this.nutritional_detail.cal = parsed_data.cal
+			this.nutritional_detail.carbs = parsed_data.carbs
+			this.nutritional_detail.fat = parsed_data.fat
+			this.nutritional_detail.protein = parsed_data.protein
 		}
 	},
 	components: {
