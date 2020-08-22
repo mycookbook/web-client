@@ -44,7 +44,7 @@
 							</div>
 							<div>
 								<div class="ui compact menu" style="width:100%;">
-									<a class="ui tiny item" :href="'/#/' + recipe.id + '/varieties'">
+									<a class="ui tiny item" :href="'/#/recipes/' + recipe.id + '/varieties'">
 										<small>
 											Varieties submitted
 										</small>

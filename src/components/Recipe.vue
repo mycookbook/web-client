@@ -162,7 +162,7 @@ export default {
 				protein: 0,
 				carbs: 0
 			},
-			varietiesLink: '/#/'
+			varietiesLink: '/#/recipes/'
 		}
 	},
 	methods: {
