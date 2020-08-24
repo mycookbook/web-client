@@ -24,7 +24,7 @@
 							<div class="ui header">
 								<h3>{{ transformRecipeName(recipe.name) }}</h3>
 							</div>
-							<div class="ui yellow ribbon label">
+							<div class="ui ribbon label">
 								Prep &#38; cook Time: {{ recipe.cook_time }}
 							</div>
 							<div>
@@ -43,21 +43,14 @@
 
 							</div>
 							<div>
-								<div class="ui compact menu" style="width:100%;">
-									<a class="ui tiny item" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'">
-										<small>
-											Varieties submitted
-										</small>
-										<div class="ui orange label">
-											{{ recipe.variations.length }}
-										</div>
+								<div class="ui labels">
+									<a class="ui tiny green label" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'">
+									varieties submitted: {{ recipe.variations.length }}
+									</a>
+									<a class="ui tiny label"  @click=addVariety() :title="addRecipeTitleText">
+										+ add
 									</a>
 								</div>
-								<span>
-									<a class="ui tiny teal button" @click=addVariety() :title="addRecipeTitleText">
-										+ Add
-									</a>
-								</span>
 							</div>			
 						</div>
 						<div class="ten wide computer column sixteen wide mobile column">

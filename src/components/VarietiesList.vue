@@ -18,7 +18,7 @@
 			</div>
 			<div class="ui grid">
 				<div class="four wide computer column sixteen wide mobile column">
-					<div class="ui green ribbon label">
+					<div class="ui ribbon label">
 						Prep &#38; cook Time: 45 mins
 					</div>
 					<div>
