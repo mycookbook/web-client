@@ -8,6 +8,7 @@ import { cookbookStore } from './modules/cookbookStore.js'
 import { recipeStore } from './modules/recipeStore.js'
 import { subscriptionStore } from './modules/subscriptionStore.js'
 import { registerStore } from './modules/user/registerStore.js'
+import { varietiesStore } from './modules/varietiesStore.js'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -18,6 +19,7 @@ export default new Vuex.Store({
 		cookbookStore,
 		recipeStore,
 		subscriptionStore,
-		registerStore
+		registerStore,
+		varietiesStore
 	}
 });

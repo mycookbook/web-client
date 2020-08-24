@@ -44,7 +44,7 @@
 							</div>
 							<div>
 								<div class="ui compact menu" style="width:100%;">
-									<a class="ui tiny item" :href="'/#/recipes/' + recipe.id + '/varieties'">
+									<a class="ui tiny item" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'">
 										<small>
 											Varieties submitted
 										</small>
@@ -209,7 +209,7 @@ export default {
 				return !(cookbook.recipes.length === 0);
 			}
 		},
-		compareRecipes () {
+		compareRecipes() {
 			alert('coming soon');
 		}
 	}
