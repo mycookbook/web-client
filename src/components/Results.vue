@@ -57,7 +57,7 @@
 export default {
 	name: 'Latest',
 	data() {
-		return {}
+		return {};
 	},
 	props: {
 		cookbooks: Array,

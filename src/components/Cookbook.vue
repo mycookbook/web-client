@@ -120,6 +120,9 @@
 							</div>
 						</div>
 					</div>
+					<br><br>
+					<div class="tvn horizontal stroke"></div>
+					<br>
 				</div>
 			</div>
 			<div v-else>
@@ -142,7 +145,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="tvn horizontal stroke"></div>
 	<Contact />
 	<Bottom />
 </div>
