@@ -2,14 +2,11 @@
 <div class="ui container">
 	<Navigation />
 	<div class="ui grid">
-		<h2 class="capitalize">
-			{{ recipe.name }} - submitted varieties
-		</h2>
-		<div class="ui large label sixteen wide computer column sixteen wide mobile column">
-			<!-- Submitted Varieties for {{ recipe.name }} recipe -->
-			{{ recipe.summary }}
+		<div class="ui huge label">
+			<span>Submitted Varieties for:</span> <span class="capitalize">{{ recipe.name }}</span>
 		</div>
 	</div>
+	<br><br><br>
 	<div class="ui grid">
 		<div class="fourteen wide computer column sixteen wide mobile column" v-for="v in varieties">
 			<div>
@@ -99,6 +96,6 @@ export default {
 	margin-top:23vh;
 }
 .capitalize {
-	text-transform: capitalize!important;
+	text-transform: uppercase!important;
 }
 </style>
