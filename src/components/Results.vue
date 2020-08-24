@@ -1,18 +1,22 @@
 <template>
 <div>
-	<div class="ui meals container" v-if="cookbooks.length > 0">
+    <div class="ui meals container" v-if="cookbooks.length > 0">
 		<div class="meal section">
 			<div class="content">
 				<div class="ui grid">
 					<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column" v-for="cookbook in cookbooks" :id="cookbook.id">
 						<div class="serving card">
 							<div class="image wrapper">
-								<div class="image" :style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }"></div>
+								<div class="image" 
+									:style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }">
+								</div>
 							</div>
 							<div class="content">
 								<div class="ui sub header">
 									<span :style="{ 'float': 'right' }">
-										proudly <i :class="generateFlagClass(cookbook.flag.flag)" :title="cookbook.flag.nationality"></i>
+										proudly
+										<i :class="generateFlagClass(cookbook.flag.flag)" 
+										:title="cookbook.flag.nationality"></i>
 									</span>
 								</div>
 								<div class="ui labels">
@@ -50,23 +54,20 @@
 </template>
 
 <script>
-import router from '@/router'
-
 export default {
-	name: "Latest",
-	data () {
+	name: 'Latest',
+	data() {
 		return {}
 	},
 	props: {
-		cookbooks: Array
+		cookbooks: Array,
 	},
 	methods: {
-		generateFlagClass: function (code) {
-			let class_ = code + " flag";
-			return class_;
+		generateFlagClass(code) {
+			return `${code} flag`;
 		},
-		getBgColor: function(code) {
-			return "#" + code;
+		getBgColor(code) {
+			return `#${code}`;
 		}
 	}
 }
