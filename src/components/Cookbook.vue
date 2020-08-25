@@ -169,7 +169,7 @@ export default {
 	},
 	methods: {
 		addVariety() {
-			alert('adding variety ...');
+			alert('Coming soon');
 		},
 		computeCalories(val) {
 			const calVal = this.parseJson(val).cal;

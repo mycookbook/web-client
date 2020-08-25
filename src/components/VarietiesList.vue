@@ -19,7 +19,15 @@
 						Prep &#38; cook Time: 45 mins
 					</div>
 					<div>
-						<img class="ui massive image" :src="v.imgUrl" :alt="v.name">
+						<router-link :to="{
+							name: 'Variety',
+							params: {
+								cookbookId: cookbook.id,
+								recipeId: recipe.id,
+								varietyId: v.id
+							}}">
+							<img class="ui massive image" :src="v.imgUrl" :alt="v.name">
+						</router-link>	
 					</div>
 				</div>
 				<div class="twelve wide computer column sixteen wide mobile column">
@@ -60,17 +68,23 @@ import Bottom from './Bottom.vue'
 export default {
 	name: "VarietiesList",
 	mounted() {
+		this.cookbook = this.$store.getters['get_cookbook'](
+			this.$route.params.cookbookId
+		);
+
 		this.recipe = this.$store.getters['get_recipe'](
 			this.$route.params.cookbookId,
 			this.$route.params.recipeId,
-		)
+		);
+
 		this.varieties = this.$store.getters['get_varieties'](
 			this.$route.params.cookbookId,
 			this.$route.params.recipeId,
-		)
+		);
 	},
 	data() {
 		return {
+			cookbook: {},
 			recipe: {},
 			varieties: []
 		}
