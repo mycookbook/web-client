@@ -79,6 +79,7 @@
 					</h3>
 				</div>
 				<div class="sixteen wide column">
+					
 					<div class="ui horizontal list">
 						<div class="item">
 							<img class="ui mini circular image" :src="recipe.user.avatar">
@@ -88,7 +89,7 @@
 									<router-link :to="{
 										name: 'UserProfile',
 										params: {
-											username: 'recipe.user.slug'
+											username: recipe.user.name_slug
 										}}">
 										{{ recipe.user.name }}
 									</router-link>	
