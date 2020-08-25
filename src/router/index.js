@@ -8,8 +8,8 @@ import FeatureRequest from '@/components/FeatureRequest';
 import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
-import VarietiesList from '@/components/VarietiesList.vue'
-import Variety from '@/components/variety.vue'
+import VarietiesList from '@/components/VarietiesList.vue';
+import Variety from '@/components/variety.vue';
 
 Vue.use(Router);
 
