@@ -9,7 +9,7 @@ import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
 import VarietiesList from '@/components/VarietiesList.vue';
-import Variety from '@/components/variety.vue';
+import Variety from '@/components/Variety.vue';
 
 Vue.use(Router);
 
