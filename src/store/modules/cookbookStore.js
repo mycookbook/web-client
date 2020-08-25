@@ -91,6 +91,10 @@ export const cookbookStore = {
         get_cookbook: (state) => (id) => {
             let cookbooks = localStorage.getItem('cookbooks')
             return JSON.parse(cookbooks).find(x => (x.id === parseInt(id)))
+        },
+        get_cookbooks: (state) => () => {
+            const cookbooks = localStorage.getItem('cookbooks')
+            return cookbooks
         }
     }
 }

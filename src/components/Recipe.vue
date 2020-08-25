@@ -127,13 +127,12 @@
 import Navigation from './Navigation'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
-import axios from 'axios';
 
 export default {
 	mounted() {
 		this.recipe = this.$store.getters['get_recipe'](
 			this.$route.params.cookbookId,
-			this.$route.params.recipeId
+			this.$route.params.recipeId,
 		)
 		this.parseNutritionalDetails(this.recipe.nutritional_detail)
 		this.getLinkToRecipeVarietiesPage(this.recipe.id)
@@ -143,12 +142,12 @@ export default {
 	},
 	computed: {
 		userContributionsCount() {
-			let count = 157051
+			let count = 157051;
 			count = this.formatCount(count)
-			return count
+			return count;
 		}
 	},
-	data () {
+	data() {
 		return {
 			recipe: {
 				id: '',
@@ -162,62 +161,60 @@ export default {
 				protein: 0,
 				carbs: 0
 			},
-			varietiesLink: '/#/recipes/'
-		}
+			varietiesLink: '/#/recipes/',
+		};
 	},
 	methods: {
-		recipeIngredients: function(data) {
-			return JSON.parse(JSON.parse(data)).data
+		recipeIngredients(data) {
+			return JSON.parse(JSON.parse(data)).data;
 		},
-		getRecipeVaritiesCount: function (varieties) {
-			return (varieties) ? varieties.length : 0
+		getRecipeVaritiesCount(varieties) {
+			return (varieties) ? varieties.length : 0;
 		},
-		addClap: function() {
-			alert('adding rating')
+		addClap() {
+			alert('adding rating');
 		},
-		reportIt: function() {
-			alert('Reporting it...')
+		reportIt() {
+			alert('Reporting it...');
 		},
-		getMembershipYear: function(date_time_string) {
-			let dateTimeObject = new Date(date_time_string)
-			let year = dateTimeObject.toDateString()
-			return year
+		getMembershipYear(dateTimeString) {
+			const dateTimeObject = new Date(dateTimeString);
+			return dateTimeObject.toDateString();
 		},
-		formatCount: function(number) {
-			let i = 0
-			switch (number.toString().length)
-			{
-				case 1:
-					return number + 'contribution';
-				case 2:
-				case 3:
-					return number + 'contributions';
-				default:
-					return this.numberFormatter(number);
+		formatCount(number) {
+			let i = 0;
+			switch (number.toString().length) {
+			case 1:
+				return `${number}contribution`;
+			case 2:
+			case 3:
+				return `${number}contributions`;
+			default:
+				return this.numberFormatter(number);
 			}
 		},
-		numberFormatter: function(number) {
+		numberFormatter(number) {
 			let strVal = number.toString();
 			strVal = strVal.slice(0, -3);
-			let numVal = parseInt(strVal);
-			return numVal + 'K+ contributions';
+			const numVal = parseInt(strVal);
+			return `${numVal}K+ contributions`;
 		},
-		parseNutritionalDetails: function(details) {
-			let parsed_data = JSON.parse(details)
+		parseNutritionalDetails(details) {
+			const parsedData = JSON.parse(details)
 
-			this.nutritional_detail.cal = parsed_data.cal
-			this.nutritional_detail.carbs = parsed_data.carbs
-			this.nutritional_detail.fat = parsed_data.fat
-			this.nutritional_detail.protein = parsed_data.protein
+			this.nutritional_detail.cal = parsedData.cal;
+			this.nutritional_detail.carbs = parsedData.carbs;
+			this.nutritional_detail.fat = parsedData.fat;
+			this.nutritional_detail.protein = parsedData.protein;
 		},
-		getLinkToRecipeVarietiesPage: function(id) {
-			this.varietiesLink = this.varietiesLink + id + '/varieties'
+		getLinkToRecipeVarietiesPage(id) {
+			this.varietiesLink = `${this.varietiesLink + id  }/varieties`;
 		}
 	},
 	components: {
 		Navigation,
 		Contact,
-		Bottom
+		Bottom,
 	}
 }
 </script>

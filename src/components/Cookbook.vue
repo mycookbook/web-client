@@ -24,7 +24,7 @@
 							<div class="ui header">
 								<h3>{{ transformRecipeName(recipe.name) }}</h3>
 							</div>
-							<div class="ui yellow ribbon label">
+							<div class="ui ribbon label">
 								Prep &#38; cook Time: {{ recipe.cook_time }}
 							</div>
 							<div>
@@ -43,21 +43,14 @@
 
 							</div>
 							<div>
-								<div class="ui compact menu" style="width:100%;">
-									<a class="ui tiny item" :href="'/#/recipes/' + recipe.id + '/varieties'">
-										<small>
-											Varieties submitted
-										</small>
-										<div class="ui orange label">
-											{{ recipe.variations.length }}
-										</div>
+								<div class="ui labels">
+									<a class="ui tiny green label" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'">
+									varieties submitted: {{ recipe.variations.length }}
+									</a>
+									<a class="ui tiny label"  @click=addVariety() :title="addRecipeTitleText">
+										+ add
 									</a>
 								</div>
-								<span>
-									<a class="ui tiny teal button" @click=addVariety() :title="addRecipeTitleText">
-										+ Add
-									</a>
-								</span>
 							</div>			
 						</div>
 						<div class="ten wide computer column sixteen wide mobile column">
@@ -120,6 +113,9 @@
 							</div>
 						</div>
 					</div>
+					<br><br>
+					<div class="tvn horizontal stroke"></div>
+					<br>
 				</div>
 			</div>
 			<div v-else>
@@ -142,79 +138,78 @@
 			</div>
 		</div>
 	</div>
-	<div class="tvn horizontal stroke"></div>
 	<Contact />
 	<Bottom />
 </div>
 </template>
 
 <script>
-import Navigation from './Navigation'
-import Contact from './Contact.vue'
-import Bottom from './Bottom.vue'
+import Navigation from './Navigation';
+import Contact from './Contact.vue';
+import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id)
+		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id);
 	},
 	computed: {
 		addRecipeTitleText() {
-			return "Know a nice little tweak to this recipe? Make it your own, add it!"
+			return 'Know a nice little tweak to this recipe? Make it your own, add it!';
 		}
 	},
-	data () {
+	data() {
 		return {
 			cookbook: {}
-		}
+		};
 	},
 	components: {
 		Navigation,
 		Contact,
-		Bottom
+		Bottom,
 	},
 	methods: {
-		addVariety: function () {
-			alert('adding variety ...')
+		addVariety() {
+			alert('Coming soon');
 		},
-		computeCalories: function (val) {
-			let calVal = this.parseJson(val).cal
-			return calVal ? (calVal + ' kCal') : (0 + ' kCal')
+		computeCalories(val) {
+			const calVal = this.parseJson(val).cal;
+			return calVal ? (`${calVal} kCal`) : (`${0} kCal`);
 		},
-		computeCarbs: function (val) {
-			let carbVal = this.parseJson(val).carbs
-			return  carbVal ? (carbVal + 'g') : (0 + 'g')
+		computeCarbs(val) {
+			const carbVal = this.parseJson(val).carbs;
+			return carbVal ? (`${carbVal}g`) : (`${0}g`);
 		},
-		computeProtein: function (val) {
-			let proteinVal = this.parseJson(val).protein
-			return proteinVal ? (proteinVal + 'g') : (0 + 'g')
+		computeProtein(val) {
+			const proteinVal = this.parseJson(val).protein;
+			return proteinVal ? (`${proteinVal}g`) : (`${0}g`);
 		},
-		computeFat: function (val) {
-			let fatVal = this.parseJson(val).fat
-			return fatVal ? (fatVal + 'g') : (0 + 'g')
+		computeFat(val) {
+			const fatVal = this.parseJson(val).fat;
+			return fatVal ? (`${fatVal}g`) : (`${0}g`);
 		},
-		parseJson: function(i) {
-			return JSON.parse(i)
+		parseJson(i) {
+			return JSON.parse(i);
 		},
-		transformRecipeName: function(name) {
-			let t = name
-			return t.toUpperCase()
+		transformRecipeName(name) {
+			const t = name;
+			return t.toUpperCase();
 		},
-		recipeIngredients: function(data) {
-			return JSON.parse(JSON.parse(data)).data
+		recipeIngredients(data) {
+			return JSON.parse(JSON.parse(data)).data;
 		},
-		hasRecipes: function (cookbook) {
+		hasRecipes(cookbook) {
 			if (cookbook.recipes) {
-				return !(cookbook.recipes.length == 0)
+				return !(cookbook.recipes.length === 0);
 			}
 		},
-		compareRecipes: function () {
-			alert('coming soon')
+		compareRecipes() {
+			alert('coming soon');
 		}
 	}
 }
 </script>
 
-<style scoped="">
+<style scoped>
 .container {
 	margin-top:23vh;
 }

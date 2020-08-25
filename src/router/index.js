@@ -8,6 +8,8 @@ import FeatureRequest from '@/components/FeatureRequest';
 import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
+import VarietiesList from '@/components/VarietiesList.vue'
+import Variety from '@/components/variety.vue'
 
 Vue.use(Router);
 
@@ -41,6 +43,14 @@ export default new Router({
 		path: '/cookbook/:cookbookId/recipe/:recipeId',
 		name: 'Recipe',
 		component: Recipe,
+    }, {
+		path: '/cookbook/:cookbookId/recipe/:recipeId/variety/:varietyId',
+		name: 'Variety',
+		component: Variety
+	}, {
+		path: '/cookbook/:cookbookId/recipe/:recipeId/varieties',
+		name: 'VarietiesList',
+		component: VarietiesList,
     }, {
 		path: '/feature-request',
 		name: 'FeatureRequest',
