@@ -44,10 +44,13 @@
 							</div>
 							<div>
 								<div class="ui labels">
-									<a class="ui tiny green label" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'">
+									<a class="ui tiny green label" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'" v-if="recipe.variations.length > 0">
 									varieties submitted: {{ recipe.variations.length }}
 									</a>
-									<a class="ui tiny label"  @click=addVariety() :title="addRecipeTitleText">
+									<span class="ui label" v-else>
+										varieties submitted: {{ recipe.variations.length }}
+									</span>
+									<a class="ui tiny green label"  @click=addVariety() :title="addRecipeTitleText" style="position:absolute; margin-left:10%;">
 										+ add
 									</a>
 								</div>
