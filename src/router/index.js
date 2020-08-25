@@ -16,7 +16,11 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
+	  {
+		  path: '/profiles/:username',
+		  name: 'UserProfile',
+		  component: UserProfile,
+	  }, {
 		path: '/',
       	name: 'Home',
       	component: LandingPage,
@@ -41,10 +45,6 @@ export default new Router({
 		name: 'Cookbook',
 		component: Cookbook,
     }, {
-		path: '/profiles/:username',
-		name: UserProfile,
-		component: UserProfile
-	}, {
 		path: '/cookbook/:cookbookId/recipe/:recipeId',
 		name: 'Recipe',
 		component: Recipe,
