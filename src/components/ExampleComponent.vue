@@ -1,19 +1,28 @@
 <template>
-<div>
-  <h2>{{ title }}</h2>
+<div class="ui container">
+    <Navigation />
+    <div class="ui grid">
+        -- contents here --
+    </div>
+    <Contact />
+    <Bottom />
 </div>
 </template>
 
 <script>
+import Navigation from './Navigation'
+import Contact from './Contact.vue'
+import Bottom from './Bottom.vue'
+
 export default {
-  name: "ChildComponent",
-  props: {
-    numbers: Array
-  },
-  data() {
-    return {
-		title: 'This is an Example component'
-    }
-  }
+    name: "UserProfile",
+    data() {
+        return {}
+    },
+    components: {
+		Navigation,
+		Contact,
+		Bottom
+	},
 };
 </script>
