@@ -25,8 +25,10 @@ export const cookbookStore = {
 			state.allCookbooks = cookbooks;
 		},
 		STORE_DEFINITIONS(state, definitions) {
-			state.definitions.categories = definitions[0];
-			state.definitions.nutritional_details = definitions[1];
+			if (definitions.length > 0) {
+				state.definitions.categories = definitions[0];
+				state.definitions.nutritional_details = definitions[1];
+			}
 		},
 		SORT(state, payload) {
 			if (payload === 'all') {

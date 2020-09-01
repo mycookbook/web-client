@@ -198,12 +198,10 @@ export default {
 			return t.toUpperCase();
 		},
 		recipeIngredients(data) {
-			return JSON.parse(JSON.parse(data)).data;
+			return JSON.parse(data);
 		},
 		hasRecipes(cookbook) {
-			if (cookbook.recipes) {
-				return !(cookbook.recipes.length === 0);
-			}
+			return (cookbook.recipes) ? !(cookbook.recipes.length === 0) : false;
 		},
 		compareRecipes() {
 			alert('coming soon');
