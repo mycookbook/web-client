@@ -63,7 +63,7 @@
 								{{ recipe.summary }}
 							</div>
 							<br />
-							<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin-top: 1%;">
+							<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)">
 								{{ ingredient }}
 							</div>			
 						</div>
@@ -198,12 +198,11 @@ export default {
 			return t.toUpperCase();
 		},
 		recipeIngredients(data) {
-			return JSON.parse(JSON.parse(data)).data;
+			const d = JSON.parse(data);
+			return d.data;
 		},
 		hasRecipes(cookbook) {
-			if (cookbook.recipes) {
-				return !(cookbook.recipes.length === 0);
-			}
+			return (cookbook.recipes) ? !(cookbook.recipes.length === 0) : false;
 		},
 		compareRecipes() {
 			alert('coming soon');

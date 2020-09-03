@@ -67,7 +67,7 @@
 					<small>
 						Use this tool if you think this recipe is any of the following; inappropriate, unauthentic, not original, stolen or a duplicate. 
 						If you think this content was stolen and you can prove it, kindly provide as much detail as possible to enable us 
-						investigate and delete the content from our servers. Alternatively, you can <a href="/#/registration-link">register</a> to become a cookbook 
+						investigate and delete the content from our servers. Alternatively, you can <a href="/#/register">register</a> to become a cookbook 
 						contributor and then ownership will be transffered to you upon request.
 					</small>
 				</div>
@@ -79,12 +79,21 @@
 					</h3>
 				</div>
 				<div class="sixteen wide column">
+					
 					<div class="ui horizontal list">
 						<div class="item">
 							<img class="ui mini circular image" :src="recipe.user.avatar">
 							<div class="content">
 								<div class="ui sub header">
-									submitted by: <a href="/#/profiles/username">{{ recipe.user.name }}</a> {{ recipe.user.pronouns }}
+									submitted by:
+									<router-link :to="{
+										name: 'UserProfile',
+										params: {
+											username: recipe.user.name_slug
+										}}">
+										{{ recipe.user.name }}
+									</router-link>	
+									{{ recipe.user.pronouns }}
 								</div>
 								<div class="capitalize">
 									{{ recipe.user.expertise_level }}
@@ -130,30 +139,36 @@ import Bottom from './Bottom.vue'
 
 export default {
 	mounted() {
+		this.cookbook = this.$store.getters['get_cookbook'](
+			this.$route.params.cookbookId,
+		);
+
 		this.recipe = this.$store.getters['get_recipe'](
 			this.$route.params.cookbookId,
 			this.$route.params.recipeId,
-		)
-		this.parseNutritionalDetails(this.recipe.nutritional_detail)
-		this.getLinkToRecipeVarietiesPage(this.recipe.id)
+		);
+
+		this.parseNutritionalDetails(this.recipe.nutritional_detail);
+		this.getLinkToRecipeVarietiesPage(this.recipe.id);
 	},
 	created() {
-		this.recipeName = this.recipe.name
+		this.recipeName = this.recipe.name;
 	},
 	computed: {
 		userContributionsCount() {
-			let count = 157051;
+			let count = 1250;
 			count = this.formatCount(count)
 			return count;
 		}
 	},
 	data() {
 		return {
+			cookbook: {},
 			recipe: {
 				id: '',
 				coverImg: '',
 				description: '',
-				recipeName: ''
+				recipeName: '',
 			},
 			nutritional_detail: {
 				cal: 0,
@@ -161,12 +176,12 @@ export default {
 				protein: 0,
 				carbs: 0
 			},
-			varietiesLink: '/#/recipes/',
+			varietiesLink: '/#/',
 		};
 	},
 	methods: {
 		recipeIngredients(data) {
-			return JSON.parse(JSON.parse(data)).data;
+			return JSON.parse(data);
 		},
 		getRecipeVaritiesCount(varieties) {
 			return (varieties) ? varieties.length : 0;
@@ -175,7 +190,7 @@ export default {
 			alert('adding rating');
 		},
 		reportIt() {
-			alert('Reporting it...');
+			alert('Coming soon')
 		},
 		getMembershipYear(dateTimeString) {
 			const dateTimeObject = new Date(dateTimeString);
@@ -185,10 +200,10 @@ export default {
 			let i = 0;
 			switch (number.toString().length) {
 			case 1:
-				return `${number}contribution`;
+				return `${number} contribution`;
 			case 2:
 			case 3:
-				return `${number}contributions`;
+				return `${number} contributions`;
 			default:
 				return this.numberFormatter(number);
 			}
@@ -207,8 +222,8 @@ export default {
 			this.nutritional_detail.fat = parsedData.fat;
 			this.nutritional_detail.protein = parsedData.protein;
 		},
-		getLinkToRecipeVarietiesPage(id) {
-			this.varietiesLink = `${this.varietiesLink + id  }/varieties`;
+		getLinkToRecipeVarietiesPage(recipeId) {
+			this.varietiesLink = `${`${this.varietiesLink}cookbook/${this.cookbook.id}/recipe/${recipeId}/varieties`}`;
 		}
 	},
 	components: {
