@@ -198,8 +198,10 @@ export default {
 			return t.toUpperCase();
 		},
 		recipeIngredients(data) {
-			return JSON.parse(JSON.parse(data)).data;
+			const d = JSON.parse(data);
+			return d.data;
 		},
+		// eslint-disable-next-line consistent-return
 		hasRecipes(cookbook) {
 			if (cookbook.recipes) {
 				return !(cookbook.recipes.length === 0);

@@ -166,7 +166,8 @@ export default {
 	},
 	methods: {
 		recipeIngredients(data) {
-			return JSON.parse(JSON.parse(data)).data;
+			const d = JSON.parse(data);
+			return d.data;
 		},
 		getRecipeVaritiesCount(varieties) {
 			return (varieties) ? varieties.length : 0;
