@@ -95,7 +95,7 @@
 								<div class="ui sub header">
 									submitted by:
 									<router-link :to="{
-										name: 'UserProfile',
+										name: 'ContributorProfile',
 										params: {
 											username: getUsername
 										}}">

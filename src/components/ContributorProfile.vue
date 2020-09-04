@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: "UserProfile",
+    name: "ContributorProfile",
     data() {
         return {}
     }
