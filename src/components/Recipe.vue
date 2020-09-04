@@ -7,7 +7,7 @@
 				<div>
 					<div class="add-clap" @click="addClap()">
 						<div class="ui tiny button tbb">
-							Add Clap 2.8K
+							Add Clap {{ recipe.claps }}
 						</div>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 									{{ recipe.user.expertise_level }}
 								</div>
 								<div class="ui tiny label">
-									<b>Member since</b> {{ recipe.user.created_at }} | {{ user.contributions }}
+									<b>Member since</b> {{ recipe.user.created_at }} | {{ user.contributions }} contribution(s)
 								</div>
 							</div>
 						</div>
@@ -197,7 +197,8 @@ export default {
 		);
 		this.recipe.ingredients = JSON.parse(this.recipe.ingredients).data
 		this.recipe.nutritional_detail = this.parseNutritionalDetails(this.recipe.nutritional_detail)
-		
+		this.recipe.claps = this.formatCount(this.recipe.claps)
+
 		this.getLinkToRecipeVarietiesPage(this.recipe.id);
 
 		this.cookbook.name = this.$store.getters['get_cookbook'](this.$route.params.cookbookId).name;
@@ -216,6 +217,7 @@ export default {
 					protein: 0,
 					carbs: 0,
 				},
+				claps: 0
 			},
 			varietiesLink: '/#/recipes/',
 			user: {
@@ -233,10 +235,10 @@ export default {
 		formatCount(number) {
 			switch (number.toString().length) {
 			case 1:
-				return `${number} contribution(s)`;
+				return `${number}`;
 			case 2:
 			case 3:
-				return `${number} contributions`;
+				return `${number}`;
 			default:
 				return this.numberFormatter(number);
 			}
@@ -245,7 +247,7 @@ export default {
 			let strVal = number.toString();
 			strVal = strVal.slice(0, -3);
 			const numVal = parseInt(strVal);
-			return `${numVal}K+ contributions`;
+			return `${numVal}K+`;
 		},
 		parseNutritionalDetails(details) {
 			const parsedData = JSON.parse(details);
