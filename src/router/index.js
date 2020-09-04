@@ -10,6 +10,7 @@ import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
 import VarietiesList from '@/components/VarietiesList.vue';
 import Variety from '@/components/Variety.vue';
+import UserProfile from '@/components/UserProfile.vue'
 
 Vue.use(Router);
 
@@ -44,6 +45,10 @@ export default new Router({
 		name: 'Recipe',
 		component: Recipe,
     }, {
+		path: '/contributors/:username',
+		name: 'UserProfile',
+		component: UserProfile
+	}, {
 		path: '/cookbook/:cookbookId/recipe/:recipeId/variety/:varietyId',
 		name: 'Variety',
 		component: Variety
