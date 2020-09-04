@@ -208,6 +208,7 @@ export default {
 	margin-top:23vh;
 }
 .cookbook-title {
+	text-transform: uppercase;
 	font-weight: 300;
 	text-align: center;
 	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));

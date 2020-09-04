@@ -24,7 +24,7 @@
 										{{ category.name }}
 									</a>
 								</div>
-								<div class="ui medium header">
+								<div class="ui medium header cookbook-title">
 									{{ cookbook.name }}
 								</div>
 								<div class="tvn vertical fade clipped description">
@@ -76,5 +76,8 @@ export default {
 <style scoped>
 a.ui.label {
 	cursor: none!important;
+}
+.cookbook-title {
+	text-transform: capitalize;
 }
 </style>
