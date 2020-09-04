@@ -235,7 +235,6 @@ export default {
 		formatCount(number) {
 			switch (number.toString().length) {
 			case 1:
-				return `${number}`;
 			case 2:
 			case 3:
 				return `${number}`;
