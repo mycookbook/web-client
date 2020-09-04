@@ -4,7 +4,6 @@ import LandingPage from '@/components/LandingPage';
 import Cookbook from '@/components/Cookbook';
 import Recipe from '@/components/Recipe';
 import Register from '@/components/Register';
-import FeatureRequest from '@/components/FeatureRequest';
 import UsagePolicy from '@/components/legal/UsagePolicy';
 import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
@@ -45,7 +44,7 @@ export default new Router({
 		name: 'Recipe',
 		component: Recipe,
     }, {
-		path: '/contributors/:username',
+		path: '/cookbook/:cookbookId/recipes/:recipeId/contributors/:username',
 		name: 'ContributorProfile',
 		component: ContributorProfile
 	}, {
@@ -56,10 +55,6 @@ export default new Router({
 		path: '/cookbook/:cookbookId/recipe/:recipeId/varieties',
 		name: 'VarietiesList',
 		component: VarietiesList,
-    }, {
-		path: '/feature-request',
-		name: 'FeatureRequest',
-		component: FeatureRequest,
     }, {
 		path: '/discover',
 		name: 'Discover',
