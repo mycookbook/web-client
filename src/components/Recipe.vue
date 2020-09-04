@@ -61,7 +61,8 @@
 				</div>
 				<hr />
 				<div>
-					<b>Course:</b> {{ recipe.course }}
+					<b>Course:</b> 
+					<div class="transformToCapitalize">{{ recipe.course }}</div>
 				</div>
 				<hr />
 				<div class="ui red button" @click="reportIt()">
@@ -96,7 +97,7 @@
 									</a>
 									{{ recipe.user.pronouns }}
 								</div>
-								<div class="expertise_title">
+								<div class="transformToCapitalize">
 									{{ recipe.user.expertise_level }}
 								</div>
 								<div class="ui tiny label">
@@ -265,7 +266,7 @@ export default {
 .main-content {
 	margin-top: 18vh;
 }
-.expertise_title {
+.transformToCapitalize {
 	text-transform: capitalize;
 }
 </style>
