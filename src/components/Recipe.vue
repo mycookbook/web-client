@@ -62,7 +62,7 @@
 				<hr />
 				<div>
 					<b>Course:</b> 
-					<div class="transformToCapitalize">{{ recipe.course }}</div>
+					<span class="transformToCapitalize">{{ recipe.course }}</span>
 				</div>
 				<hr />
 				<div class="ui red button" @click="reportIt()">
