@@ -41,19 +41,21 @@
 				<hr />
 				<div>
 					<b>No. Servings: </b> 
-					{{ recipe.servings }}
-					<br />
+					{{ recipe.servings }}<br />
 				</div>
 				<hr />
 				<div>
 					<span>
-						<b>No. Submitted Varieties:</b>
+						<b>No. Submitted varieties:</b>
 					</span>
-					<a :href="varietiesLink">
-						<span class="right foated" title="Follow link to view all varieties for this recipe">
-							{{ recipe.varieties_count }} 
-						</span>
-					</a>
+					<span  v-if="recipe.varieties_count > 0">
+						<a :href="varietiesLink">
+							<span class="right foated" title="Follow link to view all varieties for this recipe">
+								{{ recipe.varieties_count }} 
+							</span>
+						</a>
+					</span>
+					<span v-else>0</span>
 				</div>
 				<hr />
 				<div>
@@ -74,7 +76,7 @@
 						unauthentic, not original, stolen or a duplicate. If you think this content was stolen
 						and you can prove it, kindly provide as much detail as possible to enable us investigate
 						and delete the content from our servers. Alternatively, you can
-						<a href="/#/registration-link">register</a> to become a cookbook contributor and then
+						<a href="/#/register">register</a> to become a cookbook contributor and then
 						ownership will be transffered to you upon request.
 					</small>
 				</div>
