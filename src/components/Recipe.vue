@@ -93,10 +93,14 @@
 							<img class="ui mini circular image" :src="recipe.user.avatar">
 							<div class="content">
 								<div class="ui sub header">
-									submitted by: 
-									<a href="/#/profiles/username">
+									submitted by:
+									<router-link :to="{
+										name: 'UserProfile',
+										params: {
+											username: getUsername
+										}}">
 										{{ recipe.user.name }}
-									</a>
+									</router-link>	
 									{{ recipe.user.pronouns }}
 								</div>
 								<div class="transformToCapitalize">
@@ -119,7 +123,7 @@
 					<img class="ui massive image" :src="recipe.imgUrl">
 				</div>
 				<div class="ui grid">
-					<div class="four wide computer column sixteen wide mobile column">
+					<div class="four wide computer column sixteen wide mobile column mobile hidden">
 						<div class="ui vertical steps">
 							<div class="completed step">
 								<div class="content">
@@ -194,6 +198,9 @@ export default {
 		userContributionsCount() {
 			return this.formatCount(this.recipe.user.contributions);
 		},
+		getUsername() {
+			return this.recipe.user.name_slug;
+		}
 	},
 	data() {
 		return {
