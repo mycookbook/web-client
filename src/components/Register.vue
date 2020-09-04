@@ -5,7 +5,8 @@
         <div class="ui grid">
             <div class="ui sixteen wide computer column sixteen wide mobile column">
                 <div class="ui tiny info message">
-                    Already have a contributor account? <a href="">Login</a>
+                    Already have a contributor account? 
+                    <a href="https://admin.cookbookshq.com/login" target="_blank">Login</a>
                 </div>
                 <form class="ui form">
                     <div class="field">
