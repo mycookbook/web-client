@@ -24,7 +24,7 @@
 								<h3>{{ transformRecipeName(recipe.name) }}</h3>
 							</div>
 							<div class="ui ribbon label">
-								Prep &#38; cook Time: {{ recipe.cook_time }}
+								Prep &#38; cook Time: {{ recipe.total_time }}
 							</div>
 							<div>
 								<router-link :to="{
