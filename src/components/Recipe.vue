@@ -19,22 +19,22 @@
 					<hr />
 					<small>
 						<h5 class="ui teal header">
-							Calories: {{ nutritional_detail.cal }} kCal
+							Calories: {{ recipe.nutritional_detail.cal }} kCal
 						</h5>
 					</small>
 					<small>
 						<h5 class="ui orange header">
-							Fat: {{ nutritional_detail.fat }}g 
+							Fat: {{ recipe.nutritional_detail.fat }}g 
 						</h5>
 					</small>
 					<small>
 						<h5 class="ui purple header">
-							Protein: {{ nutritional_detail.protein }}g
+							Protein: {{ recipe.nutritional_detail.protein }}g
 						</h5>
 					</small>
 					<small>
 						<h5 class="ui grey header">
-							Carbs: {{ nutritional_detail.carbs }}g
+							Carbs: {{ recipe.nutritional_detail.carbs }}g
 						</h5>
 					</small>
 				</div>
@@ -83,9 +83,15 @@
 			</div>
 			<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
-					<h3 id="recipe-name">
-						{{ recipe.name }}
-					</h3>
+					<div class="ui breadcrumb">
+						<a class="section" href="/#/cookbook/2">
+							{{ cookbook.name }}
+						</a>
+						<i class="right angle icon divider"></i>
+						<div class="active section">
+							{{ recipe.name }}
+						</div>
+					</div>
 				</div>
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
@@ -97,8 +103,8 @@
 									<router-link :to="{
 										name: 'ContributorProfile',
 										params: {
-											recipeId: getRecipeId,
-											username: getUsername
+											recipeId: recipe.id,
+											username: recipe.user.name_slug
 										}}">
 										{{ recipe.user.name }}
 									</router-link>	
@@ -108,7 +114,7 @@
 									{{ recipe.user.expertise_level }}
 								</div>
 								<div class="ui tiny label">
-									<b>Member since</b> {{ recipe.user.created_at }} | {{ userContributionsCount }}
+									<b>Member since</b> {{ recipe.user.created_at }} | {{ user.contributions }}
 								</div>
 							</div>
 						</div>
@@ -116,7 +122,7 @@
 				</div>
 				<br />
 				<div class="sixteen wide column">
-					<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin:2px;">
+					<div class="ui light blue label" v-for="ingredient in recipe.ingredients" style="margin:2px;">
 						{{ ingredient }}
 					</div>
 				</div>
@@ -189,46 +195,35 @@ export default {
 			this.$route.params.cookbookId,
 			this.$route.params.recipeId,
 		);
-		this.parseNutritionalDetails(this.recipe.nutritional_detail);
+		this.recipe.ingredients = JSON.parse(this.recipe.ingredients).data
+		this.recipe.nutritional_detail = this.parseNutritionalDetails(this.recipe.nutritional_detail)
+		
 		this.getLinkToRecipeVarietiesPage(this.recipe.id);
-	},
-	created() {
-		this.recipeName = this.recipe.name;
-	},
-	computed: {
-		userContributionsCount() {
-			return this.formatCount(this.recipe.user.contributions);
-		},
-		getUsername() {
-			return this.recipe.user.name_slug;
-		},
-		getRecipeId() {
-			return this.recipe.id
-		}
+
+		this.cookbook.name = this.$store.getters['get_cookbook'](this.$route.params.cookbookId).name;
+		this.user.contributions = this.formatCount(this.recipe.user.contributions)
 	},
 	data() {
 		return {
-			recipe: {
-				id: '',
-				coverImg: '',
-				description: '',
-				recipeName: '',
-				ingredients: [],
+			cookbook: {
+				name: '',
 			},
-			nutritional_detail: {
-				cal: 0,
-				fat: 0,
-				protein: 0,
-				carbs: 0,
+			recipe: {
+				ingredients: [],
+				nutritional_detail: {
+					cal: 0,
+					fat: 0,
+					protein: 0,
+					carbs: 0,
+				},
 			},
 			varietiesLink: '/#/recipes/',
+			user: {
+				contributions: 0
+			},
 		};
 	},
 	methods: {
-		recipeIngredients(data) {
-			const d = JSON.parse(data);
-			return d.data;
-		},
 		addClap() {
 			alert('Coming soon');
 		},
@@ -255,10 +250,12 @@ export default {
 		parseNutritionalDetails(details) {
 			const parsedData = JSON.parse(details);
 
-			this.nutritional_detail.cal = parsedData.cal;
-			this.nutritional_detail.carbs = parsedData.carbs;
-			this.nutritional_detail.fat = parsedData.fat;
-			this.nutritional_detail.protein = parsedData.protein;
+			return {
+				cal: parsedData.cal,
+				carbs: parsedData.carbs,
+				fat: parsedData.fat,
+				protein: parsedData.protein
+			}
 		},
 		getLinkToRecipeVarietiesPage(id) {
 			this.varietiesLink = `${this.varietiesLink + id}/varieties`;
@@ -273,8 +270,10 @@ export default {
 </script>
 
 <style scoped>
-#recipe-name {
+.breadcrumb .section {
 	text-transform: uppercase;
+	margin-bottom: 15px;
+	font-size:smaller!important;
 }
 .main-content {
 	margin-top: 18vh;
