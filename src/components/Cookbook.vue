@@ -1,7 +1,6 @@
 <template>
 <div class="ui container">
 	<Navigation />
-	<!-- TODO: Implement lazy loading for cookbooks recipes on this page: load only 20 at one time -->
 	<div>
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
 			<h2 class="cookbook-title">
@@ -18,7 +17,7 @@
 	<div class="ui grid">
 		<div class="fourteen wide column">
 			<div v-if="hasRecipes(cookbook)">
-				<div v-for="recipe in cookbook.recipes" :id="recipe.id">
+				<div v-for="recipe in cookbook.recipes" :key="recipe.id">
 					<div class="ui grid">
 						<div class="four wide computer column sixteen wide mobile column">
 							<div class="ui header">
@@ -39,38 +38,37 @@
 										:src="recipe.imgUrl" 
 										:alt="recipe.name"
 										>
-								</router-link>	
-
-							</div>
-							<div>
+								</router-link>
+								<div>
 								<div class="ui labels">
-									<a class="ui tiny green label" :href="'/#/cookbook/' + cookbook.id + '/recipe/' + recipe.id + '/varieties'" v-if="recipe.variations.length > 0">
-									varieties submitted: {{ recipe.variations.length }}
+									<a class="ui label" id="viewRecipeSubmissionsTitleText">
+										Variety Submissions:
+										<div class="detail">
+											{{ recipe.variations.length }}
+										</div>
 									</a>
-									<span class="ui label" v-else>
-										varieties submitted: {{ recipe.variations.length }}
-									</span>
-									<a class="ui tiny green label"  @click=addVariety() :title="addRecipeTitleText" style="position:absolute; margin-left:10%;">
-										+ add
+									<a class="ui blue button label right floated" @click=addVariety() id="addRecipeButtonTitleText">
+										+ Add
 									</a>
 								</div>
-							</div>			
+							</div>		
+							</div>	
 						</div>
 						<div class="ten wide computer column sixteen wide mobile column">
 							<div class="ui header"></div>
 							<div class="ui header"></div>
-							<div>
-								{{ recipe.summary }}
-							</div>
-							<br />
-							<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin-top: 1%;">
+							<div>{{ recipe.summary }}</div><br />
+							<div class="ui light blue label ingredients-list"
+							v-for="ingredient in recipeIngredients(recipe.ingredients)"
+							v-bind:key="ingredient.id">
 								{{ ingredient }}
 							</div>			
 						</div>
 						<div class="two wide computer column sixteen wide mobile column">
-							<div class="nut_info mobile hidden">
-								<em>NUTRITIONAL INFO</em>
+							<div class="ui nutr_info">
+								<em>NUTR. INFO</em>
 								<i class="caret square down icon"></i>
+							</div>
 								<div class="ui flowing popup transition hidden">
 									<div class="ui four column divided center">
 										<div class="column">
@@ -83,66 +81,60 @@
 										</div>
 										<div class="column">
 											<span>
-												<h3>
-													{{ computeCarbs(recipe.nutritional_detail) }}
-												</h3>
+												<h3>{{ computeCarbs(recipe.nutritional_detail) }}</h3>
 											</span>
 											<span>
-												<h3 class="ui grey header">Carbs</h3>
-											</span>	<hr />
+												<h3 class="ui teal header">Carbs</h3>
+											</span> <hr />
 										</div>
 										<div class="column">
 											<span>
-												<h3>
-													{{ computeProtein(recipe.nutritional_detail) }}
-												</h3>
+												<h3>{{ computeFat(recipe.nutritional_detail) }}</h3>
 											</span>
 											<span>
-												<h3 class="ui purple header">Protein</h3>
-											</span>	<hr />
+												<h3 class="ui teal header">Fat</h3>
+											</span> <hr />
 										</div>
-											<div class="column">
+										<div class="column">
 											<span>
-												<h3>
-													{{ computeFat(recipe.nutritional_detail) }}
-												</h3>
+												<h3>{{ computeProtein(recipe.nutritional_detail) }}</h3>
 											</span>
 											<span>
-												<h3 class="ui orange header">Fat</h3>
-											</span>	
+												<h3 class="ui teal header">Protein</h3>
+											</span> <hr />
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						<br><br>
+						<div class="tvn horizontal stroke"></div>
+						<br>
 					</div>
-					<br><br>
-					<div class="tvn horizontal stroke"></div>
-					<br>
+				</div>
+				<div v-else>
+					<p>No recipes yet? Know a recipe? 
+						<a href="/">Add Recipe</a>
+					</p>
 				</div>
 			</div>
-			<div v-else>
-				<p>No recipes yet? Know a recipe? 
-					<a href="/">Add Recipe</a>
-				</p>
-			</div>
-		</div>
-		<div class="two wide computer column sixteen wide mobile column">
-			<div>
-				<div class="ui blue button" @click="compareRecipes()">
-					Compare
+			<div class="two wide computer column sixteen wide mobile column">
+				<div>
+					<div class="ui blue button" @click="compareRecipes()">
+						Compare
+					</div>
+				</div>
+				<br />
+				<div>
+					<small>ad space</small>
+					<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
+					<small>ad space</small>
 				</div>
 			</div>
-			<br />
-			<div>
-				<small>ad space</small>
-				<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
-				<small>ad space</small>
-			</div>
 		</div>
+		<Contact />
+		<Bottom />
 	</div>
-	<Contact />
-	<Bottom />
 </div>
 </template>
 
@@ -155,15 +147,12 @@ export default {
 	mounted() {
 		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id);
 	},
-	computed: {
-		addRecipeTitleText() {
-			return 'Know a nice little tweak to this recipe? Make it your own, add it!';
-		}
-	},
 	data() {
 		return {
-			cookbook: {}
-		};
+			cookbook: {},
+			recipe: {},
+			ingredients:[],
+		}
 	},
 	components: {
 		Navigation,
@@ -225,5 +214,8 @@ export default {
 }
 .nut_info {
 	cursor: pointer;
+}
+.ingredients-list {
+	margin-top: 1%;
 }
 </style>

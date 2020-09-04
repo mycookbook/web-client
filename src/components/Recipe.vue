@@ -97,6 +97,7 @@
 									<router-link :to="{
 										name: 'ContributorProfile',
 										params: {
+											recipeId: getRecipeId,
 											username: getUsername
 										}}">
 										{{ recipe.user.name }}
@@ -115,7 +116,7 @@
 				</div>
 				<br />
 				<div class="sixteen wide column">
-					<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)">
+					<div class="ui light blue label" v-for="ingredient in recipeIngredients(recipe.ingredients)" style="margin:2px;">
 						{{ ingredient }}
 					</div>
 				</div>
@@ -200,6 +201,9 @@ export default {
 		},
 		getUsername() {
 			return this.recipe.user.name_slug;
+		},
+		getRecipeId() {
+			return this.recipe.id
 		}
 	},
 	data() {
