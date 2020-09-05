@@ -114,7 +114,7 @@
 				</div>
 				<div v-else>
 					<p>No recipes yet? Know a recipe? 
-						<a href="/">Add Recipe</a>
+						<a href="/#/register">Add Recipe</a>
 					</p>
 				</div>
 			</div>
