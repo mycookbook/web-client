@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui grid">
+                    <div class="ui grid" v-if="user.contact">
                         <div class="sixteen wide column" v-if="!user.contact.is_public">
                             <i class="lock icon"></i> Contact information (private mode)
                         </div>

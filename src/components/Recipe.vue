@@ -49,7 +49,7 @@
 						<b>No. Submitted varieties:</b>
 					</span>
 					<span  v-if="recipe.varieties_count > 0">
-						<a :href="varietiesLink">
+						<a :href="links.varietiesPageLink">
 							<span class="right foated" title="Follow link to view all varieties for this recipe">
 								{{ recipe.varieties_count }} 
 							</span>
@@ -84,7 +84,7 @@
 			<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" href="/#/cookbook/2">
+						<a class="section" :href="links.breadcrumbs.cookbookLink + cookbook.id">
 							{{ cookbook.name }}
 						</a>
 						<i class="right angle icon divider"></i>
@@ -96,7 +96,7 @@
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
 						<div class="item">
-							<img class="ui mini circular image" :src="recipe.user.avatar">
+							<img class="ui mini circular image" :src="user.avatar">
 							<div class="content">
 								<div class="ui sub header">
 									submitted by:
@@ -104,17 +104,17 @@
 										name: 'ContributorProfile',
 										params: {
 											recipeId: recipe.id,
-											username: recipe.user.name_slug
+											username: user.name_slug
 										}}">
-										{{ recipe.user.name }}
+										{{ user.name }}
 									</router-link>	
-									{{ recipe.user.pronouns }}
+									{{ user.pronouns }}
 								</div>
 								<div class="transformToCapitalize">
-									{{ recipe.user.expertise_level }}
+									{{ user.expertise_level }}
 								</div>
 								<div class="ui tiny label">
-									<b>Member since</b> {{ recipe.user.created_at }} | {{ user.contributions }} contribution(s)
+									<b>Member since</b> {{ user.created_at }} | {{ user.contributions }} contribution(s)
 								</div>
 							</div>
 						</div>
@@ -201,14 +201,18 @@ export default {
 
 		this.getLinkToRecipeVarietiesPage(this.recipe.id);
 
-		this.cookbook.name = this.$store.getters['get_cookbook'](this.$route.params.cookbookId).name;
+		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.cookbookId);
 		this.user.contributions = this.formatCount(this.recipe.user.contributions)
+		this.user.name = this.recipe.user.name
+		this.user.avatar = this.recipe.user.avatar
+		this.user.name_slug = this.recipe.user.name_slug
+		this.user.pronouns = this.recipe.user.pronouns
+		this.user.expertise_level = this.recipe.user.expertise_level
+		this.user.created_at = this.recipe.user.created_at
 	},
 	data() {
 		return {
-			cookbook: {
-				name: '',
-			},
+			cookbook: {},
 			recipe: {
 				ingredients: [],
 				nutritional_detail: {
@@ -219,9 +223,20 @@ export default {
 				},
 				claps: 0
 			},
-			varietiesLink: '/#/recipes/',
 			user: {
-				contributions: 0
+				name: '',
+				pronouns: '',
+				expertise_level: '',
+				avatar: '',
+				contributions: 0,
+				name_slug: '',
+				created_at: ''
+			},
+			links: {
+				breadcrumbs: {
+					cookbookLink: '/#/cookbook/'
+				},
+				varietiesPageLink: '/#/recipes/'
 			},
 		};
 	},
@@ -259,7 +274,7 @@ export default {
 			}
 		},
 		getLinkToRecipeVarietiesPage(id) {
-			this.varietiesLink = `${this.varietiesLink + id}/varieties`;
+			this.links.varietiesPageLink = `${this.links.varietiesPageLink + id}/varieties`;
 		},
 	},
 	components: {
