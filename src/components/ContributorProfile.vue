@@ -80,8 +80,8 @@
                                 </a>
                             </span>
                             <span v-if="user.contact.website">
-                                <a :href="user.contact.website">
-                                    WEBSITE:
+                                WEBSITE:
+                                <a :href="user.contact.website" target="_blank">
                                     {{ user.contact.website }}
                                 </a>
                             </span>
