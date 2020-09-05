@@ -5,7 +5,7 @@
 		<div class="ui grid">
 			<div class="ui two wide computer column sixteen wide mobile column">
 				<div>
-					<div class="add-clap" @click="addClap()">
+					<div class="add-clap" @click="comingSoonMsg()">
 						<div class="ui tiny button tbb">
 							Add Clap {{ recipe.claps }}
 						</div>
@@ -67,7 +67,7 @@
 					<span class="transformToCapitalize">{{ recipe.course }}</span>
 				</div>
 				<hr />
-				<div class="ui red button" @click="reportIt()">
+				<div class="ui red button" @click="comingSoonMsg()">
 					Report it!
 				</div>
 				<div>
@@ -126,8 +126,11 @@
 						{{ ingredient }}
 					</div>
 				</div>
-				<div class="sixteen wide column" style="margin-top:2%;">
+				<div class="sixteen wide column img-container">
 					<img class="ui massive image" :src="recipe.imgUrl">
+					<button class="ui inverted white button" @click="comingSoonMsg()">
+						Place Order
+					</button>
 				</div>
 				<div class="ui grid">
 					<div class="four wide computer column sixteen wide mobile column mobile hidden">
@@ -241,11 +244,8 @@ export default {
 		};
 	},
 	methods: {
-		addClap() {
+		comingSoonMsg() {
 			alert('Coming soon');
-		},
-		reportIt() {
-			alert('Coming soon')
 		},
 		formatCount(number) {
 			switch (number.toString().length) {
@@ -296,5 +296,21 @@ export default {
 }
 .transformToCapitalize {
 	text-transform: capitalize;
+}
+.img-container {
+	margin-top: 2%;
+	position: relative;
+  	width: 100%;
+}
+.img-container img {
+	width: 100%;
+	height: auto;
+}
+.img-container .button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
 }
 </style>
