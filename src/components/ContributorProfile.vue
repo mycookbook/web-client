@@ -35,8 +35,56 @@
                         </div>
                     </div>
                     <div class="ui grid">
-                        <div class="sixteen wide column">
+                        <div class="sixteen wide column" v-if="!user.contact.is_public">
                             <i class="lock icon"></i> Contact information (private mode)
+                        </div>
+                        <div class="sixteen wide column contact-labels" v-else>
+                            <i class="unlock icon"></i> |
+                            <span v-if="user.contact.facebook">
+                                <a :href="user.contact.facebook">
+                                    <i class="facebook black f icon"></i>
+                                </a>
+                            </span>
+                            <span v-if="user.contact.twitter">
+                                <a :href="user.contact.twitter">
+                                    <i class="twitter black t icon"></i>
+                                </a>
+                            </span>
+                            <span v-if="user.contact.instagram">
+                                <a :href="user.contact.instagram">
+                                    <i class="black instagram icon"></i>
+                                </a>
+                            </span>
+                            <span v-if="user.contact.office_address">
+                                <a>
+                                    <i class="map marker icon"></i>
+                                    {{ user.contact.office_address }}
+                                </a>
+                            </span>
+                            <span v-if="user.contact.phone">
+                                <a>
+                                    <i class="black phone icon"></i>
+                                    {{ user.contact.phone }}
+                                </a>
+                            </span>
+                            <span v-if="user.contact.calendly">
+                                <a>
+                                    <i class="calendar icon"></i>
+                                    {{ user.contact.calendly }}
+                                </a>
+                            </span>
+                            <span v-if="user.contact.skype">
+                                <a>
+                                    <i class="skype black s icon"></i>
+                                    {{ user.contact.skype }}
+                                </a>
+                            </span>
+                            <span v-if="user.contact.website">
+                                <a :href="user.contact.website">
+                                    WEBSITE:
+                                    {{ user.contact.website }}
+                                </a>
+                            </span>
                         </div>
                     </div>
                     <div class="ui grid">
@@ -111,5 +159,8 @@ export default {
     text-transform: capitalize;
     margin-bottom: 9px;
     font-weight: 700;
+}
+.contact-labels span {
+    padding: 8px;
 }
 </style>
