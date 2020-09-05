@@ -76,6 +76,7 @@ export default {
 <style scoped>
 a.ui.label {
 	cursor: none!important;
+	text-transform: capitalize!important;
 }
 .cookbook-title {
 	text-transform: capitalize;
