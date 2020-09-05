@@ -84,13 +84,7 @@ export default {
     },
     data() {
         return {
-            user: {
-                name: '',
-                avatar: '',
-                expertise_level: '',
-                member_since: '',
-                pronouns: '',
-            },
+            user: {},
             contributions: {
                 cookbooks: 0,
                 recipes: 0
