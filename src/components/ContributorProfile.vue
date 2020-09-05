@@ -5,30 +5,44 @@
         <div class="main-content">
             <div class="ui grid">
                 <div class="twelve wide computer column sixteen wide mobile column">
-                    <div class="ui horizontal list">
-                        <div class="item">
-                            <h3>{{ user.name }}</h3>
-                            <img class="ui massive image" :src="user.avatar">
-                            <br /><br />
-                            <div class="content">
-                                <div class="ui sub right floated header">
-                                    <div class="ui four wide computer column sixteen wide mobile column secondary menu">
-                                        <div class="ui secondary menu flex-container">
-                                            <a class="item" href="https://calendly.com/okosunuzflorence">
-                                                <i class="calendar icon"></i>
-                                            </a>
-                                            <a class="item" title="https://twitter.com/florenceokosun">
-                                                <i class="twitter t icon"></i>
-                                            </a>
-                                            <a class="item" title="+1 647 834 4290">
-                                                <i class="phone icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
+                    <div class="ui segment">
+                        <div class="ui grid">
+                            <div class="eight wide computer column sixteen wide mobile column">
+                                <img class="ui massive left floated image" :src="user.avatar">
+                            </div>
+                            <div class="eight wide computer column sixteen wide mobile column">
+                                <h2>{{ user.name }} <div class="ui star rating" data-rating="3"></div></h2>
+                                <div class="bio">
+                                    <small>
+                                        {{ user.expertise_level }}
+                                    </small>
+                                    <br>
+                                    <small>
+                                        authored: {{ contributions.cookbooks }} cookbooks and {{ contributions.recipes }} recipes
+                                    </small>
+                                    <br>
+                                    <small>Member since: {{ user.created_at }}</small>
                                 </div>
-                                <div>
-                                    {{ user.about }}
+                                <p>{{ user.about }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui grid">
+                        <div class="sixteen wide column">
+                            <i class="lock icon"></i> Contact information (private mode)
+                        </div>
+                    </div>
+                    <div class="ui grid">
+                        <div class="sixteen wide column">
+                            <div class="ui form">
+                                <div class="field">
+                                    <label>Send a message/ask a question:</label>
+                                    <textarea></textarea>
                                 </div>
+                            </div>
+                            <br />
+                            <div class="ui small button tbb">
+                                Submit
                             </div>
                         </div>
                     </div>
@@ -56,7 +70,10 @@ export default {
             this.$route.params.cookbookId,
             this.$route.params.recipeId,
 			this.$route.params.username,
-		);
+        );
+        
+        this.contributions.cookbooks = this.user.contributions.cookbooks
+        this.contributions.recipes = this.user.contributions.recipes
     },
     data() {
         return {
@@ -65,8 +82,12 @@ export default {
                 avatar: '',
                 expertise_level: '',
                 member_since: '',
-                pronouns: ''
-            }
+                pronouns: '',
+            },
+            contributions: {
+                cookbooks: 0,
+                recipes: 0
+            },
         }
     },
     components: {
@@ -83,5 +104,11 @@ export default {
 }
 .item h3 {
     text-transform: uppercase;
+}
+.bio {
+    margin-top: -1vh;
+    text-transform: capitalize;
+    margin-bottom: 9px;
+    font-weight: 700;
 }
 </style>

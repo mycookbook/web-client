@@ -8,4 +8,5 @@ $(function() {
 	$('#viewRecipeSubmissionsTitleText').popup({
 		title: 'Click to view submissions'
 	})
+	$('.ui.rating').rating();
 });
