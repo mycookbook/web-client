@@ -41,16 +41,19 @@
                         <div class="sixteen wide column contact-labels" v-else>
                             <i class="unlock icon"></i> |
                             <span v-if="user.contact.facebook">
+                                facebook:
                                 <a :href="user.contact.facebook">
                                     <i class="facebook black f icon"></i>
                                 </a>
                             </span>
                             <span v-if="user.contact.twitter">
+                                twitter:
                                 <a :href="user.contact.twitter">
                                     <i class="twitter black t icon"></i>
                                 </a>
                             </span>
                             <span v-if="user.contact.instagram">
+                                instagram:
                                 <a :href="user.contact.instagram">
                                     <i class="black instagram icon"></i>
                                 </a>
@@ -62,25 +65,28 @@
                                 </a>
                             </span>
                             <span v-if="user.contact.phone">
+                                phone:
                                 <a>
                                     <i class="black phone icon"></i>
                                     {{ user.contact.phone }}
                                 </a>
                             </span>
                             <span v-if="user.contact.calendly">
+                                calendly:
                                 <a>
                                     <i class="calendar icon"></i>
                                     {{ user.contact.calendly }}
                                 </a>
                             </span>
                             <span v-if="user.contact.skype">
+                                skype:
                                 <a>
                                     <i class="skype black s icon"></i>
                                     {{ user.contact.skype }}
                                 </a>
                             </span>
                             <span v-if="user.contact.website">
-                                WEBSITE:
+                                website:
                                 <a :href="user.contact.website" target="_blank">
                                     {{ user.contact.website }}
                                 </a>
@@ -162,5 +168,6 @@ export default {
 }
 .contact-labels span {
     padding: 8px;
+    font-weight: 500!important;
 }
 </style>
