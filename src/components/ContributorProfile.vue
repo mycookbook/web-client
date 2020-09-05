@@ -11,7 +11,14 @@
                                 <img class="ui massive left floated image" :src="user.avatar">
                             </div>
                             <div class="eight wide computer column sixteen wide mobile column">
-                                <h2>{{ user.name }} <div class="ui star rating" data-rating="3"></div></h2>
+                                <span class="ui left floated">
+                                    <h2>
+                                        {{ user.name }} 
+                                        <div class="ui star rating" data-rating="3"></div>
+                                        <i class="us right floated flag"></i>
+                                    </h2>
+                                </span>
+                                <br />
                                 <div class="bio">
                                     <small>
                                         {{ user.expertise_level }}
