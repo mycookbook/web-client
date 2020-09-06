@@ -10,7 +10,7 @@
 		</div>
 		<div v-else>
 			<div class="ui divided selection list" style="text-transform: capitalize;">
-				<a class="item" v-for="result in results" href="/#/cookbook/1">
+				<a class="item" v-for="result in results" :href="getLink(result)">
 					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
 						{{ result.resource_type }}
 					</div>
@@ -39,7 +39,7 @@ export default {
 			searching: false,
 			qStr: '',
 			results: [],
-			Href: '/#/',
+			base: '/#/',
 		};
 	},
 	methods: {
@@ -50,18 +50,13 @@ export default {
 			
 			axios.get(`${process.env.BASE_URL}/search?query=${query}`)
 			.then((response) => {
-				console.log('results', response.data.response)
 				this.results = response.data.response
 			})
 			.catch((error) => {
 				console.log('error', error)
 			})
 
-			if (this.qStr) {
-				this.searching = true
-			} else {
-				this.searching = false
-			}
+			this.searching = (this.qStr)
 		},
 		getClass(type) {
 			let style = 'ui horizontal label'
@@ -80,6 +75,23 @@ export default {
 
 			return  style
 		},
+		getLink(item) {
+			let link = ''
+
+			if (item.resource_type == 'cookbook') {
+				link = this.base + 'cookbook/' + item.id
+			}
+
+			if (item.resource_type == 'recipe') {
+				link = this.base + 'cookbook/' + item.cookbook_id + '/recipe/' + item.id 
+			}
+
+			if (item.resource_type == 'recipe_variation') {
+				link = this.base + 'recipe/' + item.recipe_id + '/varieties/' + item.id 
+			}
+			
+			return link
+		}
 	},
 };
 </script>
