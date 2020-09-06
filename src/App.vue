@@ -8,6 +8,7 @@
 require('./assets/js/jquery.min.js');
 require('./assets/js/semantic.min.js');
 require('./assets/js/script.js');
+require('../static/js/script.js')
 
 export default {
   name: 'app',
