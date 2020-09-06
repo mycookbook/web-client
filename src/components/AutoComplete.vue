@@ -18,11 +18,20 @@
 					</div>
 					<em>{{ result.name }}</em>
 					<div class="description">
-						<span class="ui left floated">
-							short description not more than 150 characters long
+						<span class="ui left floated" v-if="result.resource_type == 'cookbook'">
+							{{ result.description | truncate(115, '...') }}
 						</span>
-						<span class="ui right floated meta">
-							2.8K recipes
+						<span class="ui left floated" v-if="result.resource_type == 'recipe'">
+							{{ result.summary | truncate(115, '...') }}
+						</span>
+						<span class="ui right floated meta" v-if="result.resource_type == 'cookbook'">
+							<img class="ui mini image" :src="result.bookCoverImg">
+						</span>
+						<span class="ui right floated meta" v-if="result.resource_type == 'recipe'">
+							<img class="ui mini image" :src="result.imgUrl">
+						</span>
+						<span class="ui right floated meta" v-if="result.resource_type == 'recipe_variation'">
+							<img class="ui mini image" :src="result.imgUrl">
 						</span>
 					</div>
 				</a>
@@ -44,6 +53,15 @@ export default {
 			base: '/#/',
 		};
 	},
+	filters: {
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
+    },
 	methods: {
 		search() {
 			this.results = []
@@ -53,7 +71,6 @@ export default {
 			axios.get(`${process.env.BASE_URL}/search?query=${query}`)
 			.then((response) => {
 				this.results = response.data.response
-				console.log('r', this.results)
 			})
 			.catch((error) => {
 				console.log('error', error)
