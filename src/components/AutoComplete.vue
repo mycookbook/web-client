@@ -1,24 +1,76 @@
 <template>
   <div class="ui massive search">
     <div class="ui icon large fluid input">
-      <input id="search-input" class="prompt" type="text" placeholder="Try &quot;flat tummy water recipe&quot;" />
+      <input @keyup="search" class="prompt" type="text" placeholder="Try &quot;flat tummy water recipe&quot;" />
       <i class="search icon sicon"></i>
     </div>
-    <div class="results"></div>
+    <div class="search-results" v-show="searching">
+		<div v-if="!results">
+			no results
+		</div>
+		<div v-else>
+			<div class="ui divided selection list" style="text-transform: capitalize;">
+				<a class="item" v-for="result in results">
+					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
+						{{ result.resource_type }}
+					</div>
+					{{ result.name }}
+				</a>
+			</div>
+		</div>
+	</div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
 	data() {
 		return {
+			searching: false,
+			qStr: '',
 			results: [],
 			Href: '/#/',
 		};
 	},
 	methods: {
-		buildHref(result) {
-			return `${this.Href + (result.resource_type)}/${result.id}`;
+		search() {
+			this.results = []
+			let query = event.target.value
+			this.qStr = query
+			
+			axios.get(`${process.env.BASE_URL}/search?query=${query}`)
+			.then((response) => {
+				console.log('results', response.data.response)
+				this.results = response.data.response
+			})
+			.catch((error) => {
+				console.log('error', error)
+			})
+
+			if (this.qStr) {
+				this.searching = true
+			} else {
+				this.searching = false
+			}
+		},
+		getClass(type) {
+			let style = 'ui horizontal label'
+
+			if (type == 'cookbook') {
+				style += ' red'
+			}
+
+			if (type == 'recipe') {
+				style += ' purple'
+			}
+
+			if (type == 'recipe_variation') {
+				style += ' teal'
+			}
+
+			return  style
 		},
 	},
 };
