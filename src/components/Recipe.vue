@@ -128,7 +128,7 @@
 				</div>
 				<div class="sixteen wide column img-container">
 					<img class="ui massive image" :src="recipe.imgUrl">
-					<button class="ui inverted white button" @click="comingSoonMsg()">
+					<button class="ui inverted white button" @click="comingSoonMsg()" v-if="user.can_take_orders">
 						Place Order
 					</button>
 				</div>
@@ -212,6 +212,7 @@ export default {
 		this.user.pronouns = this.recipe.user.pronouns
 		this.user.expertise_level = this.recipe.user.expertise_level
 		this.user.created_at = this.recipe.user.created_at
+		this.user.can_take_orders = this.recipe.user.can_take_orders
 	},
 	data() {
 		return {
@@ -233,7 +234,8 @@ export default {
 				avatar: '',
 				contributions: 0,
 				name_slug: '',
-				created_at: ''
+				created_at: '',
+				can_take_orders: false
 			},
 			links: {
 				breadcrumbs: {
