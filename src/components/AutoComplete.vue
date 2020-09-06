@@ -19,7 +19,7 @@
 						<span class="ui left floated">
 							short description not more than 150 characters long
 						</span>
-						<span class="ui right floated statistic">
+						<span class="ui right floated meta">
 							2.8K recipes
 						</span>
 					</div>
@@ -110,7 +110,7 @@ export default {
 .selection .description {
 	font-size: small;
 }
-.selection .description .statistic{
+.selection .description .meta{
 	font-weight: bold;
 }
 </style>
