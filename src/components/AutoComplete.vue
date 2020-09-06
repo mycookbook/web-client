@@ -5,8 +5,10 @@
       <i class="search icon sicon"></i>
     </div>
     <div class="search-results" v-show="searching">
-		<div v-if="!results">
-			no results
+		<div class="ui divided selection list" style="text-transform: capitalize;" v-if="results.length == 0">
+			<div class="item description">
+				no results
+			</div>
 		</div>
 		<div v-else>
 			<div class="ui divided selection list" style="text-transform: capitalize;">
@@ -51,6 +53,7 @@ export default {
 			axios.get(`${process.env.BASE_URL}/search?query=${query}`)
 			.then((response) => {
 				this.results = response.data.response
+				console.log('r', this.results)
 			})
 			.catch((error) => {
 				console.log('error', error)
