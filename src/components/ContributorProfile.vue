@@ -59,8 +59,8 @@
                                 </a>
                             </span>
                             <span v-if="user.contact.office_address">
-                                <a>
-                                    <i class="map marker icon"></i>
+                                <i class="street view icon"></i>
+                                <a :href="getMapAddr(user.contact.office_address)" target="_blank">
                                     {{ user.contact.office_address }}
                                 </a>
                             </span>
@@ -73,14 +73,14 @@
                             </span>
                             <span v-if="user.contact.calendly">
                                 calendly:
-                                <a>
+                                <a :href="user.contact.calendly" target="_blank">
                                     <i class="calendar icon"></i>
                                     {{ user.contact.calendly }}
                                 </a>
                             </span>
                             <span v-if="user.contact.skype">
                                 skype:
-                                <a>
+                                <a :href="user.contact.skype" target="_blank">
                                     <i class="skype black s icon"></i>
                                     {{ user.contact.skype }}
                                 </a>
@@ -145,6 +145,11 @@ export default {
             },
         }
     },
+    methods: {
+        getMapAddr: function($q) {
+            return ' http://maps.google.com/?q=' + $q
+        }
+    },
     components: {
         Navigation,
         Contact,
@@ -169,5 +174,9 @@ export default {
 .contact-labels span {
     padding: 8px;
     font-weight: 500!important;
+}
+
+.contact-labels span  a{
+    color: #171717!important;
 }
 </style>
