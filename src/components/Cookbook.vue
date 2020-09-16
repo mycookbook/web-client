@@ -16,12 +16,12 @@
 	</div>
 	<div class="ui grid">
 		<div class="fourteen wide column">
-			<div v-if="hasRecipes(cookbook)">
+			<div v-if="cookbook.hasRecipes">
 				<div v-for="recipe in cookbook.recipes" :key="recipe.id">
 					<div class="ui grid">
 						<div class="four wide computer column sixteen wide mobile column">
 							<div class="ui header">
-								<h3>{{ transformRecipeName(recipe.name) }}</h3>
+								<h3>{{ recipe.name }} </h3>
 							</div>
 							<div class="ui ribbon label">
 								Prep &#38; Cook Time: {{ recipe.total_time }}
@@ -43,8 +43,11 @@
 								<div class="ui labels">
 									<a class="ui label" id="viewRecipeSubmissionsTitleText">
 										Variety Submissions:
-										<div class="detail">
+										<div class="detail" v-if="recipe.variations">
 											{{ recipe.variations.length }}
+										</div>
+										<div class="detail" v-else>
+											0
 										</div>
 									</a>
 									<a class="ui blue button label right floated" @click=addVariety() id="addRecipeButtonTitleText">
@@ -94,7 +97,7 @@
 											<span>
 												<h3 class="ui teal header">Fat</h3>
 											</span> <hr />
-										</div>
+										</div> -->
 										<div class="column">
 											<span>
 												<h3>{{ computeProtein(recipe.nutritional_detail) }}</h3>
@@ -112,7 +115,7 @@
 						<br>
 					</div>
 				</div>
-				<div v-else>
+				<div>
 					<p>No recipes yet? Know a recipe? 
 						<a href="/#/register">Add Recipe</a>
 					</p>
@@ -145,19 +148,19 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		this.cookbook = this.$store.getters['get_cookbook'](this.$route.params.id);
+		const cookbookObj = this.$store.getters['get_cookbook'](this.$route.params.id);
+	
+		this.cookbook = cookbookObj
+		this.cookbook.hasRecipes = (cookbookObj.recipes.length > 0) ? true : false;
+		this.cookbook.recipes = (this.cookbook.hasRecipes) ? cookbookObj.recipes : [];
 	},
 	data() {
 		return {
-			cookbook: {},
-			recipe: {},
-			ingredients:[],
+			cookbook: {
+				hasRecipes: false,
+				recipes: {}
+			}
 		}
-	},
-	components: {
-		Navigation,
-		Contact,
-		Bottom,
 	},
 	methods: {
 		addVariety() {
@@ -190,15 +193,14 @@ export default {
 			const d = JSON.parse(data);
 			return d.data;
 		},
-		// eslint-disable-next-line consistent-return
-		hasRecipes(cookbook) {
-			if (cookbook.recipes) {
-				return !(cookbook.recipes.length === 0);
-			}
-		},
 		compareRecipes() {
 			alert('coming soon');
 		}
+	},
+	components: {
+		Navigation,
+		Contact,
+		Bottom,
 	}
 }
 </script>
