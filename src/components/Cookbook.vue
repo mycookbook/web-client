@@ -10,13 +10,25 @@
 	<div v-else>
 		<div>
 			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-				<span class="ui header cookbook-title">
+				<div class="ui header cookbook-title">
 					{{ cookbook.name }}
-				</span>
-				<span class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
+				</div>
+				<div class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
 					<i class="ui bell icon"></i>
 					SUBSCRIBE
-				</span>
+				</div>
+				<div class="ui images">
+					<img class="ui mini circular image contributor-avatar"
+						:title="user.name"
+						:src="user.avatar"
+						v-for="user in cookbook.users"
+					>
+					<div class="ui small button" title="View all contributors">
+						<small>
+							Contributors +1 more
+						</small>
+					</div>
+				</div>
 			</div>
 			<br />
 			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
@@ -236,5 +248,8 @@ export default {
 }
 .ingredients-list {
 	margin-top: 1%;
+}
+.contributor-avatar {
+	margin-right: -18px!important;;
 }
 </style>
