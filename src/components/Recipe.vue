@@ -130,7 +130,7 @@
 				</div>
 				<br />
 				<div class="sixteen wide column">
-					<div class="ui light blue label" v-for="ingredient in ingredients">
+					<div class="ui light blue label twopxmargin" v-for="ingredient in ingredients">
 						{{ ingredient }}
 					</div>
 				</div>
@@ -287,5 +287,8 @@ export default {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
+}
+.twopxmargin {
+	margin: 2px!important;
 }
 </style>
