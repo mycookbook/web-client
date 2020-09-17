@@ -165,7 +165,7 @@ export default {
 			return true
 		},
 		isLoading() {
-			return this.$store.state.cookbookStore.cookbook_isLoading
+			return this.$store.state.resource_isLoading
 		}
 	},
 	data() {

@@ -8,7 +8,8 @@ Vue.use(VueResource);
 
 export const cookbookStore = {
     state: () => ({
-        cookbooks: [],
+        cookbooks: JSON.parse(localStorage.getItem('cookbooks')),
+        cookbook: {},
         definitions: {
             categories: [],
             nutritional_details: []
@@ -18,10 +19,6 @@ export const cookbookStore = {
         sortBy: 'all'
     }),
     mutations: {
-        STORE_COOKBOOKS(state, cookbooks) {
-            state.cookbooks = cookbooks //how to pass data along from the instance
-            state.allCookbooks = cookbooks
-        },
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
             state.definitions.nutritional_details = definitions[1]
@@ -53,42 +50,53 @@ export const cookbookStore = {
                 state.cookbooks = filtered
             }
             localStorage.setItem('sortBy', payload)
+        },
+        SET_COOKBOOK_STATE(state, newState) {
+            this.state.resource_isLoading = false
+            state.cookbook = newState
         }
     },
     actions: {
         load_cookbooks(context) {
-            let url = process.env.BASE_URL + '/cookbooks'
-            axios.get(url)
-            .then(function (response) {// handle success
+            localStorage.setItem("isReloaded", false)
+            axios.get(this.state.named_urls.cookbook_resources)
+            .then(function (response) {
                 localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
-                context.commit('STORE_COOKBOOKS', response.data.data)
             })
-            .catch(function (error) {// handle error
-                console.log(error);
+            .catch(function (error) {
+                console.log('there was an error loading the cookbooks from the api', error);
             })
-            .then(function () {// always executed
-            });
+            .then(function () {});
+        },
+        load_cookbook(context, id) {
+            axios.get(this.state.named_urls.cookbook_resources + id)
+            .then(function (response) {
+                // const oldState = JSON.parse(context.state.cookbooks)
+                const newState = response.data
+                //todo: compare oldState vs newState before updating store with newState
+                context.commit('SET_COOKBOOK_STATE', newState)
+            })
+            .catch(function (error) {
+                console.log('there was an error fetching this cookbook from the api', error);
+            })
+            .then(function () {});
         },
         sort(context, payload) {
             context.commit('SORT', payload)
         },
         load_definitions(context) {
-            let url = process.env.BASE_URL + '/definitions'
-            axios.get(url)
-            .then(function (response) {// handle success
+            axios.get(this.state.named_urls.definitions)
+            .then(function (response) {
                 context.commit('STORE_DEFINITIONS', response.data)
             })
             .catch(function (error) {
-                // handle error
-                console.log('There was an error: ', error);
+                console.log('There was an error loading definitions: ', error);
             })
-                .then(function () {
-                // always executed
-            });
+            .then(function () {});
         }
     },
     getters: {
-        get_cookbook: (state) => (id) => {
+        get_cookbook: (context, state) => (id) => {
             let cookbooks = localStorage.getItem('cookbooks')
             return JSON.parse(cookbooks).find(x => (x.id === parseInt(id)))
         },

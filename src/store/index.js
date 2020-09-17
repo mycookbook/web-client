@@ -15,6 +15,15 @@ Vue.use(VueResource);
 
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production',
+	state: () => ({
+		named_urls: {
+			cookbook_resources: process.env.BASE_URL + 'cookbooks/',
+			recipe_resources: process.env.BASE_URL + 'recipes/',
+			user_resources: process.env.BASE_URL + 'users/',
+			definitions: process.env.BASE_URL + 'definitions'
+		},
+		resource_isLoading: true
+    }),
 	modules: {
 		cookbookStore,
 		recipeStore,

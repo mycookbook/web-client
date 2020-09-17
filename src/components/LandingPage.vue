@@ -30,10 +30,8 @@ import Bottom from './Bottom.vue'
 export default {
   name: "LandingPage",
   mounted () {
-	  if (this.$store.state.cookbookStore.cookbooks.length == 0 || this.$store.state.cookbookStore.cookbooks === null) {
-		  store.dispatch('load_cookbooks')
-		  store.dispatch('load_definitions')
-	  } 
+	  store.dispatch('load_cookbooks')
+	  store.dispatch('load_definitions')
   },
   computed: {
     cookbooks() {
