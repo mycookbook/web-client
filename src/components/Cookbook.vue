@@ -17,7 +17,7 @@
 					<i class="ui bell icon"></i>
 					SUBSCRIBE
 				</div>
-				<div class="ui images">
+				<div class="ui images" v-if="cookbook.users">
 					<img class="ui mini circular image contributor-avatar"
 						:title="user.name"
 						:src="user.avatar"
