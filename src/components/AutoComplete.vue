@@ -68,7 +68,7 @@ export default {
 			let query = event.target.value
 			this.qStr = query
 			
-			axios.get(`${process.env.BASE_URL}/search?query=${query}`)
+			axios.get(`${process.env.BASE_URL}search?query=${query}`)
 			.then((response) => {
 				this.results = response.data.response
 			})
