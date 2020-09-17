@@ -221,13 +221,13 @@ export default {
 			return JSON.parse(this.recipe.ingredients).data
 		},
 		nutritional_detail() {
-			// const parsedData = JSON.parse(this.recipe.nutritional_detail);
+			const parsedData = JSON.parse(this.recipe.nutritional_detail);
 			
 			return {
-				cal: 0,
-				carbs: 0,
-				protein: 0,
-				fat: 0
+				cal: parsedData.cal,
+				carbs: parsedData.carbs,
+				protein: parsedData.protein,
+				fat: parsedData.fat
 			}
 		}
 	},
@@ -236,7 +236,6 @@ export default {
   	},
 	data() {
 		return {
-			// recipe: {},
 			links: {
 				breadcrumbs: {
 					cookbookLink: '/#/cookbook/'
