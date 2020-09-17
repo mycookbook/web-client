@@ -17,15 +17,21 @@
                                 <img class="ui massive left floated image" :src="user.avatar">
                             </div>
                             <div class="eight wide computer column sixteen wide mobile column">
-                                <span class="ui left floated">
-                                    <h2>
+                                <div class="ui labels">
+                                    <div class="ui left floated label">
                                         {{ user.name }} 
                                         <div class="ui star rating" data-rating="3"></div>
-                                        <i class="us right floated flag"></i>
-                                    </h2>
-                                </span>
-                                <br />
-                                <div class="bio">
+                                        <i class="ca right floated flag"></i>
+                                    </div>
+                                    <div 
+                                    class="ui right floated red label button" 
+                                    :title="followTitleText"
+                                    @click="comingSoonMsg()">
+                                        <i class="ui bell icon"></i>
+                                        <small>Followers {{ user.followers }}</small>
+                                    </div>
+                                </div>
+                                <div class="ui mini info label bio">
                                     <small>
                                         {{ user.expertise_level }}
                                     </small>
@@ -36,7 +42,8 @@
                                     <br>
                                     <small>Member since: {{ user.created_at }}</small>
                                 </div>
-                                <p>{{ user.about }}</p>
+                                <div class="ui divider"></div>
+                                <p>{{ user.about }}</p> <br />
                             </div>
                         </div>
                     </div>
@@ -150,7 +157,10 @@ export default {
         },
         isLoading() {
 			return this.$store.state.resource_isLoading
-		},
+        },
+        followTitleText() {
+            return 'Follow ' + this.user.name + ' to learn about their new recipes.'
+        }
       },
     data() {
         return {}
@@ -161,6 +171,9 @@ export default {
 		},
         getMapAddr: function($q) {
             return ' http://maps.google.com/?q=' + $q
+        },
+        comingSoonMsg: function() {
+            return 'Coming soon'
         }
     },
     components: {

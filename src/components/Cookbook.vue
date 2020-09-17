@@ -10,10 +10,15 @@
 	<div v-else>
 		<div>
 			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-				<h2 class="cookbook-title">
+				<span class="ui header cookbook-title">
 					{{ cookbook.name }}
-				</h2>
+				</span>
+				<span class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
+					<i class="ui bell icon"></i>
+					SUBSCRIBE
+				</span>
 			</div>
+			<br />
 			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
 				<div class="ui message">
 					{{ cookbook.description }} 
@@ -130,7 +135,7 @@
 				</div>
 				<div class="two wide computer column sixteen wide mobile column">
 					<div>
-						<div class="ui blue button" @click="compareRecipes()">
+						<div class="ui blue button" @click="comingSoonMsg()">
 							Compare
 						</div>
 					</div>
@@ -179,7 +184,7 @@ export default {
 		reload() {
 			localStorage.setItem("cookbook_isReloaded", true)
 		},
-		addVariety() {
+		comingSoonMsg() {
 			alert('Coming soon');
 		},
 		computeCalories(val) {
@@ -208,9 +213,6 @@ export default {
 		recipeIngredients(data) {
 			const d = JSON.parse(data);
 			return d.data;
-		},
-		compareRecipes() {
-			alert('coming soon');
 		}
 	},
 	components: {
@@ -228,8 +230,6 @@ export default {
 .cookbook-title {
 	text-transform: uppercase;
 	font-weight: 300;
-	text-align: center;
-	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 .nut_info {
 	cursor: pointer;
