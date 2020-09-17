@@ -66,7 +66,8 @@ export const registerStore = {
             let cookbooks = localStorage.getItem('cookbooks')
             let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
             let recipe = cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
-            return recipe.user
+            
+            return recipe.my_cookbook.author
         }
     }
 }

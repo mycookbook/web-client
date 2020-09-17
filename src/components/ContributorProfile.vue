@@ -3,7 +3,13 @@
     <Navigation />
     <div class="ui container">
         <div class="main-content">
-            <div class="ui grid">
+            <div v-if="isLoading">
+                <div class="ui active inverted dimmer">
+                    <div class="ui text loader">Loading ...</div>
+                </div>
+                <p></p>
+            </div>
+            <div class="ui grid" v-else>
                 <div class="twelve wide computer column sixteen wide mobile column">
                     <div class="ui segment">
                         <div class="ui grid">
@@ -25,7 +31,7 @@
                                     </small>
                                     <br>
                                     <small>
-                                        authored: {{ contributions.cookbooks }} cookbooks and {{ contributions.recipes }} recipes
+                                        authored: {{ user.contributions.cookbooks }} cookbooks and {{ user.contributions.recipes }} recipes
                                     </small>
                                     <br>
                                     <small>Member since: {{ user.created_at }}</small>
@@ -34,61 +40,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui grid" v-if="user.contact">
-                        <div class="sixteen wide column" v-if="!user.contact.is_public">
+                    <div class="ui grid" v-if="user.contact_detail">
+                        <div class="sixteen wide column" v-if="!user.contact_detail.is_public">
                             <i class="lock icon"></i> Contact information (private mode)
                         </div>
                         <div class="sixteen wide column contact-labels" v-else>
                             <i class="unlock icon"></i> |
-                            <span v-if="user.contact.facebook">
+                            <span v-if="user.contact_detail.facebook">
                                 facebook:
-                                <a :href="user.contact.facebook">
+                                <a :href="user.contact_detail.facebook">
                                     <i class="facebook black f icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact.twitter">
+                            <span v-if="user.contact_detail.twitter">
                                 twitter:
-                                <a :href="user.contact.twitter">
+                                <a :href="user.contact_detail.twitter">
                                     <i class="twitter black t icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact.instagram">
+                            <span v-if="user.contact_detail.instagram">
                                 instagram:
-                                <a :href="user.contact.instagram">
+                                <a :href="user.contact_detail.instagram">
                                     <i class="black instagram icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact.office_address">
+                            <span v-if="user.contact_detail.office_address">
                                 <i class="street view icon"></i>
-                                <a :href="getMapAddr(user.contact.office_address)" target="_blank">
-                                    {{ user.contact.office_address }}
+                                <a :href="getMapAddr(user.contact_detail.office_address)" target="_blank">
+                                    {{ user.contact_detail.office_address }}
                                 </a>
                             </span>
-                            <span v-if="user.contact.phone">
+                            <span v-if="user.contact_detail.phone">
                                 phone:
                                 <a>
                                     <i class="black phone icon"></i>
-                                    {{ user.contact.phone }}
+                                    {{ user.contact_detail.phone }}
                                 </a>
                             </span>
-                            <span v-if="user.contact.calendly">
+                            <span v-if="user.contact_detail.calendly">
                                 calendly:
-                                <a :href="user.contact.calendly" target="_blank">
+                                <a :href="user.contact_detail.calendly" target="_blank">
                                     <i class="calendar icon"></i>
-                                    {{ user.contact.calendly }}
+                                    {{ user.contact_detail.calendly }}
                                 </a>
                             </span>
-                            <span v-if="user.contact.skype">
+                            <span v-if="user.contact_detail.skype">
                                 skype:
-                                <a :href="user.contact.skype" target="_blank">
+                                <a :href="user.contact_detail.skype" target="_blank">
                                     <i class="skype black s icon"></i>
-                                    {{ user.contact.skype }}
+                                    {{ user.contact_detail.skype }}
                                 </a>
                             </span>
-                            <span v-if="user.contact.website">
+                            <span v-if="user.contact_detail.website">
                                 website:
-                                <a :href="user.contact.website" target="_blank">
-                                    {{ user.contact.website }}
+                                <a :href="user.contact_detail.website" target="_blank">
+                                    {{ user.contact_detail.website }}
                                 </a>
                             </span>
                         </div>
@@ -127,25 +133,32 @@ import Bottom from './Bottom.vue';
 export default {
     name: "ContributorProfile",
     mounted() {
-        this.user = this.$store.getters['get_user'](
-            this.$route.params.cookbookId,
-            this.$route.params.recipeId,
-			this.$route.params.username,
-        );
-        
-        this.contributions.cookbooks = this.user.contributions.cookbooks
-        this.contributions.recipes = this.user.contributions.recipes
-    },
-    data() {
-        return {
-            user: {},
-            contributions: {
-                cookbooks: 0,
-                recipes: 0
-            },
+        if (localStorage.getItem("user_isReloaded") == 'true') {
+			this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
         }
     },
+    created () {
+		window.addEventListener('beforeunload', this.reload)
+      },
+      computed: {
+          user() {
+			return this.$store.getters['get_user'](
+                this.$route.params.cookbookId,
+                this.$route.params.recipeId,
+                this.$route.params.username
+			);
+        },
+        isLoading() {
+			return this.$store.state.resource_isLoading
+		},
+      },
+    data() {
+        return {}
+    },
     methods: {
+        reload() {
+			localStorage.setItem("user_isReloaded", true)
+		},
         getMapAddr: function($q) {
             return ' http://maps.google.com/?q=' + $q
         }
