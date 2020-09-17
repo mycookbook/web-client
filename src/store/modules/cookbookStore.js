@@ -58,26 +58,14 @@ export const cookbookStore = {
     },
     actions: {
         load_cookbooks(context) {
-            localStorage.setItem("isReloaded", false)
+            localStorage.setItem("recipe_isReloaded", false)
+            localStorage.setItem("cookbook_isReloaded", false)
             axios.get(this.state.named_urls.cookbook_resources)
             .then(function (response) {
                 localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
             })
             .catch(function (error) {
                 console.log('there was an error loading the cookbooks from the api', error);
-            })
-            .then(function () {});
-        },
-        load_cookbook(context, id) {
-            axios.get(this.state.named_urls.cookbook_resources + id)
-            .then(function (response) {
-                // const oldState = JSON.parse(context.state.cookbooks)
-                const newState = response.data
-                //todo: compare oldState vs newState before updating store with newState
-                context.commit('SET_COOKBOOK_STATE', newState)
-            })
-            .catch(function (error) {
-                console.log('there was an error fetching this cookbook from the api', error);
             })
             .then(function () {});
         },

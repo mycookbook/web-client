@@ -203,8 +203,8 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		if (localStorage.getItem("isReloaded") == 'true') {
-			this.$store.dispatch('reload_recipe', this.$route.params.recipeId)
+		if (localStorage.getItem("recipe_isReloaded") == 'true') {
+			this.$store.dispatch('reload_global_resources', this.$route.params.recipeId)
 		}
 	},
 	computed: {
@@ -246,7 +246,7 @@ export default {
 	},
 	methods: {
 		reload() {
-			localStorage.setItem("isReloaded", true)
+			localStorage.setItem("recipe_isReloaded", true)
 		},
 		comingSoonMsg() {
 			alert('Coming soon');

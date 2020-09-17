@@ -142,7 +142,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 	<Contact />
 	<Bottom />
 </div>
@@ -155,11 +155,15 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		this.$store.dispatch('load_cookbook', this.$route.params.id)
+		if (localStorage.getItem("cookbook_isReloaded") == 'true') {
+			this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
+		}
 	},
 	computed: {
 		cookbook() {
-			return this.$store.state.cookbookStore.cookbook
+			return this.$store.getters['get_cookbook'](
+				this.$route.params.id,
+			);
 		},
 		hasRecipes() {
 			return true
@@ -168,10 +172,13 @@ export default {
 			return this.$store.state.resource_isLoading
 		}
 	},
-	data() {
-		return {}
-	},
+	created () {
+		window.addEventListener('beforeunload', this.reload)
+  	},
 	methods: {
+		reload() {
+			localStorage.setItem("cookbook_isReloaded", true)
+		},
 		addVariety() {
 			alert('Coming soon');
 		},

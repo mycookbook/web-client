@@ -2,6 +2,7 @@ require('es6-promise').polyfill();
 
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 import VueResource from 'vue-resource';
 
 import { cookbookStore } from './modules/cookbookStore.js'
@@ -23,7 +24,29 @@ export default new Vuex.Store({
 			definitions: process.env.BASE_URL + 'definitions'
 		},
 		resource_isLoading: true
-    }),
+	}),
+	mutations: {
+        SET_RESOURCES_STATE(state, newState) {
+            this.state.resource_isLoading = false
+            localStorage.setItem("cookbooks", JSON.stringify(newState.data))
+        }
+    },
+	actions: {
+        reload_global_resources(context) {
+            axios.get(this.state.named_urls.cookbook_resources)
+            .then(function (response) {
+                // const oldState = JSON.parse(context.state.cookbooks)
+                const newState = response.data
+               
+                //todo: compare oldState vs newState before updating store with newState
+                context.commit('SET_RESOURCES_STATE', newState)
+            })
+            .catch(function (error) {
+                console.log('there was an error fetching this recipe from the api', error);
+            })
+            .then(function () {});
+        }
+    },
 	modules: {
 		cookbookStore,
 		recipeStore,
