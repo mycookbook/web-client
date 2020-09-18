@@ -17,7 +17,7 @@
 			<div class="sixteen wide column">
 				<h3>
 					<a class="ui red tag label">
-						Hot deals
+						Save Money
 					</a>
 				</h3>
 				<img class="ui image" src="https://karmasnack.com/wp-content/uploads/2014/03/PIZZA.png" />
