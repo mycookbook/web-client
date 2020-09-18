@@ -45,7 +45,7 @@
 					class="item" 
 					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
 						<button class="ui button tbb">
-							+ Register
+							<small>+ Become a Contributor</small>
 						</button>
 					</a>
 					</router-link>
