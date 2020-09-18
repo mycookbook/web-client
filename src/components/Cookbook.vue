@@ -23,15 +23,13 @@
 					v-for="user in cookbook.users"
 				>
 				<div class="ui small button" title="View all contributors">
-					<small class="contributors-count">
-						1M+ Contributors
+					<small class="contributors-count" v-if="cookbook.users.length == 1">
+						Cookbook admin
+					</small>
+					<small class="contributors-count" v-else>
+						{{ cookbook.users.length }} Contributor(s)
 					</small>
 				</div>
-			</div>
-			<div class="ui small button" v-else>
-				<small class="contributors-count">
-					0 Contributors
-				</small>
 			</div>
 		</div><br />
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
@@ -146,7 +144,7 @@
 					<div v-else>
 						<em>
 							<small>Nothing to show you! Do you know a recipe suitable for this cookbook? 
-								<a href="/#/register">Sign up for a contributor account</a> and start adding recipes right away.
+								<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.
 							</small>
 						</em>
 					</div>
