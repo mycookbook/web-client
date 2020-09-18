@@ -52,7 +52,7 @@ export const cookbookStore = {
             localStorage.setItem('sortBy', payload)
         },
         SET_COOKBOOK_STATE(state, newState) {
-            this.state.resource_isLoading = false
+            this.state.resource_isLoading = true
             state.cookbook = newState
         }
     },
@@ -61,6 +61,7 @@ export const cookbookStore = {
             localStorage.setItem("recipe_isReloaded", false)
             localStorage.setItem("cookbook_isReloaded", false)
             localStorage.setItem("user_isReloaded", false)
+
             axios.get(this.state.named_urls.cookbook_resources)
             .then(function (response) {
                 localStorage.setItem('cookbooks', JSON.stringify(response.data.data))

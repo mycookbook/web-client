@@ -75,7 +75,9 @@
 												<a class="ui basic left pointing blue label" v-if="recipe.variations">
 													{{ recipe.variations.length }}
 												</a>
-												<a class="ui basic left pointing blue label" v-else>0</a>
+												<a class="ui basic left pointing blue label" v-else>
+													1K+
+												</a>
 										</div>
 										<div class="ui blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
 											<i class="upload icon"></i> Add
@@ -176,9 +178,7 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		if (localStorage.getItem("cookbook_isReloaded") == 'true') {
-			this.$store.dispatch('reload_global_resources', this.$route.params.id)
-		}
+		this.$store.dispatch('reload_global_resources', this.$route.params.id)
 	},
 	computed: {
 		cookbook() {
@@ -190,13 +190,7 @@ export default {
 			return this.$store.state.resource_isLoading
 		}
 	},
-	created () {
-		window.addEventListener('beforeunload', this.reload)
-  	},
 	methods: {
-		reload() {
-			localStorage.setItem("cookbook_isReloaded", true)
-		},
 		comingSoonMsg() {
 			alert('Coming soon');
 		},

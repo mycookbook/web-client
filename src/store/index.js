@@ -23,7 +23,7 @@ export default new Vuex.Store({
 			user_resources: process.env.BASE_URL + 'users',
 			definitions: process.env.BASE_URL + 'definitions'
 		},
-		resource_isLoading: true
+		resource_isLoading: false
 	}),
 	mutations: {
         SET_RESOURCES_STATE(state, newState) {
@@ -33,6 +33,8 @@ export default new Vuex.Store({
     },
 	actions: {
         reload_global_resources(context) {
+            this.state.resource_isLoading = true
+            
             axios.get(this.state.named_urls.cookbook_resources)
             .then(function (response) {
                 // const oldState = JSON.parse(context.state.cookbooks)
