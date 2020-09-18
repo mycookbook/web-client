@@ -34,8 +34,23 @@
 					<img class="ui small image" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
 					<img class="ui small image" src="https://alittlebityummy.com/wp-content/uploads/2017/12/Quinoa-Porridge-with-Berries-_-Cinnamon-Portrait.jpg" />
 					<img class="ui small image" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
+					<img class="ui small image" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
+					<img class="ui small image" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
+					<img class="ui small image" src="https://alittlebityummy.com/wp-content/uploads/2017/12/Quinoa-Porridge-with-Berries-_-Cinnamon-Portrait.jpg" />
+					<img class="ui small image" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
+					<img class="ui small image" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
+					<img class="ui small image" src="https://alittlebityummy.com/wp-content/uploads/2017/12/Quinoa-Porridge-with-Berries-_-Cinnamon-Portrait.jpg" />
+					<img class="ui small image" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
 
 				</div>
+			</div>
+		</div>
+		<div class="ui grid">
+			<div class="ui sixteen wide column">
+				<h3>
+					Thanksgiving with Laura Vitale
+				</h3>
+				<div class="ui embed" data-url="https://www.youtube.com/embed/-2wKZdBpVlw" data-placeholder="https://i.insider.com/564b4e252491f99d008b5c28?width=900&format=jpeg&auto=webp"></div>
 			</div>
 		</div>
 		<Contact />

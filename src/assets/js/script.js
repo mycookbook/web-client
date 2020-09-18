@@ -9,4 +9,5 @@ $(function() {
 		title: 'Click to view submissions'
 	})
 	$('.ui.rating').rating();
+	$('.url.example .ui.embed').embed();
 });
