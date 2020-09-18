@@ -25,7 +25,7 @@
 		</div>
 		<div class="ui grid">
 			<div class="ui sixteen wide column">
-				<h3>Holiday picks just for you</h3>
+				<h3>Based on popular demand</h3>
 				<div class="ui horizontal images">
 					<img class="ui small image" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
 					<img class="ui small image" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
