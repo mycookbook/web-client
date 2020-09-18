@@ -142,11 +142,7 @@
 							</div>
 						</div>
 						<div v-else>
-							<em>
-								<small>Nothing to show you! Do you know a recipe suitable for this cookbook? 
-									<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.
-								</small>
-							</em>
+							<NothingToShowYou :htmlText="actionText" />
 						</div>
 					</div>
 					<div class="two wide computer column sixteen wide mobile column">
@@ -170,6 +166,7 @@
 </template>
 
 <script>
+import NothingToShowYou from './NothingToShowYou.vue';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
@@ -186,6 +183,11 @@ export default {
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
+		}
+	},
+	data() {
+		return {
+			actionText: '<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.'
 		}
 	},
 	methods: {
@@ -221,6 +223,7 @@ export default {
 		}
 	},
 	components: {
+		NothingToShowYou,
 		Navigation,
 		Contact,
 		Bottom,
