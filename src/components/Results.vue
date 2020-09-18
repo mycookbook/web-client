@@ -45,12 +45,15 @@
 				</div>
 			</div>
 		</div>
+		<br /><br />
 		<div class="tvn horizontal stroke"></div>
 	</div>
 	<div class="ui sixteen wide column" v-else>
 		<div style="text-align:center!important;">
 			<p class="ui item button">Nothing to show you!</p>
 		</div>
+		<br /><br />
+		<div class="tvn horizontal stroke"></div>
 	</div>
 </div>
 </template>
