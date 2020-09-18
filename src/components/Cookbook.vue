@@ -40,17 +40,17 @@
 		</div>
 		<div class="ui grid">
 			<div class="fourteen wide column">
-				<div v-if="hasRecipes">
+				<div v-if="cookbook.recipes">
 					<div v-for="recipe in cookbook.recipes" :key="recipe.id">
 						<div class="ui grid">
 							<div class="four wide computer column sixteen wide mobile column">
-								<div class="ui header">
-									<h3>{{ recipe.name }} </h3>
+								<div class="ui header capitalized">
+									<h3>{{ recipe.name }}</h3>
 								</div>
-								<div class="ui ribbon label">
-									Prep &#38; Cook Time: {{ recipe.total_time }}
-								</div>
-								<div>
+								<div class="ui massive image">
+									<div class="ui orange left ribbon label">
+										Prep &#38; Cook Time: {{ recipe.total_time }}
+									</div>
 									<router-link :to="{
 										name: 'Recipe',
 										params: {
@@ -58,27 +58,27 @@
 											recipeId: recipe.id
 										}}">
 										<img 
-											class="ui massive image" 
 											:src="recipe.imgUrl" 
 											:alt="recipe.name"
 											>
-									</router-link>
-									<div>
-									<div class="ui labels">
-										<a class="ui label" id="viewRecipeSubmissionsTitleText">
-											Variety Submissions:
-											<div class="detail" v-if="recipe.variations">
-												{{ recipe.variations.length }}
-											</div>
-											<div class="detail" v-else>
-												0
-											</div>
-										</a>
-										<a class="ui blue button label right floated" @click=addVariety() id="addRecipeButtonTitleText">
-											+ Add
-										</a>
+									</router-link>	
+								</div>
+								<div>
+									<div class="ui tiny fluid buttons">
+										<div class="ui tiny labeled button" tabindex="0">
+											<div class="ui basic blue button">
+												<i class="fork icon"></i> 
+												Varieties
+												</div>
+												<a class="ui basic left pointing blue label" v-if="recipe.variations">
+													{{ recipe.variations.length }}
+												</a>
+												<a class="ui basic left pointing blue label" v-else>0</a>
+										</div>
+										<div class="ui tiny blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
+											<i class="upload icon"></i> Add
+										</div>
 									</div>
-								</div>		
 								</div>	
 							</div>
 							<div class="ten wide computer column sixteen wide mobile column">
@@ -173,7 +173,7 @@ import Bottom from './Bottom.vue';
 export default {
 	mounted() {
 		if (localStorage.getItem("cookbook_isReloaded") == 'true') {
-			this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
+			this.$store.dispatch('reload_global_resources', this.$route.params.id)
 		}
 	},
 	computed: {
@@ -181,9 +181,6 @@ export default {
 			return this.$store.getters['get_cookbook'](
 				this.$route.params.id,
 			);
-		},
-		hasRecipes() {
-			return true
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
@@ -251,5 +248,8 @@ export default {
 }
 .contributor-avatar {
 	margin-right: -18px!important;;
+}
+.capitalized {
+	text-transform: capitalize!important;
 }
 </style>
