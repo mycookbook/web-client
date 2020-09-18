@@ -45,6 +45,6 @@
 
 <style scoped>
 .beta {
-	background: #daa520!important;;
+	background: grey!important;;
 }
 </style>
