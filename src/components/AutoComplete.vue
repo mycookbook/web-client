@@ -8,7 +8,10 @@
 		<div class="ui divided selection list" style="text-transform: capitalize;" v-if="results.length == 0">
 			<div class="item description">
 				<small>
-					no results. Know the recipe? <a href="/#/register">Add it</a>
+					no results. 
+					<em>
+						Know how to prepare <span id="qStr">{{ qStr }}</span>? <a href="/#/register">Add it</a>
+					</em>
 				</small>
 				<hr />
 			</div>
@@ -147,5 +150,8 @@ export default {
 }
 .selection .description .meta{
 	font-weight: bold;
+}
+#qStr {
+	background-color: yellow!important;
 }
 </style>
