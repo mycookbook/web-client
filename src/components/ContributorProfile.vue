@@ -140,35 +140,24 @@ import Bottom from './Bottom.vue';
 export default {
     name: "ContributorProfile",
     mounted() {
-        if (localStorage.getItem("user_isReloaded") == 'true') {
-			this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
-        }
+       this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
     },
-    created () {
-		window.addEventListener('beforeunload', this.reload)
-      },
-      computed: {
-          user() {
-			return this.$store.getters['get_user'](
+    computed: {
+        user() {
+            return this.$store.getters['get_user'](
                 this.$route.params.cookbookId,
                 this.$route.params.recipeId,
                 this.$route.params.username
-			);
+            );
         },
         isLoading() {
-			return this.$store.state.resource_isLoading
+            return this.$store.state.resource_isLoading
         },
         followTitleText() {
             return 'Follow ' + this.user.name + ' to learn about their new recipes.'
         }
-      },
-    data() {
-        return {}
     },
     methods: {
-        reload() {
-			localStorage.setItem("user_isReloaded", true)
-		},
         getMapAddr: function($q) {
             return ' http://maps.google.com/?q=' + $q
         },
