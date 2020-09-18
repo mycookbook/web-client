@@ -24,8 +24,8 @@
 						v-for="user in cookbook.users"
 					>
 					<div class="ui small button" title="View all contributors">
-						<small>
-							Contributors +1 more
+						<small class="contributors-count">
+							1M+ Contributors
 						</small>
 					</div>
 				</div>
@@ -64,8 +64,8 @@
 									</router-link>	
 								</div>
 								<div>
-									<div class="ui tiny fluid buttons">
-										<div class="ui tiny labeled button" tabindex="0">
+									<div class="ui mini fluid buttons">
+										<div class="ui labeled button" tabindex="0">
 											<div class="ui basic blue button">
 												<i class="fork icon"></i> 
 												Varieties
@@ -75,7 +75,7 @@
 												</a>
 												<a class="ui basic left pointing blue label" v-else>0</a>
 										</div>
-										<div class="ui tiny blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
+										<div class="ui blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
 											<i class="upload icon"></i> Add
 										</div>
 									</div>
@@ -251,5 +251,8 @@ export default {
 }
 .capitalized {
 	text-transform: capitalize!important;
+}
+.contributors-count {
+	padding-left: 5px;
 }
 </style>
