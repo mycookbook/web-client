@@ -44,7 +44,7 @@ export const registerStore = {
         register(context, payload) {
             context.commit('SET_BTN_LOADING_STATE')
 
-            let url = process.env.BASE_URL + '/auth/register'
+            let url = process.env.BASE_URL + 'auth/register'
             axios.post(url, {
                 name: payload.fullName,
                 email: payload.email,

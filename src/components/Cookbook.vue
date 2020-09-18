@@ -76,97 +76,97 @@
 												<a class="ui basic left pointing blue label" v-else>
 													1K+
 												</a>
+											</div>
+											<div class="ui blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
+												<i class="upload icon"></i> Add
+											</div>
 										</div>
-										<div class="ui blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
-											<i class="upload icon"></i> Add
+									</div>	
+								</div>
+								<div class="ten wide computer column sixteen wide mobile column">
+									<div class="ui header"></div>
+									<div class="ui header"></div>
+									<div>{{ recipe.summary }}</div><br />
+									<div class="ui light blue label ingredients-list"
+									v-for="ingredient in recipeIngredients(recipe.ingredients)"
+									v-bind:key="ingredient.id">
+										{{ ingredient }}
+									</div>			
+								</div>
+								<div class="two wide computer column sixteen wide mobile column">
+									<div class="ui nutr_info">
+										<em>NUTR. INFO</em>
+										<i class="caret square down icon"></i>
+									</div>
+										<div class="ui flowing popup transition hidden">
+											<div class="ui four column divided center">
+												<div class="column">
+													<span>
+														<h3>{{ computeCalories(recipe.nutritional_detail) }}</h3>
+													</span>
+													<span>
+														<h3 class="ui teal header">Calories</h3>
+													</span> <hr />
+												</div>
+												<div class="column">
+													<span>
+														<h3>{{ computeCarbs(recipe.nutritional_detail) }}</h3>
+													</span>
+													<span>
+														<h3 class="ui teal header">Carbs</h3>
+													</span> <hr />
+												</div>
+												<div class="column">
+													<span>
+														<h3>{{ computeFat(recipe.nutritional_detail) }}</h3>
+													</span>
+													<span>
+														<h3 class="ui teal header">Fat</h3>
+													</span> <hr />
+												</div> -->
+												<div class="column">
+													<span>
+														<h3>{{ computeProtein(recipe.nutritional_detail) }}</h3>
+													</span>
+													<span>
+														<h3 class="ui teal header">Protein</h3>
+													</span> <hr />
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>	
-							</div>
-							<div class="ten wide computer column sixteen wide mobile column">
-								<div class="ui header"></div>
-								<div class="ui header"></div>
-								<div>{{ recipe.summary }}</div><br />
-								<div class="ui light blue label ingredients-list"
-								v-for="ingredient in recipeIngredients(recipe.ingredients)"
-								v-bind:key="ingredient.id">
-									{{ ingredient }}
-								</div>			
-							</div>
-							<div class="two wide computer column sixteen wide mobile column">
-								<div class="ui nutr_info">
-									<em>NUTR. INFO</em>
-									<i class="caret square down icon"></i>
 								</div>
-									<div class="ui flowing popup transition hidden">
-										<div class="ui four column divided center">
-											<div class="column">
-												<span>
-													<h3>{{ computeCalories(recipe.nutritional_detail) }}</h3>
-												</span>
-												<span>
-													<h3 class="ui teal header">Calories</h3>
-												</span> <hr />
-											</div>
-											<div class="column">
-												<span>
-													<h3>{{ computeCarbs(recipe.nutritional_detail) }}</h3>
-												</span>
-												<span>
-													<h3 class="ui teal header">Carbs</h3>
-												</span> <hr />
-											</div>
-											<div class="column">
-												<span>
-													<h3>{{ computeFat(recipe.nutritional_detail) }}</h3>
-												</span>
-												<span>
-													<h3 class="ui teal header">Fat</h3>
-												</span> <hr />
-											</div> -->
-											<div class="column">
-												<span>
-													<h3>{{ computeProtein(recipe.nutritional_detail) }}</h3>
-												</span>
-												<span>
-													<h3 class="ui teal header">Protein</h3>
-												</span> <hr />
-											</div>
-										</div>
-									</div>
-								</div>
+								<br><br>
+								<div class="tvn horizontal stroke"></div>
+								<br>
 							</div>
-							<br><br>
-							<div class="tvn horizontal stroke"></div>
-							<br>
+						</div>
+						<div v-else>
+							<em>
+								<small>Nothing to show you! Do you know a recipe suitable for this cookbook? 
+									<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.
+								</small>
+							</em>
 						</div>
 					</div>
-					<div v-else>
-						<em>
-							<small>Nothing to show you! Do you know a recipe suitable for this cookbook? 
-								<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.
-							</small>
-						</em>
-					</div>
-				</div>
-				<div class="two wide computer column sixteen wide mobile column">
-					<div>
-						<div class="ui blue button" @click="comingSoonMsg()">
-							Compare
+					<div class="two wide computer column sixteen wide mobile column">
+						<div>
+							<div class="ui blue button" @click="comingSoonMsg()">
+								Compare
+							</div>
 						</div>
-					</div>
-					<br />
-					<div>
-						<small>ad space</small>
-						<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
-						<small>ad space</small>
+						<br />
+						<div>
+							<small>ad space</small>
+							<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
+							<small>ad space</small>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	<Contact />
-	<Bottom />
-</div>
+		<Contact />
+		<Bottom />
+	</div>
 </template>
 
 <script>

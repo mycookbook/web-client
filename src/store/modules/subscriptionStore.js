@@ -21,6 +21,7 @@ export const subscriptionStore = {
             state.loadingBtn.state = true
         },
         ERROR_HAS_OCCURRED(state, errObj) {
+            console.log('errors', errObj)
             state.loadingBtn.state = false
             state.hasError = true
             state.errorMsg = Object.values(errObj)
@@ -44,7 +45,7 @@ export const subscriptionStore = {
         subscribeUser(context, payload) {
             context.commit('SET_BTN_LOADING_STATE')
 
-            let url = process.env.BASE_URL + '/subscriptions'
+            let url = process.env.BASE_URL + 'subscriptions'
             axios.post(url, {
                 email: payload
             })
