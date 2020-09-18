@@ -42,7 +42,7 @@
 		</div>
 		<div class="ui grid">
 			<div class="fourteen wide column">
-				<div v-if="cookbook.recipes">
+				<div v-if="cookbook.recipes.length > 0">
 					<div v-for="recipe in cookbook.recipes" :key="recipe.id">
 						<div class="ui grid">
 							<div class="four wide computer column sixteen wide mobile column">
