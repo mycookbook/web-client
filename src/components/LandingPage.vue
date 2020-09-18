@@ -28,30 +28,27 @@ import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 
 export default {
-  name: "LandingPage",
-  mounted () {
-	  store.dispatch('load_cookbooks')
-	  store.dispatch('load_definitions')
-  },
-  computed: {
-    cookbooks() {
-		return this.$store.state.cookbookStore.cookbooks
+	name: "LandingPage",
+	mounted () {
+		store.dispatch('load_definitions')
+		store.dispatch('load_cookbooks')
 	},
-	filters() {
-		if (this.$store.state.cookbookStore.definitions.categories.contents) {
-			return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
+	computed: {
+		cookbooks() {
+			return this.$store.state.cookbookStore.cookbooks
+		},
+		filters() {
+			if (this.$store.state.cookbookStore.definitions.categories.contents) {
+				return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
+			}
 		}
-	}
-  },
-  data () {
-    return {}
-  },
-  components: {
-    Search,
-    Navigation,
-    Contact,
-    Bottom,
-    QuickSort
-  },
+	},
+	components: {
+		Search,
+		Navigation,
+		Contact,
+		Bottom,
+		QuickSort
+	},
 }
 </script>

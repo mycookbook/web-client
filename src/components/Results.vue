@@ -47,11 +47,10 @@
 		</div>
 		<div class="tvn horizontal stroke"></div>
 	</div>
-	<div v-else>
-		<div class="ui active inverted dimmer">
-			<div class="ui text loader">Loading</div>
+	<div class="ui sixteen wide column" v-else>
+		<div style="text-align:center!important;">
+			<p class="ui item button">Nothing to show you!</p>
 		</div>
-		<p></p>
 	</div>
 </div>
 </template>

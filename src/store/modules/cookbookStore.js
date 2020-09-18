@@ -14,7 +14,7 @@ export const cookbookStore = {
             categories: [],
             nutritional_details: []
         },
-        allCookbooks: [],
+        allCookbooks: JSON.parse(localStorage.getItem('cookbooks')),
         sorted: [],
         sortBy: 'all'
     }),
