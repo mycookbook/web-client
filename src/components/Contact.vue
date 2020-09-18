@@ -9,7 +9,7 @@
 			<div class="ui action centered input">
 				<input type="text" placeholder="Your email address" v-model="email">
 				<button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="getSubscribed()">
-					Get started now
+					Be the first to know
 				</button>
 			</div>
 		</div>

@@ -23,9 +23,9 @@
                     </div>
                     <div class="ui tiny message">
                         <label>
-                            By hitting the submit button, you have agreed to our <a href="/#/terms-and-conditions">Terms and Conditions, </a>
-                        <a href="/#/usage-policy">Usage Policy</a> and 
-                        <a href="/#/data-retention-policy">Data Retention Policy</a>
+                            By hitting the submit button, you have agreed to our <a href="/#/terms-and-conditions">Terms &amp; Conditions, </a>
+                        <a href="/#/usage-policy">Usage</a> and 
+                        <a href="/#/data-retention-policy">Data Retention Policies</a>
                         </label>
                     </div>
                 </form>
