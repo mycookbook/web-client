@@ -142,9 +142,11 @@
 						</div>
 					</div>
 					<div v-else>
-						<p>No recipes yet? Know a recipe? 
-							<a href="/#/register">Add Recipe</a>
-						</p>
+						<em>
+							<small>Nothing to show you! Do you know a recipe suitable for this cookbook? 
+								<a href="/#/register">Sign up for a contributor account</a> and start adding recipes right away.
+							</small>
+						</em>
 					</div>
 				</div>
 				<div class="two wide computer column sixteen wide mobile column">
