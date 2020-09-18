@@ -8,35 +8,37 @@
 		<p></p>
 	</div>
 	<div v-else>
-		<div>
-			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-				<div class="ui header cookbook-title">
-					{{ cookbook.name }}
+		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
+			<div class="ui header cookbook-title">
+				{{ cookbook.name }}
+			</div>
+			<div class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
+				<i class="ui bell icon"></i>
+				SUBSCRIBE
+			</div>
+			<div class="ui images" v-if="cookbook.users.length > 0">
+				<img class="ui mini circular image contributor-avatar"
+					:title="user.name"
+					:src="user.avatar"
+					v-for="user in cookbook.users"
+				>
+				<div class="ui small button" title="View all contributors">
+					<small class="contributors-count">
+						1M+ Contributors
+					</small>
 				</div>
-				<div class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
-					<i class="ui bell icon"></i>
-					SUBSCRIBE
-				</div>
-				<div class="ui images" v-if="cookbook.users">
-					<img class="ui mini circular image contributor-avatar"
-						:title="user.name"
-						:src="user.avatar"
-						v-for="user in cookbook.users"
-					>
-					<div class="ui small button" title="View all contributors">
-						<small class="contributors-count">
-							1M+ Contributors
-						</small>
-					</div>
-				</div>
+			</div>
+			<div class="ui small button" v-else>
+				<small class="contributors-count">
+					0 Contributors
+				</small>
+			</div>
+		</div><br />
+		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
+			<div class="ui message">
+				{{ cookbook.description }} 
 			</div>
 			<br />
-			<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-				<div class="ui message">
-					{{ cookbook.description }} 
-				</div>
-				<br />
-			</div>
 		</div>
 		<div class="ui grid">
 			<div class="fourteen wide column">
@@ -139,7 +141,7 @@
 							<br>
 						</div>
 					</div>
-					<div>
+					<div v-else>
 						<p>No recipes yet? Know a recipe? 
 							<a href="/#/register">Add Recipe</a>
 						</p>
@@ -159,7 +161,7 @@
 					</div>
 				</div>
 			</div>
-	</div>
+		</div>
 	<Contact />
 	<Bottom />
 </div>
