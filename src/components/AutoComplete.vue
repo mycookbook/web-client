@@ -7,7 +7,10 @@
     <div class="search-results" v-show="searching">
 		<div class="ui divided selection list" style="text-transform: capitalize;" v-if="results.length == 0">
 			<div class="item description">
-				no results
+				<small>
+					no results. Know the recipe? <a href="/#/register">Add it</a>
+				</small>
+				<hr />
 			</div>
 		</div>
 		<div v-else>
