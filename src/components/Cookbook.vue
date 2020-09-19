@@ -79,9 +79,9 @@
 												{{ recipe.varieties_count }}
 												</div>
 											</div>
-											<div class="ui orange button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
+											<div class="ui orange button" @click="comingSoonMsg()" id="addRecipeButtonTitleText" tabindex="0">
 												<i class="plus icon"></i> 
-												Add new variety
+												Submit a variety
 											</div>
 										</div>
 									</div>	
