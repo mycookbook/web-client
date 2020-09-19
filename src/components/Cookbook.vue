@@ -10,7 +10,13 @@
 	<div v-else>
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
 			<div class="ui header cookbook-title">
-				{{ cookbook.name }}
+				<div class="ui small breadcrumb">
+					<a class="section" href="/">back home</a>
+					<i class="left chevron icon divider"></i>
+					<div class="active section">
+						{{ cookbook.name }}
+					</div>
+				</div>
 			</div>
 			<div class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
 				<i class="ui bell icon"></i>
@@ -66,18 +72,18 @@
 								<div>
 									<div class="ui mini fluid buttons">
 										<div class="ui labeled button" tabindex="0">
-											<div class="ui basic blue button">
+											<div class="ui basic orange button" title="This represents the number of varieties submitted for this recipe">
 												<i class="fork icon"></i> 
-												Varieties
+												Forked
 												</div>
-												<a class="ui basic left pointing blue label" v-if="recipe.variations">
+												<a class="ui basic left pointing orange label" v-if="recipe.variations">
 													{{ recipe.variations.length }}
 												</a>
-												<a class="ui basic left pointing blue label" v-else>
+												<a class="ui basic left pointing orange label" v-else>
 													1K+
 												</a>
 											</div>
-											<div class="ui blue button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
+											<div class="ui orange button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
 												<i class="upload icon"></i> Add
 											</div>
 										</div>
