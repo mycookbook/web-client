@@ -72,19 +72,16 @@
 								<div>
 									<div class="ui mini fluid buttons">
 										<div class="ui labeled button" tabindex="0">
-											<div class="ui basic orange button" title="This represents the number of varieties submitted for this recipe">
+											<div class="ui basic orange button" 
+											title="This represents the number of varieties submitted for this recipe"
+											>
 												<i class="fork icon"></i> 
-												Forked
+												{{ recipe.varieties_count }}
 												</div>
-												<a class="ui basic left pointing orange label" v-if="recipe.variations">
-													{{ recipe.variations.length }}
-												</a>
-												<a class="ui basic left pointing orange label" v-else>
-													1K+
-												</a>
 											</div>
 											<div class="ui orange button" @click="addVariety()" id="addRecipeButtonTitleText" tabindex="0">
-												<i class="upload icon"></i> Add
+												<i class="plus icon"></i> 
+												Add new variety
 											</div>
 										</div>
 									</div>	
