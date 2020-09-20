@@ -10,19 +10,19 @@
                 <div class="content">
                     Dear talented developer, thank you for your interest in consuming our api for your projects. 
                     We are very happy that you're helping build mobile apps and services to help us reach our goal. 
-                    Unfortunately, CookbooksHQ API is currently in V1 and is not a public API. But in the near future, v2 will be released.
-                    v2 will be a public api. You will be needing an `APP KEY` and `APP SECRET` in order to consume the api. 
-                    Check back here again soon for updates.
+                    Unfortunately, CookbooksHQ API is currently in v1 and is not a public API. But in the near future, 
+                    v2 will be released. v2 will be a public api. You will be needing an `APP KEY` and `APP SECRET` 
+                    in order to consume the api. Check back here again soon for updates.
                 </div>
                <br /><br />
                 <div class="ui buttons">
-                    <div class="ui button">
+                    <div class="ui button disabled">
                         <i class="ui terminal icon"></i>
-                        <a href="htts://developers.cookbookshq.com">
+                        <a href="https://developers.cookbookshq.com" target="_blank">
                             Developer Console
                         </a>
                     </div>
-                     <div class="ui blue button">
+                     <div class="ui blue button disabled">
                          <i class="ui code icon"></i>
                         Documentation
                     </div>
