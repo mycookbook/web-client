@@ -9,7 +9,8 @@ import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
 import TermsAndConditions from '@/components/legal/TermsAndConditions';
 import VarietiesList from '@/components/VarietiesList.vue';
 import Variety from '@/components/Variety.vue';
-import ContributorProfile from '@/components/ContributorProfile.vue'
+import ContributorProfile from '@/components/ContributorProfile.vue';
+import Developers from '@/components/Developers.vue';
 
 Vue.use(Router);
 
@@ -80,6 +81,10 @@ export default new Router({
 			template: '<div>see all recipes</div>',
 		}
     }, {
+		path: '/developers',
+		name: 'Developers',
+		component: Developers
+	}, {
       path: '*',
       component: {
         template: '<div>' +

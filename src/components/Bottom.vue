@@ -25,7 +25,7 @@
 					</a>
 				</router-link>
 				<router-link :to="{
-					name: 'Home'
+					name: 'Developers'
 				}">
 					<a class="item" title="API and Documentation for developers">
 						API <sup class="ui mini label beta">Beta</sup>

@@ -1,0 +1,64 @@
+<template>
+    <div class="ui grid container">
+        <div class="ui grid">
+            <Navigation />
+            <div class="sixteen wide mobile column sixteen wode mobile column contents">
+                <div class="title">
+                    CookbooksHQ API v1 <i class="ui small tag icon"></i>
+                </div>
+                <div class="ui divider"></div>
+                <div class="content">
+                    Dear talented developer, thank you for your interest in consuming our api for your projects. 
+                    We are very happy that you're helping build mobile apps and services to help us reach our goal. 
+                    Unfortunately, CookbooksHQ API is currently in V1 and is not a public API. But in the near future, v2 will be released.
+                    v2 will be a public api. You will be needing an `APP KEY` and `APP SECRET` in order to consume the api. 
+                    Check back here again soon for updates.
+                </div>
+               <br /><br />
+                <div class="ui buttons">
+                    <div class="ui button">
+                        <i class="ui terminal icon"></i>
+                        <a href="htts://developers.cookbookshq.com">
+                            Developer Console
+                        </a>
+                    </div>
+                     <div class="ui blue button">
+                         <i class="ui code icon"></i>
+                        Documentation
+                    </div>
+                </div>
+            </div>
+            <Contact />
+            <Bottom />
+        </div>
+    </div>
+</template>
+
+<script>
+import Navigation from './Navigation';
+import Contact from './Contact.vue';
+import Bottom from './Bottom.vue';
+
+export default {
+    name: 'Developers',
+    components: {
+        Navigation,
+        Contact,
+        Bottom
+    }
+}
+</script>
+
+<style scoped>
+.contents {
+    margin-top: 25vh!important;
+}
+.title {
+    font-size: 25px;
+    font-weight: 300!important;
+}
+.content {
+    font-weight:300!important;
+    padding-right: 45px;
+}
+</style>

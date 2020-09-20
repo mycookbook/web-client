@@ -1,5 +1,5 @@
 <template>
-<div class="ui container" style="margin-top:6vh; border-top:1px solid #cccccc">
+<div class="ui container" style="width: 100%; border-top:1px solid #cccccc; margin-top: 5%;">
 	<div class="ui grid">
 		<div class="ui ten wide computer column sixteen wide mobile column">
 			<img class="ui large left floated image" src="/static/signup-img.png" 
