@@ -11,7 +11,7 @@
                     Dear talented developer, thank you for your interest in consuming our api for your projects. 
                     We are very happy that you're helping build mobile apps and services to help us reach our goal. 
                     Unfortunately, CookbooksHQ API is currently in v1 and is not a public API. But in the near future, 
-                    v2 will be released. v2 will be a public api. You will be needing an `APP KEY` and `APP SECRET` 
+                    v2 will be released. v2 will be a public api. You will be needing an `APP_KEY` and `APP_SECRET` 
                     in order to consume the api. Check back here again soon for updates.
                 </div>
                <br /><br />
