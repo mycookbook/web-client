@@ -26,14 +26,17 @@ export default new Vuex.Store({
 		resource_isLoading: false
 	}),
 	mutations: {
-        SET_RESOURCES_STATE(state, newState) {
+        SET_RESOURCES_STATE_TO_FALSE(state, newState) {
             this.state.resource_isLoading = false
             localStorage.setItem("cookbooks", JSON.stringify(newState.data))
+        },
+        SET_RESOURCES_STATE_TO_TRUE() {
+            this.state.resource_isLoading = true
         }
     },
 	actions: {
         reload_global_resources(context) {
-            this.state.resource_isLoading = true
+            context.commit('SET_RESOURCES_STATE_TO_TRUE')
             
             axios.get(this.state.named_urls.cookbook_resources)
             .then(function (response) {
@@ -41,7 +44,7 @@ export default new Vuex.Store({
                 const newState = response.data
                
                 //todo: compare oldState vs newState before updating store with newState
-                context.commit('SET_RESOURCES_STATE', newState)
+                context.commit('SET_RESOURCES_STATE_TO_FALSE', newState)
             })
             .catch(function (error) {
                 console.log('there was an error fetching this recipe from the api', error);
