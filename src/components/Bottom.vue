@@ -2,7 +2,14 @@
 <div>
 	<div class="ui grid">
 		<div class="fourteen wide computer column sixteen wide mobile column">
-			<div class="ui secondary menu flex-container">
+			<div class="ui secondary menu">
+				<router-link :to="{
+					name: 'UsagePolicy'
+				}">
+					<a class="item"  title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
+						Usage Policy
+					</a>
+				</router-link>
 				<router-link :to="{
 					name: 'TermsAndConditions'
 				}">

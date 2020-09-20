@@ -11,15 +11,11 @@
 		<div class="eight wide mobile twelve wide tablet ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
-					<router-link :to="{
-						name: 'UsagePolicy'
-					}">
-						<a class="item rl-fix"  title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
-							Usage Policy
-						</a>
-					</router-link>
-						<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com" @click="showSubscriptionsChannels">
-							Subscriptions
+						<a class="item" 
+						title="Search and find recipes from contributors that are open to taking orders." 
+						@click="comingSoon">
+							<i class="cart icon"></i>
+							Place an order
 						</a>
 						<a 
 						class="item" 
@@ -55,7 +51,9 @@
 					<a class="ui secondary menu item">
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
-					<a class="ui secondary menu item">Subscriptions</a>
+					<a class="ui secondary menu item">
+						Subscriptions
+					</a>
 					<a class="ui secondary menu item">
 						<button class="ui light red button">
 							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
@@ -105,8 +103,8 @@ export default {
 		toggleMobileMenu: function() {
 			this.isMobile = !this.isMobile
 		},
-		showSubscriptionsChannels: function() {
-			alert('subscribe to notifications')
+		comingSoon: function() {
+			alert('Coming soon.')
 		}
 	}
 };
