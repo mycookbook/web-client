@@ -12,10 +12,10 @@
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
 						<a class="item" 
-						title="Search and find recipes from contributors that are open to taking orders." 
+						title="Some authors are open to taking orders. That means you can browse a wide collection of this category of recipes and place order on the ones you like." 
 						@click="comingSoon">
 							<i class="cart icon"></i>
-							Place an order
+							Go to Marketplace
 						</a>
 						<a 
 						class="item" 

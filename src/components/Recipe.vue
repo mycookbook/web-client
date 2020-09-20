@@ -104,7 +104,7 @@
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
 						<div class="item">
-							<img class="ui mini circular image" :src="recipe.my_cookbook.author.avatar">
+							<img class="ui mini circular image" :src="recipe.my_cookbook.author.avatar" :title="recipe.my_cookbook.author.name">
 							<div class="content">
 								<div class="ui sub header">
 									submitted by:
