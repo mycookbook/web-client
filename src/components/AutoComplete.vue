@@ -22,7 +22,16 @@
 					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
 						{{ result.resource_type }}
 					</div>
-					<em>{{ result.name }}</em>
+					<em>
+						<span>
+							{{ result.name }}
+						</span>
+						<span v-if="result.resource_type == 'recipe' && result.is_orderable ">
+							<small class="ui mini label">
+								Available for placing orders
+							</small>
+						</span>
+					</em>
 					<div class="description">
 						<span class="ui left floated" v-if="result.resource_type == 'cookbook'">
 							{{ result.description | truncate(115, '...') }}
