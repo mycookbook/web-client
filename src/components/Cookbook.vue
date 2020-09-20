@@ -23,19 +23,7 @@
 				SUBSCRIBE
 			</div>
 			<div class="ui images" v-if="cookbook.users.length > 0">
-				<img class="ui mini circular image contributor-avatar"
-					:title="user.name"
-					:src="user.avatar"
-					v-for="user in cookbook.users"
-				>
-				<div class="ui small button" title="View all contributors">
-					<small class="contributors-count" v-if="cookbook.users.length == 1">
-						Cookbook admin
-					</small>
-					<small class="contributors-count" v-else>
-						{{ cookbook.users.length }} Contributor(s)
-					</small>
-				</div>
+				<CookbookContributors :contributors="cookbook.users" />
 			</div>
 		</div><br />
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
@@ -169,6 +157,7 @@
 </template>
 
 <script>
+import CookbookContributors from './CookbookContributors';
 import NothingToShowYou from './NothingToShowYou.vue';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
@@ -226,6 +215,7 @@ export default {
 		}
 	},
 	components: {
+		CookbookContributors,
 		NothingToShowYou,
 		Navigation,
 		Contact,
