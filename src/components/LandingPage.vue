@@ -1,12 +1,3 @@
-<!--
-@Author: Okosun Florence <florenceokosun>
-@Date:   02-12-2017
-@Email:  okosunuzflorence@gmail.com
-@Filename: LandingPage.vue
-@Last modified by:   florenceokosun
-@Last modified time: 01-01-2018
--->
-
 <template>
 <div>
 	<div class="ui container">
@@ -27,14 +18,62 @@
 			<div class="ui sixteen wide column">
 				<h3>Based on popular demand</h3>
 				<div class="ui four column grid">
-					<img class="ui small image column" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
-					<img class="ui small image column" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
-					<img class="ui small image column" src="https://alittlebityummy.com/wp-content/uploads/2017/12/Quinoa-Porridge-with-Berries-_-Cinnamon-Portrait.jpg" />
-					<img class="ui small image column" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
-					<img class="ui small image column" src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" />
-					<img class="ui small image column" src="https://alittlebityummy.com/wp-content/uploads/2017/12/Quinoa-Porridge-with-Berries-_-Cinnamon-Portrait.jpg" />
-					<img class="ui small image column" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
-					<img class="ui small image column" src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" />
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
+					<div class="column" href="/">
+						<a href="/">
+							<img class="ui image" 
+								src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
+							/>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
