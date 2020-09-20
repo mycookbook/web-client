@@ -1,12 +1,3 @@
-<!--
-@Author: Okosun Florence <florenceokosun>
-@Date:   02-12-2017
-@Email:  okosunuzflorence@gmail.com
-@Filename: Navigation.vue
-@Last modified by:   florenceokosun
-@Last modified time: 28-02-2018
--->
-
 <template>
 <div>
 	<div class="ui top fixed menu grid mobile hidden">
@@ -23,34 +14,34 @@
 					<router-link :to="{
 						name: 'UsagePolicy'
 					}">
-					<a class="item rl-fix"  title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
-						Usage Policy
-					</a>
+						<a class="item rl-fix"  title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
+							Usage Policy
+						</a>
 					</router-link>
-					<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com" @click="showSubscriptionsChannels">
-						Subscriptions
-					</a>
-					<a 
-					class="item" 
-					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
-						<button class="ui light red button">
-							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
-						</button>
-					</a>
+						<a class="item" title="Customize what you want to be notified about. Property of cookbookshq.com" @click="showSubscriptionsChannels">
+							Subscriptions
+						</a>
+						<a 
+						class="item" 
+						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+							<button class="ui light red button">
+								<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
+							</button>
+						</a>
 					<router-link :to="{
 						name: 'Register'
 					}">
-					<a 
-					v-if="!isRegistrationRoute"
-					class="item" 
-					title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
-						<button class="ui button tbb">
-							<small>
-								<i class="plus icon"></i>
-								Become a Contributor
-							</small>
-						</button>
-					</a>
+						<a 
+						v-if="!isRegistrationRoute"
+						class="item" 
+						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+							<button class="ui button tbb">
+								<small>
+									<i class="plus icon"></i>
+									Become a Contributor
+								</small>
+							</button>
+						</a>
 					</router-link>
 					<a class="item"></a>
 				</div>
@@ -83,13 +74,16 @@
 	<div class="ui top fixed hidden menu mobile only">
 		<div class="ui grid container">
 			<div class="ui two wide column" id="hamburger-icon" @click="toggleMobileMenu()">
-			<i class="large bars icon"></i>
-		</div>
-		<div class="ui fourteen wide column brand">
-			<a href="/" class="ui medium image" title="cookbookshq brand logo">
-				<img class="logo" src="/static/logo_white.png" alt="cookbookinc brand logo" style="margin-top:-2vh;margin-left:9%;">
-			</a>
-		</div>
+				<i class="large bars icon"></i>
+			</div>
+			<div class="ui ten wide column container">
+				<a href="/" title="cookbookshq brand logo" class="ui large image">
+					<img 
+					src="/static/logo_white.png" 
+					class="brand-logo"
+					alt="cookbookinc brand logo">
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
@@ -141,5 +135,9 @@ body {
 }
 #hamburger-icon {
 	cursor: pointer;
+}
+.brand-logo {
+	margin-top:-4vh!important; 
+	margin-left:25px!important;
 }
 </style>
