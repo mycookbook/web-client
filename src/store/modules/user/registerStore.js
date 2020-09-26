@@ -67,7 +67,7 @@ export const registerStore = {
             let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
             let recipe = cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
             
-            return recipe.my_cookbook.author
+            return recipe.author
         }
     }
 }

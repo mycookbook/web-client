@@ -92,8 +92,8 @@
 				<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" :href="links.breadcrumbs.cookbookLink + recipe.my_cookbook.id">
-							{{ recipe.my_cookbook.name }}
+						<a class="section" :href="links.breadcrumbs.cookbookLink + recipe.cookbook_id">
+							{{ cookbook.name }}
 						</a>
 						<i class="right angle icon divider"></i>
 						<div class="active section">
@@ -104,7 +104,7 @@
 				<div class="sixteen wide column">
 					<div class="ui horizontal list">
 						<div class="item">
-							<img class="ui mini circular image" :src="recipe.my_cookbook.author.avatar" :title="recipe.my_cookbook.author.name">
+							<img class="ui mini circular image" :src="recipe.author.avatar" :title="recipe.author.name">
 							<div class="content">
 								<div class="ui sub header">
 									submitted by:
@@ -112,17 +112,17 @@
 										name: 'ContributorProfile',
 										params: {
 											recipeId: recipe.id,
-											username: recipe.my_cookbook.author.name_slug
+											username: recipe.author.name_slug
 										}}">
-										{{ recipe.my_cookbook.author.name }}
+										{{ recipe.author.name }}
 									</router-link>	
-									{{ recipe.my_cookbook.author.pronouns }}
+									{{ recipe.author.pronouns }}
 								</div>
 								<div class="transformToCapitalize">
-									{{ recipe.my_cookbook.author.expertise_level }}
+									{{ recipe.author.expertise_level }}
 								</div>
 								<div class="ui tiny label">
-									<b>Member since</b> {{ recipe.my_cookbook.author.created_at }} | {{ recipe.my_cookbook.author.contributions.total }} contribution(s)
+									<b>Member since</b> {{ recipe.author.created_at }} | {{ recipe.author.contributions.total }} contribution(s)
 								</div>
 							</div>
 						</div>
@@ -136,7 +136,7 @@
 				</div>
 				<div class="sixteen wide column img-container">
 					<img class="ui massive image" :src="recipe.imgUrl">
-					<button class="ui inverted white button" @click="comingSoonMsg()" v-if="recipe.my_cookbook.author.can_take_orders">
+					<button class="ui inverted white button" @click="comingSoonMsg()" v-if="recipe.author.can_take_orders">
 						Place Order
 					</button>
 				</div>
@@ -210,6 +210,11 @@ export default {
 			return this.$store.getters['get_recipe'](
 				this.$route.params.cookbookId,
 				this.$route.params.recipeId,
+			);
+		},
+		cookbook() {
+			return this.$store.getters['get_cookbook'](
+				this.$route.params.cookbookId
 			);
 		},
 		isLoading() {
