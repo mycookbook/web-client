@@ -21,9 +21,11 @@ export default new Vuex.Store({
 			cookbook_resources: process.env.BASE_URL + 'cookbooks',
 			recipe_resources: process.env.BASE_URL + 'recipes',
 			user_resources: process.env.BASE_URL + 'users',
-			definitions: process.env.BASE_URL + 'definitions'
+            definitions: process.env.BASE_URL + 'definitions',
+            policies: process.env.BASE_URL + 'policies'
 		},
-		resource_isLoading: false
+        resource_isLoading: false,
+        cookbooks: {}
 	}),
 	mutations: {
         SET_RESOURCES_STATE_TO_FALSE(state, newState) {
@@ -47,7 +49,7 @@ export default new Vuex.Store({
                 context.commit('SET_RESOURCES_STATE_TO_FALSE', newState)
             })
             .catch(function (error) {
-                console.log('there was an error fetching this recipe from the api', error);
+                console.log('there was an error fetching resources from the api', error);
             })
             .then(function () {});
         }

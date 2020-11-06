@@ -104,6 +104,7 @@ export default {
 	mounted () {
 		store.dispatch('load_definitions')
 		store.dispatch('load_cookbooks')
+		store.dispatch('load_policies')
 	},
 	computed: {
 		cookbooks() {

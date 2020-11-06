@@ -4,9 +4,10 @@ import LandingPage from '@/components/LandingPage';
 import Cookbook from '@/components/Cookbook';
 import Recipe from '@/components/Recipe';
 import Register from '@/components/Register';
-import UsagePolicy from '@/components/legal/UsagePolicy';
-import DataRetentionPolicy from '@/components/legal/DataRetentionPolicy';
-import TermsAndConditions from '@/components/legal/TermsAndConditions';
+import UsagePolicy from '@/components/policies/UsagePolicy';
+import CookiePolicy from '@/components/policies/CookiePolicy';
+import DataRetentionPolicy from '@/components/policies/DataRetentionPolicy';
+import TermsAndConditions from '@/components/policies/TermsAndConditions';
 import VarietiesList from '@/components/VarietiesList.vue';
 import Variety from '@/components/Variety.vue';
 import ContributorProfile from '@/components/ContributorProfile.vue';
@@ -24,6 +25,10 @@ export default new Router({
 		path: '/usage-policy',
 		name: 'UsagePolicy',
 		component: UsagePolicy,
+    }, {
+		path: '/cookie-policy',
+		name: 'CookiePolicy',
+		component: CookiePolicy,
     }, {
 		path: '/data-retention-policy',
 		name: 'DataRetentionPolicy',
