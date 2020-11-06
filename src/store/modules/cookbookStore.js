@@ -30,7 +30,7 @@ export const cookbookStore = {
             state.definitions.nutritional_details = definitions[1]
         },
         STORE_POLICIES(state, policies) {
-            state.policies.cookiePolicy = policies.cookiePolicy
+            state.policies.cookiePolicy = policies.cookiePolicy.content
             state.policies.usagePolicy = policies.usagePolicy
             state.policies.dataRetentionPolicy = policies.dataRetentionPolicy
             state.policies.termsAndConditons = policies.termsAndConditions

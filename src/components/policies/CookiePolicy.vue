@@ -4,9 +4,7 @@
 	<div class="ui container" style="margin-top:18vh;">
 		<div class="ui grid">
 			<div class="sixteen wide column">
-				<div v-html>
-					{{ policy }}
-				</div>
+				<div v-html="policy"></div>
 			</div>
 		</div>
 		<Contact />
