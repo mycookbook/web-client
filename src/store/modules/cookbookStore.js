@@ -16,24 +16,12 @@ export const cookbookStore = {
         },
         allCookbooks: JSON.parse(localStorage.getItem('cookbooks')),
         sorted: [],
-        sortBy: 'all',
-        policies: {
-            cookiePolicy: '',
-            usagePolicy: '',
-            dataRetentionPolicy: '',
-            termsAndConditons: ''
-        }
+        sortBy: 'all'
     }),
     mutations: {
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
             state.definitions.nutritional_details = definitions[1]
-        },
-        STORE_POLICIES(state, policies) {
-            state.policies.cookiePolicy = policies.cookiePolicy.content
-            state.policies.usagePolicy = policies.usagePolicy
-            state.policies.dataRetentionPolicy = policies.dataRetentionPolicy
-            state.policies.termsAndConditons = policies.termsAndConditions
         },
         SORT(state, payload) {
             if (payload === 'all') {
@@ -91,16 +79,6 @@ export const cookbookStore = {
                 console.log('There was an error loading definitions: ', error);
             })
             .then(function () {});
-        },
-        load_policies(context) {
-            axios.get(this.state.named_urls.policies)
-            .then(function (response) {
-                context.commit('STORE_POLICIES', response.data.response)
-            })
-            .catch(function (error) {
-                console.log('There was an error loading policies: ', error);
-            })
-            .then(function () {});
         }
     },
     getters: {
@@ -111,9 +89,6 @@ export const cookbookStore = {
         get_cookbooks: (state) => () => {
             const cookbooks = localStorage.getItem('cookbooks')
             return cookbooks
-        },
-        get_cookie_policy: (store) => () => {
-            return store.policies.cookiePolicy
         }
     },
 }

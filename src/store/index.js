@@ -25,7 +25,12 @@ export default new Vuex.Store({
             policies: process.env.BASE_URL + 'policies'
 		},
         resource_isLoading: false,
-        cookbooks: {}
+        policies: {
+            cookiePolicy: '',
+            usagePolicy: '',
+            dataRetentionPolicy: '',
+            termsAndConditons: ''
+        }
 	}),
 	mutations: {
         SET_RESOURCES_STATE_TO_FALSE(state, newState) {
@@ -34,7 +39,13 @@ export default new Vuex.Store({
         },
         SET_RESOURCES_STATE_TO_TRUE() {
             this.state.resource_isLoading = true
-        }
+        },
+        STORE_POLICIES(state, policies) {
+            state.policies.cookiePolicy = policies.cookiePolicy.content
+            state.policies.usagePolicy = policies.usagePolicy.content
+            state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
+            state.policies.termsAndConditons = policies.termsAndConditions.content
+        },
     },
 	actions: {
         reload_global_resources(context) {
@@ -52,6 +63,30 @@ export default new Vuex.Store({
                 console.log('there was an error fetching resources from the api', error);
             })
             .then(function () {});
+        },
+        load_policies(context) {
+            axios.get(this.state.named_urls.policies)
+            .then(function (response) {
+                context.commit('STORE_POLICIES', response.data.response)
+            })
+            .catch(function (error) {
+                console.log('There was an error loading policies: ', error);
+            })
+            .then(function () {});
+        }
+    },
+    getters: {
+        get_cookie_policy: (store) => () => {
+            return store.policies.cookiePolicy
+        },
+        get_data_retention_policy: (store) => () => {
+            return store.policies.dataRetentionPolicy
+        },
+        get_terms_and_conditions: (store) => () => {
+            return store.policies.termsAndConditons
+        },
+        get_usage_policy: (store) => () => {
+            return store.policies.usagePolicy
         }
     },
 	modules: {
