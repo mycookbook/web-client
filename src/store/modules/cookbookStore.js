@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { Store } from 'vuex';
 import VueResource from 'vue-resource';
 import axios from 'axios';
 
@@ -16,12 +16,24 @@ export const cookbookStore = {
         },
         allCookbooks: JSON.parse(localStorage.getItem('cookbooks')),
         sorted: [],
-        sortBy: 'all'
+        sortBy: 'all',
+        policies: {
+            cookiePolicy: '',
+            usagePolicy: '',
+            dataRetentionPolicy: '',
+            termsAndConditons: ''
+        }
     }),
     mutations: {
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
             state.definitions.nutritional_details = definitions[1]
+        },
+        STORE_POLICIES(state, policies) {
+            state.policies.cookiePolicy = policies.cookiePolicy
+            state.policies.usagePolicy = policies.usagePolicy
+            state.policies.dataRetentionPolicy = policies.dataRetentionPolicy
+            state.policies.termsAndConditons = policies.termsAndConditions
         },
         SORT(state, payload) {
             if (payload === 'all') {
@@ -79,6 +91,16 @@ export const cookbookStore = {
                 console.log('There was an error loading definitions: ', error);
             })
             .then(function () {});
+        },
+        load_policies(context) {
+            axios.get(this.state.named_urls.policies)
+            .then(function (response) {
+                context.commit('STORE_POLICIES', response.data.response)
+            })
+            .catch(function (error) {
+                console.log('There was an error loading policies: ', error);
+            })
+            .then(function () {});
         }
     },
     getters: {
@@ -89,6 +111,9 @@ export const cookbookStore = {
         get_cookbooks: (state) => () => {
             const cookbooks = localStorage.getItem('cookbooks')
             return cookbooks
+        },
+        get_cookie_policy: (store) => () => {
+            return store.policies.cookiePolicy
         }
-    }
+    },
 }
