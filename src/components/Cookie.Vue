@@ -15,10 +15,7 @@
 
 <script>
 export default {
-	name: "Cookie",
-	data() {
-		return {}
-	}
+	name: "Cookie"
 };
 </script>
 
