@@ -2,7 +2,7 @@
 <div>
     <div class="ui inline cookie nag">
 		<span class="title">
-    		By using our site, you acknowledge that you have read and understood our 
+    		By using this website, you acknowledge that you have read and understood our 
 			<a href="/#/cookie-policy">Cookie Policy,</a>
 			<a href="/#/usage-policy">Usage Policy,</a>
 			<a href="/#/data-retention-policy">Data Retention Policy,</a> and our 

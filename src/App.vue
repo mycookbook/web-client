@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Cookie from './components/Cookie'
+import Cookie from './components/Cookie.vue';
 
 require('./assets/js/jquery.min.js');
 require('./assets/js/semantic.min.js');
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style>
-@import '/static/css/style.css'
+  @import '/static/css/style.css'
 </style>
