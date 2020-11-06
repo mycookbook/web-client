@@ -22,7 +22,11 @@ export default new Vuex.Store({
 			recipe_resources: process.env.BASE_URL + 'recipes',
 			user_resources: process.env.BASE_URL + 'users',
             definitions: process.env.BASE_URL + 'definitions',
-            policies: process.env.BASE_URL + 'policies'
+            policies: process.env.BASE_URL + 'policies',
+            ipInfo: {
+                uri: 'https://ipinfo.io',
+                token: process.env.IPINFO_TOKEN
+            }
 		},
         resource_isLoading: false,
         policies: {

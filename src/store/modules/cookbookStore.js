@@ -30,7 +30,7 @@ export const cookbookStore = {
                 state.cookbooks = state.allCookbooks
                 const filtered = state.cookbooks.filter((c) => {
                     axios
-                    .get('https://ipinfo.io?token=13838312c2e092')
+                    .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
                     .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
                     return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
                 })
