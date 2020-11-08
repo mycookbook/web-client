@@ -94,6 +94,7 @@
 
 <script>
 import store from '@/store'
+
 import Navigation from './Navigation.vue'
 import Search from './Search.vue'
 import QuickSort from './QuickSort.vue'

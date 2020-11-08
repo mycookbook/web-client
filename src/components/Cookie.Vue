@@ -15,7 +15,9 @@
 
 <script>
 export default {
-	name: "Cookie"
+	data () {
+		return {}
+	}
 };
 </script>
 
