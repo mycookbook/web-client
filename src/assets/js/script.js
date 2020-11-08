@@ -16,4 +16,10 @@ $(function() {
 	$('.ui.rating').rating();
 	
 	$('.url.example .ui.embed').embed();
+
+	$('.item').click(function() {
+		$('.results').hide();
+	})
+	
+	$('.ui.embed').embed();
 });
