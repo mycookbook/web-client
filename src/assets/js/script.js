@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 $(function() {
-	// $('.cookie.nag').nag('show');
+	$('.cookie.nag').nag('show');
 
 	$('.nutr_info').popup({});
 
