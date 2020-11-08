@@ -1,6 +1,5 @@
 <template>
 <div>
-<Cookie />
 	<div class="ui container">
 		<Navigation />
 		<Search />
@@ -100,7 +99,6 @@ import Search from './Search.vue'
 import QuickSort from './QuickSort.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
-import Cookie from './Cookie.vue';
 
 export default {
 	name: "LandingPage",
@@ -124,8 +122,7 @@ export default {
 		Navigation,
 		Contact,
 		Bottom,
-		QuickSort,
-		Cookie
+		QuickSort
 	},
 }
 </script>
