@@ -4,6 +4,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import VueResource from 'vue-resource';
+import createPersistedState from "vuex-persistedstate";
 
 import { cookbookStore } from './modules/cookbookStore.js'
 import { recipeStore } from './modules/recipeStore.js'
@@ -99,5 +100,6 @@ export default new Vuex.Store({
 		subscriptionStore,
 		registerStore,
 		varietiesStore
-	}
+    },
+    plugins: [createPersistedState()]
 });
