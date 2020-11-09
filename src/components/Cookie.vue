@@ -8,7 +8,9 @@
 			<a href="/#/data-retention-policy">Data Retention Policy,</a> and our 
 			<a href="/#/terms-and-conditions">Terms &amp; Conditions</a>
   		</span>
-  		<i class="close icon"></i>
+		<span id="cookie-dismiss">
+			<i class="close icon"></i>
+		</span>
 	</div>
 </div>
 </template>
@@ -25,5 +27,8 @@ export default {
 .title a {
 	color:#dddddd; 
 	text-decoration: underline;
+}
+#cookie-dismiss {
+	cursor: pointer;
 }
 </style>
