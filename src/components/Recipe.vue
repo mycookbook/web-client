@@ -12,10 +12,9 @@
 			<div class="ui grid">
 				<div class="ui two wide computer column sixteen wide mobile column">
 					<div>
-						<div class="add-clap" @click="comingSoonMsg()">
+						<div class="add-clap" @click="addClap()">
 							<div class="ui tiny button tbb">
-								Add Clap {{ recipe.claps }}
-								{{ recipe.claps }}
+								Add Clap: {{ recipe.claps }}
 							</div>
 						</div>
 					</div>
@@ -23,7 +22,7 @@
 					<div>
 						<div>
 							<b>Nutritional details</b>
-						</div> 
+						</div>
 						<hr />
 						<small>
 							<h5 class="ui teal header">
@@ -32,7 +31,7 @@
 						</small>
 						<small>
 							<h5 class="ui orange header">
-								Fat: {{ nutritional_detail.fat }}g 
+								Fat: {{ nutritional_detail.fat }}g
 							</h5>
 						</small>
 						<small>
@@ -48,7 +47,7 @@
 					</div>
 					<hr />
 					<div>
-						<b>No. Servings: </b> 
+						<b>No. Servings: </b>
 						{{ recipe.servings }}<br />
 					</div>
 					<hr />
@@ -59,7 +58,7 @@
 						<span  v-if="recipe.varieties_count > 0">
 							<a :href="links.varietiesPageLink">
 								<span class="right foated" title="Follow link to view all varieties for this recipe">
-									{{ recipe.varieties_count }} 
+									{{ recipe.varieties_count }}
 								</span>
 							</a>
 						</span>
@@ -71,7 +70,7 @@
 					</div>
 					<hr />
 					<div>
-						<b>Course:</b> 
+						<b>Course:</b>
 						<span class="transformToCapitalize">{{ recipe.course }}</span>
 					</div>
 					<hr />
@@ -115,7 +114,7 @@
 											username: recipe.author.name_slug
 										}}">
 										{{ recipe.author.name }}
-									</router-link>	
+									</router-link>
 									{{ recipe.author.pronouns }}
 								</div>
 								<div class="transformToCapitalize">
@@ -197,6 +196,7 @@
 </template>
 
 <script>
+import store from '@/store';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
@@ -225,14 +225,17 @@ export default {
 		},
 		nutritional_detail() {
 			const parsedData = JSON.parse(this.recipe.nutritional_detail);
-			
+
 			return {
 				cal: parsedData.cal,
 				carbs: parsedData.carbs,
 				protein: parsedData.protein,
 				fat: parsedData.fat
 			}
-		}
+    },
+    likesCount() {
+			return this.$store.state.recipeStore.likesCount;
+    },
 	},
 	data() {
 		return {
@@ -247,7 +250,14 @@ export default {
 	methods: {
 		comingSoonMsg() {
 			alert('Coming soon');
-		}
+    },
+    addClap() {
+      const payload = {
+        cookbookdId: this.$route.params.cookbookId,
+        recipeId: this.$route.params.recipeId,
+      };
+			store.dispatch('addClap', payload);
+    },
 	},
 	components: {
 		Navigation,
