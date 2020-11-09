@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="ui inline cookie nag">
+    <div class="ui inline cookie nag top fixed">
 		<span class="title">
     		By using this website, you acknowledge that you have read and understood our 
 			<a href="/#/cookie-policy">Cookie Policy,</a>
