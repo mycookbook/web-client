@@ -18,7 +18,7 @@
 		</div>
 		<div v-else>
 			<div class="ui divided selection list" style="text-transform: capitalize;">
-				<a class="item" v-for="result in results" :href="getLink(result)">
+				<a class="item" v-for="result in results.slice(0,5)" :href="getLink(result)">
 					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
 						{{ result.resource_type }}
 					</div>
@@ -50,6 +50,14 @@
 						</span>
 					</div>
 				</a>
+			</div>
+			<div class="fluid ui button">
+				<router-link :to="{
+					name: 'SearchResults',
+					query: { q: qStr }
+				}">
+					View all
+				</router-link>	
 			</div>
 		</div>
 	</div>

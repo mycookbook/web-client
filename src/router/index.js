@@ -12,6 +12,7 @@ import VarietiesList from '@/components/VarietiesList.vue';
 import Variety from '@/components/Variety.vue';
 import ContributorProfile from '@/components/ContributorProfile.vue';
 import Developers from '@/components/Developers.vue';
+import SearchResults from '@/components/SearchResults.vue';
 
 Vue.use(Router);
 
@@ -89,6 +90,10 @@ export default new Router({
 		path: '/developers',
 		name: 'Developers',
 		component: Developers
+	}, {
+		path: '/search',
+		name: 'SearchResults',
+		component: SearchResults
 	}, {
       path: '*',
       component: {

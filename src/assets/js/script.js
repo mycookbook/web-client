@@ -32,6 +32,8 @@ $(function() {
 
 	$('.ui.embed').embed();
 
+	$('.ui.accordion').accordion();
+
 	function readCookie(name) {
 		var nameEQ = name + "=";
 		var ca = document.cookie.split(';');
