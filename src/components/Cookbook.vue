@@ -165,7 +165,10 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		this.$store.dispatch('reload_global_resources', this.$route.params.id)
+		//TODO:
+		//listens on pusher for a change on this cookbook
+		//if yes, then dispatch a fetch_cookbook action
+		this.$store.dispatch('fetch_cookbook', this.$route.params.id)
 	},
 	computed: {
 		cookbook() {

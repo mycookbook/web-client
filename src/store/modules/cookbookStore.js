@@ -14,8 +14,7 @@ export const cookbookStore = {
             categories: [],
             nutritional_details: []
         },
-        sorted: [],
-        errors: []
+        sorted: []
     }),
     mutations: {
         STORE_COOKBOOKS(state, cookbooks) {
@@ -54,14 +53,7 @@ export const cookbookStore = {
                 })
                 state.cookbooks = filtered
             }
-        },
-        SET_COOKBOOK_STATE(state, newState) {
-            this.state.resource_isLoading = true
-            state.cookbook = newState
-        },
-        STORE_ERRORS(state, errors) {
-            state.errors = {code: error.code, message: errors.message}
-        },
+        }
     },
     actions: {
         load_cookbooks(context) {
@@ -70,10 +62,11 @@ export const cookbookStore = {
                 context.commit('STORE_COOKBOOKS', response.data.data)
             })
             .catch(function (error) {
-                console.log('there was an error loading the cookbooks from the api', error);
+                error.resourceType = "error_loading_cookbook'"
+                error.resourceId = null
+                
                 context.commit('STORE_ERRORS', error)
-            })
-            .then(function () {});
+            });
         },
         sort(context, payload) {
             context.commit('SORT', payload)
@@ -84,18 +77,35 @@ export const cookbookStore = {
                 context.commit('STORE_DEFINITIONS', response.data)
             })
             .catch(function (error) {
-                console.log('There was an error loading definitions: ', error);
+                error.resourceType = "error_loading_definitions"
+                error.resourceId = null
+                
+                context.commit('STORE_ERRORS', error)
+            });
+        },
+        fetch_cookbook(context, cookbookId) {
+            context.commit("IS_LOADING")
+
+            axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId)
+            .then(function (response) {
+                response.resource = "cookbook"
+                context.commit("SET_RESOURCE_STATE", response.data)
             })
-            .then(function () {});
+            .catch(function (error) {
+                error.resourceType = "cookbook"
+                error.resourceId = cookbookId
+                
+                context.commit('STORE_ERRORS', error)
+            });
         }
     },
     getters: {
         get_cookbook: (context, state) => (id) => {
-            let cookbooks = localStorage.getItem('cookbooks')
+            let cookbooks = localStorage.getItem("unfiltered")
             return JSON.parse(cookbooks).find(x => (x.id === parseInt(id)))
         },
         get_cookbooks: (state) => () => {
-            const cookbooks = localStorage.getItem('cookbooks')
+            const cookbooks = localStorage.getItem("unfiltered")
             return cookbooks
         }
     },

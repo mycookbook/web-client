@@ -7,34 +7,47 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 
 export const recipeStore = {
-    getters: {
+	state: () => ({
+		likesCount: 0
+	}),
+	mutations: {
+		INCREMENT_LIKES_COUNT(state, totalCount) {
+			state.likesCount = totalCount
+		},
+	},
+    actions: {
+		addClap(context, payload) {
+			let url = process.env.BASE_URL + 'add-clap';
+			
+			axios.post(url, {
+				recipe_id: payload.recipeId,
+			}).then((response) => {
+				if (response.data.updated) {
+					context.commit('INCREMENT_LIKES_COUNT', response.data.claps)
+				}
+			})
+		},
+		fetch_recipe(context, recipeId) {
+            context.commit("IS_LOADING")
+
+            axios.get(this.state.named_urls.recipe_resources + '/' + recipeId)
+            .then(function (response) {
+                response.resource = "recipe"
+                context.commit("SET_RESOURCE_STATE", response.data)
+            })
+            .catch(function (error) {
+                error.resourceType = "recipe"
+                error.resourceId = recipeId
+                
+                context.commit('STORE_ERRORS', error)
+            });
+        }
+	},
+	getters: {
         get_recipe: (state) => (cookbookId, recipeId) => {
-            let cookbooks = localStorage.getItem('cookbooks')
+			let cookbooks = localStorage.getItem("unfiltered")
             let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
             return cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
-        },
+		}
     },
-    state: () => ({
-      // likesCount state currently not in use
-      likesCount: 0
-    }),
-    mutations: {
-      INCREMENT_LIKES_COUNT(state, totalCount) {
-        state.likesCount = totalCount
-      },
-    },
-    actions: {
-      addClap(context, payload) {
-        let url = process.env.BASE_URL + 'add-clap';
-
-        axios.post(url, {
-          recipe_id: payload.recipeId,
-        })
-          .then((response) => {
-            if (response.data.updated) {
-              context.commit('INCREMENT_LIKES_COUNT', response.data.claps)
-            }
-          })
-      }
-    }
-  }
+}

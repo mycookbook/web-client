@@ -11,6 +11,7 @@ import { recipeStore } from './modules/recipeStore.js'
 import { subscriptionStore } from './modules/subscriptionStore.js'
 import { registerStore } from './modules/user/registerStore.js'
 import { varietiesStore } from './modules/varietiesStore.js'
+import { contributorStore } from './modules/contributorStore'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -35,40 +36,33 @@ export default new Vuex.Store({
             usagePolicy: '',
             dataRetentionPolicy: '',
             termsAndConditons: ''
-        }
+        },
+        errors: {}
 	}),
 	mutations: {
-        SET_RESOURCES_STATE_TO_FALSE(state, newState) {
-            this.state.resource_isLoading = false
-            localStorage.setItem("cookbooks", JSON.stringify(newState.data))
-        },
-        SET_RESOURCES_STATE_TO_TRUE() {
-            this.state.resource_isLoading = true
-        },
         STORE_POLICIES(state, policies) {
             state.policies.cookiePolicy = policies.cookiePolicy.content
             state.policies.usagePolicy = policies.usagePolicy.content
             state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
             state.policies.termsAndConditons = policies.termsAndConditions.content
         },
+        STORE_ERRORS(errorObject) {
+            let code = errorObject.response.status
+            let message = errorObject.message
+            let resourceType = errorObject.resourceType
+            let resourceId = errorObject.resourceId
+
+            this.state.errors.apiError = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
+        },
+        IS_LOADING() {
+            this.state.resource_isLoading = true
+        },
+        SET_RESOURCE_STATE(state, newState) {
+            this.state.resource_isLoading = false
+            state[newState.resource] = newState
+        }
     },
 	actions: {
-        reload_global_resources(context) {
-            context.commit('SET_RESOURCES_STATE_TO_TRUE')
-            
-            axios.get(this.state.named_urls.cookbook_resources)
-            .then(function (response) {
-                // const oldState = JSON.parse(context.state.cookbooks)
-                const newState = response.data
-               
-                //todo: compare oldState vs newState before updating store with newState
-                context.commit('SET_RESOURCES_STATE_TO_FALSE', newState)
-            })
-            .catch(function (error) {
-                console.log('there was an error fetching resources from the api', error);
-            })
-            .then(function () {});
-        },
         load_policies(context) {
             axios.get(this.state.named_urls.policies)
             .then(function (response) {
@@ -99,7 +93,8 @@ export default new Vuex.Store({
 		recipeStore,
 		subscriptionStore,
 		registerStore,
-		varietiesStore
+        varietiesStore,
+        contributorStore
     },
     plugins: [createPersistedState()]
 });

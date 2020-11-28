@@ -140,11 +140,11 @@ import Bottom from './Bottom.vue';
 export default {
     name: "ContributorProfile",
     mounted() {
-       this.$store.dispatch('reload_global_resources', this.$route.params.cookbookId)
+        this.$store.dispatch('fetch_contributor', this.$route.params.username)
     },
     computed: {
         user() {
-            return this.$store.getters['get_user'](
+            return this.$store.getters['get_contributor'](
                 this.$route.params.cookbookId,
                 this.$route.params.recipeId,
                 this.$route.params.username

@@ -203,7 +203,10 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		this.$store.dispatch('reload_global_resources', this.$route.params.recipeId)
+		//TODO:
+		//listens on pusher for a change on this recipe
+		//if yes, then dispatch a fetch_recipe action
+		this.$store.dispatch('fetch_recipe', this.$route.params.recipeId)
 	},
 	computed: {
 		recipe() {
