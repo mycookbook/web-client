@@ -8,7 +8,7 @@ Vue.use(VueResource);
 
 export const cookbookStore = {
     state: () => ({
-        cookbooks: JSON.parse(localStorage.getItem('cookbooks')),
+        cookbooks: [],
         cookbook: {},
         definitions: {
             categories: [],

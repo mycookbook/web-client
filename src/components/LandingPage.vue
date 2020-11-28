@@ -109,7 +109,9 @@ export default {
 	},
 	computed: {
 		cookbooks() {
-			return this.$store.state.cookbookStore.cookbooks
+			if (this.$store.state.cookbookStore.cookbooks) {
+				return this.$store.state.cookbookStore.cookbooks
+			}
 		},
 		filters() {
 			if (this.$store.state.cookbookStore.definitions.categories.contents) {
