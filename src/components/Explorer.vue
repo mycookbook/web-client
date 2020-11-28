@@ -26,12 +26,6 @@
 import store from '@/store'
 
 export default {
-	mounted () {
-		let sortKey = localStorage.getItem('sortBy')
-	},
-	data () {
-		return {}
-	},
 	props: {
 		filters: Array
 	},

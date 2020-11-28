@@ -15,7 +15,6 @@ export const cookbookStore = {
             nutritional_details: []
         },
         sorted: [],
-        sortBy: 'all',
         errors: []
     }),
     mutations: {
@@ -47,7 +46,7 @@ export const cookbookStore = {
                     if (c.categories.length > 0) {
                         let filteredCategories = JSON.parse(JSON.stringify(c.categories))
                         for (let i=0; i < filteredCategories.length; i++){
-                            if(filteredCategories[i].slug === payload) {
+                            if (filteredCategories[i].slug === payload) {
                                 return filteredCategories
                             }
                         }
@@ -55,7 +54,6 @@ export const cookbookStore = {
                 })
                 state.cookbooks = filtered
             }
-            localStorage.setItem('sortBy', payload)
         },
         SET_COOKBOOK_STATE(state, newState) {
             this.state.resource_isLoading = true
