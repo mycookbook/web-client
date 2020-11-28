@@ -1,6 +1,7 @@
 <template>
 <div>
-    <div class="ui meals container" v-if="cookbooks.length > 0">
+	<div>{{ cookbooks }}</div>
+    <div class="ui meals container">
 		<div class="meal section">
 			<div class="content">
 				<div class="ui grid">
@@ -48,7 +49,7 @@
 		<br /><br />
 		<div class="tvn horizontal stroke"></div>
 	</div>
-	<div class="ui sixteen wide column" v-else>
+	<div class="ui sixteen wide column">
 		<NothingToShowYou :htmlText="followUpText" />
 		<div class="tvn horizontal stroke"></div>
 	</div>
