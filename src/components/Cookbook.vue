@@ -145,7 +145,7 @@
 						<br />
 						<div>
 							<small>ad space</small>
-							<img class="ui massive image" src="https://cookieandkate.com/images/2020/03/how-to-start-a-food-blog.jpg" />
+							<img class="ui massive image" src="https://lh3.googleusercontent.com/proxy/KXLjCt3ETvj0W21sgXUqHrcddqzQAuOa7J_4rkHvfU27Z_WG69zFA2LpgZ1m96dq8nxwpU13uuRjKp5-mIJqVbdX8QC239QKOLsxh_xGCKGKYLUBHZCC9A" />
 							<small>ad space</small>
 						</div>
 					</div>
