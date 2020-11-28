@@ -14,7 +14,7 @@ export const cookbookStore = {
             categories: [],
             nutritional_details: []
         },
-        allCookbooks: JSON.parse(localStorage.getItem('cookbooks')),
+        allCookbooks: JSON.parse(localStorage.getItem("vuex")).cookbookStore.cookbooks,
         sorted: [],
         sortBy: 'all',
         errors: []
