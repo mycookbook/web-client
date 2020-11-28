@@ -11,7 +11,7 @@ export const contributorStore = {
     mutations: {},
     actions: {
         fetch_contributor(context, username) {
-            context.commit("IS_LOADING")
+            context.commit("SET_LOADING_STATE", true)
 
             axios.get(this.state.named_urls.user_resources + '/' + username)
             .then(function (response) {
@@ -28,7 +28,7 @@ export const contributorStore = {
     },
     getters: {
         get_contributor: (state) => (cookbookId, recipeId, username) => {
-            let cookbooks = localStorage.getItem('cookbooks')
+            let cookbooks = localStorage.getItem('unfiltered')
             let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
             let recipe = cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
             

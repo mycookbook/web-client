@@ -84,7 +84,7 @@ export const cookbookStore = {
             });
         },
         fetch_cookbook(context, cookbookId) {
-            context.commit("IS_LOADING")
+            context.commit("SET_LOADING_STATE", true)
 
             axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId)
             .then(function (response) {

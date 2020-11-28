@@ -28,7 +28,7 @@ export const recipeStore = {
 			})
 		},
 		fetch_recipe(context, recipeId) {
-            context.commit("IS_LOADING")
+            context.commit("SET_LOADING_STATE", true)
 
             axios.get(this.state.named_urls.recipe_resources + '/' + recipeId)
             .then(function (response) {
