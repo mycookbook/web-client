@@ -19,6 +19,9 @@ export const cookbookStore = {
         sortBy: 'all'
     }),
     mutations: {
+        STORE_COOKBOOKS(state, cookbooks) {
+            state.definitions.categories = cookbooks
+        },
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
             state.definitions.nutritional_details = definitions[1]
@@ -60,7 +63,7 @@ export const cookbookStore = {
         load_cookbooks(context) {
             axios.get(this.state.named_urls.cookbook_resources)
             .then(function (response) {
-                localStorage.setItem('cookbooks', JSON.stringify(response.data.data))
+                context.commit('STORE_COOKBOOKS', response.data.data)
             })
             .catch(function (error) {
                 console.log('there was an error loading the cookbooks from the api', error);
