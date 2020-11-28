@@ -5,7 +5,6 @@
 	</div>
 	<div>{{ cookbooks }}</div>
 	<div>
-		<Results :cookbooks="cookbooks"/>
 	</div>
 	<div>
 		<!-- Featured: Coming soon. -->
