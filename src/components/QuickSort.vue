@@ -3,6 +3,7 @@
 	<div class="ui massive search">
 		<Explorer :filters="filters"/>
 	</div>
+	<div>{{ cookbooks }}</div>
 	<div>
 		<Results :cookbooks="cookbooks"/>
 	</div>
