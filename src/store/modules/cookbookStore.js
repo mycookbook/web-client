@@ -16,11 +16,12 @@ export const cookbookStore = {
         },
         allCookbooks: JSON.parse(localStorage.getItem('cookbooks')),
         sorted: [],
-        sortBy: 'all'
+        sortBy: 'all',
+        errors: []
     }),
     mutations: {
         STORE_COOKBOOKS(state, cookbooks) {
-            state.definitions.categories = cookbooks
+            state.cookbooks = cookbooks
         },
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
@@ -57,7 +58,10 @@ export const cookbookStore = {
         SET_COOKBOOK_STATE(state, newState) {
             this.state.resource_isLoading = true
             state.cookbook = newState
-        }
+        },
+        STORE_ERRORS(state, errors) {
+            state.errors = {code: error.code, message: errors.message}
+        },
     },
     actions: {
         load_cookbooks(context) {
@@ -67,6 +71,7 @@ export const cookbookStore = {
             })
             .catch(function (error) {
                 console.log('there was an error loading the cookbooks from the api', error);
+                context.commit('STORE_ERRORS', error)
             })
             .then(function () {});
         },
