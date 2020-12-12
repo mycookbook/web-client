@@ -17,12 +17,11 @@ export const contributorStore = {
             .then(function (response) {
                 response.resource = "cookbook"
                 context.commit("SET_RESOURCE_STATE", response.data)
-            })
-            .catch(function (error) {
+            }).catch(function (error) {
                 error.resourceType = "cookbook"
                 error.resourceId = cookbookId
                 
-                context.commit('STORE_ERRORS', error)
+                context.commit('SET_ERROR_STATE', error)
             });
         }
     },

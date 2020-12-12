@@ -56,47 +56,42 @@ export const cookbookStore = {
         }
     },
     actions: {
-        load_cookbooks(context) {
-            axios.get(this.state.named_urls.cookbook_resources)
-            .then(function (response) {
-                context.commit('STORE_COOKBOOKS', response.data.data)
+        async load_cookbooks(context) {
+            const response = await axios.get(this.state.named_urls.cookbook_resources, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
             })
-            .catch(function (error) {
-                error.resourceType = "error_loading_cookbook'"
-                error.resourceId = null
-                
-                context.commit('STORE_ERRORS', error)
-            });
+            context.commit('STORE_COOKBOOKS', response.data.data)
         },
         sort(context, payload) {
             context.commit('SORT', payload)
         },
-        load_definitions(context) {
-            axios.get(this.state.named_urls.definitions)
-            .then(function (response) {
-                context.commit('STORE_DEFINITIONS', response.data)
+        async load_definitions(context) {
+            const response = await axios.get(this.state.named_urls.definitions, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
             })
-            .catch(function (error) {
-                error.resourceType = "error_loading_definitions"
-                error.resourceId = null
-                
-                context.commit('STORE_ERRORS', error)
-            });
+            context.commit('STORE_DEFINITIONS', response.data)
         },
-        fetch_cookbook(context, cookbookId) {
+        async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 
-            axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId)
-            .then(function (response) {
-                response.resource = "cookbook"
-                context.commit("SET_RESOURCE_STATE", response.data)
+            const response = await axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
             })
-            .catch(function (error) {
-                error.resourceType = "cookbook"
-                error.resourceId = cookbookId
-                
-                context.commit('STORE_ERRORS', error)
-            });
+            response.resource = "cookbook"
+            context.commit("SET_RESOURCE_STATE", response.data)
+
+            // error.resourceType = "cookbook"
+            // error.resourceId = cookbookId
+            // context.commit('SET_ERROR_STATE', error)
         }
     },
     getters: {

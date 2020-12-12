@@ -235,10 +235,10 @@ export default {
 				protein: parsedData.protein,
 				fat: parsedData.fat
 			}
-    },
-    likesCount() {
+		},
+		likesCount() {
 			return this.$store.state.recipeStore.likesCount;
-    },
+		},
 	},
 	data() {
 		return {

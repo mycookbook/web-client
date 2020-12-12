@@ -8,57 +8,55 @@ Vue.use(VueResource);
 
 export const registerStore = {
     state: () => ({
-        loadingBtn: {
-            state: false,
-        },
-        hasError: false,
-        errorMsg: [],
-        completed: false,
-        successMsg: ''
+        success: false
     }),
     mutations: {
-        SET_BTN_LOADING_STATE(state) {
-            state.loadingBtn.state = true
+        SET_REGISTRATION_FORM_ERRORS(state, errObj) {
+            if (errObj.name !== undefined) {
+                this.state.form_errors.registration_form.fullName = errObj.name
+            }
+            if (errObj.email !== undefined) {
+                this.state.form_errors.registration_form.email = errObj.email
+            }
+            if (errObj.password !== undefined) {
+                this.state.form_errors.registration_form.password = errObj.password
+            }
         },
-        ERROR_HAS_OCCURRED(state, errObj) {
-            state.loadingBtn.state = false
-            state.hasError = true
-            state.errorMsg = Object.values(errObj)
-            state.completed = true
+        SHOW_SUCCESS_MESSAGE(state) {
+            state.success = true
         },
-        REGISTRATION_SUCCESS(state) {
-            state.loadingBtn.state = false
-            state.hasError = false
-            state.completed = true
-            state.successMsg = 'Congratulations, you have successfully created an account. A confirmation email is coming to your inbox soon. Make sure you click the link to confirm your email so you can start creating those very special recipes.'
+        HIDE_SUCCESS_MESSAGE(state) {
+            state.success = false
         },
-        RESET_STORE_STATES(state) {
-            state.loadingBtn.state = false
-            state.hasError = false
-            state.errorMsg = []
-            state.successMsg = ''
-            state.completed = false
+        RESET_REGISTRATION_FORM(state) {
+            this.state.form_errors.registration_form = {}
+            state.success = false
         }
     },
     actions: {
-        register(context, payload) {
-            context.commit('SET_BTN_LOADING_STATE')
-
-            let url = process.env.BASE_URL + 'auth/register'
-            axios.post(url, {
+        async register(context, payload) {
+            context.commit('SET_LOADING_STATE', true)
+            
+            await axios.post(process.env.BASE_URL + 'auth/register', {
                 name: payload.fullName,
                 email: payload.email,
                 password: payload.password
-            })
-            .then(function (response) { // handle success
-                context.commit('REGISTRATION_SUCCESS')
-            })
-            .catch(function (error) { // handle error
-                context.commit('ERROR_HAS_OCCURRED', error.response.data)
-            })
+            }, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
+            }).then(function (response) {
+                context.commit('SHOW_SUCCESS_MESSAGE')
+                context.commit('SET_LOADING_STATE', false)
+            }).catch(function (error) {
+                context.commit('HIDE_SUCCESS_MESSAGE')
+                context.commit('SET_LOADING_STATE', false)
+                context.commit('SET_REGISTRATION_FORM_ERRORS', error.response.data)
+            });
         },
-        reset_states(context) {
-            context.commit('RESET_STORE_STATES');
+        reset_registration_form(context) {
+            context.commit('RESET_REGISTRATION_FORM')
         }
     }
 }

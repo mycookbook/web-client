@@ -37,25 +37,47 @@ export default new Vuex.Store({
             dataRetentionPolicy: '',
             termsAndConditons: ''
         },
-        errors: {}
+        errors: {},
+        success: {},
+        form_errors: {
+            registration_form: {},
+            contact_form: {}
+        }
 	}),
 	mutations: {
+        UNLOAD_GLOBAL_ERROR_OBJECT() {
+            this.state.errors = {}
+            this.state.resource_isLoading = false
+        },
+        UNLOAD_GLOBAL_SUCCESS_OBJECT() {
+            this.state.success = {}
+            this.state.resource_isLoading = false
+        },
         STORE_POLICIES(state, policies) {
             state.policies.cookiePolicy = policies.cookiePolicy.content
             state.policies.usagePolicy = policies.usagePolicy.content
             state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
             state.policies.termsAndConditons = policies.termsAndConditions.content
         },
-        STORE_ERRORS(errorObject) {
+        SET_ERROR_STATE(state, errorObject) {
+           
             let code = errorObject.response.status
-            let message = errorObject.message
+            let message = errorObject.response.data
             let resourceType = errorObject.resourceType
             let resourceId = errorObject.resourceId
 
             this.state.errors.apiError = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
         },
-        IS_LOADING() {
-            this.state.resource_isLoading = true
+        SET_SUCCESS_STATE(state, successObject) {
+            let code = successObject.response.status
+            let message = successObject.successMessage
+            let resourceType = successObject.resourceType
+            let resourceId = successObject.resourceId
+
+            this.state.success.apiMessage = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
+        },
+        SET_LOADING_STATE(state, status) {
+            this.state.resource_isLoading = status
         },
         SET_RESOURCE_STATE(state, newState) {
             this.state.resource_isLoading = false
@@ -63,15 +85,20 @@ export default new Vuex.Store({
         }
     },
 	actions: {
-        load_policies(context) {
-            axios.get(this.state.named_urls.policies)
-            .then(function (response) {
-                context.commit('STORE_POLICIES', response.data.response)
+        async load_policies(context) {
+            const response = await axios.get(this.state.named_urls.policies, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
             })
-            .catch(function (error) {
-                console.log('There was an error loading policies: ', error);
-            })
-            .then(function () {});
+            context.commit('STORE_POLICIES', response.data.response)
+        },
+        unload_global_error_object(context) {
+            context.commit("UNLOAD_GLOBAL_ERROR_OBJECT")
+        },
+        unload_global_success_object(context) {
+            context.commit("UNLOAD_GLOBAL_SUCCESS_OBJECT")
         }
     },
     getters: {

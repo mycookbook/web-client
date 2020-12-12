@@ -13,6 +13,10 @@ require('./assets/js/script.js');
 import Cookie from './components/Cookie.vue';
 
 export default {
+	mounted() {
+		this.$store.dispatch("unload_global_error_object")
+		this.$store.dispatch("unload_global_success_object")
+	},
 	name: 'app',
 	components: {
 		Cookie

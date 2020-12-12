@@ -39,7 +39,7 @@ export const recipeStore = {
                 error.resourceType = "recipe"
                 error.resourceId = recipeId
                 
-                context.commit('STORE_ERRORS', error)
+                context.commit('SET_ERROR_STATE', error)
             });
         }
 	},

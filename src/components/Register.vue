@@ -4,7 +4,7 @@
     <div class="ui container" style="margin-top:18vh;">
         <div class="ui grid">
             <div class="ui sixteen wide computer column sixteen wide mobile column">
-                <div class="ui tiny info message">
+                <div class="ui large info message">
                     Already have a contributor account? 
                     <a href="https://admin.cookbookshq.com/login" target="_blank">Login</a>
                 </div>
@@ -12,14 +12,23 @@
                     <div class="field">
                         <label>Full Name</label>
                         <input type="text" name="full-name" placeholder="Full Name" v-model="fullName">
+                        <div class="ui negative message" v-if="errors.fullName">
+                            {{ errors.fullName[0] }}
+                        </div>
                     </div>
                     <div class="field">
                         <label>Email</label>
                         <input type="text" name="email" placeholder="Email" v-model="email">
+                        <div class="ui negative message" v-if="errors.email">
+                            {{ errors.email[0] }}
+                        </div>
                     </div>
                     <div class="field">
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Password" v-model="password">
+                        <div class="ui negative message" v-if="errors.password">
+                            {{ errors.password[0] }}
+                        </div>
                     </div>
                     <div class="ui tiny message">
                         <label>
@@ -29,16 +38,19 @@
                         </label>
                     </div>
                 </form>
+                <div class="ui message success" v-if="success">
+                    <h3>
+                        Congratulations, you have successfully created an account. 
+                        A confirmation email is coming to your inbox soon. 
+                        Make sure you click the link to confirm your email 
+                        so you can start creating those very special recipes.
+                    </h3>
+                </div>
                 <br />
                 <button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="register()">
                     Submit
                 </button>
             </div>
-            <div class="ui grid">
-                <div class="ui sixteen wide computer column sixteen wide mobile column">
-                    <Alert :completed="completed" :hasError="hasError" :errors="errors" :successMsg="successMsg" />
-			    </div>
-		    </div>
 	    </div>
     </div>
     <div>
@@ -74,25 +86,19 @@ import Navigation from './Navigation.vue'
 
 export default {
     name: "Register",
-    created () {
-        this.resetStates()
+    mounted() {
+        this.$store.dispatch('reset_registration_form')
     },
     computed: {
 		isLoading() {
-			return this.$store.state.registerStore.loadingBtn.state
-		},
-		hasError() {
-			return this.$store.state.registerStore.hasError
+            return this.$store.state.resource_isLoading
 		},
 		errors() {
-			return this.$store.state.registerStore.errorMsg
+			return this.$store.state.form_errors.registration_form
 		},
-		successMsg() {
-			return this.$store.state.registerStore.successMsg
-		},
-		completed() {
-			return this.$store.state.registerStore.completed
-		}
+        success() {
+            return this.$store.state.registerStore.success
+        }
 	},
     data() {
         return {
@@ -100,10 +106,6 @@ export default {
             fullName: '',
             password: ''
         }
-    },
-    components: {
-        Navigation,
-        Alert
     },
     methods: {
 		register: function() {
@@ -114,10 +116,10 @@ export default {
             }
 
 			store.dispatch('register', payload)
-        },
-        resetStates: function() {
-            store.dispatch('reset_states')
         }
 	},
+     components: {
+        Navigation
+    },
 };
 </script>

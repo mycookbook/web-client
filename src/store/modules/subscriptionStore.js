@@ -8,57 +8,45 @@ Vue.use(VueResource);
 
 export const subscriptionStore = {
     state: () => ({
-        loadingBtn: {
-            state: false
-        },
-        completed: false,
-        hasError: false,
-        errorMsg: [],
-        successMsg: ''
+        success: false
     }),
     mutations: {
-        SET_BTN_LOADING_STATE(state) {
-            state.loadingBtn.state = true
+        SET_CONTACT_FORM_ERRORS(state, errObj) {
+            if (errObj.email !== undefined) {
+                this.state.form_errors.contact_form.email = errObj.email
+            }
         },
-        ERROR_HAS_OCCURRED(state, errObj) {
-            console.log('errors', errObj)
-            state.loadingBtn.state = false
-            state.hasError = true
-            state.errorMsg = Object.values(errObj)
-            state.completed = true
+        RESET_CONTACT_FORM(state) {
+            this.state.form_errors.contact_form = {}
+            state.success = false
         },
-        SUBSCRIPTION_SUCCESS(state) {
-            state.loadingBtn.state = false
-            state.hasError = false
-            state.completed = true
-            state.successMsg = 'Qapla! You will now recieve weekly updates in your email.'
-        },
-        RESET_STORE_STATES(state) {
-            state.loadingBtn.state = false
-            state.hasError = false
-            state.errorMsg = []
-            state.successMsg = ''
-            state.completed = false
+        SHOW_SUCCESS_MESSAGE(state) {
+            state.success = true
         }
     },
     actions: {
-        subscribeUser(context, payload) {
-            context.commit('SET_BTN_LOADING_STATE')
+        async subscribeUser(context, payload) {
+            context.commit('SET_LOADING_STATE', true)
 
-            let url = process.env.BASE_URL + 'subscriptions'
-            axios.post(url, {
+            const url = process.env.BASE_URL + 'subscriptions'
+
+            await axios.post(url, {
                 email: payload
-            })
-            .then(function (response) { // handle success
-                context.commit('SUBSCRIPTION_SUCCESS')
-            })
-            .catch(function (error) { // handle error
-                console.log(error)
-                context.commit('ERROR_HAS_OCCURRED', error.response.data)
-            })
+            }, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
+            }).then(function (response) {
+                context.commit('SHOW_SUCCESS_MESSAGE')
+                context.commit('SET_LOADING_STATE', false)
+            }).catch(function (error) {
+                context.commit('SET_LOADING_STATE', false)
+                context.commit('SET_CONTACT_FORM_ERRORS', error.response.data)
+            });
         },
-        reset_states(context) {
-            context.commit('RESET_STORE_STATES');
+        reset_contact_form(context) {
+            context.commit('RESET_CONTACT_FORM')
         }
     }
 }
