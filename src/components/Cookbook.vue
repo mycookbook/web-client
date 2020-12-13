@@ -144,9 +144,9 @@
 						</div>
 						<br />
 						<div>
-							<small>ad space</small>
-							<img class="ui massive image" src="https://lh3.googleusercontent.com/proxy/KXLjCt3ETvj0W21sgXUqHrcddqzQAuOa7J_4rkHvfU27Z_WG69zFA2LpgZ1m96dq8nxwpU13uuRjKp5-mIJqVbdX8QC239QKOLsxh_xGCKGKYLUBHZCC9A" />
-							<small>ad space</small>
+							<img 
+							class="ui massive image" 
+							src="https://tahoequarterly.com/wp-content/uploads/2016/12/AdSpace-336x750-min.jpg" />
 						</div>
 					</div>
 				</div>
@@ -165,16 +165,11 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		//TODO:
-		//listens on pusher for a change on this cookbook
-		//if yes, then dispatch a fetch_cookbook action
 		this.$store.dispatch('fetch_cookbook', this.$route.params.id)
 	},
 	computed: {
 		cookbook() {
-			return this.$store.getters['get_cookbook'](
-				this.$route.params.id,
-			);
+			return this.$store.state.cookbook;
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading

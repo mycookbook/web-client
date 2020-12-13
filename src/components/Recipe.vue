@@ -14,7 +14,7 @@
 					<div>
 						<div class="add-clap" @click="addClap()">
 							<div class="ui tiny button tbb">
-								Add Clap: {{ recipe.claps }}
+								Add Clap: {{ totalCount }}
 							</div>
 						</div>
 					</div>
@@ -23,25 +23,26 @@
 						<div>
 							<b>Nutritional details</b>
 						</div>
+						
 						<hr />
 						<small>
 							<h5 class="ui teal header">
-								Calories: {{ nutritional_detail.cal }} kCal
+								Calories: {{ JSON.parse(recipe.nutritional_detail).cal }} kCal
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui orange header">
-								Fat: {{ nutritional_detail.fat }}g
+								Fat: {{ JSON.parse(recipe.nutritional_detail).fat }}g
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui purple header">
-								Protein: {{ nutritional_detail.protein }}g
+								Protein: {{ JSON.parse(recipe.nutritional_detail).protein }}g
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui grey header">
-								Carbs: {{ nutritional_detail.carbs }}g
+								Carbs: {{ JSON.parse(recipe.nutritional_detail).carbs }}g
 							</h5>
 						</small>
 					</div>
@@ -91,8 +92,8 @@
 				<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" :href="links.breadcrumbs.cookbookLink + recipe.cookbook_id">
-							{{ cookbook.name }}
+						<a class="section" :href="links.breadcrumbs.cookbookLink + recipe.cookbook.id">
+							{{ recipe.cookbook.name }}
 						</a>
 						<i class="right angle icon divider"></i>
 						<div class="active section">
@@ -129,7 +130,7 @@
 				</div>
 				<br />
 				<div class="sixteen wide column">
-					<div class="ui light blue label twopxmargin" v-for="ingredient in ingredients">
+					<div class="ui light blue label twopxmargin" v-for="ingredient in recipe.ingredients">
 						{{ ingredient }}
 					</div>
 				</div>
@@ -203,42 +204,18 @@ import Bottom from './Bottom.vue';
 
 export default {
 	mounted() {
-		//TODO:
-		//listens on pusher for a change on this recipe
-		//if yes, then dispatch a fetch_recipe action
 		this.$store.dispatch('fetch_recipe', this.$route.params.recipeId)
 	},
 	computed: {
-		recipe() {
-			return this.$store.getters['get_recipe'](
-				this.$route.params.cookbookId,
-				this.$route.params.recipeId,
-			);
+		totalCount() {
+			return this.$store.state.recipe.claps
 		},
-		cookbook() {
-			return this.$store.getters['get_cookbook'](
-				this.$route.params.cookbookId
-			);
+		recipe() {
+			return this.$store.state.recipe
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
-		},
-		ingredients() {
-			return JSON.parse(this.recipe.ingredients).data
-		},
-		nutritional_detail() {
-			const parsedData = JSON.parse(this.recipe.nutritional_detail);
-
-			return {
-				cal: parsedData.cal,
-				carbs: parsedData.carbs,
-				protein: parsedData.protein,
-				fat: parsedData.fat
-			}
-		},
-		likesCount() {
-			return this.$store.state.recipeStore.likesCount;
-		},
+		}
 	},
 	data() {
 		return {
@@ -253,14 +230,14 @@ export default {
 	methods: {
 		comingSoonMsg() {
 			alert('Coming soon');
-    },
-    addClap() {
-      const payload = {
-        cookbookdId: this.$route.params.cookbookId,
-        recipeId: this.$route.params.recipeId,
-      };
+    	},
+		addClap() {
+			const payload = {
+				cookbookdId: this.$route.params.cookbookId,
+				recipeId: this.$route.params.recipeId,
+			};
 			store.dispatch('addClap', payload);
-    },
+		}
 	},
 	components: {
 		Navigation,

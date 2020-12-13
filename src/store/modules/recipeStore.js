@@ -8,46 +8,58 @@ Vue.use(VueResource);
 
 export const recipeStore = {
 	state: () => ({
-		likesCount: 0
+		recipe: {}
 	}),
 	mutations: {
-		INCREMENT_LIKES_COUNT(state, totalCount) {
-			state.likesCount = totalCount
+		INCREMENT_CLAP(state, claps) {
+			this.state.recipe.claps = claps
 		},
+		UPDATE_RECIPE_STATE(state, newState) {
+			this.state.recipe = newState
+		}
 	},
     actions: {
-		addClap(context, payload) {
+		async addClap(context, payload) {
 			let url = process.env.BASE_URL + 'add-clap';
-			
-			axios.post(url, {
-				recipe_id: payload.recipeId,
-			}).then((response) => {
-				if (response.data.updated) {
-					context.commit('INCREMENT_LIKES_COUNT', response.data.claps)
-				}
-			})
-		},
-		fetch_recipe(context, recipeId) {
-            context.commit("SET_LOADING_STATE", true)
 
-            axios.get(this.state.named_urls.recipe_resources + '/' + recipeId)
-            .then(function (response) {
-                response.resource = "recipe"
-                context.commit("SET_RESOURCE_STATE", response.data)
+			await axios.post(url, {
+                recipe_id: payload.recipeId,
+            }, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
+            }).then(function (response) {
+                if (response.data.updated) {
+					context.commit('INCREMENT_CLAP', response.data.claps)
+				}
+            }).catch(function (error) {
+                // console.log('clapping error', error.response)
             })
-            .catch(function (error) {
-                error.resourceType = "recipe"
-                error.resourceId = recipeId
-                
-                context.commit('SET_ERROR_STATE', error)
-            });
+		},
+		async fetch_recipe(context, recipeId) {
+			context.commit("SET_LOADING_STATE", true)
+			
+			await axios.get(this.state.named_urls.recipe_resources + '/' + recipeId, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
+            }).then(function (response) {
+				response.data.ingredients = JSON.parse(response.data.ingredients).data
+
+				const parsedData = JSON.parse(response.data.nutritional_detail)
+
+				response.data.nutritional_detail.cal = parsedData.cal
+				response.data.nutritional_detail.carbs = parsedData.carbs
+				response.data.nutritional_detail.protein = parsedData.protein
+				response.data.nutritional_detail.fat = parsedData.fat
+				
+				context.commit('UPDATE_RECIPE_STATE', response.data)
+				context.commit("SET_LOADING_STATE", false)
+            }).catch(function (error) {
+                // console.log('fetch error', error.response)
+			})
         }
-	},
-	getters: {
-        get_recipe: (state) => (cookbookId, recipeId) => {
-			let cookbooks = localStorage.getItem("unfiltered")
-            let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
-            return cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
-		}
-    },
+	}
 }

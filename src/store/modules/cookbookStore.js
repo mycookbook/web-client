@@ -53,20 +53,24 @@ export const cookbookStore = {
                 })
                 state.cookbooks = filtered
             }
-        }
+        },
+        UPDATE_COOKBOOK_STATE(state, newState) {
+			this.state.cookbook = newState
+		}
     },
     actions: {
+        sort(context, payload) {
+            context.commit('SORT', payload)
+        },
         async load_cookbooks(context) {
-            const response = await axios.get(this.state.named_urls.cookbook_resources, {
+            await axios.get(this.state.named_urls.cookbook_resources, {
                 headers: {
                     'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
                     'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
                 }
+            }).then(function (response) {
+                context.commit('STORE_COOKBOOKS', response.data.data)
             })
-            context.commit('STORE_COOKBOOKS', response.data.data)
-        },
-        sort(context, payload) {
-            context.commit('SORT', payload)
         },
         async load_definitions(context) {
             const response = await axios.get(this.state.named_urls.definitions, {
@@ -74,34 +78,26 @@ export const cookbookStore = {
                     'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
                     'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
                 }
+            }).then(function (response) {
+                context.commit('STORE_DEFINITIONS', response.data)
             })
-            context.commit('STORE_DEFINITIONS', response.data)
         },
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 
-            const response = await axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId, {
+            await axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId, {
                 headers: {
                     'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
                     'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
                 }
-            })
-            response.resource = "cookbook"
-            context.commit("SET_RESOURCE_STATE", response.data)
-
-            // error.resourceType = "cookbook"
-            // error.resourceId = cookbookId
-            // context.commit('SET_ERROR_STATE', error)
+            }).then(function (response) {
+                context.commit('UPDATE_COOKBOOK_STATE', response.data)
+				context.commit("SET_LOADING_STATE", false)
+            }).catch(function (error) {
+                error.resourceType = "cookbook"
+                error.resourceId = cookbookId
+                context.commit('SET_ERROR_STATE', error)
+            });
         }
-    },
-    getters: {
-        get_cookbook: (context, state) => (id) => {
-            let cookbooks = localStorage.getItem("unfiltered")
-            return JSON.parse(cookbooks).find(x => (x.id === parseInt(id)))
-        },
-        get_cookbooks: (state) => () => {
-            const cookbooks = localStorage.getItem("unfiltered")
-            return cookbooks
-        }
-    },
+    }
 }
