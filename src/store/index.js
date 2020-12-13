@@ -80,7 +80,6 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         SET_RESOURCE_STATE(state, newState) {
-            console.log('ne state', newState)
             this.state.resource_isLoading = false
             state[newState.resource] = newState
         }

@@ -14,12 +14,12 @@
                     <div class="ui segment">
                         <div class="ui grid">
                             <div class="eight wide computer column sixteen wide mobile column">
-                                <img class="ui massive left floated image" :src="user.avatar">
+                                <img class="ui massive left floated image" :src="contributor.avatar">
                             </div>
                             <div class="eight wide computer column sixteen wide mobile column">
                                 <div class="ui labels">
                                     <div class="ui left floated label">
-                                        {{ user.name }} 
+                                        {{ contributor.name }} 
                                         <div class="ui star rating" data-rating="3"></div>
                                         <i class="ca right floated flag"></i>
                                     </div>
@@ -28,80 +28,80 @@
                                     :title="followTitleText"
                                     @click="comingSoonMsg()">
                                         <i class="ui bell icon"></i>
-                                        <small>Followers {{ user.followers }}</small>
+                                        <small>Followers {{ contributor.followers }}</small>
                                     </div>
                                 </div>
                                 <div class="ui mini info label bio">
                                     <small>
-                                        {{ user.expertise_level }}
+                                        {{ contributor.expertise_level }}
                                     </small>
                                     <br>
                                     <small>
-                                        authored: {{ user.contributions.cookbooks }} cookbooks and {{ user.contributions.recipes }} recipes
+                                        authored: {{ contributor.contributions.cookbooks }} cookbooks and {{ contributor.contributions.recipes }} recipes
                                     </small>
                                     <br>
-                                    <small>Member since: {{ user.created_at }}</small>
+                                    <small>Member since: {{ contributor.created_at }}</small>
                                 </div>
                                 <div class="ui divider"></div>
-                                <p>{{ user.about }}</p> <br />
+                                <p>{{ contributor.about }}</p> <br />
                             </div>
                         </div>
                     </div>
-                    <div class="ui grid" v-if="user.contact_detail">
-                        <div class="sixteen wide column" v-if="!user.contact_detail.is_public">
+                    <div class="ui grid" v-if="contributor.contact_detail">
+                        <div class="sixteen wide column" v-if="!contributor.contact_detail.is_public">
                             <i class="lock icon"></i> Contact information (private mode)
                         </div>
                         <div class="sixteen wide column contact-labels" v-else>
                             <i class="unlock icon"></i> |
-                            <span v-if="user.contact_detail.facebook">
+                            <span v-if="contributor.contact_detail.facebook">
                                 facebook:
-                                <a :href="user.contact_detail.facebook">
+                                <a :href="contributor.contact_detail.facebook">
                                     <i class="facebook black f icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.twitter">
+                            <span v-if="contributor.contact_detail.twitter">
                                 twitter:
-                                <a :href="user.contact_detail.twitter">
+                                <a :href="contributor.contact_detail.twitter">
                                     <i class="twitter black t icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.instagram">
+                            <span v-if="contributor.contact_detail.instagram">
                                 instagram:
-                                <a :href="user.contact_detail.instagram">
+                                <a :href="contributor.contact_detail.instagram">
                                     <i class="black instagram icon"></i>
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.office_address">
+                            <span v-if="contributor.contact_detail.office_address">
                                 <i class="street view icon"></i>
-                                <a :href="getMapAddr(user.contact_detail.office_address)" target="_blank">
-                                    {{ user.contact_detail.office_address }}
+                                <a :href="getMapAddr(contributor.contact_detail.office_address)" target="_blank">
+                                    {{ contributor.contact_detail.office_address }}
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.phone">
+                            <span v-if="contributor.contact_detail.phone">
                                 phone:
                                 <a>
                                     <i class="black phone icon"></i>
-                                    {{ user.contact_detail.phone }}
+                                    {{ contributor.contact_detail.phone }}
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.calendly">
+                            <span v-if="contributor.contact_detail.calendly">
                                 calendly:
-                                <a :href="user.contact_detail.calendly" target="_blank">
+                                <a :href="contributor.contact_detail.calendly" target="_blank">
                                     <i class="calendar icon"></i>
-                                    {{ user.contact_detail.calendly }}
+                                    {{ contributor.contact_detail.calendly }}
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.skype">
+                            <span v-if="contributor.contact_detail.skype">
                                 skype:
-                                <a :href="user.contact_detail.skype" target="_blank">
+                                <a :href="contributor.contact_detail.skype" target="_blank">
                                     <i class="skype black s icon"></i>
-                                    {{ user.contact_detail.skype }}
+                                    {{ contributor.contact_detail.skype }}
                                 </a>
                             </span>
-                            <span v-if="user.contact_detail.website">
+                            <span v-if="contributor.contact_detail.website">
                                 website:
-                                <a :href="user.contact_detail.website" target="_blank">
-                                    {{ user.contact_detail.website }}
+                                <a :href="contributor.contact_detail.website" target="_blank">
+                                    {{ contributor.contact_detail.website }}
                                 </a>
                             </span>
                         </div>
@@ -143,18 +143,14 @@ export default {
         this.$store.dispatch('fetch_contributor', this.$route.params.username)
     },
     computed: {
-        user() {
-            return this.$store.getters['get_contributor'](
-                this.$route.params.cookbookId,
-                this.$route.params.recipeId,
-                this.$route.params.username
-            );
+        contributor() {
+            return this.$store.state.contributor
         },
         isLoading() {
             return this.$store.state.resource_isLoading
         },
         followTitleText() {
-            return 'Follow ' + this.user.name + ' to learn about their new recipes.'
+            return 'Follow ' + this.contributor.name + ' to learn about their new recipes.'
         }
     },
     methods: {

@@ -7,31 +7,29 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 
 export const contributorStore = {
-    state: () => ({}),
-    mutations: {},
+    state: () => ({
+		contributor: {}
+	}),
+    mutations: {
+        UPDATE_CONTRIBUTOR_OBJECT(state, newState) {
+			this.state.contributor = newState.data.user[0]
+		}
+    },
     actions: {
-        fetch_contributor(context, username) {
+        async fetch_contributor(context, username) {
             context.commit("SET_LOADING_STATE", true)
 
-            axios.get(this.state.named_urls.user_resources + '/' + username)
-            .then(function (response) {
-                response.resource = "cookbook"
-                context.commit("SET_RESOURCE_STATE", response.data)
+            await axios.get(this.state.named_urls.user_resources + '/' + username, {
+                headers: {
+                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
+                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                }
+            }).then(function (response) {
+                context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data)
+				context.commit("SET_LOADING_STATE", false)
             }).catch(function (error) {
-                error.resourceType = "cookbook"
-                error.resourceId = cookbookId
-                
-                context.commit('SET_ERROR_STATE', error)
-            });
-        }
-    },
-    getters: {
-        get_contributor: (state) => (cookbookId, recipeId, username) => {
-            let cookbooks = localStorage.getItem('unfiltered')
-            let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
-            let recipe = cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
-            
-            return recipe.author
+                // console.log('fetch contributor error', error.response)
+            })
         }
     }
 }
