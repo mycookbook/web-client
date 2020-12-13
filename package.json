@@ -69,6 +69,7 @@
         "vue-carousel-3d": "^0.1.23",
         "vue-input-tag": "0.0.16",
         "vue-loader": "^12.1.0",
+        "vue-loading-skeleton": "^1.1.9",
         "vue-resource": "^1.5.1",
         "vue-router": "^2.3.1",
         "vuex": "^2.4.0",

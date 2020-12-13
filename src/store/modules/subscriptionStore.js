@@ -34,8 +34,8 @@ export const subscriptionStore = {
                 email: payload
             }, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
                 context.commit('SHOW_SUCCESS_MESSAGE')

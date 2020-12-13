@@ -17,15 +17,6 @@ export const varietiesStore = {
             const recipe = cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
 
             return recipe.variations;
-        },
-        get_variety: (state) => (cookbookId, recipeId) => {
-            // let cookbooks = localStorage.getItem('cookbooks')
-            // let cookbook = JSON.parse(cookbooks).find(x => (x.id === parseInt(cookbookId)))
-            // return cookbook.recipes.find(y => (y.id === parseInt(recipeId)))
-
-
-            // variations
-
         }
     }
 }

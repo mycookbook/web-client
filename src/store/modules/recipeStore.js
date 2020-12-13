@@ -26,8 +26,8 @@ export const recipeStore = {
                 recipe_id: payload.recipeId,
             }, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
                 if (response.data.updated) {
@@ -42,8 +42,8 @@ export const recipeStore = {
 			
 			await axios.get(this.state.named_urls.recipe_resources + '/' + recipeId, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
 				response.data.ingredients = JSON.parse(response.data.ingredients).data

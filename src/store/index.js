@@ -86,13 +86,17 @@ export default new Vuex.Store({
     },
 	actions: {
         async load_policies(context) {
-            const response = await axios.get(this.state.named_urls.policies, {
+            
+            await axios.get(this.state.named_urls.policies, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
+            }).then(function (response) {
+                context.commit('STORE_POLICIES', response.data.response)
+            }).catch(function (error) {
+                console.log('fetch policies error', error.response)
             })
-            context.commit('STORE_POLICIES', response.data.response)
         },
         unload_global_error_object(context) {
             context.commit("UNLOAD_GLOBAL_ERROR_OBJECT")

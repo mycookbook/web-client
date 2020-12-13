@@ -65,8 +65,8 @@ export const cookbookStore = {
         async load_cookbooks(context) {
             await axios.get(this.state.named_urls.cookbook_resources, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
                 context.commit('STORE_COOKBOOKS', response.data.data)
@@ -75,8 +75,8 @@ export const cookbookStore = {
         async load_definitions(context) {
             const response = await axios.get(this.state.named_urls.definitions, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
                 context.commit('STORE_DEFINITIONS', response.data)
@@ -87,8 +87,8 @@ export const cookbookStore = {
 
             await axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId, {
                 headers: {
-                    'X-API-KEY': process.env.REQUEST_HEADERS.API_KEY,
-                    'X-CLIENT-SECRET': process.env.REQUEST_HEADERS.API_SECRET
+                    'X-API-KEY': process.env.API_KEY,
+                    'X-CLIENT-SECRET': process.env.API_SECRET
                 }
             }).then(function (response) {
                 context.commit('UPDATE_COOKBOOK_STATE', response.data)
