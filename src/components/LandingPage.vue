@@ -4,10 +4,8 @@
 		<div>
 			<Navigation />
 			<Search />
-			<div v-if="cookbooks">
-				<div v-if="filters()">
-					<QuickSort :filters="filters()" :cookbooks="cookbooks" />
-				</div>
+			<div v-if="loaded()">
+				<QuickSort :filters="filters()" :cookbooks="cookbooks()" />
 				<div class="ui grid" style="margin-top: 15px;">
 					<div class="sixteen wide column">
 						<h3>
@@ -112,16 +110,17 @@ export default {
 	async mounted () {
 		store.dispatch('boot')
 	},
-	computed: {
+	methods: {
+		loaded() {
+			if ((this.$store.state.cookbookStore.cookbooks !== undefined) && (this.$store.state.cookbookStore.definitions.categories.contents !== undefined)) {
+				return true
+			}
+		},
 		cookbooks() {
 			return this.$store.state.cookbookStore.cookbooks
-		}
-	},
-	methods: {
+		},
 		filters() {
-			if (this.$store.state.cookbookStore.definitions.categories !== undefined) {
-				return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
-			}
+			return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
 		}
 	},
 	components: {
