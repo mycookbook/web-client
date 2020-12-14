@@ -4,7 +4,11 @@
 		<div>
 			<Navigation />
 			<Search />
-			<div v-if="loaded()">
+			<br /> <br />
+			<div v-if="!loaded()">
+				<ExploreSkeleton />
+			</div>
+			<div v-else>
 				<QuickSort :filters="filters()" :cookbooks="cookbooks()" />
 				<div class="ui grid" style="margin-top: 15px;">
 					<div class="sixteen wide column">
@@ -16,69 +20,7 @@
 						<img class="ui image" src="https://karmasnack.com/wp-content/uploads/2014/03/PIZZA.png" />
 					</div>
 				</div>
-				<div class="ui grid">
-					<div class="ui sixteen wide column">
-						<h3>Based on popular demand</h3>
-						<div class="ui four column grid">
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://www.eatwell101.com/wp-content/uploads/2019/12/peanut-butter-oatmeal-recipe-2.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-							<div class="column" href="/">
-								<a href="/">
-									<img class="ui image" 
-										src="https://whipperberry.com/wp-content/uploads/2016/07/Jif-Peanut-Butter-Fruity-Breakfast-Hacks-by-WhipperBerry-3.jpg" 
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<PopularDemand />
 				<div class="ui grid">
 					<div class="ui sixteen wide column">
 						<h3>
@@ -104,6 +46,8 @@ import Search from './Search.vue'
 import QuickSort from './QuickSort.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
+import ExploreSkeleton from './Skeletons/ExploreSkeleton.vue'
+import PopularDemand from './PopularDemand.vue'
 
 export default {
 	name: "LandingPage",
@@ -128,7 +72,9 @@ export default {
 		Navigation,
 		Contact,
 		Bottom,
-		QuickSort
+		QuickSort,
+		ExploreSkeleton,
+		PopularDemand
 	},
 }
 </script>

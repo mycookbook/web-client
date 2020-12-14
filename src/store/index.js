@@ -82,6 +82,7 @@ export default new Vuex.Store({
     },
 	actions: {
         async boot(context) {
+            
             await axios.all([
                 axios.get(this.state.named_urls.definitions, options),
                 axios.get(this.state.named_urls.cookbook_resources, options),
@@ -90,6 +91,8 @@ export default new Vuex.Store({
                 context.commit('STORE_DEFINITIONS', definitions.data)
                 context.commit('STORE_COOKBOOKS', cookbooks.data.data)
                 context.commit('STORE_POLICIES', policies.data.response)
+
+                context.commit("SET_LOADING_STATE", false)
             })).catch(function (error) { 
                 if (error.response.status === 401) {
                     context.commit("SET_LOADING_STATE", true)
@@ -97,6 +100,7 @@ export default new Vuex.Store({
                 } else {
                     // console.log('must be a server error') 
                 }
+                context.commit("SET_LOADING_STATE", false)
             })
         },
         unload_global_error_object(context) {
@@ -104,6 +108,9 @@ export default new Vuex.Store({
         },
         unload_global_success_object(context) {
             context.commit("UNLOAD_GLOBAL_SUCCESS_OBJECT")
+        },
+        load_skeleton(context) {
+            context.commit("SET_LOADING_STATE", true)
         }
     },
     getters: {
