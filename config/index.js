@@ -2,6 +2,8 @@
 require('dotenv').config()
 var path = require('path')
 let port = process.env.PORT
+const api_key = process.env.API_KEY
+const client_secret = process.env.CLIENT_SECRET
 
 module.exports = {
   build: {
@@ -30,6 +32,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    api_key: api_key,
+    client_secret: client_secret,
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
