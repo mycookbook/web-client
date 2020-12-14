@@ -62,26 +62,6 @@ export const cookbookStore = {
         sort(context, payload) {
             context.commit('SORT', payload)
         },
-        async load_cookbooks(context) {
-            await axios.get(this.state.named_urls.cookbook_resources, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
-                context.commit('STORE_COOKBOOKS', response.data.data)
-            })
-        },
-        async load_definitions(context) {
-            const response = await axios.get(this.state.named_urls.definitions, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
-                context.commit('STORE_DEFINITIONS', response.data)
-            })
-        },
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 

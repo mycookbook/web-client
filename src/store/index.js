@@ -12,9 +12,18 @@ import { subscriptionStore } from './modules/subscriptionStore.js'
 import { registerStore } from './modules/user/registerStore.js'
 import { varietiesStore } from './modules/varietiesStore.js'
 import { contributorStore } from './modules/contributorStore'
+// import Skeleton from 'vue-loading-skeleton';
 
 Vue.use(Vuex);
 Vue.use(VueResource);
+// Vue.use(Skeleton)
+
+const options = {
+    headers: {
+        'X-API-KEY': process.env.API_KEY,
+        'X-CLIENT-SECRET': process.env.CLIENT_SECRET
+    }
+}
 
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production',
@@ -60,7 +69,6 @@ export default new Vuex.Store({
             state.policies.termsAndConditons = policies.termsAndConditions.content
         },
         SET_ERROR_STATE(state, errorObject) {
-           
             let code = errorObject.response.status
             let message = errorObject.response.data
             let resourceType = errorObject.resourceType
@@ -68,34 +76,27 @@ export default new Vuex.Store({
 
             this.state.errors.apiError = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
         },
-        SET_SUCCESS_STATE(state, successObject) {
-            let code = successObject.response.status
-            let message = successObject.successMessage
-            let resourceType = successObject.resourceType
-            let resourceId = successObject.resourceId
-
-            this.state.success.apiMessage = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
-        },
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
-        },
-        SET_RESOURCE_STATE(state, newState) {
-            this.state.resource_isLoading = false
-            state[newState.resource] = newState
         }
     },
 	actions: {
-        async load_policies(context) {
-            
-            await axios.get(this.state.named_urls.policies, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
+        async boot(context) {
+            await axios.all([
+                axios.get(this.state.named_urls.definitions, options),
+                axios.get(this.state.named_urls.cookbook_resources, options),
+                axios.get(this.state.named_urls.policies, options)
+            ]).then(axios.spread((definitions, cookbooks, policies) => {
+                context.commit('STORE_DEFINITIONS', definitions.data)
+                context.commit('STORE_COOKBOOKS', cookbooks.data.data)
+                context.commit('STORE_POLICIES', policies.data.response)
+            })).catch(function (error) { 
+                if (error.response.status === 401) {
+                    context.commit("SET_LOADING_STATE", true)
+                    // console.log('malformed request, check headers')
+                } else {
+                    // console.log('must be a server error') 
                 }
-            }).then(function (response) {
-                context.commit('STORE_POLICIES', response.data.response)
-            }).catch(function (error) {
-                console.log('fetch policies error', error.response)
             })
         },
         unload_global_error_object(context) {
