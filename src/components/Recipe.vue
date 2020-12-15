@@ -206,7 +206,7 @@ export default {
 	},
 	computed: {
 		totalCount() {
-			return this.$store.state.recipe.claps
+			return (this.$store.state.recipe.claps) || 0
 		},
 		recipe() {
 			return this.$store.state.recipe
