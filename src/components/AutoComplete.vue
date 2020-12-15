@@ -86,17 +86,20 @@ export default {
         },
     },
 	methods: {
-		search() {
+		async search() {
 			this.results = []
 			let query = event.target.value
 			this.qStr = query
 			
-			axios.get(`${process.env.BASE_URL}search?query=${query}`)
-			.then((response) => {
+			await axios.get(`${process.env.BASE_URL}search?query=${query}`, {
+				headers: {
+					'X-API-KEY': process.env.API_KEY,
+					'X-CLIENT-SECRET': process.env.CLIENT_SECRET
+				}
+			}).then((response) => {
 				this.results = response.data.response
-			})
-			.catch((error) => {
-				console.log('error', error)
+			}).catch((error) => {
+				console.log('search error', error)
 			})
 
 			this.searching = (this.qStr)
