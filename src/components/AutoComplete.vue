@@ -97,9 +97,12 @@ export default {
 					'X-CLIENT-SECRET': process.env.CLIENT_SECRET
 				}
 			}).then((response) => {
-				this.results = response.data.response
+				if (Object.keys(this.results).length !== 0 ) {
+					//Match found: store the search query via the ML endpoint
+					this.results = response.data.response
+				}
 			}).catch((error) => {
-				console.log('search error', error)
+				// console.log('search error', error.response.data.query)
 			})
 
 			this.searching = (this.qStr)
