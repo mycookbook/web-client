@@ -4,10 +4,7 @@
     <div class="ui container">
         <div class="main-content">
             <div v-if="isLoading">
-                <div class="ui active inverted dimmer">
-                    <div class="ui text loader">Loading ...</div>
-                </div>
-                <p></p>
+                <RecipeCardSkeleton />
             </div>
             <div class="ui grid" v-else>
                 <div class="twelve wide computer column sixteen wide mobile column">
@@ -124,9 +121,9 @@
                 <div class="four wide computer column sixteen wide mobile column">
                     <div class="ui wide skyscraper test ad" data-text="Ad space"></div>
                 </div>
+                <Contact />
+                <Bottom />
             </div>
-            <Contact />
-            <Bottom />
         </div>
     </div>
 </div>
@@ -136,6 +133,7 @@
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
+import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
 
 export default {
     name: "ContributorProfile",
@@ -162,6 +160,7 @@ export default {
         }
     },
     components: {
+        RecipeCardSkeleton,
         Navigation,
         Contact,
         Bottom

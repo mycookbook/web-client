@@ -18,17 +18,15 @@ export const contributorStore = {
     actions: {
         async fetch_contributor(context, username) {
             context.commit("SET_LOADING_STATE", true)
+            
+            const uri = this.state.named_urls.user_resources + '/' + username
 
-            await axios.get(this.state.named_urls.user_resources + '/' + username, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+            await axios.get(uri, this.state.api_options.axios)
+            .then(function (response) {
                 context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data)
 				context.commit("SET_LOADING_STATE", false)
             }).catch(function (error) {
-                // console.log('fetch contributor error', error.response)
+                console.log('fetch contributor error', error.response)
             })
         }
     }
