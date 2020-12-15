@@ -2,10 +2,7 @@
 <div class="ui container">
 	<Navigation />
 	<div v-if="isLoading">
-		<div class="ui active inverted dimmer">
-			<div class="ui text loader">Loading ...</div>
-		</div>
-		<p></p>
+		<DefaultSkeleton />
 	</div>
 	<div v-else>
 		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
@@ -150,9 +147,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		<Contact />
-		<Bottom />
+			<Contact />
+			<Bottom />
+		</div>
 	</div>
 </template>
 
@@ -162,6 +159,7 @@ import NothingToShowYou from './NothingToShowYou.vue';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
+import DefaultSkeleton from './Skeletons/DefaultSkeleton.vue';
 
 export default {
 	mounted() {
@@ -169,7 +167,7 @@ export default {
 	},
 	computed: {
 		cookbook() {
-			return this.$store.state.cookbook;
+			return this.$store.state.cookbook
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
@@ -214,6 +212,7 @@ export default {
 	},
 	components: {
 		CookbookContributors,
+		DefaultSkeleton,
 		NothingToShowYou,
 		Navigation,
 		Contact,

@@ -18,12 +18,15 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 // Vue.use(Skeleton)
 
-const options = {
+const axios_options = {
     headers: {
         'X-API-KEY': process.env.API_KEY,
         'X-CLIENT-SECRET': process.env.CLIENT_SECRET
     }
 }
+
+const unauthorized = 401;
+const unprocessible = 422;
 
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production',
@@ -51,6 +54,9 @@ export default new Vuex.Store({
         form_errors: {
             registration_form: {},
             contact_form: {}
+        },
+        api_options: {
+            axios: axios_options
         }
 	}),
 	mutations: {
@@ -84,9 +90,9 @@ export default new Vuex.Store({
         async boot(context) {
             
             await axios.all([
-                axios.get(this.state.named_urls.definitions, options),
-                axios.get(this.state.named_urls.cookbook_resources, options),
-                axios.get(this.state.named_urls.policies, options)
+                axios.get(this.state.named_urls.definitions, this.state.api_options.axios),
+                axios.get(this.state.named_urls.cookbook_resources, this.state.api_options.axios),
+                axios.get(this.state.named_urls.policies, this.state.api_options.axios)
             ]).then(axios.spread((definitions, cookbooks, policies) => {
                 context.commit('STORE_DEFINITIONS', definitions.data)
                 context.commit('STORE_COOKBOOKS', cookbooks.data.data)
@@ -94,7 +100,7 @@ export default new Vuex.Store({
 
                 context.commit("SET_LOADING_STATE", false)
             })).catch(function (error) { 
-                if (error.response.status === 401) {
+                if (error.response.status === unauthorized) {
                     context.commit("SET_LOADING_STATE", true)
                     // console.log('malformed request, check headers')
                 } else {

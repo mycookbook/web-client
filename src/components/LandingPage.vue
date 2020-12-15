@@ -46,7 +46,7 @@ import Search from './Search.vue'
 import QuickSort from './QuickSort.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
-import ExploreSkeleton from './Skeletons/ExploreSkeleton.vue'
+import DefaultSkeleton from './Skeletons/DefaultSkeleton.vue'
 import PopularDemand from './PopularDemand.vue'
 
 export default {
@@ -73,7 +73,7 @@ export default {
 		Contact,
 		Bottom,
 		QuickSort,
-		ExploreSkeleton,
+		DefaultSkeleton,
 		PopularDemand
 	},
 }

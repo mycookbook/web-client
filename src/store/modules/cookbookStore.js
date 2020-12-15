@@ -64,13 +64,11 @@ export const cookbookStore = {
         },
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
+            
+            const uri = this.state.named_urls.cookbook_resources + '/' + cookbookId
 
-            await axios.get(this.state.named_urls.cookbook_resources + '/' + cookbookId, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+            await axios.get(uri, this.state.api_options.axios)
+            .then(function (response) {
                 context.commit('UPDATE_COOKBOOK_STATE', response.data)
 				context.commit("SET_LOADING_STATE", false)
             }).catch(function (error) {
