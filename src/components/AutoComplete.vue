@@ -99,6 +99,7 @@ export default {
 			}).then((response) => {
 				if (Object.keys(this.results).length !== 0 ) {
 					//Match found: store the search query via the ML endpoint
+					//metadata: {query, user {geolocation, ip, locale}, browser}
 					this.results = response.data.response
 				}
 			}).catch((error) => {

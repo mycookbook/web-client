@@ -6,7 +6,7 @@
             <div class="ui sixteen wide computer column sixteen wide mobile column">
                 <div class="ui large info message">
                     Already have a contributor account? 
-                    <a href="https://admin.cookbookshq.com/login" target="_blank">Login</a>
+                    <a href="https://contribute.cookbookshq.com/login" target="_blank">Login</a>
                 </div>
                 <form class="ui form">
                     <div class="field">
