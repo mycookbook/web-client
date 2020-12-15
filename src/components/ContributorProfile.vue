@@ -107,8 +107,12 @@
                         <div class="sixteen wide column">
                             <div class="ui form">
                                 <div class="field">
-                                    <label>Send a message/ask a question:</label>
-                                    <textarea></textarea>
+                                    <label>*Send a message/Give Feedback/Ask a question:</label>
+                                    <textarea :placeholder="personalizedMsg()"></textarea>
+                                </div>
+                                <div class="field">
+                                    <label>*Your email:</label>
+                                    <input type="email" multiple placeholder="Add comma separated email addresses"/>
                                 </div>
                             </div>
                             <br />
@@ -157,6 +161,9 @@ export default {
         },
         comingSoonMsg: function() {
             return 'Coming soon'
+        },
+        personalizedMsg() {
+            return "This ia a personalised message/question, it goes directly into " + this.contributor.name + "'s" + " email, so, make it count!";
         }
     },
     components: {
