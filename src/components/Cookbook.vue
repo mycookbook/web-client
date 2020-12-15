@@ -15,7 +15,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="ui right floated mini red button" @click="comingSoonMsg()" title="Be the first to know when there is a new submission into this cookbook.">
+			<div class="ui right floated mini disabled red button" title="Be the first to know when there is a new submission into this cookbook.">
 				<i class="ui bell icon"></i>
 				SUBSCRIBE
 			</div>
@@ -135,7 +135,7 @@
 					</div>
 					<div class="two wide computer column sixteen wide mobile column">
 						<div>
-							<div class="ui blue button" @click="comingSoonMsg()">
+							<div class="ui disabled blue button" @click="comingSoonMsg()">
 								Compare
 							</div>
 						</div>

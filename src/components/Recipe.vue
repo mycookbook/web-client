@@ -72,7 +72,7 @@
 						<span class="transformToCapitalize">{{ recipe.course }}</span>
 					</div>
 					<hr />
-					<div class="ui red button" @click="comingSoonMsg()">
+					<div class="ui disabled red button">
 						Report it!
 					</div>
 					<div>
