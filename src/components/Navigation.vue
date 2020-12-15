@@ -11,14 +11,17 @@
 		<div class="eight wide mobile twelve wide tablet ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
-						<a class="disabled item" 
-						title="Some authors are open to taking orders. That means you can browse a wide collection of this category of recipes and place order on the ones you like.">
+						<a class="item" 
+						href="https://marketplace.cookbookshq.com"
+						target="_blank"
+						title="Coming soon."
+						>
 							<i class="cart icon"></i>
 							Go to Marketplace
 						</a>
 						<a 
 						class="item" 
-						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+						title="Coming soon.">
 							<button class="ui light disabled red button">
 								<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
 							</button>
