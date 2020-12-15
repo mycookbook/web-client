@@ -21,7 +21,7 @@
                                         <i class="ca right floated flag"></i>
                                     </div>
                                     <div 
-                                    class="ui right floated red label button" 
+                                    class="ui right floated disabled red label button" 
                                     :title="followTitleText"
                                     @click="comingSoonMsg()">
                                         <i class="ui bell icon"></i>
@@ -108,15 +108,15 @@
                             <div class="ui form">
                                 <div class="field">
                                     <label>*Send a message/Give Feedback/Ask a question:</label>
-                                    <textarea :placeholder="personalizedMsg()"></textarea>
+                                    <textarea :placeholder="personalizedMsg()" disabled></textarea>
                                 </div>
                                 <div class="field">
                                     <label>*Your email:</label>
-                                    <input type="email" multiple placeholder="Add comma separated email addresses"/>
+                                    <input type="email" placeholder="Add comma separated email addresses" disabled/>
                                 </div>
                             </div>
                             <br />
-                            <div class="ui small button tbb">
+                            <div class="ui small disabled button tbb">
                                 Submit
                             </div>
                         </div>
