@@ -41,14 +41,11 @@ export const registerStore = {
                 name: payload.fullName,
                 email: payload.email,
                 password: payload.password
-            }, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+            }, this.state.api_options.axios)
+            .then(function (response) {
                 context.commit('SHOW_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)
+                context.commit('RESET_REGISTRATION_FORM')
             }).catch(function (error) {
                 context.commit('HIDE_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)
