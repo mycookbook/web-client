@@ -3,10 +3,7 @@
 	<Navigation />
 	<div class="ui container main-content">
 		<div v-if="isLoading">
-			<div class="ui active inverted dimmer">
-				<div class="ui text loader">Loading ...</div>
-			</div>
-			<p></p>
+			<RecipeCardSkeleton />
 		</div>
 		<div v-else>
 			<div class="ui grid">
@@ -27,22 +24,22 @@
 						<hr />
 						<small>
 							<h5 class="ui teal header">
-								Calories: {{ JSON.parse(recipe.nutritional_detail).cal }} kCal
+								Calories:  {{ recipe.nutritional_detail.cal }}k
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui orange header">
-								Fat: {{ JSON.parse(recipe.nutritional_detail).fat }}g
+								Fat: {{ recipe.nutritional_detail.fat }}g
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui purple header">
-								Protein: {{ JSON.parse(recipe.nutritional_detail).protein }}g
+								Protein: {{ recipe.nutritional_detail.protein }}g
 							</h5>
 						</small>
 						<small>
 							<h5 class="ui grey header">
-								Carbs: {{ JSON.parse(recipe.nutritional_detail).carbs }}g
+								Carbs: {{ recipe.nutritional_detail.carbs }}g
 							</h5>
 						</small>
 					</div>
@@ -189,9 +186,9 @@
 					<small>ad space</small>
 				</div>
 			</div>
+			<Contact />
+			<Bottom />
 		</div>
-		<Contact />
-		<Bottom />
     </div>
 </div>
 </template>
@@ -201,6 +198,7 @@ import store from '@/store';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
+import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
 
 export default {
 	mounted() {
@@ -240,6 +238,7 @@ export default {
 		}
 	},
 	components: {
+		RecipeCardSkeleton,
 		Navigation,
 		Contact,
 		Bottom,

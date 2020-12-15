@@ -24,12 +24,8 @@ export const recipeStore = {
 
 			await axios.post(url, {
                 recipe_id: payload.recipeId,
-            }, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+			}, this.state.api_options.axios)
+			.then(function (response) {
                 if (response.data.updated) {
 					context.commit('INCREMENT_CLAP', response.data.claps)
 				}
@@ -39,26 +35,27 @@ export const recipeStore = {
 		},
 		async fetch_recipe(context, recipeId) {
 			context.commit("SET_LOADING_STATE", true)
+
+			const uri = this.state.named_urls.recipe_resources + '/' + recipeId
 			
-			await axios.get(this.state.named_urls.recipe_resources + '/' + recipeId, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+			await axios.get(uri, this.state.api_options.axios)
+			.then(function (response) {
 				response.data.ingredients = JSON.parse(response.data.ingredients).data
 
 				const parsedData = JSON.parse(response.data.nutritional_detail)
+				const detail = {
+					cal: parsedData.cal,
+					carbs: parsedData.carbs,
+					protein: parsedData.protein,
+					fat: parsedData.fat
+				}
+				response.data.nutritional_detail = detail;
 
-				response.data.nutritional_detail.cal = parsedData.cal
-				response.data.nutritional_detail.carbs = parsedData.carbs
-				response.data.nutritional_detail.protein = parsedData.protein
-				response.data.nutritional_detail.fat = parsedData.fat
-				
 				context.commit('UPDATE_RECIPE_STATE', response.data)
 				context.commit("SET_LOADING_STATE", false)
             }).catch(function (error) {
-                // console.log('fetch error', error.response)
+				// console.log('fetch error', error)
+				context.commit("SET_LOADING_STATE", false)
 			})
         }
 	}
