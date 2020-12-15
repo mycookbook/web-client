@@ -31,7 +31,18 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    
+    // new webpack.optimize.UglifyJsPlugin({
+      // mangle: {
+      //   keep_fnames: true,
+      // },
+      // compress: {
+      //   warnings: false
+      // },
+      // output: {
+      //   beautify: false,
+      // },
+      // sourceMap: true
+    // }),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
