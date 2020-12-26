@@ -12,16 +12,14 @@ import { subscriptionStore } from './modules/subscriptionStore.js'
 import { registerStore } from './modules/user/registerStore.js'
 import { varietiesStore } from './modules/varietiesStore.js'
 import { contributorStore } from './modules/contributorStore'
-// import Skeleton from 'vue-loading-skeleton';
+import { searchStore } from './modules/searchStore'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
-// Vue.use(Skeleton)
 
 const axios_options = {
     headers: {
-        'X-API-KEY': process.env.API_KEY,
-        'X-CLIENT-SECRET': process.env.CLIENT_SECRET
+        'X-API-KEY': process.env.API_KEY
     }
 }
 
@@ -139,7 +137,8 @@ export default new Vuex.Store({
 		subscriptionStore,
 		registerStore,
         varietiesStore,
-        contributorStore
+        contributorStore,
+        searchStore
     },
     plugins: [createPersistedState()]
 });
