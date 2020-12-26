@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div v-else>
-			<div class="ui divided selection list" style="text-transform: capitalize;">
+			<div class="ui divided selection list capitalize">
 				<a class="item" v-for="result in results.slice(0,5)" :href="getLink(result)">
 					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
 						{{ result.resource_type }}
@@ -108,12 +108,12 @@ export default {
 						'X-API-KEY': process.env.API_KEY
 					}
 				}).then((response) => {
-					if (Object.keys(this.results).length !== 0 ) {
+					if (Object.keys(this.results).length == 0 ) {
 						this.results = response.data.response
-						console.log('results',this.results)
+						this.$store.dispatch('post_to_ml_endpoint', this.query)
 					}
 				}).catch((error) => {
-					console.log('search error', error.response.data.query)
+					console.log('search error', error.response.data)
 				})
 
 				this.searching = (this.qStr)
@@ -180,10 +180,13 @@ export default {
 .selection .description {
 	font-size: small;
 }
-.selection .description .meta{
+.selection .description .meta {
 	font-weight: bold;
 }
 #qStr {
 	background-color: yellow!important;
+}
+.capitalize {
+	text-transform: capitalize;
 }
 </style>
