@@ -1,10 +1,11 @@
 <template>
   <div class="ui massive search search-container">
     <div class="ui icon large fluid input">
-      <input @keyup="search" class="prompt" type="text" placeholder="Try &quot;flat tummy water recipe&quot;" />
+      <input v-model="query" @keyup="search" class="prompt" type="text" placeholder="Try &quot;flat tummy water recipe&quot;" />
       <i class="search icon sicon"></i>
     </div>
     <div class="search-results" v-show="searching">
+	{{ results }}
 		<div class="ui divided selection list" style="text-transform: capitalize;" v-if="results.length == 0">
 			<div class="item description">
 				<small>
@@ -74,6 +75,7 @@ export default {
 			qStr: '',
 			results: [],
 			base: '/#/',
+			query: ''
 		};
 	},
 	filters: {
@@ -86,27 +88,30 @@ export default {
         },
     },
 	methods: {
-		async search() {
-			this.results = []
-			let query = event.target.value
-			this.qStr = query
-			
-			await axios.get(`${process.env.BASE_URL}search?query=${query}`, {
-				headers: {
-					'X-API-KEY': process.env.API_KEY,
-					'X-CLIENT-SECRET': process.env.CLIENT_SECRET
-				}
-			}).then((response) => {
-				if (Object.keys(this.results).length !== 0 ) {
-					//Match found: store the search query via the ML endpoint
-					//metadata: {query, user {geolocation, ip, locale}, browser}
-					this.results = response.data.response
-				}
-			}).catch((error) => {
-				// console.log('search error', error.response.data.query)
-			})
+		search() {
 
-			this.searching = (this.qStr)
+			if (this.query.length > 2) {
+				this.$store.dispatch('post_to_ml_endpoint', this.query)
+
+				this.results = []
+				let query = event.target.value
+				this.qStr = this.query
+
+				axios.get(`${process.env.BASE_URL}search?query=${this.query}`, {
+					headers: {
+						'X-API-KEY': process.env.API_KEY
+					}
+				}).then((response) => {
+					if (Object.keys(this.results).length !== 0 ) {
+						this.results = response.data.response
+						console.log('results',this.results)
+					}
+				}).catch((error) => {
+					console.log('search error', error.response.data.query)
+				})
+
+				this.searching = (this.qStr)
+			}
 		},
 		getClass(type) {
 			let style = 'ui horizontal label'
