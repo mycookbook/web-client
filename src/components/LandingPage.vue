@@ -6,7 +6,7 @@
 			<Search />
 			<br /> <br />
 			<div v-if="!loaded()">
-				<ExploreSkeleton />
+				<DefaultSkeleton />
 			</div>
 			<div v-else>
 				<QuickSort :filters="filters()" :cookbooks="cookbooks()" />

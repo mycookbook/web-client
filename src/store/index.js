@@ -17,12 +17,6 @@ import { searchStore } from './modules/searchStore'
 Vue.use(Vuex);
 Vue.use(VueResource);
 
-const axios_options = {
-    headers: {
-        'X-API-KEY': process.env.API_KEY
-    }
-}
-
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production',
 	state: () => ({
@@ -50,9 +44,13 @@ export default new Vuex.Store({
             registration_form: {},
             contact_form: {}
         },
-        apiClient: axios,
-        api_options: {
-            axios: axios_options
+        api: {
+            client: axios,
+            options: {
+                headers: {
+                    'X-API-KEY': process.env.API_KEY
+                }
+            }
         },
         response: {
             statuses: {
@@ -91,11 +89,11 @@ export default new Vuex.Store({
 	actions: {
         async boot(context) {
             
-            await this.state.apiClient.all([
-                axios.get(this.state.named_urls.definitions, this.state.api_options.axios),
-                axios.get(this.state.named_urls.cookbook_resources, this.state.api_options.axios),
-                axios.get(this.state.named_urls.policies, this.state.api_options.axios)
-            ]).then(axios.spread((definitions, cookbooks, policies) => {
+            await this.state.api.client.all([
+                this.state.api.client.get(this.state.named_urls.definitions, this.state.api.options),
+                this.state.api.client.get(this.state.named_urls.cookbook_resources, this.state.api.options),
+                this.state.api.client.get(this.state.named_urls.policies, this.state.api.options)
+            ]).then(this.state.api.client.spread((definitions, cookbooks, policies) => {
                 context.commit('STORE_DEFINITIONS', definitions.data)
                 context.commit('STORE_COOKBOOKS', cookbooks.data.data)
                 context.commit('STORE_POLICIES', policies.data.response)

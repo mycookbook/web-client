@@ -31,11 +31,11 @@ export const registerStore = {
             context.commit('SET_LOADING_STATE', true)
             context.commit('RESET_REGISTRATION_FORM')
             
-            await this.state.apiClient.post(process.env.BASE_URL + 'auth/register', {
+            await this.state.api.client.post(process.env.BASE_URL + 'auth/register', {
                 name: payload.fullName,
                 email: payload.email,
                 password: payload.password
-            }, this.state.api_options.axios)
+            }, this.state.api.options)
             .then(function (response) {
                 context.commit('SHOW_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)

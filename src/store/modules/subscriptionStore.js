@@ -23,14 +23,10 @@ export const subscriptionStore = {
 
             const url = process.env.BASE_URL + 'subscriptions'
 
-            await this.state.apiClient.post(url, {
+            await this.state.api.client.post(url, {
                 email: payload
-            }, {
-                headers: {
-                    'X-API-KEY': process.env.API_KEY,
-                    'X-CLIENT-SECRET': process.env.API_SECRET
-                }
-            }).then(function (response) {
+            }, this.state.api.options)
+            .then(function (response) {
                 context.commit('SHOW_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)
             }).catch(function (error) {

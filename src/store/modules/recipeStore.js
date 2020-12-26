@@ -20,9 +20,9 @@ export const recipeStore = {
 		addClap(context, payload) {
 			let url = process.env.BASE_URL + 'add-clap';
 
-			this.state.apiClient.post(url, {
+			this.state.api.client.post(url, {
                 recipe_id: payload.recipeId,
-			}, this.state.api_options.axios)
+			}, this.state.api.options)
 			.then(function (response) {
                 if (response.data.updated) {
 					context.commit('INCREMENT_CLAP', response.data.claps)
@@ -36,7 +36,7 @@ export const recipeStore = {
 
 			const uri = this.state.named_urls.recipe_resources + '/' + recipeId
 			
-			await this.state.apiClient.get(uri, this.state.api_options.axios)
+			await this.state.api.client.get(uri, this.state.api.options)
 			.then(function (response) {
 				response.data.ingredients = JSON.parse(response.data.ingredients).data
 

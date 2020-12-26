@@ -59,7 +59,7 @@ export const cookbookStore = {
 
             const uri = this.state.named_urls.cookbook_resources + '/' + cookbookId
 
-            await this.state.apiClient.get(uri, this.state.api_options.axios)
+            await this.state.api.client.get(uri, this.state.api.options)
             .then(function (response) {
                 context.commit('UPDATE_COOKBOOK_STATE', response.data)
 				context.commit("SET_LOADING_STATE", false)
