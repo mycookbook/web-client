@@ -38,8 +38,6 @@ export default new Vuex.Store({
             dataRetentionPolicy: '',
             termsAndConditons: ''
         },
-        errors: {},
-        success: {},
         form_errors: {
             registration_form: {},
             contact_form: {}
@@ -55,32 +53,18 @@ export default new Vuex.Store({
         response: {
             statuses: {
                 unauthorized: 401,
-                unprocessible: 422
+                unprocessible: 422,
+                ok: 200,
+                server: 500
             }
         }
 	}),
 	mutations: {
-        UNLOAD_GLOBAL_ERROR_OBJECT() {
-            this.state.errors = {}
-            this.state.resource_isLoading = false
-        },
-        UNLOAD_GLOBAL_SUCCESS_OBJECT() {
-            this.state.success = {}
-            this.state.resource_isLoading = false
-        },
         STORE_POLICIES(state, policies) {
             state.policies.cookiePolicy = policies.cookiePolicy.content
             state.policies.usagePolicy = policies.usagePolicy.content
             state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
             state.policies.termsAndConditons = policies.termsAndConditions.content
-        },
-        SET_ERROR_STATE(state, errorObject) {
-            let code = errorObject.response.status
-            let message = errorObject.response.data
-            let resourceType = errorObject.resourceType
-            let resourceId = errorObject.resourceId
-
-            this.state.errors.apiError = { code: code, message: message, resourceType: resourceType,  resourceId: resourceId }
         },
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
