@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 export const registerStore = {
     state: () => ({
@@ -31,7 +30,7 @@ export const registerStore = {
         async register(context, payload) {
             context.commit('SET_LOADING_STATE', true)
             
-            await axios.post(process.env.BASE_URL + 'auth/register', {
+            await this.state.apiClient.post(process.env.BASE_URL + 'auth/register', {
                 name: payload.fullName,
                 email: payload.email,
                 password: payload.password

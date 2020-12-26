@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const contributorStore = {
     state: () => ({
 		contributor: {}
@@ -15,7 +13,7 @@ export const contributorStore = {
             
             const uri = this.state.named_urls.user_resources + '/' + username
 
-            await axios.get(uri, this.state.api_options.axios)
+            await this.state.apiClient.get(uri, this.state.api_options.axios)
             .then(function (response) {
                 context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data)
 				context.commit("SET_LOADING_STATE", false)

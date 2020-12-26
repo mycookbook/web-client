@@ -23,9 +23,6 @@ const axios_options = {
     }
 }
 
-const unauthorized = 401;
-const unprocessible = 422;
-
 export default new Vuex.Store({
 	strict: process.env.NODE_ENV !== 'production',
 	state: () => ({
@@ -53,8 +50,15 @@ export default new Vuex.Store({
             registration_form: {},
             contact_form: {}
         },
+        apiClient: axios,
         api_options: {
             axios: axios_options
+        },
+        response: {
+            statuses: {
+                unauthorized: 401,
+                unprocessible: 422
+            }
         }
 	}),
 	mutations: {
@@ -87,7 +91,7 @@ export default new Vuex.Store({
 	actions: {
         async boot(context) {
             
-            await axios.all([
+            await this.state.apiClient.all([
                 axios.get(this.state.named_urls.definitions, this.state.api_options.axios),
                 axios.get(this.state.named_urls.cookbook_resources, this.state.api_options.axios),
                 axios.get(this.state.named_urls.policies, this.state.api_options.axios)
@@ -98,7 +102,7 @@ export default new Vuex.Store({
 
                 context.commit("SET_LOADING_STATE", false)
             })).catch(function (error) { 
-                if (error.response.status === unauthorized) {
+                if (error.response.status === this.state.response.statuses.unauthorized) {
                     context.commit("SET_LOADING_STATE", true)
                     // console.log('malformed request, check headers')
                 } else {

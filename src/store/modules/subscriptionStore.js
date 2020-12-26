@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const subscriptionStore = {
     state: () => ({
         success: false
@@ -21,10 +19,11 @@ export const subscriptionStore = {
     actions: {
         async subscribeUser(context, payload) {
             context.commit('SET_LOADING_STATE', true)
+            context.commit('RESET_CONTACT_FORM')
 
             const url = process.env.BASE_URL + 'subscriptions'
 
-            await axios.post(url, {
+            await this.state.apiClient.post(url, {
                 email: payload
             }, {
                 headers: {

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const recipeStore = {
 	state: () => ({
 		recipe: {},
@@ -22,7 +20,7 @@ export const recipeStore = {
 		addClap(context, payload) {
 			let url = process.env.BASE_URL + 'add-clap';
 
-			axios.post(url, {
+			this.state.apiClient.post(url, {
                 recipe_id: payload.recipeId,
 			}, this.state.api_options.axios)
 			.then(function (response) {
@@ -38,7 +36,7 @@ export const recipeStore = {
 
 			const uri = this.state.named_urls.recipe_resources + '/' + recipeId
 			
-			await axios.get(uri, this.state.api_options.axios)
+			await this.state.apiClient.get(uri, this.state.api_options.axios)
 			.then(function (response) {
 				response.data.ingredients = JSON.parse(response.data.ingredients).data
 

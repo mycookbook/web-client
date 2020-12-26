@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const cookbookStore = {
     state: () => ({
         cookbooks: [],
@@ -27,7 +25,7 @@ export const cookbookStore = {
             } else if (payload === 'location') {
                 state.cookbooks = unfiltered
                 const filtered = state.cookbooks.filter((c) => {
-                    axios
+                    this.state.apiClient
                     .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
                     .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
                     return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
@@ -61,7 +59,7 @@ export const cookbookStore = {
 
             const uri = this.state.named_urls.cookbook_resources + '/' + cookbookId
 
-            await axios.get(uri, this.state.api_options.axios)
+            await this.state.apiClient.get(uri, this.state.api_options.axios)
             .then(function (response) {
                 context.commit('UPDATE_COOKBOOK_STATE', response.data)
 				context.commit("SET_LOADING_STATE", false)
