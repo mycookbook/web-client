@@ -1,14 +1,10 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VueResource from 'vue-resource';
 import axios from 'axios';
-
-Vue.use(Vuex);
-Vue.use(VueResource);
 
 export const recipeStore = {
 	state: () => ({
-		recipe: {}
+		recipe: {},
+		hasClapped: 0,
+		maxAllowedClaps: 7
 	}),
 	mutations: {
 		INCREMENT_CLAP(state, claps) {
@@ -16,13 +12,17 @@ export const recipeStore = {
 		},
 		UPDATE_RECIPE_STATE(state, newState) {
 			this.state.recipe = newState
+			state.hasClapped += 1
+		},
+		RESET_HASCLAPPED(state) {
+			state.hasClapped = 0
 		}
 	},
     actions: {
-		async addClap(context, payload) {
+		addClap(context, payload) {
 			let url = process.env.BASE_URL + 'add-clap';
 
-			await axios.post(url, {
+			axios.post(url, {
                 recipe_id: payload.recipeId,
 			}, this.state.api_options.axios)
 			.then(function (response) {
@@ -57,6 +57,9 @@ export const recipeStore = {
 				// console.log('fetch error', error)
 				context.commit("SET_LOADING_STATE", false)
 			})
-        }
+		},
+		reset_hasClapped(context) {
+			context.commit('RESET_HASCLAPPED');
+		}
 	}
 }

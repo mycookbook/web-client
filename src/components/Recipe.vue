@@ -9,10 +9,8 @@
 			<div class="ui grid">
 				<div class="ui two wide computer column sixteen wide mobile column">
 					<div>
-						<div class="add-clap" @click="addClap()">
-							<div class="ui tiny button tbb">
-								Add Clap: {{ totalCount }}
-							</div>
+						<div class="ui tiny button tbb" @click="addClap()" :class="{ 'disabled':hasReachedMaximumAllowedThreshold }">
+							Add Clap: {{ totalCount }}
 						</div>
 					</div>
 					<hr />
@@ -203,6 +201,7 @@ import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
 export default {
 	mounted() {
 		this.$store.dispatch('fetch_recipe', this.$route.params.recipeId)
+		this.$store.dispatch('reset_hasClapped')
 	},
 	computed: {
 		totalCount() {
@@ -213,6 +212,10 @@ export default {
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
+		},
+		hasReachedMaximumAllowedThreshold() {
+			console.log('hasClapped', this.$store.state.recipeStore.hasClapped)
+			return (this.$store.state.recipeStore.hasClapped >= this.$store.state.recipeStore.maxAllowedClaps)
 		}
 	},
 	data() {
