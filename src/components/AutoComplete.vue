@@ -6,7 +6,8 @@
 		@keyup="search" 
 		class="prompt" 
 		type="text" 
-		placeholder="Try &quot;flat tummy water recipe&quot;" 
+		id="searchInput"
+		placeholder="Try &quot;banana bread recipe&quot;" 
 	  />
       <i class="search icon sicon"></i>
     </div>
@@ -159,19 +160,17 @@ export default {
 
 <style>
 .sicon {
-	color: #0160CC!important;
+	color: #0160CC;
 }
 .prompt {
-	font-weight: 300!important;
-	line-height: 200%!important;
-	padding-left:40px!important;
+	font-weight: 300;
+	line-height: 200%;
+	padding-left:40px;
 	border-radius: 0!important;
 	border-top: none!important;
 	border-left: none!important;
 	border-right: none!important;
-	/* box-shadow: 0 80px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	background-color: #ffffff!important;
-	font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 .search-container {
 	width: 80%;
@@ -189,4 +188,10 @@ export default {
 .capitalize {
 	text-transform: capitalize;
 }
+#searchInput::placeholder {
+  font-size: 0.8em;
+  color: #eeeeee;
+  font-style: italic;
+}
+
 </style>
