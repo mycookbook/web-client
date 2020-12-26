@@ -17,11 +17,11 @@ import Cookie from './components/Cookie.vue';
 Vue.use(Skeleton)
 
 export default {
+	name: "App",
 	mounted() {
 		this.$store.dispatch("unload_global_error_object")
 		this.$store.dispatch("unload_global_success_object")
 	},
-	name: 'app',
 	components: {
 		Cookie
 	}
