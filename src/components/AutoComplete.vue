@@ -1,11 +1,16 @@
 <template>
   <div class="ui massive search search-container">
     <div class="ui icon large fluid input">
-      <input v-model="query" @keyup="search" class="prompt" type="text" placeholder="Try &quot;flat tummy water recipe&quot;" />
+      <input 
+		v-model="query" 
+		@keyup="search" 
+		class="prompt" 
+		type="text" 
+		placeholder="Try &quot;flat tummy water recipe&quot;" 
+	  />
       <i class="search icon sicon"></i>
     </div>
     <div class="search-results" v-show="searching">
-	{{ results }}
 		<div class="ui divided selection list" style="text-transform: capitalize;" v-if="results.length == 0">
 			<div class="item description">
 				<small>
@@ -88,10 +93,11 @@ export default {
         },
     },
 	methods: {
-		search() {
-
-			if (this.query.length > 2) {
-				this.$store.dispatch('post_to_ml_endpoint', this.query)
+		search(e) {
+			if (this.query.length > 3) {
+				if (e.which == 13) {
+					this.$store.dispatch('post_to_ml_endpoint', this.query)
+				}
 
 				this.results = []
 				let query = event.target.value
@@ -153,10 +159,7 @@ export default {
 
 <style>
 .sicon {
-	float: left;
 	color: #0160CC!important;
-	font-weight: 100!important;
-	margin-right: 12px !important;
 }
 .prompt {
 	font-weight: 300!important;
