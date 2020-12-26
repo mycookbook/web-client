@@ -10,27 +10,35 @@
                 </div>
                 <form class="ui form">
                     <div class="field">
-                        <label>Full Name</label>
+                        <label>Enter your Full Name *</label>
                         <input type="text" name="full-name" placeholder="Full Name" v-model="fullName">
                         <div class="ui negative message" v-if="errors.fullName">
                             {{ errors.fullName[0] }}
                         </div>
                     </div>
                     <div class="field">
-                        <label>Email</label>
+                        <label>Enter your Email *</label>
                         <input type="text" name="email" placeholder="Email" v-model="email">
                         <div class="ui negative message" v-if="errors.email">
                             {{ errors.email[0] }}
                         </div>
                     </div>
                     <div class="field">
-                        <label>Password</label>
+                        <label>set your Password (minimum 6 characters long) *</label>
                         <input type="password" name="password" placeholder="Password" v-model="password">
                         <div class="ui negative message" v-if="errors.password">
                             {{ errors.password[0] }}
                         </div>
                     </div>
-                    <div class="ui tiny message">
+                    <div class="field">
+                        <label>blog, youtube, instagram (where else can we find you on the internet?)</label>
+                        <input type="text" name="original_content" placeholder="https://..." v-model="original_content">
+                    </div>
+                    <div class="field">
+                        <label>with a few words, tell us a little bit more about you (cover letter/intro)</label>
+                        <textarea type="text" name="intro" placeholder="What you tell us here help us understand you better and increase your chance of progressing to the next stage. You may say as little or as much as you'd like us to know." v-model="intro"></textarea>
+                    </div>
+                    <div class="ui tiny info">
                         <label>
                             By hitting the submit button, you have agreed to our <a href="/#/terms-and-conditions">Terms &amp; Conditions, </a>
                         <a href="/#/usage-policy">Usage</a> and 
@@ -39,12 +47,14 @@
                     </div>
                 </form>
                 <div class="ui message success" v-if="success">
-                    <h3>
-                        Congratulations, you have successfully created an account. 
-                        A confirmation email is coming to your inbox soon. 
-                        Make sure you click the link to confirm your email 
-                        so you can start creating those very special recipes.
-                    </h3>
+                    <small>
+                    Thank you so much <b>{{ fullName | capitalize }}</b> for your interest in becoming an active member of this community.
+                    We are very happy to have you get started as soon as possible. Kindly note that there's a screening process,
+                    your account will not be activated immediately because we need to carefully go through your application and have 
+                    a quick phone or video chat with you first. Someone from the Marketing and Sales team will be in contact with you soon.
+                    Please note also that this process might take up to 10 business days before your account will be activated 
+                    and you may start creating contents. 
+                    </small>
                 </div>
                 <br />
                 <button class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="register()">
@@ -104,7 +114,9 @@ export default {
         return {
             email: '',
             fullName: '',
-            password: ''
+            password: '',
+            original_content: '',
+            intro: ''
         }
     },
     methods: {
@@ -112,7 +124,9 @@ export default {
             let payload = {
                 email: this.email,
                 fullName: this.fullName,
-                password: this.password
+                password: this.password,
+                authored: this.original_content,
+                intro: this.intro
             }
 
 			store.dispatch('register', payload)
@@ -121,5 +135,12 @@ export default {
      components: {
         Navigation
     },
+    filters: {
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+    }
 };
 </script>

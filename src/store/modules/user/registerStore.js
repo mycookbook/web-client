@@ -29,6 +29,7 @@ export const registerStore = {
     actions: {
         async register(context, payload) {
             context.commit('SET_LOADING_STATE', true)
+            context.commit('RESET_REGISTRATION_FORM')
             
             await this.state.apiClient.post(process.env.BASE_URL + 'auth/register', {
                 name: payload.fullName,
@@ -38,7 +39,6 @@ export const registerStore = {
             .then(function (response) {
                 context.commit('SHOW_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)
-                context.commit('RESET_REGISTRATION_FORM')
             }).catch(function (error) {
                 context.commit('HIDE_SUCCESS_MESSAGE')
                 context.commit('SET_LOADING_STATE', false)

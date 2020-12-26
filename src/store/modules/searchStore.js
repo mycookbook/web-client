@@ -24,7 +24,7 @@ export const searchStore = {
                 timezone: meta.timezone
             }, this.state.api_options.axios)
             .then(function (response) {
-                // console.log('meta-data', response.status)
+                // console.log('meta-data', response.data)
             }).catch(function (error) {
                 // console.log('server error', error.response)
             });
