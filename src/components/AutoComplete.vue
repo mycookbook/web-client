@@ -106,7 +106,7 @@ export default {
 
 				axios.get(`${process.env.BASE_URL}search?query=${this.query}`, {
 					headers: {
-						'X-API-KEY': process.env.API_KEY
+						'X-API-KEY': "cy1qJoeJsLyEHUk9AOuAbTy2gerd8t0mFFbu86YfJPQJw31Wv2"
 					}
 				}).then((response) => {
 					if (Object.keys(this.results).length == 0 ) {

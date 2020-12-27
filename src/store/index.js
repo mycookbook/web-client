@@ -46,7 +46,7 @@ export default new Vuex.Store({
             client: axios,
             options: {
                 headers: {
-                    'X-API-KEY': process.env.API_KEY
+                    'X-API-KEY': "cy1qJoeJsLyEHUk9AOuAbTy2gerd8t0mFFbu86YfJPQJw31Wv2"
                 }
             }
         },
