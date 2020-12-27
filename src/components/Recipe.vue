@@ -10,7 +10,9 @@
 				<div class="ui two wide computer column sixteen wide mobile column">
 					<div>
 						<div class="ui tiny button tbb" @click="addClap()" :class="{ 'disabled':hasReachedMaximumAllowedThreshold }">
-							Add Clap: {{ totalCount }}
+							<div>
+								Likes <i class="ui thumbs up outline icon"></i>{{ totalCount }}
+							</div>
 						</div>
 					</div>
 					<hr />
@@ -214,7 +216,6 @@ export default {
 			return this.$store.state.resource_isLoading
 		},
 		hasReachedMaximumAllowedThreshold() {
-			console.log('hasClapped', this.$store.state.recipeStore.hasClapped)
 			return (this.$store.state.recipeStore.hasClapped >= this.$store.state.recipeStore.maxAllowedClaps)
 		}
 	},

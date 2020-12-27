@@ -2,11 +2,12 @@ export const recipeStore = {
 	state: () => ({
 		recipe: {},
 		hasClapped: 0,
-		maxAllowedClaps: 7
+		maxAllowedClaps: 10
 	}),
 	mutations: {
 		INCREMENT_CLAP(state, claps) {
 			this.state.recipe.claps = claps
+			state.hasClapped += 1
 		},
 		UPDATE_RECIPE_STATE(state, newState) {
 			this.state.recipe = newState
