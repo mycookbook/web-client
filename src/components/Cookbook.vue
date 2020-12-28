@@ -175,7 +175,7 @@ export default {
 	},
 	data() {
 		return {
-			actionText: '<a href="/#/register">Sign up for a contributor account</a> today and start adding recipes right away.'
+			actionText: '<a href="http://contribute.cookbookshq.com/login">Login to your contributor account</a> today and start adding recipes right away.'
 		}
 	},
 	methods: {
