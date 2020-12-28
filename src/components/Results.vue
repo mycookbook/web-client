@@ -21,7 +21,8 @@
 								</div>
 								<div class="ui labels">
 									<a class="ui tiny label" v-for="category in cookbook.categories" :style="{ 'background-color': getBgColor(category.color)}">
-										{{ category.name }}
+										<span>{{ category.name }}</span>
+										<span v-html="category.emoji"></span>
 									</a>
 								</div>
 								<div class="ui medium header cookbook-title">

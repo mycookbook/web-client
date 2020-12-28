@@ -11,7 +11,8 @@
 					<div>
 						<div class="ui tiny button tbb" @click="addClap()" :class="{ 'disabled':hasReachedMaximumAllowedThreshold }">
 							<div>
-								Likes <i class="ui thumbs up outline icon"></i>{{ totalCount }}
+								<span style="display:inline-block;font-size:1.7em;">&#x1F389;</span> 
+								<span style="display:inline-block;font-size:1.2em;">{{ totalCount }} claps</span>
 							</div>
 						</div>
 					</div>
