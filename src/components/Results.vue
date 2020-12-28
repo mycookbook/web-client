@@ -9,6 +9,7 @@
 							<div class="image wrapper">
 								<div class="image" 
 									:style="{ 'background-image': 'url(' + cookbook.bookCoverImg + ')' }">
+									<span role="img" :aria-label="cookbook.alt_text" ></span>
 								</div>
 							</div>
 							<div class="content">
