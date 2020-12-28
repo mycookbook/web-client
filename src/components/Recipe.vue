@@ -11,8 +11,10 @@
 					<div>
 						<div class="ui tiny button tbb" @click="addClap()" :class="{ 'disabled':hasReachedMaximumAllowedThreshold }">
 							<div>
-								<span style="display:inline-block;font-size:1.7em;">&#x1F389;</span> 
-								<span style="display:inline-block;font-size:1.2em;">{{ totalCount }} claps</span>
+								<span style="display:inline-block;font-size:1.7em;float: left!important;margin-left: -4px;">&#x1F389;</span> 
+								<span style="display:inline-block;font-size:1.2em;float: right!important;margin-right: -8px;">
+									{{ totalCount | numberFormatter }} claps
+								</span>
 							</div>
 						</div>
 					</div>
@@ -240,6 +242,19 @@ export default {
 				recipeId: this.$route.params.recipeId,
 			};
 			store.dispatch('addClap', payload);
+		}
+	},
+	filters: {
+		numberFormatter(value) {
+			//Logic goes here:
+
+			//value greater than 1,000 && less than 9,001 => 1K+
+			//value greater than 9,001 && less than 10,001 => 9K+
+			//value greater than 10,001 but less than 90,001 => 10K+
+			//value greater than 90,001 but less than or equal 1,000,000 => 100K+
+			//value greater than 1,000,000 => 1M+
+
+			return value
 		}
 	},
 	components: {
