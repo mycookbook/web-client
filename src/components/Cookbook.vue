@@ -32,7 +32,12 @@
 			>
 				<div class="ui grid">
 					<div class="eight wide computer column sixteen wide mobile column">
-						<img :src="cookbook.bookCoverImg" class="ui fluid image">
+						<div class="ui fluid image">
+							<a class="ui left corner label">
+								<i class="unlock icon" title="This cookbook is public. Anyone can contribute a recipe into this cookbook."></i>
+							</a>
+							<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="">
+						</div>
 						<p>
 							{{ cookbook.description | truncate(230, '...') }}
 						</p>
@@ -63,7 +68,28 @@
 										sixteen wide large screen column"
 									>
 										<div class="ui header capitalized">
-											<h3>{{ recipe.name }}</h3>
+											<span>
+												<h3>
+													{{ recipe.name }}
+												</h3>
+											</span>
+											<span>
+												<p>
+													by {{ recipe.author.name }}
+												</p>
+											</span>
+										</div>
+										<div style="margin-top:-15px!important;font-size: .89em!important;color: rgba(0,0,0,.5);">
+											<div>
+												<small>
+													{{ recipe.claps }} CLAP(S)
+												</small>
+											</div>
+											<div>
+												<small>
+													{{ recipe.varieties_count }} VARIETIE(S) SUBMITTED
+												</small>
+											</div>
 										</div>
 										<div class="ui medium fluid left floated image">
 											<div class="ui orange left ribbon label">
@@ -88,7 +114,7 @@
 												{{ ingredient }}
 											</div>
 										</div>
-										<div>{{ recipe.summary }}</div>
+										<p>{{ recipe.summary }}</p>
 									</div>
 									</div>
 								</div>
@@ -205,5 +231,8 @@ export default {
 }
 .margin-up-down {
 	margin: 55px 0 60px 0;
+}
+p {
+    color: rgba(0,0,0,.5);
 }
 </style>
