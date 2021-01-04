@@ -23,15 +23,15 @@
 						class="item" 
 						title="Coming soon.">
 							<button class="ui light disabled red button">
-								<i class="chart bar outline icon"></i> Calorie counter 
+								<i class="chart bar outline icon"></i> Calorie Counter 
 								<sup>
 									<i class="ui trademark icon"></i>
 								</sup>
 							</button>
 						</a>
-					<router-link :to="{
-						name: 'Register'
-					}">
+						<router-link :to="{
+							name: 'Register'
+						}">
 						<a 
 						v-if="!isRegistrationRoute"
 						class="item" 

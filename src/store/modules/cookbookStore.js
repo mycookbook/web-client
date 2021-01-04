@@ -6,7 +6,8 @@ export const cookbookStore = {
             categories: [],
             nutritional_details: []
         },
-        sorted: []
+        sorted: [],
+        seeMore: true
     }),
     mutations: {
         STORE_COOKBOOKS(state, cookbooks) {
@@ -48,11 +49,17 @@ export const cookbookStore = {
         },
         UPDATE_COOKBOOK_STATE(state, newState) {
 			this.state.cookbook = newState
-		}
+        },
+        SEE_MORE_OR_LESS(state) {
+            state.seeMore = !state.seeMore
+        }
     },
     actions: {
         sort(context, payload) {
             context.commit('SORT', payload)
+        },
+        see_more_or_less(context) {
+            context.commit('SEE_MORE_OR_LESS')
         },
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)

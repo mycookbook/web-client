@@ -38,21 +38,22 @@
 							</a>
 							<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="">
 						</div>
-						<p>
+						<p v-if="seeMore">
 							{{ cookbook.description | truncate(230, '...') }}
 						</p>
-						<span>
-							<i class="ui chevron circle down icon"></i>
-						</span>
-						<span>
-							see more
-						</span>
-						<span>
-							<i class="ui chevron circle up icon"></i>
-						</span>
-						<span>
-							see less
-						</span>
+						<p v-else>
+							{{ cookbook.description }}
+						</p>
+						<div @click="seeMoreOrLess()">
+							<span class="click" v-if="seeMore">
+								<i class="ui chevron circle down icon"></i>see more
+							</span>
+							
+							<span class="click" v-else>
+								<i class="ui chevron circle up icon"></i>see less
+							</span>
+						</div>
+						
 						<div class="ui tiny message" v-if="!cookbook.is_locked">
 							DISCLAIMER: <br />
 							<small>
@@ -166,6 +167,9 @@ export default {
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
+		},
+		seeMore() {
+			return this.$store.state.cookbookStore.seeMore
 		}
 	},
 	data() {
@@ -212,6 +216,9 @@ export default {
 		recipeIngredients(data) {
 			const d = JSON.parse(data);
 			return d.data;
+		},
+		seeMoreOrLess() {
+			this.$store.dispatch('see_more_or_less')
 		}
 	},
 	components: {
@@ -253,5 +260,8 @@ export default {
 }
 p {
     color: rgba(0,0,0,.5);
+}
+.click {
+	cursor: pointer!important;
 }
 </style>
