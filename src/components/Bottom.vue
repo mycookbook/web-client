@@ -1,7 +1,7 @@
 <template>
 <div>
 	<div class="ui grid">
-		<div class="fourteen wide computer column sixteen wide mobile column">
+		<div class="fourteen wide computer column mobile hidden">
 			<div class="ui secondary menu">
 				<router-link :to="{
 					name: 'UsagePolicy'
