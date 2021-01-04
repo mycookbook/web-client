@@ -39,7 +39,7 @@
 							<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="">
 						</div>
 						<p>
-							{{ cookbook.description | truncate(2300, '...') }}
+							{{ cookbook.description | truncate(230, '...') }}
 						</p>
 						<span>
 							<i class="ui chevron circle down icon"></i>
@@ -57,9 +57,10 @@
 							DISCLAIMER: <br />
 							<small>
 								This is a public repository. The contributions made 
-								herin are from different contributors across the globe, 
-								therefore, contents are opinionated. Cookbookshq shall not be held liable 
-								for any misunderstanding of the description therein, or any inaccuracies discovered. 
+								herein are from different contributors across the globe, 
+								therefore, contents are opinionated. Cookbookshq shall not 
+								be held liable for any misunderstanding of the descriptions 
+								therein, or any inaccuracies encountered. 
 							</small>
 						</div>
 					</div>
