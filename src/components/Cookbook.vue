@@ -39,7 +39,7 @@
 							<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="">
 						</div>
 						<p>
-							{{ cookbook.description | truncate(230, '...') }}
+							{{ cookbook.description | truncate(2300, '...') }}
 						</p>
 						<span>
 							<i class="ui chevron circle down icon"></i>
@@ -53,10 +53,13 @@
 						<span>
 							see less
 						</span>
-						<div class="ui message">
+						<div class="ui tiny message" v-if="!cookbook.is_locked">
 							DISCLAIMER: <br />
 							<small>
-								--
+								This is a public repository. The contributions made 
+								herin are from different contributors across the globe, 
+								therefore, contents are opinionated. Cookbookshq shall not be held liable 
+								for any misunderstanding of the description therein, or any inaccuracies discovered. 
 							</small>
 						</div>
 					</div>
