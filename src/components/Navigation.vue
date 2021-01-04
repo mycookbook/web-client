@@ -4,7 +4,7 @@
 		<div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
 			<div class="tvn clipped brand">
 				<a href="/" class="ui medium image" title="cookbookshq brand logo">
-					<img class="logo" src="/static/logo_white.png" alt="cookbookinc brand logo" style="min-width: unset;height: 5.5em; !important">
+					<img class="logo" src="/static/transparent_logo.png" alt="cookbookinc brand logo" style="min-width: unset;height: 5.5em; !important">
 				</a>
 			</div>
     	</div>
@@ -79,7 +79,7 @@
 			<div class="ui ten wide column container">
 				<a href="/" title="cookbookshq brand logo" class="ui large image">
 					<img 
-					src="/static/logo_white.png" 
+					src="/static/transparent_logo.png" 
 					class="brand-logo"
 					alt="cookbookinc brand logo">
 				</a>
