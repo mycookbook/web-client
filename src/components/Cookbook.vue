@@ -129,6 +129,15 @@
 									</div>
 								</div>
 							</div>
+							<div v-else>
+								<p>
+									<em>
+										<i class="ui terminal icon"></i>
+										nothing to show you. <br />
+										<a href="https://contribute.cookbookshq.com/login">Login</a> to your contributor account to start adding recipes.
+									</em>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
