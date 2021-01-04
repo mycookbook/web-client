@@ -1,8 +1,8 @@
 <template>
 <div class="ui segment">
     <div class="ui item count">
-        <b>{{ contributors.length }} contributors </b><br />
-        Including {{ author }} and {{ contributors.length - 1 }} others
+        <b>{{ contributors.length }} contributor(s) </b><br />
+        Including {{ author }} and {{ contributors.length - 1 }} other(s)
     </div>
     <div class="ui mini images">
         <div class="ui image" v-for="contributor in contributors">

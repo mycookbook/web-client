@@ -34,7 +34,7 @@
 					<div class="eight wide computer column sixteen wide mobile column">
 						<div class="ui fluid image">
 							<a class="ui left corner label">
-								<i class="unlock icon" title="This cookbook is public. Anyone can contribute a recipe into this cookbook."></i>
+								<i class="unlock icon" title="This cookbook is public. Login to your contributor account to add a recipe into this cookbook."></i>
 							</a>
 							<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="">
 						</div>
@@ -53,6 +53,12 @@
 						<span>
 							see less
 						</span>
+						<div class="ui message">
+							DISCLAIMER: <br />
+							<small>
+								--
+							</small>
+						</div>
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column">
 						<div v-if="cookbook.users.length > 0">
@@ -73,14 +79,14 @@
 													{{ recipe.name }}
 												</h3>
 											</span>
-											<span>
-												<p>
-													by {{ recipe.author.name }}
-												</p>
-											</span>
 										</div>
 										<div style="margin-top:-15px!important;font-size: .89em!important;color: rgba(0,0,0,.5);">
 											<div>
+												<span>
+													<p>
+														Contributed by {{ recipe.author.name }}
+													</p>
+												</span>
 												<small>
 													{{ recipe.claps }} CLAP(S)
 												</small>
