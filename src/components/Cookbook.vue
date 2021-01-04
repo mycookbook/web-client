@@ -97,7 +97,7 @@
 											</div>
 											<div>
 												<small>
-													{{ recipe.varieties_count }} VARIETIE(S) SUBMITTED
+													<a href="/#/">{{ recipe.varieties_count }} VARIETIE(S)</a> SUBMITTED
 												</small>
 											</div>
 										</div>
