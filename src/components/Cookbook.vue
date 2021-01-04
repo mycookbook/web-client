@@ -2,148 +2,97 @@
 <div class="ui container">
 	<Navigation />
 	<div v-if="isLoading">
-		<DefaultSkeleton />
+		<CookbookPageSkeleton />
 	</div>
 	<div v-else>
-		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-			<div class="ui header cookbook-title">
-				<div class="ui small breadcrumb">
-					<a class="section" href="/">back home</a>
-					<i class="left chevron icon divider"></i>
-					<div class="active section">
-						{{ cookbook.name }}
+		<div class="ui grid">
+			<div class="ten wide computer column ten wide mobile column ten wide tablet column ten wide large screen column">
+				<div class="ui header cookbook-title">
+					<div class="ui small breadcrumb">
+						<a class="section" href="/">back home</a>
+						<i class="left chevron icon divider"></i>
+						<div class="active section">
+							{{ cookbook.name }}
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="ui right floated mini disabled red button" title="Be the first to know when there is a new submission into this cookbook.">
-				<i class="ui bell icon"></i>
-				SUBSCRIBE
+			<div class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
+				<div class="ui right floated mini disabled red button" title="Be the first to know when there is a new submission into this cookbook.">
+					<i class="ui bell icon"></i>
+					SUBSCRIBE
+				</div>
 			</div>
-			<div class="ui images" v-if="cookbook.users.length > 0">
-				<CookbookContributors :contributors="cookbook.users" />
-			</div>
-		</div><br />
-		<div class="sixteen wide mobile column sixteen wide tablet column eight wide computer column eight wide large screen column">
-			<div class="ui message">
-				{{ cookbook.description }} 
-			</div>
-			<br />
 		</div>
 		<div class="ui grid">
-			<div class="fourteen wide column">
-				<div v-if="cookbook.recipes.length > 0">
-					<div v-for="recipe in cookbook.recipes" :key="recipe.id">
-						<div class="ui grid">
-							<div class="four wide computer column sixteen wide mobile column">
-								<div class="ui header capitalized">
-									<h3>{{ recipe.name }}</h3>
-								</div>
-								<div class="ui massive image">
-									<div class="ui orange left ribbon label">
-										Prep &#38; Cook Time: {{ recipe.total_time }}
-									</div>
-									<router-link :to="{
-										name: 'Recipe',
-										params: {
-											cookbookId: cookbook.id,
-											recipeId: recipe.id
-										}}">
-										<img 
-											:src="recipe.imgUrl" 
-											:alt="recipe.name"
-											>
-									</router-link>	
-								</div>
-								<div>
-									<div class="ui mini fluid buttons">
-										<div class="ui labeled button" tabindex="0">
-											<div class="ui basic orange button" 
-											title="This represents the number of varieties submitted for this recipe"
-											>
-												<i class="fork icon"></i> 
-												{{ recipe.varieties_count }}
-												</div>
-											</div>
-											<div class="ui orange button" @click="comingSoonMsg()" id="addRecipeButtonTitleText" tabindex="0">
-												<i class="plus icon"></i> 
-												Submit a variety
-											</div>
-										</div>
-									</div>	
-								</div>
-								<div class="ten wide computer column sixteen wide mobile column">
-									<div class="ui header"></div>
-									<div class="ui header"></div>
-									<div>{{ recipe.summary }}</div><br />
-									<div class="ui light blue label ingredients-list"
-									v-for="ingredient in recipeIngredients(recipe.ingredients)"
-									v-bind:key="ingredient.id">
-										{{ ingredient }}
-									</div>			
-								</div>
-								<div class="two wide computer column sixteen wide mobile column">
-									<div class="ui nutr_info">
-										<em>NUTR. INFO</em>
-										<i class="caret square down icon"></i>
-									</div>
-										<div class="ui flowing popup transition hidden">
-											<div class="ui four column divided center">
-												<div class="column">
-													<span>
-														<h3>{{ computeCalories(recipe.nutritional_detail) }}</h3>
-													</span>
-													<span>
-														<h3 class="ui teal header">Calories</h3>
-													</span> <hr />
-												</div>
-												<div class="column">
-													<span>
-														<h3>{{ computeCarbs(recipe.nutritional_detail) }}</h3>
-													</span>
-													<span>
-														<h3 class="ui teal header">Carbs</h3>
-													</span> <hr />
-												</div>
-												<div class="column">
-													<span>
-														<h3>{{ computeFat(recipe.nutritional_detail) }}</h3>
-													</span>
-													<span>
-														<h3 class="ui teal header">Fat</h3>
-													</span> <hr />
-												</div> -->
-												<div class="column">
-													<span>
-														<h3>{{ computeProtein(recipe.nutritional_detail) }}</h3>
-													</span>
-													<span>
-														<h3 class="ui teal header">Protein</h3>
-													</span> <hr />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<br><br>
-								<div class="tvn horizontal stroke"></div>
-								<br>
-							</div>
-						</div>
-						<div v-else>
-							<NothingToShowYou :htmlText="actionText" />
-						</div>
+			<div class="sixteen wide mobile column 
+				sixteen wide tablet column 
+				sixteen wide computer column 
+				sixteen wide large screen column"
+			>
+				<div class="ui grid">
+					<div class="eight wide computer column sixteen wide mobile column">
+						<img :src="cookbook.bookCoverImg" class="ui fluid image">
+						<p>
+							{{ cookbook.description | truncate(230, '...') }}
+						</p>
+						<span>
+							<i class="ui chevron circle down icon"></i>
+						</span>
+						<span>
+							see more
+						</span>
+						<span>
+							<i class="ui chevron circle up icon"></i>
+						</span>
+						<span>
+							see less
+						</span>
 					</div>
-					<div class="two wide computer column sixteen wide mobile column">
-						<div>
-							<div class="ui disabled blue button" @click="comingSoonMsg()">
-								Compare
-							</div>
+					<div class="eight wide computer column sixteen wide mobile column">
+						<div v-if="cookbook.users.length > 0">
+							<CookbookContributors :contributors="cookbook.users" :author="cookbook.author.name" />
 						</div>
-						<br />
-						<div>
-							<img 
-							class="ui massive image" 
-							src="https://tahoequarterly.com/wp-content/uploads/2016/12/AdSpace-336x750-min.jpg" />
+						<div class="margin-up-down"></div>
+						<div v-if="cookbook.recipes.length > 0">
+							<div v-for="recipe in cookbook.recipes" :key="recipe.id">
+								<div class="ui grid">
+									<div class="sixteen wide mobile column 
+										sixteen wide tablet column 
+										sixteen wide computer column 
+										sixteen wide large screen column"
+									>
+										<div class="ui header capitalized">
+											<h3>{{ recipe.name }}</h3>
+										</div>
+										<div class="ui medium fluid left floated image">
+											<div class="ui orange left ribbon label">
+												Prep &#38; Cook Time: {{ recipe.total_time }}
+											</div>
+											<router-link :to="{
+												name: 'Recipe',
+												params: {
+													cookbookId: cookbook.id,
+													recipeId: recipe.id
+												}}">
+												<img 
+													:src="recipe.imgUrl" 
+													:alt="recipe.name"
+													>
+											</router-link>
+										</div>
+										<div>
+											<div class="ui light blue label ingredients-list"
+											v-for="ingredient in recipeIngredients(recipe.ingredients)"
+											v-bind:key="ingredient.id">
+												{{ ingredient }}
+											</div>
+										</div>
+										<div>{{ recipe.summary }}</div>
+									</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -151,6 +100,7 @@
 			<Bottom />
 		</div>
 	</div>
+</div>
 </template>
 
 <script>
@@ -159,7 +109,7 @@ import NothingToShowYou from './NothingToShowYou.vue';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
-import DefaultSkeleton from './Skeletons/DefaultSkeleton.vue';
+import CookbookPageSkeleton from './Skeletons/CookbookPageSkeleton.vue';
 
 export default {
 	mounted() {
@@ -178,6 +128,15 @@ export default {
 			actionText: '<a href="http://contribute.cookbookshq.com/login">Login to your contributor account</a> today and start adding recipes right away.'
 		}
 	},
+	filters: {
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
+    },
 	methods: {
 		comingSoonMsg() {
 			alert('Coming soon');
@@ -212,7 +171,7 @@ export default {
 	},
 	components: {
 		CookbookContributors,
-		DefaultSkeleton,
+		CookbookPageSkeleton,
 		NothingToShowYou,
 		Navigation,
 		Contact,
@@ -243,5 +202,8 @@ export default {
 }
 .contributors-count {
 	padding-left: 5px;
+}
+.margin-up-down {
+	margin: 55px 0 60px 0;
 }
 </style>

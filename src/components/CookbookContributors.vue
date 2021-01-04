@@ -1,33 +1,37 @@
 <template>
+<div class="ui segment">
+    <div class="ui item count">
+        <b>{{ contributors.length }} contributors </b><br />
+        Including {{ author }} and {{ contributors.length - 1 }} others
+    </div>
     <div class="ui mini images">
-        <img class="ui circular image contributor-avatar" 
-        :title="contributor.name" 
-        :src="contributor.avatar" 
-        v-for="contributor in contributors">
-        <div class="ui small button" title="View all contributors">
-            <small class="contributors-count" v-if="contributors.length == 1">
-                Cookbook admin
-            </small>
-            <small class="contributors-count" v-else>
-                {{ contributors.length }} Contributor(s)
-            </small>
+        <div class="ui image" v-for="contributor in contributors">
+            <img class="ui circular image contributor-avatar" 
+                :title="contributor.name" 
+                :src="contributor.avatar" 
+            >
         </div>
     </div>
+</div>
 </template>
 
 <script>
 export default {
     name: 'CookbookContributors',
     props: {
-        contributors: Array
+        contributors: Array,
+        author: String
     }
 }
 </script>
 
 <style scoped>
 .contributor-avatar {
-    margin-right: -28px!important;
-    width: 36px!important;
     height: 32px!important;
+}
+.count {
+    font-size: .89em!important;
+    color: rgba(0,0,0,.5);
+    padding-bottom: 15px;
 }
 </style>
