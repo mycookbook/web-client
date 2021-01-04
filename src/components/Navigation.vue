@@ -23,7 +23,10 @@
 						class="item" 
 						title="Coming soon.">
 							<button class="ui light disabled red button">
-								<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
+								<i class="chart bar outline icon"></i> Calorie counter 
+								<sup>
+									<i class="ui trademark icon"></i>
+								</sup>
 							</button>
 						</a>
 					<router-link :to="{
