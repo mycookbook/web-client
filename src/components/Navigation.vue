@@ -11,7 +11,7 @@
 		<div class="eight wide mobile twelve wide tablet ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
-						<a class="item" 
+						<!--<a class="item" 
 						href="https://marketplace.cookbookshq.com"
 						target="_blank"
 						title="Coming soon."
@@ -28,7 +28,7 @@
 									<i class="ui trademark icon"></i>
 								</sup>
 							</button>
-						</a>
+						</a>-->
 						<router-link :to="{
 							name: 'Register'
 						}">
