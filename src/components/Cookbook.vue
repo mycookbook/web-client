@@ -41,7 +41,7 @@
 						<p v-if="seeMore">
 							{{ cookbook.description | truncate(230, '...') }}
 						</p>
-						<p v-else>
+						<p v-else style="text-align:justify!important;">
 							{{ cookbook.description }}
 						</p>
 						<div @click="seeMoreOrLess()">
@@ -70,75 +70,7 @@
 							<CookbookContributors :contributors="cookbook.users" :author="cookbook.author.name" />
 						</div>
 						<div class="margin-up-down"></div>
-						<div v-if="cookbook.recipes.length > 0">
-							<div v-for="recipe in cookbook.recipes" :key="recipe.id">
-								<div class="ui grid">
-									<div class="sixteen wide mobile column 
-										sixteen wide tablet column 
-										sixteen wide computer column 
-										sixteen wide large screen column"
-									>
-										<div class="ui header capitalized">
-											<span>
-												<h3>
-													{{ recipe.name }}
-												</h3>
-											</span>
-										</div>
-										<div style="margin-top:-15px!important;font-size: .89em!important;color: rgba(0,0,0,.5);">
-											<div>
-												<span>
-													<p>
-														Contributed by {{ recipe.author.name }}
-													</p>
-												</span>
-												<small>
-													{{ recipe.claps }} CLAP(S)
-												</small>
-											</div>
-											<div>
-												<small>
-													<a href="/#/">{{ recipe.varieties_count }} VARIETIE(S)</a> SUBMITTED
-												</small>
-											</div>
-										</div>
-										<div class="ui medium fluid left floated image">
-											<div class="ui orange left ribbon label">
-												Prep &#38; Cook Time: {{ recipe.total_time }}
-											</div>
-											<router-link :to="{
-												name: 'Recipe',
-												params: {
-													cookbookId: cookbook.id,
-													recipeId: recipe.id
-												}}">
-												<img 
-													:src="recipe.imgUrl" 
-													:alt="recipe.name"
-													>
-											</router-link>
-										</div>
-										<div>
-											<div class="ui light blue label ingredients-list"
-											v-for="ingredient in recipeIngredients(recipe.ingredients)"
-											v-bind:key="ingredient.id">
-												{{ ingredient }}
-											</div>
-										</div>
-										<p>{{ recipe.summary }}</p>
-									</div>
-									</div>
-								</div>
-							</div>
-							<div v-else>
-								<p>
-									<em>
-										<i class="ui terminal icon"></i>
-										nothing to show you. <br />
-										<a href="https://contribute.cookbookshq.com/login">Login</a> to your contributor account to start adding recipes.
-									</em>
-								</p>
-							</div>
+							<RecipesList :recipes="cookbook.recipes" :cookbookId="cookbook.id" />
 						</div>
 					</div>
 				</div>
@@ -151,11 +83,11 @@
 
 <script>
 import CookbookContributors from './CookbookContributors';
-import NothingToShowYou from './NothingToShowYou.vue';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
 import CookbookPageSkeleton from './Skeletons/CookbookPageSkeleton.vue';
+import RecipesList from './RecipesList.vue'
 
 export default {
 	mounted() {
@@ -172,11 +104,6 @@ export default {
 			return this.$store.state.cookbookStore.seeMore
 		}
 	},
-	data() {
-		return {
-			actionText: '<a href="http://contribute.cookbookshq.com/login">Login to your contributor account</a> today and start adding recipes right away.'
-		}
-	},
 	filters: {
         truncate: function (text, length, suffix) {
             if (text.length > length) {
@@ -187,36 +114,6 @@ export default {
         },
     },
 	methods: {
-		comingSoonMsg() {
-			alert('Coming soon');
-		},
-		computeCalories(val) {
-			const calVal = this.parseJson(val).cal;
-			return calVal ? (`${calVal} kCal`) : (`${0} kCal`);
-		},
-		computeCarbs(val) {
-			const carbVal = this.parseJson(val).carbs;
-			return carbVal ? (`${carbVal}g`) : (`${0}g`);
-		},
-		computeProtein(val) {
-			const proteinVal = this.parseJson(val).protein;
-			return proteinVal ? (`${proteinVal}g`) : (`${0}g`);
-		},
-		computeFat(val) {
-			const fatVal = this.parseJson(val).fat;
-			return fatVal ? (`${fatVal}g`) : (`${0}g`);
-		},
-		parseJson(i) {
-			return JSON.parse(i);
-		},
-		transformRecipeName(name) {
-			const t = name;
-			return t.toUpperCase();
-		},
-		recipeIngredients(data) {
-			const d = JSON.parse(data);
-			return d.data;
-		},
 		seeMoreOrLess() {
 			this.$store.dispatch('see_more_or_less')
 		}
@@ -224,7 +121,7 @@ export default {
 	components: {
 		CookbookContributors,
 		CookbookPageSkeleton,
-		NothingToShowYou,
+		RecipesList,
 		Navigation,
 		Contact,
 		Bottom,
@@ -240,28 +137,16 @@ export default {
 	text-transform: uppercase;
 	font-weight: 300;
 }
-.nut_info {
-	cursor: pointer;
-}
-.ingredients-list {
-	margin-top: 1%;
-}
 .contributor-avatar {
 	margin-right: -18px!important;;
-}
-.capitalized {
-	text-transform: capitalize!important;
-}
-.contributors-count {
-	padding-left: 5px;
-}
-.margin-up-down {
-	margin: 55px 0 60px 0;
 }
 p {
     color: rgba(0,0,0,.5);
 }
 .click {
 	cursor: pointer!important;
+}
+.margin-up-down {
+	margin: 45px 0 45px 0;
 }
 </style>
