@@ -3,9 +3,9 @@
     <div class="ui fluid action input">
         <input type="text" placeholder="search recipes in this cookbook">
         <select class="ui compact selection dropdown" style="height:auto!important;">
-            <option value="all">By contributor</option>
-            <option selected="" value="articles">By recipe Name</option>
-            <option value="products">By ingredient name</option>
+            <option value="all">By Contributor</option>
+            <option selected="" value="articles">By Recipe Name</option>
+            <option value="products">By Ingredient name</option>
         </select>
         <div class="ui tbb button">Search</div>
     </div>
@@ -14,14 +14,9 @@
 
 <script>
 export default {
-  name: "SearchCookbook",
-  props: {
-    numbers: Array
-  },
-  data() {
-    return {
-		title: 'What to do with LeftOvers'
+    name: "SearchCookbook",
+    props: {
+        numbers: Array
     }
-  }
 };
 </script>
