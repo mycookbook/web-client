@@ -100,7 +100,14 @@ export default {
 			return d.data;
 		},
 		showMore() {
-			this.recipesSlice = this.recipes.slice(0, this.incrementBy)
+			this.recipesSlice = this.recipes.slice(0, this.getBy())
+		},
+		getBy() {
+			if (this.recipesSlice.length === this.incrementBy) {
+				return this.incrementBy += 5
+			}
+			
+			return this.incrementBy
 		}
 	},
 	components: {
