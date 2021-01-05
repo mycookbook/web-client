@@ -1,67 +1,75 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import LandingPage from '@/components/LandingPage';
+import Cookbook from '@/components/Cookbook';
+import Recipe from '@/components/Recipe';
+import Register from '@/components/Register';
+import UsagePolicy from '@/components/policies/UsagePolicy';
+import CookiePolicy from '@/components/policies/CookiePolicy';
+import DataRetentionPolicy from '@/components/policies/DataRetentionPolicy';
+import TermsAndConditions from '@/components/policies/TermsAndConditions';
+import VarietiesList from '@/components/VarietiesList.vue';
+import Variety from '@/components/Variety.vue';
+import ContributorProfile from '@/components/ContributorProfile.vue';
+import Developers from '@/components/Developers.vue';
+import SearchResults from '@/components/SearchResults.vue';
 
 Vue.use(Router);
 
-function lazyLoad(view){
-  return() => import(`@/components/${view}.vue`)
-}
-
 export default new Router({
-	mode: 'history',
   	routes: [
 		{
 			path: '/',
 			name: 'Home',
-			component: lazyLoad('LandingPage'),
+			component: LandingPage,
 		}, {
 			path: '/usage-policy',
 			name: 'UsagePolicy',
-			component: lazyLoad('UsagePolicy'),
+			component: UsagePolicy,
 		}, {
 			path: '/cookie-policy',
 			name: 'CookiePolicy',
-			component: lazyLoad('CookiePolicy'),
+			component: CookiePolicy,
 		}, {
 			path: '/data-retention-policy',
 			name: 'DataRetentionPolicy',
-			component: lazyLoad('DataRetentionPolicy'),
+			component: DataRetentionPolicy,
 		}, {
 			path: '/terms-and-conditions',
 			name: 'TermsAndConditions',
-			component: lazyLoad('TermsAndConditions'),
+			component: TermsAndConditions,
 		}, {
 			path: '/register',
 			name: 'Register',
-			component: lazyLoad('Register'),
+			component: Register,
 		}, {
 			path: '/cookbook/:id',
 			name: 'Cookbook',
-			component: lazyLoad('Cookbook'),
+			component: Cookbook,
 		}, {
 			path: '/cookbook/:cookbookId/recipe/:recipeId',
 			name: 'Recipe',
-			component: lazyLoad('Recipe'),
+			component: Recipe,
 		}, {
 			path: '/cookbook/:cookbookId/recipes/:recipeId/contributors/:username',
 			name: 'ContributorProfile',
-			component: lazyLoad('ContributorProfile')
+			component: ContributorProfile
 		}, {
 			path: '/cookbook/:cookbookId/recipe/:recipeId/variety/:varietyId',
 			name: 'Variety',
-			component: lazyLoad('Variety')
+			component: Variety
 		}, {
 			path: '/cookbook/:cookbookId/recipe/:recipeId/varieties',
 			name: 'VarietiesList',
-			component: lazyLoad('VarietiesList'),
+			component: VarietiesList,
 		}, {
 			path: '/developers',
 			name: 'Developers',
-			component: lazyLoad('Developers')
+			component: Developers
 		}, {
 			path: '/search',
 			name: 'SearchResults',
-			component: lazyLoad('SearchResults')
+			component: SearchResults
 		}, {
 		path: '*',
 		component: {
