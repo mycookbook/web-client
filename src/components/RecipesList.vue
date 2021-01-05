@@ -10,6 +10,7 @@
 		<select class="ui compact selection dropdown" style="height:auto!important;" v-model="searchBy">
 			<option value="contributor" selected="">By Contributor</option>
 			<option value="recipe">By Recipe Name</option>
+			<option value="category">By Categories</option>
 		</select>
 		<div class="ui tbb button" @click="searchCookbook()">
 			Search
@@ -147,7 +148,7 @@ export default {
 
 			this.recipesSlice = this.recipes.slice(0,5)
 
-			if ((by === 'recipe' && !q) || (by === 'contributor' && !q)) {
+			if ((by === 'recipe' && !q) || (by === 'contributor' && !q) || (by === 'category' && !q)) {
 				return this.recipesSlice
 			}
 
@@ -161,6 +162,12 @@ export default {
 				this.recipesSlice = this.recipesSlice.filter(function(r) {
 					let author = r.author.name.toLowerCase()
 					return author.includes(q)
+				})
+			}
+
+			if (by === 'category') {
+				this.recipesSlice = this.recipesSlice.filter(function(r) {
+					return r.categories.contains(q)
 				})
 			}
         }

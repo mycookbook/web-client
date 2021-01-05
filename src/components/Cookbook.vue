@@ -32,6 +32,12 @@
 			>
 				<div class="ui grid">
 					<div class="eight wide computer column sixteen wide mobile column">
+					<div class="ui labels">
+						<a class="ui tiny label" v-for="category in cookbook.categories" :style="{ 'background-color': getBgColor(category.color)}">
+							<span>{{ category.name }}</span>
+							<span v-html="category.emoji"></span>
+						</a>
+					</div>
 						<div class="ui fluid image">
 							<a class="ui left corner label">
 								<i class="unlock icon" title="This cookbook is public. Login to your contributor account to add a recipe into this cookbook."></i>
@@ -119,6 +125,9 @@ export default {
 	methods: {
 		seeMoreOrLess() {
 			this.$store.dispatch('see_more_or_less')
+		},
+		getBgColor(code) {
+			return `#${code}`;
 		}
 	},
 	components: {
