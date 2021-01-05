@@ -1,8 +1,9 @@
 <template>
 <div>
 	<div class="ui header">
-		Showing {{ (incrementBy > recipesSlice.length) ? recipesSlice.length : incrementBy }} of {{ recipes.length }} recipes
+		<span>Showing {{ (incrementBy > recipesSlice.length) ? recipesSlice.length : incrementBy }} of {{ recipes.length }} recipes</span>
 	</div>
+	
 	<div class="margin-up-down"></div>
 	<div class="ui fluid action input">
 		<input type="text" placeholder="search recipes in this cookbook" v-model="searchText">
@@ -13,6 +14,20 @@
 		<div class="ui tbb button" @click="searchCookbook()">
 			Search
 		</div>
+	</div>
+	<div>
+		<span>
+			<small><a class="link" @click="recent()">
+				most recent |
+			</a></small>
+		</span>
+		<span>
+			<small>
+			<a class="link" @click="oldest()">
+				oldest
+			</a>
+			</small>
+		</span>
 	</div>
 	<div v-if="recipesSlice.length > 0">
 		<div class="margin-up-down"></div>
