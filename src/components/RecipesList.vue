@@ -1,9 +1,9 @@
 <template>
 <div>
-	<div v-if="recipes.length > 0">
+	<div v-if="recipesSlice.length > 0">
 		<SearchCookbook />
 			<div class="margin-up-down"></div>
-			<div v-for="recipe in recipes" :key="recipe.id">
+			<div v-for="recipe in recipesSlice" :key="recipe.id">
 				<div class="ui grid">
 					<div class="sixteen wide mobile column 
 						sixteen wide tablet column 
@@ -61,8 +61,13 @@
 					</div>
 				</div>
 			</div>
-			<div>
-				<a href="">Show more</a>
+			<div v-if="recipesSlice.length >= recipes.length">
+				<p>no more recipes.</p>
+			</div>
+			<div v-else>
+				<a class="link" @click="showMore()">
+					Show more
+				</a>
 			</div>
 		</div>
 		<div v-else>
@@ -84,20 +89,25 @@ export default {
   	},
 	data() {
 		return {
+			incrementBy: 5,
+			recipesSlice: this.recipes.slice(0, 5),
 			htmlText: '<a href="https://contribute.cookbookshq.com/login">Login</a> to your contributor account to start adding recipes.'
 		}
 	},
 	methods: {
-			recipeIngredients(data) {
+		recipeIngredients(data) {
 			const d = JSON.parse(data);
 			return d.data;
 		},
+		showMore() {
+			this.recipesSlice = this.recipes.slice(0, this.incrementBy)
+		}
 	},
 	components: {
 		NothingToShowYou,
 		SearchCookbook
 	}	  
-};
+}
 </script>
 
 <style scoped>
@@ -109,5 +119,8 @@ export default {
 }
 .margin-up-down {
 	margin: 45px 0 45px 0;
+}
+.link {
+	cursor: pointer!important;
 }
 </style>
