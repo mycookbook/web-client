@@ -55,30 +55,6 @@ export default new Router({
 			name: 'VarietiesList',
 			component: lazyLoad('VarietiesList'),
 		}, {
-			path: '/discover',
-			name: 'Discover',
-			component: {
-				template: '<div> Discover </div>',
-			}
-		}, {
-			path: '/dashboard',
-			name: 'Dashboard',
-			component: {
-				template: '<div> Dashboard, welcome </div>',
-			}
-		}, {
-			path: '/help',
-			name: 'Help',
-			component: {
-				template: '<div> Help </div>',
-			}
-		}, {
-			path: '/recipes/all',
-			name: 'view.recipes',
-			component: {
-				template: '<div>see all recipes</div>',
-			}
-		}, {
 			path: '/developers',
 			name: 'Developers',
 			component: lazyLoad('Developers')
