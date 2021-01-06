@@ -131,23 +131,7 @@ export default {
 	},
 	methods: {
 		recipeIngredients(data) {
-			// const d = JSON.parse(data);
-			// return d.data;
-			return [
-					{
-						name: '2 lbs red potatoes',
-						thumbnail: 'https://www.irishtimes.com/polopoly_fs/1.3594671.1534163385!/image/image.jpg_gen/derivatives/box_620_330/image.jpg'
-					}, {
-						name: '4 tablespoons salt',
-						thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61EK5fHr9gL._SL1500_.jpg'
-					}, {
-						name: '1 medium onion chopped',
-						thumbnail: 'https://mybutcherwadingriver.com/wp-content/uploads/2020/05/red-onion.jpg'
-					}, {
-						name: '1/4 bag of baby carrots',
-						thumbnail: 'https://www.jessicagavin.com/wp-content/uploads/2019/02/carrots-7-1200.jpg'
-					}
-				]
+			return JSON.parse(data)
 		},
 		showMore() {
 			this.recipesSlice = this.recipes.slice(0, this.getBy())
