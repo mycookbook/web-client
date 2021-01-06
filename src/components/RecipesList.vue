@@ -18,15 +18,17 @@
 	</div>
 	<div>
 		<span>
-			<small><a class="link" @click="recent()">
-				most recent |
-			</a></small>
+			<small>
+				<a class="link" @click="sortBy('newest')">
+					most recent |
+				</a>
+			</small>
 		</span>
 		<span>
 			<small>
-			<a class="link" @click="oldest()">
-				oldest
-			</a>
+				<a class="link" @click="sortBy('oldest')">
+					oldest
+				</a>
 			</small>
 		</span>
 	</div>
@@ -50,15 +52,15 @@
 						<div>
 							<div>
 								<p>
-									Contributed by {{ recipe.author.name }} - 2 years ago
+									Contributed by <a href="/#/cookbook/10/recipes/21/contributors/flora">{{ recipe.author.name }}</a> - {{ recipe.submission_date }}
 								</p>
 							</div>
 							<div style="font-size: .89em!important;color: rgba(0,0,0,.5);margin-bottom: 15px;">
 								<span>
-									{{ recipe.claps }} Clap(s) &#38;
+									{{ recipe.claps }} Clap(s) <br />
 								</span>
 								<span>
-									<a href="/#/cookbook//recipe//variety/">{{ recipe.varieties_count }} Varietie(s)</a> submitted
+									<a href="/#/cookbook//recipe//variety/">{{ recipe.varieties_count }} Varietie(s)</a>
 								</span>
 							</div>
 						</div>
@@ -174,7 +176,32 @@ export default {
 					return r.categories.contains(q)
 				})
 			}
-        }
+        },
+		sortBy(order) {
+			this.recipesSlice.sort(function(a,b) {
+
+				var dateA = Date.parse(a.created_at)
+				var dateB = Date.parse(b.created_at)
+
+				if (order === 'oldest' && (dateA < dateB)) {
+					return -1;
+				}
+
+				if (order === 'oldest' && (dateA > dateB )) {
+					return 1;
+				}
+
+				if (order === 'newest' && (dateA > dateB)) {
+					return -1;
+				}
+
+				if (order === 'newest' && (dateA < dateB )) {
+					return 1;
+				}
+
+				return 0;
+			})
+		}
 	},
 	components: {
 		NothingToShowYou,
