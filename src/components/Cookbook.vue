@@ -18,9 +18,24 @@
 				</div>
 			</div>
 			<div class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-				<div class="ui right floated mini disabled red button" title="Be the first to know when there is a new submission into this cookbook.">
-					<i class="ui bell icon"></i>
-					SUBSCRIBE
+				<!--<div class="ui right floated mini buttons">
+					<div 
+						class="ui mini red button" 
+						title="Be the first to know when there is a new submission into this cookbook." 
+						@click="showSubscriptionForm()"
+					>
+						<i class="ui bell icon"></i>
+						SUBSCRIBE
+					</div>
+					<div class="ui right floated mini disabled button">
+						<i class="ui bell slash icon"></i>
+						SUBSCRIBED
+					</div>
+				</div>-->
+				<div class="ui right floated tiny button">
+					<div>
+						<i class="ui light blue twitter icon"></i> 20.5K tweets
+					</div>
 				</div>
 			</div>
 		</div>
@@ -72,6 +87,16 @@
 						</div>
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column">
+						<!--<div v-if="subscribed" v-model="subscribed">
+							<div class="ui form">
+								<div class="field">
+									<label>Subscribe to this Cookbook</label>
+									<input type="text" placeholder="Enter your email address and press the enter button">
+								</div>
+							</div>
+							<br />
+						</div>-->
+						
 						<div v-if="cookbook.users.length > 0">
 							<CookbookContributors :contributors="cookbook.users" :author="cookbook.author.name" />
 						</div>
@@ -113,6 +138,11 @@ export default {
 			return this.$store.state.cookbook.recipes
 		}
 	},
+	data() {
+		return {
+			subscribed: false
+		}
+	},
 	filters: {
         truncate: function (text, length, suffix) {
             if (text.length > length) {
@@ -128,6 +158,9 @@ export default {
 		},
 		getBgColor(code) {
 			return `#${code}`;
+		},
+		showSubscriptionForm() {
+			this.subscribed = !this.subscribed
 		}
 	},
 	components: {

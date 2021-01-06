@@ -130,9 +130,10 @@
 				</div>
 				<br />
 				<div class="sixteen wide column">
-					<div class="ui light blue label twopxmargin" v-for="ingredient in recipe.ingredients">
-						{{ ingredient }}
-					</div>
+					<a class="ui image label" v-for="ingredient in recipe.ingredients">
+						<img :src="ingredient.thumbnail" />
+						{{ ingredient.name }}
+					</a>
 				</div>
 				<div class="sixteen wide column img-container">
 					<img class="ui massive image" :src="recipe.imgUrl">

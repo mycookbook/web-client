@@ -48,45 +48,50 @@
 					</div>
 					<div style="margin-top:-15px!important;font-size: .89em!important;color: rgba(0,0,0,.5);">
 						<div>
-							<span>
+							<div>
 								<p>
-									Contributed by {{ recipe.author.name }}
+									Contributed by {{ recipe.author.name }} - 2 years ago
 								</p>
-							</span>
-							<small>
-								{{ recipe.claps }} CLAP(S)
-							</small>
-						</div>
-						<div>
-							<small>
-								<a href="/#/">{{ recipe.varieties_count }} VARIETIE(S)</a> SUBMITTED
-							</small>
+							</div>
+							<div style="font-size: .89em!important;color: rgba(0,0,0,.5);margin-bottom: 15px;">
+								<span>
+									{{ recipe.claps }} Clap(s) &#38;
+								</span>
+								<span>
+									<a href="/#/cookbook//recipe//variety/">{{ recipe.varieties_count }} Varietie(s)</a> submitted
+								</span>
+							</div>
 						</div>
 					</div>
-					<div class="ui medium fluid left floated image">
+					<div class="ui fluid image">
 						<div class="ui orange left ribbon label">
 							Prep &#38; Cook Time: {{ recipe.total_time }}
 						</div>
 						<router-link :to="{
-						name: 'Recipe',
-						params: {
-							cookbookId: cookbookId,
-							recipeId: recipe.id
-						}}">
-						<img 
-							:src="recipe.imgUrl" 
-							:alt="recipe.name"
-							>
+							name: 'Recipe',
+							params: {
+								cookbookId: cookbookId,
+								recipeId: recipe.id
+							}}">
+							<img 
+								:src="recipe.imgUrl" 
+								:alt="recipe.name"
+								>
 						</router-link>
 					</div>
 					<div>
-						<div class="ui light blue label ingredients-list"
+						<div class="ingredients-list"
 							v-for="ingredient in recipeIngredients(recipe.ingredients)"
 							v-bind:key="ingredient.id">
-							{{ ingredient }}
+							<a class="ui left floated fluid image label">
+								<img :src="ingredient.thumbnail" />
+								{{ ingredient.name }}
+							</a>
 						</div>
 					</div>
-					<p>{{ recipe.summary }}</p>
+					<div style="padding-top:3%;color: rgba(0,0,0,.5);margin: 0 0 1em;line-height: 1.4285em;float:right!important;">
+						<p>{{ recipe.summary }}</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -126,8 +131,23 @@ export default {
 	},
 	methods: {
 		recipeIngredients(data) {
-			const d = JSON.parse(data);
-			return d.data;
+			// const d = JSON.parse(data);
+			// return d.data;
+			return [
+					{
+						name: '2 lbs red potatoes',
+						thumbnail: 'https://www.irishtimes.com/polopoly_fs/1.3594671.1534163385!/image/image.jpg_gen/derivatives/box_620_330/image.jpg'
+					}, {
+						name: '4 tablespoons salt',
+						thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61EK5fHr9gL._SL1500_.jpg'
+					}, {
+						name: '1 medium onion chopped',
+						thumbnail: 'https://mybutcherwadingriver.com/wp-content/uploads/2020/05/red-onion.jpg'
+					}, {
+						name: '1/4 bag of baby carrots',
+						thumbnail: 'https://www.jessicagavin.com/wp-content/uploads/2019/02/carrots-7-1200.jpg'
+					}
+				]
 		},
 		showMore() {
 			this.recipesSlice = this.recipes.slice(0, this.getBy())
@@ -184,7 +204,10 @@ export default {
 	text-transform: capitalize!important;
 }
 .ingredients-list {
-	margin-top: 1%;
+	margin-top: 1px;
+}
+.ingredients-list a {
+	margin-top: 15px!important;
 }
 .margin-up-down {
 	margin: 45px 0 45px 0;
