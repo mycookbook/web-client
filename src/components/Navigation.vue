@@ -29,6 +29,16 @@
 								</sup>
 							</button>
 						</a>-->
+						<a 
+						class="item" 
+						title="Coming soon."
+						href="https://www.youtube.com/channel/UCKRpHS0EFxGtgZ9l6UOsjOA/featured"
+						>
+							<div class="ui red button">
+								<i class="youtube icon"></i> 
+								<small style="font-weight:300!important;">Watch lastest Videos</small>
+							</div>
+						</a>
 						<router-link :to="{
 							name: 'Register'
 						}">
@@ -56,13 +66,23 @@
 					<a class="ui secondary menu item">
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
-					<a class="ui secondary menu item">
+					<!--<a class="ui secondary menu item">
 						Subscriptions
 					</a>
 					<a class="ui secondary menu item">
 						<button class="ui light red button">
 							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
 						</button>
+					</a>-->
+					<a 
+						class="ui secondary menu item"
+						title="Coming soon."
+						href="https://www.youtube.com/channel/UCKRpHS0EFxGtgZ9l6UOsjOA/featured"
+					>
+						<div class="ui red button">
+							<i class="youtube icon"></i> 
+							<small style="font-weight:300!important;">Watch lastest Videos</small>
+						</div>
 					</a>
 					<a class="ui secondary menu item" href="/#/register">
 						<div class="ui button tbb">
