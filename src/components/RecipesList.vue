@@ -31,6 +31,11 @@
 				</a>
 			</small>
 		</span>
+		<span style="float:right!important;">
+			<small>
+				<a href="/#/search">Advanced search</a>
+			</small>
+		</span>
 	</div>
 	<div v-if="recipesSlice.length > 0">
 		<div class="margin-up-down"></div>
