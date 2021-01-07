@@ -111,7 +111,7 @@
 						</div>
 					</div>
 					<div style="padding-top:3%;color: rgba(0,0,0,.5);margin: 0 0 1em;line-height: 1.4285em;float:right!important;">
-						<p>{{ recipe.summary }}</p>
+						<p>{{ recipe.summary | | truncate(130, '...') }}</p>
 					</div>
 				</div>
 			</div>
@@ -157,6 +157,15 @@ export default {
             searchBy: "recipe"
 		}
 	},
+	filters: {
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
+    },
 	methods: {
 		recipeIngredients(data) {
 			return JSON.parse(data)
