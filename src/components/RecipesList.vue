@@ -3,7 +3,6 @@
 	<div class="ui header">
 		<span>Showing {{ (incrementBy > recipesSlice.length) ? recipesSlice.length : incrementBy }} of {{ recipes.length }} recipes</span>
 	</div>
-	
 	<div class="margin-up-down"></div>
 	<div class="ui fluid action input">
 		<input type="text" placeholder="search recipes in this cookbook" v-model="searchText">
@@ -75,7 +74,7 @@
 						<div class="ui left floated white label" style="background-color: transparent!important;">
 							Tags
 						</div>
-						<div class="ui purple label" v-for="tag in JSON.parse(recipe.tags)">
+						<div class="ui grey label" v-for="tag in JSON.parse(recipe.tags)" style="background-color: #333d79!important;border-color: #333d79!important;">
 							<span>
 								{{ tag }}
 							</span>
@@ -85,8 +84,11 @@
 						</div>
 					</div>
 					<div class="ui fluid image">
-						<div class="ui orange left ribbon label">
+						<div class="ui left ribbon label light-pink">
 							Prep &#38; Cook Time: {{ recipe.total_time }}
+						</div>
+						<div class="ui right ribbon orange label">
+							<i class="utensil spoon icon"></i>{{ recipe.cuisine }} cuisine
 						</div>
 						<router-link :to="{
 							name: 'Recipe',
@@ -101,10 +103,10 @@
 						</router-link>
 					</div>
 					<div>
-						<div class="ingredients-list"
+						<div class="ingredients-list" 
 							v-for="ingredient in recipeIngredients(recipe.ingredients)"
 							v-bind:key="ingredient.id">
-							<a class="ui left floated fluid image label">
+							<a class="ui left floated fluid image label light-pink">
 								<img :src="ingredient.thumbnail" />
 								{{ ingredient.name }}
 							</a>
@@ -265,5 +267,10 @@ export default {
 }
 .link {
 	cursor: pointer!important;
+}
+.light-pink {
+	background-color: #faebef!important;
+    border-color: #faebef!important;
+    color: black!important;
 }
 </style>
