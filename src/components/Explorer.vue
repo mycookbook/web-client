@@ -27,11 +27,12 @@
 	</div>
 	<div class="ui grid">
 		<div class="ui sixteen wide mobile column mobile only" v-if="filters">
-			<select class="ui search fluid dropdown" style="font-size: 0.7em!important;">
+			<select class="ui search fluid dropdown" style="font-size: 0.7em!important;" v-on:change="doSomething()" v-model="searchBy">
 				<option value="all">All</option>
-				<option v-for="filter in filters" :value="filter.name">
+				<option v-for="filter in filters" :value="filter.slug">
 					{{ filter.name }}
 				</option>
+				<option value="location">Current Location</option>
 			</select>
 		</div>
 	</div>
@@ -45,6 +46,11 @@ export default {
 	props: {
 		filters: Array
 	},
+	data() {
+		return {
+			searchBy: "all"
+		}
+	},
 	methods: {
 		getCategoryName: function(category) {
 			this.selectActive(category)
@@ -56,6 +62,9 @@ export default {
 			let el = "#" + category
 			$(el).addClass("active")
 			$(el).addClass("tbb")
+		},
+		doSomething() {
+			this.getCategoryName(this.searchBy)
 		}
 	}
 }

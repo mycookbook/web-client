@@ -47,6 +47,13 @@
 				</div>
 			</div>
 		</div>
+		<div>
+			<span style="float:right!important;">
+				<a href="/#/cookbooks">
+					see all <i class="ui arrow right icon"></i>
+				</a>
+			</span>
+		</div>
 		<br /><br />
 		<div class="tvn horizontal stroke"></div>
 	</div>
