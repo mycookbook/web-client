@@ -1,23 +1,39 @@
 <template>
 <div class="categories-quick-search-wrapper">
-	<div class="ui twelve wide left header">
-		<h3>
-			Explore latest cookbooks
-		</h3>
+	<div class="ui grid">
+		<div class="ui sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
+			<h3>
+				Explore latest cookbooks
+			</h3>
+		</div>
 	</div>
-	<div class="ui secondary menu flex-container" v-if="filters">
-		<a class="active item tbb" id="all" @click="getCategoryName('all')">All</a>
-		<a 
-			class="item" 
-			:id="filter.slug" 
-			@click="getCategoryName(filter.slug)" 
-			v-for="filter in filters" :title="filter.name">
-			{{ filter.name }}
-		</a>
-		<a class="item" id="location" @click="getCategoryName('location')">Current Location</a>
-		<a class="item" title="view all">
-			<i class="ellipsis horizontal icon"></i>
-		</a>
+	<div class="ui grid">
+		<div class="sixteen wide computer column sixteen wide tablet column mobile hidden">
+			<div class="ui secondary menu flex-container" v-if="filters">
+				<a class="active item tbb" id="all" @click="getCategoryName('all')">All</a>
+				<a 
+					class="item" 
+					:id="filter.slug" 
+					@click="getCategoryName(filter.slug)" 
+					v-for="filter in filters" :title="filter.name">
+					{{ filter.name }}
+				</a>
+				<a class="item" id="location" @click="getCategoryName('location')">Current Location</a>
+				<a class="item" title="view all">
+					<i class="ellipsis horizontal icon"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="ui grid">
+		<div class="ui sixteen wide mobile column mobile only" v-if="filters">
+			<select class="ui search fluid dropdown" style="font-size: 0.7em!important;">
+				<option value="all">All</option>
+				<option v-for="filter in filters" :value="filter.name">
+					{{ filter.name }}
+				</option>
+			</select>
+		</div>
 	</div>
 </div>
 </template>

@@ -26,7 +26,7 @@ export const cookbookStore = {
             } else if (payload === 'location') {
                 state.cookbooks = unfiltered
                 const filtered = state.cookbooks.filter((c) => {
-                    this.state.apiClient
+                    this.state.api.client
                     .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
                     .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
                     return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
