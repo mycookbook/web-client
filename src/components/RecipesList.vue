@@ -8,9 +8,10 @@
 	<div class="ui fluid action input">
 		<input type="text" placeholder="search recipes in this cookbook" v-model="searchText">
 		<select class="ui compact selection dropdown" style="height:auto!important;" v-model="searchBy">
+			<option value="all">All</option>
 			<option value="contributor" selected="">By Contributor</option>
 			<option value="recipe">By Recipe Name</option>
-			<option value="category">By Categories</option>
+			<option value="tagName">By Tag Name</option>
 		</select>
 		<div class="ui tbb button" @click="searchCookbook()">
 			Search
@@ -68,6 +69,19 @@
 									<a href="/#/cookbook//recipe//variety/">{{ recipe.varieties_count }} Varietie(s)</a>
 								</span>
 							</div>
+						</div>
+					</div>
+					<div class="ui tiny labels">
+						<div class="ui left floated white label" style="background-color: transparent!important;">
+							Tags
+						</div>
+						<div class="ui purple label" v-for="tag in JSON.parse(recipe.tags)">
+							<span>
+								{{ tag }}
+							</span>
+							<span>
+								<i class="delete icon"></i>
+							</span>
 						</div>
 					</div>
 					<div class="ui fluid image">
@@ -166,7 +180,13 @@ export default {
 
 			this.recipesSlice = this.recipes.slice(0,5)
 
-			if ((by === 'recipe' && !q) || (by === 'contributor' && !q) || (by === 'category' && !q)) {
+			if (by === 'tagname') {
+				this.recipesSlice = this.recipesSlice.filter(function(r) {
+					return r.tags.includes(q)
+				})
+			}
+
+			if ((by === 'recipe' && !q) || (by === 'contributor' && !q) || (by === 'tagname' && !q)) {
 				return this.recipesSlice
 			}
 
@@ -183,11 +203,7 @@ export default {
 				})
 			}
 
-			if (by === 'category') {
-				this.recipesSlice = this.recipesSlice.filter(function(r) {
-					return r.categories.contains(q)
-				})
-			}
+			return this.recipesSlice
         },
 		sortBy(order) {
 			this.recipesSlice.sort(function(a,b) {
