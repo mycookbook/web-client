@@ -103,7 +103,14 @@
 			</div>
 		</div>
 		<div v-if="recipesSlice.length >= recipes.length">
-			<p>no more recipes.</p>
+			<span>
+				<p>no more recipes.</p>
+			</span>
+			<span style="float:right!important;">
+				<a @click="scrollToTop()" style="cursor:pointer!important;">
+					<i class="ui long arrow alternate up icon"></i>Scroll To Top
+				</a>
+			</span>
 		</div>
 		<div v-else>
 			<a class="link" @click="showMore()">
@@ -206,6 +213,9 @@ export default {
 
 				return 0;
 			})
+		},
+		scrollToTop() {
+			window.scrollTo(0,0);
 		}
 	},
 	components: {
