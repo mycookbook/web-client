@@ -34,6 +34,14 @@
                     <input type="checkbox" name="showVarieties" id="showVarieties">
                 </div>
                 <div class="ui checkbox">
+                    <label>Show Recipes open for orders only</label>
+                    <input type="checkbox" name="openForoOders" id="openForoOders">
+                </div>
+                <div class="ui checkbox">
+                    <label>Show Marketplace items only</label>
+                    <input type="checkbox" name="showmarketPlace" id="showmarketPlace">
+                </div>
+                <div class="ui checkbox">
                     <label>Show Archived</label>
                     <input type="checkbox" name="showArchived" id="showArchived">
                 </div>
@@ -115,6 +123,9 @@
                     </span>
                     <span v-if="result.resource_type === 'cookbook' && !result.is_locked ">
                         <i class="ui unlock icon"></i> <small>Community</small>
+                    </span>
+                    <span v-if="result.resource_type === 'recipe' && (result.author_can_take_orders)">
+                        <i class="shopping basket icon"></i>
                     </span>
                     <span>
                         <small>
