@@ -13,6 +13,7 @@ import Variety from '@/components/Variety.vue';
 import ContributorProfile from '@/components/ContributorProfile.vue';
 import Developers from '@/components/Developers.vue';
 import SearchResults from '@/components/SearchResults.vue';
+import NotFound from '@/components/NotFound.vue';
 
 Vue.use(Router);
 
@@ -72,11 +73,6 @@ export default new Router({
 			component: SearchResults
 		}, {
 		path: '*',
-		component: {
-			template: '<div>' +
-			'<h1>404</h1>' +
-			'Page Not Found' +
-			'</div>',
-		}
+		component: NotFound
     }]
 });
