@@ -5,7 +5,7 @@
     <div class="ui center aligned grid">
         <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div class="ui huge header">
-                Showing {{ results.length }} of {{ results.length }} results for " {{ qu.q }} "
+                Showing {{ results.length }} of {{ results.length }} results for " {{ searchq.q }} "
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
         <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div>
                 <div class="ui fluid action input">
-                    <input type="text" placeholder="Start typing..." :value="qu.q">
+                    <input type="text" placeholder="Start typing..." :value="searchq.q">
                     <div class="ui tbb button">Search</div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="tvn horizontal stroke"></div>
             <br /><br />
             <div>
-                <div><b>Ad · chapters.indigo.ca</b></div>
+                <div><b>Ad · www.chapters.indigo.ca</b></div>
                 <div class="ui header" style="margin-top:5px!important;">
                     <a href="/">Bestselling Cookbooks | chapters.indigo.ca</a>
                 </div>
@@ -162,7 +162,7 @@ export default {
     name: 'SearchResults',
     data() {
         return {
-            qu: this.$route.query,
+            searchq: this.$route.query,
             results: JSON.parse(localStorage.getItem('search'))
         }
     },
