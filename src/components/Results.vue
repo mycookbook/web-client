@@ -50,7 +50,7 @@
 		<div>
 			<span style="float:right!important;">
 				<a href="/#/cookbooks">
-					see all <i class="ui arrow right icon"></i>
+					see more <i class="ui arrow down icon"></i>
 				</a>
 			</span>
 		</div>
