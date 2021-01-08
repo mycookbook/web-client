@@ -50,7 +50,7 @@
                 <span style="float:right!important;">
                     <small>
                         <a href="https://www.algolia.com" target="_blank">
-                            Cookbookshq <sup>TM</sup>
+                            Cookbookshq <sup>&#174;</sup>
                         </a>
                     </small>
                 </span>
@@ -110,9 +110,15 @@
             <br />
             <div v-for="result in results" class="capitalize">
                 <div>
+                    <span v-if="result.resource_type === 'cookbook' && result.is_locked ">
+                        <i class="ui lock icon"></i>
+                    </span>
+                    <span v-if="result.resource_type === 'cookbook' && !result.is_locked ">
+                        <i class="ui unlock icon"></i>
+                    </span>
                     <span>
                         <small>
-                            <b>{{ result.resource_type }}</b> > By {{ result.author }} > {{ result.created_at }}
+                            <b>{{ result.resource_type }}</b> > <a :href="getUri('contributor', result.author_id)">By {{ result.author_name }}</a> > {{ result.created_at }}
                         </small>
                     </span>
                 </div>
@@ -163,6 +169,10 @@ export default {
 
             if (type === 'recipe') {
                 return '/#/recipe/' + id
+            }
+
+            if (type === 'contributor') {
+                return '/#/contributor/' + id
             }
         }
     },
