@@ -111,10 +111,10 @@
             <div v-for="result in results" class="capitalize">
                 <div>
                     <span v-if="result.resource_type === 'cookbook' && result.is_locked ">
-                        <i class="ui lock icon"></i>
+                        <i class="ui lock icon"></i> <small>Private</small>
                     </span>
                     <span v-if="result.resource_type === 'cookbook' && !result.is_locked ">
-                        <i class="ui unlock icon"></i>
+                        <i class="ui unlock icon"></i> <small>Community</small>
                     </span>
                     <span>
                         <small>
