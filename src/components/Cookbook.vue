@@ -101,7 +101,7 @@
 							<CookbookContributors :contributors="cookbook.users" :author="cookbook.author.name" />
 						</div>
 						<div class="margin-up-down"></div>
-							<RecipesList :recipes="recipes" :cookbookId="cookbook.id" />
+							<RecipesList :recipes="recipes" :cookbookId="cookbook.id" :cookbookName="cookbook.name" />
 						</div>
 					</div>
 				</div>

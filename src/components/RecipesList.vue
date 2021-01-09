@@ -148,7 +148,8 @@ export default {
 	name: "RecipesList",
   	props: {
     	recipes: Array,
-		cookbookId: Number
+		cookbookId: Number,
+		cookbookName: String
   	},
 	data() {
 		return {
@@ -171,7 +172,7 @@ export default {
 	methods: {
 		advancedSearchUri() {
 			if (this.searchText === "") {
-				return '/#/search?q=all'
+				return '/#/search?q=' + this.cookbookName
 			}
 
 			return '/#/search?q=' + this.searchText
