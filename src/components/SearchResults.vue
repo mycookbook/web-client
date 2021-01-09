@@ -32,10 +32,6 @@
                 </span>
 	        </div>
             <div class="margin-top-15"></div>
-            <div>
-                <small>About 9,290,000 results (0.53 seconds)</small>
-            </div>
-            <div class="margin-top-15"></div>
                 <GoogleAdSense />
             <div v-show="results.length > 0">
                 <span>
