@@ -57,7 +57,7 @@
             <div>
                 <span style="float:right!important;">
                     <small>
-                        <a href="https://www.algolia.com" target="_blank">
+                        <a href="/">
                             Cookbookshq <sup>&#174;</sup>
                         </a>
                     </small>
@@ -99,7 +99,7 @@
             </div>
             <br /><br />
             <div class="tvn horizontal stroke"></div>
-            <div>
+            <div v-show="results.length > 0">
                 <span>
                     <small>
                         <a class="link" @click="sortBy('newest')">
@@ -143,7 +143,7 @@
                 </div>
                 <div class="margin-top-15"></div>
             </div>
-            <div>
+            <div v-show="results.length > 0">
                 <span style="float:right!important;">
                     <small>
                         <a href="">See more</a>
@@ -160,10 +160,19 @@ import Navigation from './Navigation.vue'
 
 export default {
     name: 'SearchResults',
+    mounted() {
+        if (this.$route.query.q !== "") {
+            this.$store.dispatch('fetch_results', this.$route.query.q)
+        }
+    },
+    computed: {
+        results() {
+			return this.$store.state.searchStore.results
+		}
+    },
     data() {
         return {
-            searchq: this.$route.query,
-            results: JSON.parse(localStorage.getItem('search'))
+            searchq: this.$route.query
         }
     },
     methods: {

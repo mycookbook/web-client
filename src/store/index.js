@@ -11,8 +11,8 @@ import { recipeStore } from './modules/recipeStore.js'
 import { subscriptionStore } from './modules/subscriptionStore.js'
 import { registerStore } from './modules/user/registerStore.js'
 import { varietiesStore } from './modules/varietiesStore.js'
-import { contributorStore } from './modules/contributorStore'
-import { searchStore } from './modules/searchStore'
+import { contributorStore } from './modules/contributorStore.js'
+import { searchStore } from './modules/searchStore.js'
 
 Vue.use(Vuex);
 Vue.use(VueResource);

@@ -111,7 +111,6 @@ export default {
 				}).then((response) => {
 					if (Object.keys(this.results).length == 0 ) {
 						this.results = response.data.response
-						localStorage.setItem('search', JSON.stringify(this.results))
 						this.$store.dispatch('post_to_ml_endpoint', this.query)
 					}
 				}).catch((error) => {
