@@ -3,7 +3,8 @@
 	<Navigation />
     <div class="margin-top-150"></div>
     <div class="ui center aligned grid">
-        <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
+        <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"></div>
+        <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div class="ui huge header">
                 Showing {{ results.length }} of {{ results.length }} results for "{{ showing }}"
             </div>
@@ -77,13 +78,13 @@
                 </div>
                 <div class="margin-top-15"></div>
             </div>
-            <div v-show="results.length > 0">
+            <!--<div v-show="results.length > 0">
                 <span style="float:right!important;">
                     <small>
                         <a href="">See more</a>
                     </small>
                 </span>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
