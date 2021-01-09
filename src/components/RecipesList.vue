@@ -33,7 +33,7 @@
 		</span>
 		<span style="float:right!important;">
 			<small>
-				<a href="/#/search">Advanced search</a>
+				<a :href="advancedSearchUri()">Advanced search</a>
 			</small>
 		</span>
 	</div>
@@ -169,6 +169,9 @@ export default {
         },
     },
 	methods: {
+		advancedSearchUri() {
+			return '/#/search?q=' + this.searchText
+		},
 		recipeIngredients(data) {
 			return JSON.parse(data)
 		},

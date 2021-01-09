@@ -5,7 +5,7 @@
     <div class="ui center aligned grid">
         <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div class="ui huge header">
-                Showing {{ results.length }} of {{ results.length }} results for " {{ rss }} "
+                Showing {{ results.length }} of {{ results.length }} results for "{{ rss }}"
             </div>
         </div>
     </div>
@@ -178,7 +178,7 @@ export default {
                 if (this.searchq !== "") {
                     return this.searchq
                 }
-                
+
                 return this.$route.query.q
             }
         }
