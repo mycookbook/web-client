@@ -16,8 +16,8 @@
         <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div>
                 <div class="ui fluid action input">
-                    <input type="text" placeholder="Try bread, butter or peppermint tea recipe" v-model="searchq">
-                    <div class="ui tbb button" @click="searchForQuery()">
+                    <input type="text" placeholder="Try bread, butter or peppermint tea recipe" v-model="searchq" @keyup="searchForQuery" >
+                    <div class="ui tbb button" @click="searchForQuery">
                         Search
                     </div>
                 </div>
@@ -142,7 +142,11 @@ export default {
             //     return '/#/contributor/' + id
             // }
         },
-        searchForQuery() {
+        searchForQuery(e) {
+            if (e.which == 13) {
+                this.$store.dispatch('empty_results_object')
+                this.$store.dispatch('fetch_results', this.searchq)
+            }
             this.$store.dispatch('empty_results_object')
             this.$store.dispatch('fetch_results', this.searchq)
         }
