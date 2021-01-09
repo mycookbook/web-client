@@ -144,7 +144,7 @@ export default {
 		}
 	},
 	filters: {
-        truncate: function (text, length, suffix) {
+        truncate(text, length, suffix) {
             if (text.length > length) {
                 return text.substring(0, length) + suffix;
             } else {

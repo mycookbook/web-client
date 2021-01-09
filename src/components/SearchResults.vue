@@ -72,7 +72,7 @@
                     </span>
                 </div>
                 <div>
-                    <a :href="getUri(result.resource_type, result.id)">
+                    <a :href="getUri(result.resource_type, result.cookbook_id, result.recipe_id)">
                         <h4>{{ result.name }}</h4>
                     </a>
                 </div>
@@ -133,18 +133,18 @@ export default {
         isRecipe(type) {
             return (type === "recipe")
         },
-        getUri(type, id) {
+        getUri(type, c, r) {
             if (type === 'cookbook') {
-                return '/#/cookbook/' + id
+                return '/#/cookbook/' + c
             }
 
             if (type === 'recipe') {
-                return '/#/recipe/' + id
+                return '/#/cookbook/' + c + '/recipe/' + r
             }
 
-            if (type === 'contributor') {
-                return '/#/contributor/' + id
-            }
+            // if (type === 'contributor') {
+            //     return '/#/contributor/' + id
+            // }
         },
         searchForQuery() {
             this.$store.dispatch('empty_results_object')
