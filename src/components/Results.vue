@@ -49,8 +49,8 @@
 		</div>
 		<div>
 			<span style="float:right!important;">
-				<a href="/#/cookbooks">
-					see more <i class="ui arrow down icon"></i>
+				<a href="/#/search?q=cookbooks">
+					see all <i class="ui arrow down icon"></i>
 				</a>
 			</span>
 		</div>
