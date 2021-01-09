@@ -170,6 +170,10 @@ export default {
     },
 	methods: {
 		advancedSearchUri() {
+			if (this.searchText === "") {
+				return '/#/search?q=all'
+			}
+
 			return '/#/search?q=' + this.searchText
 		},
 		recipeIngredients(data) {
