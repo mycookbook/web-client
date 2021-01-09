@@ -5,7 +5,7 @@
     <div class="ui center aligned grid">
         <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div class="ui huge header">
-                Showing {{ results.length }} of {{ results.length }} results for " {{ searchq.q }} "
+                Showing {{ results.length }} of {{ results.length }} results for " {{ rss }} "
             </div>
         </div>
     </div>
@@ -50,8 +50,10 @@
         <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div>
                 <div class="ui fluid action input">
-                    <input type="text" placeholder="Start typing..." :value="searchq.q">
-                    <div class="ui tbb button">Search</div>
+                    <input type="text" placeholder="Start typing..." v-model="searchq">
+                    <div class="ui tbb button" @click="searchForQuery()">
+                        Search
+                    </div>
                 </div>
             </div>
             <div>
@@ -161,6 +163,8 @@ import Navigation from './Navigation.vue'
 export default {
     name: 'SearchResults',
     mounted() {
+        this.$store.dispatch('empty_results_object')
+
         if (this.$route.query.q !== "") {
             this.$store.dispatch('fetch_results', this.$route.query.q)
         }
@@ -168,11 +172,20 @@ export default {
     computed: {
         results() {
 			return this.$store.state.searchStore.results
-		}
+		},
+        rss() {
+            if (this.$route.query.q !== "") {
+                if (this.searchq !== "") {
+                    return this.searchq
+                }
+                
+                return this.$route.query.q
+            }
+        }
     },
     data() {
         return {
-            searchq: this.$route.query
+            searchq: ""
         }
     },
     methods: {
@@ -194,6 +207,10 @@ export default {
             if (type === 'contributor') {
                 return '/#/contributor/' + id
             }
+        },
+        searchForQuery() {
+            this.$store.dispatch('empty_results_object')
+            this.$store.dispatch('fetch_results', this.searchq)
         }
     },
     filters: {
