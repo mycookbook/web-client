@@ -25,7 +25,8 @@
 		</div>
 		<div v-else>
 			<div class="ui divided selection list capitalize">
-				<a class="item" v-for="result in results.slice(0,5)" :href="getLink(result)">
+				<a class="item" v-for="result in results.slice(0,5)" 
+				@click="redirectTo(result.resource_type, (result.resource_type == 'cookbook') ? result.cookbook_slug : result.recipe_slug, (result.resource_type == 'cookbook') ? result.cookbook_id : result.recipe_id)">
 					<div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
 						{{ result.resource_type }}
 					</div>
@@ -142,19 +143,28 @@ export default {
 			let link = ''
 
 			if (item.resource_type == 'cookbook') {
-				link = this.base + 'cookbook/' + item.id
+				link = this.base + 'cookbooks/' + item.id
 			}
 
 			if (item.resource_type == 'recipe') {
-				link = this.base + 'cookbook/' + item.cookbook_id + '/recipe/' + item.id 
-			}
-
-			if (item.resource_type == 'recipe_variation') {
-				link = this.base + 'recipe/' + item.recipe_id + '/varieties/' + item.id 
+				link = this.base + '/recipes/' + item.id 
 			}
 			
 			return link
-		}
+		},
+		redirectTo(type, slug, id) {
+            let name = "default"
+
+            if (type === "cookbook") {
+                name = "Cookbook"
+            }
+
+            if (type === "recipe") {
+                name = "Recipe"
+            }
+
+            this.$router.replace({ name, params:{ slug, id } });
+        }
 	},
 };
 </script>
