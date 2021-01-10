@@ -19,6 +19,7 @@ export const recipeStore = {
 	},
     actions: {
 		addClap(context, payload) {
+			alert(payload.recipeId)
 			let url = process.env.BASE_URL + 'add-clap';
 
 			this.state.api.client.post(url, {

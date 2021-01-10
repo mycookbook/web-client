@@ -92,7 +92,7 @@
 				<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" :href="links.breadcrumbs.cookbookLink + recipe.cookbook.id">
+						<a class="section" :href="'/#/cookbooks/' + recipe.cookbook.slug">
 							{{ recipe.cookbook.name }}
 						</a>
 						<i class="right angle icon divider"></i>
