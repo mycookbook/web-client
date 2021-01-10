@@ -52,7 +52,7 @@ export default new Router({
 			name: 'Recipe',
 			component: Recipe,
 		}, {
-			path: '/cookbook/:cookbookId/recipes/:recipeId/contributors/:username',
+			path: '/contributors/(@):username',
 			name: 'ContributorProfile',
 			component: ContributorProfile
 		}, {

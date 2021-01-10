@@ -57,7 +57,7 @@
 						<div>
 							<div>
 								<p>
-									Contributed by <a href="/#/cookbook/10/recipes/21/contributors/flora">{{ recipe.author.name }}</a> - {{ recipe.submission_date }}
+									Contributed by <a :href="contributorPage(recipe.author.name_slug)">{{ recipe.author.name }}</a> - {{ recipe.submission_date }}
 								</p>
 							</div>
 							<div style="font-size: .89em!important;color: rgba(0,0,0,.5);margin-bottom: 15px;">
@@ -251,6 +251,9 @@ export default {
 		},
 		scrollToTop() {
 			window.scrollTo(0,0);
+		},
+		contributorPage(username) {
+			return "/#/contributors/@" + username
 		}
 	},
 	components: {

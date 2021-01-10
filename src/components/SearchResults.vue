@@ -64,7 +64,7 @@
                     </span>
                     <span>
                         <small>
-                            <b>{{ result.resource_type }}</b> > <a :href="getUri('contributor', result.author_id)">By {{ result.author_name }}</a> > {{ result.created_at }}
+                            <b>{{ result.resource_type }}</b> > <a :href="getUri('contributor', result.username)">By {{ result.author_name }}</a> > {{ result.created_at }}
                         </small>
                     </span>
                 </div>
@@ -139,9 +139,9 @@ export default {
                 return '/#/cookbook/' + c + '/recipe/' + r
             }
 
-            // if (type === 'contributor') {
-            //     return '/#/contributor/' + id
-            // }
+            if (type === 'contributor') {
+                return '/#/contributors/@' + c
+            }
         },
         searchForQuery(e) {
             if (e.which == 13) {
