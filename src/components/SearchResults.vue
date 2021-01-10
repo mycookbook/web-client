@@ -2,7 +2,7 @@
 <div class="ui container">
 	<Navigation />
     <div class="margin-top-150"></div>
-    <div class="ui center aligned grid">
+    <div class="ui grid">
         <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"></div>
         <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div class="ui huge header">
