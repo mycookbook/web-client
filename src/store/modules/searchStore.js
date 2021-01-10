@@ -10,6 +10,30 @@ export const searchStore = {
         },
         EMPTY_RESULTS_OBJECT(state) {
             state.results = []
+        },
+        SORT_RESULTS_BY(state, order) {
+            state.results.sort(function(a,b) {
+                var dateA = Date.parse(a.created_at)
+                var dateB = Date.parse(b.created_at)
+
+                if (order === 'oldest' && (dateA < dateB)) {
+                    return -1;
+                }
+
+                if (order === 'oldest' && (dateA > dateB )) {
+                    return 1;
+                }
+
+                if (order === 'newest' && (dateA > dateB)) {
+                    return -1;
+                }
+
+                if (order === 'newest' && (dateA < dateB )) {
+                    return 1;
+                }
+
+                return 0;
+            })
         }
     },
     actions: {
@@ -53,7 +77,11 @@ export const searchStore = {
         },
         empty_results_object(context) {
             context.commit('EMPTY_RESULTS_OBJECT')
+        },
+        sort_results_by(context, order) {
+            context.commit("SORT_RESULTS_BY", order)
         }
+        
     },
     getters: {}
 }

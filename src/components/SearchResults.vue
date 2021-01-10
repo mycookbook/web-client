@@ -170,7 +170,10 @@ export default {
             }
 
             this.$router.replace({ name, params:{ slug, id } });
-        }
+        },
+        sortBy(order) {
+			this.$store.dispatch('sort_results_by', order)
+		},
     },
     filters: {
         truncate: function (text, length, suffix) {
