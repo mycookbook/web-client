@@ -34,7 +34,7 @@
 								</div>
 								<div class="footer options">
 									<span>
-										<router-link :to="{name: 'Cookbook',params: {id: cookbook.id}}">
+										<router-link :to="{ name: 'Cookbook', params: { slug: cookbook.slug, id: cookbook.id }}">
 											<button class="ui primary left floated basic button">
 												{{ cookbook.recipes.length }} Recipe(s)
 											</button>

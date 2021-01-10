@@ -64,13 +64,20 @@
                     </span>
                     <span>
                         <small>
-                            <b>{{ result.resource_type }}</b> > <a :href="getUri('contributor', result.username)">By {{ result.author_name }}</a> > {{ result.created_at }}
+                            <b>{{ result.resource_type }}</b> > 
+                            <a :href="getUri('contributor', result.username)">By {{ result.author_name }}</a> 
+                            > {{ result.created_at }}
                         </small>
                     </span>
                 </div>
                 <div>
-                    <a :href="getUri(result.resource_type, result.cookbook_id, result.recipe_id)">
-                        <h4>{{ result.name }}</h4>
+                    <a class="link">
+                        <div v-if="isCookbook(result.resource_type)" @click="redirectTo(result.resource_type, result.cookbook_slug, result.cookbook_id)">
+                            <h4>{{ result.cookbook_name }}</h4>
+                        </div>
+                        <div v-else @click="redirectTo(result.resource_type, result.recipe_slug, result.recipe_id)">
+                            <h4>{{ result.recipe_name }}</h4>
+                        </div>
                     </a>
                 </div>
                 <div>
@@ -132,11 +139,11 @@ export default {
         },
         getUri(type, c, r) {
             if (type === 'cookbook') {
-                return '/#/cookbook/' + c
+                return '/#/cookbooks/' + c
             }
 
             if (type === 'recipe') {
-                return '/#/cookbook/' + c + '/recipe/' + r
+                return '/#/recipes/' + r
             }
 
             if (type === 'contributor') {
@@ -150,6 +157,19 @@ export default {
             }
             this.$store.dispatch('empty_results_object')
             this.$store.dispatch('fetch_results', this.searchq)
+        },
+        redirectTo(type, slug, id) {
+            let name = "default"
+
+            if (type === "cookbook") {
+                name = "Cookbook"
+            }
+
+            if (type === "recipe") {
+                name = "Recipe"
+            }
+
+            this.$router.replace({ name, params:{ slug, id } });
         }
     },
     filters: {
@@ -181,5 +201,8 @@ export default {
 }
 .capitalize {
     text-transform: capitalize!important;
+}
+.link {
+    cursor: pointer!important;
 }
 </style>

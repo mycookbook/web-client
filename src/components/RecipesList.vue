@@ -93,8 +93,8 @@
 						<router-link :to="{
 							name: 'Recipe',
 							params: {
-								cookbookId: cookbookId,
-								recipeId: recipe.id
+								slug: recipe.slug,
+								id: recipe.id
 							}}">
 							<img 
 								:src="recipe.imgUrl" 

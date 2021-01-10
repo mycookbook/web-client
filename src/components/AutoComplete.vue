@@ -98,7 +98,7 @@ export default {
 			if (this.query.length > 3) {
 				if (e.which == 13) {
 					this.$store.dispatch('post_to_ml_endpoint', this.query)
-					this.$router.push({ name: 'SearchResults', query: { q: this.query } });
+					this.$router.push({ name: 'SearchResults', query: { q: this.query } })
 				}
 
 				this.results = []

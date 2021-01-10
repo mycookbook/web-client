@@ -44,23 +44,26 @@ export default new Router({
 			name: 'Register',
 			component: Register,
 		}, {
-			path: '/cookbook/:id',
+			path: '/cookbooks/:slug',
 			name: 'Cookbook',
 			component: Cookbook,
+			props: true
 		}, {
-			path: '/cookbook/:cookbookId/recipe/:recipeId',
+			path: '/recipes/:slug',
 			name: 'Recipe',
 			component: Recipe,
+			props: true
 		}, {
 			path: '/contributors/(@):username',
 			name: 'ContributorProfile',
 			component: ContributorProfile
 		}, {
-			path: '/cookbook/:cookbookId/recipe/:recipeId/variety/:varietyId',
+			path: '/recipes/:recipe_slug/varieties/:variety_slug',
 			name: 'Variety',
-			component: Variety
+			component: Variety,
+			prop: true
 		}, {
-			path: '/cookbook/:cookbookId/recipe/:recipeId/varieties',
+			path: '/recipes/:recipe_slug/varieties/',
 			name: 'VarietiesList',
 			component: VarietiesList,
 		}, {

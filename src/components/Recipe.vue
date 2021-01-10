@@ -201,9 +201,15 @@ import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
 
 export default {
 	mounted() {
-		this.$store.dispatch('fetch_recipe', this.$route.params.recipeId)
+		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
+
+		this.$store.dispatch('fetch_recipe', id)
 		this.$store.dispatch('reset_hasClapped')
 	},
+	props: [
+		'slug',
+		'id'
+	],
 	computed: {
 		totalCount() {
 			return (this.$store.state.recipe.claps) || 0

@@ -122,8 +122,14 @@ import RecipesList from './RecipesList.vue'
 
 export default {
 	mounted() {
-		this.$store.dispatch('fetch_cookbook', this.$route.params.id)
+		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
+		
+		this.$store.dispatch('fetch_cookbook', id)
 	},
+	props: [
+		'slug',
+		'id'
+	],
 	computed: {
 		cookbook() {
 			return this.$store.state.cookbook
