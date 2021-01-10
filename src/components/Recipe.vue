@@ -239,8 +239,10 @@ export default {
 			alert('Coming soon');
     	},
 		addClap() {
+			let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
+
 			const payload = {
-				recipeId: this.$route.params.id,
+				recipeId: id,
 			};
 			store.dispatch('addClap', payload);
 		}
