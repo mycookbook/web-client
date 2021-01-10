@@ -8,7 +8,7 @@
 				</a>
 			</div>
     	</div>
-		<div class="twelve wide tablet ten wide computer right floated column tvn no padding">
+		<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
 						<!--<a class="item" 
