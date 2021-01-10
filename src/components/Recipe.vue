@@ -240,8 +240,7 @@ export default {
     	},
 		addClap() {
 			const payload = {
-				cookbookdId: this.$route.params.cookbookId,
-				recipeId: this.$route.params.recipeId,
+				recipeId: this.$route.params.id,
 			};
 			store.dispatch('addClap', payload);
 		}
