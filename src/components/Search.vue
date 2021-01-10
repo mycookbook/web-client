@@ -42,7 +42,7 @@ export default {
 }
 .food-drink {
 	font-weight: 300;
-	padding: 10px 0 65px 0;
+	padding: 0 0 65px 0;
 	font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 .search-banner {

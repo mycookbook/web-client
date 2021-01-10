@@ -25,7 +25,6 @@ const client = new elasticsearch.Client({
 });
 
 app.get('/search', function (req, res){
-alert("we here")
     let body = {
       size: 100,
       from: 0,
