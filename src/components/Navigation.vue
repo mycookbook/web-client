@@ -1,14 +1,14 @@
 <template>
 <div>
 	<div class="ui top fixed menu grid mobile hidden">
-		<div class="eight wide mobile four wide tablet six wide computer left floated column tvn no padding">
+		<div class="six wide tablet column six wide computer column tvn no padding">
 			<div class="tvn clipped brand">
-				<a href="/" class="ui medium image" title="cookbookshq brand logo">
-					<img class="logo" src="/static/transparent_logo.png" alt="cookbookinc brand logo" style="min-width: unset;height: 5.5em; !important">
+				<a href="/" class="ui massive fluid image" title="cookbookshq brand logo">
+					<img class="logo" src="/static/transparent_logo.png" alt="cookbookinc brand logo">
 				</a>
 			</div>
     	</div>
-		<div class="eight wide mobile twelve wide tablet ten wide computer right floated column tvn no padding">
+		<div class="twelve wide tablet ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui right floated secondary menu">
 						<!--<a class="item" 
@@ -96,16 +96,11 @@
 	</div>
 	<div class="ui top fixed hidden menu mobile only">
 		<div class="ui grid container">
-			<div class="ui two wide column" id="hamburger-icon" @click="toggleMobileMenu()">
+			<div class="ui two wide mobile column" id="hamburger-icon" @click="toggleMobileMenu()">
 				<i class="large bars icon"></i>
 			</div>
-			<div class="ui ten wide column container">
-				<a href="/" title="cookbookshq brand logo" class="ui large image">
-					<img 
-					src="/static/transparent_logo.png" 
-					class="brand-logo"
-					alt="cookbookinc brand logo">
-				</a>
+			<div class="ui fourteen wide mobile column">
+				<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo" style="margin-top:-6%!important;margin-left:16%!important;">
 			</div>
 		</div>
 	</div>
