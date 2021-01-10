@@ -12,7 +12,7 @@
                         <div class="six wide computer column sixteen wide mobile column">
                             <img class="ui huge fluid image" :src="contributor.avatar">
                             <div style="margin-top:15px;">
-                                <b>{{ contributor.name }}</b>
+                                <b>{{ contributor.name }}</b> ({{ contributor.pronouns }})
                             </div>
                             <div>
                                 Authored {{ contributor.contributions.cookbooks }} 
