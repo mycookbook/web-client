@@ -10,7 +10,7 @@
     	</div>
 		<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 			<div class="selectors">
-				<div class="ui right floated secondary menu">
+				<div class="ui secondary menu">
 						<!--<a class="item" 
 						href="https://marketplace.cookbookshq.com"
 						target="_blank"
@@ -46,10 +46,15 @@
 						v-if="!isRegistrationRoute"
 						class="item" 
 						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
-							<button class="ui button tbb">
+							<button class="ui button tbb tablet hidden">
 								<small>
 									<i class="plus icon"></i>
 									Become a Contributor
+								</small>
+							</button>
+							<button class="ui button tbb tablet only">
+								<small>
+									Register
 								</small>
 							</button>
 						</a>
