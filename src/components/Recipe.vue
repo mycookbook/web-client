@@ -108,14 +108,9 @@
 							<div class="content">
 								<div class="ui sub header">
 									submitted by:
-									<router-link :to="{
-										name: 'ContributorProfile',
-										params: {
-											recipeId: recipe.id,
-											username: recipe.author.name_slug
-										}}">
+									<a :href="'/#/contributors/@' + recipe.author.name_slug">
 										{{ recipe.author.name }}
-									</router-link>
+									</a>
 									{{ recipe.author.pronouns }}
 								</div>
 								<div class="transformToCapitalize">
