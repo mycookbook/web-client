@@ -18,7 +18,8 @@
 					</div>
 				</div>
 				<div class="tvn horizontal stroke"></div>
-				<div>
+				<div class="spaced">
+					<div>
 					<div>
 						<b>Nutritional details</b>
 					</div>
@@ -73,8 +74,8 @@
 					<span class="transformToCapitalize">{{ recipe.course }}</span>
 				</div>
 				<div class="tvn horizontal stroke"></div>
-				<div class="ui disabled red button">
-					Report it!
+				<div class="ui disabled large red button">
+					<small>Report it!</small>
 				</div>
 				<div>
 					<small>
@@ -85,6 +86,7 @@
 						<a href="/#/register">register</a> to become a cookbook contributor and then
 						ownership will be transffered to you upon request.
 					</small>
+				</div>
 				</div>
 			</div>
 			<div class="ui eleven wide computer column sixteen wide mobile column">
@@ -166,7 +168,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- Tablet -->
+						<!-- Tablet view -->
 						<div class="ui horizontal steps tablet only">
 							<div class="completed step">
 								<div class="content">
@@ -199,7 +201,7 @@
 						</div>
 					</div>
 					<div class="twelve wide computer column sixteen wide tablet column sixteen wide mobile column">
-						<div class="ui header padding">
+						<div class="ui header padded">
 							HOW TO PREPARE
 						</div>
 						<div class="description-contents"v-html="recipe.description"></div>
@@ -325,8 +327,12 @@ export default {
 	overflow-x: auto!important;
     overflow-y: hidden!important;
 }
-.padding {
+.padded {
 	padding-top: 30px;
 	padding-bottom:5px;
+}
+.spaced div {
+	padding-top: 4px!important;
+	padding-bottom: 4px!important;
 }
 </style>
