@@ -32,7 +32,7 @@
 					</div>
 					<em>
 						<span>
-							{{ result.name }}
+							{{ (result.resource_type == 'cookbook') ? result.cookbook_name : result.recipe_name }}
 						</span>
 						<span v-if="result.resource_type == 'recipe' && result.is_orderable ">
 							<small class="ui mini label">
