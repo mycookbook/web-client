@@ -1,19 +1,21 @@
 <template>
 <div>
-	<h2>{{ title }}</h2>
-	<SomeCompoent />
+    <Navigation />
+    <div class="ui container" style="margin-top:10%;">
+        {{ recipe.author.contributions }}
+    </div>
 </div>
 </template>
 
 <script>
-import Navigation from './SomeCompoenent.vue';
+import Navigation from './Navigation.vue';
 
 export default {
-	name: "ChildComponent",
+	name: "CookbooksBy",
 	mounted() {},
 	computed: {
-		example() {
-			return true
+		recipe() {
+			return this.$store.state.recipe
 		}
 	},
 	props: {
@@ -21,7 +23,7 @@ export default {
 	},
 	data() {
 		return {
-			title: 'This is an Example component'
+			title: 'My cookbooks'
     	}
   	},
 	filters: {

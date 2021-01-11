@@ -139,15 +139,15 @@ export default {
         },
         getUri(type, c, r) {
             if (type === 'cookbook') {
-                return '/#/cookbooks/' + c
+                return '/cookbooks/' + c
             }
 
             if (type === 'recipe') {
-                return '/#/recipes/' + r
+                return '/recipes/' + r
             }
 
             if (type === 'contributor') {
-                return '/#/contributors/@' + c
+                return '/contributors/@' + c
             }
         },
         searchForQuery(e) {

@@ -17,7 +17,7 @@
 				<small>
 					no results. 
 					<em>
-						Know how to prepare <span id="qStr">{{ qStr }}</span>? <a href="/#/register">Add it</a>
+						Know how to prepare <span id="qStr">{{ qStr }}</span>? <a href="/register">Add it</a>
 					</em>
 				</small>
 				<hr />
@@ -81,7 +81,6 @@ export default {
 			searching: false,
 			qStr: '',
 			results: [],
-			base: '/#/',
 			query: ''
 		};
 	},
@@ -143,11 +142,11 @@ export default {
 			let link = ''
 
 			if (item.resource_type == 'cookbook') {
-				link = this.base + 'cookbooks/' + item.id
+				link = 'cookbooks/' + item.id
 			}
 
 			if (item.resource_type == 'recipe') {
-				link = this.base + '/recipes/' + item.id 
+				link = '/recipes/' + item.id 
 			}
 			
 			return link

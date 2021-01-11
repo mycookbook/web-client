@@ -40,9 +40,9 @@
                     </div>
                     <div class="ui tiny info">
                         <label>
-                            By hitting the submit button, you have agreed to our <a href="/#/terms-and-conditions">Terms &amp; Conditions, </a>
-                        <a href="/#/usage-policy">Usage</a> and 
-                        <a href="/#/data-retention-policy">Data Retention Policies</a>
+                            By hitting the submit button, you have agreed to our <a href="/terms-and-conditions">Terms &amp; Conditions, </a>
+                        <a href="/usage-policy">Usage</a> and 
+                        <a href="/data-retention-policy">Data Retention Policies</a>
                         </label>
                     </div>
                 </form>

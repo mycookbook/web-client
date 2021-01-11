@@ -16,14 +16,14 @@
                             </div>
                             <div>
                                 Authored {{ contributor.contributions.cookbooks }} 
-                                <a :href="'/#/cookbooks/by/@' + contributor.name_slug">cookbooks</a> 
+                                <a :href="'/cookbooks/by/@' + contributor.name_slug">cookbooks</a> 
                                 and {{ contributor.contributions.recipes }} 
-                                <a :href="'/#/recipes/by/@' + contributor.name_slug">recipes</a>
+                                <a :href="'/recipes/by/@' + contributor.name_slug">recipes</a>
                             </div>
                             <div>Member since: {{ contributor.created_at }}</div>
                             <div>
                                 <i class="ui linkify icon"></i>
-                                <a :href="'/#/contributors/@' + contributor.name_slug">@{{ contributor.name_slug }}</a> 
+                                <a :href="'/contributors/@' + contributor.name_slug">@{{ contributor.name_slug }}</a> 
                                 <div class="ui tiny link label">COPY LINK</div>
                             </div>
                         </div>

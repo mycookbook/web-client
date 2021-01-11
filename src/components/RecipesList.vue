@@ -65,7 +65,7 @@
 									{{ recipe.claps }} Clap(s) <br />
 								</span>
 								<span>
-									<a href="/#/cookbook//recipe//variety/">{{ recipe.varieties_count }} Varietie(s)</a>
+									<a href="/recipes/1/varieties/">{{ recipe.varieties_count }} Varietie(s)</a>
 								</span>
 							</div>
 						</div>
@@ -172,10 +172,10 @@ export default {
 	methods: {
 		advancedSearchUri() {
 			if (this.searchText === "") {
-				return '/#/search?q=' + this.cookbookName
+				return '/search?q=' + this.cookbookName
 			}
 
-			return '/#/search?q=' + this.searchText
+			return '/search?q=' + this.searchText
 		},
 		recipeIngredients(data) {
 			return JSON.parse(data)
@@ -253,7 +253,7 @@ export default {
 			window.scrollTo(0,0);
 		},
 		contributorPage(username) {
-			return "/#/contributors/@" + username
+			return "/contributors/@" + username
 		}
 	},
 	components: {

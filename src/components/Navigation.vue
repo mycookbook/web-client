@@ -89,7 +89,7 @@
 							<small style="font-weight:300!important;">Watch lastest Videos</small>
 						</div>
 					</a>
-					<a class="ui secondary menu item" href="/#/register">
+					<a class="ui secondary menu item" href="/register">
 						<div class="ui button tbb">
 							<i class="plus icon"></i>
 							Become a Contributor
@@ -105,7 +105,9 @@
 				<i class="large bars icon"></i>
 			</div>
 			<div class="ui fourteen wide mobile column">
-				<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo" style="margin-top:-6%!important;margin-left:16%!important;">
+				<a href="/">
+					<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo" style="margin-top:-6%!important;margin-left:16%!important;">
+				</a>
 			</div>
 		</div>
 	</div>

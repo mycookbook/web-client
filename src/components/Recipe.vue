@@ -83,7 +83,7 @@
 						unauthentic, not original, stolen or a duplicate. If you think this content was stolen
 						and you can prove it, kindly provide as much detail as possible to enable us investigate
 						and delete the content from our servers. Alternatively, you can
-						<a href="/#/register">register</a> to become a cookbook contributor and then
+						<a href="/register">register</a> to become a cookbook contributor and then
 						ownership will be transffered to you upon request.
 					</small>
 				</div>
@@ -92,7 +92,7 @@
 			<div class="ui eleven wide computer column sixteen wide mobile column">
 				<div class="sixteen wide column">
 					<div class="ui breadcrumb">
-						<a class="section" :href="'/#/cookbooks/' + recipe.cookbook.slug">
+						<a class="section" :href="'/cookbooks/' + recipe.cookbook.slug">
 							{{ recipe.cookbook.name }}
 						</a>
 						<i class="right angle icon divider"></i>
@@ -108,7 +108,7 @@
 							<div class="content">
 								<div class="ui sub header">
 									submitted by:
-									<a :href="'/#/contributors/@' + recipe.author.name_slug">
+									<a :href="'/contributors/@' + recipe.author.name_slug">
 										{{ recipe.author.name }}
 									</a>
 									{{ recipe.author.pronouns }}
@@ -254,9 +254,9 @@ export default {
 		return {
 			links: {
 				breadcrumbs: {
-					cookbookLink: '/#/cookbook/'
+					cookbookLink: '/cookbook/'
 				},
-				varietiesPageLink: '/#/recipes/'
+				varietiesPageLink: '/recipes/'
 			},
 		};
 	},

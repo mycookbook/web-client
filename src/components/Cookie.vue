@@ -3,10 +3,10 @@
     <div class="ui inline cookie nag top fixed">
 		<span class="ui title">
     		By using this website, you acknowledge that you have read and understood our 
-			<a href="/#/cookie-policy">Cookie Policy,</a>
-			<a href="/#/usage-policy">Usage Policy,</a>
-			<a href="/#/data-retention-policy">Data Retention Policy,</a> and our 
-			<a href="/#/terms-and-conditions">Terms &amp; Conditions</a>
+			<a href="/cookie-policy">Cookie Policy,</a>
+			<a href="/usage-policy">Usage Policy,</a>
+			<a href="/data-retention-policy">Data Retention Policy,</a> and our 
+			<a href="/terms-and-conditions">Terms &amp; Conditions</a>
   		</span>
 		<span id="cookie-dismiss">
 			<i class="close icon"></i>

@@ -14,10 +14,12 @@ import ContributorProfile from '@/components/ContributorProfile.vue';
 import Developers from '@/components/Developers.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
+import CookbooksBy from '@/components/CookbooksBy.vue';
 
 Vue.use(Router);
 
 export default new Router({
+	mode: 'history',
   	routes: [
 		{
 			path: '/',
@@ -57,6 +59,10 @@ export default new Router({
 			path: '/contributors/(@):username',
 			name: 'ContributorProfile',
 			component: ContributorProfile
+		}, {
+			path: '/cookbooks/by/(@):username',
+			name: 'CookbooksBy',
+			component: CookbooksBy
 		}, {
 			path: '/recipes/:recipe_slug/varieties/:variety_slug',
 			name: 'Variety',
