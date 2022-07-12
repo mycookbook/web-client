@@ -1,6 +1,6 @@
 <template>
 <div>
-	<div class="ui top fixed menu grid mobile hidden">
+	<div class="ui top fixed menu grid mobile hidden" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;height: 180px!important;margin-top: -40px!important;">
 		<div class="six wide tablet column six wide computer column tvn no padding">
 			<div class="tvn clipped brand">
 				<a href="/" class="ui massive fluid image" title="cookbookshq brand logo">
@@ -11,33 +11,14 @@
 		<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui secondary menu">
-						<!--<a class="item" 
-						href="https://marketplace.cookbookshq.com"
-						target="_blank"
-						title="Coming soon."
-						>
-							<i class="cart icon"></i>
-							Go to Marketplace
+						<a class="item" href="https://marketplace.cookbookshq.com" target="_blank" title="Coming soon." >
+							<i class="blue cart icon"></i> Go to Marketplace
 						</a>
-						<a 
-						class="item" 
-						title="Coming soon.">
-							<button class="ui light disabled red button">
-								<i class="chart bar outline icon"></i> Calorie Counter 
-								<sup>
-									<i class="ui trademark icon"></i>
-								</sup>
-							</button>
-						</a>-->
-						<a 
-						class="item" 
-						title="Coming soon."
-						href="https://www.youtube.com/channel/UCKRpHS0EFxGtgZ9l6UOsjOA/featured"
-						>
-							<div class="ui red button">
-								<i class="youtube icon"></i> 
-								<small style="font-weight:300!important;">Watch lastest Videos</small>
-							</div>
+						<a  class="item"  title="Coming soon.">
+							<i class="chart blue bar outline icon"></i> Calorie Counter 
+							<sup>
+								<i class="ui blue trademark icon"></i>
+							</sup>
 						</a>
 						<router-link :to="{
 							name: 'Register'
@@ -48,8 +29,7 @@
 						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
 							<button class="ui button tbb tablet hidden">
 								<small>
-									<i class="plus icon"></i>
-									Become a Contributor
+									Signin/Register
 								</small>
 							</button>
 							<button class="ui button tbb tablet only">
@@ -71,14 +51,6 @@
 					<a class="ui secondary menu item">
 						<router-link :to="{name: 'UsagePolicy'}">Usage Policy</router-link>
 					</a>
-					<!--<a class="ui secondary menu item">
-						Subscriptions
-					</a>
-					<a class="ui secondary menu item">
-						<button class="ui light red button">
-							<i class="chart bar outline icon"></i> Calorie counter <sup>coming soon</sup>
-						</button>
-					</a>-->
 					<a 
 						class="ui secondary menu item"
 						title="Coming soon."

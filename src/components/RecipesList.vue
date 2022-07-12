@@ -1,122 +1,58 @@
 <template>
 <div>
-	<div class="ui header">
-		<span>Showing {{ (incrementBy > recipesSlice.length) ? recipesSlice.length : incrementBy }} of {{ recipes.length }} recipes</span>
+	<div class="ui horizontal divider">
+		<i class="camera icon"></i>
 	</div>
-	<div class="margin-up-down"></div>
-	<div class="ui fluid action input">
-		<input type="text" placeholder="search recipes in this cookbook" v-model="searchText">
-		<select class="ui compact selection dropdown" style="height:auto!important;" v-model="searchBy">
-			<option value="all">All</option>
-			<option value="contributor" selected="">By Contributor</option>
-			<option value="recipe">By Recipe Name</option>
-			<option value="tagName">By Tag Name</option>
-		</select>
-		<div class="ui tbb button" @click="searchCookbook()">
-			Search
-		</div>
+	<div class="ui header">
+		<span>Showing {{ (incrementBy > recipes.length) ? recipes.length : incrementBy }} of {{ recipes.length }} recipes</span>
 	</div>
 	<div>
 		<span>
 			<small>
 				<a class="link" @click="sortBy('newest')">
-					most recent |
+					Most Recent |
 				</a>
 			</small>
 		</span>
 		<span>
 			<small>
 				<a class="link" @click="sortBy('oldest')">
-					oldest
+					Oldest
 				</a>
 			</small>
 		</span>
-		<span style="float:right!important;">
-			<small>
-				<a :href="advancedSearchUri()">Advanced search</a>
-			</small>
-		</span>
 	</div>
-	<div v-if="recipesSlice.length > 0">
-		<div class="margin-up-down"></div>
-		<div v-for="recipe in recipesSlice" :key="recipe.id" >
-			<div class="ui grid">
-				<div class="sixteen wide mobile column 
-					sixteen wide tablet column 
-					sixteen wide computer column 
-					sixteen wide large screen column"
-				>
-					<div class="ui header capitalized">
-						<span>
-							<h3>
-								{{ recipe.name }}
-							</h3>
-						</span>
-					</div>
-					<div style="margin-top:-15px!important;font-size: .89em!important;color: rgba(0,0,0,.5);">
-						<div>
-							<div>
-								<p>
-									Contributed by <a :href="contributorPage(recipe.author.name_slug)">{{ recipe.author.name }}</a> - {{ recipe.submission_date }}
-								</p>
-							</div>
-							<div style="font-size: .89em!important;color: rgba(0,0,0,.5);margin-bottom: 15px;">
-								<span>
-									{{ recipe.claps }} Clap(s) <br />
-								</span>
-								<span>
-									<a href="/recipes/1/varieties/">{{ recipe.varieties_count }} Varietie(s)</a>
-								</span>
-							</div>
-						</div>
-					</div>
-					<div class="ui tiny labels">
-						<div class="ui left floated white label" style="background-color: transparent!important;">
-							Tags
-						</div>
-						<div class="ui grey label" v-for="tag in JSON.parse(recipe.tags)" style="background-color: #333d79!important;border-color: #333d79!important;">
-							<span>
-								{{ tag }}
-							</span>
-							<span>
-								<i class="delete icon"></i>
-							</span>
-						</div>
-					</div>
+
+	<div v-if="recipes.length > 0" style="margin-left:10%;"><br />
+		<div v-for="recipe in recipes" :key="recipe.id" class="ui card">
+		<router-link :to="{ name: 'Recipe', params: { slug: recipe.slug }}">
+			<div class="ui link cards">
+				<div class="card">
 					<div class="ui fluid image">
-						<div class="ui left ribbon label light-pink">
-							Prep &#38; Cook Time: {{ recipe.total_time }}
-						</div>
-						<div class="ui right ribbon orange label">
-							<i class="utensil spoon icon"></i>{{ recipe.cuisine }} cuisine
-						</div>
-						<router-link :to="{
-							name: 'Recipe',
-							params: {
-								slug: recipe.slug,
-								id: recipe.id
-							}}">
-							<img 
-								:src="recipe.imgUrl" 
-								:alt="recipe.name"
-								>
-						</router-link>
+						<a class="ui red right ribbon label">NEW</a>
+						<img :src="recipe.imgUrl">
 					</div>
-					<div>
-						<div class="ingredients-list" 
-							v-for="ingredient in recipeIngredients(recipe.ingredients)"
-							v-bind:key="ingredient.id">
-							<a class="ui left floated fluid image label light-pink">
-								<img :src="ingredient.thumbnail" />
-								{{ ingredient.name }}
-							</a>
-						</div>
+					<div class="content">
+					<div class="header">{{ recipe.name }}</div>
+					<div class="meta">
+						<a class="ui light blue text">{{ recipe.author.name}} @{{ recipe.author.name_slug}}</a>
 					</div>
-					<div style="padding-top:3%;color: rgba(0,0,0,.5);margin: 0 0 1em;line-height: 1.4285em;float:right!important;">
-						<p>{{ recipe.summary | | truncate(130, '...') }}</p>
+					<div class="description">
+						{{ recipe.summary }}
+					</div>
+					</div>
+					<div class="extra content">
+					<span class="right floated">
+						Prep & Cook Time 45 Mins
+					</span>
+					<span>
+						<i class="blue sign language icon"></i>
+						{{ recipe.claps }} Claps
+					</span>
 					</div>
 				</div>
 			</div>
+		</router-link>
 		</div>
 		<div v-if="recipesSlice.length >= recipes.length">
 			<span>
@@ -142,7 +78,6 @@
 
 <script>
 import NothingToShowYou from './NothingToShowYou.vue';
-import SearchCookbook from './SearchCookbook.vue'
 
 export default {
 	name: "RecipesList",
@@ -160,72 +95,19 @@ export default {
             searchBy: "recipe"
 		}
 	},
-	filters: {
-        truncate: function (text, length, suffix) {
-            if (text.length > length) {
-                return text.substring(0, length) + suffix;
-            } else {
-                return text;
-            }
-        },
-    },
 	methods: {
-		advancedSearchUri() {
-			if (this.searchText === "") {
-				return '/search?q=' + this.cookbookName
-			}
-
-			return '/search?q=' + this.searchText
-		},
-		recipeIngredients(data) {
-			return JSON.parse(data)
-		},
 		showMore() {
-			this.recipesSlice = this.recipes.slice(0, this.getBy())
+			this.recipes = this.recipes.slice(0, this.getBy())
 		},
 		getBy() {
-			if (this.recipesSlice.length === this.incrementBy) {
+			if (this.recipes.length === this.incrementBy) {
 				return this.incrementBy += 5
 			}
 			
 			return this.incrementBy
 		},
-		sortRecipesList() {
-			console.log('does something')
-		},
-		searchCookbook() {
-            let by = this.searchBy.toLowerCase()
-            let q = this.searchText.toLowerCase()
-
-			this.recipesSlice = this.recipes.slice(0,5)
-
-			if (by === 'tagname') {
-				this.recipesSlice = this.recipesSlice.filter(function(r) {
-					return r.tags.includes(q)
-				})
-			}
-
-			if ((by === 'recipe' && !q) || (by === 'contributor' && !q) || (by === 'tagname' && !q)) {
-				return this.recipesSlice
-			}
-
-            if (by === 'recipe') {
-				this.recipesSlice = this.recipesSlice.filter(function(r) {
-					return r.name.includes(q)
-				})
-			}
-
-			if (by === 'contributor') {
-				this.recipesSlice = this.recipesSlice.filter(function(r) {
-					let author = r.author.name.toLowerCase()
-					return author.includes(q)
-				})
-			}
-
-			return this.recipesSlice
-        },
 		sortBy(order) {
-			this.recipesSlice.sort(function(a,b) {
+			this.recipes.sort(function(a,b) {
 
 				var dateA = Date.parse(a.created_at)
 				var dateB = Date.parse(b.created_at)
@@ -251,37 +133,24 @@ export default {
 		},
 		scrollToTop() {
 			window.scrollTo(0,0);
-		},
-		contributorPage(username) {
-			return "/contributors/@" + username
 		}
 	},
 	components: {
 		NothingToShowYou,
-		SearchCookbook
 	}	  
 }
 </script>
 
 <style scoped>
-.capitalized {
-	text-transform: capitalize!important;
-}
-.ingredients-list {
-	margin-top: 1px;
-}
-.ingredients-list a {
-	margin-top: 15px!important;
-}
-.margin-up-down {
-	margin: 45px 0 45px 0;
-}
 .link {
 	cursor: pointer!important;
 }
-.light-pink {
-	background-color: #faebef!important;
-    border-color: #faebef!important;
-    color: black!important;
+
+.card {
+	display: inline-flex!important;
+	margin-right: 10px!important;
+}
+.card .image img {
+	height: 275px!important;
 }
 </style>
