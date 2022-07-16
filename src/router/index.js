@@ -15,6 +15,7 @@ import Developers from '@/components/Developers.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
 import CookbooksBy from '@/components/CookbooksBy.vue';
+import CreateRecipe from '@/components/CreateRecipe.vue';
 
 Vue.use(Router);
 
@@ -54,6 +55,11 @@ export default new Router({
 			path: '/recipes/:slug',
 			name: 'Recipe',
 			component: Recipe,
+			props: true
+		}, {
+			path: '/recipes/create',
+			name: 'CreateRecipe',
+			component: CreateRecipe,
 			props: true
 		}, {
 			path: '/contributors/(@):username',

@@ -20,9 +20,9 @@
 				</div>
 			</div>
 			<div class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-				<div class="ui right floated tiny button">
+				<div class="ui right floated medium tbb button">
 					<div>
-						<i class="ui download icon"></i> 0 Downloads
+						<i class="ui white download icon"></i> 0 Downloads
 					</div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 				<div style="position:relative;display:flex;">
 					<div>
 						<a class="ui right corner red label">
-							<i class="unlock icon" title="This cookbook is public. Login to your contributor account to add a recipe into this cookbook."></i>
+							<i :class="cookbook.is_locked ? 'lock icon' : 'unlock icon'" title="This cookbook is public. Login to your contributor account to add a recipe into this cookbook."></i>
 						</a>
 					</div>
 					<img :src="cookbook.bookCoverImg" class="ui fluid image" alt="mj's signature custom made salad. contains chicken shreds and tomatoe" style="max-height:650px;">
@@ -83,15 +83,16 @@
 								{{ cookbook.recipes.length}} Recipes By {{ cookbook.author.name}} & {{ cookbook.contributors.length }} Other(s)
 						</a>
 					</div>
+					<div style="position:absolute;top:40%;left:40%;">
+						<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id }}">
+							<div class="ui small light red button" style="padding:25px;">
+								<i class="plus icon"></i>Click To Add A Recipe To This Cookbook</div>
+						</router-link>
+					</div>
 					<div style="position:absolute;bottom: 20;color: #ffffff; top:80%; max-width: 100%; padding: 25px 50px 0px 30px; background-color: rgba(0, 0, 0, 0.5);opacity: 0.9;">
 						<div :class="{'cookbook-info': seeMore}">
 							{{ cookbook.description }}
-							DISCLAIMER:
-							This is a public repository. The contributions made 
-							herein are from different contributors across the globe, 
-							therefore, contents are opinionated. Cookbookshq shall not 
-							be held liable for any misunderstanding of the descriptions 
-							therein, or any inaccuracies encountered. 
+							{{ disclaimerText(cookbook.is_locked) }}
 						</div>
 						<div @click="seeMoreOrLess()">
 							<span class="click" v-if="seeMore">
@@ -233,6 +234,13 @@ export default {
 			const el = document.getElementById("scrollIntoView");
 
 			el.scrollIntoView();
+		},
+		disclaimerText(visibility) {
+			if (!visibility) {
+				return "DISCLAIMER NOTICE:This is a public repository. The contributions made herein are from different contributors across the globe, therefore, contents are opinionated. Cookbookshq shall not be held liable for any misunderstanding of the descriptions therein, or any inaccuracies encountered. "
+			}
+
+			return "DISCLAIMER NOTICE: This is a private cookbook. This means that the owner has exclusive control over the contributions made in this cookbook and where possible, contributions are INVITE ONLY!!!";
 		}
 	},
 	components: {

@@ -25,34 +25,34 @@
 
 	<div v-if="recipes.length > 0" style="margin-left:10%;"><br />
 		<div v-for="recipe in recipes" :key="recipe.id" class="ui card">
-		<router-link :to="{ name: 'Recipe', params: { slug: recipe.slug }}">
-			<div class="ui link cards">
-				<div class="card">
-					<div class="ui fluid image">
-						<a class="ui red right ribbon label">NEW</a>
-						<img :src="recipe.imgUrl">
-					</div>
-					<div class="content">
-					<div class="header">{{ recipe.name }}</div>
-					<div class="meta">
-						<a class="ui light blue text">{{ recipe.author.name}} @{{ recipe.author.name_slug}}</a>
-					</div>
-					<div class="description">
-						{{ recipe.summary }}
-					</div>
-					</div>
-					<div class="extra content">
-					<span class="right floated">
-						Prep & Cook Time 45 Mins
-					</span>
-					<span>
-						<i class="blue sign language icon"></i>
-						{{ recipe.claps }} Claps
-					</span>
+			<router-link :to="{ name: 'Recipe', params: { slug: recipe.slug }}">
+				<div class="ui link cards">
+					<div class="card">
+						<div class="ui fluid image">
+							<a class="ui red right ribbon label">NEW</a>
+							<img :src="recipe.imgUrl">
+						</div>
+						<div class="content">
+							<div class="header">{{ recipe.name }}</div>
+							<div class="meta">
+								<a class="ui light blue text">{{ recipe.author.name}} @{{ recipe.author.name_slug}}</a>
+							</div>
+							<div class="description">
+								{{ recipe.summary }}
+							</div>
+						</div>
+						<div class="extra content">
+							<span class="right floated">
+								Prep & Cook Time 45 Mins
+							</span>
+							<span>
+								<i class="blue sign language icon"></i>
+								{{ recipe.claps }} Claps
+							</span>
+						</div>
 					</div>
 				</div>
-			</div>
-		</router-link>
+			</router-link>
 		</div>
 		<div v-if="recipesSlice.length >= recipes.length">
 			<span>
