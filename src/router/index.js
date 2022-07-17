@@ -16,16 +16,17 @@ import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
 import CookbooksBy from '@/components/CookbooksBy.vue';
 import CreateRecipe from '@/components/CreateRecipe.vue';
+import VueRouteMiddleware from 'vue-route-middleware';
 
 Vue.use(Router);
 
-export default new Router({
+const VueRouter = new Router({
 	mode: 'history',
   	routes: [
 		{
 			path: '/',
 			name: 'Home',
-			component: LandingPage,
+			component: LandingPage
 		}, {
 			path: '/usage-policy',
 			name: 'UsagePolicy',
@@ -46,6 +47,15 @@ export default new Router({
 			path: '/register',
 			name: 'Register',
 			component: Register,
+			meta: {
+				middleware: (to, from, next) => {
+					let auth = localStorage.isLogged;
+					
+					if (auth){
+						next({ name: 'Register' });
+					}
+				}
+			}
 		}, {
 			path: '/cookbooks/:slug',
 			name: 'Cookbook',
@@ -60,7 +70,16 @@ export default new Router({
 			path: '/recipes/create',
 			name: 'CreateRecipe',
 			component: CreateRecipe,
-			props: true
+			props: true,
+			meta: {
+				middleware: (to, from, next) => {
+					let auth = localStorage.isLogged;
+					
+					if (!auth){
+						next({ name: 'Register' });
+					}
+				}
+			}
 		}, {
 			path: '/contributors/(@):username',
 			name: 'ContributorProfile',
@@ -91,3 +110,7 @@ export default new Router({
 		component: NotFound
     }]
 });
+
+VueRouter.beforeEach(VueRouteMiddleware());
+
+export default VueRouter;
