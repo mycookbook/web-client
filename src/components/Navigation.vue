@@ -11,13 +11,13 @@
 		<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 			<div class="selectors">
 				<div class="ui secondary menu">
-						<a class="item" href="https://marketplace.cookbookshq.com" target="_blank" title="Coming soon." >
-							<i class="blue cart icon"></i> Go to Marketplace
+						<a class="disabled item" title="Coming soon." >
+							<i class="blue cart disabled icon"></i> Go to Marketplace
 						</a>
-						<a  class="item"  title="Coming soon.">
-							<i class="chart blue bar outline icon"></i> Calorie Counter 
+						<a  class="disabled item" title="Coming soon.">
+							<i class="chart blue bar outline disabled icon"></i> Calorie Counter 
 							<sup>
-								<i class="ui blue trademark icon"></i>
+								<i class="ui blue trademark disabled icon"></i>
 							</sup>
 						</a>
 						<router-link :to="{
@@ -26,10 +26,10 @@
 						<a 
 						v-if="!isRegistrationRoute"
 						class="item" 
-						title="Become a contributor by filling the sign up form and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you! Property of cookbookshq.com">
+						title="Become a contributor by the signing in and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you.">
 							<button class="ui button tbb tablet hidden">
 								<small>
-									Signin/Register
+									Signin to Contribute!
 								</small>
 							</button>
 							<button class="ui button tbb tablet only">
