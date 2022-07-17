@@ -11,17 +11,17 @@
                         Sign in with TikTok
                     </button>
                     <br />
-                    <button class="ui large blue button" @click="authRedirect('twitter')">
+                    <button class="ui large blue disabled button" @click="authRedirect('twitter')">
                         <i class="twitter large icon"></i>
                         Sign in with Twitter
                     </button>
                     <br />
-                    <button class="ui large red button" @click="authRedirect('pinterest')">
+                    <button class="ui large red disabled button" @click="authRedirect('pinterest')">
                         <i class="pinterest large icon"></i>
                         Sign in with Pinterest
                     </button>
                     <br />
-                    <button class="ui large tbb button" @click="authRedirect('instagram')">
+                    <button class="ui large tbb disabled button" @click="authRedirect('instagram')">
                         <i class="instagram large icon"></i>
                         Sign in with Instagram
                     </button>
@@ -75,15 +75,34 @@ export default {
     },
     methods: {
         authRedirect(provider) {
-            alert('COMING SOON!!')
+            const csrfState = Math.random().toString(36).substring(2);
+
+            let uri_params = {}
+
             const oauth_endpoint = {
                 'tiktok': process.env.SERVER_ENDPOINT_OAUTH,
                 'twitter': process.env.TWITTER_BASE_URL,
                 'pinterest': process.env.PINTEREST_BASE_URL,
                 'instgaram': process.env.INSTAGRAM_BASE_URL
             }
+            
+            if (provider === 'tiktok') {
+                uri_params = {
+                    'client_key': process.env.TIKTOK_CLIENT_KEY,
+                    'scope': 'code',
+                    'redirect_uri': '',
+                    'state': '',
+                    'response_type': 'code'
+                }
+            }
 
-            console.log('logs', oauth_endpoint[provider])
+            let url = new URL(oauth_endpoint[provider]);
+
+            for (const param in uri_params) {
+                url.searchParams.set(param, uri_params[param])
+            }
+
+            window.location.href = url;
         }
     },
      components: {

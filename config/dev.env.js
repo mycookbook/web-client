@@ -7,7 +7,8 @@ module.exports = merge(prodEnv, {
   IPINFO_TOKEN: '"13838312c2e092"',
   API_KEY: process.env.API_KEY,
   CLIENT_SECRET: process.env.CLIENT_SECRET,
-  SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize/"',
+  SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize"',
+  TIKTOK_CLIENT_KEY: '"aw2m32xifypveu7g"',
   TWITTER_BASE_URL: '""',
   PINTEREST_BASE_URL: '""',
   INSTAGRAM_BASE_URL: '""'
