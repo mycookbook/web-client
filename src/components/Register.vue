@@ -6,22 +6,22 @@
         <div class="ui center aligned grid">
             <div class="ui sixteen wide computer column sixteen wide mobile column">
                 <div class="ui vertical labeled icon buttons">
-                    <button class="ui large black button">
+                    <button class="ui large black button" @click="authRedirect('tiktok')">
                         <img class="ui icon" src="https://www.logo.wine/a/logo/TikTok/TikTok-Icon-Logo.wine.svg" style="margin-left:12px!important;" />
                         Sign in with TikTok
                     </button>
                     <br />
-                    <button class="ui large blue button">
+                    <button class="ui large blue button" @click="authRedirect('twitter')">
                         <i class="twitter large icon"></i>
                         Sign in with Twitter
                     </button>
                     <br />
-                    <button class="ui large red button">
+                    <button class="ui large red button" @click="authRedirect('pinterest')">
                         <i class="pinterest large icon"></i>
                         Sign in with Pinterest
                     </button>
                     <br />
-                    <button class="ui large tbb button">
+                    <button class="ui large tbb button" @click="authRedirect('instagram')">
                         <i class="instagram large icon"></i>
                         Sign in with Instagram
                     </button>
@@ -73,7 +73,19 @@ export default {
             intro: ''
         }
     },
-    methods: {},
+    methods: {
+        authRedirect(provider) {
+            alert('COMING SOON!!')
+            const oauth_endpoint = {
+                'tiktok': process.env.SERVER_ENDPOINT_OAUTH,
+                'twitter': process.env.TWITTER_BASE_URL,
+                'pinterest': process.env.PINTEREST_BASE_URL,
+                'instgaram': process.env.INSTAGRAM_BASE_URL
+            }
+
+            console.log('logs', oauth_endpoint[provider])
+        }
+    },
      components: {
         Navigation,
         Contact,
