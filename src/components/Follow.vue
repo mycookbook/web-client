@@ -7,9 +7,9 @@
                     <div>
                         <small>
                             <b>
-                                <a class="ui link" :href="_profile">
+                                <router-link :to="{ name: 'ContributorProfile', params: { username: handle }}">
                                     {{ author }}
-                                </a>
+                                </router-link>
                             </b>
                         </small>
                     </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="item">
-                <div class="ui tbb small circular button">
+                <div class="ui tbb small circular disabled button">
                     Follow
                 </div>
             </div>
@@ -41,7 +41,7 @@ export default {
         }
     },
     props: {
-        followers: Number,
+        followers: String,
         author: String,
         avatar: String,
         handle: String

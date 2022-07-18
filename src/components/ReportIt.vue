@@ -1,5 +1,5 @@
 <template>
-	<div class="ui red button" :title="title">
+	<div class="ui red disabled button" :title="title">
 		<i class="ui file outline icon"></i>
 		Report it
 	</div>

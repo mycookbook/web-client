@@ -110,7 +110,7 @@ const VueRouter = new Router({
 				}
 			}
 		}, {
-			path: '/contributors/(@):username',
+			path: '/contributors/:username',
 			name: 'ContributorProfile',
 			component: ContributorProfile,
 			prop: true
