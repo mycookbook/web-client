@@ -58,7 +58,7 @@
 							<div class="ui horizontal divider"></div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
-									<Comments />
+									<Comments :comments="_recipeComments" />
 								</div>
 							</div>
 						</div>
@@ -100,6 +100,11 @@ export default {
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
+		},
+		_recipeComments() {
+			this.recipeComments = this.$store.state.recipe.comments
+
+			return this.recipeComments;
 		}
 	},
 	data() {
@@ -110,6 +115,7 @@ export default {
 				},
 				varietiesPageLink: '/recipes/'
 			},
+			recipeComments: []
 		};
 	},
 	methods: {
