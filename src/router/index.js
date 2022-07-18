@@ -24,6 +24,7 @@ Vue.use(Router);
 
 const VueRouter = new Router({
 	mode: 'history',
+	fallback: true,
   	routes: [
 		{
 			path: '/',
@@ -111,11 +112,8 @@ const VueRouter = new Router({
 		}, {
 			path: '/contributors/(@):username',
 			name: 'ContributorProfile',
-			component: ContributorProfile
-		}, {
-			path: '/cookbooks/by/(@):username',
-			name: 'CookbooksBy',
-			component: CookbooksBy
+			component: ContributorProfile,
+			prop: true
 		}, {
 			path: '/recipes/:recipe_slug/varieties/:variety_slug',
 			name: 'Variety',
