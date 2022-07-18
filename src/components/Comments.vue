@@ -78,7 +78,7 @@
                     <textarea></textarea>
                 </div>
                 <div class="ui tbb submit button">
-                    Add Reply
+                    Post Comment
                 </div>
             </form>
         </div>
