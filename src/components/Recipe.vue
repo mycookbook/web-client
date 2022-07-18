@@ -17,14 +17,14 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
-						<div class="eight wide column ui fluid image" style="height:fit-content!important">
+						<div class="eight wide computer column sixteen wide mobile column ui fluid image" style="height:fit-content!important">
 							<img :src="recipe.imgUrl" />
 							<div class="ui header padded">
 								HOW TO PREPARE
 							</div>
 							<div v-html="recipe.description" class="ui left aligned text"></div>
 						</div>
-						<div class="eight wide column">
+						<div class="eight wide computer column sixteen wide mobile column">
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<div class="ui buttons">
@@ -32,19 +32,19 @@
 											<i class="ui download icon"></i>
 											Download
 										</div>
-										<div style="margin-right:5px;"></div>
+
+										<div style="margin-right:1px;"></div>
+
 										<div class="ui button" title="copy link">
 											<i class="ui linkify icon"></i>
 											Copy link
 										</div>
-										<div style="margin-right:5px;"></div>
-										<div title="report it">
-											<Claps />
-										</div>
-										<div style="margin-right:5px;"></div>
-										<div title="report it">
-											<ReportIt />
-										</div>
+
+										<div style="margin-right:1px;"></div>
+										<Claps />
+
+										<div style="margin-right:1px;"></div>
+										<ReportIt />
 									</div>
 								</div>
 							</div>

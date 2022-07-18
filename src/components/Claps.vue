@@ -1,18 +1,12 @@
 <template>
-	<div>
-		<Navigation />
-		<div class="ui large tbb button" @click="addClap()" :class="{ 'disabled': hasReachedMaximumAllowedThreshold }" title="clap for this recipe">
-			<small>
-				<i class="ui heart icon"></i>
-					{{ totalCount | numberFormatter }} Claps
-			</small>
-		</div>
+	<div class="ui tbb button" title="clap for this recipe" @click="addClap()" :class="{ 'disabled': hasReachedMaximumAllowedThreshold }">
+		<i class="ui heart icon"></i>
+		{{ totalCount | numberFormatter }} Claps
 	</div>
 </template>
 
 <script>
 import store from '@/store';
-import Navigation from './Navigation.vue';
 
 export default {
 	name: "Claps",
@@ -54,15 +48,6 @@ export default {
 
 			return value
 		}
-	},
-	components: {
-		Navigation
 	}
 };
 </script>
-
-<style scoped>
-.example-class {
-	color: #000000;
-}
-</style>
