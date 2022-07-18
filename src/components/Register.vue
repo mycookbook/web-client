@@ -91,7 +91,8 @@ export default {
                     'client_key': process.env.TIKTOK_CLIENT_KEY,
                     'redirect_uri': process.env.TIKTOK_REDIRECT_URI,
                     'response_type': 'code',
-                    'scope': ''
+                    'scope': 'user.info.basic,video.list',
+                    'state': csrfState
                 }
             }
 
