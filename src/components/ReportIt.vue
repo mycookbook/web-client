@@ -2,7 +2,8 @@
 	<div>
 		<Navigation />
 		<div class="ui large red button" :title="title">
-			<small>Report it!</small>
+		<i class="ui file outline icon"></i>
+			<small>Report it</small>
 		</div>
 	</div>
 </template>

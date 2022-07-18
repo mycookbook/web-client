@@ -55,10 +55,14 @@
 												:title="recipe.author.name">
 											<div class="content">
 												<div>
-													{{ recipe.author.name }}
+													<small>
+														<b>{{ recipe.author.name }}</b>
+													</small>
 												</div>
 												<div>
-													94.k followers
+													<small>
+														94.k followers
+													</small>
 												</div>
 											</div>
 										</div>

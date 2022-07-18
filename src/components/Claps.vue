@@ -3,7 +3,7 @@
 		<Navigation />
 		<div class="ui large tbb button" @click="addClap()" :class="{ 'disabled': hasReachedMaximumAllowedThreshold }" title="clap for this recipe">
 			<small>
-				<i class="ui hand peace icon"></i>
+				<i class="ui heart icon"></i>
 					{{ totalCount | numberFormatter }} Claps
 			</small>
 		</div>

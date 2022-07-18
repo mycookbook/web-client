@@ -1,6 +1,6 @@
 <template>
 <div>
-	<div class="ui top fixed menu grid mobile hidden" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;height: 180px!important;margin-top: -40px!important;">
+	<div class="ui top fixed menu grid mobile hidden" style="height: 180px!important;margin-top: -40px!important;">
 		<div class="six wide tablet column six wide computer column tvn no padding">
 			<div class="tvn clipped brand">
 				<a href="/" class="ui massive fluid image" title="cookbookshq brand logo">
