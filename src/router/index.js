@@ -17,6 +17,8 @@ import NotFound from '@/components/NotFound.vue';
 import CookbooksBy from '@/components/CookbooksBy.vue';
 import CreateRecipe from '@/components/CreateRecipe.vue';
 import VueRouteMiddleware from 'vue-route-middleware';
+import Dashboard from '@/components/Dashboard'
+import Profile from '@/components/Profile'
 
 Vue.use(Router);
 
@@ -52,6 +54,32 @@ const VueRouter = new Router({
 					let auth = localStorage.isLogged;
 					
 					if (auth){
+						next({ name: 'Register' });
+					}
+				}
+			}
+		}, {
+			path: '/dashboard',
+			name: 'Dashboard',
+			component: Dashboard,
+			meta: {
+				middleware: (to, from, next) => {
+					let auth = localStorage.isLogged;
+					
+					if (!auth){
+						next({ name: 'Register' });
+					}
+				}
+			}
+		}, {
+			path: '/profile',
+			name: 'Profile',
+			component: Profile,
+			meta: {
+				middleware: (to, from, next) => {
+					let auth = localStorage.isLogged;
+					
+					if (!auth){
 						next({ name: 'Register' });
 					}
 				}

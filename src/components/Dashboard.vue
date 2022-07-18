@@ -8,7 +8,7 @@
 import Navigation from './Navigation.vue';
 
 export default {
-	name: "Example",
+	name: "Dashboard",
 	mounted() {},
 	computed: {
 		example() {
