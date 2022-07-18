@@ -12,49 +12,49 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const client = new elasticsearch.Client({
-    host: '127.0.0.1:9200',
-    log: 'error'
- });
-
- client.ping({ requestTimeout: 30000 }, function(error) {
-    if (error) {
-        console.error('elasticsearch cluster is down!');
-    } else {
-        console.log('Everything is ok');
-    }
+  host: '127.0.0.1:9200',
+  log: 'error'
 });
 
-app.get('/search', function (req, res){
-    let body = {
-      size: 100,
-      from: 0,
-      query: {
-        match: {
-                cast_name: {
-                    query: req.query['q'],
-                    fuzziness: 4
-                }
-            }
-        }
-    }
+client.ping({ requestTimeout: 30000 }, function (error) {
+  if (error) {
+    console.error('elasticsearch cluster is down!');
+  } else {
+    console.log('Everything is ok');
+  }
+});
 
-    client.search({index:'vue-elastic', body:body, type:'characters_list'})
+app.get('/search', function (req, res) {
+  let body = {
+    size: 100,
+    from: 0,
+    query: {
+      match: {
+        cast_name: {
+          query: req.query['q'],
+          fuzziness: 4
+        }
+      }
+    }
+  }
+
+  client.search({ index: 'vue-elastic', body: body, type: 'characters_list' })
     .then(results => {
-            res.send(results.hits.hits);
+      res.send(results.hits.hits);
 
     })
-    .catch(err=>{
+    .catch(err => {
       console.log(err)
       res.send([]);
     });
 
-  })
+})
 
 var port = process.env.PORT || 5000
 app.listen(port)
 
-app.all('*', function(req, res) { 
-  res.redirect('/'); 
+app.all('*', function (req, res) {
+  res.redirect('/');
 });
 
 console.log('server started ' + port)

@@ -17,7 +17,8 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
-						<div class="eight wide computer column sixteen wide mobile column ui fluid image" style="height:fit-content!important">
+						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
+							style="height:fit-content!important">
 							<img :src="recipe.imgUrl" />
 							<div class="ui header padded">
 								HOW TO PREPARE
@@ -28,14 +29,14 @@
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<div class="ui buttons">
-										<div class="ui button" title="download">
+										<div class="ui disabled button" title="download">
 											<i class="ui download icon"></i>
 											Download
 										</div>
 
 										<div style="margin-right:1px;"></div>
 
-										<div class="ui button" title="copy link">
+										<div class="ui button" title="copy link" @click="copyLink()">
 											<i class="ui linkify icon"></i>
 											Copy link
 										</div>
@@ -50,12 +51,8 @@
 							</div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
-									<Follow 
-										:followers="recipe.author.followers" 
-										:author="recipe.author.name" 
-										:avatar="recipe.author.avatar" 
-										:handle="recipe.author.name_slug"
-									/>
+									<Follow :followers="recipe.author.followers" :author="recipe.author.name"
+										:avatar="recipe.author.avatar" :handle="recipe.author.name_slug" />
 								</div>
 							</div>
 							<div class="ui horizontal divider"></div>
@@ -116,23 +113,27 @@ export default {
 		};
 	},
 	methods: {
-		comingSoonMsg() {
-			alert('Coming soon');
+		copyLink() {
+			let _link = process.env.APP_URL + this.$route.fullPath
+
+			navigator.clipboard.writeText(_link).then(function (x) {
+				alert('Link is copied to your clipboard.');
+			});
 		},
 	},
 	components: {
-    RecipeCardSkeleton,
-    Navigation,
-    Contact,
-    Bottom,
-    ReportIt,
-    Claps,
-    NutritionalDetail,
-    AutoComplete,
-    Breadcrumb,
-    Comments,
-    Follow
-},
+		RecipeCardSkeleton,
+		Navigation,
+		Contact,
+		Bottom,
+		ReportIt,
+		Claps,
+		NutritionalDetail,
+		AutoComplete,
+		Breadcrumb,
+		Comments,
+		Follow
+	},
 };
 </script>
 
