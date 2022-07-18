@@ -54,7 +54,8 @@ var port = process.env.PORT || 5000
 app.listen(port)
 
 app.all('*', function (req, res) {
-  res.redirect('/');
+  alert('efewfwe')
+  // res.redirect('/');
 });
 
 console.log('server started ' + port)
