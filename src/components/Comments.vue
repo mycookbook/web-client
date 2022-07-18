@@ -23,7 +23,9 @@
                                 v-if="author_id === comment.user_id">OWNER</div>
                         </router-link>
                         <div class="metadata">
-                            <span class="date">Yesterday at 12:30AM</span>
+                            <span class="date">
+                                {{ comment.created_at }}
+                            </span>
                         </div>
                         <div class="text">
                             <p>
@@ -37,7 +39,7 @@
                 <div class="field">
                     <textarea></textarea>
                 </div>
-                <div class="ui tbb submit button">
+                <div class="ui tbb submit disabled button">
                     Post Comment
                 </div>
             </form>
