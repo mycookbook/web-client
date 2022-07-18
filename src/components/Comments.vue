@@ -3,8 +3,11 @@
         <Navigation />
         <div class="ui threaded comments">
             <h3 class="ui dividing header">
-                <div class="sixteen wide computer column sixteen wide mobile column">
-                    12 Comments <i class="ui chevron down icon"></i>
+                <div class="sixteen wide computer column sixteen wide mobile column" v-if="isCollapsed">
+                    12 Comments <i class="ui chevron up icon" title="expand"></i>
+                </div>
+                <div class="sixteen wide computer column sixteen wide mobile column" v-else>
+                    12 Comments <i class="ui chevron down icon" title="collapse"></i>
                 </div>
                 <br />
             </h3>
@@ -110,7 +113,8 @@ export default {
     },
     data() {
         return {
-            title: 'This is an Example component'
+            title: 'This is an Example component',
+            isCollapsed: true
         }
     },
     filters: {
@@ -126,4 +130,5 @@ export default {
 .example-class {
     color: #000000;
 }
+
 </style>

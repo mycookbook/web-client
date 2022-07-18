@@ -53,9 +53,8 @@ app.get('/search', function (req, res) {
 var port = process.env.PORT || 5000
 app.listen(port)
 
-app.all('*', function (req, res) {
-  alert('efewfwe')
-  // res.redirect('/');
-});
+// app.all('*', function (req, res) {
+//   res.redirect('/');
+// });
 
 console.log('server started ' + port)

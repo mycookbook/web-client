@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="item">
-                <div class="ui tbb small circular disabled button">
-                    Follow
+                <div class="ui tbb small circular button" :class="{ disabled: !_isLoggedIn }" @click="follow()">
+                    Following
                 </div>
             </div>
         </div>
@@ -34,10 +34,26 @@ import Navigation from './Navigation.vue';
 
 export default {
     name: "Follow",
-    mounted() { },
     computed: {
         _profile() {
             return "/contributors/@" + this.handle
+        },
+        _isLoggedIn() {
+            let hasSession = localStorage.getItem('access_token')
+
+            this.isLoggedIn = true
+
+            if (hasSession !== 'true') {
+                this.isLoggedIn = false
+            }
+
+            //if has session but not following this contributor
+
+
+            //if has session and following this contributor
+            //disabled btn and change text to following
+
+            return this.isLoggedIn
         }
     },
     props: {
@@ -47,10 +63,22 @@ export default {
         handle: String
     },
     data() {
-        return {}
+        return { 
+            isLoggedIn: false
+        }
     },
-    filters: {
-        exampleFilter() { }
+    methods: {
+        follow() {
+            let hasSession = localStorage.getItem('access_token')
+
+            if (hasSession !== 'true') {
+                this.$router.push('/register')
+            }
+
+            //grab token make request to:
+            //follow endpoint
+            //req params { contributor_id }
+        }
     },
     components: {
         Navigation
