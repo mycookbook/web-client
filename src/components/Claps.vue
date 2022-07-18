@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import store from '@/store';
 import Navigation from './Navigation.vue';
 
 export default {
@@ -30,22 +31,29 @@ export default {
 		numbers: Array
 	},
 	data() {
-		return {
-			title: 'This is an Example component'
-		}
+		return {}
 	},
 	methods: {
 		addClap() {
-			let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
+			let id = this.$store.state.recipe.id
 
-			const payload = {
-				recipeId: id,
-			};
+			const payload = { recipeId: id };
+
 			store.dispatch('addClap', payload);
 		}
 	},
 	filters: {
-		exampleFilter() { }
+		numberFormatter(value) {
+			//Logic goes here:
+
+			//value greater than 1,000 && less than 9,001 => 1K+
+			//value greater than 9,001 && less than 10,001 => 9K+
+			//value greater than 10,001 but less than 90,001 => 10K+
+			//value greater than 90,001 but less than or equal 1,000,000 => 100K+
+			//value greater than 1,000,000 => 1M+
+
+			return value
+		}
 	},
 	components: {
 		Navigation

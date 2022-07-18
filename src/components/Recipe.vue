@@ -75,7 +75,6 @@
 </template>
 
 <script>
-import store from '@/store';
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
@@ -120,19 +119,6 @@ export default {
 		comingSoonMsg() {
 			alert('Coming soon');
 		},
-	},
-	filters: {
-		numberFormatter(value) {
-			//Logic goes here:
-
-			//value greater than 1,000 && less than 9,001 => 1K+
-			//value greater than 9,001 && less than 10,001 => 9K+
-			//value greater than 10,001 but less than 90,001 => 10K+
-			//value greater than 90,001 but less than or equal 1,000,000 => 100K+
-			//value greater than 1,000,000 => 1M+
-
-			return value
-		}
 	},
 	components: {
     RecipeCardSkeleton,
