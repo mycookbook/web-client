@@ -58,7 +58,7 @@
 							<div class="ui horizontal divider"></div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
-									<Comments :comments="_recipeComments" />
+									<Comments :comments="_recipeComments" :author_id="recipe.id" />
 								</div>
 							</div>
 						</div>

@@ -22,7 +22,7 @@
             </div>
             <div class="item">
                 <div class="ui tbb small circular button" :class="{ disabled: !_isLoggedIn }" @click="follow()">
-                    Following
+                    Follow
                 </div>
             </div>
         </div>

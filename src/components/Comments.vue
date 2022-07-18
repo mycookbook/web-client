@@ -15,11 +15,13 @@
             <div v-if="comments.length > 0">
                 <div class="comment" v-for="comment in comments">
                     <a class="avatar">
-                        <img
-                            src="https://media-exp2.licdn.com/dms/image/C5603AQHPA8VEPr9RKA/profile-displayphoto-shrink_400_400/0/1643647555390?e=1663804800&v=beta&t=WejZ3ARFlAU-sFG768GU0VsirBid89aIcyCkC5dKB-E">
+                        <img :src="comment.author.avatar" />
                     </a>
                     <div class="content">
-                        <a class="author">Elliot Fu</a>
+                        <router-link :to="{ name: 'ContributorProfile', params: { username: comment.author.name_slug }}">
+                             {{ comment.author.name }} <div class="ui tiny link label"
+                                v-if="author_id === comment.user_id">OWNER</div>
+                        </router-link>
                         <div class="metadata">
                             <span class="date">Yesterday at 12:30AM</span>
                         </div>
@@ -27,29 +29,6 @@
                             <p>
                                 {{ comment.comment }}
                             </p>
-                        </div>
-                        <div class="actions">
-                            <a class="reply">Reply</a>
-                        </div>
-                    </div>
-                    <div class="comments">
-                        <div class="comment">
-                            <a class="avatar">
-                                <img
-                                    src="https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1663804800&v=beta&t=YGH7N-WLLoAjVKM0KEOMZVcvf2_Mmt0XykriSyAsLVY">
-                            </a>
-                            <div class="content">
-                                <a class="author">Joy Ekhata</a>
-                                <div class="metadata">
-                                    <span class="date">Just now</span>
-                                </div>
-                                <div class="text">
-                                    You are always so right :)
-                                </div>
-                                <div class="actions">
-                                    <a class="reply">Reply</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,16 +51,14 @@ import Navigation from './Navigation.vue';
 export default {
     name: "Comments",
     props: {
-        comments: Array
+        comments: Array,
+        author_id: Number
     },
     data() {
         return {
             title: 'This is an Example component',
             isCollapsed: true
         }
-    },
-    filters: {
-        exampleFilter() { }
     },
     components: {
         Navigation
