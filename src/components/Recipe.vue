@@ -50,29 +50,12 @@
 							</div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
-									<div class="ui horizontal list">
-										<div class="item">
-											<img class="ui mini circular image" :src="recipe.author.avatar"
-												:title="recipe.author.name">
-											<div class="content">
-												<div>
-													<small>
-														<b>{{ recipe.author.name }}</b>
-													</small>
-												</div>
-												<div>
-													<small>
-														{{ recipe.author.followers }} followers
-													</small>
-												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div class="ui tbb small circular button">
-												Follow
-											</div>
-										</div>
-									</div>
+									<Follow 
+										:followers="recipe.author.followers" 
+										:author="recipe.author.name" 
+										:avatar="recipe.author.avatar" 
+										:handle="recipe.author.name_slug"
+									/>
 								</div>
 							</div>
 							<div class="ui horizontal divider"></div>
@@ -103,6 +86,7 @@ import NutritionalDetail from './NutritionalDetail.vue';
 import AutoComplete from './AutoComplete.vue';
 import Breadcrumb from './Breadcrumb.vue';
 import Comments from './Comments.vue';
+import Follow from './Follow.vue';
 
 export default {
 	mounted() {
@@ -160,7 +144,8 @@ export default {
     NutritionalDetail,
     AutoComplete,
     Breadcrumb,
-    Comments
+    Comments,
+    Follow
 },
 };
 </script>
