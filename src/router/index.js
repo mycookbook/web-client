@@ -47,7 +47,7 @@ const VueRouter = new Router({
 			name: 'TermsAndConditions',
 			component: TermsAndConditions,
 		}, {
-			path: '/register',
+			path: '/signin',
 			name: 'Register',
 			component: Register,
 			meta: {
