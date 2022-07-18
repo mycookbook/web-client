@@ -5,7 +5,7 @@ module.exports = {
   IPINFO_TOKEN: '"13838312c2e092"',
   SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize"',
   TIKTOK_CLIENT_KEY: '"awzqdaho7oawcchp"',
-  TIKTOK_REDIRECT_URI: '"https://web.cookbookshq.com/tiktok-callback"',
+  TIKTOK_REDIRECT_URI: '"https://web.cookbookshq.com"',
   TWITTER_BASE_URL: '""',
   PINTEREST_BASE_URL: '""',
   INSTAGRAM_BASE_URL: '""'

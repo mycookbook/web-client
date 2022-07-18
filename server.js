@@ -57,8 +57,4 @@ app.listen(port)
 //   res.redirect('/');
 // });
 
-app.get('/tiktok-callback', function (req, res) {
-  alert('', req.path)
-});
-
 console.log('server started ' + port)
