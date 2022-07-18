@@ -5,12 +5,13 @@
 			<RecipeCardSkeleton />
 		</div>
 		<div v-else>
-			<div class="ui grid center">
+			<!-- <div class="ui grid center">
 				<div class="ui sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
 					<AutoComplete />
 				</div>
-			</div>
-			<br /><br /><br /><br /><br />
+			</div> -->
+			<br /><br /><br />
+			<!-- <br /><br /> -->
 			<Breadcrumb :active="recipe.cookbook.name + ' < ' + recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
@@ -27,12 +28,12 @@
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<div class="ui buttons">
-										<div class="ui tbb button" title="download">
+										<div class="ui button" title="download">
 											<i class="ui download icon"></i>
 											Download
 										</div>
 										<div style="margin-right:5px;"></div>
-										<div class="ui tbb button" title="copy link">
+										<div class="ui button" title="copy link">
 											<i class="ui linkify icon"></i>
 											Copy link
 										</div>
@@ -61,7 +62,7 @@
 												</div>
 												<div>
 													<small>
-														94.k followers
+														{{ recipe.author.followers }} followers
 													</small>
 												</div>
 											</div>
