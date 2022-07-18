@@ -10,26 +10,6 @@
 			</div>
 			<div v-else>
 				<QuickSort :filters="filters()" :cookbooks="cookbooks()" />
-				<!--<div class="ui grid" style="margin-top: 15px;">
-					<div class="sixteen wide column">
-						<h3>
-							<a class="ui red tag label">
-								Save Money
-							</a>
-						</h3>
-						<img class="ui image" src="https://karmasnack.com/wp-content/uploads/2014/03/PIZZA.png" />
-					</div>
-				</div>-->
-				<!--<PopularDemand />-->
-				<br /><br />
-				<!-- <div class="ui grid">
-					<div class="ui sixteen wide column">
-						<h3>
-							The Most Epic Rice Recipe Ever by Master Chef • Taste Show
-						</h3>
-						<div class="ui embed" data-url="https://www.youtube.com/embed/S1LB4t34X08" data-placeholder=""></div>
-					</div>
-				</div> -->
 				<Contact />
 				<Bottom />
 			</div>

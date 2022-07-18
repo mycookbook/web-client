@@ -90,7 +90,7 @@ export default {
                 uri_params = {
                     'client_key': process.env.TIKTOK_CLIENT_KEY,
                     'scope': 'code',
-                    'redirect_uri': '',
+                    'redirect_uri': process.env.TIKTOK_REDIRECT_URI,
                     'state': '',
                     'response_type': 'code'
                 }
