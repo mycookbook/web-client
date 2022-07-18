@@ -1,221 +1,92 @@
 <template>
-<div class="ui container">
-	<Navigation />
-	<div class="main-content">
+	<div class="ui container">
+		<Navigation />
 		<div v-if="isLoading">
 			<RecipeCardSkeleton />
 		</div>
-		<div class="ui grid" v-else>
-			<div class="ui two wide computer column sixteen wide tablet column sixteen wide mobile column">
-				<div>
-					<div class="ui tiny button tbb" @click="addClap()" :class="{ 'disabled':hasReachedMaximumAllowedThreshold }">
-						<div>
-							<span style="display:inline-block;font-size:1.7em;float: left!important;margin-left: -4px;">&#x1F389;</span> 
-							<span style="display:inline-block;font-size:1.2em;float: right!important;margin-right: -8px;">
-								{{ totalCount | numberFormatter }} claps
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div class="spaced">
-					<div>
-					<div>
-						<b>Nutritional details</b>
-					</div>
-					<div class="tvn horizontal stroke"></div>
-					<small>
-						<h5 class="ui teal header">
-							Calories:  {{ recipe.nutritional_detail.cal }}k
-						</h5>
-					</small>
-					<small>
-						<h5 class="ui orange header">
-							Fat: {{ recipe.nutritional_detail.fat }}g
-						</h5>
-					</small>
-					<small>
-						<h5 class="ui purple header">
-							Protein: {{ recipe.nutritional_detail.protein }}g
-						</h5>
-					</small>
-					<small>
-						<h5 class="ui grey header">
-							Carbs: {{ recipe.nutritional_detail.carbs }}g
-						</h5>
-					</small>
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div>
-					<b>No. Servings: </b>
-					{{ recipe.servings }}<br />
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div>
-					<span>
-						<b>No. Submitted varieties:</b>
-					</span>
-					<span  v-if="recipe.varieties_count > 0">
-						<a :href="links.varietiesPageLink">
-							<span class="right foated" title="Follow link to view all varieties for this recipe">
-								{{ recipe.varieties_count }}
-							</span>
-						</a>
-					</span>
-					<span v-else>0</span>
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div>
-					<b>Cuisine:</b> {{ recipe.cuisine }}
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div>
-					<b>Course:</b>
-					<span class="transformToCapitalize">{{ recipe.course }}</span>
-				</div>
-				<div class="tvn horizontal stroke"></div>
-				<div class="ui disabled large red button">
-					<small>Report it!</small>
-				</div>
-				<div>
-					<small>
-						Use this tool if you think this recipe is any of the following; inappropriate,
-						unauthentic, not original, stolen or a duplicate. If you think this content was stolen
-						and you can prove it, kindly provide as much detail as possible to enable us investigate
-						and delete the content from our servers. Alternatively, you can
-						<a href="/register">register</a> to become a cookbook contributor and then
-						ownership will be transffered to you upon request.
-					</small>
-				</div>
+		<div v-else>
+			<div class="ui grid center">
+				<div class="ui sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
+					<AutoComplete />
 				</div>
 			</div>
-			<div class="ui eleven wide computer column sixteen wide mobile column">
-				<div class="sixteen wide column">
-					<div class="ui breadcrumb">
-						<a class="section" :href="'/cookbooks/' + recipe.cookbook.slug">
-							{{ recipe.cookbook.name }}
-						</a>
-						<i class="right angle icon divider"></i>
-						<div class="active section">
-							{{ recipe.name }}
+			<br /><br /><br /><br /><br />
+			<Breadcrumb :active="recipe.cookbook.name + ' < ' + recipe.name" />
+			<div class="ui grid">
+				<div class="sixteen wide computer column sixteen wide mobile column">
+					<div class="ui grid"
+						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
+						<div class="eight wide column ui fluid image" style="height:fit-content!important">
+							<img :src="recipe.imgUrl" />
+							<div class="ui header padded">
+								HOW TO PREPARE
+							</div>
+							<div v-html="recipe.description" class="ui left aligned text"></div>
 						</div>
-					</div>
-				</div>
-				<div class="sixteen wide column">
-					<div class="ui horizontal list">
-						<div class="item">
-							<img class="ui mini circular image" :src="recipe.author.avatar" :title="recipe.author.name">
-							<div class="content">
-								<div class="ui sub header">
-									submitted by:
-									<a :href="'/contributors/@' + recipe.author.name_slug">
-										{{ recipe.author.name }}
-									</a>
-									{{ recipe.author.pronouns }}
-								</div>
-								<div class="transformToCapitalize">
-									{{ recipe.author.expertise_level }}
-								</div>
-								<div class="ui tiny label">
-									<b>Member since</b> {{ recipe.author.created_at }} | {{ recipe.author.contributions.total }} contribution(s)
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br />
-				<div class="sixteen wide column">
-					<a class="ui image label" v-for="ingredient in recipe.ingredients">
-						<img :src="ingredient.thumbnail" />
-						{{ ingredient.name }}
-					</a>
-				</div>
-				<div class="sixteen wide column img-container">
-					<img class="ui massive image" :src="recipe.imgUrl">
-					<button class="ui inverted white button" @click="comingSoonMsg()" v-if="recipe.author.can_take_orders">
-						Place Order
-					</button>
-				</div>
-				<div class="ui grid">
-					<div class="four wide computer column sixteen wide tablet column sixteen wide mobile column mobile hidden">
-						<div class="ui vertical steps tablet hidden">
-							<div class="completed step">
-								<div class="content">
-									<div class="title">
-										Prep Time
-									</div>
-									<div class="description">{{ recipe.prep_time }}</div>
-								</div>
-							</div>
-							<div class="completed step">
-								<div class="content">
-									<div class="title">
-										Cook Time
-									</div>
-									<div class="description">
-										{{ recipe.cook_time }}
+						<div class="eight wide column">
+							<div class="ui grid">
+								<div class="sixteen wide computer column sixteen wide mobile column">
+									<div class="ui buttons">
+										<div class="ui tbb button" title="download">
+											<i class="ui download icon"></i>
+											Download
+										</div>
+										<div style="margin-right:5px;"></div>
+										<div class="ui tbb button" title="copy link">
+											<i class="ui linkify icon"></i>
+											Copy link
+										</div>
+										<div style="margin-right:5px;"></div>
+										<div title="report it">
+											<Claps />
+										</div>
+										<div style="margin-right:5px;"></div>
+										<div title="report it">
+											<ReportIt />
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="active step">
-								<div class="content">
-									<div class="title">
-										Total Time
-									</div>
-									<div class="description">
-										{{ recipe.total_time }}
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Tablet view -->
-						<div class="ui horizontal steps tablet only">
-							<div class="completed step">
-								<div class="content">
-									<div class="title">
-										Prep Time
-									</div>
-									<div class="description">{{ recipe.prep_time }}</div>
-								</div>
-							</div>
-							<div class="completed step">
-								<div class="content">
-									<div class="title">
-										Cook Time
-									</div>
-									<div class="description">
-										{{ recipe.cook_time }}
+							<div class="ui grid">
+								<div class="sixteen wide computer column sixteen wide mobile column">
+									<div class="ui horizontal list">
+										<div class="item">
+											<img class="ui mini circular image" :src="recipe.author.avatar"
+												:title="recipe.author.name">
+											<div class="content">
+												<div>
+													{{ recipe.author.name }}
+												</div>
+												<div>
+													94.k followers
+												</div>
+											</div>
+										</div>
+										<div class="item">
+											<div class="ui tbb small circular button">
+												Follow
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="active step">
-								<div class="content">
-									<div class="title">
-										Total Time
-									</div>
-									<div class="description">
-										{{ recipe.total_time }}
-									</div>
+							<div class="ui horizontal divider"></div>
+							<div class="ui grid">
+								<div class="sixteen wide computer column sixteen wide mobile column">
+									12 comments <i class="ui chevron down icon"></i>
+								</div>
+								<div class="sixteen wide computer column sixteen wide mobile column">
+									<Comments />
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="twelve wide computer column sixteen wide tablet column sixteen wide mobile column">
-						<div class="ui header padded">
-							HOW TO PREPARE
-						</div>
-						<div class="description-contents"v-html="recipe.description"></div>
-					</div>
 				</div>
-			</div>
-			<div class="ui three wide center aligned computer column sixteen wide tablet column mobile hidden">
-				<!-- Ads space -->
 			</div>
 		</div>
 		<Contact />
 		<Bottom />
-    </div>
-</div>
+	</div>
 </template>
 
 <script>
@@ -224,30 +95,29 @@ import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
 import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
+import ReportIt from './ReportIt.vue';
+import Claps from './Claps.vue';
+import NutritionalDetail from './NutritionalDetail.vue';
+import AutoComplete from './AutoComplete.vue';
+import Breadcrumb from './Breadcrumb.vue';
+import Comments from './Comments.vue';
 
 export default {
 	mounted() {
 		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
 
 		this.$store.dispatch('fetch_recipe', id)
-		this.$store.dispatch('reset_hasClapped')
 	},
 	props: [
 		'slug',
 		'id'
 	],
 	computed: {
-		totalCount() {
-			return (this.$store.state.recipe.claps) || 0
-		},
 		recipe() {
 			return this.$store.state.recipe
 		},
 		isLoading() {
 			return this.$store.state.resource_isLoading
-		},
-		hasReachedMaximumAllowedThreshold() {
-			return (this.$store.state.recipeStore.hasClapped >= this.$store.state.recipeStore.maxAllowedClaps)
 		}
 	},
 	data() {
@@ -263,15 +133,7 @@ export default {
 	methods: {
 		comingSoonMsg() {
 			alert('Coming soon');
-    	},
-		addClap() {
-			let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
-
-			const payload = {
-				recipeId: id,
-			};
-			store.dispatch('addClap', payload);
-		}
+		},
 	},
 	filters: {
 		numberFormatter(value) {
@@ -287,35 +149,50 @@ export default {
 		}
 	},
 	components: {
-		RecipeCardSkeleton,
-		Navigation,
-		Contact,
-		Bottom,
-	},
+    RecipeCardSkeleton,
+    Navigation,
+    Contact,
+    Bottom,
+    ReportIt,
+    Claps,
+    NutritionalDetail,
+    AutoComplete,
+    Breadcrumb,
+    Comments
+},
 };
 </script>
 
 <style scoped>
+.container {
+	margin-top: 23vh;
+}
+
 .breadcrumb .section {
 	text-transform: uppercase;
 	margin-bottom: 15px;
-	font-size:smaller!important;
+	font-size: smaller !important;
 }
+
 .main-content {
 	margin-top: 18vh;
 }
+
 .transformToCapitalize {
 	text-transform: capitalize;
 }
+
 .img-container {
 	margin-top: 2%;
 	position: relative;
-  	width: 100%;
+	width: 100%;
 }
+
 .img-container img {
 	width: 100%;
 	height: auto;
 }
+
 .img-container .button {
 	position: absolute;
 	top: 50%;
@@ -323,16 +200,19 @@ export default {
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 }
+
 .description-contents {
-	overflow-x: auto!important;
-    overflow-y: hidden!important;
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
 }
+
 .padded {
 	padding-top: 30px;
-	padding-bottom:5px;
+	padding-bottom: 5px;
 }
+
 .spaced div {
-	padding-top: 4px!important;
-	padding-bottom: 4px!important;
+	padding-top: 4px !important;
+	padding-bottom: 4px !important;
 }
 </style>

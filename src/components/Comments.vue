@@ -1,0 +1,120 @@
+<template>
+    <div>
+        <Navigation />
+        <div class="ui threaded comments">
+            <h3 class="ui dividing header">Comments</h3>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1663804800&v=beta&t=YGH7N-WLLoAjVKM0KEOMZVcvf2_Mmt0XykriSyAsLVY">
+                </a>
+                <div class="content">
+                    <a class="author">Matt</a>
+                    <div class="metadata">
+                        <span class="date">Today at 5:42PM</span>
+                    </div>
+                    <div class="text">
+                        How artistic!
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1663804800&v=beta&t=YGH7N-WLLoAjVKM0KEOMZVcvf2_Mmt0XykriSyAsLVY">
+                </a>
+                <div class="content">
+                    <a class="author">Elliot Fu</a>
+                    <div class="metadata">
+                        <span class="date">Yesterday at 12:30AM</span>
+                    </div>
+                    <div class="text">
+                        <p>This has been very useful for my research. Thanks as well!</p>
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1663804800&v=beta&t=YGH7N-WLLoAjVKM0KEOMZVcvf2_Mmt0XykriSyAsLVY">
+                        </a>
+                        <div class="content">
+                            <a class="author">Jenny Hess</a>
+                            <div class="metadata">
+                                <span class="date">Just now</span>
+                            </div>
+                            <div class="text">
+                                Elliot you are always so right :)
+                            </div>
+                            <div class="actions">
+                                <a class="reply">Reply</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1663804800&v=beta&t=YGH7N-WLLoAjVKM0KEOMZVcvf2_Mmt0XykriSyAsLVY">
+                </a>
+                <div class="content">
+                    <a class="author">Joe Henderson</a>
+                    <div class="metadata">
+                        <span class="date">5 days ago</span>
+                    </div>
+                    <div class="text">
+                        Dude, this is awesome. Thanks so much
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+            <form class="ui reply form">
+                <div class="field">
+                    <textarea></textarea>
+                </div>
+                <div class="ui tbb submit button">
+                    Add Reply
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+import Navigation from './Navigation.vue';
+
+export default {
+    name: "Comments",
+    mounted() { },
+    computed: {
+        example() {
+            return true
+        }
+    },
+    props: {
+        numbers: Array
+    },
+    data() {
+        return {
+            title: 'This is an Example component'
+        }
+    },
+    filters: {
+        exampleFilter() { }
+    },
+    components: {
+        Navigation
+    }
+};
+</script>
+
+<style scoped>
+.example-class {
+    color: #000000;
+}
+</style>
