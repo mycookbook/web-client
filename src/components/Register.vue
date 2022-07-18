@@ -89,9 +89,9 @@ export default {
             if (provider === 'tiktok') {
                 uri_params = {
                     'client_key': process.env.TIKTOK_CLIENT_KEY,
-                    'scope': 'code',
+                    'scope': '',
                     'redirect_uri': process.env.TIKTOK_REDIRECT_URI,
-                    'state': '',
+                    'state': csrfState,
                     'response_type': 'code'
                 }
             }
