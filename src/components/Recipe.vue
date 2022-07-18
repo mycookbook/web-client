@@ -78,9 +78,6 @@
 							<div class="ui horizontal divider"></div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
-									12 comments <i class="ui chevron down icon"></i>
-								</div>
-								<div class="sixteen wide computer column sixteen wide mobile column">
 									<Comments />
 								</div>
 							</div>
