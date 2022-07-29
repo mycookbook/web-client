@@ -29,13 +29,6 @@
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<div class="ui buttons">
-										<div class="ui disabled button" title="download">
-											<i class="ui download icon"></i>
-											Download
-										</div>
-
-										<div style="margin-right:1px;"></div>
-
 										<div class="ui button" title="copy link" @click="copyLink()">
 											<i class="ui linkify icon"></i>
 											Copy link

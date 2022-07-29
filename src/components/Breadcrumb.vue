@@ -14,9 +14,9 @@
         </div>
         <div
             class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-            <div class="ui right floated medium tbb disabled button">
-                <div>
-                    <i class="ui white eye icon"></i> 0 Total Opens
+            <div class="ui right floated medium button">
+                <div style="cursor:none!important;">
+                    <i class="ui white share icon"></i> 0 Shares
                 </div>
             </div>
         </div>
