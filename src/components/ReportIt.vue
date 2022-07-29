@@ -10,29 +10,46 @@
 			</div>
 			<div class="scrolling content">
 				<p>
-					Every time you submit a report, you help make <a href="https://web.cookbookshq.com">cookbookshq</a> more reliable, safe and 
-					accessible to billions of others users on this platform and all over the internet. Thank you so much!
-					To proceed, please select one of the following options:
+					Every time you submit a report, you help make <a href="https://web.cookbookshq.com">cookbookshq</a>
+					more reliable, safe and
+					accessible to billions of other users on this platform and all over the internet. Thank you so much!
+					To proceed, please select as many options as possible:
 				</p>
 				<div>
-					<input type="radio" id="nudity" name="nudity" value="nudity">
+					<input type="checkbox" id="nudity" name="nudity" value="nudity">
 					<label for="nudity">It contains Nudity</label><br /><br />
 
-					<input type="radio" id="irrelevant" name="irrelevant" value="irrelevant">
-					<label for="css">This content is irrelevant (it's not about a recipe)</label><br /><br />
+					<input type="checkbox" id="irrelevant" name="irrelevant" value="irrelevant">
+					<label for="irrelevant">This content is irrelevant (it's not about a recipe)</label><br /><br />
 
-					<input type="radio" id="javascript" name="fav_language" value="JavaScript">
-					<label for="javascript">It is a duplicate.</label><br /><br />
+					<input type="checkbox" id="violation" name="violation" value="violation">
+					<label for="violation">It violates community guidelines. (see community guidelines <a href="https://web.cookbookshq.com/#/usage-policy">here</a>)</label><br /><br />
 
-					<input type="radio" id="javascript" name="fav_language" value="JavaScript">
-					<label for="javascript">It's plagiarism. The content originally belongs to me or someone else.</label><br /><br />
+					<input type="checkbox" id="duplicate" name="duplicate" value="duplicate">
+					<label for="duplicate">It is a duplicate.</label><br /><br />
 
-					<input type="radio" id="javascript" name="fav_language" value="JavaScript">
-					<label for="javascript">It's something else.</label><br /><br />
+					<input type="checkbox" id="plagiarism" name="plagiarism" value="plagiarism">
+					<label for="plagiarism">It's plagiarism. The content originally belongs to me or someone
+						else.</label><br /><br />
+
+					<input type="checkbox" id="somethingelse" name="somethingelse" value="somethingelse">
+					<label for="somethingelse">It's something else.</label><br /><br />
 				</div>
 				<br />
 				<div>
-					<b>Our conflict resolution team will reach out to you if need be within 4-10 business days.</b>
+					<label for="additionalinfo">Additional info: (Optional)</label>
+					<br />
+					<textarea id="additionalinfo" name="additionalinfo" rows="4" cols="50"></textarea>
+				</div>
+				<br />
+				<div>
+					<label for="emailorphone">Please provide your email or phone number: (Required*)</label>
+					<br />
+					<input type="text" name="emailorphone">
+				</div>
+				<br /><br />
+				<div>
+					<b>Our conflict resolution team will reach out to you if need be within 10-28 business days.</b>
 				</div>
 				<hr />
 				<div class="ui tbb button">
@@ -51,7 +68,7 @@ export default {
 	},
 	data() {
 		return {
-			title: "Use this tool if you think this recipe is any of the following; inappropriate, unauthentic, not original, stolen or a duplicate. If you think this content was stolen and you can prove it, kindly provide as much detail as possible to enable us investigate and delete the content from our servers. Alternatively, you can register to become a cookbook contributor and then ownership will be transffered to you upon request."
+			title: "Use this tool if you think this recipe is any of the following; inappropriate, unauthentic, not original, stolen or a duplicate."
 		}
 	},
 	methods: {
