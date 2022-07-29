@@ -130,8 +130,8 @@ import Breadcrumb from './Breadcrumb.vue';
 
 export default {
 	mounted() {
+		window.scrollTo(0,0);
 		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
-
 		this.$store.dispatch('fetch_cookbook', id)
 	},
 	props: [
