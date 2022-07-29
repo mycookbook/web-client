@@ -31,6 +31,16 @@ const VueRouter = new Router({
 			name: 'Home',
 			component: LandingPage
 		}, {
+			path: '/tiktok',
+			meta: {
+				middleware: (to, from, next) => {
+					const queryString = window.location.search;
+					const urlParams = new URLSearchParams(queryString);
+					console.log(urlParams.get('code'));
+					// console.log('code', from)
+				}
+			}
+		}, {
 			path: '/usage-policy',
 			name: 'UsagePolicy',
 			component: UsagePolicy,

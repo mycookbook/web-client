@@ -58,7 +58,8 @@ export default new Vuex.Store({
                 ok: 200,
                 server: 500
             }
-        }
+        },
+        access_token: null
 	}),
 	mutations: {
         STORE_POLICIES(state, policies) {

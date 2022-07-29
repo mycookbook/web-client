@@ -89,6 +89,8 @@ export default {
 	],
 	computed: {
 		recipe() {
+			let token = this.$store.state.access_token
+		console.log('token', token)
 			return this.$store.state.recipe
 		},
 		isLoading() {
