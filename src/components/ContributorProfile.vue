@@ -51,12 +51,20 @@
                                         <textarea :placeholder="personalizedMsg()"></textarea>
                                     </div>
                                     <div class="field">
-                                        <label>*Your email:</label>
-                                        <input type="email" placeholder="Add comma separated email addresses" />
+                                        <label>*Your name:</label>
+                                        <input type="text" />
+                                    </div>
+                                    <div class="field">
+                                        <label>*Your phone:</label>
+                                        <input type="text" />
+                                    </div>
+                                    <div class="field">
+                                        <label>*We sent you a verification code</label>
+                                        <input type="text" style="width: 35%;" />
                                     </div>
                                 </div>
                                 <br />
-                                <div class="ui small button tbb">
+                                <div class="ui small disabled button tbb">
                                     Submit
                                 </div>
                             </div>
@@ -117,6 +125,7 @@ export default {
 .container {
     margin-top: 23vh;
 }
+
 .contact-labels span {
     padding: 8px;
     font-weight: 500 !important;
