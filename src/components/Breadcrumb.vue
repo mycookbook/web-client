@@ -22,7 +22,7 @@
             class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
             <div class="ui right floated medium red button">
                 <div style="cursor:none!important;" v-if="activeLink === 'My Dashboard'">
-                    Subscribe To My Cookbooks
+                    <i class="ui white bell icon"></i> Turn On Notifications
                 </div>
                 <div style="cursor:none!important;" v-else>
                     <i class="ui white share icon"></i> 0 Shares

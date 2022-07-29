@@ -11,6 +11,18 @@
                 <div class="ui grid">
                     <div class="six wide computer column sixteen wide mobile column">
                         <img class="ui huge fluid image" :src="contributor.avatar">
+                    </div>
+                    <div class="ten wide computer column sixteen wide mobile column">
+
+                        <div style="margin-top:8%;margin-bottom:8%;"></div>
+                        <div>
+                            <h2>Bio</h2>
+                        </div>
+                        <div style="margin-top:3%;"></div>
+                        <div class="tvn horizontal stroke"></div>
+
+                        <div style="margin-top:3%;"></div>
+
                         <div style="margin-top:15px;">
                             <b>{{ contributor.name }}</b> ({{ contributor.pronouns }})
                         </div>
@@ -23,23 +35,33 @@
                         <div>Member since: {{ contributor.created_at }}</div>
                         <div>
                             <i class="ui linkify icon"></i>
-                            <a :href="'/contributors/@' + contributor.name_slug">@{{ contributor.name_slug }}</a>
-                            <div class="ui tiny link label">COPY LINK</div>
+                            <a :href="'#/contributors/' + contributor.name_slug">@{{ contributor.name_slug }}</a>
                         </div>
-                    </div>
-                    <div class="ten wide computer column sixteen wide mobile column">
-                        
-                        <div style="margin-top:8%;margin-bottom:8%;"></div>
-                        <div>
-                            <h2>About Me</h2>
-                        </div>
-                        <div style="margin-top:3%;"></div>
-                        <div class="tvn horizontal stroke"></div>
 
                         <div style="margin-top:3%;"></div>
-                        
+
                         <div>{{ contributor.about }}</div>
                         <div style="margin-top:8%;margin-bottom:8%;"></div>
+
+                        <div class="ui grid">
+                            <div class="sixteen wide column">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <label>*Send a message/Give Feedback/Ask me a question:</label>
+                                        <textarea :placeholder="personalizedMsg()"></textarea>
+                                    </div>
+                                    <div class="field">
+                                        <label>*Your email:</label>
+                                        <input type="email" placeholder="Add comma separated email addresses"
+                                         />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="ui small button tbb">
+                                    Submit
+                                </div>
+                            </div>
+                        </div>
                         <div class="ui bottom grid" v-if="contributor.contact_detail">
                             <div class="sixteen wide column" v-if="!contributor.contact_detail.is_public">
                                 <i class="lock icon"></i> Contact information (private mode)
@@ -101,27 +123,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui grid">
-                    <div class="sixteen wide column">
-                        <div class="ui form">
-                            <div class="field">
-                                <label>*Send a message/Give Feedback/Ask a question:</label>
-                                <textarea :placeholder="personalizedMsg()" disabled></textarea>
-                            </div>
-                            <div class="field">
-                                <label>*Your email:</label>
-                                <input type="email" placeholder="Add comma separated email addresses" disabled />
-                            </div>
-                        </div>
-                        <br />
-                        <div class="ui small disabled button tbb">
-                            Submit
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="three wide computer column sixteen wide mobile column">
-                <div class="ui wide skyscraper test ad" data-text="Ad space"></div>
             </div>
             <Contact />
             <Bottom />
