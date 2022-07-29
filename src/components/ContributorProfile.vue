@@ -1,7 +1,7 @@
 <template>
-<div>
-    <Navigation />
     <div class="ui container">
+    <Navigation />
+    <div class="ui grid">
         <div class="main-content">
             <div v-if="isLoading">
                 <RecipeCardSkeleton />
@@ -15,15 +15,15 @@
                                 <b>{{ contributor.name }}</b> ({{ contributor.pronouns }})
                             </div>
                             <div>
-                                Authored {{ contributor.contributions.cookbooks }} 
-                                <a :href="'/cookbooks/by/@' + contributor.name_slug">cookbooks</a> 
-                                and {{ contributor.contributions.recipes }} 
+                                Authored {{ contributor.contributions.cookbooks }}
+                                <a :href="'/cookbooks/by/@' + contributor.name_slug">cookbooks</a>
+                                and {{ contributor.contributions.recipes }}
                                 <a :href="'/recipes/by/@' + contributor.name_slug">recipes</a>
                             </div>
                             <div>Member since: {{ contributor.created_at }}</div>
                             <div>
                                 <i class="ui linkify icon"></i>
-                                <a :href="'/contributors/@' + contributor.name_slug">@{{ contributor.name_slug }}</a> 
+                                <a :href="'/contributors/@' + contributor.name_slug">@{{ contributor.name_slug }}</a>
                                 <div class="ui tiny link label">COPY LINK</div>
                             </div>
                         </div>
@@ -64,7 +64,8 @@
                                     </span>
                                     <span v-if="contributor.contact_detail.office_address">
                                         <i class="street view icon"></i>
-                                        <a :href="getMapAddr(contributor.contact_detail.office_address)" target="_blank">
+                                        <a :href="getMapAddr(contributor.contact_detail.office_address)"
+                                            target="_blank">
                                             {{ contributor.contact_detail.office_address }}
                                         </a>
                                     </span>
@@ -108,7 +109,7 @@
                                 </div>
                                 <div class="field">
                                     <label>*Your email:</label>
-                                    <input type="email" placeholder="Add comma separated email addresses" disabled/>
+                                    <input type="email" placeholder="Add comma separated email addresses" disabled />
                                 </div>
                             </div>
                             <br />
@@ -126,7 +127,7 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 </template>
 
 <script>
@@ -152,7 +153,7 @@ export default {
         }
     },
     methods: {
-        getMapAddr: function($q) {
+        getMapAddr: function ($q) {
             return ' http://maps.google.com/?q=' + $q
         },
         personalizedMsg() {
@@ -169,24 +170,30 @@ export default {
 </script>
 
 <style scoped>
+.container {
+	margin-top: 23vh;
+} 
 .main-content {
     margin-top: 18vh;
 }
+
 .item h3 {
     text-transform: uppercase;
 }
+
 .bio {
     margin-top: -1vh;
     text-transform: capitalize;
     margin-bottom: 9px;
     font-weight: 700;
 }
+
 .contact-labels span {
     padding: 8px;
-    font-weight: 500!important;
+    font-weight: 500 !important;
 }
 
-.contact-labels span  a{
-    color: #171717!important;
+.contact-labels span a {
+    color: #171717 !important;
 }
 </style>

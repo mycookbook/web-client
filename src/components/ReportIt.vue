@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="ui red button" :title="title" @click="ReportIt()">
-			<i class="ui file outline icon"></i>
+			<i class="ui bug icon"></i>
 			Report it
 		</div>
 		<div class="ui modal">
