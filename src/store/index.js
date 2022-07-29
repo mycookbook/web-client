@@ -13,6 +13,7 @@ import { registerStore } from './modules/user/registerStore.js'
 import { varietiesStore } from './modules/varietiesStore.js'
 import { contributorStore } from './modules/contributorStore.js'
 import { searchStore } from './modules/searchStore.js'
+import { userStore } from './modules/userStore.js'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -124,7 +125,8 @@ export default new Vuex.Store({
 		registerStore,
         varietiesStore,
         contributorStore,
-        searchStore
+        searchStore,
+        userStore
     },
     plugins: [createPersistedState()]
 });

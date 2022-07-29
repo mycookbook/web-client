@@ -3,10 +3,10 @@
         <div class="ui threaded comments">
             <h3 class="ui dividing header">
                 <div class="sixteen wide computer column sixteen wide mobile column" v-if="isCollapsed">
-                    {{ comments.length }} Comments <i class="ui chevron up icon" title="expand"></i>
+                    {{ comments.length }} Comments <i class="ui chevron down icon" title="expand"></i>
                 </div>
                 <div class="sixteen wide computer column sixteen wide mobile column" v-else>
-                    {{ comments.length }} Comments <i class="ui chevron down icon" title="collapse"></i>
+                    {{ comments.length }} Comments <i class="ui chevron up icon" title="collapse"></i>
                 </div>
                 <br />
             </h3>

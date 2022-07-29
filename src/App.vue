@@ -17,6 +17,13 @@ import Cookie from './components/Cookie.vue';
 Vue.use(Skeleton)
 
 export default {
+	mounted() {
+		let route = this.$route.name
+
+		if (route === 'Recipe') {
+			this.$router.push({ name: 'Recipe', slug: this.$route.params.slug });
+		}
+	},
 	name: "App",
 	components: {
 		Cookie

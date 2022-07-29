@@ -7,7 +7,7 @@
                     <div>
                         <small>
                             <b>
-                                <router-link :to="{ name: 'ContributorProfile', params: { username: handle }}">
+                                <router-link :to="{ name: 'ContributorProfile', params: { username: handle } }">
                                     {{ author }}
                                 </router-link>
                             </b>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import store from '@/store';
 import Navigation from './Navigation.vue';
 
 export default {
@@ -48,8 +49,6 @@ export default {
             }
 
             //if has session but not following this contributor
-
-
             //if has session and following this contributor
             //disabled btn and change text to following
 
@@ -63,7 +62,7 @@ export default {
         handle: String
     },
     data() {
-        return { 
+        return {
             isLoggedIn: false
         }
     },
@@ -72,12 +71,10 @@ export default {
             let hasSession = localStorage.getItem('access_token')
 
             if (hasSession !== 'true') {
-                this.$router.push('/register')
+                this.$router.push('/signin')
             }
 
-            //grab token make request to:
-            //follow endpoint
-            //req params { contributor_id }
+			store.dispatch('followUser', {});
         }
     },
     components: {
