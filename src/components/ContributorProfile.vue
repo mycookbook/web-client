@@ -28,14 +28,14 @@
                         </div>
                         <div>
                             Authored {{ contributor.contributions.cookbooks }}
-                            <a :href="'/cookbooks/by/@' + contributor.name_slug">cookbooks</a>
+                            <a :href="'#/search?q=' + contributor.name_slug">cookbooks</a>
                             and {{ contributor.contributions.recipes }}
-                            <a :href="'/recipes/by/@' + contributor.name_slug">recipes</a>
+                            <a :href="'#/search?q=' + contributor.name_slug">recipes</a>
                         </div>
                         <div>Member since: {{ contributor.created_at }}</div>
                         <div>
                             <i class="ui linkify icon"></i>
-                            <a :href="'#/contributors/' + contributor.name_slug">@{{ contributor.name_slug }}</a>
+                            <a :href="'#/search?q=' + contributor.name_slug">@{{ contributor.name_slug }}</a>
                         </div>
 
                         <div style="margin-top:3%;"></div>
@@ -52,73 +52,13 @@
                                     </div>
                                     <div class="field">
                                         <label>*Your email:</label>
-                                        <input type="email" placeholder="Add comma separated email addresses"
-                                         />
+                                        <input type="email" placeholder="Add comma separated email addresses" />
                                     </div>
                                 </div>
                                 <br />
                                 <div class="ui small button tbb">
                                     Submit
                                 </div>
-                            </div>
-                        </div>
-                        <div class="ui bottom grid" v-if="contributor.contact_detail">
-                            <div class="sixteen wide column" v-if="!contributor.contact_detail.is_public">
-                                <i class="lock icon"></i> Contact information (private mode)
-                            </div>
-                            <div class="sixteen wide column contact-labels" v-else>
-                                <i class="unlock icon"></i> |
-                                <span v-if="contributor.contact_detail.facebook">
-                                    facebook:
-                                    <a :href="contributor.contact_detail.facebook">
-                                        <i class="facebook black f icon"></i>
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.twitter">
-                                    twitter:
-                                    <a :href="contributor.contact_detail.twitter">
-                                        <i class="twitter black t icon"></i>
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.instagram">
-                                    instagram:
-                                    <a :href="contributor.contact_detail.instagram">
-                                        <i class="black instagram icon"></i>
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.office_address">
-                                    <i class="street view icon"></i>
-                                    <a :href="getMapAddr(contributor.contact_detail.office_address)" target="_blank">
-                                        {{ contributor.contact_detail.office_address }}
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.phone">
-                                    phone:
-                                    <a>
-                                        <i class="black phone icon"></i>
-                                        {{ contributor.contact_detail.phone }}
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.calendly">
-                                    calendly:
-                                    <a :href="contributor.contact_detail.calendly" target="_blank">
-                                        <i class="calendar icon"></i>
-                                        {{ contributor.contact_detail.calendly }}
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.skype">
-                                    skype:
-                                    <a :href="contributor.contact_detail.skype" target="_blank">
-                                        <i class="skype black s icon"></i>
-                                        {{ contributor.contact_detail.skype }}
-                                    </a>
-                                </span>
-                                <span v-if="contributor.contact_detail.website">
-                                    website:
-                                    <a :href="contributor.contact_detail.website" target="_blank">
-                                        {{ contributor.contact_detail.website }}
-                                    </a>
-                                </span>
                             </div>
                         </div>
                     </div>
@@ -148,9 +88,6 @@ export default {
         },
         isLoading() {
             return this.$store.state.resource_isLoading
-        },
-        followTitleText() {
-            return 'Follow ' + this.contributor.name + ' to learn about their new recipes.'
         }
     },
     data() {
@@ -180,22 +117,6 @@ export default {
 .container {
     margin-top: 23vh;
 }
-
-.main-content {
-    margin-top: 18vh;
-}
-
-.item h3 {
-    text-transform: uppercase;
-}
-
-.bio {
-    margin-top: -1vh;
-    text-transform: capitalize;
-    margin-bottom: 9px;
-    font-weight: 700;
-}
-
 .contact-labels span {
     padding: 8px;
     font-weight: 500 !important;

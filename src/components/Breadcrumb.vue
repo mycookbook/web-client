@@ -20,13 +20,11 @@
         </div>
         <div
             class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-            <div class="ui right floated medium red button">
-                <div style="cursor:none!important;" v-if="activeLink === 'My Dashboard'">
-                    <i class="ui white bell icon"></i> Turn On Notifications
-                </div>
-                <div style="cursor:none!important;" v-else>
-                    <i class="ui white share icon"></i> 0 Shares
-                </div>
+            <div class="ui right floated medium red button" v-if="activeLink === 'My Dashboard'">
+                <i class="ui white bell icon"></i> Turn On Notifications
+            </div>
+            <div class="ui right floated medium button" style="cursor:none!important;" v-else>
+                <i class="ui white share icon"></i> 0 Shares
             </div>
         </div>
     </div>
