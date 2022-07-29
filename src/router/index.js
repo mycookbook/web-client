@@ -23,7 +23,7 @@ import Profile from '@/components/Profile'
 Vue.use(Router);
 
 const VueRouter = new Router({
-	mode: 'history',
+	mode: 'hash',
 	fallback: true,
   	routes: [
 		{
