@@ -119,7 +119,7 @@ export default {
 	},
 	methods: {
 		copyLink() {
-			let _link = process.env.APP_URL + this.$route.fullPath
+			let _link = process.env.APP_URL + '#/' + this.$route.fullPath
 
 			navigator.clipboard.writeText(_link).then(function () {
 				alert('Link is copied to your clipboard.');
