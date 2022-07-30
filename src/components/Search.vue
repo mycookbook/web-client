@@ -4,7 +4,7 @@
 		<div class="ui grid center aligned">
 			<div class="sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
 				<div class="discover">
-					<span>Discover thousands of</span>
+					<span>Discover unlimited </span>
 					<span class="biro-blue">Recipes</span>
 				</div>
 			</div>
