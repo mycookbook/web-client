@@ -4,7 +4,8 @@
         <div class="ui grid">
             <div class="sixteen wide computer column sixteen wide mobile column">
                 <div class="ui grid">
-                    <div class="two wide computer column sixteen wide mobile hidden column">
+                    <div class="two wide computer column sixteen wide mobile hidden column"
+                        style="background-color:#F9f9f9;border-radius: 8px; width: 100%; height: auto;">
                         <div>
                             <div class="ui search">
                                 <div class="ui icon input" style="max-width:100%!important">
@@ -13,27 +14,31 @@
                                 </div>
                             </div>
                         </div>
-                        <br /><br />
-                        <div
-                            style="background-color:#F4F4F4;border-radius: 8px; width: 100%; height: auto; padding:15px">
-                            <div>
-                                <a href="">
-                                    Cookbooks 0
-                                </a>
+                        <br />
+                        <div>
+                            <div class="ui list">
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="">
+                                            Cookbooks 0
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="">
+                                            Recipes 0
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="">
+                                            Settings
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <br />
-                            <div>
-                                <a href="">
-                                    Recipes 100
-                                </a>
-                            </div>
-                            <br />
-                            <div>
-                                <a href="">
-                                    Privacy Settings
-                                </a>
-                            </div>
-                            <br />
                             <div>
                                 <div class="ui tbb tiny button">
                                     Advertise With Us!
