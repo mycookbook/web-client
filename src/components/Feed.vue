@@ -33,16 +33,27 @@
                                         </a>
                                     </div>
                                 </div>
+                                <br />
                                 <div class="item">
                                     <div class="content">
                                         <a href="">
                                             <small>
-                                                Privacy Settings
+                                                <i class="ui bell icon"></i> Notifications
+                                            </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="">
+                                            <small>
+                                               <i class="ui cogs icon"></i>  Privacy Settings
                                             </small>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                            <br />
                             <div>
                                 <div class="ui tbb tiny button">
                                     Advertise With Us!
