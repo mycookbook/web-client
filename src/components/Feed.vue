@@ -37,7 +37,7 @@
                                     <div class="content">
                                         <a href="">
                                             <small>
-                                                Settings
+                                                Privacy Settings
                                             </small>
                                         </a>
                                     </div>
