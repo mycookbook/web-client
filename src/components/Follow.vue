@@ -40,11 +40,11 @@ export default {
             return "/contributors/@" + this.handle
         },
         _isLoggedIn() {
-            let hasSession = localStorage.getItem('access_token')
+            let hasSession = (store.state.access_token !== null)
 
             this.isLoggedIn = true
 
-            if (hasSession !== 'true') {
+            if (!hasSession) {
                 this.isLoggedIn = false
             }
 

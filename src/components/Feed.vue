@@ -5,17 +5,48 @@
             <div class="sixteen wide computer column sixteen wide mobile column">
                 <div class="ui grid">
                     <div class="two wide computer column sixteen wide mobile hidden column">
-                        sidebar
                         <div>
-                            search, cookbooks, recipes link to dashboard, link to settings page, link to advertise with
-                            us
+                            <div class="ui search">
+                                <div class="ui icon input" style="max-width:100%!important">
+                                    <input class="prompt" type="text" placeholder="Search...">
+                                    <i class="search icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div
+                            style="background-color:#F4F4F4;border-radius: 8px; width: 100%; height: auto; padding:15px">
+                            <div>
+                                <a href="">
+                                    Cookbooks 0
+                                </a>
+                            </div>
+                            <br />
+                            <div>
+                                <a href="">
+                                    Recipes 100
+                                </a>
+                            </div>
+                            <br />
+                            <div>
+                                <a href="">
+                                    Privacy Settings
+                                </a>
+                            </div>
+                            <br />
+                            <div>
+                                <div class="ui tbb tiny button">
+                                    Advertise With Us!
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="nine wide computer column sixteen wide mobile column">
                         <div class="ui feed">
                             <div class="event">
                                 <div class="label">
-                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
+                                    <img
+                                        src="https://media-exp2.licdn.com/dms/image/C5603AQHPA8VEPr9RKA/profile-displayphoto-shrink_400_400/0/1643647555390?e=1663804800&v=beta&t=WejZ3ARFlAU-sFG768GU0VsirBid89aIcyCkC5dKB-E">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -45,7 +76,8 @@
                                         </div>
                                     </div>
                                     <div class="extra images">
-                                        <a><img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"></a>
+                                        <a><img
+                                                src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"></a>
                                     </div>
                                     <div class="meta">
                                         <a class="like">
@@ -56,7 +88,8 @@
                             </div>
                             <div class="event">
                                 <div class="label">
-                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
+                                    <img
+                                        src="https://media-exp2.licdn.com/dms/image/C5603AQHPA8VEPr9RKA/profile-displayphoto-shrink_400_400/0/1643647555390?e=1663804800&v=beta&t=WejZ3ARFlAU-sFG768GU0VsirBid89aIcyCkC5dKB-E">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -113,7 +146,8 @@
                                         </div>
                                     </div>
                                     <div class="extra images">
-                                        <a><img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"></a>
+                                        <a><img
+                                                src="https://media-exp2.licdn.com/dms/image/C5603AQHPA8VEPr9RKA/profile-displayphoto-shrink_400_400/0/1643647555390?e=1663804800&v=beta&t=WejZ3ARFlAU-sFG768GU0VsirBid89aIcyCkC5dKB-E"></a>
                                     </div>
                                     <div class="meta">
                                         <a class="like">
@@ -127,7 +161,8 @@
                     <div class="five wide computer column sixteen wide mobile column">
                         <div class="ui grid">
                             <div class="sixteen wide computer column sixteen wide mobile column">
-                                <img src="https://drdrew.com/wp-content/uploads/2017/08/ad-space-placeholder-300x250-300x250.png" />
+                                <img
+                                    src="https://drdrew.com/wp-content/uploads/2017/08/ad-space-placeholder-300x250-300x250.png" />
                             </div>
                         </div>
 
@@ -168,10 +203,10 @@ export default {
         exampleFilter() { }
     },
     components: {
-    Navigation,
-    Follow,
-    WhoToFollowList
-}
+        Navigation,
+        Follow,
+        WhoToFollowList
+    }
 };
 </script>
 
