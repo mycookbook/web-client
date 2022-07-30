@@ -48,7 +48,7 @@ const VueRouter = new Router({
 						store.dispatch('set_access_token', response.data.access_token)
 
 						//redirect user to dashboard
-						router.push('/dashboard');
+						router.go('/dashboard')
 					}).catch(function (error) {
 						console.log('login error', error)
 					})
