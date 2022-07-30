@@ -9,22 +9,8 @@ import Navigation from './Navigation.vue';
 
 export default {
 	name: "Dashboard",
-	mounted() {},
-	computed: {
-		example() {
-			return true
-		}
-	},
 	props: {
 		numbers: Array
-	},
-	data() {
-		return {
-			title: 'This is an Example component'
-    	}
-  	},
-	filters: {
-		exampleFilter() {}
 	},
 	components: {
 		Navigation
