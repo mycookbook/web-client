@@ -31,7 +31,7 @@ const VueRouter = new Router({
 		{
 			path: '/',
 			name: 'Home',
-			component: LandingPage
+			component: LandingPage,
 		}, {
 			path: '/tiktok',
 			meta: {
@@ -48,7 +48,8 @@ const VueRouter = new Router({
 						store.dispatch('set_access_token', response.data.access_token)
 
 						//redirect user to dashboard
-						router.push('/dashboard');
+						// router.push('/dashboard');
+						router.push({ path: '/dashboard', replace: true })
 					}).catch(function (error) {
 						console.log('login error', error)
 					})
