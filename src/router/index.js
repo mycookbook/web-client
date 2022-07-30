@@ -14,11 +14,11 @@ import ContributorProfile from '@/components/ContributorProfile.vue';
 import Developers from '@/components/Developers.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
-import CookbooksBy from '@/components/CookbooksBy.vue';
 import CreateRecipe from '@/components/CreateRecipe.vue';
 import VueRouteMiddleware from 'vue-route-middleware';
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
+import router from '../router/index.js'
 
 Vue.use(Router);
 
@@ -34,10 +34,17 @@ const VueRouter = new Router({
 			path: '/tiktok',
 			meta: {
 				middleware: (to, from, next) => {
-					const queryString = window.location.search;
-					const urlParams = new URLSearchParams(queryString);
-					console.log(urlParams.get('code'));
-					// console.log('code', from)
+					const queryString = window.location.href;
+
+					let replaced = queryString.replace("/#/", "/");
+					let url = new URL(replaced);
+					let code = url.searchParams.get("code");
+					
+					//make a request to the backend - auth endpoint
+					//if 200 - persist token in store
+
+					//redirect user to dashboard
+					router.push('/dashboard');
 				}
 			}
 		}, {
@@ -72,16 +79,7 @@ const VueRouter = new Router({
 		}, {
 			path: '/dashboard',
 			name: 'Dashboard',
-			component: Dashboard,
-			meta: {
-				middleware: (to, from, next) => {
-					let auth = localStorage.isLogged;
-					
-					if (!auth){
-						next({ name: 'Register' });
-					}
-				}
-			}
+			component: Dashboard
 		}, {
 			path: '/profile',
 			name: 'Profile',
