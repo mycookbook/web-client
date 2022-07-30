@@ -7,10 +7,7 @@
                     <a class="section" href="/">back home</a>
                     <i class="left chevron icon divider"></i>
                     <div class="active section" v-if="activeLink === 'My Dashboard'">
-                        <a href="">
-                            {{ activeLink }}
-                        </a>
-                        > public profile
+                        public profile
                     </div>
                     <div class="active section" v-else>
                         {{ activeLink }}
@@ -20,8 +17,8 @@
         </div>
         <div
             class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-            <div class="ui right floated medium red button" v-if="activeLink === 'My Dashboard'">
-                <i class="ui white bell icon"></i> Turn On Notifications
+            <div class="ui right floated medium tbb button" v-if="activeLink === 'My Dashboard'" :class="{ disabled: !isLoggedIn }">
+                <i class="ui white bell icon"></i> Follow
             </div>
             <div class="ui right floated medium button" style="cursor:none!important;" v-else>
                 <i class="ui white share icon"></i> 0 Shares
@@ -41,7 +38,10 @@ export default {
     computed: {
         activeLink() {
             return this.active
-        }
+        },
+        isLoggedIn() {
+			return (this.$store.state.access_token);
+		}
     },
     data() {
         return {
