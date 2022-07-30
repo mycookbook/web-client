@@ -60,7 +60,8 @@ export default new Vuex.Store({
                 server: 500
             }
         },
-        access_token: null
+        access_token: null,
+        active_user: null
 	}),
 	mutations: {
         STORE_POLICIES(state, policies) {
@@ -74,9 +75,15 @@ export default new Vuex.Store({
         },
         SET_ACCESS_TOKEN(state, token) {
             this.state.access_token = token
+            this.state.active_user = {
+                'cookbooks': 20,
+                'recipes': 150
+            }
         },
         LOGOUT(state) {
             this.state.access_token = null
+            this.state.active_user = null
+
             router.push('/')
         }
     },

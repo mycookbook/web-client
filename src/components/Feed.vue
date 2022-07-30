@@ -14,7 +14,7 @@
                                             name: 'SearchResults'
                                         }">
                                             <div>
-                                                <small><i class="ui search icon"></i>Advanced Search</small>
+                                                <small><i class="ui search icon"></i>Adv. Search</small>
                                             </div>
                                         </router-link>
                                     </div>
@@ -28,7 +28,7 @@
                                             <div>
                                                 <small>
                                                     <u>
-                                                        Cookbooks 2
+                                                        Cookbooks {{ active_user.cookbooks }}
                                                     </u>
                                                 </small>
                                             </div>
@@ -43,7 +43,7 @@
                                             <div>
                                                 <small>
                                                     <u>
-                                                        Recipes 54
+                                                        Recipes {{ active_user.recipes }}
                                                     </u>
                                                 </small>
                                             </div>
@@ -238,10 +238,9 @@ import WhoToFollowList from './WhoToFollowList.vue';
 
 export default {
     name: "Feed",
-    mounted() { },
     computed: {
-        example() {
-            return true
+        active_user() {
+            return this.$store.state.active_user
         }
     },
     props: {
