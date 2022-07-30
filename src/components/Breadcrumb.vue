@@ -20,9 +20,6 @@
             <div class="ui right floated medium tbb button" v-if="activeLink === 'My Dashboard'" :class="{ disabled: !isLoggedIn }">
                 <i class="ui white bell icon"></i> Follow
             </div>
-            <div class="ui right floated medium button" style="cursor:none!important;" v-else>
-                <i class="ui white share icon"></i> 0 Shares
-            </div>
         </div>
     </div>
 </template>
