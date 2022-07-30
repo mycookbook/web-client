@@ -38,6 +38,15 @@
                                     <div class="content">
                                         <a href="">
                                             <small>
+                                                <i class="ui hashtag icon"></i> Explore
+                                            </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="content">
+                                        <a href="">
+                                            <small>
                                                 <i class="ui bell icon"></i> Notifications
                                             </small>
                                         </a>
