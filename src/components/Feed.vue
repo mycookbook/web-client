@@ -20,21 +20,25 @@
                                 <div class="item">
                                     <div class="content">
                                         <a href="">
-                                            Cookbooks 0
+                                            <small>Cookbooks 2</small>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="content">
                                         <a href="">
-                                            Recipes 0
+                                            <small>
+                                                Recipes 54
+                                            </small>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="content">
                                         <a href="">
-                                            Settings
+                                            <small>
+                                                Settings
+                                            </small>
                                         </a>
                                     </div>
                                 </div>
