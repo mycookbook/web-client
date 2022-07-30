@@ -3,13 +3,21 @@
 	<div class="ui container">
 		<div>
 			<Navigation />
-			<Search />
+			<div v-if="!userIsLoggedIn">
+				<Search />
+			</div>
 			<br /> <br />
 			<div v-if="!loaded()">
 				<DefaultSkeleton />
 			</div>
 			<div v-else>
-				<QuickSort :filters="filters()" :cookbooks="cookbooks()" />
+				<div v-if="userIsLoggedIn">
+					<Feed />
+				</div>
+				<div v-else>
+					<QuickSort :filters="filters()" :cookbooks="cookbooks()" />
+				</div>
+				
 				<Contact />
 				<Bottom />
 			</div>
@@ -29,11 +37,17 @@ import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 import DefaultSkeleton from './Skeletons/DefaultSkeleton.vue'
 import PopularDemand from './PopularDemand.vue'
+import Feed from './Feed.vue'
 
 export default {
 	name: "LandingPage",
 	async mounted () {
 		store.dispatch('boot')
+	},
+	computed: {
+		userIsLoggedIn() {
+			return (store.state.access_token)
+		}
 	},
 	methods: {
 		loaded() {
@@ -49,13 +63,14 @@ export default {
 		}
 	},
 	components: {
-		Search,
-		Navigation,
-		Contact,
-		Bottom,
-		QuickSort,
-		DefaultSkeleton,
-		PopularDemand
-	},
+    Search,
+    Navigation,
+    Contact,
+    Bottom,
+    QuickSort,
+    DefaultSkeleton,
+    PopularDemand,
+    Feed
+},
 }
 </script>

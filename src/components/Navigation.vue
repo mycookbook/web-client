@@ -25,6 +25,14 @@
 							<div class="ui button tbb tablet hidden" @click="logOut()">
 								Logout
 							</div>
+
+							<router-link :to="{
+								name: 'Dashboard'
+							}">
+								<div class="ui button tbb tablet hidden">
+									My Dashboard
+								</div>
+							</router-link>
 						</div>
 						<div v-else>
 							<router-link :to="{
@@ -38,9 +46,8 @@
 										Register
 									</small>
 								</button>
-								</router-link>
+							</router-link>
 						</div>
-						
 						<a class="item"></a>
 					</div>
 				</div>
