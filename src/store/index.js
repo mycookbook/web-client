@@ -70,6 +70,9 @@ export default new Vuex.Store({
         },
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
+        },
+        SET_ACCESS_TOKEN(state, token) {
+            this.state.access_token = token
         }
     },
 	actions: {
@@ -103,6 +106,10 @@ export default new Vuex.Store({
         },
         load_skeleton(context) {
             context.commit("SET_LOADING_STATE", true)
+        },
+        set_access_token(context, token) {
+            //setting access token
+            context.commit("SET_ACCESS_TOKEN", token)
         }
     },
     getters: {

@@ -19,6 +19,8 @@ import VueRouteMiddleware from 'vue-route-middleware';
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
 import router from '../router/index.js'
+import axios from 'axios';
+import store from '@/store'
 
 Vue.use(Router);
 
@@ -41,10 +43,15 @@ const VueRouter = new Router({
 					let code = url.searchParams.get("code");
 					
 					//make a request to the backend - auth endpoint
-					//if 200 - persist token in store
+					axios.post(process.env.BASE_URL + 'socialauth')
+					.then(function (response) {
+						store.dispatch('set_access_token', response.data.access_token)
 
-					//redirect user to dashboard
-					router.push('/dashboard');
+						//redirect user to dashboard
+						router.push('/dashboard');
+					}).catch(function (error) {
+						console.log('login error', error)
+					})
 				}
 			}
 		}, {
