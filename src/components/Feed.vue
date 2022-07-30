@@ -11,6 +11,18 @@
                                 <div class="item">
                                     <div class="content">
                                         <router-link :to="{
+                                            name: 'SearchResults'
+                                        }">
+                                            <div>
+                                                <small><i class="ui search icon"></i>Advanced Search</small>
+                                            </div>
+                                        </router-link>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="item">
+                                    <div class="content">
+                                        <router-link :to="{
                                             name: 'Dashboard'
                                         }">
                                             <div>
