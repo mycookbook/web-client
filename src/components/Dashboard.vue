@@ -1,6 +1,7 @@
 <template>
-<div>
+<div class="ui container">
 	<Navigation />
+	<div>I am Dashboard</div>
 </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.example-class {
-	color: #000000;
+.container {
+	margin-top: 23vh;
 }
 </style>
