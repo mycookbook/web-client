@@ -26,7 +26,11 @@
                                             name: 'Dashboard'
                                         }">
                                             <div>
-                                                <small>Cookbooks 2</small>
+                                                <small>
+                                                    <u>
+                                                        Cookbooks 2
+                                                    </u>
+                                                </small>
                                             </div>
                                         </router-link>
                                     </div>
@@ -37,7 +41,11 @@
                                             name: 'Dashboard'
                                         }">
                                             <div>
-                                                <small>Recipes 54</small>
+                                                <small>
+                                                    <u>
+                                                        Recipes 54
+                                                    </u>
+                                                </small>
                                             </div>
                                         </router-link>
                                     </div>
@@ -55,7 +63,7 @@
                                         </router-link>
                                     </div>
                                 </div>
-                                <div class="item">
+                                <div class="ui disabled item">
                                     <div class="content">
                                         <a href="">
                                             <small>
@@ -80,7 +88,7 @@
                             </div>
                             <br />
                             <div>
-                                <div class="ui tbb tiny button">
+                                <div class="ui tbb tiny disabled button">
                                     Advertise With Us!
                                 </div>
                             </div>
