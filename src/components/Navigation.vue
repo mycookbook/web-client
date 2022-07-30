@@ -27,16 +27,26 @@
 						v-if="!isRegistrationRoute"
 						class="item" 
 						title="Become a contributor by the signing in and start submitting recipes. You can create your custom cookbooks or contribute to existing cookbooks. This is your personal space to be your creative you.">
-							<button class="ui button tbb tablet hidden">
+							<div v-if="isLoggedIn">
+								<button class="ui button tbb tablet hidden">
+								Logout
+							</button>
+							<button class="ui button tbb tablet only">
 								<small>
-									Sign In To Contribute
+									Logout
 								</small>
+							</button>
+							</div>
+							<div v-else>
+								<button class="ui button tbb tablet hidden">
+								Sign in To Contribute
 							</button>
 							<button class="ui button tbb tablet only">
 								<small>
 									Register
 								</small>
 							</button>
+							</div>
 						</a>
 					</router-link>
 					<a class="item"></a>
@@ -91,6 +101,9 @@ export default {
 	computed: {
 		isRegistrationRoute() {
 			return (this.$router.currentRoute.name == 'Register')
+		},
+		isLoggedIn() {
+			return true;
 		}
 	},
 	data() {
