@@ -34,7 +34,6 @@ const VueRouter = new Router({
 			component: LandingPage
 		}, {
 			path: '/tiktok',
-			mode: 'history',
 			meta: {
 				middleware: (to, from, next) => {
 					const queryString = window.location.href;
