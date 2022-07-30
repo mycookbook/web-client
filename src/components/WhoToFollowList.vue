@@ -31,7 +31,7 @@ export default {
             followers: '0',
             author: "Mrs Diomonde",
             avatar: "https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1661990400&v=beta&t=4-NHoPTEItzBB8gTsd0JIkGZfoYraG53mpTVjUhZlJY",
-            handle: "@my handle"
+            handle: "mjay"
         }
     },
     filters: {

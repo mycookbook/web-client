@@ -7,40 +7,40 @@
                     <div class="two wide computer column sixteen wide mobile hidden column"
                         style="background-color:#F9f9f9;border-radius: 8px; width: 100%; height: auto;">
                         <div>
-                            <div class="ui search">
-                                <div class="ui icon input" style="max-width:100%!important">
-                                    <input class="prompt" type="text" placeholder="Search...">
-                                    <i class="search icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div>
                             <div class="ui list">
                                 <div class="item">
                                     <div class="content">
-                                        <a href="">
-                                            <small>Cookbooks 2</small>
-                                        </a>
+                                        <router-link :to="{
+                                            name: 'Dashboard'
+                                        }">
+                                            <div>
+                                                <small>Cookbooks 2</small>
+                                            </div>
+                                        </router-link>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="content">
-                                        <a href="">
-                                            <small>
-                                                Recipes 54
-                                            </small>
-                                        </a>
+                                        <router-link :to="{
+                                            name: 'Dashboard'
+                                        }">
+                                            <div>
+                                                <small>Recipes 54</small>
+                                            </div>
+                                        </router-link>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="item">
                                     <div class="content">
-                                        <a href="">
-                                            <small>
-                                                <i class="ui hashtag icon"></i> Explore
-                                            </small>
-                                        </a>
+                                        <router-link :to="{
+                                            name: 'SearchResults',
+                                            query: { q: 'all' }
+                                        }">
+                                            <div>
+                                                <small><i class="ui hashtag icon"></i> Explore</small>
+                                            </div>
+                                        </router-link>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -54,11 +54,15 @@
                                 </div>
                                 <div class="item">
                                     <div class="content">
-                                        <a href="">
-                                            <small>
-                                               <i class="ui cogs icon"></i>  Privacy Settings
-                                            </small>
-                                        </a>
+                                        <router-link :to="{
+                                            name: 'Dashboard'
+                                        }">
+                                            <div>
+                                                <small>
+                                                    <i class="ui cogs icon"></i> Privacy Settings
+                                                </small>
+                                            </div>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
