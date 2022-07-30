@@ -111,7 +111,7 @@ export default {
     },
     methods: {
         follow() {
-            let hasSession = this.$srore.state.access_token
+            let hasSession = this.$store.state.access_token
 
             if (!hasSession) {
                 this.$router.push('/signin')
