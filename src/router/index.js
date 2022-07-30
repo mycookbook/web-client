@@ -48,7 +48,8 @@ const VueRouter = new Router({
 						store.dispatch('set_access_token', response.data.access_token)
 
 						//redirect user to dashboard
-						router.push({ name: 'Dashboard' });
+						// router.push({ name: 'Dashboard' });
+						location.replace('https://web.cookbookshq.com//#/dashboard');
 					}).catch(function (error) {
 						console.log('login error', error)
 					})
