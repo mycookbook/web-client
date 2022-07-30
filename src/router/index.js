@@ -49,7 +49,7 @@ const VueRouter = new Router({
 
 						//redirect user to dashboard
 						// router.push({ name: 'Dashboard' });
-						location.replace('https://web.cookbookshq.com//#/dashboard');
+						location.replace('https://web.cookbookshq.com//#/');
 					}).catch(function (error) {
 						console.log('login error', error)
 					})
