@@ -7,14 +7,15 @@
                     <div class="two wide computer column sixteen wide mobile hidden column">
                         sidebar
                         <div>
-                            search, cookbooks, recipes link to dashboard, link to settings page, link to advertise with us
+                            search, cookbooks, recipes link to dashboard, link to settings page, link to advertise with
+                            us
                         </div>
                     </div>
-                    <div class="twelve wide computer column sixteen wide mobile column">
+                    <div class="nine wide computer column sixteen wide mobile column">
                         <div class="ui feed">
                             <div class="event">
                                 <div class="label">
-                                    <img src="/images/avatar/small/elliot.jpg">
+                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -34,7 +35,7 @@
                             </div>
                             <div class="event">
                                 <div class="label">
-                                    <img src="/images/avatar/small/helen.jpg">
+                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -44,8 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="extra images">
-                                        <a><img src="/images/wireframe/image.png"></a>
-                                        <a><img src="/images/wireframe/image.png"></a>
+                                        <a><img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"></a>
                                     </div>
                                     <div class="meta">
                                         <a class="like">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="event">
                                 <div class="label">
-                                    <img src="/images/avatar/small/jenny.jpg">
+                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="event">
                                 <div class="label">
-                                    <img src="/images/avatar/small/joe.jpg">
+                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="event">
                                 <div class="label">
-                                    <img src="/images/avatar/small/justen.jpg">
+                                    <img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg">
                                 </div>
                                 <div class="content">
                                     <div class="summary">
@@ -113,8 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="extra images">
-                                        <a><img src="/images/wireframe/image.png"></a>
-                                        <a><img src="/images/wireframe/image.png"></a>
+                                        <a><img src="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"></a>
                                     </div>
                                     <div class="meta">
                                         <a class="like">
@@ -125,8 +124,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="two wide computer column sixteen wide mobile column">
-                        this is an advertisement
+                    <div class="five wide computer column sixteen wide mobile column">
+                        <div class="ui grid">
+                            <div class="sixteen wide computer column sixteen wide mobile column">
+                                <img src="https://drdrew.com/wp-content/uploads/2017/08/ad-space-placeholder-300x250-300x250.png" />
+                            </div>
+                        </div>
+
+                        <div class="ui grid">
+                            <div class="sixteen wide computer column sixteen wide mobile column">
+                                <WhoToFollowList />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -136,6 +145,8 @@
 
 <script>
 import Navigation from './Navigation.vue';
+import Follow from './Follow.vue';
+import WhoToFollowList from './WhoToFollowList.vue';
 
 export default {
     name: "Feed",
@@ -157,8 +168,10 @@ export default {
         exampleFilter() { }
     },
     components: {
-        Navigation
-    }
+    Navigation,
+    Follow,
+    WhoToFollowList
+}
 };
 </script>
 
