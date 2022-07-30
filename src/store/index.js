@@ -14,6 +14,7 @@ import { varietiesStore } from './modules/varietiesStore.js'
 import { contributorStore } from './modules/contributorStore.js'
 import { searchStore } from './modules/searchStore.js'
 import { userStore } from './modules/userStore.js'
+import router from '../router/index.js'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -73,6 +74,10 @@ export default new Vuex.Store({
         },
         SET_ACCESS_TOKEN(state, token) {
             this.state.access_token = token
+        },
+        LOGOUT(state) {
+            this.state.access_token = null
+            router.push('/')
         }
     },
 	actions: {
@@ -110,6 +115,9 @@ export default new Vuex.Store({
         set_access_token(context, token) {
             //setting access token
             context.commit("SET_ACCESS_TOKEN", token)
+        },
+        logout(context) {
+            context.commit("LOGOUT")
         }
     },
     getters: {
