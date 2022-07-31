@@ -5,7 +5,7 @@
 		</div>
 		<br />
 		<div class="cookbookEditor">
-			<div>
+			<div style="text-align:center">
 				<div>
 					Upload Cookbook Cover Image
 				</div>
