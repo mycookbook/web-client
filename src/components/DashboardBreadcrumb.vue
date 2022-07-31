@@ -1,6 +1,6 @@
 <template>
     <div class="ui grid">
-        <div class="thirteen wide computer column sixteen wide mobile column">
+        <div class="twelve wide computer column sixteen wide mobile column">
             <div class="ui mini breadcrumb">
                 <a class="section">Dashboard</a>
                 <i class="right chevron icon divider"></i>
@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <div class="three wide computer column sixteen wide mobile column">
+        <div class="four wide computer column sixteen wide mobile column">
             <div class="ui mini tbb button">
                 <i class="ui plus icon"></i>
                 Create

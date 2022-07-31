@@ -86,7 +86,8 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard'
+                        name: 'Dashboard',
+                        query: { tab: 'Privacy Settings' }
                     }">
                         <div>
                             <small>
