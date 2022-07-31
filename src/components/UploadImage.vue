@@ -1,8 +1,8 @@
 <template>
 <div>
 	<div style="border:1px dashed blue;height:150px;">
-		<div style="margin-left:25%;margin-top:8%;">
-			Drop or Upload Cookbook Cover image
+		<div style="margin-left:32%;margin-top:8%;">
+			Upload Cookbook Cover image
 		</div>
 		<br />
 		<div style="margin-left:40%;">
