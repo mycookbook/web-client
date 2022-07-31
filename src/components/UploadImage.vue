@@ -1,35 +1,38 @@
 <template>
-<div>
-	<div class="ui small grey header label">
-		create a new cookbook
-	</div>
-	<br />
-	<div style="border:1px dashed blue;height:170px;">
-		<div style="margin-left:32%;margin-top:8%;">
-			Upload Cookbook Cover Image
-		</div>
-		<div style="margin-left:18%;">
-			<div class="ui header">
-				Image dimension for best results (1127 x 650px)
-			</div>
+	<div>
+		<div class="ui small grey header label">
+			create a new cookbook
 		</div>
 		<br />
-		<div style="margin-left:40%;">
-			<div class="ui tbb button">
-				Upload
+		<div style="border:1px dashed blue;height:170px;">
+			<div style="margin-left:32%;margin-top:8%;">
+				Upload Cookbook Cover Image
 			</div>
-			<form enctype="multipart/form-data" method="post">
-				<input type="file" id="myfile" name="myfile" hidden />
-			</form>
+			<div style="margin-left:18%;">
+				<div class="ui header">
+					Image dimension for best results (1127 x 650px)
+				</div>
+			</div>
+			<br />
+			<div style="margin-left:40%;">
+				<div class="ui tbb button" @click="showFileFinder()">
+					Upload
+				</div>
+				<form enctype="multipart/form-data" method="post">
+					<input type="file" id="myfile" name="myfile" hidden />
+				</form>
+			</div>
+			<div style="margin-left:42%;">
+				{{ fileName }}
+			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <script>
 export default {
 	name: "UploadImage",
-	mounted() {},
+	mounted() { },
 	computed: {
 		example() {
 			return true
@@ -40,14 +43,22 @@ export default {
 	},
 	data() {
 		return {
-			title: 'This is an Example component'
-    	}
-  	},
-	filters: {
-		exampleFilter() {}
+			fileName: ''
+		}
 	},
-	components: {
-		
+	filters: {
+		exampleFilter() { }
+	},
+	methods: {
+		showFileFinder() {
+			$('#myfile').trigger('click');
+
+			const input = document.querySelector('input');
+			input.addEventListener('change', (e) => {
+				const [file] = e.target.files;
+				this.fileName = file.name
+			})
+		}
 	}
 };
 </script>
