@@ -21,6 +21,7 @@ import Profile from '@/components/Profile'
 import router from '../router/index.js'
 import axios from 'axios';
 import store from '@/store'
+import PrivacyPolicy from '@/components/PrivacyPolicy'
 
 Vue.use(Router);
 
@@ -71,6 +72,10 @@ const VueRouter = new Router({
 			path: '/terms-and-conditions',
 			name: 'TermsAndConditions',
 			component: TermsAndConditions,
+		}, {
+			path: '/privacy-policy',
+			name: 'PrivacyPolicy',
+			component: PrivacyPolicy,
 		}, {
 			path: '/signin',
 			name: 'Register',

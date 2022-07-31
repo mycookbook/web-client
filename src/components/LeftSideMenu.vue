@@ -100,6 +100,20 @@
                     </router-link>
                 </div>
             </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Profile' }
+                    }">
+                        <div>
+                            <small>
+                                <i class="ui edit icon"></i> My Profile
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
         </div>
         <br />
         <div>

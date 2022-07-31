@@ -25,6 +25,13 @@
 					</a>
 				</router-link>
 				<router-link :to="{
+          			name: 'PrivacyPolicy'
+          		}">
+				  	<a class="item" title="CookbooksHQ Privacy Policy. Property of cookbookshq.com">
+						  Privacy Policy
+					</a>
+				</router-link>
+				<router-link :to="{
 					name: 'Developers'
 				}">
 					<a class="item" title="API and Documentation for developers">

@@ -8,7 +8,7 @@
 			<div class="field">
 				<label>About this Cookbook? (required*)</label>
 				<textarea
-					placeholder="A very good description will be about 300 characters long. This tells users what this cookbook is about. it may encourage users to add to your cookbook. Make the best use for it, good luck!"></textarea>
+					placeholder="A very good description will be about 300 characters long. This tells users what this cookbook is about. it may encourage users to add to your cookbook thereby increasing your visibility. Make the best use for it, good luck!"></textarea>
 			</div>
 		</div>
 		<div class="ui horizontal divider"></div>
