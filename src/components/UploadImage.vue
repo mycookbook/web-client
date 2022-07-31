@@ -20,7 +20,7 @@
 						Upload
 					</div>
 					<form enctype="multipart/form-data" method="post">
-						<input type="file" id="myfile" name="myfile" hidden />
+						<input type="file" id="myfile" name="myfile" accept=".png" hidden />
 					</form>
 				</div>
 				<br />

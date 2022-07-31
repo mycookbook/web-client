@@ -5,7 +5,7 @@
 				hide editor<i class="ui chevron down icon" @click="toggleEditor('hide')"></i>
 			</div>
 			<div v-else>
-				show editor<i class="ui chevron up icon"  @click="toggleEditor('show')"></i>
+				show editor<i class="ui chevron up icon" @click="toggleEditor('show')"></i>
 			</div>
 		</div>
 		<br />
@@ -33,7 +33,15 @@
 			<div class="ui form">
 				<div class="field">
 					<label>Select up to 3 categories (required*)</label>
+					<div>
+						<div class="ui labels">
+							<a class="ui label" v-for="cat in _categories" :style="{ 'background-color': '#' + cat.color }">
+								{{ cat.name }}
+							</a>
+						</div>
+					</div>
 					<input type="text" placeholder="Comma separated list of categories e.g Vegan" />
+					<br /><br />
 				</div>
 			</div>
 			<br />
@@ -103,13 +111,17 @@ import UploadImage from './UploadImage.vue';
 
 export default {
 	name: "MyCookbooks",
+	computed: {
+		_categories() {
+			let cs = this.$store.state.cookbookStore.definitions.categories.contents
+			console.log('hgfh', JSON.parse(cs))
+			return JSON.parse(cs)
+		}
+	},
 	data() {
 		return {
 			inEditMode: true
 		}
-	},
-	filters: {
-		exampleFilter() { }
 	},
 	components: {
 		UploadImage
@@ -135,11 +147,12 @@ export default {
 .hideshowicon i {
 	cursor: pointer !important;
 }
+
 .show {
 	display: inline;
 }
 
 .hide {
-	display: none!important;
+	display: none !important;
 }
 </style>
