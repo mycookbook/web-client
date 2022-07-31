@@ -74,13 +74,16 @@
                     </router-link>
                 </div>
             </div>
-            <div class="ui disabled item">
+            <div class="ui item">
                 <div class="content">
-                    <a href="">
-                        <small>
-                            <i class="ui bell icon"></i> Notifications
-                        </small>
-                    </a>
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Notifications' }
+                    }">
+                        <div>
+                            <small><i class="ui bell icon"></i> Notifications 10</small>
+                        </div>
+                    </router-link>
                 </div>
             </div>
             <div class="item">

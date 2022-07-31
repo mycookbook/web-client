@@ -22,10 +22,13 @@
 									My recipes
 								</div>
 								<div v-if="activeLink === 'Drafts'">
-									My drafts
+									No drafts.
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
 									My privacy settings
+								</div>
+								<div v-if="activeLink === 'Notifications'">
+									My notifications
 								</div>
 							</div>
 						</div>
