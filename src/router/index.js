@@ -77,9 +77,9 @@ const VueRouter = new Router({
 			component: Register,
 			meta: {
 				middleware: (to, from, next) => {
-					let auth = localStorage.isLogged;
+					let hasSession = (store.state.access_token);
 					
-					if (auth){
+					if (!hasSession){
 						next({ name: 'Register' });
 					}
 				}
@@ -87,16 +87,25 @@ const VueRouter = new Router({
 		}, {
 			path: '/dashboard',
 			name: 'Dashboard',
-			component: Dashboard
+			component: Dashboard,
+			meta: {
+				middleware: (to, from, next) => {
+					let hasSession = (store.state.access_token);
+					
+					if (!hasSession){
+						next({ name: 'Register' });
+					}
+				}
+			}
 		}, {
 			path: '/profile',
 			name: 'Profile',
 			component: Profile,
 			meta: {
 				middleware: (to, from, next) => {
-					let auth = localStorage.isLogged;
+					let hasSession = (store.state.access_token);
 					
-					if (!auth){
+					if (!hasSession){
 						next({ name: 'Register' });
 					}
 				}
@@ -118,9 +127,9 @@ const VueRouter = new Router({
 			props: true,
 			meta: {
 				middleware: (to, from, next) => {
-					let auth = localStorage.isLogged;
+					let hasSession = (store.state.access_token);
 					
-					if (!auth){
+					if (!hasSession){
 						next({ name: 'Register' });
 					}
 				}
