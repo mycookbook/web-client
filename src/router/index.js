@@ -22,6 +22,7 @@ import router from '../router/index.js'
 import axios from 'axios';
 import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
+import EditCookbook from '@/components/EditCookbook'
 
 Vue.use(Router);
 
@@ -111,6 +112,10 @@ const VueRouter = new Router({
 			name: 'Cookbook',
 			component: Cookbook,
 			props: true
+		},{ 
+			path: '/cookbooks/:slug',
+			name: 'EditCookbook',
+			component: EditCookbook,
 		}, {
 			path: '/recipes/:slug',
 			name: 'Recipe',

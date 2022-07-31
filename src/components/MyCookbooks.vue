@@ -84,9 +84,18 @@
 						<div class="content">
 							<a class="header" href="">
 								<small>
-									{{ cookbook.name }}
+									<span>
+										<router-link :to="{ name: 'Cookbook', params: { slug: cookbook.slug } }">
+											{{ cookbook.name }}
+										</router-link>
+									</span>
 								</small>
 							</a>
+							<span style="float:right!important;">
+								<router-link :to="{ name: 'EditCookbook', params: { slug: cookbook.slug } }">
+									edit
+								</router-link>
+							</span>
 							<div class="meta">
 								<span>
 									{{ cookbook.description | truncate(115, '...') }}
@@ -110,8 +119,8 @@ export default {
 	name: "MyCookbooks",
 	mounted() {
 		let username = this.$store.state.active_user.username
-        this.$store.dispatch('fetch_contributor', username)
-    },
+		this.$store.dispatch('fetch_contributor', username)
+	},
 	computed: {
 		_categories() {
 			let cs = this.$store.state.cookbookStore.definitions.categories.contents
@@ -146,14 +155,14 @@ export default {
 		}
 	},
 	filters: {
-        truncate: function (text, length, suffix) {
-            if (text.length > length) {
-                return text.substring(0, length) + suffix;
-            } else {
-                return text;
-            }
-        },
-    },
+		truncate: function (text, length, suffix) {
+			if (text.length > length) {
+				return text.substring(0, length) + suffix;
+			} else {
+				return text;
+			}
+		},
+	},
 };
 </script>
 
