@@ -35,19 +35,29 @@
 					<label>Select up to 3 categories (required*)</label>
 					<div>
 						<div class="ui labels">
-							<a class="ui label" v-for="cat in _categories" :style="{ 'background-color': '#' + cat.color }">
+							<a class="ui label" v-for="cat in _categories"
+								:style="{ 'background-color': '#' + cat.color }">
 								{{ cat.name }}
 							</a>
 						</div>
 					</div>
-					<input type="text" placeholder="Comma separated list of categories e.g Vegan" />
+					<input type="text" placeholder="Your selected categories show up here" />
 					<br /><br />
 				</div>
 			</div>
 			<br />
 			<div class="ui form">
 				<div class="field">
-					<label>Country Flag (Optional)</label>
+					<label>
+						<span>
+							Country Flag (Optional)
+						</span>
+						<span style="float:right!important;">
+							<a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">
+								<i class="ui wikipedia icon"></i>
+							</a>
+						</span>
+					</label>
 					<input type="text" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
 				</div>
 			</div>
@@ -56,44 +66,31 @@
 
 		</div>
 
-		<div class="ui horizontal divider"></div>
-		<hr />
+		<div class="ui horizontal divider">
+			<i class="camera icon"></i>
+		</div>
+
 		<div>
-			<div>
-				<small>
-					<b>showing 100 results</b>
-				</small>
+			<div class="cookbooks-showing">
+				showing 1 - 100 of 20 results
 			</div>
 			<div class="ui horizontal divider"></div>
 			<div>
 				<div class="ui items">
-					<div class="item">
-						<div class="ui mini image">
-							<img src="https://tinyurl.com/aek9pjuw">
+					<div class="item" v-for="cookbook in _myCookbooks">
+						<div class="ui tiny image">
+							<img :src="cookbook.bookCoverImg">
 						</div>
 						<div class="content">
 							<a class="header" href="">
-								<small>Title</small>
+								<small>
+									{{ cookbook.name }}
+								</small>
 							</a>
 							<div class="meta">
-								<span>Truncated Description ...</span>
-							</div>
-							<div class="description">
-								<p></p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="ui mini image">
-							<img
-								src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
-						</div>
-						<div class="content">
-							<a class="header" href="">
-								<small>Title</small>
-							</a>
-							<div class="meta">
-								<span>Truncated Description ...</span>
+								<span>
+									{{ cookbook.description | truncate(115, '...') }}
+								</span>
 							</div>
 							<div class="description">
 								<p></p>
@@ -111,11 +108,19 @@ import UploadImage from './UploadImage.vue';
 
 export default {
 	name: "MyCookbooks",
+	mounted() {
+		let username = this.$store.state.active_user.username
+        this.$store.dispatch('fetch_contributor', username)
+    },
 	computed: {
 		_categories() {
 			let cs = this.$store.state.cookbookStore.definitions.categories.contents
-			console.log('hgfh', JSON.parse(cs))
 			return JSON.parse(cs)
+		},
+		_myCookbooks() {
+			console.log("contributor", this.$store.state.cookbookStore.cookbooks)
+
+			return this.$store.state.cookbookStore.cookbooks
 		}
 	},
 	data() {
@@ -139,7 +144,16 @@ export default {
 			}
 			this.inEditMode = !this.inEditMode
 		}
-	}
+	},
+	filters: {
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
+    },
 };
 </script>
 
@@ -154,5 +168,9 @@ export default {
 
 .hide {
 	display: none !important;
+}
+
+.cookbooks-showing {
+	color: grey;
 }
 </style>

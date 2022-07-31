@@ -76,6 +76,7 @@ export default new Vuex.Store({
         SET_ACCESS_TOKEN(state, token) {
             this.state.access_token = token
             this.state.active_user = {
+                'username': 'mjay',
                 'cookbooks': 20,
                 'recipes': 150
             }
