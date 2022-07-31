@@ -4,26 +4,29 @@
 			create a new cookbook
 		</div>
 		<br />
-		<div style="border:1px dashed blue;height:170px;">
-			<div style="margin-left:32%;margin-top:8%;">
-				Upload Cookbook Cover Image
-			</div>
-			<div style="margin-left:18%;">
-				<div class="ui header">
-					Image dimension for best results (1127 x 650px)
+		<div class="cookbookEditor">
+			<div>
+				<div>
+					Upload Cookbook Cover Image
 				</div>
-			</div>
-			<br />
-			<div style="margin-left:40%;">
-				<div class="ui tbb button" @click="showFileFinder()">
-					Upload
+				<div>
+					<div class="ui header">
+						Image dimension for best results (1127 x 650px)
+					</div>
 				</div>
-				<form enctype="multipart/form-data" method="post">
-					<input type="file" id="myfile" name="myfile" hidden />
-				</form>
-			</div>
-			<div style="margin-left:42%;">
-				{{ fileName }}
+				<br />
+				<div>
+					<div class="ui tbb button" @click="showFileFinder()">
+						Upload
+					</div>
+					<form enctype="multipart/form-data" method="post">
+						<input type="file" id="myfile" name="myfile" hidden />
+					</form>
+				</div>
+				<br />
+				<div>
+					{{ fileName }}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -56,6 +59,7 @@ export default {
 			const input = document.querySelector('input');
 			input.addEventListener('change', (e) => {
 				const [file] = e.target.files;
+				console.log('file', file)
 				this.fileName = file.name
 			})
 		}
@@ -64,7 +68,11 @@ export default {
 </script>
 
 <style scoped>
-.example-class {
-	color: #000000;
+.cookbookEditor {
+	border: 1px dashed blue;
+	height: 170px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
 }
 </style>
