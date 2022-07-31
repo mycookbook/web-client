@@ -50,6 +50,24 @@
                                         </router-link>
                                     </div>
                                 </div>
+                                <div class="item">
+                                    <div class="content">
+                                        <router-link :to="{
+                                            name: 'Dashboard',
+                                            params: {
+                                                'tab': 'drafts'
+                                            }
+                                        }">
+                                            <div>
+                                                <small>
+                                                    <u>
+                                                        Drafts 0
+                                                    </u>
+                                                </small>
+                                            </div>
+                                        </router-link>
+                                    </div>
+                                </div>
                                 <br />
                                 <div class="item">
                                     <div class="content">

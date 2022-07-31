@@ -34,14 +34,6 @@
                                     <i class="ui tiny plus icon" style="margin-left:-8px;"></i>
                                 </span>
                             </p>
-                            
-                            <!-- <span class="ui icons reactions">
-                                <img class="ui icon" src="/static/img/icons/love.png" title="love" />
-                                <img class="ui icon" src="/static/img/icons/fire.png" title="hot" />
-                                <img class="ui icon" src="/static/img/icons/heart.png" title="love" />
-                                <img class="ui icon" src="/static/img/icons/smile.png" title="smile" />
-                                <img class="ui icon" src="/static/img/icons/star.png" title="like" />
-                            </span> -->
                         </div>
                     </div>
                 </div>
