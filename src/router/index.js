@@ -93,7 +93,8 @@ const VueRouter = new Router({
 					let hasSession = (store.state.access_token);
 					
 					if (!hasSession){
-						next({ name: 'Register' });
+						alert('bummer')
+						router.push('signin')
 					}
 				}
 			}
