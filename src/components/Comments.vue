@@ -29,18 +29,19 @@
                         <div class="text">
                             <p>
                                 {{ comment.comment }}
+                                <span class="ui icons reaction-icons">
+                                    <i class="ui red heart icon"></i>
+                                    <i class="ui tiny plus icon" style="margin-left:-8px;"></i>
+                                </span>
                             </p>
-                            <span class="ui icons reaction-icons">
-                                <i class="ui smile outline icon"></i>
-                                <i class="ui tiny plus icon" style="margin-left:-8px;"></i>
-                            </span>
-                            <span class="ui icons reactions">
+                            
+                            <!-- <span class="ui icons reactions">
                                 <img class="ui icon" src="/static/img/icons/love.png" title="love" />
                                 <img class="ui icon" src="/static/img/icons/fire.png" title="hot" />
                                 <img class="ui icon" src="/static/img/icons/heart.png" title="love" />
                                 <img class="ui icon" src="/static/img/icons/smile.png" title="smile" />
                                 <img class="ui icon" src="/static/img/icons/star.png" title="like" />
-                            </span>
+                            </span> -->
                         </div>
                     </div>
                 </div>

@@ -29,6 +29,13 @@
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<div class="ui buttons">
+										<div class="ui tbb button" title="Add a variation for this recipe, make it yours!">
+											<i class="ui plus icon"></i>
+											Add variation
+										</div>
+
+										<div style="margin-right:1px;"></div>
+
 										<div class="ui button" title="copy link" @click="copyLink()">
 											<i class="ui linkify icon"></i>
 											Copy link
