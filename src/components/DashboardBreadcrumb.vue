@@ -4,7 +4,9 @@
             <div class="ui mini breadcrumb">
                 <a class="section">Dashboard</a>
                 <i class="right chevron icon divider"></i>
-                <div class="active section">Cookbooks</div>
+                <div class="active section">
+                    {{ active }}
+                </div>
             </div>
         </div>
         <div class="three wide computer column sixteen wide mobile column">
@@ -26,7 +28,7 @@ export default {
         }
     },
     props: {
-        numbers: Array
+        active: String
     },
     data() {
         return {
