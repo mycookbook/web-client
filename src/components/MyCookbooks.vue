@@ -1,6 +1,10 @@
 <template>
 	<div>
 		<div>
+			Hide <i class="ui chevron down icon"></i>
+		</div>
+		<br />
+		<div>
 			<UploadImage />
 		</div>
 		<div class="ui horizontal divider"></div>
@@ -23,6 +27,13 @@
 			<div class="field">
 				<label>Select up to 3 categories (required*)</label>
 				<input type="text" placeholder="Comma separated list of categories e.g Vegan" />
+			</div>
+		</div>
+		<br />
+		<div class="ui form">
+			<div class="field">
+				<label>Country Flag (Optinoal)</label>
+				<input type="text" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
 			</div>
 		</div>
 		<div class="ui horizontal divider"></div>
