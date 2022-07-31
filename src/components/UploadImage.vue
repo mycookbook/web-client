@@ -1,8 +1,12 @@
 <template>
 <div>
+	<div class="ui small grey header label">
+		create a new cookbook
+	</div>
+	<br />
 	<div style="border:1px dashed blue;height:150px;">
 		<div style="margin-left:32%;margin-top:8%;">
-			Upload Cookbook Cover image
+			Upload Cookbook Cover Image
 		</div>
 		<br />
 		<div style="margin-left:40%;">
