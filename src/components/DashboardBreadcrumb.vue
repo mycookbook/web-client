@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="four wide computer column sixteen wide mobile column">
-            <div class="ui mini tbb button">
+            <div class="ui mini tbb button" v-if="active === 'Cookbooks' || active === 'Recipes'">
                 <i class="ui plus icon"></i>
                 Create
             </div>
