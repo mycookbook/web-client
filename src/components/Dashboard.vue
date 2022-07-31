@@ -25,8 +25,8 @@
 
 									<div class="ui form">
 										<div class="field">
-											<label>How to prepare</label>
-											<textarea placeholder="Step 1: Do something awesome"></textarea>
+											<label>About this Cookbook</label>
+											<textarea placeholder="A very description will be about 300 characters long. This tells users what this cookbook is about. it may encourage users to add to your cookbook. Make the best use for it, good luck!"></textarea>
 										</div>
 									</div>
 
@@ -47,7 +47,9 @@
 														<img src="https://tinyurl.com/aek9pjuw">
 													</div>
 													<div class="content">
-														<a class="header" href="">Title</a>
+														<a class="header" href="">
+															<small>Title</small>
+														</a>
 														<div class="meta">
 															<span>Truncated Description ...</span>
 														</div>
@@ -62,7 +64,9 @@
 															src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
 													</div>
 													<div class="content">
-														<a class="header" href="">Title</a>
+														<a class="header" href="">
+															<small>Title</small>
+														</a>
 														<div class="meta">
 															<span>Truncated Description ...</span>
 														</div>
