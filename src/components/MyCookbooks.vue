@@ -72,7 +72,7 @@
 
 		<div>
 			<div class="cookbooks-showing">
-				showing 1 - 100 of 20 results
+				cookbooks > showing 1 - 100 of 20 results
 			</div>
 			<div class="ui horizontal divider"></div>
 			<div>
@@ -91,9 +91,12 @@
 									</span>
 								</small>
 							</a>
-							<span style="float:right!important;">
+							<span style="float:right!important; font-size: 16px;">
 								<router-link :to="{ name: 'EditCookbook', params: { slug: cookbook.slug } }">
-									edit
+									edit |
+								</router-link>
+								<router-link :to="{ name: 'CreateRecipe', query: { cookbook_id: cookbook.id } }">
+									add recipe
 								</router-link>
 							</span>
 							<div class="meta">
