@@ -27,7 +27,8 @@
 							</div>
 
 							<router-link :to="{
-								name: 'Dashboard'
+								name: 'Dashboard',
+								query: { tab: 'Cookbooks' }
 							}">
 								<div class="ui button tbb tablet hidden">
 									My Dashboard

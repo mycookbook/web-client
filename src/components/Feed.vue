@@ -4,10 +4,10 @@
         <div class="ui grid">
             <div class="sixteen wide computer column sixteen wide mobile column">
                 <div class="ui grid">
-                    <div class="two wide computer column sixteen wide mobile hidden column">
+                    <div class="three wide computer column sixteen wide mobile hidden column">
                         <LeftSideMenu :active_user="active_user" />
                     </div>
-                    <div class="nine wide computer column sixteen wide mobile column">
+                    <div class="eight wide computer column sixteen wide mobile column">
                         <FeedData />
                     </div>
                     <div class="five wide computer column sixteen wide mobile column">

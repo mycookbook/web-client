@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color:#F9f9f9;border-radius: 8px; width: 100%; height: auto;">
+    <div style="background-color:#F9f9f9;border-radius: 8px; width: 100%; height: auto;padding:12px;">
         <div class="ui list">
             <div class="item">
                 <div class="content">
@@ -7,7 +7,7 @@
                         name: 'SearchResults'
                     }">
                         <div>
-                            <small><i class="ui search icon"></i>Adv. Search</small>
+                            <small><i class="ui search icon"></i>Advanced Search</small>
                         </div>
                     </router-link>
                 </div>
