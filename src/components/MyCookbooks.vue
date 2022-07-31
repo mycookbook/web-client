@@ -24,7 +24,7 @@
 			<div>
 				<div class="ui items">
 					<div class="item">
-						<div class="ui tiny image">
+						<div class="ui mini image">
 							<img src="https://tinyurl.com/aek9pjuw">
 						</div>
 						<div class="content">
@@ -40,7 +40,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<div class="ui tiny image">
+						<div class="ui mini image">
 							<img
 								src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
 						</div>
