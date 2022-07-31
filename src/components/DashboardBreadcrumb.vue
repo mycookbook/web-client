@@ -1,18 +1,12 @@
 <template>
     <div class="ui grid">
-        <div class="twelve wide computer column sixteen wide mobile column">
+        <div class="sixteen wide computer column sixteen wide mobile column">
             <div class="ui mini breadcrumb">
                 <a class="section">Dashboard</a>
                 <i class="right chevron icon divider"></i>
                 <div class="active section">
                     {{ active }}
                 </div>
-            </div>
-        </div>
-        <div class="four wide computer column sixteen wide mobile column">
-            <div class="ui mini tbb button" v-if="active === 'Cookbooks' || active === 'Recipes'">
-                <i class="ui plus icon"></i>
-                Create
             </div>
         </div>
     </div>

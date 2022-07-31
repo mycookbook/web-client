@@ -7,16 +7,62 @@
 					<div class="three wide computer column sixteen wide mobile hidden column">
 						<LeftSideMenu :active_user="active_user" />
 					</div>
-					<div class="eight wide computer column sixteen wide mobile column" style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
+					<div class="eight wide computer column sixteen wide mobile column"
+						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
 						<DashboardBreadcrumb :active="activeLink" />
 						<div class="ui horizontal divider"></div>
 
-						<hr /><br />
+						<br />
 
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
 								<div v-if="activeLink === 'Cookbooks'">
-									My cookbooks
+									<div>
+										<UploadImage />
+									</div>
+
+									<div class="ui horizontal divider"></div>
+
+									<div>
+										<div>
+											<small>
+												showing 100 results
+											</small>
+										</div>
+										<div class="ui horizontal divider"></div>
+										<div>
+											<div class="ui items">
+												<div class="item">
+													<div class="ui tiny image">
+														<img src="https://tinyurl.com/aek9pjuw">
+													</div>
+													<div class="content">
+														<a class="header" href="">Title</a>
+														<div class="meta">
+															<span>Truncated Description ...</span>
+														</div>
+														<div class="description">
+															<p></p>
+														</div>
+													</div>
+												</div>
+												<div class="item">
+													<div class="ui tiny image">
+														<img src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
+													</div>
+													<div class="content">
+														<a class="header" href="">Title</a>
+														<div class="meta">
+															<span>Truncated Description ...</span>
+														</div>
+														<div class="description">
+															<p></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div v-if="activeLink === 'Recipes'">
 									My recipes
@@ -52,6 +98,7 @@ import Navigation from './Navigation.vue';
 import LeftSideMenu from './LeftSideMenu.vue'
 import Breadcrumb from './Breadcrumb.vue';
 import DashboardBreadcrumb from './DashboardBreadcrumb.vue';
+import UploadImage from './UploadImage.vue';
 
 export default {
 	name: "Dashboard",
@@ -67,7 +114,8 @@ export default {
 		Navigation,
 		LeftSideMenu,
 		Breadcrumb,
-		DashboardBreadcrumb
+		DashboardBreadcrumb,
+		UploadImage
 	}
 };
 </script>
