@@ -15,7 +15,18 @@
 
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
-								list resources here
+								<div v-if="activeLink === 'Cookbooks'">
+									My cookbooks
+								</div>
+								<div v-if="activeLink === 'Recipes'">
+									My recipes
+								</div>
+								<div v-if="activeLink === 'Drafts'">
+									My drafts
+								</div>
+								<div v-if="activeLink === 'Privacy Settings'">
+									My privacy settings
+								</div>
 							</div>
 						</div>
 					</div>
