@@ -74,16 +74,7 @@ const VueRouter = new Router({
 		}, {
 			path: '/signin',
 			name: 'Register',
-			component: Register,
-			meta: {
-				middleware: (to, from, next) => {
-					let hasSession = (store.state.access_token);
-					
-					if (!hasSession){
-						next({ name: 'Register' });
-					}
-				}
-			}
+			component: Register
 		}, {
 			path: '/dashboard',
 			name: 'Dashboard',
@@ -93,7 +84,6 @@ const VueRouter = new Router({
 					let hasSession = (store.state.access_token);
 					
 					if (!hasSession){
-						alert('bummer')
 						router.push('signin')
 					}
 				}
