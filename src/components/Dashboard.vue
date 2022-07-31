@@ -23,10 +23,20 @@
 
 									<div class="ui horizontal divider"></div>
 
+									<div class="ui form">
+										<div class="field">
+											<label>How to prepare</label>
+											<textarea placeholder="Step 1: Do something awesome"></textarea>
+										</div>
+									</div>
+
+									<div class="ui horizontal divider"></div>
+									<button class="fluid ui tbb button">Save</button>
+									<div class="ui horizontal divider"></div>
 									<div>
 										<div>
 											<small>
-												showing 100 results
+												<b>showing 100 results</b>
 											</small>
 										</div>
 										<div class="ui horizontal divider"></div>
@@ -48,7 +58,8 @@
 												</div>
 												<div class="item">
 													<div class="ui tiny image">
-														<img src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
+														<img
+															src="https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG">
 													</div>
 													<div class="content">
 														<a class="header" href="">Title</a>
