@@ -16,7 +16,8 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard'
+                        name: 'Dashboard',
+                        query: { tab: 'cookbooks' }
                     }">
                         <div>
                             <small>
@@ -31,7 +32,8 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard'
+                        name: 'Dashboard',
+                        query: { tab: 'recipes' }
                     }">
                         <div>
                             <small>
@@ -47,9 +49,7 @@
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
-                        params: {
-                            'tab': 'drafts'
-                        }
+                        query: { tab: 'drafts' }
                     }">
                         <div>
                             <small>
