@@ -44,22 +44,7 @@ const VueRouter = new Router({
 					let url = new URL(replaced);
 					let code = url.searchParams.get("code");
 
-					let responseData = {
-						code: url.searchParams.get("code"),
-						scope: url.searchParams.get("scope"),
-						state: url.searchParams.get("state"),
-						error: url.searchParams.get("error")
-					}
-
-					console.log('response', responseData)
-
-					//make a request to the backend - auth endpoint
-					axios.post(process.env.BASE_URL + 'socialauth')
-						.then(function (response) {
-							store.dispatch('attempt_login', response.data.access_token)
-						}).catch(function (error) {
-							console.log('login error', error)
-						})
+					store.dispatch('attempt_login', code)
 				}
 			}
 		}, {

@@ -73,14 +73,15 @@ export default new Vuex.Store({
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
         },
-        SET_ACCESS_TOKEN(state, token) {
-            this.state.access_token = token
+        ATTEMPT_LOGIN(state, code) {
+            this.state.access_token = code
+
             this.state.active_user = {
                 'username': 'mjay',
                 'cookbooks': 20,
                 'recipes': 150
             }
-            
+
             location.replace('https://web.cookbookshq.com//#/');
         },
         LOGOUT(state) {
@@ -122,11 +123,11 @@ export default new Vuex.Store({
         load_skeleton(context) {
             context.commit("SET_LOADING_STATE", true)
         },
-        attempt_login(context, token) {
+        attempt_login(context, code) {
             //make a call to or backend api
             //if 200 commit 
             //else set error
-            context.commit("SET_ACCESS_TOKEN", token)
+            context.commit("ATTEMPT_LOGIN", code)
         },
         logout(context) {
             context.commit("LOGOUT")
