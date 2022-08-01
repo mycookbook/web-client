@@ -84,6 +84,7 @@ export default new Vuex.Store({
                 code: req.code
             }, this.state.api.options)
                 .then(function (response) {
+                    alert(JSON.stringify(response))
                     console.log('response', response)
 
                     this.state.active_user = {

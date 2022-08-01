@@ -106,7 +106,7 @@
 								<router-link :to="{ name: 'EditCookbook', params: { slug: cookbook.slug } }">
 									edit |
 								</router-link>
-								<router-link :to="{ name: 'CreateRecipe', query: { cookbook_id: cookbook.id } }">
+								<router-link :to="{ name: 'Dashboard', query: { tab: 'Drafts' } }">
 									add recipe
 								</router-link>
 							</span>
