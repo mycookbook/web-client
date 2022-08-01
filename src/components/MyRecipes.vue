@@ -99,11 +99,8 @@
                                 </small>
                             </a>
                             <span style="float:right!important; font-size: 16px;">
-                                <router-link :to="{ name: 'EditCookbook', params: { slug: cookbook.slug } }">
-                                    edit |
-                                </router-link>
-                                <router-link :to="{ name: 'CreateRecipe', query: { cookbook_id: cookbook.id } }">
-                                    add recipe
+                                <router-link :to="{ name: 'EditRecipe', params: { slug: cookbook.slug } }">
+                                    edit
                                 </router-link>
                             </span>
                             <div class="meta">
