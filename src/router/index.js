@@ -56,8 +56,7 @@ const VueRouter = new Router({
 					//make a request to the backend - auth endpoint
 					axios.post(process.env.BASE_URL + 'socialauth')
 						.then(function (response) {
-							store.dispatch('set_access_token', response.data.access_token)
-							location.replace('https://web.cookbookshq.com//#/');
+							store.dispatch('attempt_login', response.data.access_token)
 						}).catch(function (error) {
 							console.log('login error', error)
 						})

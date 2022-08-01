@@ -80,6 +80,8 @@ export default new Vuex.Store({
                 'cookbooks': 20,
                 'recipes': 150
             }
+            
+            location.replace('https://web.cookbookshq.com//#/');
         },
         LOGOUT(state) {
             this.state.access_token = null
@@ -120,8 +122,10 @@ export default new Vuex.Store({
         load_skeleton(context) {
             context.commit("SET_LOADING_STATE", true)
         },
-        set_access_token(context, token) {
-            //setting access token
+        attempt_login(context, token) {
+            //make a call to or backend api
+            //if 200 commit 
+            //else set error
             context.commit("SET_ACCESS_TOKEN", token)
         },
         logout(context) {
