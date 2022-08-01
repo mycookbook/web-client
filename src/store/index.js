@@ -74,7 +74,12 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
+            alert(req.code)
             this.state.access_token = req.code
+
+            //make a call to or backend api
+            //if 200 commit 
+            //else set error
 
             this.state.active_user = {
                 'username': 'mjay',
@@ -93,7 +98,6 @@ export default new Vuex.Store({
     },
 	actions: {
         async boot(context) {
-            
             await this.state.api.client.all([
                 this.state.api.client.get(this.state.named_urls.definitions, this.state.api.options),
                 this.state.api.client.get(this.state.named_urls.cookbook_resources, this.state.api.options),
@@ -107,9 +111,9 @@ export default new Vuex.Store({
             })).catch(function (error) { 
                 if (error.response.status === this.state.response.statuses.unauthorized) {
                     context.commit("SET_LOADING_STATE", true)
-                    // console.log('malformed request, check headers')
+                    console.log('malformed request, check headers')
                 } else {
-                    // console.log('must be a server error') 
+                    console.log('must be a server error') 
                 }
                 context.commit("SET_LOADING_STATE", false)
             })
@@ -124,9 +128,6 @@ export default new Vuex.Store({
             context.commit("SET_LOADING_STATE", true)
         },
         attempt_login(context, req) {
-            //make a call to or backend api
-            //if 200 commit 
-            //else set error
             context.commit("ATTEMPT_LOGIN", req)
         },
         logout(context) {
