@@ -73,8 +73,8 @@ export default new Vuex.Store({
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
         },
-        ATTEMPT_LOGIN(state, code) {
-            this.state.access_token = code
+        ATTEMPT_LOGIN(state, req) {
+            this.state.access_token = req.code
 
             this.state.active_user = {
                 'username': 'mjay',
@@ -123,11 +123,11 @@ export default new Vuex.Store({
         load_skeleton(context) {
             context.commit("SET_LOADING_STATE", true)
         },
-        attempt_login(context, code) {
+        attempt_login(context, req) {
             //make a call to or backend api
             //if 200 commit 
             //else set error
-            context.commit("ATTEMPT_LOGIN", code)
+            context.commit("ATTEMPT_LOGIN", req)
         },
         logout(context) {
             context.commit("LOGOUT")
