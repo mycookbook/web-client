@@ -29,7 +29,7 @@ Vue.use(Router);
 const VueRouter = new Router({
 	mode: 'hash',
 	fallback: true,
-  	routes: [
+	routes: [
 		{
 			path: '/',
 			name: 'Home',
@@ -43,18 +43,24 @@ const VueRouter = new Router({
 					let replaced = queryString.replace("/#/", "/");
 					let url = new URL(replaced);
 					let code = url.searchParams.get("code");
-					
+
+					let responseData = {
+						code: url.searchParams.get("code"),
+						scope: url.searchParams.get("scope"),
+						state: url.searchParams.get("state"),
+						error: url.searchParams.get("error")
+					}
+
+					console.log('response', responseData)
+
 					//make a request to the backend - auth endpoint
 					axios.post(process.env.BASE_URL + 'socialauth')
-					.then(function (response) {
-						store.dispatch('set_access_token', response.data.access_token)
-
-						//redirect user to dashboard
-						// router.push({ name: 'Dashboard' });
-						location.replace('https://web.cookbookshq.com//#/');
-					}).catch(function (error) {
-						console.log('login error', error)
-					})
+						.then(function (response) {
+							store.dispatch('set_access_token', response.data.access_token)
+							location.replace('https://web.cookbookshq.com//#/');
+						}).catch(function (error) {
+							console.log('login error', error)
+						})
 				}
 			}
 		}, {
@@ -88,8 +94,8 @@ const VueRouter = new Router({
 			meta: {
 				middleware: (to, from, next) => {
 					let hasSession = (store.state.access_token);
-					
-					if (!hasSession){
+
+					if (!hasSession) {
 						router.push('signin')
 					}
 				}
@@ -101,8 +107,8 @@ const VueRouter = new Router({
 			meta: {
 				middleware: (to, from, next) => {
 					let hasSession = (store.state.access_token);
-					
-					if (!hasSession){
+
+					if (!hasSession) {
 						next({ name: 'Register' });
 					}
 				}
@@ -112,7 +118,7 @@ const VueRouter = new Router({
 			name: 'Cookbook',
 			component: Cookbook,
 			props: true
-		},{ 
+		}, {
 			path: '/cookbooks/:slug',
 			name: 'EditCookbook',
 			component: EditCookbook,
@@ -129,8 +135,8 @@ const VueRouter = new Router({
 			meta: {
 				middleware: (to, from, next) => {
 					let hasSession = (store.state.access_token);
-					
-					if (!hasSession){
+
+					if (!hasSession) {
 						next({ name: 'Register' });
 					}
 				}
@@ -158,9 +164,9 @@ const VueRouter = new Router({
 			name: 'SearchResults',
 			component: SearchResults
 		}, {
-		path: '*',
-		component: NotFound
-    }]
+			path: '*',
+			component: NotFound
+		}]
 });
 
 VueRouter.beforeEach(VueRouteMiddleware());
