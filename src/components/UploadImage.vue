@@ -1,17 +1,13 @@
 <template>
 	<div>
-		<div class="ui small grey header label">
-			create a new cookbook
-		</div>
-		<br />
 		<div class="cookbookEditor">
 			<div style="text-align:center">
 				<div>
-					Upload Cookbook Cover Image
+					{{ description }}
 				</div>
 				<div>
 					<div class="ui header">
-						Image dimension for best results (1127 x 650px)
+						{{ imageDimensionMsg }}
 					</div>
 				</div>
 				<br />
@@ -20,7 +16,7 @@
 						Upload
 					</div>
 					<form enctype="multipart/form-data" method="post">
-						<input type="file" id="myfile" name="myfile" accept=".png" hidden />
+						<input type="file" id="myfile" name="myfile" :accept="acceptTypes" hidden />
 					</form>
 				</div>
 				<br />
@@ -35,22 +31,15 @@
 <script>
 export default {
 	name: "UploadImage",
-	mounted() { },
-	computed: {
-		example() {
-			return true
-		}
-	},
 	props: {
-		numbers: Array
+		description: String,
+		imageDimensionMsg: String,
+		acceptTypes: String
 	},
 	data() {
 		return {
 			fileName: ''
 		}
-	},
-	filters: {
-		exampleFilter() { }
 	},
 	methods: {
 		showFileFinder() {
@@ -59,7 +48,6 @@ export default {
 			const input = document.querySelector('input');
 			input.addEventListener('change', (e) => {
 				const [file] = e.target.files;
-				console.log('file', file)
 				this.fileName = file.name
 			})
 		}

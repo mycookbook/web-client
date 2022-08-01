@@ -9,6 +9,7 @@
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column"
 						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
+
 						<DashboardBreadcrumb :active="activeLink" />
 						
 						<div class="ui horizontal divider"></div>
@@ -21,7 +22,7 @@
 									<MyCookbooks />
 								</div>
 								<div v-if="activeLink === 'Recipes'">
-									My recipes
+									<MyRecipes />
 								</div>
 								<div v-if="activeLink === 'Drafts'">
 									No drafts.
@@ -59,6 +60,7 @@ import DashboardBreadcrumb from './DashboardBreadcrumb.vue';
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 import MyCookbooks from './MyCookbooks.vue'
+import MyRecipes from './MyRecipes.vue';
 
 export default {
 	name: "Dashboard",
@@ -70,6 +72,11 @@ export default {
 			return this.$route.query.tab
 		}
 	},
+	data() {
+        return { 
+			uploadMessageDescription: "Upload Cookbook Cover Image"
+		}
+    },
 	components: {
 		Navigation,
 		LeftSideMenu,
@@ -77,7 +84,8 @@ export default {
 		DashboardBreadcrumb,
 		Contact,
 		Bottom,
-		MyCookbooks
+		MyCookbooks,
+		MyRecipes
 	}
 };
 </script>

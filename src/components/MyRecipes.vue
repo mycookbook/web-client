@@ -130,7 +130,7 @@
 import UploadImage from './UploadImage.vue';
 
 export default {
-	name: "MyCookbooks",
+	name: "MyRecipes",
 	mounted() {
 		let username = this.$store.state.active_user.username
 		this.$store.dispatch('fetch_contributor', username)
@@ -147,9 +147,9 @@ export default {
 	data() {
 		return {
 			inEditMode: true,
-			uploadMessageDescription: "Upload Cookbook Cover Image",
-			imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
-			acceptTypes: ".png"
+            uploadMessageDescription: "Upload Recipe Cover Image",
+            imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
+            acceptTypes: ".png"
 		}
 	},
 	components: {
