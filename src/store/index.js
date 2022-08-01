@@ -20,19 +20,19 @@ Vue.use(Vuex);
 Vue.use(VueResource);
 
 export default new Vuex.Store({
-	strict: process.env.NODE_ENV !== 'production',
-	state: () => ({
-		named_urls: {
-			cookbook_resources: process.env.BASE_URL + 'cookbooks',
-			recipe_resources: process.env.BASE_URL + 'recipes',
-			user_resources: process.env.BASE_URL + 'users',
+    strict: process.env.NODE_ENV !== 'production',
+    state: () => ({
+        named_urls: {
+            cookbook_resources: process.env.BASE_URL + 'cookbooks',
+            recipe_resources: process.env.BASE_URL + 'recipes',
+            user_resources: process.env.BASE_URL + 'users',
             definitions: process.env.BASE_URL + 'definitions',
             policies: process.env.BASE_URL + 'policies',
             ipInfo: {
                 uri: 'https://ipinfo.io',
                 token: process.env.IPINFO_TOKEN
             }
-		},
+        },
         resource_isLoading: false,
         policies: {
             cookiePolicy: '',
@@ -62,8 +62,8 @@ export default new Vuex.Store({
         },
         access_token: null,
         active_user: null
-	}),
-	mutations: {
+    }),
+    mutations: {
         STORE_POLICIES(state, policies) {
             state.policies.cookiePolicy = policies.cookiePolicy.content
             state.policies.usagePolicy = policies.usagePolicy.content
@@ -74,20 +74,28 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-            alert(req.code)
             this.state.access_token = req.code
 
             //make a call to or backend api
             //if 200 commit 
             //else set error
 
-            this.state.active_user = {
-                'username': 'mjay',
-                'cookbooks': 20,
-                'recipes': 150
-            }
+            await this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
+                code: req.code
+            }, this.state.api.options)
+                .then(function (response) {
+                    console.log('response', response)
 
-            location.replace('https://web.cookbookshq.com//#/');
+                    this.state.active_user = {
+                        'username': 'mjay',
+                        'cookbooks': 20,
+                        'recipes': 150
+                    }
+        
+                    location.replace('https://web.cookbookshq.com//#/');
+                }).catch(function (error) {
+                    console.log('error', error.response)
+                });
         },
         LOGOUT(state) {
             this.state.access_token = null
@@ -96,7 +104,7 @@ export default new Vuex.Store({
             router.push('/')
         }
     },
-	actions: {
+    actions: {
         async boot(context) {
             await this.state.api.client.all([
                 this.state.api.client.get(this.state.named_urls.definitions, this.state.api.options),
@@ -108,12 +116,12 @@ export default new Vuex.Store({
                 context.commit('STORE_POLICIES', policies.data.response)
 
                 context.commit("SET_LOADING_STATE", false)
-            })).catch(function (error) { 
+            })).catch(function (error) {
                 if (error.response.status === this.state.response.statuses.unauthorized) {
                     context.commit("SET_LOADING_STATE", true)
                     console.log('malformed request, check headers')
                 } else {
-                    console.log('must be a server error') 
+                    console.log('must be a server error')
                 }
                 context.commit("SET_LOADING_STATE", false)
             })
@@ -148,11 +156,11 @@ export default new Vuex.Store({
             return store.policies.usagePolicy
         }
     },
-	modules: {
-		cookbookStore,
-		recipeStore,
-		subscriptionStore,
-		registerStore,
+    modules: {
+        cookbookStore,
+        recipeStore,
+        subscriptionStore,
+        registerStore,
         varietiesStore,
         contributorStore,
         searchStore,
