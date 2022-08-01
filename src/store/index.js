@@ -80,7 +80,7 @@ export default new Vuex.Store({
             //if 200 commit 
             //else set error
 
-            await this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
+            this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
                 code: req.code
             }, this.state.api.options)
                 .then(function (response) {
