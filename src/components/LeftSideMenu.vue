@@ -54,7 +54,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts 0
+                                    Drafts {{ active_user.drafts.length }}
                                 </u>
                             </small>
                         </div>

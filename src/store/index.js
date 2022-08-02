@@ -90,7 +90,33 @@ export default new Vuex.Store({
                     this.state.active_user = {
                         'username': 'mjay',
                         'cookbooks': 20,
-                        'recipes': 150
+                        'recipes': 150,
+                        'drafts': [
+                            {
+                                "id": 1,
+                                "user_id": 1,
+                                "resource_type": "recipe",
+                                "contents": {
+                                    "name": "Draft Recipe 1",
+                                    "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+                                    "description": "draft description",
+                                    "cookbook": {
+                                        "name": "existing cookbook name",
+                                        "slug": "cookbook slug"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 2,
+                                "user_id": 1,
+                                "resource_type": "cookbook",
+                                "contents": {
+                                    "name": "Draft Cookbook 1",
+                                    "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+                                    "description": "draft description"
+                                }
+                            }
+                        ]
                     }
         
                     location.replace('https://web.cookbookshq.com//#/');

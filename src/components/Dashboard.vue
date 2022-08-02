@@ -25,7 +25,7 @@
 									<MyRecipes />
 								</div>
 								<div v-if="activeLink === 'Drafts'">
-									No drafts.
+									<MyDrafts :active_user=active_user />
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
 									My privacy settings
@@ -61,6 +61,7 @@ import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
 import MyCookbooks from './MyCookbooks.vue'
 import MyRecipes from './MyRecipes.vue';
+import MyDrafts from './MyDrafts.vue';
 
 export default {
 	name: "Dashboard",
@@ -85,7 +86,8 @@ export default {
 		Contact,
 		Bottom,
 		MyCookbooks,
-		MyRecipes
+		MyRecipes,
+		MyDrafts
 	}
 };
 </script>

@@ -69,8 +69,14 @@
                 </div>
             </div>
             <div class="ui horizontal divider"></div>
-            <button class="fluid ui tbb button">Save</button>
-
+            <div class="ui grid">
+				<div class="six wide computer column sixteen wide mobile column">
+					<button class="fluid ui black outline button">save as draft</button>
+				</div>
+				<div class="ten wide computer column  sixteen wide mobile column">
+					<button class="fluid ui tbb button">save</button>
+				</div>
+			</div>
         </div>
 
         <div class="ui horizontal divider">

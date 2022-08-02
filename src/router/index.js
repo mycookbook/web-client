@@ -78,6 +78,9 @@ const VueRouter = new Router({
 			path: '/dashboard',
 			name: 'Dashboard',
 			component: Dashboard,
+			props: {
+				default: true,
+			},
 			meta: {
 				middleware: (to, from, next) => {
 					let hasSession = (store.state.access_token);
