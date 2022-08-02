@@ -32,7 +32,7 @@
 										<Claps />
 										<div style="margin-right:1px;"></div>
 
-										<div class="ui tbb button" title="Add a variation for this recipe, make it yours!">
+										<div class="ui tbb disabled button" title="Add a variation for this recipe, make it yours!">
 											<i class="ui plus icon"></i>
 											Add customization
 										</div>
