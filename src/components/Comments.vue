@@ -46,6 +46,11 @@
                 <div class="ui tbb submit disabled button">
                     Post Comment
                 </div>
+                <div>
+                    <small>
+                        You must be logged in to post a comment.
+                    </small>
+                </div>
             </form>
         </div>
     </div>
@@ -61,7 +66,6 @@ export default {
     },
     data() {
         return {
-            title: 'This is an Example component',
             isCollapsed: true
         }
     }
@@ -69,31 +73,6 @@ export default {
 </script>
 
 <style scoped>
-.reaction-icons {
-    margin-top: -15px!important;
-    cursor: pointer;
-    padding: 8px;
-    width: 9%;
-    background-color:#E0E1E2;
-    color: rgba(0,0,0,.6);
-    border-radius: 10px;
-}
-
-.reactions {
-    cursor: pointer;
-    padding: 8px;
-    width: 100%;
-    background-color:#E0E1E2;
-    color: rgba(0,0,0,.6);
-    border-radius: 10px;
-}
-
-.reactions img {
-    width:18px;
-    height:auto;
-    padding-right: 5px;
-}
-
 .chevron {
     cursor: pointer!important;
 }

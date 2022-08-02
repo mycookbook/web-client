@@ -32,7 +32,8 @@
 										<Claps />
 										<div style="margin-right:1px;"></div>
 
-										<div class="ui tbb disabled button" title="Add a variation for this recipe, make it yours!">
+										<div class="ui tbb disabled button"
+											title="Add a variation for this recipe, make it yours!">
 											<i class="ui plus icon"></i>
 											Add customization
 										</div>
@@ -86,7 +87,7 @@ import Follow from './Follow.vue';
 
 export default {
 	mounted() {
-		window.scrollTo(0,0);
+		window.scrollTo(0, 0);
 		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
 		this.$store.dispatch('fetch_recipe', id)
 	},
@@ -97,7 +98,7 @@ export default {
 	computed: {
 		recipe() {
 			let token = this.$store.state.access_token
-		console.log('token', token)
+
 			return this.$store.state.recipe
 		},
 		isLoading() {
