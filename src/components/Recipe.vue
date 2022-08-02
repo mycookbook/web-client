@@ -17,15 +17,16 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
 						<a href="https://www.google.com/search?q=Locust+beans" target="_blank">
-							<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients" :alt="ingredient.name" :title="ingredient.name">
+							<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
+								:alt="ingredient.name" :title="ingredient.name">
 						</a>
 					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
-							<img :src="recipe.imgUrl" />
-
+							<img :src="recipe.imgUrl" :alt="recipe.name" class="zoom"
+								style="position:relative; z-index: 1000!important" />
 							<div class="ui header padded">
 								HOW TO PREPARE
 							</div>
@@ -136,7 +137,7 @@ export default {
 			navigator.clipboard.writeText(ingredients).then(function () {
 				alert('Ingredients copied to your clipboard.');
 			});
-		},
+		}
 	},
 	components: {
 		RecipeCardSkeleton,
@@ -205,5 +206,21 @@ export default {
 .spaced div {
 	padding-top: 4px !important;
 	padding-bottom: 4px !important;
+}
+
+img {
+	cursor: pointer !important;
+}
+
+.zoom {
+	padding: 0px;
+	transition: transform .2s;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.5);
 }
 </style>
