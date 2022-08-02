@@ -122,9 +122,11 @@ export default {
 	},
 	methods: {
 		copyIngredients() {
-			let _link = process.env.APP_URL + '#' + this.$route.fullPath
+			let ingredients = JSON.stringify(this.$store.state.recipe.ingredients)
 
-			navigator.clipboard.writeText(_link).then(function () {
+			// todo: format ingradients to human readable format
+
+			navigator.clipboard.writeText(ingredients).then(function () {
 				alert('Ingredients copied to your clipboard.');
 			});
 		},
