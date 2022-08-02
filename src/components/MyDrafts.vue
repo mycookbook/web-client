@@ -12,7 +12,7 @@
                     <div class="massive content">
                         <a class="header">
                             <small>
-                                {{ draft.contents.name }}
+                                {{ draft.contents.name }} <i class="ui edit icon"></i>
                             </small>
                         </a>
                         <small>
