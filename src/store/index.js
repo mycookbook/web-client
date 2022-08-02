@@ -85,6 +85,7 @@ export default new Vuex.Store({
                         "id": 1,
                         "user_id": 1,
                         "resource_type": "recipe",
+                        "created_at": "Just now",
                         "contents": {
                             "name": "Draft Recipe 1",
                             "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
@@ -99,6 +100,7 @@ export default new Vuex.Store({
                         "id": 2,
                         "user_id": 1,
                         "resource_type": "variety",
+                        "created_at": "Yesterday 17:45 PM",
                         "contents": {
                             "name": "Draft variety 1",
                             "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
@@ -113,6 +115,7 @@ export default new Vuex.Store({
                         "id": 3,
                         "user_id": 1,
                         "resource_type": "cookbook",
+                        "created_at": "2 days ago",
                         "contents": {
                             "name": "Draft Cookbook 1",
                             "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",

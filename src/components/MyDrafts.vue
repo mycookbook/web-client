@@ -12,15 +12,24 @@
                     <div class="ui mini orange label" v-if="draft.resource_type === 'variety'">
                         recipe variety
                     </div>
-                    <div class="massive content">
-                        <a class="header">
-                            <small>
-                                {{ draft.contents.name }} <i class="ui edit icon"></i>
-                            </small>
-                        </a>
+                    <div class="content">
+                        <span>
+                            <a class="header">
+                                <small>
+                                    {{ draft.contents.name }} <i class="ui edit icon"></i>
+                                </small>
+                            </a>
+                        </span>
+                        <span style="float:right!important;cursor:pointer!important;">
+                            <i class="ui trash icon"></i>
+                        </span>
                         <small>
                             {{ draft.contents.description | truncate(85, '...') }}
                         </small>
+                    </div>
+                    <br />
+                    <div class="ui mini label">
+                        <i class="ui clock icon"></i> {{ draft.created_at }}
                     </div>
                 </div>
             </div>
