@@ -35,13 +35,6 @@
 										</div>
 
 										<div style="margin-right:1px;"></div>
-
-										<div class="ui button" title="copy link" @click="copyLink()">
-											<i class="ui linkify icon"></i>
-											Copy link
-										</div>
-
-										<div style="margin-right:1px;"></div>
 										<Claps />
 
 										<div style="margin-right:1px;"></div>
@@ -117,15 +110,6 @@ export default {
 			},
 			recipeComments: []
 		};
-	},
-	methods: {
-		copyLink() {
-			let _link = process.env.APP_URL + this.$route.fullPath
-
-			navigator.clipboard.writeText(_link).then(function () {
-				alert('Link is copied to your clipboard.');
-			});
-		},
 	},
 	components: {
 		RecipeCardSkeleton,

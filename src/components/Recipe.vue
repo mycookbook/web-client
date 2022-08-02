@@ -39,7 +39,7 @@
 
 										<div style="margin-right:1px;"></div>
 
-										<div class="ui tbb button" title="copy link" @click="copyLink()">
+										<div class="ui tbb button" title="copy link" @click="copyIngredients()">
 											<i class="ui linkify icon"></i>
 											Copy ingredients
 										</div>
@@ -121,11 +121,11 @@ export default {
 		};
 	},
 	methods: {
-		copyLink() {
+		copyIngredients() {
 			let _link = process.env.APP_URL + '#' + this.$route.fullPath
 
 			navigator.clipboard.writeText(_link).then(function () {
-				alert('Link is copied to your clipboard.');
+				alert('Ingredients copied to your clipboard.');
 			});
 		},
 	},
