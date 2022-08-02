@@ -88,7 +88,7 @@ export default new Vuex.Store({
                         "contents": {
                             "name": "Draft Recipe 1",
                             "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                            "description": "draft description",
+                            "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
                             "cookbook": {
                                 "name": "existing cookbook name",
                                 "slug": "cookbook slug"
@@ -102,7 +102,7 @@ export default new Vuex.Store({
                         "contents": {
                             "name": "Draft variety 1",
                             "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                            "description": "draft description",
+                            "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
                             "recipe": {
                                 "name": "existing cookbook name",
                                 "slug": "recipe slug or id"
