@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="draft in active_user.drafts">
+        <div v-for="draft in active_user.drafts" v-if="active_user.drafts && active_user.drafts.length > 0">
             <div class="ui list">
                 <div class="item">
                     <div class="ui mini red label" v-if="draft.resource_type === 'cookbook'">
@@ -10,7 +10,7 @@
                         recipe
                     </div>
                     <div class="ui mini orange label" v-if="draft.resource_type === 'variety'">
-                        variety
+                        recipe variety
                     </div>
                     <div class="massive content">
                         <a class="header">
@@ -30,41 +30,25 @@
 </template>
 
 <script>
-import Navigation from './Navigation.vue';
-
 export default {
     name: "MyDrafts",
-    mounted() { },
+    mounted() {
+        window.scrollTo(0, 0);
+    },
     props: {
         active_user: Object
     },
-    computed: {
-        example() {
-            return true
-        }
-    },
-    data() {
-        return {
-            title: 'This is an Example component'
-        }
-    },
     filters: {
-		truncate: function (text, length, suffix) {
-			if (text.length > length) {
-				return text.substring(0, length) + suffix;
-			} else {
-				return text;
-			}
-		},
-	},
-    components: {
-        Navigation
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
     }
 };
 </script>
 
 <style scoped>
-.container {
-    margin-top: 23vh;
-}
 </style>
