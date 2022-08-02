@@ -3,11 +3,14 @@
         <div v-for="draft in active_user.drafts">
             <div class="ui list">
                 <div class="item">
-                    <div class="ui mini red label" v-if="draft.resource_type === 'recipe'">
+                    <div class="ui mini red label" v-if="draft.resource_type === 'cookbook'">
+                        cookbook
+                    </div>
+                    <div class="ui mini purple label" v-if="draft.resource_type === 'recipe'">
                         recipe
                     </div>
-                    <div class="ui mini purple label" v-else>
-                        cookbook
+                    <div class="ui mini orange label" v-if="draft.resource_type === 'variety'">
+                        variety
                     </div>
                     <div class="massive content">
                         <a class="header">
