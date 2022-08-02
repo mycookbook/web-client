@@ -15,11 +15,17 @@
 			<Breadcrumb :active="recipe.cookbook.name + ' < ' + recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
+					<div class="ui mini images">
+						<a href="https://www.google.com/search?q=Locust+beans" target="_blank">
+							<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients" :alt="ingredient.name" :title="ingredient.name">
+						</a>
+					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
 							<img :src="recipe.imgUrl" />
+
 							<div class="ui header padded">
 								HOW TO PREPARE
 							</div>
