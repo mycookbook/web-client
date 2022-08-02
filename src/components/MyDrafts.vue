@@ -16,7 +16,7 @@
                         <span>
                             <a class="header">
                                 <small>
-                                    {{ draft.contents.name }} <i class="ui edit icon"></i>
+                                    <em>{{ draft.contents.name }}</em> <i class="ui edit icon"></i>
                                 </small>
                             </a>
                         </span>
