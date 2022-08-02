@@ -76,53 +76,87 @@ export default new Vuex.Store({
         ATTEMPT_LOGIN(state, req) {
             this.state.access_token = req.code
 
+            this.state.active_user = {
+                'username': 'mjay',
+                'cookbooks': 20,
+                'recipes': 150,
+                'drafts': [
+                    {
+                        "id": 1,
+                        "user_id": 1,
+                        "resource_type": "recipe",
+                        "contents": {
+                            "name": "Draft Recipe 1",
+                            "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+                            "description": "draft description",
+                            "cookbook": {
+                                "name": "existing cookbook name",
+                                "slug": "cookbook slug"
+                            }
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "user_id": 1,
+                        "resource_type": "cookbook",
+                        "contents": {
+                            "name": "Draft Cookbook 1",
+                            "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+                            "description": "draft description. This can be a long description. it will be truncated anyway."
+                        }
+                    }
+                ]
+            }
+
+            location.replace('https://web.cookbookshq.com//#/');
+
             //make a call to or backend api
             //if 200 commit 
             //else set error
 
-            this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
-                code: req.code
-            }, this.state.api.options)
-                .then(function (response) {
-                    alert(JSON.stringify(response))
-                    console.log('response', response)
+            // this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
+            //     code: req.code
+            // }, this.state.api.options)
+            //     .then(function (response) {
+            //         alert(JSON.stringify(response))
+            //         console.log('response', response)
 
-                    this.state.active_user = {
-                        'username': 'mjay',
-                        'cookbooks': 20,
-                        'recipes': 150,
-                        'drafts': [
-                            {
-                                "id": 1,
-                                "user_id": 1,
-                                "resource_type": "recipe",
-                                "contents": {
-                                    "name": "Draft Recipe 1",
-                                    "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                                    "description": "draft description",
-                                    "cookbook": {
-                                        "name": "existing cookbook name",
-                                        "slug": "cookbook slug"
-                                    }
-                                }
-                            },
-                            {
-                                "id": 2,
-                                "user_id": 1,
-                                "resource_type": "cookbook",
-                                "contents": {
-                                    "name": "Draft Cookbook 1",
-                                    "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                                    "description": "draft description"
-                                }
-                            }
-                        ]
-                    }
+            //         this.state.active_user = {
+            //             'username': 'mjay',
+            //             'cookbooks': 20,
+            //             'recipes': 150,
+            //             'drafts': [
+            //                 {
+            //                     "id": 1,
+            //                     "user_id": 1,
+            //                     "resource_type": "recipe",
+            //                     "contents": {
+            //                         "name": "Draft Recipe 1",
+            //                         "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+            //                         "description": "draft description",
+            //                         "cookbook": {
+            //                             "name": "existing cookbook name",
+            //                             "slug": "cookbook slug"
+            //                         }
+            //                     }
+            //                 },
+            //                 {
+            //                     "id": 2,
+            //                     "user_id": 1,
+            //                     "resource_type": "cookbook",
+            //                     "contents": {
+            //                         "name": "Draft Cookbook 1",
+            //                         "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+            //                         "description": "draft description"
+            //                     }
+            //                 }
+            //             ]
+            //         }
         
-                    location.replace('https://web.cookbookshq.com//#/');
-                }).catch(function (error) {
-                    console.log('error', error.response)
-                });
+            //         location.replace('https://web.cookbookshq.com//#/');
+            //     }).catch(function (error) {
+            //         console.log('error', error.response)
+            //     });
         },
         LOGOUT(state) {
             this.state.access_token = null
