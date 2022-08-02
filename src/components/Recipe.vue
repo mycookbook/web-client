@@ -28,7 +28,15 @@
 							<img :src="recipe.imgUrl" :alt="recipe.name" class="zoom"
 								style="position:relative; z-index: 1000!important" />
 							<div class="ui header padded">
-								HOW TO PREPARE
+								<span>
+									HOW TO PREPARE
+								</span>
+								<span style="float:right;cursor: pointer!important;">
+									<i class="ui small play circle green icon"></i>
+										<span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
+											Listen
+										</span>
+								</span>
 							</div>
 							<div v-html="recipe.description" class="ui left aligned text"></div>
 						</div>
@@ -208,11 +216,9 @@ export default {
 	padding-bottom: 4px !important;
 }
 
-.zoom {
+/* .zoom {
 	padding: 0px;
 	transition: transform .2s;
-	width: 200px;
-	height: 200px;
 	margin: 0 auto;
 	cursor: zoom-in;
 }
@@ -220,5 +226,5 @@ export default {
 .zoom:hover {
 	transform: scale(1.3);
 	transition-duration: 1s, 1s;
-}
+} */
 </style>
