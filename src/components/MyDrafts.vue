@@ -3,17 +3,21 @@
         <div v-for="draft in active_user.drafts">
             <div class="ui list">
                 <div class="item">
-                    <div class="ui tiny red label" v-if="draft.resource_type === 'recipe'">
+                    <div class="ui mini red label" v-if="draft.resource_type === 'recipe'">
                         recipe
                     </div>
-                    <div class="ui tiny purple label" v-else>
+                    <div class="ui mini purple label" v-else>
                         cookbook
                     </div>
-                    <div class="content">
+                    <div class="massive content">
                         <a class="header">
-                            {{ draft.contents.name }}
+                            <small>
+                                {{ draft.contents.name }}
+                            </small>
                         </a>
-                        {{ draft.contents.description | truncate(85, '...') }}
+                        <small>
+                            {{ draft.contents.description | truncate(85, '...') }}
+                        </small>
                     </div>
                 </div>
             </div>
