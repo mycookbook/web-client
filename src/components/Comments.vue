@@ -29,10 +29,10 @@
                         <div class="text">
                             <p>
                                 {{ comment.comment }}
-                                <span class="ui icons reaction-icons">
-                                    <!-- <i class="ui red heart icon"></i> -->
+                                <!-- <span class="ui icons reaction-icons">
+                                    <i class="ui red heart icon"></i>
                                     <i class="ui tiny plus icon" style="margin-left:-8px;"></i>
-                                </span>
+                                </span> -->
                             </p>
                         </div>
                     </div>
