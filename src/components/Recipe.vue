@@ -208,20 +208,17 @@ export default {
 	padding-bottom: 4px !important;
 }
 
-img {
-	cursor: pointer !important;
-}
-
 .zoom {
 	padding: 0px;
 	transition: transform .2s;
 	width: 200px;
 	height: 200px;
 	margin: 0 auto;
+	cursor: zoom-in;
 }
 
 .zoom:hover {
 	transform: scale(1.3);
-	transition-duration: 2s;
+	transition-duration: 1s, 1s;
 }
 </style>
