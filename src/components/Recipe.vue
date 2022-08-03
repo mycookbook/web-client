@@ -33,7 +33,7 @@
 								</span>
 								<span style="float:right;cursor: pointer!important;"
 									@click="textToSpeech(recipe.description)">
-									<i class="ui small play circle green icon"></i>
+									<i class="ui small play circle green icon" id="t2sIcon"></i>
 									<span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
 										Listen
 									</span>
@@ -148,11 +148,18 @@ export default {
 			});
 		},
 		textToSpeech(description) {
-			let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
+			$("#t2sIcon").removeClass("play")
+			$("#t2sIcon").addClass("pause")
+
+			// let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
+			let cleanText = "I'm still a Work In Progress!"
+			// console.log(typeof cleanText)
 
 			const msg = new SpeechSynthesisUtterance();
 			msg.text = cleanText;
 			window.speechSynthesis.speak(msg); 
+			// $("#t2sIcon").removeClass("pause")
+			// $("#t2sIcon").addClass("play")
 		}
 	},
 	components: {
