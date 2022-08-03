@@ -31,11 +31,12 @@
 								<span>
 									HOW TO PREPARE
 								</span>
-								<span style="float:right;cursor: pointer!important;">
+								<span style="float:right;cursor: pointer!important;"
+									@click="textToSpeech(recipe.description)">
 									<i class="ui small play circle green icon"></i>
-										<span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
-											Listen
-										</span>
+									<span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
+										Listen
+									</span>
 								</span>
 							</div>
 							<div v-html="recipe.description" class="ui left aligned text"></div>
@@ -145,6 +146,13 @@ export default {
 			navigator.clipboard.writeText(ingredients).then(function () {
 				alert('Ingredients copied to your clipboard.');
 			});
+		},
+		textToSpeech(description) {
+			let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
+
+			const msg = new SpeechSynthesisUtterance();
+			msg.text = cleanText;
+			window.speechSynthesis.speak(msg); 
 		}
 	},
 	components: {
