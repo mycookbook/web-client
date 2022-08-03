@@ -133,9 +133,15 @@ export default new Vuex.Store({
             //if 200 commit 
             //else set error
 
-            this.state.api.client.post('https://open-api.tiktok.com/oauth/access_token/', {
-                code: 'bPauvp6wDcJ0Vv1IBhhsGvn96ZUK3tHL4X8ZYqo5I72N3OS1wAqisWk-Jpzr1zzkpVBTC6YwDvJtpejnwa3FAs6PBY6WeT0bXpMNusfXk_E%2a2%214623&scopes=user.info.basic,video.list&state=ficndb24cdp#/'
-            }).then(function (response) {
+            uri_params = {
+                'client_key': 'awzqdaho7oawcchp',
+                'client_secret': '5376fb91489d66bd64072222b454740a',
+                'code': req.code,
+                'grant_type': 'authorization_code'
+            }
+
+            this.state.api.client.post('https://open-api.tiktok.com/oauth/access_token/', uri_params)
+            .then(function (response) {
                     alert(JSON.stringify(response))
                     console.log('response', response)
                 }).catch(function (error) {
