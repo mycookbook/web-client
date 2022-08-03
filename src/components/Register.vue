@@ -102,11 +102,7 @@ export default {
                 url.searchParams.set(param, uri_params[param])
             }
 
-            // window.location.href = url;
-            this.$store.dispatch('attempt_login', {
-                code: 'testcode',
-                platform: 'tiktok'
-            })
+            window.location.href = url;
         }
     },
      components: {
