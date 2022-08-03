@@ -75,7 +75,7 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-
+            alert('here')
             // this.state.access_token = req.code
 
             // this.state.active_user = {
@@ -133,26 +133,16 @@ export default new Vuex.Store({
             //if 200 commit 
             //else set error
 
-            let url_access_token = 'https://open-api.tiktok.com/oauth/access_token/';
+            this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
+                code: req.code
+            }, this.state.api.options)
+                .then(function (response) {
+                    
+                    console.log('response', response)
 
-            url_access_token += '?client_key=awzqdaho7oawcchp';
-            url_access_token += '&client_secret=5376fb91489d66bd64072222b454740a';
-            url_access_token += '&code=' + req.code;
-            url_access_token += '&grant_type=authorization_code';
-
-            let headers = new Headers();
-
-            headers.append('Access-Control-Allow-Origin', '*');
-
-            fetch(url_access_token, {
-                method: 'post', mode: 'cors',
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                }
-            })
-                .then(res => res.json())
-                .then(json => {
-                    res.send(json);
+                    // location.replace('https://web.cookbookshq.com//#/');
+                }).catch(function (error) {
+                    console.log('error', error.response)
                 });
         },
         LOGOUT(state) {
