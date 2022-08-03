@@ -25,8 +25,7 @@
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
-							<img :src="recipe.imgUrl" :alt="recipe.name" class="zoom"
-								style="position:relative; z-index: 1000!important" />
+							<img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
 							<div class="ui header padded">
 								<span>
 									HOW TO PREPARE
