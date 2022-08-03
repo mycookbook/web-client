@@ -61,7 +61,8 @@ export default new Vuex.Store({
             }
         },
         access_token: null,
-        active_user: null
+        active_user: null,
+        contributor: {}
     }),
     mutations: {
         STORE_POLICIES(state, policies) {

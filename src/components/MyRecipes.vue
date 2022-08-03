@@ -30,10 +30,10 @@
                             How to prepare (required*)
                         </span>
                         <span style="float:right!important;">
-							<a href="/#/examples">
-								Examples
-							</a>
-						</span>
+                            <a href="/#/examples">
+                                Examples
+                            </a>
+                        </span>
                     </label>
                     <textarea
                         placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!"></textarea>
@@ -70,13 +70,13 @@
             </div>
             <div class="ui horizontal divider"></div>
             <div class="ui grid">
-				<div class="six wide computer column sixteen wide mobile column">
-					<button class="fluid ui black outline button">save as draft</button>
-				</div>
-				<div class="ten wide computer column  sixteen wide mobile column">
-					<button class="fluid ui tbb button">save</button>
-				</div>
-			</div>
+                <div class="six wide computer column sixteen wide mobile column">
+                    <button class="fluid ui black outline button">save as draft</button>
+                </div>
+                <div class="ten wide computer column  sixteen wide mobile column">
+                    <button class="fluid ui tbb button">save</button>
+                </div>
+            </div>
         </div>
 
         <div class="ui horizontal divider">
@@ -85,37 +85,34 @@
 
         <div>
             <div class="cookbooks-showing">
-                cookbooks > showing 1 - 100 of 20 results
+                recipes > showing 1 - 100 of 20 results
             </div>
             <div class="ui horizontal divider"></div>
             <div>
                 <div class="ui items">
-                    <div class="item" v-for="cookbook in _myCookbooks">
+                    <div class="item" v-for="recipe in _myRecipes">
                         <div class="ui tiny image">
-                            <img :src="cookbook.bookCoverImg">
+                            <img :src="recipe.imgUrl">
                         </div>
                         <div class="content">
                             <a class="header" href="">
                                 <small>
                                     <span>
-                                        <router-link :to="{ name: 'Recipe', params: { slug: cookbook.slug } }">
-                                            {{ cookbook.name }}
+                                        <router-link :to="{ name: 'Recipe', params: { slug: recipe.slug } }">
+                                            {{ recipe.name }}
                                         </router-link>
                                     </span>
                                 </small>
                             </a>
                             <span style="float:right!important; font-size: 16px;">
-                                <router-link :to="{ name: 'EditRecipe', params: { slug: cookbook.slug } }">
+                                <router-link :to="{ name: 'EditRecipe', params: { slug: recipe.slug } }">
                                     edit
                                 </router-link>
                             </span>
                             <div class="meta">
                                 <span>
-                                    {{ cookbook.description | truncate(115, '...') }}
+                                    {{ recipe.summary | truncate(115, '...') }}
                                 </span>
-                            </div>
-                            <div class="description">
-                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -139,8 +136,8 @@ export default {
             let cs = this.$store.state.cookbookStore.definitions.categories.contents
             return JSON.parse(cs)
         },
-        _myCookbooks() {
-            return this.$store.state.cookbookStore.cookbooks
+        _myRecipes() {
+            return this.$store.state.contributor.recipes
         }
     },
     data() {
