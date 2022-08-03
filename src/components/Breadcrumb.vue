@@ -20,7 +20,7 @@
                         }">
                             {{ active }}
                         </router-link>
-                        <i class="ui angle left icon"></i> {{ child }}
+                        <i class="left chevron icon divider"></i> {{ child }}
                         </div>
                     </div>
                 </div>
