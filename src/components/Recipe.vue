@@ -136,11 +136,21 @@ export default {
 	},
 	methods: {
 		copyIngredients() {
-			let ingredients = JSON.stringify(this.$store.state.recipe.ingredients)
+			const recipe = this.$store.state.recipe
 
-			// todo: format ingradients to human readable format
+			let ingredients = JSON.stringify(recipe.ingredients)
+			let ingredientsList = ""
 
-			navigator.clipboard.writeText(ingredients).then(function () {
+			let line1 = "Ingredients list for " + recipe.name + "\n\n";
+			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
+
+			for(let i=0;i<recipe.ingredients.length;i++) {
+				ingredientsList += "- " + recipe.ingredients[i].name + "\n"
+			}
+
+			let message = line1 + ingredientsList + lastLine
+
+			navigator.clipboard.writeText(message).then(function () {
 				alert('Ingredients copied to your clipboard.');
 			});
 		},
