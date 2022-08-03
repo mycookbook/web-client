@@ -12,7 +12,7 @@
 			</div> -->
 			<br /><br /><br />
 			<!-- <br /><br /> -->
-			<Breadcrumb :active="recipe.cookbook.name + ' < ' + recipe.name" />
+			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'" :parentSlug="recipe.cookbook.slug" :child="recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">

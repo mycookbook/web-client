@@ -10,46 +10,47 @@
                         public profile
                     </div>
                     <div class="active section" v-else>
-                        {{ activeLink }}
+                        <div v-if="isCookbookRoute()">
+                            {{ active}}
+                        </div>
+                        <div v-else>
+                            <router-link :to="{
+                            name: parentComponentName,
+                            params: { slug: parentSlug }
+                        }">
+                            {{ active }}
+                        </router-link>
+                        <i class="ui angle left icon"></i> {{ child }}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div
-            class="six wide computer column six wide mobile column six wide tablet column six wide large screen column">
-            <div class="ui right floated medium tbb button" v-if="activeLink === 'My Dashboard'" :class="{ disabled: !isLoggedIn }">
-                <i class="ui white bell icon"></i> Follow
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Navigation from './Navigation.vue';
 
 export default {
     name: "Breadcrumb",
     props: {
-        active: String
+        active: String,
+        parentSlug: String,
+        parentComponentName: String,
+        child: String
     },
     computed: {
         activeLink() {
             return this.active
         },
         isLoggedIn() {
-			return (this.$store.state.access_token);
-		}
-    },
-    data() {
-        return {
-            title: 'This is an Example component'
+            return (this.$store.state.access_token);
         }
     },
-    filters: {
-        exampleFilter() { }
-    },
-    components: {
-        Navigation
+    methods: {
+        isCookbookRoute() {
+            return (this.$route.name === 'Cookbook')
+        }
     }
 };
 </script>
