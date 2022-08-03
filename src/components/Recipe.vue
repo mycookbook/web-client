@@ -16,10 +16,8 @@
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
-						<a href="https://www.google.com/search?q=Locust+beans" target="_blank">
-							<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
-								:alt="ingredient.name" :title="ingredient.name">
-						</a>
+						<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
+								:alt="ingredient.name" :title="ingredient.name" style="cursor:pointer" @click="ingredientLink(ingredient.name)">
 					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
@@ -159,6 +157,11 @@ export default {
 			window.speechSynthesis.speak(msg); 
 			// $("#t2sIcon").removeClass("pause")
 			// $("#t2sIcon").addClass("play")
+		},
+		ingredientLink(str) {
+			const google_search_url = "https://www.google.com/search?q=" + str;
+			
+			window.open(google_search_url, '_blank').focus();
 		}
 	},
 	components: {
