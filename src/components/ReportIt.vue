@@ -49,7 +49,15 @@
 				</div>
 				<br /><br />
 				<div>
-					<b>Our conflict resolution team will reach out to you if need be within 10-28 business days.</b>
+					<label for="verificationcode">We sent you a code</label>
+					<br />
+					<input type="text" name="verificationcode">
+				</div>
+				<br /><br />
+				<div>
+					<div class="ui label">
+						Our conflict resolution/hygiene team will reach out to you if need be, within 10-28 business days.
+					</div>
 				</div>
 				<hr />
 				<div class="ui tbb button">
