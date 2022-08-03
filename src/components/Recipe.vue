@@ -17,7 +17,7 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
 						<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
-								:alt="ingredient.name" :title="ingredient.name" style="cursor:pointer" @click="ingredientLink(ingredient)">
+								:alt="ingredient.name" :title="ingredient.name" style="cursor:zoom-in" @click="ingredientLink(ingredient)">
 					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
