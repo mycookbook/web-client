@@ -133,13 +133,6 @@ export default new Vuex.Store({
             //if 200 commit 
             //else set error
 
-            uri_params = {
-                'client_key': 'awzqdaho7oawcchp',
-                'client_secret': '5376fb91489d66bd64072222b454740a',
-                'code': req.code,
-                'grant_type': 'authorization_code'
-            }
-
             let url_access_token = 'https://open-api.tiktok.com/oauth/access_token/';
             
             url_access_token += '?client_key=awzqdaho7oawcchp';
