@@ -164,8 +164,8 @@ export default {
 			const msg = new SpeechSynthesisUtterance();
 			msg.text = cleanText;
 			window.speechSynthesis.speak(msg);
-			window.speechSynthesis.addEventListener('voiceschanged', (event) => { })
-			onvoiceschanged = (event) => { }
+			// window.speechSynthesis.addEventListener('voiceschanged', (event) => { })
+			// onvoiceschanged = (event) => { }
 
 			// $("#t2sIcon").removeClass("pause")
 			// $("#t2sIcon").addClass("play")
