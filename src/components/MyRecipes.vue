@@ -85,7 +85,7 @@
 
         <div>
             <div v-if="_myRecipes.length < 1">
-				<em>No data.</em>
+				<em>You have no recipes.</em>
 			</div>
 			<div v-else>
                 <div class="ui items">

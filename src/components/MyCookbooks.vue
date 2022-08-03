@@ -93,7 +93,7 @@
 		<div>
 			<div class="ui horizontal divider"></div>
 			<div v-if="_myCookbooks.length < 1">
-				<em>No data.</em>
+				<em>You have no cookbooks.</em>
 			</div>
 			<div v-else>
 				<div class="ui items">
