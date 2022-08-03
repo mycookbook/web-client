@@ -144,7 +144,12 @@ export default new Vuex.Store({
 
             headers.append('Access-Control-Allow-Origin', '*');
 
-            fetch(url_access_token, { method: 'post', headers: headers })
+            fetch(url_access_token, {
+                method: 'post', mode: 'cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
                 .then(res => res.json())
                 .then(json => {
                     res.send(json);
