@@ -75,7 +75,7 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-            alert('here')
+            
             // this.state.access_token = req.code
 
             // this.state.active_user = {
@@ -137,7 +137,7 @@ export default new Vuex.Store({
                 code: req.code
             }, this.state.api.options)
                 .then(function (response) {
-                    
+
                     console.log('response', response)
 
                     // location.replace('https://web.cookbookshq.com//#/');
