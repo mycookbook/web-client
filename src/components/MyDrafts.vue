@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="_myDrafts.length < 1">
-            You have no drafts.
+            <em>You have no drafts.</em>
         </div>
         <div v-else>
             <div v-for="draft in _myDrafts">

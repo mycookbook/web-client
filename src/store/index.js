@@ -75,106 +75,72 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-            this.state.access_token = req.code
+         
+            // this.state.access_token = req.code
 
-            this.state.active_user = {
-                'username': 'mjay',
-                'cookbooks': 20,
-                'recipes': 150,
-                'drafts': [
-                    {
-                        "id": 1,
-                        "user_id": 1,
-                        "resource_type": "recipe",
-                        "created_at": "Just now",
-                        "contents": {
-                            "name": "Draft Recipe 1",
-                            "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                            "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
-                            "cookbook": {
-                                "name": "existing cookbook name",
-                                "slug": "cookbook slug"
-                            }
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "user_id": 1,
-                        "resource_type": "variety",
-                        "created_at": "Yesterday 17:45 PM",
-                        "contents": {
-                            "name": "Draft variety 1",
-                            "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                            "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
-                            "recipe": {
-                                "name": "existing cookbook name",
-                                "slug": "recipe slug or id"
-                            }
-                        }
-                    },
-                    {
-                        "id": 3,
-                        "user_id": 1,
-                        "resource_type": "cookbook",
-                        "created_at": "2 days ago",
-                        "contents": {
-                            "name": "Draft Cookbook 1",
-                            "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-                            "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated."
-                        }
-                    }
-                ]
-            }
+            // this.state.active_user = {
+            //     'username': 'mjay',
+            //     'cookbooks': 20,
+            //     'recipes': 150,
+            //     'drafts': [
+            //         {
+            //             "id": 1,
+            //             "user_id": 1,
+            //             "resource_type": "recipe",
+            //             "created_at": "Just now",
+            //             "contents": {
+            //                 "name": "Draft Recipe 1",
+            //                 "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+            //                 "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
+            //                 "cookbook": {
+            //                     "name": "existing cookbook name",
+            //                     "slug": "cookbook slug"
+            //                 }
+            //             }
+            //         },
+            //         {
+            //             "id": 2,
+            //             "user_id": 1,
+            //             "resource_type": "variety",
+            //             "created_at": "Yesterday 17:45 PM",
+            //             "contents": {
+            //                 "name": "Draft variety 1",
+            //                 "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+            //                 "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated.",
+            //                 "recipe": {
+            //                     "name": "existing cookbook name",
+            //                     "slug": "recipe slug or id"
+            //                 }
+            //             }
+            //         },
+            //         {
+            //             "id": 3,
+            //             "user_id": 1,
+            //             "resource_type": "cookbook",
+            //             "created_at": "2 days ago",
+            //             "contents": {
+            //                 "name": "Draft Cookbook 1",
+            //                 "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
+            //                 "description": "draft description. This can be a long description. it will be truncated anyway. What did I just say? Yes it can be a very long description and it will be truncated."
+            //             }
+            //         }
+            //     ]
+            // }
 
-            location.replace('https://web.cookbookshq.com//#/');
+            // location.replace('https://web.cookbookshq.com//#/');
 
             //make a call to or backend api
             //if 200 commit 
             //else set error
 
-            // this.state.api.client.post(process.env.BASE_URL + 'auth/tiktok', {
-            //     code: req.code
-            // }, this.state.api.options)
-            //     .then(function (response) {
-            //         alert(JSON.stringify(response))
-            //         console.log('response', response)
-
-            //         this.state.active_user = {
-            //             'username': 'mjay',
-            //             'cookbooks': 20,
-            //             'recipes': 150,
-            //             'drafts': [
-            //                 {
-            //                     "id": 1,
-            //                     "user_id": 1,
-            //                     "resource_type": "recipe",
-            //                     "contents": {
-            //                         "name": "Draft Recipe 1",
-            //                         "imgUrl": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-            //                         "description": "draft description",
-            //                         "cookbook": {
-            //                             "name": "existing cookbook name",
-            //                             "slug": "cookbook slug"
-            //                         }
-            //                     }
-            //                 },
-            //                 {
-            //                     "id": 2,
-            //                     "user_id": 1,
-            //                     "resource_type": "cookbook",
-            //                     "contents": {
-            //                         "name": "Draft Cookbook 1",
-            //                         "bookCoverImg": "https://cookbookshq.s3.us-east-2.amazonaws.com/87056075-7837-4a2a-90ad-6ac6d28f92c8.JPG",
-            //                         "description": "draft description"
-            //                     }
-            //                 }
-            //             ]
-            //         }
-        
-            //         location.replace('https://web.cookbookshq.com//#/');
-            //     }).catch(function (error) {
-            //         console.log('error', error.response)
-            //     });
+            this.state.api.client.post('https://open-api.tiktok.com/oauth/access_token/', {
+                code: 'bPauvp6wDcJ0Vv1IBhhsGvn96ZUK3tHL4X8ZYqo5I72N3OS1wAqisWk-Jpzr1zzkpVBTC6YwDvJtpejnwa3FAs6PBY6WeT0bXpMNusfXk_E%2a2%214623&scopes=user.info.basic,video.list&state=ficndb24cdp#/'
+            }).then(function (response) {
+                    alert(JSON.stringify(response))
+                    console.log('response', response)
+                }).catch(function (error) {
+                    console.log('error', error.response)
+                });
         },
         LOGOUT(state) {
             this.state.access_token = null
