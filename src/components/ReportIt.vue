@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="ui red button" :title="title" @click="ReportIt()">
+		<div class="ui red fluid mini button" :title="title" @click="ReportIt()">
 			<i class="ui bug icon"></i>
 			Report it
 		</div>

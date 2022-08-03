@@ -1,7 +1,11 @@
 <template>
-	<div class="ui tbb button" title="clap for this recipe" @click="addClap()" :class="{ 'disabled': hasReachedMaximumAllowedThreshold }">
-		<i class="ui heart icon"></i>
-		{{ totalCount | numberFormatter }} Claps
+	<div class="ui tbb fluid mini button" title="claps" @click="addClap()" :class="{ 'disabled': hasReachedMaximumAllowedThreshold }">
+		<span>
+			<i class="ui heart icon"></i>
+		</span>
+		<span>
+			{{ totalCount | numberFormatter }} Claps
+		</span>
 	</div>
 </template>
 
@@ -20,12 +24,6 @@ export default {
 		hasReachedMaximumAllowedThreshold() {
 			return (this.$store.state.recipeStore.hasClapped >= this.$store.state.recipeStore.maxAllowedClaps)
 		}
-	},
-	props: {
-		numbers: Array
-	},
-	data() {
-		return {}
 	},
 	methods: {
 		addClap() {

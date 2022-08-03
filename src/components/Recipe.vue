@@ -17,7 +17,8 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
 						<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
-								:alt="ingredient.name" :title="ingredient.name" style="cursor:zoom-in" @click="ingredientLink(ingredient)">
+							:alt="ingredient.name" :title="ingredient.name" style="cursor:zoom-in"
+							@click="ingredientLink(ingredient)">
 					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
@@ -40,27 +41,25 @@
 						</div>
 						<div class="eight wide computer column sixteen wide mobile column">
 							<div class="ui grid">
-								<div class="sixteen wide computer column sixteen wide mobile column">
-									<div class="ui mini buttons">
-										<Claps />
-										<div style="margin-right:1px;"></div>
-
-										<div class="ui tbb disabled button"
-											title="Add a variation for this recipe, make it yours!">
-											<i class="ui plus icon"></i>
-											Add customization
-										</div>
-
-										<div style="margin-right:1px;"></div>
-
-										<div class="ui tbb button" title="copy link" @click="copyIngredients()">
-											<i class="ui linkify icon"></i>
-											Copy ingredients
-										</div>
-
-										<div style="margin-right:1px;"></div>
-										<ReportIt />
+								<div class="four wide computer column sixteen wide mobile column">
+									<Claps />
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<div class="ui tbb disabled fluid mini button"
+										title="Add a variation for this recipe, make it yours!">
+										<i class="ui plus icon"></i>
+										Customize
 									</div>
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<div class="ui tbb fluid mini button" title="copy ingredients"
+										@click="copyIngredients()">
+										<i class="ui linkify icon"></i>
+										Ingredients
+									</div>
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<ReportIt />
 								</div>
 							</div>
 							<div class="ui grid">
@@ -144,7 +143,7 @@ export default {
 			let line1 = "Ingredients list for " + recipe.name + "\n\n";
 			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
 
-			for(let i=0;i<recipe.ingredients.length;i++) {
+			for (let i = 0; i < recipe.ingredients.length; i++) {
 				ingredientsList += "- " + recipe.ingredients[i].name + "\n"
 			}
 
@@ -160,11 +159,14 @@ export default {
 
 			// let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
 			let cleanText = "I'm still a Work In Progress!"
-			// console.log(typeof cleanText)
+			// console.log(typeof cleanText)22
 
 			const msg = new SpeechSynthesisUtterance();
 			msg.text = cleanText;
-			window.speechSynthesis.speak(msg); 
+			window.speechSynthesis.speak(msg);
+			window.speechSynthesis.addEventListener('voiceschanged', (event) => { })
+			onvoiceschanged = (event) => { }
+
 			// $("#t2sIcon").removeClass("pause")
 			// $("#t2sIcon").addClass("play")
 		},
@@ -177,7 +179,7 @@ export default {
 			} else {
 				url = google_search_url
 			}
-			
+
 			window.open(url, '_blank').focus();
 		}
 	},
@@ -202,31 +204,6 @@ export default {
 	margin-top: 23vh;
 }
 
-.breadcrumb .section {
-	text-transform: uppercase;
-	margin-bottom: 15px;
-	font-size: smaller !important;
-}
-
-.main-content {
-	margin-top: 18vh;
-}
-
-.transformToCapitalize {
-	text-transform: capitalize;
-}
-
-.img-container {
-	margin-top: 2%;
-	position: relative;
-	width: 100%;
-}
-
-.img-container img {
-	width: 100%;
-	height: auto;
-}
-
 .img-container .button {
 	position: absolute;
 	top: 50%;
@@ -235,30 +212,8 @@ export default {
 	-ms-transform: translate(-50%, -50%);
 }
 
-.description-contents {
-	overflow-x: auto !important;
-	overflow-y: hidden !important;
-}
-
 .padded {
 	padding-top: 30px;
 	padding-bottom: 5px;
 }
-
-.spaced div {
-	padding-top: 4px !important;
-	padding-bottom: 4px !important;
-}
-
-/* .zoom {
-	padding: 0px;
-	transition: transform .2s;
-	margin: 0 auto;
-	cursor: zoom-in;
-}
-
-.zoom:hover {
-	transform: scale(1.3);
-	transition-duration: 1s, 1s;
-} */
 </style>
