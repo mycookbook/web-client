@@ -17,7 +17,7 @@
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
 						<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
-								:alt="ingredient.name" :title="ingredient.name" style="cursor:pointer" @click="ingredientLink(ingredient.name)">
+								:alt="ingredient.name" :title="ingredient.name" style="cursor:pointer" @click="ingredientLink(ingredient)">
 					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
@@ -158,10 +158,17 @@ export default {
 			// $("#t2sIcon").removeClass("pause")
 			// $("#t2sIcon").addClass("play")
 		},
-		ingredientLink(str) {
-			const google_search_url = "https://www.google.com/search?q=" + str;
+		ingredientLink(ingredient) {
+			let url = ""
+			let google_search_url = "https://www.google.com/search?q=" + ingredient.name;
+
+			if (ingredient.purchaseLink) {
+				url = ingredient.purchaseLink
+			} else {
+				url = google_search_url
+			}
 			
-			window.open(google_search_url, '_blank').focus();
+			window.open(url, '_blank').focus();
 		}
 	},
 	components: {
