@@ -22,7 +22,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Cookbooks {{ active_user.cookbooks }}
+                                    Cookbooks {{ _contributor.cookbooks.length }}
                                 </u>
                             </small>
                         </div>
@@ -38,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Recipes {{ active_user.recipes }}
+                                    Recipes {{ _contributor.recipes.length }}
                                 </u>
                             </small>
                         </div>
@@ -54,7 +54,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ active_user.drafts.length }}
+                                    Drafts {{ _contributor.drafts.length }}
                                 </u>
                             </small>
                         </div>
@@ -81,7 +81,7 @@
                         query: { tab: 'Notifications' }
                     }">
                         <div>
-                            <small><i class="ui bell icon"></i> Notifications 10</small>
+                            <small><i class="ui bell icon"></i> Notifications 0</small>
                         </div>
                     </router-link>
                 </div>
@@ -129,6 +129,11 @@ export default {
     name: "LeftSideMenu",
     props: {
         active_user: Object
+    },
+    computed: {
+        _contributor() {
+            return this.$store.state.contributor
+        }
     },
     data() {
         return { }

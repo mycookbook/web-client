@@ -12,7 +12,8 @@
 
 		<div id="cookbook-editor">
 			<div>
-				<UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg" :acceptTypes="acceptTypes" />
+				<UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
+					:acceptTypes="acceptTypes" />
 			</div>
 			<div class="ui horizontal divider"></div>
 			<div class="ui form">
@@ -90,11 +91,11 @@
 		</div>
 
 		<div>
-			<div class="cookbooks-showing">
-				cookbooks > showing 1 - 100 of 20 results
-			</div>
 			<div class="ui horizontal divider"></div>
-			<div>
+			<div v-if="_myCookbooks.length < 1">
+				<em>No data.</em>
+			</div>
+			<div v-else>
 				<div class="ui items">
 					<div class="item" v-for="cookbook in _myCookbooks">
 						<div class="ui tiny image">
@@ -141,7 +142,7 @@ export default {
 	name: "MyCookbooks",
 	mounted() {
 		let username = this.$store.state.active_user.username
-		
+
 		this.$store.dispatch('fetch_contributor', username)
 	},
 	computed: {
@@ -201,9 +202,5 @@ export default {
 
 .hide {
 	display: none !important;
-}
-
-.cookbooks-showing {
-	color: grey;
 }
 </style>

@@ -84,11 +84,10 @@
         </div>
 
         <div>
-            <div class="cookbooks-showing">
-                recipes > showing 1 - 100 of 20 results
-            </div>
-            <div class="ui horizontal divider"></div>
-            <div>
+            <div v-if="_myRecipes.length < 1">
+				<em>No data.</em>
+			</div>
+			<div v-else>
                 <div class="ui items">
                     <div class="item" v-for="recipe in _myRecipes">
                         <div class="ui tiny image">
@@ -188,9 +187,5 @@ export default {
 
 .hide {
     display: none !important;
-}
-
-.cookbooks-showing {
-    color: grey;
 }
 </style>
