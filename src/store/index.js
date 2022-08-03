@@ -75,7 +75,7 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-         
+
             // this.state.access_token = req.code
 
             // this.state.active_user = {
@@ -140,12 +140,17 @@ export default new Vuex.Store({
                 'grant_type': 'authorization_code'
             }
 
-            this.state.api.client.post('https://open-api.tiktok.com/oauth/access_token/', uri_params)
-            .then(function (response) {
-                    alert(JSON.stringify(response))
-                    console.log('response', response)
-                }).catch(function (error) {
-                    console.log('error', error.response)
+            let url_access_token = 'https://open-api.tiktok.com/oauth/access_token/';
+            
+            url_access_token += '?client_key=awzqdaho7oawcchp';
+            url_access_token += '&client_secret=5376fb91489d66bd64072222b454740a';
+            url_access_token += '&code=' + req.code;
+            url_access_token += '&grant_type=authorization_code';
+
+            fetch(url_access_token, { method: 'post' })
+                .then(res => res.json())
+                .then(json => {
+                    res.send(json);
                 });
         },
         LOGOUT(state) {
