@@ -76,8 +76,9 @@
 						</div> -->
 						<div style="position:absolute;top:40%;left:40%;">
 							<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id } }">
-								<div class="ui small light red button" style="padding:25px;">
-									<i class="plus icon"></i>Click To Add A Recipe To This Cookbook
+								<div class="ui small light tbb button" style="padding:25px;">
+									<i class="plus icon"></i>
+									Earn points by adding recipes to this cookbook!
 								</div>
 							</router-link>
 						</div>
