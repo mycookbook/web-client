@@ -69,9 +69,10 @@
 							<!-- link to user bio was here -->
 						<div style="position:absolute;top:40%;left:40%;">
 							<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id } }">
-								<div class="ui small light tbb circular button" style="padding:25px;">
-									<i class="plus icon"></i>
-									Earn points by adding recipes to this cookbook!
+								<div class="ui small light tbb circular button" style="padding:25px; width: 65%;">
+									<i class="idea yellow icon"></i>
+									Did you know that you can earn points by adding recipes to this cookbook?  <br /><br />
+									Try it now, start adding recipes
 								</div>
 							</router-link>
 						</div>
