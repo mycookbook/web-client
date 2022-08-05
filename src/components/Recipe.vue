@@ -12,7 +12,8 @@
 			</div> -->
 			<br /><br /><br />
 			<!-- <br /><br /> -->
-			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'" :parentSlug="recipe.cookbook.slug" :child="recipe.name" />
+			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'"
+				:parentSlug="recipe.cookbook.slug" :child="recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui mini images">
@@ -52,8 +53,8 @@
 									</div>
 								</div>
 								<div class="four wide computer column sixteen wide mobile column">
-									<div class="ui tbb fluid mini button" title="copy ingredients"
-										@click="copyIngredients()">
+									<div class="ui icon tbb fluid mini button" data-tooltip="Click to copy to your clipboard"
+										data-position="top left" data-inverted="" id="clipboardMsg" @click="copyIngredients()">
 										<i class="ui linkify icon"></i>
 										Ingredients
 									</div>
@@ -149,9 +150,9 @@ export default {
 
 			let message = line1 + ingredientsList + lastLine
 
-			navigator.clipboard.writeText(message).then(function () {
-				alert('Ingredients copied to your clipboard.');
-			});
+			navigator.clipboard.writeText(message).then(function() {
+				$("#clipboardMsg").data("tooltip", "Copied!")
+			})
 		},
 		textToSpeech(description) {
 			$("#t2sIcon").removeClass("play")
@@ -215,5 +216,13 @@ export default {
 .padded {
 	padding-top: 30px;
 	padding-bottom: 5px;
+}
+
+.hidden {
+	display:none!important;
+}
+
+.show {
+	display: block!important;
 }
 </style>
