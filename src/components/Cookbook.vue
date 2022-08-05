@@ -66,15 +66,13 @@
 						<img :src="cookbook.bookCoverImg" class="ui fluid image"
 							alt="mj's signature custom made salad. contains chicken shreds and tomatoe"
 							style="max-height:650px;">
-							<!-- link to user bio was here -->
-						<div style="position:absolute;top:40%;left:40%;">
-							<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id } }">
-								<div class="ui small light tbb circular button" style="padding:25px; width: 65%;">
-									<i class="idea yellow icon"></i>
-									Did you know that you can earn points by adding recipes to this cookbook?  <br /><br />
-									Try it now, start adding recipes
-								</div>
-							</router-link>
+						<!-- link to user bio was here -->
+						<div style="position:absolute;top:40%;left:40%;" @click="redirectToDashboard()">
+							<div class="ui small light tbb circular button" style="padding:25px; width: 65%;">
+								<i class="idea yellow icon"></i>
+								Did you know that you can earn points by adding recipes to this cookbook? <br /><br />
+								Try it now, start adding recipes
+							</div>
 						</div>
 						<div
 							style="position:absolute;bottom: 20;color: #ffffff; top:80%; max-width: 100%; padding: 25px 50px 0px 30px; background-color: rgba(0, 0, 0, 0.5);opacity: 0.9;">
@@ -125,7 +123,7 @@ import Breadcrumb from './Breadcrumb.vue';
 
 export default {
 	mounted() {
-		window.scrollTo(0,0);
+		window.scrollTo(0, 0);
 		let id = (!this.$route.params.id) ? this.$route.params.slug : this.$route.params.id
 		this.$store.dispatch('fetch_cookbook', id)
 	},
@@ -230,6 +228,9 @@ export default {
 			}
 
 			return "DISCLAIMER NOTICE: This is a private cookbook. This means that the owner has exclusive control over the contributions made in this cookbook and where possible, contributions are INVITE ONLY!!!";
+		},
+		redirectToDashboard() {
+			location.replace('https://web.cookbookshq.com//#/dashboard');
 		}
 	},
 	components: {
