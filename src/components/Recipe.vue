@@ -86,7 +86,7 @@
 					<div style="background-color:#1e272c;height:45px; width:20%; border-radius: 20px;">
 						<div style="padding:15px;color:white;" class="shareIcons">
 							<span style="margin-left:10px;">
-								<i class="ui twitter icon"></i>
+								<i class="ui twitter icon" title="click to share on twitter"></i>
 							</span>
 							<span>
 								<i class="ui paypal icon" title="we accept your kind donations"></i>
