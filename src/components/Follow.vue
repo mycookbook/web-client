@@ -38,7 +38,8 @@
             <div v-else>
                 <div class="item">
                     <div class="ui grid">
-                        <div class="four wide column"><img class="ui mini circular image" :src="avatar" :title="author">
+                        <div class="four wide column">
+                            <img class="ui mini circular image" :src="avatar" :title="author">
                         </div>
                         <div class="seven wide column" style="margin-left:-27px!important">
                             <div>

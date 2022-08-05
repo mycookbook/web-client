@@ -80,9 +80,26 @@
 					</div>
 				</div>
 			</div>
-			<div>
-				<span><i class="ui twitter icon"></i></span>
-				<span><i class="ui paypal icon"></i>we accept donations</span>
+			<div class="ui grid">
+				<div class="sixteen wide computer column sixteen wide mobile column">
+					<br />
+					<div style="background-color:#1e272c;height:45px; width:20%; border-radius: 20px;">
+						<div style="padding:15px;color:white;" class="shareIcons">
+							<span style="margin-left:10px;">
+								<i class="ui twitter icon"></i>
+							</span>
+							<span>
+								<i class="ui paypal icon" title="we accept your kind donations"></i>
+							</span>
+							<span>
+								<i class="ui linkify icon" title="copy link to this recipe"></i>
+							</span>
+							<span>
+								<i class="ui bell icon" title="get notified when there are updates"></i>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<Contact />
@@ -229,5 +246,10 @@ export default {
 
 .show {
 	display: block!important;
+}
+
+.shareIcons span {
+	margin-right: 12%!important;
+	cursor: pointer!important;
 }
 </style>
