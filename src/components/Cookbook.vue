@@ -68,7 +68,7 @@
 							style="max-height:650px;">
 						<!-- link to user bio was here -->
 						<div style="position:absolute;top:40%;left:40%;" @click="redirectToDashboard()">
-							<div class="ui small light tbb circular button" style="padding:25px; width: 65%;">
+							<div class="ui small light black circular button hidden mobile" style="padding:25px; width: 65%;">
 								<i class="idea yellow icon"></i>
 								Did you know that you can earn points by adding recipes to this cookbook? <br /><br />
 								Try it now, start adding recipes
