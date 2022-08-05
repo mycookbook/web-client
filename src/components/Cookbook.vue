@@ -44,7 +44,7 @@
 					<span style="float:right!important;">
 						<div style="margin-top:-27px!important">
 							<small>
-								<a href="/search?q=Naija Canadian">Advanced search</a>
+								<a href="/#/search?q=">Advanced search</a>
 							</small>
 						</div>
 					</span>
