@@ -1,7 +1,7 @@
 <template>
     <div class="ui grid">
         <div
-            class="ten wide computer column ten wide mobile column ten wide tablet column ten wide large screen column">
+            class="sixteen wide computer column">
             <div class="ui header title">
                 <div class="ui small breadcrumb">
                     <a class="section" href="/">back home</a>
