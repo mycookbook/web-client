@@ -60,20 +60,20 @@
 						<div>
 							<a class="ui right corner red label">
 								<i :class="cookbook.is_locked ? 'lock icon' : 'unlock icon'"
-									title="This cookbook is public. Login to your contributor account to add a recipe into this cookbook."></i>
+									title="Earn redeemable points by adding recipes to this public cookbook."></i>
 							</a>
 						</div>
 						<img :src="cookbook.bookCoverImg" class="ui fluid image"
 							alt="mj's signature custom made salad. contains chicken shreds and tomatoe"
 							style="max-height:650px;">
-						<div style="position:absolute;top: 20;color:white;padding: 15px;">
-							<a class="ui image tbb label" href="/contributors/@mummy-obiora">
+						<!-- <div style="position:absolute;top: 20;color:white;padding: 15px;">
+							<a class="ui image tbb label" href="/contributors/mummy-obiora">
 								<img :src="cookbook.author.avatar">
 								{{ cookbook.recipes.length }} Recipes By {{ cookbook.author.name }} & {{
 										cookbook.contributors.length
 								}} Other(s)
 							</a>
-						</div>
+						</div> -->
 						<div style="position:absolute;top:40%;left:40%;">
 							<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id } }">
 								<div class="ui small light red button" style="padding:25px;">

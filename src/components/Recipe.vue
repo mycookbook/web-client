@@ -53,7 +53,7 @@
 									</div>
 								</div>
 								<div class="four wide computer column sixteen wide mobile column">
-									<div class="ui icon tbb fluid mini button" data-tooltip="Click to copy to your clipboard"
+									<div class="ui icon tbb fluid mini button" data-tooltip="click to copy the ingredients to your clipboard"
 										data-position="top left" data-inverted="" id="clipboardMsg" @click="copyIngredients()">
 										<i class="ui linkify icon"></i>
 										Ingredients
@@ -75,9 +75,14 @@
 									<Comments :comments="_recipeComments" :author_id="recipe.id" />
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>
+			</div>
+			<div>
+				<span><i class="ui twitter icon"></i></span>
+				<span><i class="ui paypal icon"></i>we accept donations</span>
 			</div>
 		</div>
 		<Contact />

@@ -114,6 +114,34 @@
                     </router-link>
                 </div>
             </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Redeem Points' }
+                    }">
+                        <div>
+                            <small>
+                                <i class="ui trophy icon"></i> Redeem My Points
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Payments & Billing' }
+                    }">
+                        <div>
+                            <small>
+                                <i class="ui dollar sign icon"></i> Payments & Billing
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
         </div>
         <br />
         <div>
