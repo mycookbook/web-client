@@ -66,17 +66,10 @@
 						<img :src="cookbook.bookCoverImg" class="ui fluid image"
 							alt="mj's signature custom made salad. contains chicken shreds and tomatoe"
 							style="max-height:650px;">
-						<!-- <div style="position:absolute;top: 20;color:white;padding: 15px;">
-							<a class="ui image tbb label" href="/contributors/mummy-obiora">
-								<img :src="cookbook.author.avatar">
-								{{ cookbook.recipes.length }} Recipes By {{ cookbook.author.name }} & {{
-										cookbook.contributors.length
-								}} Other(s)
-							</a>
-						</div> -->
+							<!-- link to user bio was here -->
 						<div style="position:absolute;top:40%;left:40%;">
 							<router-link :to="{ name: 'CreateRecipe', params: { cookbook_id: cookbook.id } }">
-								<div class="ui small light tbb button" style="padding:25px;">
+								<div class="ui small light tbb circular button" style="padding:25px;">
 									<i class="plus icon"></i>
 									Earn points by adding recipes to this cookbook!
 								</div>
