@@ -53,8 +53,10 @@
 									</div>
 								</div>
 								<div class="four wide computer column sixteen wide mobile column">
-									<div class="ui icon tbb fluid mini button" data-tooltip="click to copy the ingredients to your clipboard"
-										data-position="top left" data-inverted="" id="clipboardMsg" @click="copyIngredients()">
+									<div class="ui icon tbb fluid mini button"
+										data-tooltip="click to copy the ingredients to your clipboard"
+										data-position="top left" data-inverted="" id="clipboardMsg"
+										@click="copyIngredients()">
 										<i class="ui linkify icon"></i>
 										Ingredients
 									</div>
@@ -75,7 +77,7 @@
 									<Comments :comments="_recipeComments" :author_id="recipe.id" />
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -172,7 +174,7 @@ export default {
 
 			let message = line1 + ingredientsList + lastLine
 
-			navigator.clipboard.writeText(message).then(function() {
+			navigator.clipboard.writeText(message).then(function () {
 				$("#clipboardMsg").data("tooltip", "Copied!")
 			})
 		},
@@ -241,15 +243,15 @@ export default {
 }
 
 .hidden {
-	display:none!important;
+	display: none !important;
 }
 
 .show {
-	display: block!important;
+	display: block !important;
 }
 
 .shareIcons span {
-	margin-right: 12%!important;
-	cursor: pointer!important;
+	margin-right: 12% !important;
+	cursor: pointer !important;
 }
 </style>

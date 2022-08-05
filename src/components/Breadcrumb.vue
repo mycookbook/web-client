@@ -1,7 +1,6 @@
 <template>
     <div class="ui grid">
-        <div
-            class="sixteen wide computer column">
+        <div class="sixteen wide computer column">
             <div class="ui header title">
                 <div class="ui small breadcrumb">
                     <a class="section" href="/">back home</a>
@@ -11,16 +10,16 @@
                     </div>
                     <div class="active section" v-else>
                         <div v-if="isCookbookRoute()">
-                            {{ active}}
+                            {{ active }}
                         </div>
                         <div v-else>
                             <router-link :to="{
-                            name: parentComponentName,
-                            params: { slug: parentSlug }
-                        }">
-                            {{ active }}
-                        </router-link>
-                        <i class="left chevron icon divider"></i> {{ child }}
+                                name: parentComponentName,
+                                params: { slug: parentSlug }
+                            }">
+                                {{ active }}
+                            </router-link>
+                            <i class="left chevron icon divider"></i> {{ child }}
                         </div>
                     </div>
                 </div>

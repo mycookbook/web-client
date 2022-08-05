@@ -75,7 +75,7 @@ export default new Vuex.Store({
             this.state.resource_isLoading = status
         },
         ATTEMPT_LOGIN(state, req) {
-            
+
             // this.state.access_token = req.code
 
             // this.state.active_user = {
