@@ -28,7 +28,29 @@
 									<MyDrafts :active_user=active_user />
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
-									My privacy settings
+									<div>
+										<form class="ui form">
+											<div class="field">
+												<div class="ui checkbox">
+													<input type="checkbox" tabindex="0" class="hidden">
+													<label>Allow direct messaging from annonymous users on the platform</label>
+												</div>
+											</div>
+											<div class="field">
+												<div class="ui checkbox">
+													<input type="checkbox" tabindex="0" class="hidden" disabled>
+													<label>Allow other users contribute to my cookbooks</label>
+													<div class="ui mini message">
+														<em>This is a Premium feature. All cookbooks are public by default
+														i.e users on this platform are able to freely add recipes to any
+														cookbook. Upgrade your subscription to have control over this.</em>
+													</div>
+												</div>
+											</div>
+											<button class="ui tbb button" type="submit">Submit</button>
+											<button class="ui red button" type="submit">Delete My Account</button>
+										</form>
+									</div>
 								</div>
 								<div v-if="activeLink === 'Notifications'">
 									My notifications
@@ -42,19 +64,23 @@
 										</h4>
 										<div class="field">
 											<label>Name</label>
-											<div class="two fields">
-												<div class="field">
-													<input type="text" name="fname"
-														:placeholder="_myProfile.name" disabled>
-												</div>
+											<div class="twelve wide field">
+												<input type="text" name="fname" :placeholder="_myProfile.name" disabled>
+											</div>
+										</div>
+										<div class="field">
+											<label>Email</label>
+											<div class="twelve wide field">
+												<input type="text" name="email"
+													placeholder="This email will be used for correspondence">
 											</div>
 										</div>
 										<div class="field">
 											<label>Pronouns (optional)</label>
 											<div class="fields">
 												<div class="twelve wide field">
-													<input type="text" name="pronouns"
-														placeholder="Your pronouns" :value="_myProfile.pronouns">
+													<input type="text" name="pronouns" placeholder="Your pronouns"
+														:value="_myProfile.pronouns">
 												</div>
 											</div>
 										</div>
@@ -62,8 +88,7 @@
 											<label>Phone (Optional)</label>
 											<div class="fields">
 												<div class="twelve wide field">
-													<input type="text" name="phone"
-														placeholder="Your phone number">
+													<input type="text" name="phone" placeholder="Your phone number">
 												</div>
 											</div>
 										</div>
