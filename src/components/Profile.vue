@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="field">
-				<label>Bio</label>
+				<label>Bio (Optional)</label>
 				<textarea rows="2" v-model="about"></textarea>
 			</div>
 			<div class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="updateProfile()">Update</div>
@@ -94,7 +94,9 @@ export default {
 				payload.pronouns = this.pronouns
 			}
 
-			console.log('efe', payload)
+			if (this.about !== "") {
+				payload.about = this.about
+			}
 
 			// this.$store.dispatch('update_user', payload)
 		}
