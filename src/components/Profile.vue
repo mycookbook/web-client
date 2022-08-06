@@ -66,15 +66,28 @@ export default {
 	},
 	methods: {
 		updateProfile() {
-			
-			const payload = {
-				username: this._myProfile.name_slug,
-				email: this.email,
-				phone: this.phone,
-				pronouns: this.pronouns,
+
+			let payload = {
+				name_slug: this._myProfile.name_slug,
 				token: this.$store.state.access_token
 			}
 
+			if (this.email !== "") {
+				payload.email = this.email
+			}
+
+			if (this.phone !== "") {
+				payload.phone = this.phone
+			}
+
+			if (this.pronouns !== "") {
+				payload.pronouns = this.pronouns
+			}
+
+			if (this.pronouns !== "") {
+				payload.pronouns = this.pronouns
+			}
+			
 			this.$store.dispatch('update_user', payload)
 		}
 	}

@@ -22,7 +22,7 @@ export const userStore = {
         update_user(context, payload) {
             context.commit('SET_LOADING_STATE', true)
 
-            let url = process.env.BASE_URL + 'users/' + payload.username;
+            let url = process.env.BASE_URL + 'users/' + payload.name_slug;
 
             this.state.api.client.post(url, payload, {
                 headers: {
