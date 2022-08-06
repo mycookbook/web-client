@@ -30,7 +30,9 @@
 					<div class="ui link cards" title="click to view recipe">
 						<div class="card">
 							<div class="ui fluid image">
-								<a class="ui red right ribbon label">NEW</a>
+								<a class="ui red right ribbon label" v-if="recipe.created_at == 'just now'">
+									NEW
+								</a>
 								<img :src="recipe.imgUrl">
 							</div>
 							<div class="content">

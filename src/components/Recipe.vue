@@ -46,8 +46,10 @@
 									<Claps />
 								</div>
 								<div class="four wide computer column sixteen wide mobile column">
-									<div class="ui tbb disabled fluid mini button"
-										title="Add a variation for this recipe, make it yours!">
+									<div class="ui tbb fluid mini button"
+									:class="{disabled: !_isLoggedIn}"
+										title="Add a variation for this recipe, make it yours!"
+									>
 										<i class="ui plus icon"></i>
 										Customize
 									</div>
@@ -121,6 +123,7 @@ import AutoComplete from './AutoComplete.vue';
 import Breadcrumb from './Breadcrumb.vue';
 import Comments from './Comments.vue';
 import Follow from './Follow.vue';
+import store from '@/store';
 
 export default {
 	mounted() {
@@ -145,7 +148,18 @@ export default {
 			this.recipeComments = this.$store.state.recipe.comments
 
 			return this.recipeComments;
-		}
+		},
+		_isLoggedIn() {
+            let hasSession = (store.state.access_token !== null)
+
+            this.isLoggedIn = true
+
+            if (!hasSession) {
+                this.isLoggedIn = false
+            }
+
+            return this.isLoggedIn
+        }
 	},
 	data() {
 		return {
