@@ -159,7 +159,7 @@ const VueRouter = new Router({
 			path: '/errors',
 			name: 'ErrorPage',
 			component: ErrorPage
-		},{
+		}, {
 			path: '*',
 			component: NotFound
 		}]

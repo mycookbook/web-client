@@ -1,7 +1,15 @@
 <template>
-<div>
-	<Navigation />
-</div>
+	<div>
+		<Navigation />
+		<div class="ui container">
+			<div class="ui error message">
+				<i class="close icon"></i>
+				<div class="header">
+					{{ _errorMessage }}
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -9,22 +17,10 @@ import Navigation from './Navigation.vue';
 
 export default {
 	name: "ErrorPage",
-	mounted() {},
 	computed: {
-		example() {
-			return true
+		_errorMessage() {
+			return this.$route.params.m
 		}
-	},
-	props: {
-		numbers: Array
-	},
-	data() {
-		return {
-			title: 'This is an Example component'
-    	}
-  	},
-	filters: {
-		exampleFilter() {}
 	},
 	components: {
 		Navigation
