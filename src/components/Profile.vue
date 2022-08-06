@@ -34,7 +34,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="ui tbb button" tabindex="0" @click="updateProfile()">Update</div>
+			<div class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="updateProfile()">Update</div>
 		</form>
 	</div>
 </template>
@@ -45,6 +45,17 @@ export default {
 	name: "Profile",
 	props: {
 		_myProfile: Object
+	},
+	computed: {
+		isLoading() {
+            return this.$store.state.resource_isLoading
+		},
+		errors() {
+			return this.$store.state.form_errors.contact_form
+		},
+		success() {
+            return this.$store.state.subscriptionStore.success
+        }
 	},
 	data() {
 		return {

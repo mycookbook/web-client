@@ -20,7 +20,8 @@ export const userStore = {
                 })
         },
         update_user(context, payload) {
-            alert("whats happening nau")
+            context.commit('SET_LOADING_STATE', true)
+
             let url = process.env.BASE_URL + 'users/' + payload.username;
 
             this.state.api.client.post(url, payload, {
@@ -28,8 +29,15 @@ export const userStore = {
                     'Authorization': "Bearer " + payload.token
                 }
             }).then(function (response) {
+                context.commit('SET_LOADING_STATE', false)
                 console.log('response', response)
             }).catch(function (error) {
+                context.commit('SET_LOADING_STATE', false)
+
+                if (error.response.status === 401) {
+                    alert("logging this loser out")
+                }
+
                 console.log('error', error)
             })
         }
