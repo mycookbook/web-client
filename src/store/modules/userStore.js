@@ -30,15 +30,13 @@ export const userStore = {
                 }
             }).then(function (response) {
                 context.commit('SET_LOADING_STATE', false)
-                console.log('response', response)
+                location.reload();
             }).catch(function (error) {
                 context.commit('SET_LOADING_STATE', false)
 
                 if (error.response.status === 401) {
-                    alert("logging this loser out")
+                    this.$store.dispatch('logout')
                 }
-
-                console.log('error', error)
             })
         }
     }
