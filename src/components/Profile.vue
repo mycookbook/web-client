@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<img class="ui circular image" :src="_myProfile.avatar" />
+		<img class="ui circular small image" :src="_myProfile.avatar" />
 		<br />
 		<form class="ui form">
 			<h4 class="ui dividing header">
@@ -48,6 +48,9 @@
 
 export default {
 	name: "Profile",
+	 mounted() {
+        this.$store.dispatch('fetch_contributor', this._myProfile.name_slug)
+    },
 	props: {
 		_myProfile: Object
 	},
@@ -65,18 +68,20 @@ export default {
 	data() {
 		return {
 			phone: "",
-			pronouns: "",
+			pronouns: this._myProfile.pronouns,
 			email: "",
-			about: ""
+			about: this._myProfile.about
 		}
 	},
 	methods: {
 		updateProfile() {
-
+			console.log(this._myProfile)
 			let payload = {
 				name_slug: this._myProfile.name_slug,
 				token: this.$store.state.access_token
 			}
+
+			
 
 			if (this.email !== "") {
 				payload.contact_email = this.email
@@ -98,7 +103,7 @@ export default {
 				payload.about = this.about
 			}
 
-			// this.$store.dispatch('update_user', payload)
+			this.$store.dispatch('update_user', payload)
 		}
 	}
 };
