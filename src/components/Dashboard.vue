@@ -56,44 +56,7 @@
 									My notifications
 								</div>
 								<div v-if="activeLink === 'Profile'">
-									<img class="ui circular image" :src="_myProfile.avatar" />
-									<br />
-									<form class="ui form">
-										<h4 class="ui dividing header">
-											Personal Info
-										</h4>
-										<div class="field">
-											<label>Name</label>
-											<div class="twelve wide field">
-												<input type="text" name="fname" :placeholder="_myProfile.name" disabled>
-											</div>
-										</div>
-										<div class="field">
-											<label>Email</label>
-											<div class="twelve wide field">
-												<input type="text" name="email"
-													placeholder="This email will be used for correspondence">
-											</div>
-										</div>
-										<div class="field">
-											<label>Pronouns (optional)</label>
-											<div class="fields">
-												<div class="twelve wide field">
-													<input type="text" name="pronouns" placeholder="Your pronouns"
-														:value="_myProfile.pronouns">
-												</div>
-											</div>
-										</div>
-										<div class="field">
-											<label>Phone (Optional)</label>
-											<div class="fields">
-												<div class="twelve wide field">
-													<input type="text" name="phone" placeholder="Your phone number">
-												</div>
-											</div>
-										</div>
-										<div class="ui tbb button" tabindex="0">Update</div>
-									</form>
+									<Profile :_myProfile="_myProfile" />
 								</div>
 							</div>
 						</div>
@@ -124,6 +87,7 @@ import Bottom from './Bottom.vue'
 import MyCookbooks from './MyCookbooks.vue'
 import MyRecipes from './MyRecipes.vue';
 import MyDrafts from './MyDrafts.vue';
+import Profile from './Profile.vue'
 
 export default {
 	name: "Dashboard",
@@ -152,7 +116,8 @@ export default {
 		Bottom,
 		MyCookbooks,
 		MyRecipes,
-		MyDrafts
+		MyDrafts,
+		Profile
 	}
 };
 </script>
