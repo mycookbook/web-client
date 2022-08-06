@@ -11,6 +11,10 @@
                 <div class="ui grid">
                     <div class="six wide computer column sixteen wide mobile column">
                         <img class="ui huge fluid image" :src="contributor.avatar">
+                        <h3>Contributions graph</h3>
+                        <div class="ui large image">
+                            <img src="https://repository-images.githubusercontent.com/279995113/37c6ee80-caef-11ea-8dd5-58fe488fddb8" />
+                        </div>
                     </div>
                     <div class="ten wide computer column sixteen wide mobile column">
 
