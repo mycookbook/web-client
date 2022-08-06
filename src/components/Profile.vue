@@ -15,7 +15,8 @@
 			<div class="field">
 				<label>Email</label>
 				<div class="twelve wide field">
-					<input type="text" name="email" placeholder="This email will be used for correspondence" v-model="email" >
+					<input type="text" name="email" placeholder="This email will be used for correspondence"
+						v-model="email">
 				</div>
 			</div>
 			<div class="field">
@@ -34,6 +35,10 @@
 					</div>
 				</div>
 			</div>
+			<div class="field">
+				<label>Bio</label>
+				<textarea rows="2" v-model="about"></textarea>
+			</div>
 			<div class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="updateProfile()">Update</div>
 		</form>
 	</div>
@@ -48,20 +53,21 @@ export default {
 	},
 	computed: {
 		isLoading() {
-            return this.$store.state.resource_isLoading
+			return this.$store.state.resource_isLoading
 		},
 		errors() {
 			return this.$store.state.form_errors.contact_form
 		},
 		success() {
-            return this.$store.state.subscriptionStore.success
-        }
+			return this.$store.state.subscriptionStore.success
+		}
 	},
 	data() {
 		return {
 			phone: "",
 			pronouns: "",
-			email: ""
+			email: "",
+			about: ""
 		}
 	},
 	methods: {
@@ -73,7 +79,7 @@ export default {
 			}
 
 			if (this.email !== "") {
-				payload.email = this.email
+				payload.contact_email = this.email
 			}
 
 			if (this.phone !== "") {
@@ -87,8 +93,10 @@ export default {
 			if (this.pronouns !== "") {
 				payload.pronouns = this.pronouns
 			}
-			
-			this.$store.dispatch('update_user', payload)
+
+			console.log('efe', payload)
+
+			// this.$store.dispatch('update_user', payload)
 		}
 	}
 };
