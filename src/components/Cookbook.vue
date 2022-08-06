@@ -32,8 +32,13 @@
 							<option value="recipe">By Recipe Name</option>
 							<option value="tagName">By Tag Name</option>
 						</select>
-						<div class="ui tbb button" @click="searchCookbook()">
-							<i class="search icon" style="margin:auto!important;"></i>
+						<div class="ui tbb button" @click="searchCookbook()" title="search this cookbook">
+							<span style="padding-right:10px;">
+								Search
+							</span>
+							<span>
+								<i class="search icon" style="margin:auto!important;"></i>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -44,7 +49,7 @@
 					<span style="float:right!important;">
 						<div style="margin-top:-27px!important">
 							<small>
-								<a href="/#/search?q=">Advanced search</a>
+								<a :href="'/#/search?q=' + searchText">Advanced search</a>
 							</small>
 						</div>
 					</span>
