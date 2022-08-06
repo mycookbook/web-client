@@ -75,14 +75,11 @@ export default {
 	},
 	methods: {
 		updateProfile() {
-			console.log(this._myProfile)
 			let payload = {
 				name_slug: this._myProfile.name_slug,
 				token: this.$store.state.access_token
 			}
-
 			
-
 			if (this.email !== "") {
 				payload.contact_email = this.email
 			}

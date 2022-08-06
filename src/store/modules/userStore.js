@@ -30,13 +30,14 @@ export const userStore = {
                 }
             }).then(function (response) {
                 context.commit('SET_LOADING_STATE', false)
-                location.reload();
+                window.location.href("/");
             }).catch(function (error) {
-                context.commit('SET_LOADING_STATE', false)
-
+                
                 if (error.response.status === 401) {
-                    this.$store.dispatch('logout')
+                    context.commit("LOGOUT")
                 }
+                
+                context.commit('SET_LOADING_STATE', false)
             })
         }
     }
