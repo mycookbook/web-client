@@ -11,7 +11,7 @@
 						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
 
 						<DashboardBreadcrumb :active="activeLink" />
-						
+
 						<div class="ui horizontal divider"></div>
 
 						<br />
@@ -32,6 +32,43 @@
 								</div>
 								<div v-if="activeLink === 'Notifications'">
 									My notifications
+								</div>
+								<div v-if="activeLink === 'Profile'">
+									<img class="ui circular image" :src="_myProfile.avatar" />
+									<br />
+									<form class="ui form">
+										<h4 class="ui dividing header">
+											Personal Info
+										</h4>
+										<div class="field">
+											<label>Name</label>
+											<div class="two fields">
+												<div class="field">
+													<input type="text" name="fname"
+														:placeholder="_myProfile.name" disabled>
+												</div>
+											</div>
+										</div>
+										<div class="field">
+											<label>Pronouns (optional)</label>
+											<div class="fields">
+												<div class="twelve wide field">
+													<input type="text" name="pronouns"
+														placeholder="Your pronouns" :value="_myProfile.pronouns">
+												</div>
+											</div>
+										</div>
+										<div class="field">
+											<label>Phone (Optional)</label>
+											<div class="fields">
+												<div class="twelve wide field">
+													<input type="text" name="phone"
+														placeholder="Your phone number">
+												</div>
+											</div>
+										</div>
+										<div class="ui tbb button" tabindex="0">Update</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -71,13 +108,16 @@ export default {
 		},
 		activeLink() {
 			return this.$route.query.tab
+		},
+		_myProfile() {
+			return this.$store.state.contributor
 		}
 	},
 	data() {
-        return { 
+		return {
 			uploadMessageDescription: "Upload Cookbook Cover Image"
 		}
-    },
+	},
 	components: {
 		Navigation,
 		LeftSideMenu,
