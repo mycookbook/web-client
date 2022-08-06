@@ -3,8 +3,11 @@
 		<Navigation />
 		<div class="ui container">
 			<div class="ui error message">
-				<i class="close icon"></i>
 				<div class="header">
+					Oops! it looks like there was an error
+				</div>
+				<br />
+				<div>
 					{{ _errorMessage }}
 				</div>
 			</div>
@@ -19,7 +22,7 @@ export default {
 	name: "ErrorPage",
 	computed: {
 		_errorMessage() {
-			return this.$route.params.m
+			return this.$route.query.m
 		}
 	},
 	components: {
