@@ -20,6 +20,7 @@ export const userStore = {
                 })
         },
         update_user(context, payload) {
+            alert("whats happening nau")
             let url = process.env.BASE_URL + 'users/' + payload.username;
 
             this.state.api.client.post(url, payload, {
