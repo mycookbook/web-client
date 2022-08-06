@@ -5,7 +5,7 @@
             <div class="sixteen wide computer column sixteen wide mobile column">
                 <div class="ui grid">
                     <div class="three wide computer column sixteen wide mobile hidden column">
-                        <LeftSideMenu :active_user="active_user" />
+                        <LeftSideMenu />
                     </div>
                     <div class="eight wide computer column sixteen wide mobile column">
                         <FeedData />
@@ -39,15 +39,6 @@ import FeedData from './FeedData.vue';
 
 export default {
     name: "Feed",
-    computed: {
-        active_user() {
-            return this.$store.state.active_user
-        }
-    },
-    data() {
-        return { }
-    },
-    filters: { },
     components: {
         Navigation,
         Follow,

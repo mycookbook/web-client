@@ -155,9 +155,6 @@
 <script>
 export default {
     name: "LeftSideMenu",
-    props: {
-        active_user: Object
-    },
     computed: {
         _contributor() {
             return this.$store.state.contributor
