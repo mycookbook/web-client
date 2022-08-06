@@ -23,6 +23,7 @@ import axios from 'axios';
 import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
+import ErrorPage from '@/components/ErrorPage'
 
 Vue.use(Router);
 
@@ -155,6 +156,10 @@ const VueRouter = new Router({
 			name: 'SearchResults',
 			component: SearchResults
 		}, {
+			path: '/errors',
+			name: 'ErrorPage',
+			component: ErrorPage
+		},{
 			path: '*',
 			component: NotFound
 		}]
