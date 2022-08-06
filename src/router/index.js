@@ -43,10 +43,11 @@ const VueRouter = new Router({
 					let replaced = queryString.replace("/#/", "/");
 					let url = new URL(replaced);
 					let code = url.searchParams.get("code");
+					let username = url.searchParams.get('_d')
 
 					store.dispatch('attempt_login', {
 						code: code,
-						platform: 'tiktok'
+						username: username
 					})
 				}
 			}
