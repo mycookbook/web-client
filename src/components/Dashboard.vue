@@ -56,7 +56,8 @@
 									My notifications
 								</div>
 								<div v-if="activeLink === 'Profile'">
-									<Profile :_activeUser="_activeUser" />
+								{{ _activeUser }}
+									<!-- <Profile :_activeUser="_activeUser" /> -->
 								</div>
 							</div>
 						</div>
