@@ -4,9 +4,7 @@ export const contributorStore = {
             this.state.contributor = newState.data.user[0]
         },
         UPDATE_ACTIVE_USER(state, newState) {
-            this.state.active_user = {
-                'active': newState.data.user[0]
-            }
+            this.state.active_user['active'] = newState.data.user[0]
         }
     },
     actions: {

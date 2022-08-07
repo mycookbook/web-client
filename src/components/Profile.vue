@@ -1,7 +1,6 @@
 <template>
 	<div>
-		{{ _activeUser }}
-		<!-- <img class="ui circular small image" :src="_activeUser.avatar" />
+		<img class="ui circular small image" :src="_activeUser.avatar" />
 		<br />
 		<form class="ui form">
 			<h4 class="ui dividing header">
@@ -41,7 +40,7 @@
 				<textarea rows="2" v-model="about"></textarea>
 			</div>
 			<div class="ui tbb button" v-bind:class="{ loading: isLoading }" @click="updateProfile()">Update</div>
-		</form> -->
+		</form>
 	</div>
 </template>
 
@@ -65,10 +64,10 @@ export default {
 	},
 	data() {
 		return {
-			// phone: this._activeUser.contact_detail.phone,
-			// pronouns: this._activeUser.pronouns,
-			// email: this._activeUser.contact_detail.contact_email,
-			// about: this._activeUser.about
+			phone: this._activeUser.contact_detail.phone,
+			pronouns: this._activeUser.pronouns,
+			email: this._activeUser.contact_detail.contact_email,
+			about: this._activeUser.about
 		}
 	},
 	methods: {

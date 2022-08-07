@@ -78,9 +78,7 @@ export default new Vuex.Store({
 
             this.state.access_token = req.code
 
-            this.state.active_user = {
-                username: req.username
-            }
+            this.state.active_user['username'] = req.username
 
             location.replace('/');
         },
