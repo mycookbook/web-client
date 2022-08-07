@@ -26,6 +26,7 @@ export const contributorStore = {
 
             this.state.api.client.get(uri, this.state.api.options)
                 .then(function (response) {
+                    console.log('fedfd', response.data)
                     context.commit("UPDATE_ACTIVE_USER", response.data)
                 }).catch(function (error) {
                     console.log('fetch active user error', error.response)
