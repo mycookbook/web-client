@@ -65,10 +65,10 @@ export default {
 	},
 	data() {
 		return {
-			phone: this._activeUser.contact_detail.phone,
-			pronouns: this._activeUser.pronouns,
-			email: this._activeUser.contact_detail.contact_email,
-			about: this._activeUser.about
+			// phone: this._activeUser.contact_detail.phone,
+			// pronouns: this._activeUser.pronouns,
+			// email: this._activeUser.contact_detail.contact_email,
+			// about: this._activeUser.about
 		}
 	},
 	methods: {
