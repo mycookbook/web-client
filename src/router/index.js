@@ -49,7 +49,8 @@ const VueRouter = new Router({
 					store.dispatch('fetch_active_user', username)
 
 					store.dispatch('set_active_user', {
-						code: "jkhvfjvkhvbkhjb"
+						code: code,
+						username: username
 					})
 				}
 			}
