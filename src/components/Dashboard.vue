@@ -5,7 +5,7 @@
 			<div class="sixteen wide computer column sixteen wide mobile column">
 				<div class="ui grid">
 					<div class="three wide computer column sixteen wide mobile hidden column">
-						<LeftSideMenu :active_user="active_user" />
+						<LeftSideMenu />
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column"
 						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
@@ -92,9 +92,6 @@ import Profile from './Profile.vue'
 export default {
 	name: "Dashboard",
 	computed: {
-		active_user() {
-			return this.$store.state.active_user
-		},
 		activeLink() {
 			return this.$route.query.tab
 		},
