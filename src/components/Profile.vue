@@ -1,5 +1,6 @@
 <template>
 	<div>
+		{{_activeUser.active }}
 		<img class="ui circular small image" :src="_activeUser.avatar" />
 		<br />
 		<form class="ui form">
