@@ -141,7 +141,7 @@ import UploadImage from './UploadImage.vue';
 export default {
 	name: "MyCookbooks",
 	mounted() {
-		let username = this.$store.state.active_user.username
+		let username = this.$store.state.username
 
 		this.$store.dispatch('fetch_contributor', username)
 	},

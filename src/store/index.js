@@ -61,8 +61,9 @@ export default new Vuex.Store({
             }
         },
         access_token: null,
-        active_user: {},
-        contributor: {}
+        active_user: null,
+        contributor: {},
+        username: null
     }),
     mutations: {
         STORE_POLICIES(state, policies) {
@@ -78,7 +79,7 @@ export default new Vuex.Store({
 
             this.state.access_token = req.code
 
-            this.state.active_user['username'] = req.username
+            this.state.username = req.username
 
             location.replace('/');
         },

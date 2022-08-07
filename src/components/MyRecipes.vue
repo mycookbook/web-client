@@ -127,7 +127,7 @@ import UploadImage from './UploadImage.vue';
 export default {
     name: "MyRecipes",
     mounted() {
-        let username = this.$store.state.active_user.username
+        let username = this.$store.state.username
         this.$store.dispatch('fetch_contributor', username)
     },
     computed: {

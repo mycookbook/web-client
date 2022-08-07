@@ -96,7 +96,7 @@ export default {
 			return this.$route.query.tab
 		},
 		_activeUser() {
-			return this.$store.state.active_user.active
+			return this.$store.state.active_user
 		}
 	},
 	data() {
