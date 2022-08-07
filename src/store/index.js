@@ -61,7 +61,7 @@ export default new Vuex.Store({
             }
         },
         access_token: null,
-        active_user: null,
+        active_user: {},
         contributor: {}
     }),
     mutations: {
@@ -84,7 +84,7 @@ export default new Vuex.Store({
         },
         LOGOUT(state) {
             this.state.access_token = null
-            this.state.active_user = null
+            this.state.active_user = {}
 
             router.push('/')
         }
