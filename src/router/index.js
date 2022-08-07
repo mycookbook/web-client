@@ -46,9 +46,10 @@ const VueRouter = new Router({
 					let code = url.searchParams.get("code");
 					let username = url.searchParams.get('_d')
 
-					store.dispatch('attempt_login', {
-						code: code,
-						username: username
+					store.dispatch('fetch_active_user', username)
+
+					store.dispatch('set_active_user', {
+						code: "jkhvfjvkhvbkhjb"
 					})
 				}
 			}

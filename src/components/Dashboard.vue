@@ -56,7 +56,7 @@
 									My notifications
 								</div>
 								<div v-if="activeLink === 'Profile'">
-									<Profile :_myProfile="_myProfile" />
+									<Profile :_activeUser="_activeUser" />
 								</div>
 							</div>
 						</div>
@@ -98,8 +98,8 @@ export default {
 		activeLink() {
 			return this.$route.query.tab
 		},
-		_myProfile() {
-			return this.$store.state.contributor
+		_activeUser() {
+			return this.$store.state.active_user.active
 		}
 	},
 	data() {

@@ -74,15 +74,13 @@ export default new Vuex.Store({
         SET_LOADING_STATE(state, status) {
             this.state.resource_isLoading = status
         },
-        ATTEMPT_LOGIN(state, req) {
+        SET_ACTIVE_USER(state, req) {
 
             this.state.access_token = req.code
 
-            this.state.active_user = {
-                'username': req.username,
-            }
+            this.state.active_user.username = req.username
 
-            location.replace('https://web.cookbookshq.com//#/');
+            location.replace('/');
         },
         LOGOUT(state) {
             this.state.access_token = null
@@ -122,8 +120,8 @@ export default new Vuex.Store({
         load_skeleton(context) {
             context.commit("SET_LOADING_STATE", true)
         },
-        attempt_login(context, req) {
-            context.commit("ATTEMPT_LOGIN", req)
+        set_active_user(context, req) {
+            context.commit("SET_ACTIVE_USER", req)
         },
         logout(context) {
             context.commit("LOGOUT")

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<img class="ui circular small image" :src="_myProfile.avatar" />
+		<img class="ui circular small image" :src="_activeUser.avatar" />
 		<br />
 		<form class="ui form">
 			<h4 class="ui dividing header">
@@ -9,7 +9,7 @@
 			<div class="field">
 				<label>Name</label>
 				<div class="twelve wide field">
-					<input type="text" name="fname" :placeholder="_myProfile.name" disabled>
+					<input type="text" name="fname" :placeholder="_activeUser.name" disabled>
 				</div>
 			</div>
 			<div class="field">
@@ -23,7 +23,7 @@
 				<label>Pronouns (optional)</label>
 				<div class="fields">
 					<div class="twelve wide field">
-						<input type="text" name="pronouns" :placeholder="_myProfile.pronouns" v-model="pronouns">
+						<input type="text" name="pronouns" :placeholder="_activeUser.pronouns" v-model="pronouns">
 					</div>
 				</div>
 			</div>
@@ -48,11 +48,8 @@
 
 export default {
 	name: "Profile",
-	 mounted() {
-        this.$store.dispatch('fetch_contributor', this._myProfile.name_slug)
-    },
 	props: {
-		_myProfile: Object
+		_activeUser: Object
 	},
 	computed: {
 		isLoading() {
@@ -67,19 +64,19 @@ export default {
 	},
 	data() {
 		return {
-			phone: "",
-			pronouns: this._myProfile.pronouns,
-			email: "",
-			about: this._myProfile.about
+			phone: this._activeUser.contact_detail.phone,
+			pronouns: this._activeUser.pronouns,
+			email: this._activeUser.contact_detail.contact_email,
+			about: this._activeUser.about
 		}
 	},
 	methods: {
 		updateProfile() {
 			let payload = {
-				name_slug: this._myProfile.name_slug,
+				name_slug: this._activeUser.name_slug,
 				token: this.$store.state.access_token
 			}
-			
+
 			if (this.email !== "") {
 				payload.contact_email = this.email
 			}
