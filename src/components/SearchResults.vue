@@ -42,23 +42,25 @@
                     </div>
                     <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column">
                         <h4>Top 3 most searched recipe keywords in your location</h4>
-                        <div style="padding-top:15%">
+                        <div style="padding-top:3%">
                             <div class="ui orange progress" data-percent="74" id="example1">
                                 <div class="bar"></div>
                                 <div class="label">Smoked Salmon 74%</div>
                             </div>
-                            <div class="ui orange progress" data-percent="74" id="example1">
+                            <div class="ui orange progress" data-percent="45" id="example2">
                                 <div class="bar"></div>
-                                <div class="label">Pulled Pork 4%</div>
+                                <div class="label">Pulled Pork 45%</div>
                             </div>
-                            <div class="ui orange progress" data-percent="74" id="example1">
+                            <div class="ui orange progress" data-percent="99" id="example3">
                                 <div class="bar"></div>
-                                <div class="label">Jamaican Jerk Chicken recipe 74%</div>
+                                <div class="label">Jamaican Jerk Chicken 99%</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <h4 class="ui horizontal divider header">
+                    Search Results
+                </h4>
                 <div v-show="results.length > 0">
                     <span>
                         <small>
@@ -132,6 +134,8 @@ import GoogleAdSense from './GoogleAdSense.vue'
 export default {
     name: 'SearchResults',
     mounted() {
+        this.initkeywords();
+
         this.$store.dispatch('empty_results_object')
 
         if (this.$route.query.q !== "") {
@@ -201,6 +205,11 @@ export default {
         sortBy(order) {
             this.$store.dispatch('sort_results_by', order)
         },
+        initkeywords() {
+            $('#example1').progress();
+            $('#example2').progress();
+            $('#example3').progress();
+        }
     },
     filters: {
         truncate: function (text, length, suffix) {
