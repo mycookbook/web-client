@@ -17,7 +17,7 @@
         <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
             <div>
                 <div class="ui fluid action input">
-                    <input type="text" placeholder="Try bread, butter or peppermint tea recipe" v-model="searchq" @keyup="searchForQuery" >
+                    <input type="text" placeholder="Try: Peppermint tea recipe | Cookbooks by {author's name} | Recipes by {author's name}" v-model="searchq" @keyup="searchForQuery" >
                     <div class="ui tbb button" @click="searchForQuery">
                         Search
                     </div>
