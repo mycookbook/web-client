@@ -109,18 +109,10 @@
                         </a>
                     </div>
                     <div>
-                        {{ (isCookbook(result.resource_type)) ? (result.description + '...') : (result.summary + '...')
-                        }}
+                        {{ (isCookbook(result.resource_type)) ? (result.description + '...') : (result.summary + '...') }}
                     </div>
                     <div class="margin-top-15"></div>
                 </div>
-                <!--<div v-show="results.length > 0">
-                <span style="float:right!important;">
-                    <small>
-                        <a href="">See more</a>
-                    </small>
-                </span>
-            </div>-->
             </div>
         </div>
     </div>
