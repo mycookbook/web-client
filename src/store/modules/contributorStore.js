@@ -11,7 +11,7 @@ export const contributorStore = {
         fetch_contributor(context, username) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = this.state.named_urls.user_resources + '/' + username
+            const uri = 'http://localhost:8080/api/v1/users/' + username
 
             this.state.api.client.get(uri, this.state.api.options)
                 .then(function (response) {
@@ -22,7 +22,7 @@ export const contributorStore = {
                 })
         },
         fetch_active_user(context, username) {
-            const uri = this.state.named_urls.user_resources + '/' + username
+            const uri = 'http://localhost:8080/api/v1/users/'  + username
 
             this.state.api.client.get(uri, this.state.api.options)
                 .then(function (response) {

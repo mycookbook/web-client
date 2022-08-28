@@ -92,7 +92,8 @@
                         <span>
                             <small>
                                 <b>{{ result.resource_type }}</b> >
-                                <a :href="getUri('contributor', result.username)">By {{ result.author_name }}</a>
+                                <a :href="getUri('contributor', result.username)">
+                                By {{ result.author_name }}</a>
                                 > {{ result.created_at }}
                             </small>
                         </span>
@@ -162,15 +163,15 @@ export default {
         },
         getUri(type, c, r) {
             if (type === 'cookbook') {
-                return '/cookbooks/' + c
+                return '/#/cookbooks/' + c
             }
 
             if (type === 'recipe') {
-                return '/recipes/' + r
+                return '/#/recipes/' + r
             }
 
             if (type === 'contributor') {
-                return '/contributors/@' + c
+                return '/#/contributors/' + c
             }
         },
         searchForQuery(e) {
