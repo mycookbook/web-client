@@ -41,7 +41,7 @@
                         <GoogleAdSense />
                     </div>
                     <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column">
-                        <h4>Top 3 most searched recipe keywords in your location</h4>
+                        <h4>Top 3 most searched recipe keywords in your location this week</h4>
                         <div style="padding-top:3%">
                             <div class="ui orange progress" data-percent="74" id="example1">
                                 <div class="bar"></div>
