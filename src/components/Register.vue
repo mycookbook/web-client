@@ -90,7 +90,7 @@ export default {
             if (provider === 'tiktok') {
                 uri_params = {
                     'client_key': process.env.TIKTOK_CLIENT_KEY,
-                    'redirect_uri': 'https://api.cookbookshq.com/api/v1/callback/tiktok',
+                    'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
                     'response_type': 'code',
                     'scope': 'user.info.basic,video.list',
                     'state': csrfState
