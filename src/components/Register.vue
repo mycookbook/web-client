@@ -76,34 +76,38 @@ export default {
     },
     methods: {
         authRedirect(provider) {
-            const csrfState = Math.random().toString(36).substring(2);
+            if (process.env.NODE_ENV === 'development') {
+                console.log('log me in damn fool')
+            } else {
+                let uri_params = {}
 
-            let uri_params = {}
+                if (provider === 'tiktok') {
+                    const csrfState = Math.random().toString(36).substring(2);
 
-            const oauth_endpoint = {
-                'tiktok': process.env.SERVER_ENDPOINT_OAUTH,
-                'twitter': process.env.TWITTER_BASE_URL,
-                'pinterest': process.env.PINTEREST_BASE_URL,
-                'instgaram': process.env.INSTAGRAM_BASE_URL
-            }
+                    const oauth_endpoint = {
+                        'tiktok': process.env.SERVER_ENDPOINT_OAUTH,
+                        'twitter': process.env.TWITTER_BASE_URL,
+                        'pinterest': process.env.PINTEREST_BASE_URL,
+                        'instgaram': process.env.INSTAGRAM_BASE_URL
+                    }
 
-            if (provider === 'tiktok') {
-                uri_params = {
-                    'client_key': process.env.TIKTOK_CLIENT_KEY,
-                    'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
-                    'response_type': 'code',
-                    'scope': 'user.info.basic,video.list',
-                    'state': csrfState
+                    let url = new URL(oauth_endpoint[provider]);
+
+                    uri_params = {
+                        'client_key': process.env.TIKTOK_CLIENT_KEY,
+                        'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
+                        'response_type': 'code',
+                        'scope': 'user.info.basic,video.list',
+                        'state': csrfState
+                    }
+
+                    for (const param in uri_params) {
+                        url.searchParams.set(param, uri_params[param])
+                    }
+
+                    window.location.href = url;
                 }
             }
-
-            let url = new URL(oauth_endpoint[provider]);
-
-            for (const param in uri_params) {
-                url.searchParams.set(param, uri_params[param])
-            }
-
-            window.location.href = url;
         }
     },
     components: {
