@@ -104,6 +104,20 @@
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
+                        query: { tab: 'Privacy Settings' }
+                    }">
+                        <div>
+                            <small>
+                                <i class="ui cogs icon"></i> Display Settings
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
                         query: { tab: 'Profile' }
                     }">
                         <div>
