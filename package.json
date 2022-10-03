@@ -69,6 +69,7 @@
         "url-loader": "^0.5.8",
         "vue": "^2.6.10",
         "vue-carousel-3d": "^0.1.23",
+        "vue-dark-mode-switch": "^1.1.0",
         "vue-input-tag": "0.0.16",
         "vue-loader": "^12.1.0",
         "vue-loading-skeleton": "^1.1.9",
