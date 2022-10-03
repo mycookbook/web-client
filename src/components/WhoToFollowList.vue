@@ -21,7 +21,7 @@ export default {
                 {
                     followers: '67K',
                     author: "Mrs Elvis",
-                    avatar: "https://media-exp2.licdn.com/dms/image/C5603AQEevNlf1HqCkQ/profile-displayphoto-shrink_800_800/0/1655683956974?e=1661990400&v=beta&t=4-NHoPTEItzBB8gTsd0JIkGZfoYraG53mpTVjUhZlJY",
+                    avatar: "https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg",
                     handle: "mummy-obiora",
                 },
                 {
@@ -33,7 +33,7 @@ export default {
                 {
                     followers: '10K',
                     author: "Elvis Diomonde",
-                    avatar: "https://media-exp2.licdn.com/dms/image/C5603AQHPA8VEPr9RKA/profile-displayphoto-shrink_400_400/0/1643647555390?e=1663804800&v=beta&t=WejZ3ARFlAU-sFG768GU0VsirBid89aIcyCkC5dKB-E",
+                    avatar: "https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg",
                     handle: "edmond-olson",
                 }
             ]
