@@ -52,6 +52,12 @@
 										</form>
 									</div>
 								</div>
+								<div v-if="activeLink === 'Display Settings'">
+									<p>
+										Enable/Disable Dark Mode
+									</p> 
+									<DarkModeSwitch @switched="onSwitched" :initialState="isDarkModeEnabled" />
+								</div>
 								<div v-if="activeLink === 'Notifications'">
 									My notifications
 								</div>
@@ -88,7 +94,9 @@ import Bottom from './Bottom.vue'
 import MyCookbooks from './MyCookbooks.vue'
 import MyRecipes from './MyRecipes.vue';
 import MyDrafts from './MyDrafts.vue';
-import Profile from './Profile.vue'
+import Profile from './Profile.vue';
+import DarkModeSwitch from 'vue-dark-mode-switch'
+import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css'
 
 export default {
 	name: "Dashboard",
@@ -102,7 +110,8 @@ export default {
 	},
 	data() {
 		return {
-			uploadMessageDescription: "Upload Cookbook Cover Image"
+			uploadMessageDescription: "Upload Cookbook Cover Image",
+			isDarkModeEnabled: true
 		}
 	},
 	components: {
@@ -110,13 +119,19 @@ export default {
 		LeftSideMenu,
 		Breadcrumb,
 		DashboardBreadcrumb,
+		DarkModeSwitch,
 		Contact,
 		Bottom,
 		MyCookbooks,
 		MyRecipes,
 		MyDrafts,
 		Profile
-	}
+	},
+	methods: {
+			onSwitched: function (isSwitched) {
+				console.log('dark mode is enabled :', isSwitched);
+			}
+		}
 };
 </script>
 

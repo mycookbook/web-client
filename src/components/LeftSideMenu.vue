@@ -69,7 +69,22 @@
                         query: { q: 'all' }
                     }">
                         <div>
-                            <small><i class="ui hashtag icon"></i> Explore</small>
+                            <h3><i class="ui hashtag icon"></i> Explore</h3>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <br />
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Profile' }
+                    }">
+                        <div>
+                            <small>
+                                <i class="ui terminal icon"></i> About
+                            </small>
                         </div>
                     </router-link>
                 </div>
@@ -94,7 +109,7 @@
                     }">
                         <div>
                             <small>
-                                <i class="ui cogs icon"></i> Privacy Settings
+                                <i class="ui lock icon"></i> Privacy Settings
                             </small>
                         </div>
                     </router-link>
@@ -108,21 +123,7 @@
                     }">
                         <div>
                             <small>
-                                <i class="ui cogs icon"></i> Display Settings
-                            </small>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-            <div class="item">
-                <div class="content">
-                    <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Profile' }
-                    }">
-                        <div>
-                            <small>
-                                <i class="ui edit icon"></i> My Profile
+                                <i class="ui puzzle icon"></i> Display Settings
                             </small>
                         </div>
                     </router-link>
