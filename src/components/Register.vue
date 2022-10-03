@@ -77,7 +77,7 @@ export default {
     methods: {
         authRedirect(provider) {
             if (process.env.NODE_ENV === 'development') {
-                console.log('log me in damn fool')
+                window.location.href = process.env.APP_URL + '/#/' + provider + '/?code=&_d='
             } else {
                 let uri_params = {}
 

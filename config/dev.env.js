@@ -10,7 +10,7 @@ module.exports = merge(prodEnv, {
   CLIENT_SECRET: process.env.CLIENT_SECRET,
   SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize"',
   TIKTOK_CLIENT_KEY: '"aw2m32xifypveu7g"',
-  TIKTOK_REDIRECT_URI: '"http://localhost:8000/api/v1/auth/tiktok"',
+  TIKTOK_REDIRECT_URI: '"http://localhost:8080/api/v1/auth/tiktok"',
   TWITTER_BASE_URL: '""',
   PINTEREST_BASE_URL: '""',
   INSTAGRAM_BASE_URL: '""'

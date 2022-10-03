@@ -104,7 +104,7 @@
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
-                        query: { tab: 'Privacy Settings' }
+                        query: { tab: 'Display Settings' }
                     }">
                         <div>
                             <small>

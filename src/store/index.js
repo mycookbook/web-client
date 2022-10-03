@@ -92,10 +92,19 @@ export default new Vuex.Store({
     },
     actions: {
         async boot(context) {
+            const base_urls = {
+                'development': 'http://localhost:8080/api/v1/',
+                'production': 'https://api.cookbookshq.com/api/v1/'
+            }
+
+            const definitions = base_urls[process.env.NODE_ENV] + 'definitions'
+            const cookbook_resources = base_urls[process.env.NODE_ENV] + 'cookbooks'
+            const policies = base_urls[process.env.NODE_ENV] + 'policies'
+
             await this.state.api.client.all([
-                this.state.api.client.get(this.state.named_urls.definitions, this.state.api.options),
-                this.state.api.client.get(this.state.named_urls.cookbook_resources, this.state.api.options),
-                this.state.api.client.get(this.state.named_urls.policies, this.state.api.options)
+                this.state.api.client.get(definitions, this.state.api.options),
+                this.state.api.client.get(cookbook_resources, this.state.api.options),
+                this.state.api.client.get(policies, this.state.api.options)
             ]).then(this.state.api.client.spread((definitions, cookbooks, policies) => {
                 context.commit('STORE_DEFINITIONS', definitions.data)
                 context.commit('STORE_COOKBOOKS', cookbooks.data.data)
