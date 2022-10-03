@@ -23,7 +23,7 @@
 
 						<div v-if="isLoggedIn">
 							<div class="ui button tbb tablet hidden" @click="logOut()">
-								Logout
+								Hello, {{ activeUser }} / Logout
 							</div>
 
 							<router-link :to="{
@@ -102,6 +102,9 @@ export default {
 		},
 		isLoggedIn() {
 			return (this.$store.state.access_token);
+		},
+		activeUser() {
+			return this.$store.state.username
 		}
 	},
 	data() {
