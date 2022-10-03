@@ -22,9 +22,14 @@
 						</a>
 
 						<div v-if="isLoggedIn">
-							<div class="ui button tbb tablet hidden" @click="logOut()">
-								Hello, {{ activeUser }} / Logout
-							</div>
+							<span style="ont-weight: 300 !important; letter-spacing: 0.05em !important; font-size: 18px !important;!important;font-weight:lighter!important; padding:15px!important;">
+								Hello, {{ activeUser }}
+							</span>
+							<span>
+								<div class="ui button tbb tablet hidden" @click="logOut()">
+									Logout
+								</div>
+							</span>
 
 							<router-link :to="{
 								name: 'Dashboard',
