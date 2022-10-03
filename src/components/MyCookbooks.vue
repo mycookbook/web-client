@@ -2,15 +2,15 @@
 	<div>
 		<div class="hideshowicon">
 			<div v-if="inEditMode">
-				hide editor<i class="ui chevron down icon" @click="toggleEditor('hide')"></i>
+				expand to create new<i class="ui chevron down icon" @click="toggleEditor('show')"></i>
 			</div>
 			<div v-else>
-				show editor<i class="ui chevron up icon" @click="toggleEditor('show')"></i>
+				hide editor<i class="ui chevron up icon" @click="toggleEditor('hide')"></i>
 			</div>
 		</div>
 		<br />
 
-		<div id="cookbook-editor">
+		<div id="cookbook-editor" v-if="!inEditMode">
 			<div>
 				<UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
 					:acceptTypes="acceptTypes" />
@@ -168,14 +168,15 @@ export default {
 	methods: {
 		toggleEditor(action) {
 			if (action === 'hide') {
+				$("#cookbook-editor").addClass("show")
+				$("#cookbook-editor").removeClass("hide")
+			}
+
+			if (action === 'show') {
 				$("#cookbook-editor").removeClass("show")
 				$("#cookbook-editor").addClass("hide")
 			}
 
-			if (action === 'show') {
-				$("#cookbook-editor").addClass("show")
-				$("#cookbook-editor").removeClass("hide")
-			}
 			this.inEditMode = !this.inEditMode
 		}
 	},
