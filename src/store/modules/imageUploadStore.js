@@ -3,21 +3,20 @@ import UploadService from '../../services/UploadService'
 export const imageUploadStore = {
     mutations: {
         SET_IMAGEPATH(state, response) {
-            if (response.code !== 200) {
-                this.state.upload_error = 'Sorry, an error occured while uploading the image, please try again.'
-            } else {
-                this.state.imagePath = response.bucketUrl
-            }
-        },
-        RESET_MSGS(state) {
-            this.state.upload_error = null
-            this.state.imagePath = ""
+            console.log(response)
+            // this.state.imagePath = newState.data.imagePath
+
+            //todos:
+            //1. if response.error set the error in the state object, you can watch for this
+            //using computed props in the ImgaeUpload component, that way if there is an error 
+            //it can be displayed to the use in real time
+
+            //if !response.error then go ahead and use the image url as needed
         }
     },
     actions: {
-        async upload_image(context, file) {
-            context.commit('SET_LOADING_STATE', true)
-
+        async upload_to_s3(context, file) {
+            alert('uploading')
             const service = new UploadService()
             const response = await service.upload(file)
 

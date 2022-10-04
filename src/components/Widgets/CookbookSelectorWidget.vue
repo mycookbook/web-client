@@ -1,9 +1,10 @@
 <template>
     <div @click="selectDropDown()">
-        <div id="cookbookDropdown" class="ui fluid search selection dropdown" @click="getValue()">
+        <div id="cookbookDropdown" class="ui fluid search selection dropdown">
             <input type="hidden" name="cookbook">
             <i class="dropdown icon"></i>
             <div class="default text">Select cookbook</div>
+
             <div class="menu">
                 <div class="item" v-bind:data-value="selectCookbookCode(c.id)" v-for="c in cookbooks"
                     @click="getCode(c.id)">
@@ -22,6 +23,11 @@
 
 export default {
     name: 'CookbookSelectorWidget',
+    computed: {
+        lala() {
+            return this.$store.state.cookbookStore.cookbooks
+        }
+    },
     data() {
         return {
             selectedCookbook: "",
@@ -36,9 +42,6 @@ export default {
         deep: true,
         immediate: true
     },
-    mounted(){
-        $('#cookbookDropdown').dropdown();
-    },
 
     methods: {
         selectDropDown() {
@@ -47,22 +50,9 @@ export default {
         selectCookbookCode(code) {
             return code
         },
-        getValue() {
-            const recievedCookbook = ($('#cookbookDropdown').dropdown('get value'))  
-            this.selectedCookbook = recievedCookbook.trim()
-        },
         getCode(the_code) {
             this.selectedCookbook = the_code;
         },
-        setSelectedCookbook(name) {
-           
-            const cookbook = this.cookbooks.find(c => c.name === name);
-            if (cookbook) {
-                this.selectedCookbook = cookbook.id;
-                $('#cookbookDropdown').dropdown('set selected', cookbook.id);
-                $('#cookbookDropdown').dropdown('set text', `${cookbook.name}`);
-            }
-        }
     }
 }
 </script>

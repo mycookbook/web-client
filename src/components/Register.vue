@@ -6,7 +6,7 @@
             <div class="ui center aligned grid">
                 <div class="ui sixteen wide computer column sixteen wide mobile column">
                     <div class="ui vertical labeled icon buttons">
-                        <button class="ui large black button" @click="authRedirect('tiktok')">
+                        <button class="ui large black button" @click="authRedirect('tiktok')" id="signinWithTikTokBtn">
                             <img class="ui icon" src="https://www.logo.wine/a/logo/TikTok/TikTok-Icon-Logo.wine.svg"
                                 style="margin-left:12px!important;" />
                             Sign in with TikTok

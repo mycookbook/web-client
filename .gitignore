@@ -11,8 +11,6 @@ yarn-error.log*
 /test/e2e/reports/
 selenium-debug.log
 .env
-/coverage/
-.nyc_output/
 
 # Editor directories and files
 .idea

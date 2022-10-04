@@ -50,6 +50,8 @@ const VueRouter = new Router({
                     if (!username) username = process.env.DEV_USERNAME
                     if (!code) code = process.env.DEV_TOKEN
 
+                    console.log('token', code)
+
                     store.dispatch('set_active_user', {
                         code: code,
                         username: username

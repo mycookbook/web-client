@@ -28,7 +28,7 @@
 							<router-link :to="{
 								name: 'Register'
 							}">
-								<button class="ui button tbb tablet hidden">
+								<button class="ui button tbb tablet hidden" id="signinBtn">
 									Sign in To Contribute
 								</button>
 								<button class="ui button tbb tablet only">
