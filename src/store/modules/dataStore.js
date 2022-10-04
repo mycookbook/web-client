@@ -8,21 +8,21 @@ export const dataStore = {
         },
     },
     actions: {
-        async fetchFlags(context) {
+        fetch_flags(context) {
             const flagsUrl = process.env.BASE_URL + "flags";
-            try {
-                const response = await this.state.api.client.get(
-                    flagsUrl,
-                    this.state.api.options,
-                );
+
+            this.state.api.client.get(
+                flagsUrl,
+                this.state.api.options,
+            ).then(function(response) {
                 context.commit("SET_FLAGS", response.data);
-            } catch (error) {
-                console.error("Error fetching flags:", error);
-            }
+            }).catch(function(error){
+                context.commit("HANDLE_ERROR", error);
+            });
         },
     },
     getters: {
-        getFlags: (state) => {
+        get_flags: (state) => {
             return state.flags;
         }
     },

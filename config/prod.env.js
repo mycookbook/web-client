@@ -12,4 +12,5 @@ module.exports = {
   AWS_ACCESS_KEY_ID: process.env.VUE_APP_AWS_ACCESS_KEY_ID,
   AWS_BUCKET: process.env.VUE_APP_AWS_BUCKET,
   AWS_REGION: process.env.VUE_APP_AWS_REGION,
+  PEXEL_API_KEY: process.env.VUE_APP_PEXEL_API_KEY
 }
