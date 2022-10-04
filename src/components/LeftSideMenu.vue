@@ -83,7 +83,7 @@
                     }">
                         <div>
                             <small>
-                                <i class="ui terminal icon"></i> About
+                                <i class="ui terminal icon"></i> Bio
                             </small>
                         </div>
                     </router-link>

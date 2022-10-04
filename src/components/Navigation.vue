@@ -22,15 +22,12 @@
 						</a>
 
 						<div v-if="isLoggedIn">
-							<span style="ont-weight: 300 !important; letter-spacing: 0.05em !important; font-size: 18px !important;!important;font-weight:lighter!important; padding:15px!important;">
+							<p style="ont-size: 1em;line-height: 1em;color: rgba(0,0,0,.6)!important;">
 								Hello, {{ activeUser }}
-							</span>
-							<span>
-								<div class="ui button tbb tablet hidden" @click="logOut()">
-									Logout
-								</div>
-							</span>
-
+							</p>
+							<div class="ui button tbb tablet hidden" @click="logOut()">
+								Logout
+							</div>
 							<router-link :to="{
 								name: 'Dashboard',
 								query: { tab: 'Cookbooks' }
