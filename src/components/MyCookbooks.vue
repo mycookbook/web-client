@@ -18,6 +18,13 @@
 			<div class="ui horizontal divider"></div>
 			<div class="ui form">
 				<div class="field">
+					<label>Image alt Text (optional)</label>
+					<input type="text" placeholder="Enter Image alt text" v-model="alt_text" />
+				</div>
+			</div>
+			<br />
+			<div class="ui form">
+				<div class="field">
 					<label>Title (required*)</label>
 					<input type="text" placeholder="Enter title" v-model="cookbook_title" />
 				</div>
@@ -76,7 +83,7 @@
 			</div>
 
 			<div class="ui horizontal divider"></div>
-			
+
 			<div class="ui grid">
 				<div class="six wide computer column sixteen wide mobile column">
 					<button class="fluid ui black outline button" @click="saveAsDraft()">
@@ -170,6 +177,7 @@ export default {
 			cookbook_title: '',
 			description: '',
 			keywords: '',
+			alt_text: '',
 			flag: ''
 		}
 	},
@@ -217,11 +225,14 @@ export default {
 		},
 		getPayload() {
 			return {
-				'title': this.cookbook_title,
+				'name': this.cookbook_title,
 				'description': this.description,
 				'categories': this.selectedCategories,
-				'flag': this.flag,
-				'keywords': this.keywords
+				'flag_id': this.flag,
+				'keywords': this.keywords,
+				'bookCoverImg': '',
+				'user_id': this.$store.state.username,
+				'alt_text': this.alt_text
 			}
 		}
 	},
