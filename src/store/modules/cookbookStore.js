@@ -81,7 +81,7 @@ export const cookbookStore = {
 
             let url = process.env.BASE_URL + 'cookbooks';
 
-            const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODg3NjQsImV4cCI6MTY2NDk3NTE2NCwibmJmIjoxNjY0ODg4NzY0LCJqdGkiOiJVVVFsQTdSZk0wRmJVc0Q5Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7L8YyA3Xq9ZPzqpt8_JKb3yFLcjXfFm-U4oL2SWBr50'
+            const token = this.state.access_token
 
             const req_options = {
                 headers: {

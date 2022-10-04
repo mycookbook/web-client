@@ -43,11 +43,12 @@ const VueRouter = new Router({
 
 					let replaced = queryString.replace("/#/", "/");
 					let url = new URL(replaced);
-					let code = url.searchParams.get("code");
+					let code = url.searchParams.get("token");
 					let username = url.searchParams.get('_d')
 
 					if (!username) username = 'test-user'
-					if (!code) code = '123'
+					if (!code) code = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODg3NjQsImV4cCI6MTY2NDk3NTE2NCwibmJmIjoxNjY0ODg4NzY0LCJqdGkiOiJVVVFsQTdSZk0wRmJVc0Q5Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7L8YyA3Xq9ZPzqpt8_JKb3yFLcjXfFm-U4oL2SWBr50'
+					//attempt login with postman to get a new access token for test user account
 
 					store.dispatch('fetch_active_user', username)
 
