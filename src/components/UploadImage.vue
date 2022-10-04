@@ -13,7 +13,7 @@
 				<br />
 				<div>
 					<div class="ui tbb button" @click="showFileFinder()">
-						Upload
+						Select & Upload
 					</div>
 					<form enctype="multipart/form-data" method="post">
 						<input type="file" id="myfile" name="myfile" :accept="acceptTypes" hidden />

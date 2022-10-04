@@ -19,14 +19,14 @@
 			<div class="ui form">
 				<div class="field">
 					<label>Title (required*)</label>
-					<input type="text" placeholder="Enter title" />
+					<input type="text" placeholder="Enter title" v-model="cookbook_title" />
 				</div>
 			</div>
 			<br />
 			<div class="ui form">
 				<div class="field">
 					<label>About this Cookbook? (required*)</label>
-					<textarea
+					<textarea v-model="description"
 						placeholder="A very good description will be about 300 characters long. This tells users what this cookbook is about. it may encourage users to add to your cookbook thereby increasing your visibility. Make the best use for it, good luck!"></textarea>
 				</div>
 			</div>
@@ -37,12 +37,13 @@
 					<div>
 						<div class="ui labels">
 							<a class="ui label" v-for="cat in _categories"
-								:style="{ 'background-color': '#' + cat.color }">
+								:style="{ 'background-color': '#' + cat.color }" @click="selectedCategory(cat.slug)">
 								{{ cat.name }}
 							</a>
 						</div>
 					</div>
-					<input type="text" placeholder="Your selected categories show up here" />
+					<input type="text" placeholder="Your selected categories show up here"
+						v-model="selectedCategories" />
 					<br /><br />
 				</div>
 			</div>
@@ -59,7 +60,7 @@
 							</a>
 						</span>
 					</label>
-					<input type="text" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
+					<input type="text" v-model="flag" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
 				</div>
 			</div>
 			<br />
@@ -70,17 +71,22 @@
 							Keywords (Optional)
 						</span>
 					</label>
-					<input type="text" placeholder="Keywords help your content get seen quickly in search results" />
+					<input type="text" v-model="keywords" placeholder="e.g #goals, #tiktok, #goals" />
 				</div>
 			</div>
-			<div class="ui horizontal divider"></div>
 
+			<div class="ui horizontal divider"></div>
+			
 			<div class="ui grid">
 				<div class="six wide computer column sixteen wide mobile column">
-					<button class="fluid ui black outline button">save as draft</button>
+					<button class="fluid ui black outline button" @click="saveAsDraft()">
+						Save as draft
+					</button>
 				</div>
 				<div class="ten wide computer column  sixteen wide mobile column">
-					<button class="fluid ui tbb button">save</button>
+					<button class="fluid ui tbb button" @click="save()">
+						Save
+					</button>
 				</div>
 			</div>
 
@@ -159,7 +165,12 @@ export default {
 			inEditMode: true,
 			uploadMessageDescription: "Upload Cookbook Cover Image",
 			imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
-			acceptTypes: ".png"
+			acceptTypes: ".png",
+			selectedCategories: '',
+			cookbook_title: '',
+			description: '',
+			keywords: '',
+			flag: ''
 		}
 	},
 	components: {
@@ -178,6 +189,40 @@ export default {
 			}
 
 			this.inEditMode = !this.inEditMode
+		},
+		selectedCategory(slug) {
+			let selected = this.selectedCategories + ', '
+
+			selected += slug + ', '
+
+			this.selectedCategories = selected.slice(0, -2);
+
+			if (this.selectedCategories.substring(0, 1) === ',') {
+				this.selectedCategories = selected.slice(0, -2).substring(1);
+			}
+
+			let chars = this.selectedCategories.split(',')
+
+			let uniqueChars = chars.filter((c, index) => {
+				return chars.indexOf(c) === index;
+			});
+
+			this.selectedCategories = uniqueChars.toString()
+		},
+		save() {
+			console.log('payload', this.getPayload())
+		},
+		saveAsDraft() {
+			console.log('payload', this.getPayload())
+		},
+		getPayload() {
+			return {
+				'title': this.cookbook_title,
+				'description': this.description,
+				'categories': this.selectedCategories,
+				'flag': this.flag,
+				'keywords': this.keywords
+			}
 		}
 	},
 	filters: {
