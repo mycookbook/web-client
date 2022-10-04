@@ -19,7 +19,7 @@
 			<div class="ui form">
 				<div class="field">
 					<label>Image alt Text (optional)</label>
-					<input type="text" placeholder="Enter Image alt text" v-model="alt_text" />
+					<input type="text" placeholder="Optional but strongly recommended" v-model="alt_text" />
 				</div>
 			</div>
 			<br />
@@ -218,16 +218,16 @@ export default {
 			this.selectedCategories = uniqueChars.toString()
 		},
 		save() {
-			console.log('payload', this.getPayload())
+			this.$store.dispatch('create_cookbook', this.getPayload())
 		},
 		saveAsDraft() {
-			console.log('payload', this.getPayload())
+			this.$store.dispatch('save_as_draft', this.getPayload())
 		},
 		getPayload() {
 			return {
 				'name': this.cookbook_title,
 				'description': this.description,
-				'categories': this.selectedCategories,
+				'categories': this.selectedCategories.trim(),
 				'flag_id': this.flag,
 				'keywords': this.keywords,
 				'bookCoverImg': '',

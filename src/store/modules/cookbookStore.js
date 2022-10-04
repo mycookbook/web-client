@@ -73,6 +73,27 @@ export const cookbookStore = {
             }).catch(function (error) {
                 context.commit("SET_LOADING_STATE", false)
             })
-        }
+        },
+        create_cookbook(context, payload) {
+            context.commit("SET_LOADING_STATE", true)
+
+            const uri = this.state.named_urls.cookbook_resources
+
+            let url = process.env.BASE_URL + 'cookbooks';
+
+			this.state.api.client.post(url, payload, this.state.api.options)
+			.then(function (response) {
+                // if (response.data.updated) {
+				// 	context.commit('INCREMENT_CLAP', response.data.claps)
+				// }
+                console.log('r', response.data)
+            }).catch(function (error) {
+                let res_status = error.response.status
+                console.log('error', error.response.status)
+            })
+        },
+        save_as_draft(context, payload) {
+            context.commit("SET_LOADING_STATE", true)
+        },
     }
 }
