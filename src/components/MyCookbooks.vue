@@ -230,7 +230,7 @@ export default {
 				'categories': this.selectedCategories.trim(),
 				'flag_id': this.flag,
 				'keywords': this.keywords,
-				'bookCoverImg': '',
+				'bookCoverImg': 'https://media-exp1.licdn.com/dms/image/C5603AQGKdRvQJbmLqw/profile-displayphoto-shrink_400_400/0/1662683412684?e=1670457600&v=beta&t=wiLPkRzrltHPOsudDg6lyo3Tg4NzTANQaa7g78i_Pss',
 				'user_id': this.$store.state.username,
 				'alt_text': this.alt_text
 			}

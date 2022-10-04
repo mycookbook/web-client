@@ -44,11 +44,12 @@ export default new Vuex.Store({
             registration_form: {},
             contact_form: {}
         },
+        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODYyNjksImV4cCI6MTY2NDk3MjY2OSwibmJmIjoxNjY0ODg2MjY5LCJqdGkiOiJQTmREdXE1bVBEc2lrSUIzIiwic3ViIjo0MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.wJszEQVp-ZQGJFAP_kdnwKe1xOMAR0YwX1HsLLogBk0',
         api: {
             client: axios,
             options: {
                 headers: {
-                    'X-API-KEY': "SijjocvGGcgnXVbXzSoVtmN5qPor0jl8PnlRJ25U26JCODpoyi"
+                    'Authorization': `Bearer ${this.token}`
                 }
             }
         },

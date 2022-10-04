@@ -81,15 +81,20 @@ export const cookbookStore = {
 
             let url = process.env.BASE_URL + 'cookbooks';
 
-			this.state.api.client.post(url, payload, this.state.api.options)
+            const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODg3NjQsImV4cCI6MTY2NDk3NTE2NCwibmJmIjoxNjY0ODg4NzY0LCJqdGkiOiJVVVFsQTdSZk0wRmJVc0Q5Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7L8YyA3Xq9ZPzqpt8_JKb3yFLcjXfFm-U4oL2SWBr50'
+
+            const req_options = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+
+			this.state.api.client.post(url, payload, req_options)
 			.then(function (response) {
-                // if (response.data.updated) {
-				// 	context.commit('INCREMENT_CLAP', response.data.claps)
-				// }
-                console.log('r', response.data)
+                location.reload();
             }).catch(function (error) {
                 let res_status = error.response.status
-                console.log('error', error.response.status)
+                console.log(res_status, error.response.status)
             })
         },
         save_as_draft(context, payload) {
