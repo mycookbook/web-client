@@ -94,7 +94,10 @@ export const cookbookStore = {
                 location.reload();
             }).catch(function (error) {
                 let res_status = error.response.status
-                console.log(res_status, error.response.status)
+                
+                if (res_status == 401) {
+                    context.commit("LOGOUT")
+                }
             })
         },
         save_as_draft(context, payload) {
