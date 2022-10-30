@@ -46,8 +46,10 @@ const VueRouter = new Router({
 					let code = url.searchParams.get("token");
 					let username = url.searchParams.get('_d')
 
+					console.log('tttoken', code)
+
 					if (!username) username = 'test-user'
-					if (!code) code = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODg3NjQsImV4cCI6MTY2NDk3NTE2NCwibmJmIjoxNjY0ODg4NzY0LCJqdGkiOiJVVVFsQTdSZk0wRmJVc0Q5Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7L8YyA3Xq9ZPzqpt8_JKb3yFLcjXfFm-U4oL2SWBr50'
+					if (!code) code = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcxNTEzNzYsImV4cCI6MTY2NzIzNzc3NiwibmJmIjoxNjY3MTUxMzc2LCJqdGkiOiJISVR2c0o5bDFyZ0dOWVo3Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.kDzVJKCAnyQnS00ZVxNJZnhsp0xBYWmAexwrVALIBq4'
 					//attempt login with postman to get a new access token for test user account
 
 					store.dispatch('fetch_active_user', username)
