@@ -16,7 +16,7 @@
 						Select & Upload
 					</div>
 					<form enctype="multipart/form-data" method="post">
-						<input type="file" id="myfile" name="myfile" :accept="acceptTypes" hidden />
+						<input type="file" id="myfile" name="myfile" ref="file" :accept="acceptTypes" hidden />
 					</form>
 				</div>
 				<br />
