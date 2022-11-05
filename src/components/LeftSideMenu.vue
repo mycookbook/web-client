@@ -22,7 +22,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Cookbooks {{ _contributor.cookbooks.length }}
+                                    Cookbooks {{ _contributor.cookbooks ? _contributor.cookbooks.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -38,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Recipes {{ _contributor.recipes.length }}
+                                    Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0}}
                                 </u>
                             </small>
                         </div>
@@ -54,7 +54,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _contributor.drafts.length }}
+                                    Drafts {{ _contributor.drafts ? _contributor.drafts.length : 0 }}
                                 </u>
                             </small>
                         </div>
