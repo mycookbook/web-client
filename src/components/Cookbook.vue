@@ -58,7 +58,7 @@
 			<!-- end categories section -->
 
 			<!-- start hero -->
-			<div class="ui grid">
+			<div class="ui grid" id="cover-img">
 				<div
 					class="sixteen wide mobile column sixteen wide tablet column sixteen wide computer column  sixteen wide large screen column">
 					<div style="position:relative;display:flex;">
@@ -68,42 +68,34 @@
 									title="Earn redeemable points by adding recipes to this public cookbook."></i>
 							</a>
 						</div>
-						<img :src="cookbook.bookCoverImg" class="ui fluid image"
-							alt="mj's signature custom made salad. contains chicken shreds and tomatoe"
+						<img :src="cookbook.bookCoverImg" class="ui fluid image" :alt="cookbook.alt_text"
 							style="max-height:650px;">
-						<!-- link to user bio was here -->
-						<div style="position:absolute;top:40%;left:40%;" @click="redirectToDashboard()">
-							<div class="ui small light black circular button hidden mobile"
-								style="padding:25px; width: 65%;">
-								<i class="idea yellow icon"></i>
-								Did you know that you can earn points by adding recipes to this cookbook? <br /><br />
-								Try it now, start adding recipes
-							</div>
-						</div>
-						<div
-							style="position:absolute;bottom: 20;color: #ffffff; top:80%; max-width: 100%; padding: 25px 50px 0px 30px; background-color: rgba(0, 0, 0, 0.5);opacity: 0.9;">
-							<div :class="{ 'cookbook-info': seeMore }">
-								{{ cookbook.description }}
-								{{ disclaimerText(cookbook.is_locked) }}
-							</div>
-							<div @click="seeMoreOrLess()">
-								<span class="click" v-if="seeMore">
-									<i class="ui chevron circle down icon"></i>see more
-								</span>
-
-								<span class="click" v-else>
-									<i class="ui chevron circle up icon"></i>see less
-								</span>
+						<div style="position:absolute;top:40%;left:23%!important">
+							<div class="ui inverted segment">
+								<button class="ui large inverted button" @click="hideCoverImg()">
+									Open to see all {{ cookbook.recipes.length}} Recipe(s)
+								</button>
+								<button class="ui large inverted red button">
+									<i class="bell icon"></i>Subscribe</button>
+								<button class="ui large inverted orange button">Like & Share</button>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div style="padding:25px;">
+					{{ cookbook.description }}
 				</div>
 			</div>
 			<!-- end hero -->
 
 			<!-- recipes -->
-			<div class="ui grid center">
+			<div class="ui grid center" id="recipes-list">
 				<div class="sixteen wide computer column sixteen wide mobile column" id="scrollIntoView">
+					<div>
+						<button class="ui orange inverted button" @click="showCoverImg()">
+							Show the Cookbook Cover Image
+						</button>
+					</div>
 					<RecipesList :recipes="_recipes" :cookbookId="cookbook.id" :cookbookName="cookbook.name" />
 				</div>
 			</div>
@@ -237,6 +229,14 @@ export default {
 		},
 		redirectToDashboard() {
 			location.replace('https://web.cookbookshq.com//#/dashboard');
+		},
+		hideCoverImg() {
+			$("#cover-img").addClass("hide")
+			$("#recipes-list").removeClass("hide")
+		},
+		showCoverImg() {
+			$("#recipes-list").addClass("hide")
+			$("#cover-img").removeClass("hide")
 		}
 	},
 	components: {
@@ -270,4 +270,9 @@ p {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+.hide {
+	display:none;
+}
+
 </style>

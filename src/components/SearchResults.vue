@@ -145,6 +145,7 @@ export default {
         this.$store.dispatch('empty_results_object')
 
         if (this.$route.query.q !== "") {
+            this.searchq = this.$route.query.q
             this.$store.dispatch('fetch_results', this.$route.query.q)
         }
     },

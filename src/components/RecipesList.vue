@@ -5,7 +5,7 @@
 		</div>
 		<div class="ui header">
 			<span>Showing {{ (incrementBy > recipes.length) ? recipes.length : incrementBy }} of {{ recipes.length }}
-				recipes</span>
+				recipes in "{{ cookbookName }}"</span>
 		</div>
 		<div>
 			<span>
