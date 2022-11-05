@@ -79,17 +79,28 @@
 									<i class="bell icon"></i>Subscribe</button>
 								<button class="ui large inverted orange button">Like & Share</button>
 							</div>
+							<div style="margin-left:40%;">
+								<button class="ui tbb large button">
+									<i class="ui mouse pointer icon"></i>Login/Register
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div style="padding:25px;">
 					{{ cookbook.description }}
+					<br /><br /><br /><br />
+					<div>
+						<button class="ui tbb button">
+							Join the community! Login and start contributing to Cookbooks.
+						</button>
+					</div>
 				</div>
 			</div>
 			<!-- end hero -->
 
 			<!-- recipes -->
-			<div class="ui grid center" id="recipes-list">
+			<div class="ui grid center hide" id="recipes-list">
 				<div class="sixteen wide computer column sixteen wide mobile column" id="scrollIntoView">
 					<div>
 						<button class="ui orange inverted button" @click="showCoverImg()">
