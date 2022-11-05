@@ -24,6 +24,7 @@ import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
+import Help from '@/components/Help'
 
 Vue.use(Router);
 
@@ -97,6 +98,13 @@ const VueRouter = new Router({
 						router.push('signin')
 					}
 				}
+			}
+		}, {
+			path: '/help',
+			name: 'Help',
+			component: Help,
+			props: {
+				default: true,
 			}
 		}, {
 			path: '/profile',

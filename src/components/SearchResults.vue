@@ -18,9 +18,8 @@
             <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
                 <div>
                     <div class="ui fluid action input">
-                        <input type="text"
-                            placeholder="Try: peppermint tea recipe | cookbooks by {author's name} | recipes by {author's name} | trending | top: {:number} recipes ..."
-                            v-model="searchq" @keyup="searchForQuery">
+                        <input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq"
+                            @keyup="searchForQuery">
                         <div class="ui tbb button" @click="searchForQuery">
                             Search
                         </div>
@@ -34,6 +33,19 @@
                             </a>
                         </small>
                     </span>
+                </div>
+                <div style="margin:18px!important">
+                    <i class="lightbulb icon"></i>
+                    <em>Did you know that you can search for more fine-grained results?
+                        As an example, you can type <code>:cookbooks|author [all or part of author's name].</code> This
+                        will list all the cookbooks that matches your search query!
+                        <br /><br /> Neat right? Learn how to search like a pro using our homegrown</em>
+                    <router-link :to="{
+                    	name: 'Help',
+                    	query: { doc: 'query-syntax' }
+                    }">
+                        query syntax
+                    </router-link>
                 </div>
                 <div class="margin-top-25"></div>
                 <div class="ui grid">
@@ -93,7 +105,7 @@
                             <small>
                                 <b>{{ result.resource_type }}</b> >
                                 <a :href="getUri('contributor', result.username)">
-                                By {{ result.author_name }}</a>
+                                    By {{ result.author_name }}</a>
                                 > {{ result.created_at }}
                             </small>
                         </span>
@@ -110,7 +122,8 @@
                         </a>
                     </div>
                     <div>
-                        {{ (isCookbook(result.resource_type)) ? (result.description + '...') : (result.summary + '...') }}
+                        {{ (isCookbook(result.resource_type)) ? (result.description + '...') : (result.summary + '...')
+                        }}
                     </div>
                     <div class="margin-top-15"></div>
                 </div>
@@ -224,6 +237,10 @@ export default {
 <style scoped>
 .margin-top-15 {
     margin-top: 15px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
 }
 
 .margin-top-25 {
