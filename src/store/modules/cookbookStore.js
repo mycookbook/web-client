@@ -64,7 +64,7 @@ export const cookbookStore = {
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = this.state.named_urls.cookbook_resources + '/' + cookbookId
+            const uri = 'http://localhost:8080/api/v1/cookbooks' + '/' + cookbookId
 
             await this.state.api.client.get(uri, this.state.api.options)
             .then(function (response) {
@@ -77,7 +77,7 @@ export const cookbookStore = {
         create_cookbook(context, payload) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = this.state.named_urls.cookbook_resources
+            const uri = 'http://localhost:8080/api/v1/cookbooks'
 
             let url = process.env.BASE_URL + 'cookbooks';
 

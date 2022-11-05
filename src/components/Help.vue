@@ -29,6 +29,9 @@
                         <br />
                         <div>
                             <div class="ui message">
+                                <span style="float: right!important;">
+                                    <a href="/#/search?q=:tags|cookbooks vegan">Try it</a>
+                                </span>
                                 <div class="header">
                                     :tags|cookbooks
                                 </div>
@@ -41,15 +44,18 @@
                                 </div>
                             </div>
                             <div class="ui message">
+                                <span style="float: right!important;">
+                                    <a href="/#/search?q=:tags|recipes vegan">Try it</a>
+                                </span>
                                 <div class="header">
                                     :tags|recipes
                                 </div>
                                 <ul class="list">
-                                    Example <code>:tags|recipes 2022</code>
+                                    Example <code>:tags|recipes vegan</code>
                                 </ul>
                                 <br />
                                 <div>
-                                    This will return results for all the recipes found with 2022 tag.
+                                    This will return results for all the recipes found with vegan tag.
                                 </div>
                             </div>
                         </div>
@@ -62,35 +68,29 @@
                         <br />
                         <div>
                             <div class="ui message">
+                                <span style="float: right!important;">
+                                    <a href="/#/search?q=:cookbooks|country canada">Try it</a>
+                                </span>
                                 <div class="header">
-                                    :cookbooks|tags [keyword]
+                                    :cookbooks|country [country name e.g canada]
                                 </div>
                                 <ul class="list">
-                                    Example <code>:tags|cookbooks vegan</code>
+                                    Example <code>:tags|recipes canada</code>
                                 </ul>
                                 <br />
                                 <div>
-                                    This will return results for all the cookbooks taged as vegan.
+                                    This will return results for all the canadian recipes
                                 </div>
                             </div>
                             <div class="ui message">
+                                <span style="float: right!important;">
+                                    <a href="/#/search?q=:cookbooks|category vegan">Try it</a>
+                                </span>
                                 <div class="header">
-                                    :cookbooks|country [country name]
+                                    :cookbooks|category [category name e.g vegan]
                                 </div>
                                 <ul class="list">
-                                    Example <code>:tags|recipes 2022</code>
-                                </ul>
-                                <br />
-                                <div>
-                                    This will return results for all the recipes found with 2022 tag.
-                                </div>
-                            </div>
-                            <div class="ui message">
-                                <div class="header">
-                                    :cookbooks|category [category name]
-                                </div>
-                                <ul class="list">
-                                    Example <code>:tags|recipes 2022</code>
+                                    Example <code>:cookbooks|category vegan</code>
                                 </ul>
                                 <br />
                                 <div>
