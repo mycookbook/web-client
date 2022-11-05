@@ -29,7 +29,7 @@ export const contributorStore = {
                     console.log('fedfd', response.data)
                     context.commit("UPDATE_ACTIVE_USER", response.data)
                 }).catch(function (error) {
-                    console.log('fetch active user error', error.response)
+                    console.log('fetch active user error', error)
                 })
         }
     }

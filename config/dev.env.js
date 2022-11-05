@@ -2,6 +2,7 @@ var merge = require('webpack-merge')
 var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
+  TEST_TOKEN:"'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2Njc2MTMwMjYsImV4cCI6MTY2NzY5OTQyNiwibmJmIjoxNjY3NjEzMDI2LCJqdGkiOiJ5RFh4TEoxTUZXR2NaTFhVIiwic3ViIjoyMiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.zNHOmdKRfaQFA0kaCKP3EkQ0Kns0CHFfvUP2B11R8k4'",
   NODE_ENV: '"development"',
   APP_URL: '"http://localhost:5001"',
   BASE_URL: '"http://localhost:8080/api/v1/"',
