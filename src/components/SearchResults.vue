@@ -113,7 +113,7 @@
                     <div>
                         <a class="link">
                             <div v-if="isCookbook(result.resource_type)"
-                                @click="redirectTo(result.resource_type, result.cookbook_slug, result.cookbook_id)">
+                                @click="redirectTo(result.resource_type, result.slug, result.id)">
                                 <h4>{{ result.name }}</h4>
                             </div>
                         </a>

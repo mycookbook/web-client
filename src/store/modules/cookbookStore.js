@@ -20,15 +20,15 @@ export const cookbookStore = {
         },
         SORT(state, payload) {
             const unfiltered = JSON.parse(localStorage.getItem("unfiltered"))
- 
+
             if (payload === 'all') {
                 state.cookbooks = unfiltered
             } else if (payload === 'location') {
                 state.cookbooks = unfiltered
                 const filtered = state.cookbooks.filter((c) => {
                     this.state.api.client
-                    .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
-                    .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
+                        .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
+                        .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
                     return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
                 })
                 state.cookbooks = filtered
@@ -37,7 +37,7 @@ export const cookbookStore = {
                 const filtered = state.cookbooks.filter((c) => {
                     if (c.categories.length > 0) {
                         let filteredCategories = JSON.parse(JSON.stringify(c.categories))
-                        for (let i=0; i < filteredCategories.length; i++){
+                        for (let i = 0; i < filteredCategories.length; i++) {
                             if (filteredCategories[i].slug === payload) {
                                 return filteredCategories
                             }
@@ -48,7 +48,7 @@ export const cookbookStore = {
             }
         },
         UPDATE_COOKBOOK_STATE(state, newState) {
-			this.state.cookbook = newState
+            this.state.cookbook = newState
         },
         SEE_MORE_OR_LESS(state) {
             state.seeMore = !state.seeMore
@@ -64,20 +64,24 @@ export const cookbookStore = {
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = 'http://localhost:8080/api/v1/cookbooks' + '/' + cookbookId
+            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.NODE_ENV;
+
+            const uri = base + '/' + cookbookId
 
             await this.state.api.client.get(uri, this.state.api.options)
-            .then(function (response) {
-                context.commit('UPDATE_COOKBOOK_STATE', response.data)
-				context.commit("SET_LOADING_STATE", false)
-            }).catch(function (error) {
-                context.commit("SET_LOADING_STATE", false)
-            })
+                .then(function (response) {
+                    context.commit('UPDATE_COOKBOOK_STATE', response.data)
+                    context.commit("SET_LOADING_STATE", false)
+                }).catch(function (error) {
+                    context.commit("SET_LOADING_STATE", false)
+                })
         },
         create_cookbook(context, payload) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = 'http://localhost:8080/api/v1/cookbooks'
+            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.NODE_ENV;
+
+            const uri = base
 
             let url = process.env.BASE_URL + 'cookbooks';
 
@@ -89,16 +93,16 @@ export const cookbookStore = {
                 }
             }
 
-			this.state.api.client.post(url, payload, req_options)
-			.then(function (response) {
-                location.reload();
-            }).catch(function (error) {
-                let res_status = error.response.status
-                
-                if (res_status == 401) {
-                    context.commit("LOGOUT")
-                }
-            })
+            this.state.api.client.post(url, payload, req_options)
+                .then(function (response) {
+                    location.reload();
+                }).catch(function (error) {
+                    let res_status = error.response.status
+
+                    if (res_status == 401) {
+                        context.commit("LOGOUT")
+                    }
+                })
         },
         save_as_draft(context, payload) {
             context.commit("SET_LOADING_STATE", true)
