@@ -81,7 +81,7 @@
 							</div>
 							<div style="margin-left:40%;">
 								<button class="ui tbb large button">
-									<i class="ui mouse pointer icon"></i>Login/Register
+									<i class="ui mouse pointer icon"></i>Contribute
 								</button>
 							</div>
 						</div>
