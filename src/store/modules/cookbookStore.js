@@ -64,7 +64,7 @@ export const cookbookStore = {
         async fetch_cookbook(context, cookbookId) {
             context.commit("SET_LOADING_STATE", true)
 
-            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.NODE_ENV;
+            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.BASE_URL + 'cookbooks';
 
             const uri = base + '/' + cookbookId
 
@@ -79,7 +79,7 @@ export const cookbookStore = {
         create_cookbook(context, payload) {
             context.commit("SET_LOADING_STATE", true)
 
-            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.NODE_ENV;
+            let base = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/cookbooks' : process.env.BASE_URL + 'cookbooks';
 
             const uri = base
 
