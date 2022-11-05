@@ -105,7 +105,7 @@
                             <small>
                                 <b>{{ result.resource_type }}</b> >
                                 <a :href="getUri('contributor', result.username)">
-                                    By {{ result.author_name }}</a>
+                                    By {{ result.author.name }}</a>
                                 > {{ result.created_at }}
                             </small>
                         </span>
@@ -114,10 +114,7 @@
                         <a class="link">
                             <div v-if="isCookbook(result.resource_type)"
                                 @click="redirectTo(result.resource_type, result.cookbook_slug, result.cookbook_id)">
-                                <h4>{{ result.cookbook_name }}</h4>
-                            </div>
-                            <div v-else @click="redirectTo(result.resource_type, result.recipe_slug, result.recipe_id)">
-                                <h4>{{ result.recipe_name }}</h4>
+                                <h4>{{ result.name }}</h4>
                             </div>
                         </a>
                     </div>
@@ -151,6 +148,7 @@ export default {
     },
     computed: {
         results() {
+            console.log('resultsss', this.$store.state.searchStore.results)
             return this.$store.state.searchStore.results
         },
         showing() {

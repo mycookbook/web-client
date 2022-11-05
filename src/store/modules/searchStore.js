@@ -65,14 +65,11 @@ export const searchStore = {
             });
         },
         async fetch_results(context, query) {
-            await axios.get(`${process.env.BASE_URL}search?query=${query}`, {
-                headers: {
-                    'X-API-KEY': "SijjocvGGcgnXVbXzSoVtmN5qPor0jl8PnlRJ25U26JCODpoyi"
-                }
-            }).then((response) => {
+            await axios.get(`${process.env.BASE_URL}search?query=${query}`)
+            .then((response) => {
                 context.commit('SAVE_SEARCH_RESULTS', response.data.response)
             }).catch((error) => {
-                // console.log('search error', error)
+                console.log('search error', error)
             })
         },
         empty_results_object(context) {
