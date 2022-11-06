@@ -35,7 +35,7 @@ export const recipeStore = {
 		async fetch_recipe(context, recipeId) {
 			context.commit("SET_LOADING_STATE", true)
 
-			const uri = this.state.named_urls.recipe_resources + '/' + recipeId
+			let uri = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/recipes/' + recipeId : process.env.BASE_URL + 'recipes/' + recipeId;
 			
 			await this.state.api.client.get(uri, this.state.api.options)
 			.then(function (response) {
