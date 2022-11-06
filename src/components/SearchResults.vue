@@ -19,7 +19,7 @@
                 <div>
                     <div class="ui fluid action input">
                         <input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq"
-                            @keyup="searchForQuery">
+                            @keyup="searchForQuery" id="sq">
                         <div class="ui tbb button" @click="searchForQuery">
                             Search
                         </div>
@@ -109,6 +109,14 @@
                                 > {{ result.created_at }}
                             </small>
                         </span>
+                        <span style="float:right">
+                            <small>
+                                <span>contains <span style="background-color: #FFFF00">example 1, example
+                                        2</span></span>
+                                <span>: </span>
+                                <span>missing <s>example 3, example 4</s></span>
+                            </small>
+                        </span>
                     </div>
                     <div>
                         <a class="link">
@@ -152,7 +160,6 @@ export default {
     },
     computed: {
         results() {
-            console.log('resultsss', this.$store.state.searchStore.results)
             return this.$store.state.searchStore.results
         },
         showing() {
@@ -191,10 +198,15 @@ export default {
             }
         },
         searchForQuery(e) {
-            if (e.which == 13) {
-                this.$store.dispatch('empty_results_object')
-                this.$store.dispatch('fetch_results', this.searchq)
+
+            if (e.which == 13) { //only when the keyup event is triggered by the enter key
+                console.log('qq', $("#sq").val())
+                let qStr = $("#sq").val();
+                let name = 'SearchResults'
+                this.$router.replace({ name, query: { q: qStr } });
+                this.searchq = qStr
             }
+
             this.$store.dispatch('empty_results_object')
             this.$store.dispatch('fetch_results', this.searchq)
         },
