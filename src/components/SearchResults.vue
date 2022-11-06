@@ -116,6 +116,10 @@
                                 @click="redirectTo(result.resource_type, result.slug, result.id)">
                                 <h4>{{ result.name }}</h4>
                             </div>
+                            <div v-if="isRecipe(result.resource_type)"
+                                @click="redirectTo(result.resource_type, result.slug, result.id)">
+                                <h4>{{ result.name }}</h4>
+                            </div>
                         </a>
                     </div>
                     <div>
