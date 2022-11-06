@@ -91,9 +91,7 @@
 			<div class="ui grid center hide" id="recipes-list">
 				<div class="sixteen wide computer column sixteen wide mobile column" id="scrollIntoView">
 					<div>
-						<button class="ui orange inverted button" @click="showCoverImg()">
-							Show the Cookbook Cover Image
-						</button>
+						<a style="cursor: pointer;" @click="showCoverImg()">back to about page</a>
 					</div>
 					<RecipesList :recipes="_recipes" :cookbookId="cookbook.id" :cookbookName="cookbook.name" />
 				</div>
