@@ -60,41 +60,29 @@
 			<!-- start hero -->
 			<div class="ui grid" id="cover-img">
 				<div
-					class="sixteen wide mobile column sixteen wide tablet column sixteen wide computer column  sixteen wide large screen column">
+					class="sixteen wide mobile column eight wide tablet column eight wide computer column eight wide large screen column">
 					<div style="position:relative;display:flex;">
-						<div>
-							<a class="ui right corner red label">
-								<i :class="cookbook.is_locked ? 'lock icon' : 'unlock icon'"
-									title="Earn redeemable points by adding recipes to this public cookbook."></i>
-							</a>
-						</div>
 						<img :src="cookbook.bookCoverImg" class="ui fluid image" :alt="cookbook.alt_text"
 							style="max-height:650px;">
-						<div style="position:absolute;top:40%;left:23%!important">
-							<div class="ui inverted segment">
-								<button class="ui large inverted button" @click="hideCoverImg()">
-									Open to see all {{ cookbook.recipes.length}} Recipe(s)
-								</button>
-								<button class="ui large inverted red button">
-									<i class="bell icon"></i>Subscribe</button>
-								<button class="ui large inverted orange button">Like & Share</button>
-							</div>
-							<div style="margin-left:40%;">
-								<button class="ui tbb large button">
-									<i class="ui mouse pointer icon"></i>Contribute
-								</button>
-							</div>
-						</div>
 					</div>
 				</div>
-				<div style="padding:25px;">
-					{{ cookbook.description }}
-					<br /><br /><br /><br />
+				<div
+					class="sixteen wide mobile column eight wide tablet column eight wide computer column eight wide large screen column">
+					<h2>About</h2>
 					<div>
-						<button class="ui tbb button">
-							Join the community! Login and start contributing to Cookbooks.
-						</button>
+						{{ cookbook.description }}
 					</div>
+					<br />
+					<div class="ui divider"></div>
+					<button class="ui fluid tbb inverted button" @click="hideCoverImg()">
+						<h4>Show Recipes</h4>
+					</button>
+					<br />
+					<button class="ui fluid red button">
+						<h4><i class="bell icon"></i> Subscribe</h4>
+					</button>
+					<br />
+					<button class="ui fluid orange button">Like & Share</button>
 				</div>
 			</div>
 			<!-- end hero -->
@@ -283,7 +271,6 @@ p {
 }
 
 .hide {
-	display:none;
+	display: none;
 }
-
 </style>
