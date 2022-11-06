@@ -3,7 +3,9 @@
         <Navigation />
         <div class="margin-top-150"></div>
         <div class="ui grid">
-            <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"></div>
+            <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column">
+                <h2>Trending this week</h2>
+            </div>
             <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
                 <div class="ui huge header">
                     Showing {{ results.length }} of {{ results.length }} results for "{{ showing }}"
@@ -13,7 +15,24 @@
         <div class="ui grid">
             <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"
                 style="border-right:solid #eeeeee 1px;">
-                <AdvancedSearchFilters />
+                <!-- <AdvancedSearchFilters /> -->
+                <p class="ui info message">Well, hello there! Here's a quick summary of what the community has been up
+                    to in the current week. Members like yourself seem to be interested in the following recipes. Hope
+                    you find this helpful!</p>
+                <div style="padding-top:3%">
+                    <div class="ui orange progress" data-percent="74" id="example1">
+                        <div class="bar"></div>
+                        <div class="label">Fufu & Egusi Soup 74%</div>
+                    </div>
+                    <div class="ui orange progress" data-percent="45" id="example2">
+                        <div class="bar"></div>
+                        <div class="label">Pulled Pork 45%</div>
+                    </div>
+                    <div class="ui orange progress" data-percent="99" id="example3">
+                        <div class="bar"></div>
+                        <div class="label">Jamaican Jerk Chicken 99%</div>
+                    </div>
+                </div>
             </div>
             <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
                 <div>
@@ -49,25 +68,8 @@
                 </div>
                 <div class="margin-top-25"></div>
                 <div class="ui grid">
-                    <div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
+                    <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
                         <GoogleAdSense />
-                    </div>
-                    <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column">
-                        <h4>Top 3 most searched recipe keywords in your location this week</h4>
-                        <div style="padding-top:3%">
-                            <div class="ui orange progress" data-percent="74" id="example1">
-                                <div class="bar"></div>
-                                <div class="label">Smoked Salmon 74%</div>
-                            </div>
-                            <div class="ui orange progress" data-percent="45" id="example2">
-                                <div class="bar"></div>
-                                <div class="label">Pulled Pork 45%</div>
-                            </div>
-                            <div class="ui orange progress" data-percent="99" id="example3">
-                                <div class="bar"></div>
-                                <div class="label">Jamaican Jerk Chicken 99%</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <h4 class="ui horizontal divider header">
