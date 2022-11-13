@@ -4,7 +4,7 @@ module.exports = {
   // output configuration
   output: {
     path: __dirname + '/build/',
-    publicPath: 'build/',
+    publicPath: ['build/', 'semantic/'],
     filename: 'build.js'
   },
 

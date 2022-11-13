@@ -21,6 +21,7 @@ var
   fs        = require('fs'),
   path      = require('path'),
   git       = require('gulp-git'),
+  githubAPI = require('github'),
   mkdirp    = require('mkdirp'),
 
   // admin files
@@ -53,8 +54,6 @@ module.exports = function(callback) {
     return;
   }
 
-  console.info('Init components');
-
   // Do Git commands synchronously per component, to avoid issues
   stepRepo = function() {
 
@@ -66,7 +65,7 @@ module.exports = function(callback) {
     }
 
     var
-      component            = release.components[index],
+      component            = release.components[index]
       outputDirectory      = path.resolve(release.outputRoot + component),
       capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
       repoName             = release.componentRepoRoot + capitalizedComponent,
@@ -75,7 +74,7 @@ module.exports = function(callback) {
       pullOptions          = { args: '-q', cwd: outputDirectory, quiet: true },
       resetOptions         = { args: '-q --hard', cwd: outputDirectory, quiet: true },
 
-      gitURL               = 'git@github.com:' + release.org + '/' + repoName + '.git',
+      gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git',
       repoURL              = 'https://github.com/' + release.org + '/' + repoName + '/',
       localRepoSetup       = fs.existsSync(path.join(outputDirectory, '.git'))
     ;
@@ -150,8 +149,7 @@ module.exports = function(callback) {
       // avoid rate throttling
       global.clearTimeout(timer);
       timer = global.setTimeout(function() {
-        console.info('Stepping to next repo');
-        stepRepo();
+        stepRepo()
       }, 0);
     }
 
@@ -167,5 +165,6 @@ module.exports = function(callback) {
   };
 
   stepRepo();
+
 
 };

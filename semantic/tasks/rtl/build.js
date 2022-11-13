@@ -17,7 +17,7 @@ var
   less         = require('gulp-less'),
   minifyCSS    = require('gulp-clean-css'),
   plumber      = require('gulp-plumber'),
-  print        = require('gulp-print').default,
+  print        = require('gulp-print'),
   rename       = require('gulp-rename'),
   replace      = require('gulp-replace'),
   rtlcss       = require('gulp-rtlcss'),
@@ -39,15 +39,13 @@ var
   banner       = tasks.banner,
   comments     = tasks.regExp.comments,
   log          = tasks.log,
-  settings     = tasks.settings,
-
-  buildRTL
+  settings     = tasks.settings
 ;
 
 // add internal tasks (concat release)
 require('../collections/internal')(gulp);
 
-buildRTL = function(callback) {
+module.exports = function(callback) {
 
   var
     stream,
@@ -92,7 +90,7 @@ buildRTL = function(callback) {
     })
   ;
 
-  compressedStream
+  compressedStream = stream
     .pipe(plumber())
     .pipe(clone())
     .pipe(replace(assets.source, assets.compressed))
@@ -132,8 +130,3 @@ buildRTL = function(callback) {
   ;
 
 };
-
-/* Export with Metadata */
-buildRTL.displayName = 'build-rtl';
-buildRTL.description = 'Build files as RTL';
-module.exports = buildRTL;

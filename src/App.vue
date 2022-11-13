@@ -6,9 +6,9 @@
 </template>
 
 <script>
-require('./assets/js/jquery.min.js');
-require('./assets/js/semantic.min.js');
 require('./assets/js/script.js');
+require('../semantic/dist/semantic.min.css')
+require('../semantic/dist/semantic.min.js')
 
 import Vue from 'vue';
 import Skeleton from 'vue-loading-skeleton';
