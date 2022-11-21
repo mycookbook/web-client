@@ -4,5 +4,8 @@
 
 //Global typography
 //font
-@fontName : 'Roboto';
-//@pageFont : 'Work Sans';     
+@fontName : 'Jost';
+@pageFont : 'Jost';    
+
+/* The size of page text  */
+@fontSize : 20px;
