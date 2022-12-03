@@ -16,7 +16,7 @@
                 <div class="ui sub header">
                   <span :style="{ 'float': 'right' }">
                     <span>proudly</span>
-                    <span v-if="cookbook.flag.flag">
+                    <span v-if="cookbook.flag">
                       <i :class="generateFlagClass(cookbook.flag.flag)"
                     :title="cookbook.flag.nationality"></i>
                     </span>
