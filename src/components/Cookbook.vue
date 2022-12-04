@@ -19,7 +19,7 @@
               :style="{ 'background-color': getBgColor(category.color) }">
               <span>
 
-                <a :href="'#/search?q=:cookbooks|categories ' + category.slug">
+                <a :href="'#/search?q=:cookbooks|categories ' + category.name">
                   {{ category.name }}
                   </a>
                 </span>
