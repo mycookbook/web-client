@@ -17,7 +17,12 @@
           <div class="ui labels">
             <a class="ui tiny label" v-for="category in cookbook.categories"
               :style="{ 'background-color': getBgColor(category.color) }">
-              <span>{{ category.name }}</span>
+              <span>
+
+                <a :href="'#/search?q=:cookbooks|categories ' + category.slug">
+                  {{ category.name }}
+                  </a>
+                </span>
               <span v-html="category.emoji"></span>
             </a>
           </div>
