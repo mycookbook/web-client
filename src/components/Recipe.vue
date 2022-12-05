@@ -24,7 +24,7 @@
               <div class="ui mini images">
                 <img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients.data"
                   :alt="ingredient.name" :title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
-                  @click="ingredientLink(ingredient)" :style="{'display':'inline-flex'}">
+                  @click="ingredientLink(ingredient)" :style="{'display':'inline-flex', 'height': '35px'}">
               </div>
               <img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
               <div class="ui header padded">
