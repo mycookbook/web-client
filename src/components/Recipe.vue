@@ -45,19 +45,20 @@
                 <div class="four wide computer column sixteen wide mobile column">
                   <Claps />
                 </div>
-                <div class="four wide computer column sixteen wide mobile column">
+                <!-- <div class="four wide computer column sixteen wide mobile column">
                   <div class="ui tbb fluid mini button" :class="{disabled: !_isLoggedIn}"
                     title="Add a variation for this recipe, make it yours!">
                     <i class="ui plus icon"></i>
                     Customize
                   </div>
-                </div>
-                <div class="four wide computer column sixteen wide mobile column">
-                  <div class="ui icon tbb fluid mini button"
-                    data-tooltip="click to copy the ingredients to your clipboard" data-position="top left"
-                    data-inverted="" id="clipboardMsg" @click="copyIngredients()">
-                    <i class="ui linkify icon"></i>
-                    Ingredients
+                </div> -->
+                <div class="five wide computer column sixteen wide mobile column">
+                  <div class="ui icon tbb fluid mini button" id="clipboardMsg" @click="copyIngredients()">
+                    <i class="ui mail icon"></i>
+                    Get Ingredients by sms
+                  </div>
+                  <div class="ui small input hidden" id="smsto">
+                    <input :style="{'max-width': '92%'}" type="phone" placeholder="e.g: +1 (111) 111 1111" />
                   </div>
                 </div>
                 <div class="four wide computer column sixteen wide mobile column">
@@ -189,6 +190,8 @@ export default {
       navigator.clipboard.writeText(message).then(function () {
         $("#clipboardMsg").data("tooltip", "Copied!")
       })
+
+      $("#smsto").removeClass("hidden")
     },
     textToSpeech(description) {
       $("#t2sIcon").removeClass("play")
