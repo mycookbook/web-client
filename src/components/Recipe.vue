@@ -16,16 +16,16 @@
         :child="recipe.name" />
       <div class="ui grid">
         <div class="sixteen wide computer column sixteen wide mobile column">
-          <div class="ui mini images">
 
-            <img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients.data"
-              :alt="ingredient.name" :title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
-              @click="ingredientLink(ingredient)">
-          </div>
           <div class="ui grid"
             style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
             <div class="eight wide computer column sixteen wide mobile column ui fluid image"
               style="height:fit-content!important">
+              <div class="ui mini images">
+                <img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients.data"
+                  :alt="ingredient.name" :title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
+                  @click="ingredientLink(ingredient)" :style="{'display':'inline-flex'}">
+              </div>
               <img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
               <div class="ui header padded">
                 <span>
