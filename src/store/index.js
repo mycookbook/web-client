@@ -15,6 +15,7 @@ import { contributorStore } from './modules/contributorStore.js'
 import { searchStore } from './modules/searchStore.js'
 import { userStore } from './modules/userStore.js'
 import router from '../router/index.js'
+import auth from './auth'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -160,7 +161,8 @@ export default new Vuex.Store({
         varietiesStore,
         contributorStore,
         searchStore,
-        userStore
+        userStore,
+        auth,
     },
     plugins: [createPersistedState()]
 });

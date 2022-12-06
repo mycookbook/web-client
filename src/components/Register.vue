@@ -26,6 +26,15 @@
                             <i class="instagram large icon"></i>
                             Sign in with Instagram
                         </button>
+
+                        <!-- For dev sign-in -->
+                        <br />
+                        <button class="ui large tbb button" @click="submitButton()">
+                            <i class="instagram large icon"></i>
+                            Sign in as Dev
+                        </button>
+                        <!-- For dev sign-in -->
+
                     </div>
                     <br /><br /><br />
                     <div>
@@ -51,6 +60,7 @@ import Alert from './Alert.vue'
 import Navigation from './Navigation.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
+import { mapActions } from 'vuex'
 
 export default {
     name: "Register",
@@ -67,17 +77,20 @@ export default {
     },
     data() {
         return {
-            email: '',
-            fullName: '',
-            password: '',
-            original_content: '',
-            intro: ''
+            form: {
+                email: 'test.user@cookbookshq.com',
+                password: 'fakePass',
+            }
         }
     },
     methods: {
+        ...mapActions({
+            signIn: 'auth/signIn'
+        }),
         authRedirect(provider) {
             if (process.env.NODE_ENV === 'development') {
-                window.location.href = process.env.APP_URL + '/#/' + provider + '/?code=&_d='
+                // window.location.href = process.env.APP_URL + '/#/' + provider + '/?code=&_d='
+
             } else {
                 let uri_params = {}
 
@@ -108,6 +121,10 @@ export default {
                     window.location.href = url;
                 }
             }
+        },
+
+        submitButton: function() {
+            this.signIn(this.form)    
         }
     },
     components: {

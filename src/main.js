@@ -21,16 +21,24 @@ import router from './router';
 import store from '@/store';
 // import VueAxios from 'vue-axios';
 
+require('@/store/subscriber')
+
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App },
-});
+
+
+
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
+
+  new Vue({
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App },
+  });
+})
 
 // window.$ = window.jQuery = require('jquery')
