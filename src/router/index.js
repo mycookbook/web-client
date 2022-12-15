@@ -25,7 +25,6 @@ import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
-import auth from './middleware/auth'
 
 Vue.use(Router);
 
