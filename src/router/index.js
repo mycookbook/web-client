@@ -25,6 +25,7 @@ import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
+import auth from './middleware/auth'
 
 Vue.use(Router);
 
@@ -133,20 +134,28 @@ const VueRouter = new Router({
 			name: 'Recipe',
 			component: Recipe,
 			props: true
-		}, {
-			path: '/recipes/create',
+		},
+    // {
+		// 	path: '/recipes/create',
+		// 	name: 'CreateRecipe',
+		// 	component: CreateRecipe,
+		// 	props: true,
+		// 	meta: {
+		// 		middleware: (to, from, next) => {
+		// 			let hasSession = (store.state.access_token);
+
+		// 			if (!hasSession) {
+		// 				next({ name: 'Register' });
+		// 			}
+		// 		}
+		// 	}
+		// },
+    {
+			path: '/example-protected-route',
 			name: 'CreateRecipe',
 			component: CreateRecipe,
 			props: true,
-			meta: {
-				middleware: (to, from, next) => {
-					let hasSession = (store.state.access_token);
-
-					if (!hasSession) {
-						next({ name: 'Register' });
-					}
-				}
-			}
+			meta: {isAuth: true}
 		}, {
 			path: '/contributors/:username',
 			name: 'ContributorProfile',
@@ -180,5 +189,44 @@ const VueRouter = new Router({
 });
 
 VueRouter.beforeEach(VueRouteMiddleware());
+
+// Creates a `nextMiddleware()` function which not only
+// runs the default `next()` callback but also triggers
+// the subsequent Middleware function.
+function nextFactory(context, middleware, index) {
+    const subsequentMiddleware = middleware[index];
+    // If no subsequent Middleware exists,
+    // the default `next()` callback is returned.
+    if (!subsequentMiddleware) return context.next;
+
+    return (...parameters) => {
+      // Run the default Vue Router `next()` callback first.
+      context.next(...parameters);
+      // Then run the subsequent Middleware with a new
+      // `nextMiddleware()` callback.
+      const nextMiddleware = nextFactory(context, middleware, index + 1);
+      subsequentMiddleware({ ...context, next: nextMiddleware });
+    };
+  }
+
+  VueRouter.beforeEach((to, from, next) => {
+    if (to.meta.middleware) {
+      const middleware = Array.isArray(to.meta.middleware)
+        ? to.meta.middleware
+        : [to.meta.middleware];
+
+      const context = {
+        from,
+        next,
+        VueRouter,
+        to,
+      };
+      const nextMiddleware = nextFactory(context, middleware, 1);
+
+      return middleware[0]({ ...context, next: nextMiddleware });
+    }
+
+    return next();
+  });
 
 export default VueRouter;
