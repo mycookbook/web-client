@@ -16,6 +16,7 @@ import { searchStore } from './modules/searchStore.js'
 import { userStore } from './modules/userStore.js'
 import router from '../router/index.js'
 
+
 Vue.use(Vuex);
 Vue.use(VueResource);
 
@@ -44,7 +45,8 @@ export default new Vuex.Store({
             registration_form: {},
             contact_form: {}
         },
-        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODYyNjksImV4cCI6MTY2NDk3MjY2OSwibmJmIjoxNjY0ODg2MjY5LCJqdGkiOiJQTmREdXE1bVBEc2lrSUIzIiwic3ViIjo0MiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.wJszEQVp-ZQGJFAP_kdnwKe1xOMAR0YwX1HsLLogBk0',
+        
+        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLmNvb2tib29rc2hxLmNvbS9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY3MTQxMTc1MSwiZXhwIjoxNjcxNDk4MTUxLCJuYmYiOjE2NzE0MTE3NTEsImp0aSI6InVpUkNSWEhLanZCejJ4Y3MiLCJzdWIiOjIyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Ymtray5qObr3W9wBYQpHNlqdZK97MHc7gQ7vleo3lSY',
         api: {
             client: axios,
             options: {
@@ -154,7 +156,8 @@ export default new Vuex.Store({
         varietiesStore,
         contributorStore,
         searchStore,
-        userStore
+        userStore,
+        
     },
     plugins: [createPersistedState()]
 });

@@ -26,6 +26,8 @@
                             <i class="instagram large icon"></i>
                             Sign in with Instagram
                         </button>
+
+                     
                     </div>
                     <br /><br /><br />
                     <div>
@@ -51,6 +53,7 @@ import Alert from './Alert.vue'
 import Navigation from './Navigation.vue'
 import Contact from './Contact.vue'
 import Bottom from './Bottom.vue'
+import { mapActions } from 'vuex'
 
 export default {
     name: "Register",
@@ -68,11 +71,12 @@ export default {
     data() {
         return {
             email: '',
-            fullName: '',
+            // fullName: '',
             password: '',
-            original_content: '',
-            intro: ''
+            // original_content: '',
+            // intro: ''
         }
+      
     },
     methods: {
         authRedirect(provider) {

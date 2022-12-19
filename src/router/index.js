@@ -24,6 +24,8 @@ import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
+// import auth from '../store/auth.js';
+import auth from '../middleware/auth.js';
 
 Vue.use(Router);
 
@@ -170,7 +172,10 @@ const VueRouter = new Router({
 		}, {
 			path: '/developers',
 			name: 'Developers',
-			component: Developers
+			component: Developers,
+			meta:{
+				middleware: auth,
+			}
 		}, {
 			path: '/search',
 			name: 'SearchResults',
@@ -185,6 +190,37 @@ const VueRouter = new Router({
 		}]
 });
 
-VueRouter.beforeEach(VueRouteMiddleware());
+// VueRouter.beforeEach(VueRouteMiddleware());
+//create the next middleware() function to run the default next() callback and triggers the middleware function
+function nextFactory(context, middleware, index){
+	const subsequentMiddleware = middleware[index];
+	if(!subsequentMiddleware) return context.next;
+
+	return (...parameters) => {
+		context.next(...parameters);
+		const nextMiddleware = nextFactory(context, middleware, index + 1);
+		subsequentMiddleware({ ...context, next: nextMiddleware });
+	};
+}
+
+VueRouter.beforeEach((to, from, next) => {
+	if(to.meta.middleware){
+		const middleware = Array.isArray(to.meta.middleware)
+		? to.meta.middleware
+		: [to.meta.middleware];
+
+		const context = {
+			from,
+			next,
+			VueRouter,
+			to,
+		};
+		const nextMiddleware = nextFactory(context, middleware, 1);
+
+		return middleware[0]({ ...context, next: nextMiddleware });
+	}
+
+	return next();
+})
 
 export default VueRouter;
