@@ -4,9 +4,7 @@
       <div v-if="toFollowList && toFollowList.length > 0">
         <div class="item" v-for="toFollow in toFollowList">
           <div class="ui grid">
-            <div class="four wide column">
-              <img class="ui mini circular image" :src="toFollow.avatar" :title="toFollow.author" style="height:31px!important;">
-            </div>
+            <FourWideCircularImage :imgUrl="toFollow.avatar" :imgTitle="toFollow.author" />
             <div class="eight wide column" style="margin-left:-27px!important">
               <div>
                 <small>
@@ -71,7 +69,7 @@
 
 <script>
 import store from '@/store';
-import Navigation from './Navigation.vue';
+import FourWideCircularImage from './FourWideCircularImage.vue'
 
 export default {
   name: "Follow",
@@ -117,6 +115,9 @@ export default {
 
       store.dispatch('followUser', {});
     }
+  },
+  components: {
+    FourWideCircularImage
   }
 };
 </script>
