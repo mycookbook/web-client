@@ -13,8 +13,9 @@ export const contributorStore = {
 
             const uri = process.env.BASE_URL + 'users/' + username
 
-            this.state.api.client.get(uri, this.state.api.options)
+            this.state.api.client.get(uri)
                 .then(function (response) {
+                  console.log('res', response.data)
                     context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data)
                     context.commit("SET_LOADING_STATE", false)
                 }).catch(function (error) {
@@ -22,9 +23,9 @@ export const contributorStore = {
                 })
         },
         fetch_active_user(context, username) {
-            const uri = 'http://localhost:8080/api/v1/users/'  + username
+            const uri = process.env.BASE_URL + 'users/'  + username
 
-            this.state.api.client.get(uri, this.state.api.options)
+            this.state.api.client.get(uri)
                 .then(function (response) {
                     console.log('fedfd', response.data)
                     context.commit("UPDATE_ACTIVE_USER", response.data)
