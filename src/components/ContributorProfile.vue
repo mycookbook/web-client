@@ -13,34 +13,36 @@
             <img class="ui fluid image" :src="contributor.avatar">
           </div>
           <div class="ten wide computer column sixteen wide mobile column">
-
-            <div style="margin-top:8%;margin-bottom:8%;"></div>
+            <div style="margin-top:2%;margin-bottom:2%;"></div>
             <div>
               <h2>About this contributor</h2>
             </div>
             <div style="margin-top:3%;"></div>
             <div class="tvn horizontal stroke"></div>
-
             <div style="margin-top:3%;"></div>
-
             <div style="margin-top:15px;">
               <b>{{ contributor.name }}</b> ({{ contributor.pronouns }})
             </div>
+            <small><em>
+                Member since: {{ contributor.created_at }}
+              </em></small>
             <div>
+              <small>
+                <a :href="'#/search?q=:cookbooks|author ' + contributor.name">
+                  see my cookbooks {{ contributor.contributions.cookbooks }}
+                </a>
+              </small>
               <div>
-                Cookbooks
-                <a :href="'#/search?q=:cookbooks|author ' + contributor.name">{{ contributor.contributions.cookbooks
-                }}</a>
-              </div>
-              <div>
-                Recipes <a :href="'#/search?q=:recipes|author ' + contributor.name">{{ contributor.contributions.recipes
-                }}</a>
+                <small>
+                  <a :href="'#/search?q=:recipes|author ' + contributor.name">
+                    see my recipes {{ contributor.contributions.recipes }}
+                  </a>
+                </small>
               </div>
             </div>
-            <div>Member since: {{ contributor.created_at }}</div>
             <br />
             <div class="ui tbb tiny button">
-              <i class="ui cart icon"></i> view my pantry
+              <i class="ui cart icon"></i> shop my pantry
             </div>
             <div style="margin-top:3%;"></div>
             <div>{{ contributor.about }}</div>
