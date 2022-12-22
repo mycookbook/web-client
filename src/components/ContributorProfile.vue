@@ -13,7 +13,6 @@
             <img class="ui fluid image" :src="contributor.avatar">
           </div>
           <div class="ten wide computer column sixteen wide mobile column">
-            <div style="margin-top:2%;margin-bottom:2%;"></div>
             <div>
               <h2>About this contributor</h2>
             </div>
@@ -29,20 +28,19 @@
             <div>
               <small>
                 <a :href="'#/search?q=:cookbooks|author ' + contributor.name">
-                  see my cookbooks {{ contributor.contributions.cookbooks }}
+                  Browse my cookbooks {{ contributor.contributions.cookbooks }}
                 </a>
               </small>
-              <div>
-                <small>
-                  <a :href="'#/search?q=:recipes|author ' + contributor.name">
-                    see my recipes {{ contributor.contributions.recipes }}
-                  </a>
-                </small>
-              </div>
+              <br />
+              <small>
+                <a :href="'#/search?q=:recipes|author ' + contributor.name">
+                  Browse my recipes {{ contributor.contributions.recipes }}
+                </a>
+              </small>
             </div>
             <br />
             <div class="ui tbb tiny button">
-              <i class="ui cart icon"></i> shop my pantry
+              <i class="ui cart icon"></i> Shop my pantry
             </div>
             <div style="margin-top:3%;"></div>
             <div>{{ contributor.about }}</div>
