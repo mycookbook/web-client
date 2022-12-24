@@ -16,7 +16,7 @@
       <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"
         style="border-right:solid #eeeeee 1px;">
         <p class="ui info message">
-          Results are ranked based on relevance and are based on the activities of users in
+          Results are ranked based on relevance and the activities of users in
           your geographical location
         </p>
         <div style="padding-top:3%">

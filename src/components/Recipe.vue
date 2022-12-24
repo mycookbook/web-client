@@ -38,35 +38,35 @@
             </div>
             <div class="eight wide computer column sixteen wide mobile column">
               <div class="ui grid">
-                <div class="four wide computer column sixteen wide mobile column">
-                  <Claps />
-                </div>
-                <div class="four wide computer column sixteen wide mobile column">
-                  <div class="ui tbb fluid mini button" :class="{disabled: !_isLoggedIn}"
-                    title="Add a variation for this recipe, make it yours!">
-                    <i class="ui plus icon"></i>
-                    Customize
-                  </div>
-                </div>
-                <div class="four wide computer column sixteen wide mobile column">
-                  <div class="ui icon tbb fluid mini button"
-                    data-tooltip="click to copy the ingredients to your clipboard" data-position="top left"
-                    data-inverted="" id="clipboardMsg" @click="copyIngredients()">
-                    <i class="ui linkify icon"></i>
-                    Ingredients
-                  </div>
-                </div>
-                <div class="four wide computer column sixteen wide mobile column">
-                  <ReportIt />
-                </div>
-              </div>
-              <div class="ui grid">
                 <div class="sixteen wide computer column sixteen wide mobile column">
                   <Follow :followers="recipe.author.followers" :author="recipe.author.name"
                     :avatar="recipe.author.avatar" :handle="recipe.author.name_slug" />
                 </div>
               </div>
               <div class="ui horizontal divider"></div>
+              <div class="ui grid">
+                <div class="four wide computer column sixteen wide mobile column">
+                  <Claps />
+                </div>
+                <div class="four wide computer column sixteen wide mobile column">
+                  <div class="ui tbb fluid mini circular button" :class="{disabled: !_isLoggedIn}"
+                    title="Add a variation for this recipe, make it yours!">
+                    <i class="ui plus icon"></i>
+                    Customize
+                  </div>
+                </div>
+                <div class="four wide computer column sixteen wide mobile column">
+                  <div class="ui icon tbb fluid mini circular button"
+                    data-tooltip="Click to copy" data-position="top left"
+                    data-inverted="" id="clipboardMsg" @click="copyIngredients()">
+                    <i class="ui linkify icon"></i>
+                    Copy ingredients
+                  </div>
+                </div>
+                <div class="four wide computer column sixteen wide mobile column">
+                  <ReportIt />
+                </div>
+              </div>
               <div class="ui grid">
                 <div class="sixteen wide computer column sixteen wide mobile column">
                   <Comments :comments="_recipeComments" :author_id="recipe.id" />
