@@ -15,22 +15,32 @@
     <div class="ui grid">
       <div class="three wide computer column sixteen wide mobile column sixteen wide tablet column"
         style="border-right:solid #eeeeee 1px;">
-        <!-- <AdvancedSearchFilters /> -->
-        <p class="ui info message">Well, hello there! Here's a quick summary of what the community has been up
-          to in the current week. Members like yourself seem to be interested in the following recipes. Hope
-          you find this helpful!</p>
+        <p class="ui info message">
+          Results are ranked based on relevance and are based on the activities of users in
+          your geographical location
+        </p>
         <div style="padding-top:3%">
+          <div class="ui orange progress" data-percent="99" id="example3">
+            <div class="bar"></div>
+            <div class="label">
+              <a href="/#/search?q=">Jamaican Jerk Chicken 99%</a>
+            </div>
+          </div>
           <div class="ui orange progress" data-percent="74" id="example1">
             <div class="bar"></div>
-            <div class="label">Fufu & Egusi Soup 74%</div>
+            <div class="label">
+              <a href="/#/search?q=">
+                Chicken Egg Nuggets 74%
+              </a>
+            </div>
           </div>
           <div class="ui orange progress" data-percent="45" id="example2">
             <div class="bar"></div>
-            <div class="label">Pulled Pork 45%</div>
-          </div>
-          <div class="ui orange progress" data-percent="99" id="example3">
-            <div class="bar"></div>
-            <div class="label">Jamaican Jerk Chicken 99%</div>
+            <div class="label">
+              <a href="/#/search?q=">
+                Mac & Cheese 45%
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -55,10 +65,10 @@
         </div>
         <div style="margin:18px!important">
           <i class="lightbulb icon"></i>
-          <em>Did you know that you can search for more fine-grained results?
+          <em>Do you know that you can search for more fine-grained results?
             As an example, you can type <code>:cookbooks|author [all or part of author's name].</code> This
             will list all the cookbooks that matches your search query!
-            <br /><br /> Neat right? Learn how to search like a pro using our homegrown</em>
+            <br /><br /> <b>Neat right? Learn how to search like a pro using our homegrown</b></em>
           <router-link :to="{
           	name: 'Help',
           	query: { doc: 'query-syntax' }
@@ -66,10 +76,10 @@
             query syntax
           </router-link>
         </div>
-        <div class="margin-top-25"></div>
+        <div class="margin-top-20"></div>
         <div class="ui grid">
           <div class="sixteen wide computer column sixteen wide mobile column sixteen wide tablet column">
-            <GoogleAdSense />
+            <AdsComponent />
           </div>
         </div>
         <h4 class="ui horizontal divider header">
@@ -111,17 +121,17 @@
                 > {{ result.created_at }}
               </small>
             </span>
-            <span style="float:right">
+            <span style="float:right; text-transform: lowercase;">
               <small>
                 <span v-if="result.contains.length > 0">
-                  contains <span style="background-color: #FFFF00" v-for="contain in result.contains">
+                  includes <span style="background-color: #FFFF00;" v-for="contain in result.contains">
                     {{ contain }}
                   </span>
                 </span>
                 <span v-if="result.missing.length > 0">
                   : missing <span v-for="missing in result.missing"><s>
-                    {{ missing }}
-                  </s></span>
+                      {{ missing }}
+                    </s></span>
                 </span>
               </small>
             </span>
@@ -152,7 +162,7 @@
 <script>
 import Navigation from './Navigation.vue'
 import AdvancedSearchFilters from './AdvancedSearchFilters.vue'
-import GoogleAdSense from './GoogleAdSense.vue'
+import AdsComponent from './AdsComponent.vue'
 
 export default {
   name: 'SearchResults',
@@ -252,7 +262,7 @@ export default {
   components: {
     Navigation,
     AdvancedSearchFilters,
-    GoogleAdSense
+    AdsComponent: AdsComponent
   }
 };
 </script>

@@ -26,10 +26,11 @@
                     HOW TO PREPARE
                   </span>
                   <span style="float:right;cursor: pointer!important;" @click="textToSpeech()">
-                    <i class="ui small play circle green icon" id="t2sIcon"></i>
-                    <span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
+                    <button class="ui right labeled icon tbb button">
+                      <i class="right headphone icon"></i>
                       Listen
-                    </span>
+                    </button>
+                    <span style="font-size: 14px;margin-left: -5px;font-weight: lighter;"></span>
                   </span>
                 </div>
                 <div v-html="recipe.description" class="ui left aligned text"></div>
