@@ -4,6 +4,9 @@
     <span>
       <i class="ui heart icon"></i>
     </span>
+    <span>
+      {{ totalCount | numberFormatter }} Claps
+    </span>
   </div>
 </template>
 
@@ -30,6 +33,11 @@ export default {
       const payload = { recipeId: id };
 
       store.dispatch('addClap', payload);
+    }
+  },
+  filters: {
+    numberFormatter(value) {
+      return value
     }
   }
 };
