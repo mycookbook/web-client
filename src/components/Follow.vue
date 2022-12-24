@@ -79,16 +79,7 @@ export default {
     },
     _isLoggedIn() {
       let hasSession = (store.state.access_token !== null)
-
-      this.isLoggedIn = true
-
-      if (!hasSession) {
-        this.isLoggedIn = false
-      }
-
-      //if has session but not following this contributor
-      //if has session and following this contributor
-      //disabled btn and change text to following
+      this.isLoggedIn = hasSession
 
       return this.isLoggedIn
     }
