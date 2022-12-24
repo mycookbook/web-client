@@ -5,18 +5,11 @@
       <RecipeCardSkeleton />
     </div>
     <div v-else>
-      <!-- <div class="ui grid center">
-				<div class="ui sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
-					<AutoComplete />
-				</div>
-			</div> -->
       <br /><br /><br />
-      <!-- <br /><br /> -->
       <Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'" :parentSlug="recipe.cookbook.slug"
         :child="recipe.name" />
       <div class="ui grid">
         <div class="sixteen wide computer column sixteen wide mobile column">
-
           <div class="ui grid"
             style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
             <div class="eight wide computer column sixteen wide mobile column ui fluid image"
@@ -27,18 +20,20 @@
                   @click="ingredientLink(ingredient)" :style="{'display':'inline-flex', 'height': '35px'}">
               </div>
               <img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
-              <div class="ui header padded">
-                <span>
-                  HOW TO PREPARE
-                </span>
-                <span style="float:right;cursor: pointer!important;" @click="textToSpeech(recipe.description)">
-                  <i class="ui small play circle green icon" id="t2sIcon"></i>
-                  <span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
-                    Listen
+              <div class="talkify-section">
+                <div class="ui header padded">
+                  <span>
+                    HOW TO PREPARE
                   </span>
-                </span>
+                  <span style="float:right;cursor: pointer!important;" @click="textToSpeech()">
+                    <i class="ui small play circle green icon" id="t2sIcon"></i>
+                    <span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
+                      Listen
+                    </span>
+                  </span>
+                </div>
+                <div v-html="recipe.description" class="ui left aligned text"></div>
               </div>
-              <div v-html="recipe.description" class="ui left aligned text"></div>
             </div>
             <div class="eight wide computer column sixteen wide mobile column">
               <div class="ui grid">
@@ -76,7 +71,6 @@
                   <Comments :comments="_recipeComments" :author_id="recipe.id" />
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -190,22 +184,26 @@ export default {
         $("#clipboardMsg").data("tooltip", "Copied!")
       })
     },
-    textToSpeech(description) {
-      $("#t2sIcon").removeClass("play")
-      $("#t2sIcon").addClass("pause")
+    textToSpeech() {
+      talkify.config.debug = false;
+      talkify.config.useSsml = false;
 
-      // let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
-      let cleanText = "I'm still a Work In Progress!"
-      // console.log(typeof cleanText)22
+      talkify.config.remoteService.apiKey = process.env.TALKIFY_KEY;
+      talkify.config.ui.audioControls.enabled = true;
 
-      const msg = new SpeechSynthesisUtterance();
-      msg.text = cleanText;
-      window.speechSynthesis.speak(msg);
-      // window.speechSynthesis.addEventListener('voiceschanged', (event) => { })
-      // onvoiceschanged = (event) => { }
+      var player = new talkify.TtsPlayer()
+        .enableTextHighlighting();
 
-      // $("#t2sIcon").removeClass("pause")
-      // $("#t2sIcon").addClass("play")
+      player.forceVoice({ name: 'Zira', description: "Zira" });
+
+      var playlist = new talkify.playlist()
+        .begin()
+        .usingPlayer(player)
+        .withRootSelector('.talkify-section')
+        .withTextInteraction()
+        .build();
+
+      playlist.play();
     },
     ingredientLink(ingredient) {
       let url = ""
