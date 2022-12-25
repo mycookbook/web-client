@@ -97,13 +97,6 @@ const VueRouter = new Router({
         default: true,
       }
     }, {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
-      meta: {
-        middleware: auth,
-      }
-    }, {
       path: '/cookbooks/:slug',
       name: 'Cookbook',
       component: Cookbook,
@@ -112,6 +105,9 @@ const VueRouter = new Router({
       path: '/cookbooks/:slug',
       name: 'EditCookbook',
       component: EditCookbook,
+      meta: {
+        middleware: auth,
+      }
     }, {
       path: '/recipes/:slug',
       name: 'Recipe',
@@ -126,13 +122,6 @@ const VueRouter = new Router({
       meta: {
         middleware: auth,
       }
-    },
-    {
-      path: '/example-protected-route',
-      name: 'CreateRecipe',
-      component: CreateRecipe,
-      props: true,
-      meta: { isAuth: true }
     }, {
       path: '/contributors/:username',
       name: 'ContributorProfile',
