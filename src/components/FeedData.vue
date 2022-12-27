@@ -48,7 +48,8 @@
     <div class="event">
       <div class="label">
         <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg" imgTitle="
+          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
+          imgTitle="
           example" />
       </div>
       <div class="content">
@@ -108,11 +109,11 @@
           <a>
             <img
               src="https://thumbs.dreamstime.com/b/bean-soup-meat-vegetables-served-rustic-board-garlic-traditional-balkan-soup-stew-corbast-pasulj-grah-top-179776386.jpg"></a>
-              <a><img
+          <a><img
               src="https://media.istockphoto.com/id/1372464974/photo/healthy-food-assortment-on-light-background.jpg?s=612x612&w=is&k=20&c=kSahI3Sw86j60HZuF_yEAFTCV-3zFI6bZ_q9I5suwLg="></a>
-              <a><img
+          <a><img
               src="https://media.istockphoto.com/id/1289263708/photo/fresh-homemade-tangerine-and-beet-salad-with-arugula-walnuts-and-pine-nuts-on-grey-concrete.jpg?s=612x612&w=is&k=20&c=NyAVrgPDJkCWdWIWp_80nSYv00DBLL9zoFNBEiYZtO0="></a>
-            </div>
+        </div>
         <div class="meta">
           <a class="like">
             <i class="like icon"></i> 1 Like
@@ -123,7 +124,8 @@
     <div class="event">
       <div class="label">
         <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg" imgTitle="
+          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
+          imgTitle="
           example" />
       </div>
       <div class="content">
@@ -159,4 +161,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
