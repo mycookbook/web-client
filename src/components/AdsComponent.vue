@@ -35,7 +35,8 @@
     <div>
       <div class="ui grid">
         <div class="two wide computer column">
-          <img src="https://pbs.twimg.com/profile_images/1523654095734816768/LhHHNPN1_400x400.jpg" class="ui mini image" style="width:23px!important;" />
+          <img src="https://pbs.twimg.com/profile_images/1523654095734816768/LhHHNPN1_400x400.jpg" class="ui mini image"
+            style="width:23px!important;" />
         </div>
         <div class="fourteen wide computer column" style="float: left!important;left: -89px;">
           <b>Eat Binchi – Delicious African meals delivered right to you</b>
