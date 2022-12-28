@@ -8,7 +8,11 @@ yarn-error.log*
 /test/unit/coverage/
 /test/e2e/reports/
 selenium-debug.log
+<<<<<<< HEAD
 .env.test
+=======
+.env
+>>>>>>> 2947501 (cleanup)
 
 # Editor directories and files
 .idea
