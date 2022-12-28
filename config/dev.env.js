@@ -14,9 +14,8 @@ module.exports = merge(prodEnv, {
   TWITTER_BASE_URL: '""',
   PINTEREST_BASE_URL: '""',
   INSTAGRAM_BASE_URL: '""',
-  VUE_APP_AWS_SECRET_ACCESS_KEY: '"CmmmQjpOqI7ZP1QLOU8Oeehi3EvJ8+/PnirlD/Aq"',
-  VUE_APP_AWS_ACCESS_KEY: '"AKIAZCORHJYJTF5NPEWW"',
-  // VUE_APP_AWS_BUCKET:'"arn:aws:s3:::cookbookshq"',
-  VUE_APP_AWS_REGION: '"us-east-2"',
-  VUE_APP_AWS_BUCKET:'"cookbookshq"',
+  VUE_APP_AWS_SECRET_ACCESS_KEY: '""',
+  VUE_APP_AWS_ACCESS_KEY: '""',
+  VUE_APP_AWS_REGION: '""',
+  VUE_APP_AWS_BUCKET:'""',
 })
