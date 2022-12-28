@@ -15,4 +15,5 @@ module.exports = {
   VUE_APP_AWS_ACCESS_KEY: '""',
   VUE_APP_AWS_REGION: '""',
   VUE_APP_AWS_BUCKET:'""',
-})
+  DEV_TOKEN: process.env.VUE_APP_DEV_TOKEN,
+}
