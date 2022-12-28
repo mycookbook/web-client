@@ -23,6 +23,9 @@ export default {
         }, {
           href: 'https://eatbinchi.com/product/binchi-box/',
           src: '/static/img/campaigns/eat-binchi/flexi-box.png'
+        }, {
+          href: 'https://food.jumia.com.ng/',
+          src: '/static/img/campaigns/jumia/jumia-food-xmas.png'
         }
       ]
 
