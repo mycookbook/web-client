@@ -26,6 +26,16 @@
                          <i class="ui code icon"></i>
                         Documentation
                     </div>
+                    
+                    <!-- dev testing remove after use -->
+                    <div class="ui blue button">
+                        <i class="ui code icon"></i>
+                        <input type="file" @change="uploadFile"/>
+                       Documentation
+                   </div>
+
+                     <!-- dev testing remove after use -->
+
                 </div>
             </div>
             <Contact />
@@ -38,13 +48,24 @@
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
+import { singleUpload } from './ImageUploader';
 
 export default {
     name: 'Developers',
+    methods: {
+       async uploadFile(event){
+        const fileSend = event.target.files[0];
+        console.log(fileSend.name)
+        const result = await singleUpload(fileSend, 'static/uploads/')
+        
+        console.log(result);
+       }
+    },
     components: {
         Navigation,
         Contact,
-        Bottom
+        Bottom,
+        singleUpload,
     }
 }
 </script>
