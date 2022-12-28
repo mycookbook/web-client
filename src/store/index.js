@@ -67,7 +67,9 @@ export default new Vuex.Store({
 		access_token: process.env.VUE_APP_DEV_TOKEN,
 		active_user: {},
 		contributor: {},
-		username: null
+		username: null,
+		followind_data: {},
+		who_to_follow: []
 	}),
 	mutations: {
 		STORE_POLICIES(state, policies) {
@@ -85,13 +87,41 @@ export default new Vuex.Store({
 
 			this.state.username = req.username
 
-			router.push('/')
+			router.push('/?v=fu')
 		},
 		LOGOUT(state) {
 			this.state.access_token = null
 			this.state.active_user = {}
+			this.state.following_data = {}
 
 			router.push('/')
+		},
+		COMMENT_POSTED(state, breadcrumb) {
+			location.reload()
+		},
+		HANDLE_ERROR(state, errorObj) {
+			let _m = 'Uh oh, it looks like your session has expired. Please logout and signin again.'
+
+			if (process.env.NODE_ENV === 'development') {
+				_m = 'Developer, please obtain a new token and restart your dev server.'
+			}
+
+			if (errorObj.status === 401) {
+				alert(_m)
+			}
+
+			if ([400, 500, 404].includes(errorObj.status)) {
+
+				alert(errorObj.data.message)
+
+				this.state.access_token = null
+				this.state.active_user = {}
+				this.state.following_data = {}
+
+				router.push('/')
+			}
+
+			console.log('error', errorObj)
 		}
 	},
 	actions: {

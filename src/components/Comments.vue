@@ -16,17 +16,17 @@
 						<img :src="comment.author.avatar" />
 					</a>
 					<div class="content">
-						<router-link
-							:to="{ name: 'ContributorProfile', params: { username: comment.author.name_slug } }">
-							{{ comment.author.name }} <div class="ui tiny link label"
-								v-if="author_id === comment.user_id">OWNER</div>
+						<router-link :to="{ name: 'ContributorProfile', params: { username: comment.author.name_slug } }">
+							{{ comment.author.name }} <div class="ui tiny link label" v-if="author_id === comment.user_id">
+								OWNER</div>
 						</router-link>
 						<div class="metadata">
 							<span class="date">
 								{{ comment.created_at }}
 							</span>
 						</div>
-						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author.name_slug)">
+						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author.email)"
+							@click="deleteComment(comment.id)">
 							<i class="ui small trash icon"></i>
 						</span>
 						<div class="text">
@@ -41,9 +41,9 @@
 			<div class="ui horizontal divider"></div>
 			<form class="ui reply form">
 				<div class="field">
-					<textarea></textarea>
+					<input type="text" placeholder="add a comment here" v-model="new_comment" maxlength="120" />
 				</div>
-				<div class="ui tbb submit circular button" v-if="_isLoggedIn">
+				<div class="ui tbb submit button" v-if="_isLoggedIn" @click="postComment()">
 					Post Comment
 				</div>
 				<div v-else>
@@ -66,7 +66,10 @@ export default {
 	name: "Comments",
 	props: {
 		comments: Array,
-		author_id: Number
+		author_id: Number,
+		resource_type: String,
+		resource_id: Number,
+		breadcrumb: String
 	},
 	computed: {
 		_isLoggedIn() {
@@ -79,12 +82,27 @@ export default {
 	data() {
 		return {
 			isCollapsed: true,
-			isLoggedIn: false
+			isLoggedIn: false,
+			new_comment: ""
 		}
 	},
 	methods: {
 		canDelete(commentAuthorSlug) {
 			return this.isLoggedIn && (store.state.username === commentAuthorSlug);
+		},
+		postComment() {
+			if (this.new_comment) {
+				this.$store.dispatch('post_comment', {
+					'commenting-as': this.$store.state.username,
+					'resource-type': this.resource_type,
+					'resource-id': this.resource_id,
+					'comment': this.new_comment,
+					'breadcrumb': this.breadcrumb
+				})
+			}
+		},
+		deleteComment(id) {
+			this.$store.dispatch('delete_comment', { 'comment-id': id })
 		}
 	}
 };
