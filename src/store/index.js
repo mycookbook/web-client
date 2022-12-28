@@ -94,7 +94,7 @@ export default new Vuex.Store({
     actions: {
         async boot(context) {
             const base_urls = {
-                'development': 'http://localhost:8080/api/v1/',
+                'development': 'https://api.cookbookshq.com/api/v1/',
                 'production': 'https://api.cookbookshq.com/api/v1/'
             }
 
