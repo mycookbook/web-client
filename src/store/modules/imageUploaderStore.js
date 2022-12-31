@@ -2,10 +2,10 @@ import axios from 'axios';
 const aws = require('aws-sdk')
 
 
-export const imageUploadStore = {
+export const imageUploaderStore = {
     mutations: {
         SET_IMAGEPATH(state, newState) {
-            this.state.imagePath = newState.data.imagePath // check this later
+            this.state.imagePath = newState.data.imagePath
         }
     },
 
@@ -13,18 +13,18 @@ export const imageUploadStore = {
         upload_to_s3(context, payload) {
             const file = payload;
             aws.config.update({
-                secretAccessKey: process.env.VUE_APP_AWS_SECRET_ACCESS_KEY,
-                accessKeyId: process.env.VUE_APP_AWS_ACCESS_KEY,
+                secretAccessKey: process.env.DEV_SECRET_ACCESS_KEY,
+                accessKeyId: process.env.DEV_ACCESS_KEY_ID,
             })
             const s3 = new aws.S3({
                 signatureVersion: 'v4',
-                region: process.env.VUE_APP_AWS_REGION,
+                region: process.env.DEV_AWS_REGION,
             })
             
 
             const key = 'static/uploads/' + Date.now() + '-' + file.name.replace(/\s/g, '-')
             const params = {
-                Bucket: process.env.VUE_APP_AWS_BUCKET,
+                Bucket: process.env.DEV_AWS_BUCKET,
                 Key: key,
                 Expires: 10,
                 ContentType: file.type,

@@ -14,7 +14,7 @@ import { contributorStore } from './modules/contributorStore.js'
 import { searchStore } from './modules/searchStore.js'
 import { userStore } from './modules/userStore.js'
 import router from '../router/index.js'
-import { imageUploadStore } from './modules/imageUploadStore'
+import { imageUploaderStore } from './modules/imageUploaderStore'
 
 
 Vue.use(Vuex);
@@ -162,7 +162,7 @@ export default new Vuex.Store({
     contributorStore,
     searchStore,
     userStore,
-    imageUploadStore,
+    imageUploaderStore,
   },
   plugins: [createPersistedState()]
 });

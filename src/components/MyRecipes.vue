@@ -2,10 +2,10 @@
     <div>
         <div class="hideshowicon">
             <div v-if="inEditMode">
-                hide editor<i class="ui chevron down icon" @click="toggleEditor('hide')"></i>
+                Hide editor<i class="ui chevron down icon" @click="toggleEditor('hide')"></i>
             </div>
             <div v-else>
-                show editor<i class="ui chevron up icon" @click="toggleEditor('show')"></i>
+                Show editor<i class="ui chevron up icon" @click="toggleEditor('show')"></i>
             </div>
         </div>
         <br />
