@@ -11,166 +11,174 @@ import TermsAndConditions from '@/components/policies/TermsAndConditions';
 import VarietiesList from '@/components/VarietiesList.vue';
 import Variety from '@/components/Variety.vue';
 import ContributorProfile from '@/components/ContributorProfile.vue';
-import Developers from '@/components/Developers.vue';
 import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
 import CreateRecipe from '@/components/CreateRecipe.vue';
-import VueRouteMiddleware from 'vue-route-middleware';
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
-import router from '../router/index.js'
-import axios from 'axios';
 import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
+import Help from '@/components/Help'
+import auth from '../middleware/auth.js';
 
 Vue.use(Router);
 
 const VueRouter = new Router({
-	mode: 'hash',
-	fallback: true,
-	routes: [
-		{
-			path: '/',
-			name: 'Home',
-			component: LandingPage
-		}, {
-			path: '/tiktok',
-			meta: {
-				middleware: (to, from, next) => {
-					const queryString = window.location.href;
+  mode: 'hash',
+  fallback: true,
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: LandingPage
+    }, {
+      path: '/tiktok',
+      meta: {
+        middleware: (to, from, next) => {
+          const queryString = window.location.href;
 
-					let replaced = queryString.replace("/#/", "/");
-					let url = new URL(replaced);
-					let code = url.searchParams.get("token");
-					let username = url.searchParams.get('_d')
+          let replaced = queryString.replace("/#/", "/");
+          let url = new URL(replaced);
+          let code = url.searchParams.get("token");
+          let username = url.searchParams.get('_d')
 
-					if (!username) username = 'test-user'
-					if (!code) code = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE2NjQ4ODg3NjQsImV4cCI6MTY2NDk3NTE2NCwibmJmIjoxNjY0ODg4NzY0LCJqdGkiOiJVVVFsQTdSZk0wRmJVc0Q5Iiwic3ViIjo0MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7L8YyA3Xq9ZPzqpt8_JKb3yFLcjXfFm-U4oL2SWBr50'
-					//attempt login with postman to get a new access token for test user account
+          if (!username) username = 'test-user'
+          if (!code) code = process.env.DEV_TOKEN
 
-					store.dispatch('fetch_active_user', username)
+          store.dispatch('set_active_user', {
+            code: code,
+            username: username
+          })
 
-					store.dispatch('set_active_user', {
-						code: code,
-						username: username
-					})
-				}
-			}
-		}, {
-			path: '/usage-policy',
-			name: 'UsagePolicy',
-			component: UsagePolicy,
-		}, {
-			path: '/cookie-policy',
-			name: 'CookiePolicy',
-			component: CookiePolicy,
-		}, {
-			path: '/data-retention-policy',
-			name: 'DataRetentionPolicy',
-			component: DataRetentionPolicy,
-		}, {
-			path: '/terms-and-conditions',
-			name: 'TermsAndConditions',
-			component: TermsAndConditions,
-		}, {
-			path: '/privacy-policy',
-			name: 'PrivacyPolicy',
-			component: PrivacyPolicy,
-		}, {
-			path: '/signin',
-			name: 'Register',
-			component: Register
-		}, {
-			path: '/dashboard',
-			name: 'Dashboard',
-			component: Dashboard,
-			props: {
-				default: true,
-			},
-			meta: {
-				middleware: (to, from, next) => {
-					let hasSession = (store.state.access_token);
-
-					if (!hasSession) {
-						router.push('signin')
-					}
-				}
-			}
-		}, {
-			path: '/profile',
-			name: 'Profile',
-			component: Profile,
-			meta: {
-				middleware: (to, from, next) => {
-					let hasSession = (store.state.access_token);
-
-					if (!hasSession) {
-						next({ name: 'Register' });
-					}
-				}
-			}
-		}, {
-			path: '/cookbooks/:slug',
-			name: 'Cookbook',
-			component: Cookbook,
-			props: true
-		}, {
-			path: '/cookbooks/:slug',
-			name: 'EditCookbook',
-			component: EditCookbook,
-		}, {
-			path: '/recipes/:slug',
-			name: 'Recipe',
-			component: Recipe,
-			props: true
-		}, {
-			path: '/recipes/create',
-			name: 'CreateRecipe',
-			component: CreateRecipe,
-			props: true,
-			meta: {
-				middleware: (to, from, next) => {
-					let hasSession = (store.state.access_token);
-
-					if (!hasSession) {
-						next({ name: 'Register' });
-					}
-				}
-			}
-		}, {
-			path: '/contributors/:username',
-			name: 'ContributorProfile',
-			component: ContributorProfile,
-			prop: true
-		}, {
-			path: '/recipes/:recipe_slug/varieties/:variety_slug',
-			name: 'Variety',
-			component: Variety,
-			prop: true
-		}, {
-			path: '/recipes/:recipe_slug/varieties/',
-			name: 'VarietiesList',
-			component: VarietiesList,
-		}, {
-			path: '/developers',
-			name: 'Developers',
-			component: Developers
-		}, {
-			path: '/search',
-			name: 'SearchResults',
-			component: SearchResults
-		}, {
-			path: '/errors',
-			name: 'ErrorPage',
-			component: ErrorPage
-		}, {
-			path: '*',
-			component: NotFound
-		}]
+          store.dispatch('fetch_active_user', username)
+        }
+      }
+    }, {
+      path: '/usage-policy',
+      name: 'UsagePolicy',
+      component: UsagePolicy,
+    }, {
+      path: '/cookie-policy',
+      name: 'CookiePolicy',
+      component: CookiePolicy,
+    }, {
+      path: '/data-retention-policy',
+      name: 'DataRetentionPolicy',
+      component: DataRetentionPolicy,
+    }, {
+      path: '/terms-and-conditions',
+      name: 'TermsAndConditions',
+      component: TermsAndConditions,
+    }, {
+      path: '/privacy-policy',
+      name: 'PrivacyPolicy',
+      component: PrivacyPolicy,
+    }, {
+      path: '/signin',
+      name: 'Register',
+      component: Register
+    }, {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      props: {
+        default: true,
+      },
+      meta: {
+        middleware: auth,
+      }
+    }, {
+      path: '/help',
+      name: 'Help',
+      component: Help,
+      props: {
+        default: true,
+      }
+    }, {
+      path: '/cookbooks/:slug',
+      name: 'Cookbook',
+      component: Cookbook,
+      props: true
+    }, {
+      path: '/cookbooks/:slug',
+      name: 'EditCookbook',
+      component: EditCookbook,
+      meta: {
+        middleware: auth,
+      }
+    }, {
+      path: '/recipes/:slug',
+      name: 'Recipe',
+      component: Recipe,
+      props: true
+    },
+    {
+      path: '/recipes/create',
+      name: 'CreateRecipe',
+      component: CreateRecipe,
+      props: true,
+      meta: {
+        middleware: auth,
+      }
+    }, {
+      path: '/contributors/:username',
+      name: 'ContributorProfile',
+      component: ContributorProfile,
+      prop: true
+    }, {
+      path: '/recipes/:recipe_slug/varieties/:variety_slug',
+      name: 'Variety',
+      component: Variety,
+      prop: true
+    }, {
+      path: '/recipes/:recipe_slug/varieties/',
+      name: 'VarietiesList',
+      component: VarietiesList,
+    }, {
+      path: '/search',
+      name: 'SearchResults',
+      component: SearchResults
+    }, {
+      path: '/errors',
+      name: 'ErrorPage',
+      component: ErrorPage
+    }, {
+      path: '*',
+      component: NotFound
+    }]
 });
 
-VueRouter.beforeEach(VueRouteMiddleware());
+function nextFactory(context, middleware, index) {
+  const subsequentMiddleware = middleware[index];
+  if (!subsequentMiddleware) return context.next;
+
+  return (...parameters) => {
+    context.next(...parameters);
+    const nextMiddleware = nextFactory(context, middleware, index + 1);
+    subsequentMiddleware({ ...context, next: nextMiddleware });
+  };
+}
+
+VueRouter.beforeEach((to, from, next) => {
+  if (to.meta.middleware) {
+    const middleware = Array.isArray(to.meta.middleware)
+      ? to.meta.middleware
+      : [to.meta.middleware];
+
+    const context = {
+      from,
+      next,
+      VueRouter,
+      to,
+    };
+    const nextMiddleware = nextFactory(context, middleware, 1);
+
+    return middleware[0]({ ...context, next: nextMiddleware });
+  }
+
+  return next();
+})
 
 export default VueRouter;

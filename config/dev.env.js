@@ -1,7 +1,4 @@
-var merge = require('webpack-merge')
-var prodEnv = require('./prod.env')
-
-module.exports = merge(prodEnv, {
+module.exports = {
   NODE_ENV: '"development"',
   APP_URL: '"http://localhost:5001"',
   BASE_URL: '"https://api.cookbookshq.com/api/v1/"',
@@ -14,8 +11,8 @@ module.exports = merge(prodEnv, {
   TWITTER_BASE_URL: '""',
   PINTEREST_BASE_URL: '""',
   INSTAGRAM_BASE_URL: '""',
-  VUE_APP_AWS_SECRET_ACCESS_KEY: '""',
-  VUE_APP_AWS_ACCESS_KEY: '""',
-  VUE_APP_AWS_REGION: '""',
-  VUE_APP_AWS_BUCKET:'""',
-})
+  TOKEN_VALIDATE_ENDPOINT: '"https://api.cookbookshq.com/api/v1/auth/validate"',
+  VUE_APP_API: '"https://api.cookbookshq.com/api/v1/"',
+  VUE_APP_APP_URL: '"http://localhost:5001"',
+}
+

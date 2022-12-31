@@ -1,33 +1,29 @@
 <template>
-    <div class="ui container">
-        <Navigation />
+  <div class="ui container">
+    <Navigation />
+    <div class="ui grid">
+      <div class="sixteen wide computer column sixteen wide mobile column">
         <div class="ui grid">
-            <div class="sixteen wide computer column sixteen wide mobile column">
-                <div class="ui grid">
-                    <div class="three wide computer column sixteen wide mobile hidden column">
-                        <LeftSideMenu />
-                    </div>
-                    <div class="eight wide computer column sixteen wide mobile column">
-                        <FeedData />
-                    </div>
-                    <div class="five wide computer column sixteen wide mobile column">
-                        <div class="ui grid">
-                            <div class="sixteen wide computer column sixteen wide mobile column">
-                                <img
-                                    src="https://drdrew.com/wp-content/uploads/2017/08/ad-space-placeholder-300x250-300x250.png" />
-                            </div>
-                        </div>
-
-                        <div class="ui grid">
-                            <div class="sixteen wide computer column sixteen wide mobile column">
-                                <WhoToFollowList />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="three wide computer column sixteen wide mobile hidden column">
+            <LeftSideMenu />
+          </div>
+          <div class="eight wide computer column sixteen wide mobile column">
+            <FeedData />
+          </div>
+          <div class="five wide computer column sixteen wide mobile column">
+            <div class="ui grid">
+              <ThreehundredByTwofifty />
             </div>
+            <div class="ui grid">
+              <div class="sixteen wide computer column sixteen wide mobile column">
+                <WhoToFollowList />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -36,21 +32,23 @@ import Follow from './Follow.vue';
 import WhoToFollowList from './WhoToFollowList.vue';
 import LeftSideMenu from './LeftSideMenu.vue';
 import FeedData from './FeedData.vue';
+import ThreehundredByTwofifty from './Ads/300X250.vue'
 
 export default {
-    name: "Feed",
-    components: {
-        Navigation,
-        Follow,
-        WhoToFollowList,
-        LeftSideMenu,
-        FeedData
-    }
+  name: "Feed",
+  components: {
+    Navigation,
+    Follow,
+    WhoToFollowList,
+    LeftSideMenu,
+    FeedData,
+    ThreehundredByTwofifty
+  }
 };
 </script>
 
 <style scoped>
 .container {
-    margin-top: 23vh;
+  margin-top: 23vh;
 }
 </style>

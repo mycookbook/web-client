@@ -6,7 +6,6 @@ module.exports = {
   SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize"',
   TIKTOK_CLIENT_KEY: '"awzqdaho7oawcchp"',
   TIKTOK_REDIRECT_URI: '"https://web.cookbookshq.com/#/tiktok"',
-  TWITTER_BASE_URL: '""',
-  PINTEREST_BASE_URL: '""',
-  INSTAGRAM_BASE_URL: '""'
+  TALKIFY_KEY: '"a1ffee0c-61a1-4424-90c2-9988cc11c840"',
+  TOKEN_VALIDATE_ENDPOINT: '"https://api.cookbookshq.com/api/v1/auth/validate"',
 }
