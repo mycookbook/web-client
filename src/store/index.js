@@ -14,6 +14,11 @@ import { contributorStore } from './modules/contributorStore.js'
 import { searchStore } from './modules/searchStore.js'
 import { userStore } from './modules/userStore.js'
 import router from '../router/index.js'
+<<<<<<< HEAD
+=======
+import { imageUploaderStore } from './modules/imageUploaderStore'
+
+>>>>>>> 0ef4ad9 (Component to upload images to AWS S3)
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -154,7 +159,6 @@ export default new Vuex.Store({
     contributorStore,
     searchStore,
     userStore,
-
   },
   plugins: [createPersistedState()]
 });

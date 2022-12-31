@@ -1,11 +1,15 @@
 module.exports = {
   NODE_ENV: '"development"',
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0ef4ad9 (Component to upload images to AWS S3)
   BASE_URL: process.env.VUE_APP_API,
   APP_URL: process.env.VUE_APP_APP_URL,
   IPINFO_TOKEN: process.env.VUE_APP_IPINFO_TOKEN,
   TALKIFY_KEY: process.env.VUE_APP_TALKIFY_KEY,
   TOKEN_VALIDATE_ENDPOINT: process.env.VUE_APP_TOKEN_VALIDATE_ENDPOINT,
+<<<<<<< HEAD
   DEV_TOKEN: process.env.VUE_APP_DEV_TOKEN
 }
 =======
@@ -26,3 +30,12 @@ module.exports = {
   VUE_APP_AWS_BUCKET:'""',
 })
 >>>>>>> 2947501 (cleanup)
+=======
+  DEV_TOKEN: process.env.VUE_APP_DEV_TOKEN,
+  DEV_SECRET_ACCESS_KEY: process.env.VUE_APP_AWS_SECRET_ACCESS_KEY,
+  DEV_ACCESS_KEY_ID: process.env.VUE_APP_AWS_ACCESS_KEY,
+  DEV_AWS_BUCKET: process.env.VUE_APP_AWS_BUCKET,
+  DEV_AWS_REGION: process.env.VUE_APP_AWS_REGION
+}
+
+>>>>>>> 0ef4ad9 (Component to upload images to AWS S3)
