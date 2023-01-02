@@ -15,7 +15,6 @@ import SearchResults from '@/components/SearchResults.vue';
 import NotFound from '@/components/NotFound.vue';
 import CreateRecipe from '@/components/CreateRecipe.vue';
 import Dashboard from '@/components/Dashboard'
-import Profile from '@/components/Profile'
 import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
 import EditCookbook from '@/components/EditCookbook'
