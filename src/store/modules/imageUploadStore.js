@@ -16,6 +16,7 @@ export const imageUploadStore = {
     },
     actions: {
         async upload_to_s3(context, file) {
+            alert('uploading')
             const service = new UploadService()
             context.commit('SET_IMAGEPATH', service.upload(file))
         },

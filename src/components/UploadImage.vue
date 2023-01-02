@@ -47,8 +47,9 @@ export default {
 
 			const input = document.querySelector('input');
 			input.addEventListener('change', (e) => {
-				const [file] = e.target.files;
-				this.fileName = file.name
+				const file = e.target.files[0];
+				this.fileName = file.name;
+				this.$store.dispatch('upload_to_s3', file)
 			})
 		}
 	}
