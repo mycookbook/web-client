@@ -1,6 +1,9 @@
 var express = require('express')
 var path = require('path')
 var serveStatic = require('serve-static')
+var dotenv = require('dotenv');
+
+dotenv.config()
 const cors = require('cors');
 const bodyParser = require('body-parser');
 var app = express()
@@ -12,3 +15,4 @@ app.use(bodyParser.json());
 app.listen(port)
 
 console.log('server started ' + port)
+console.log('token', process.env.VUE_APP_DEV_TOKEN)

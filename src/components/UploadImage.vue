@@ -18,6 +18,7 @@
 					<form enctype="multipart/form-data" method="post">
 						<input type="file" id="myfile" name="myfile" ref="file" :accept="acceptTypes" hidden />
 					</form>
+					
 				</div>
 				<br />
 				<div>
@@ -41,6 +42,12 @@ export default {
 			fileName: ''
 		}
 	},
+	computed: {
+		errorMessage: function (){
+			alert(this.state.upload_error)
+		}
+	},
+
 	methods: {
 		showFileFinder() {
 			$('#myfile').trigger('click');

@@ -38,14 +38,13 @@
 import Navigation from './Navigation';
 import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
-import { singleUpload } from './ImageUploader';
 
 export default {
     name: 'Developers',
     components: {
         Navigation,
         Contact,
-        Bottom,
+        Bottom
     }
 }
 </script>
