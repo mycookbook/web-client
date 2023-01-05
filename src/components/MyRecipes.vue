@@ -140,7 +140,7 @@ export default {
             return this.$store.state.contributor.recipes
         },
         editorSettings() {
-            return { theme: 'snow', font }
+            return { theme: 'snow' }
         }
     },
     data() {
