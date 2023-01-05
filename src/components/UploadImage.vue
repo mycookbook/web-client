@@ -12,7 +12,7 @@
 				</div>
 				<br />
 				<div>
-					<div class="ui tbb button" @click="showFileFinder()">
+					<div class="ui tbb button" @click="showFileFinder()"  v-bind:class="{ loading: isLoading }">
 						Select & Upload
 					</div>
 					<form enctype="multipart/form-data" method="post">
@@ -47,6 +47,9 @@ export default {
 		this.$store.dispatch('reset_msgs')
 	},
 	computed: {
+		isLoading() {
+			return this.$store.state.resource_isLoading
+		},
 		errorMessage() {
 			return this.$store.state.upload_error
 		},
