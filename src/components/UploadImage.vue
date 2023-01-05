@@ -26,6 +26,7 @@
 			</div>
 		</div>
 		<div class="ui error message" v-if="errorMessage">{{ errorMessage }}</div>
+		<div class="ui success message" v-if="uploadSuccess">Success.</div>
 	</div>
 </template>
 
@@ -43,13 +44,14 @@ export default {
 		}
 	},
 	mounted() {
-		this.$store.dispatch('reset_error_msg')
+		this.$store.dispatch('reset_msgs')
 	},
 	computed: {
 		errorMessage() {
-			if (this.$store.state.upload_error) {
-				return this.$store.state.upload_error
-			}
+			return this.$store.state.upload_error
+		},
+		uploadSuccess() {
+			return this.$store.state.imagePath != ""
 		}
 	},
 	methods: {

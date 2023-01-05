@@ -9,8 +9,9 @@ export const imageUploadStore = {
                 this.state.imagePath = response.bucketUrl
             }
         },
-        RESET_ERROR_MSG(state) {
+        RESET_MSGS(state) {
             this.state.upload_error = null
+            this.state.imagePath = ""
         }
     },
     actions: {
@@ -18,15 +19,15 @@ export const imageUploadStore = {
             const service =  new UploadService()
             const response = await service.upload(file)
             
-            context.commit('RESET_ERROR_MSG')
+            context.commit('RESET_MSGS')
             context.commit('SET_IMAGEPATH', response)
         },
         delete_image(context,key) {
             const service = new UploadService()
             service.delete(key)
         },
-        reset_error_msg(context) {
-            context.commit('RESET_ERROR_MSG')
+        reset_msgs(context) {
+            context.commit('RESET_MSGS')
         }
     }
 }
