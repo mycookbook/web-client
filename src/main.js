@@ -19,10 +19,12 @@ import Vuex from 'vuex';
 import App from './App.vue';
 import router from './router';
 import store from '@/store';
+import Vue2Editor from "vue2-editor";
 // import VueAxios from 'vue-axios';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
+Vue.use(Vue2Editor);
 
 /* eslint-disable no-new */
 new Vue({
