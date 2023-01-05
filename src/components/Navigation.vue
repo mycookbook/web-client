@@ -143,7 +143,7 @@ body {
 
 #hamburger-icon {
 	cursor: pointer;
-	margin-left:-15px;
+	margin-left: -15px;
 }
 
 .brand-logo {

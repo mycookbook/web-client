@@ -46,7 +46,7 @@ export default new Vuex.Store({
 		},
 		token: process.env.VUE_APP_DEV_TOKEN,
 		imagePath: "",
-		upload_message: "",
+		upload_error: "",
 		api: {
 			client: axios,
 			options: {
@@ -84,6 +84,12 @@ export default new Vuex.Store({
 			this.state.access_token = req.code
 
 			this.state.username = req.username
+
+			router.push('/')
+		},
+		LOGOUT(state) {
+			this.state.access_token = null
+			this.state.active_user = {}
 
 			router.push('/')
 		}

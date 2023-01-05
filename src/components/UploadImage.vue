@@ -18,7 +18,6 @@
 					<form enctype="multipart/form-data" method="post">
 						<input type="file" id="myfile" name="myfile" ref="file" :accept="acceptTypes" hidden />
 					</form>
-					
 				</div>
 				<br />
 				<div>
@@ -26,6 +25,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="ui error message" v-if="errorMessage">{{ errorMessage }}</div>
 	</div>
 </template>
 
@@ -42,21 +42,24 @@ export default {
 			fileName: ''
 		}
 	},
+	mounted() {
+		this.$store.dispatch('reset_error_msg')
+	},
 	computed: {
-		errorMessage: function (){
-			alert(this.state.upload_error)
+		errorMessage() {
+			if (this.$store.state.upload_error) {
+				return this.$store.state.upload_error
+			}
 		}
 	},
-
 	methods: {
 		showFileFinder() {
 			$('#myfile').trigger('click');
-
 			const input = document.querySelector('input');
 			input.addEventListener('change', (e) => {
 				const file = e.target.files[0];
 				this.fileName = file.name;
-				this.$store.dispatch('upload_to_s3', file)
+				this.$store.dispatch('upload_image', file)
 			})
 		}
 	}

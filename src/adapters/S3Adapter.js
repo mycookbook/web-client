@@ -3,7 +3,6 @@ import aws from 'aws-sdk';
 import Vue from 'vue'
 
 export default class UploadService extends Vue {
-
     async upload(file) {
         const s3 = new aws.S3({
             secretAccessKey: process.env.DEV_SECRET_ACCESS_KEY,
@@ -35,8 +34,7 @@ export default class UploadService extends Vue {
 
             return {
                 code: 200,
-                key: key,
-                fullPath: bucketUrl
+                bucketUrl: bucketUrl
             };
         } catch (error) {
             return {
