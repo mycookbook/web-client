@@ -5,16 +5,16 @@ import Vue from 'vue'
 export default class UploadService extends Vue {
     async upload(file) {
         const s3 = new aws.S3({
-            secretAccessKey: process.env.DEV_SECRET_ACCESS_KEY,
-            accessKeyId: process.env.DEV_ACCESS_KEY_ID,
+            secretAccessKey: process.env.SECRET_ACCESS_KEY,
+            accessKeyId: process.env.ACCESS_KEY_ID,
             signatureVersion: 'v4',
-            region: 'us-east-2',
+            region: process.env.AWS_REGION
         })
 
         const key = Date.now() + '-' + file.name.replace(/\s/g, '-')
 
         const params = {
-            Bucket: process.env.DEV_AWS_BUCKET,
+            Bucket: process.env.AWS_BUCKET,
             Key: key,
             Expires: 10,
             ContentType: file.type
@@ -37,6 +37,7 @@ export default class UploadService extends Vue {
                 bucketUrl: bucketUrl
             };
         } catch (error) {
+            console.log('err', error)
             return {
                 code: 403,
                 error: error
