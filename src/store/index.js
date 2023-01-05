@@ -55,7 +55,6 @@ export default new Vuex.Store({
 				}
 			}
 		},
-
 		response: {
 			statuses: {
 				unauthorized: 401,
