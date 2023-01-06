@@ -35,8 +35,8 @@
                             </a>
                         </span>
                     </label>
-                    <textarea
-                        placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!"></textarea>
+                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
+                        placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!" />
                 </div>
             </div>
             <br />
@@ -85,9 +85,9 @@
 
         <div>
             <div v-if="_myRecipes.length < 1">
-				<em>You have no recipes.</em>
-			</div>
-			<div v-else>
+                <em>You have no recipes.</em>
+            </div>
+            <div v-else>
                 <div class="ui items">
                     <div class="item" v-for="recipe in _myRecipes">
                         <div class="ui tiny image">
@@ -123,6 +123,7 @@
 
 <script>
 import UploadImage from './UploadImage.vue';
+import { VueEditor } from "vue2-editor";
 
 export default {
     name: "MyRecipes",
@@ -137,6 +138,9 @@ export default {
         },
         _myRecipes() {
             return this.$store.state.contributor.recipes
+        },
+        editorSettings() {
+            return { theme: 'snow'}
         }
     },
     data() {
@@ -144,11 +148,13 @@ export default {
             inEditMode: true,
             uploadMessageDescription: "Upload Recipe Cover Image",
             imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
-            acceptTypes: ".png"
+            acceptTypes: ".png",
+            recipeDescription: ""
         }
     },
     components: {
-        UploadImage
+        UploadImage,
+        VueEditor
     },
     methods: {
         toggleEditor(action) {
@@ -162,7 +168,9 @@ export default {
                 $("#cookbook-editor").removeClass("hide")
             }
             this.inEditMode = !this.inEditMode
-        }
+        },
+
+
     },
     filters: {
         truncate: function (text, length, suffix) {
@@ -177,6 +185,11 @@ export default {
 </script>
 
 <style scoped>
+@import "~vue2-editor/dist/vue2-editor.css";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
 .hideshowicon i {
     cursor: pointer !important;
 }
