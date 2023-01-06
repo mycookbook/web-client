@@ -35,7 +35,8 @@
                             </a>
                         </span>
                     </label>
-                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings" :editorToolbar="customToolbar"
+                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
+                        :editorToolbar="customToolbar"
                         placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!" />
                 </div>
             </div>
@@ -43,9 +44,45 @@
             <div class="ui form">
                 <div class="field">
                     <label>Ingredients (required*)</label>
-                    <input type="text"
-                        placeholder="Comma separated list of ingredients e.g 1/2 cup chilli pepper, 1/2 cup red onions" />
-                    <br /><br />
+                    <div v-for="(input, index) in ingredients" :key="`ingInput-${index}`">
+                        <div>
+                            <label>name</label>
+                            <input v-model="input.name" type="text" placeholder="name of ingredient" />
+                        </div>
+                        <br />
+                        <div class="ui grid">
+                            <div class="six wide computer column sixteen wide mobile column">
+                                <label>unit</label>
+                                <input v-model="input.unit" type="text" placeholder="unit" />
+                            </div>
+                            <br />
+                            <div class="ten wide computer column  sixteen wide mobile column">
+                                <label>thumbnail</label>
+                                <input v-model="input.thumbnail" type="text" placeholder="thumbnail" />
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <label>link</label>
+                            <input v-model="input.link" type="text" placeholder="Link" />
+                        </div>
+                        <br />
+                        <div class="ui grid">
+                            <div class="six wide computer column sixteen wide mobile column">
+                                <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i class="plus circle icon"></i>new
+                                    item</button>
+                            </div>
+                            <div  class="ten wide computer column  sixteen wide mobile column">
+                                <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i class="minus circle icon"></i>remove
+                                    item</button>
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider">
+                            <i class="plus circe icon"></i>
+                        </div>
+
+                        <br /><br />
+                    </div>
                 </div>
             </div>
             <br />
@@ -151,6 +188,7 @@ export default {
             imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
             acceptTypes: ".png",
             recipeDescription: "",
+            ingredients: [{ name:"", unit:"", thumbnail:"", link:"" }],
             customToolbar: [
                 [{ header: [false, 1, 2, 3, 4, 5, 6] }],
                 ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -185,8 +223,12 @@ export default {
             }
             this.inEditMode = !this.inEditMode
         },
-
-
+        addField(value, field){
+            field.push({ value : {name:"", unit:"", thumbnail:"", link:""} })
+        },
+        removeField(index, field){
+            field.splice(index, 1);
+        }
     },
     filters: {
         truncate: function (text, length, suffix) {
