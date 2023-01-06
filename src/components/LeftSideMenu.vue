@@ -13,7 +13,7 @@
                 </div>
             </div>
             <br />
-            <div class="item">
+            <!-- <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -28,7 +28,7 @@
                         </div>
                     </router-link>
                 </div>
-            </div>
+            </div> -->
             <div class="item">
                 <div class="content">
                     <router-link :to="{

@@ -18,7 +18,7 @@
 							<div class="ui button tbb tablet hidden" @click="logOut()">
 								Logout
 							</div>
-							<router-link :to="{ name: 'Dashboard', query: { tab: 'Cookbooks' } }">
+							<router-link :to="{ name: 'Dashboard', query: { tab: 'Recipes' } }">
 								<div class="ui button tbb tablet hidden">
 									My Dashboard
 								</div>

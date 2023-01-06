@@ -10,7 +10,7 @@
         </div>
         <br />
 
-        <div id="cookbook-editor">
+        <div id="recipe-editor">
             <div>
                 <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
                     :acceptTypes="acceptTypes" />
@@ -130,6 +130,7 @@ export default {
     mounted() {
         let username = this.$store.state.username
         this.$store.dispatch('fetch_contributor', username)
+        this.$store.dispatch('reset_msgs')
     },
     computed: {
         _categories() {
@@ -159,13 +160,13 @@ export default {
     methods: {
         toggleEditor(action) {
             if (action === 'hide') {
-                $("#cookbook-editor").removeClass("show")
-                $("#cookbook-editor").addClass("hide")
+                $("#recipe-editor").removeClass("show")
+                $("#recipe-editor").addClass("hide")
             }
 
             if (action === 'show') {
-                $("#cookbook-editor").addClass("show")
-                $("#cookbook-editor").removeClass("hide")
+                $("#recipe-editor").addClass("show")
+                $("#recipe-editor").removeClass("hide")
             }
             this.inEditMode = !this.inEditMode
         },
