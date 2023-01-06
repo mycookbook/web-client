@@ -13,7 +13,7 @@
                 </div>
             </div>
             <br />
-            <div class="item">
+            <!-- <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -22,13 +22,13 @@
                         <div>
                             <small>
                                 <u>
-                                    Cookbooks {{ _contributor.cookbooks.length }}
+                                    Cookbooks {{ _contributor.cookbooks ? _contributor.cookbooks.length : 0 }}
                                 </u>
                             </small>
                         </div>
                     </router-link>
                 </div>
-            </div>
+            </div> -->
             <div class="item">
                 <div class="content">
                     <router-link :to="{
@@ -38,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Recipes {{ _contributor.recipes.length }}
+                                    Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0}}
                                 </u>
                             </small>
                         </div>
@@ -54,7 +54,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _contributor.drafts.length }}
+                                    Drafts {{ _contributor.drafts ? _contributor.drafts.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -163,6 +163,14 @@
             <div class="ui tbb tiny disabled button">
                 Advertise With Us!
             </div>
+            <br /><br />
+            <div class="ui tbb tiny button">
+                Go Premium Now <span> </span><i class="ui trophy icon"></i>
+            </div>
+            <br />
+            <small>
+              Unlock more powerful features with our Premium Plan. Terms & conditions apply.
+            </small>
         </div>
     </div>
 </template>

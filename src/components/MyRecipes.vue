@@ -10,7 +10,7 @@
         </div>
         <br />
 
-        <div id="cookbook-editor">
+        <div id="recipe-editor">
             <div>
                 <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
                     :acceptTypes="acceptTypes" />
@@ -35,7 +35,7 @@
                             </a>
                         </span>
                     </label>
-                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
+                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings" :editorToolbar="customToolbar"
                         placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!" />
                 </div>
             </div>
@@ -130,6 +130,7 @@ export default {
     mounted() {
         let username = this.$store.state.username
         this.$store.dispatch('fetch_contributor', username)
+        this.$store.dispatch('reset_msgs')
     },
     computed: {
         _categories() {
@@ -149,7 +150,22 @@ export default {
             uploadMessageDescription: "Upload Recipe Cover Image",
             imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
             acceptTypes: ".png",
-            recipeDescription: ""
+            recipeDescription: "",
+            customToolbar: [
+                [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+                ["bold", "italic", "underline", "strike"], // toggled buttons
+                [
+                    { align: "" },
+                    { align: "center" },
+                    { align: "right" },
+                    { align: "justify" }
+                ],
+                ["blockquote", "code-block"],
+                [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+                ["clean"] // remove formatting button
+            ]
         }
     },
     components: {
@@ -159,13 +175,13 @@ export default {
     methods: {
         toggleEditor(action) {
             if (action === 'hide') {
-                $("#cookbook-editor").removeClass("show")
-                $("#cookbook-editor").addClass("hide")
+                $("#recipe-editor").removeClass("show")
+                $("#recipe-editor").addClass("hide")
             }
 
             if (action === 'show') {
-                $("#cookbook-editor").addClass("show")
-                $("#cookbook-editor").removeClass("hide")
+                $("#recipe-editor").addClass("show")
+                $("#recipe-editor").removeClass("hide")
             }
             this.inEditMode = !this.inEditMode
         },

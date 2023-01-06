@@ -19,7 +19,7 @@
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
 								<div v-if="activeLink === 'Cookbooks'">
-									<MyCookbooks />
+									<MyRecipes />
 								</div>
 								<div v-if="activeLink === 'Recipes'">
 									<MyRecipes />
@@ -33,7 +33,8 @@
 											<div class="field">
 												<div class="ui checkbox">
 													<input type="checkbox" tabindex="0" class="hidden">
-													<label>Allow direct messaging from annonymous users on the platform</label>
+													<label>Allow direct messaging from annonymous users on the
+														platform</label>
 												</div>
 											</div>
 											<div class="field">
@@ -41,9 +42,12 @@
 													<input type="checkbox" tabindex="0" class="hidden" disabled>
 													<label>Allow other users contribute to my cookbooks</label>
 													<div class="ui mini message">
-														<em>This is a Premium feature. All cookbooks are public by default
-														i.e users on this platform are able to freely add recipes to any
-														cookbook. Upgrade your subscription to have control over this.</em>
+														<em>This is a Premium feature. All cookbooks are public by
+															default
+															i.e users on this platform are able to freely add recipes to
+															any
+															cookbook. Upgrade your subscription to have control over
+															this.</em>
 													</div>
 												</div>
 											</div>
@@ -55,14 +59,14 @@
 								<div v-if="activeLink === 'Display Settings'">
 									<p>
 										Enable/Disable Dark Mode
-									</p> 
+									</p>
 									<DarkModeSwitch @switched="onSwitched" :initialState="isDarkModeEnabled" />
 								</div>
 								<div v-if="activeLink === 'Notifications'">
 									My notifications
 								</div>
 								<div v-if="activeLink === 'Profile'">
-								{{ _activeUser }}
+									{{ _activeUser }}
 									<!-- <Profile :_activeUser="_activeUser" /> -->
 								</div>
 							</div>
@@ -71,8 +75,7 @@
 					<div class="five wide computer column sixteen wide mobile column">
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
-								<img
-									src="https://drdrew.com/wp-content/uploads/2017/08/ad-space-placeholder-300x250-300x250.png" />
+								<ThreehundredByTwofifty />
 							</div>
 						</div>
 					</div>
@@ -96,7 +99,8 @@ import MyRecipes from './MyRecipes.vue';
 import MyDrafts from './MyDrafts.vue';
 import Profile from './Profile.vue';
 import DarkModeSwitch from 'vue-dark-mode-switch'
-import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css'
+import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css';
+import ThreehundredByTwofifty from './Ads/300X250.vue'
 
 export default {
 	name: "Dashboard",
@@ -125,13 +129,14 @@ export default {
 		MyCookbooks,
 		MyRecipes,
 		MyDrafts,
-		Profile
+		Profile,
+		ThreehundredByTwofifty
 	},
 	methods: {
-			onSwitched: function (isSwitched) {
-				console.log('dark mode is enabled :', isSwitched);
-			}
+		onSwitched: function (isSwitched) {
+			console.log('dark mode is enabled :', isSwitched);
 		}
+	}
 };
 </script>
 

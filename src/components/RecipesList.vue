@@ -1,13 +1,21 @@
 <template>
 	<div>
+		<br />
+		<div class="ui success small message">
+			To start contributing to this cookbook is very easy! Simply hit the <a
+				href="http://localhost:5001/#/signin">signin</a> button and start contributing
+			to this cookbook and many more cookbooks on this platform!
+		</div>
 		<div class="ui horizontal divider">
 			<i class="camera icon"></i>
 		</div>
 		<div class="ui header">
 			<span>Showing {{ (incrementBy > recipes.length) ? recipes.length : incrementBy }} of {{ recipes.length }}
-				recipes</span>
+				recipes in "{{ cookbookName }}"
+			</span>
 		</div>
 		<div>
+			<span>sort by </span>
 			<span>
 				<small>
 					<a class="link" @click="sortBy('newest')">

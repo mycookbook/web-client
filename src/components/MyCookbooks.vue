@@ -155,7 +155,6 @@ export default {
 	name: "MyCookbooks",
 	mounted() {
 		let username = this.$store.state.username
-
 		this.$store.dispatch('fetch_contributor', username)
 	},
 	computed: {

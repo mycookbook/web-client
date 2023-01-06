@@ -1,17 +1,13 @@
-var merge = require('webpack-merge')
-var prodEnv = require('./prod.env')
-
-module.exports = merge(prodEnv, {
+module.exports = {
   NODE_ENV: '"development"',
-  APP_URL: '"http://localhost:5001"',
-  BASE_URL: '"http://localhost:8080/api/v1/"',
-  IPINFO_TOKEN: '"13838312c2e092"',
-  API_KEY: process.env.API_KEY,
-  CLIENT_SECRET: process.env.CLIENT_SECRET,
-  SERVER_ENDPOINT_OAUTH: '"https://www.tiktok.com/auth/authorize"',
-  TIKTOK_CLIENT_KEY: '"aw2m32xifypveu7g"',
-  TIKTOK_REDIRECT_URI: '"http://localhost:8080/api/v1/auth/tiktok"',
-  TWITTER_BASE_URL: '""',
-  PINTEREST_BASE_URL: '""',
-  INSTAGRAM_BASE_URL: '""'
-})
+  BASE_URL: process.env.VUE_APP_API,
+  APP_URL: process.env.VUE_APP_APP_URL,
+  IPINFO_TOKEN: process.env.VUE_APP_IPINFO_TOKEN,
+  TALKIFY_KEY: process.env.VUE_APP_TALKIFY_KEY,
+  TOKEN_VALIDATE_ENDPOINT: process.env.VUE_APP_TOKEN_VALIDATE_ENDPOINT,
+  DEV_TOKEN: process.env.VUE_APP_DEV_TOKEN,
+  SECRET_ACCESS_KEY: process.env.VUE_APP_AWS_SECRET_ACCESS_KEY,
+  ACCESS_KEY_ID: process.env.VUE_APP_AWS_ACCESS_KEY,
+  AWS_BUCKET: process.env.VUE_APP_AWS_BUCKET,
+  AWS_REGION: process.env.VUE_APP_AWS_REGION
+}

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="ui top fixed menu grid mobile hidden" style="height: 180px!important;margin-top: -40px!important;">
+		<div class="ui top fixed menu grid mobile hidden">
 			<div class="six wide tablet column six wide computer column tvn no padding">
 				<div class="tvn clipped brand">
 					<a href="/" class="ui massive fluid image" title="cookbookshq brand logo">
@@ -14,24 +14,11 @@
 						<a class="disabled item" title="Coming soon.">
 							<i class="blue cart disabled icon"></i> Go to Marketplace
 						</a>
-						<a class="disabled item" title="Coming soon.">
-							<i class="chart blue bar outline disabled icon"></i> Calorie Counter
-							<sup>
-								<i class="ui blue trademark disabled icon"></i>
-							</sup>
-						</a>
-
 						<div v-if="isLoggedIn">
-							<p style="ont-size: 1em;line-height: 1em;color: rgba(0,0,0,.6)!important;">
-								Hello, {{ activeUser }}
-							</p>
 							<div class="ui button tbb tablet hidden" @click="logOut()">
 								Logout
 							</div>
-							<router-link :to="{
-								name: 'Dashboard',
-								query: { tab: 'Cookbooks' }
-							}">
+							<router-link :to="{ name: 'Dashboard', query: { tab: 'Recipes' } }">
 								<div class="ui button tbb tablet hidden">
 									My Dashboard
 								</div>
@@ -39,8 +26,8 @@
 						</div>
 						<div v-else>
 							<router-link :to="{
-								name: 'Register'
-							}">
+	name: 'Register'
+}">
 								<button class="ui button tbb tablet hidden">
 									Sign in To Contribute
 								</button>
@@ -82,14 +69,14 @@
 		</div>
 		<div class="ui top fixed hidden menu mobile only">
 			<div class="ui grid container">
-				<div class="ui two wide mobile column" id="hamburger-icon" @click="toggleMobileMenu()">
-					<i class="large bars icon"></i>
-				</div>
 				<div class="ui fourteen wide mobile column">
 					<a href="/">
 						<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo"
 							style="margin-top:-6%!important;margin-left:16%!important;">
 					</a>
+				</div>
+				<div class="ui two wide mobile column" id="hamburger-icon" @click="toggleMobileMenu()">
+					<i class="large bars icon"></i>
 				</div>
 			</div>
 		</div>
@@ -156,6 +143,7 @@ body {
 
 #hamburger-icon {
 	cursor: pointer;
+	margin-left: -15px;
 }
 
 .brand-logo {
