@@ -30,8 +30,8 @@
                             How to prepare (required*)
                         </span>
                         <span style="float:right!important;">
-                            <a href="/#/examples">
-                                Examples
+                            <a href="/#/help?doc=templates">
+                                see templates
                             </a>
                         </span>
                     </label>
@@ -69,11 +69,13 @@
                         <br />
                         <div class="ui grid">
                             <div class="six wide computer column sixteen wide mobile column">
-                                <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i class="plus circle icon"></i>new
+                                <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i
+                                        class="plus circle icon"></i>new
                                     item</button>
                             </div>
-                            <div  class="ten wide computer column  sixteen wide mobile column">
-                                <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i class="minus circle icon"></i>remove
+                            <div class="ten wide computer column  sixteen wide mobile column">
+                                <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i
+                                        class="minus circle icon"></i>remove
                                     item</button>
                             </div>
                         </div>
@@ -188,7 +190,7 @@ export default {
             imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
             acceptTypes: ".png",
             recipeDescription: "",
-            ingredients: [{ name:"", unit:"", thumbnail:"", link:"" }],
+            ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
             customToolbar: [
                 [{ header: [false, 1, 2, 3, 4, 5, 6] }],
                 ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -223,10 +225,10 @@ export default {
             }
             this.inEditMode = !this.inEditMode
         },
-        addField(value, field){
-            field.push({ value : {name:"", unit:"", thumbnail:"", link:""} })
+        addField(value, field) {
+            field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
         },
-        removeField(index, field){
+        removeField(index, field) {
             field.splice(index, 1);
         }
     },
