@@ -25,12 +25,6 @@ export default {
           handle: "mummy-obiora",
         },
         {
-          followers: '3',
-          author: "Marcella Frami",
-          avatar: "https://pbs.twimg.com/profile_images/1604277603501760513/0AYDgHAZ_400x400.jpg",
-          handle: "mjay",
-        },
-        {
           followers: '10K',
           author: "Eulah Durgan",
           avatar: "https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg",
