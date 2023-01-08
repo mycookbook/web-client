@@ -2,7 +2,7 @@
 <div class="ui container">
 	<Navigation />
 	<div>
-		cookbook in edit mode
+		recipe in edit mode
 	</div>
 </div>
 </template>
@@ -11,7 +11,7 @@
 import Navigation from './Navigation.vue';
 
 export default {
-	name: "EditCookbook",
+	name: "EditRecipe",
 	mounted() {},
 	computed: {
 		example() {

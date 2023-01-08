@@ -17,7 +17,7 @@ import CreateRecipe from '@/components/CreateRecipe.vue';
 import Dashboard from '@/components/Dashboard'
 import store from '@/store'
 import PrivacyPolicy from '@/components/PrivacyPolicy'
-import EditCookbook from '@/components/EditCookbook'
+import EditRecipe from '@/components/EditRecipe'
 import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
 import auth from '../middleware/auth.js';
@@ -102,9 +102,9 @@ const VueRouter = new Router({
       component: Cookbook,
       props: true
     }, {
-      path: '/cookbooks/:slug',
-      name: 'EditCookbook',
-      component: EditCookbook,
+      path: '/recipes/:slug/edit',
+      name: 'EditRecipe',
+      component: EditRecipe,
       meta: {
         middleware: auth,
       }

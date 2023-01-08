@@ -17,7 +17,7 @@
               <div class="ui mini images">
                 <img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients.data"
                   :alt="ingredient.name" :title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
-                  @click="ingredientLink(ingredient)" :style="{'display':'inline-flex', 'height': '35px'}">
+                  @click="ingredientLink(ingredient)" :style="{ 'display': 'inline-flex', 'height': '35px' }">
               </div>
               <img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
               <div class="talkify-section">
@@ -49,16 +49,15 @@
                   <Claps />
                 </div>
                 <div class="four wide computer column sixteen wide mobile column">
-                  <div class="ui tbb fluid mini circular button" :class="{disabled: !_isLoggedIn}"
+                  <div class="ui tbb fluid mini circular button" :class="{ disabled: !_isLoggedIn }"
                     title="Add a variation for this recipe, make it yours!">
                     <i class="ui plus icon"></i>
                     Customize
                   </div>
                 </div>
                 <div class="four wide computer column sixteen wide mobile column">
-                  <div class="ui icon tbb fluid mini circular button"
-                    data-tooltip="Click to copy" data-position="top left"
-                    data-inverted="" id="clipboardMsg" @click="copyIngredients()">
+                  <div class="ui icon tbb fluid mini circular button" data-tooltip="Click to copy"
+                    data-position="top left" data-inverted="" id="clipboardMsg" @click="copyIngredients()">
                     <i class="ui linkify icon"></i>
                     Copy ingredients
                   </div>
