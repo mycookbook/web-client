@@ -23,7 +23,7 @@
                         <CopyCopiedButtonsWidget :htmlTagId="'stepsstyle'" />
                     </span>
                     <div class="header">
-                        <em>Steps style with instructions</em>
+                        <em>Step by step</em>
                     </div>
                     <br />
                     <div id="stepsstyle">
@@ -58,7 +58,7 @@
                         <CopyCopiedButtonsWidget :htmlTagId="'liststyle'" />
                     </span>
                     <div class="header">
-                        <em>List style with instructions</em>
+                        <em>Shopping list</em>
                     </div>
                     <br />
                     <div id="liststyle">
@@ -107,6 +107,35 @@
                                     laborum.
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui message">
+                    <span style="float: right!important;">
+                        <CopyCopiedButtonsWidget :htmlTagId="'storyteller'" />
+                    </span>
+                    <div class="header">
+                        <em>Story teller</em>
+                    </div>
+                    <br />
+                    <div id="stepsstyle">
+                        <br />
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                        <br />
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                        <br />
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
                     </div>
                 </div>

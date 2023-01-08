@@ -21,6 +21,7 @@ import EditCookbook from '@/components/EditCookbook'
 import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
 import auth from '../middleware/auth.js';
+import SubscriptionPlans from '@/components/Widgets/SubscriptionPlans'
 
 Vue.use(Router);
 
@@ -139,6 +140,10 @@ const VueRouter = new Router({
       path: '/search',
       name: 'SearchResults',
       component: SearchResults
+    }, {
+      path: '/plans',
+      name: 'SubscriptionPlans',
+      component: SubscriptionPlans
     }, {
       path: '/errors',
       name: 'ErrorPage',

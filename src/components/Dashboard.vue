@@ -24,10 +24,7 @@
 									<MyDrafts :active_user=active_user />
 								</div>
 								<div v-if="activeLink === 'Preferences'">
-									<p>TBD</p>
-									<p>- prefered default cookbook</p>
-									<p>- prefered cover photo tool i.e image upload or imagelink from stockphoto service
-										etc</p>
+									<Preferences />
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
 									<div>
@@ -103,6 +100,7 @@ import Profile from './Profile.vue';
 import DarkModeSwitch from 'vue-dark-mode-switch'
 import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css';
 import ThreehundredByTwofifty from './Ads/300X250.vue'
+import Preferences from './Widgets/PreferencesWidget.vue'
 
 export default {
 	name: "Dashboard",
@@ -132,7 +130,8 @@ export default {
 		MyRecipes,
 		MyDrafts,
 		Profile,
-		ThreehundredByTwofifty
+		ThreehundredByTwofifty,
+		Preferences
 	},
 	methods: {
 		onSwitched: function (isSwitched) {
