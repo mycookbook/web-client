@@ -81,19 +81,6 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'SearchResults',
-                        query: { q: 'all' }
-                    }">
-                        <div>
-                            <h3><i class="ui hashtag icon"></i> Explore</h3>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-            <br />
-            <div class="item">
-                <div class="content">
-                    <router-link :to="{
                         name: 'Dashboard',
                         query: { tab: 'Profile' }
                     }">

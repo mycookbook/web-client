@@ -8,6 +8,11 @@
             <LeftSideMenu />
           </div>
           <div class="eight wide computer column sixteen wide mobile column">
+            <a class="ui label">
+                <em>Control what you see by choosing your preffered topics in your <a
+                  href="/#/dashboard?tab=Preferences">preferences</a></em>
+              </a>
+              <br /><br />
             <FeedData />
           </div>
           <div class="five wide computer column sixteen wide mobile column">

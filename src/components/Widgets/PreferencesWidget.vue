@@ -31,6 +31,39 @@
                     </div>
                 </div>
             </div>
+            <br />
+            <div class="grouped fields">
+                <div class="field">
+                    <label>
+                        topics (select as many as possible)
+                    </label>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>topic 1</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>topic 2</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>topic 3</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <button class="fluid ui tbb button">Save</button>
         </div>
     </div>
