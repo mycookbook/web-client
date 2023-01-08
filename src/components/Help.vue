@@ -7,17 +7,17 @@
                 <div class="ui vertical menu">
                     <a class="item" href="/#/help?doc=query-syntax">
                         <h4 class="ui header">Search Query Syntax</h4>
-                        <p>Learn how to get fine-grained results using our homegrown query syntax</p>
+                        <small>Learn how to get fine-grained results using our homegrown query syntax</small>
                     </a>
                     <a class="item" href="/#/help?doc=contributing">
                         <h4 class="ui header">Contributing</h4>
-                        <p>Check out our resources on how to be a contributor</p>
+                        <small>Check out our resources on how to be a contributor</small>
                     </a>
                     <a class="item" href="/#/help?doc=templates">
                         <h4 class="ui header">Templates</h4>
-                        <p>
+                        <small>
                             Choose from a list of various templates to jump start your new recipe creation
-                        </p>
+                        </small>
                     </a>
                 </div>
             </div>
@@ -30,7 +30,9 @@
                     </div>
 
                     <div v-if="helpDoc == 'contributing'">
-                        <p>WIP</p>
+                        <p>link to youtube and vimeo videos</p>
+                        <p>link to tiktok videos</p>
+                        <p>link to other learning resources</p>
                     </div>
 
                     <div v-if="helpDoc == 'templates'">

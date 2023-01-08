@@ -176,17 +176,13 @@
         </div>
         <br />
         <div>
-            <div class="ui tbb tiny disabled button">
-                Advertise With Us!
+            <div class="ui tbb circular button">
+                <a href="/#/contact-sales" style="color:white!important;">Advertise With Us!</a>
             </div>
             <br /><br />
-            <div class="ui tbb tiny button">
-                Go Premium Now <span> </span><i class="ui trophy icon"></i>
+            <div class="ui tbb circular button">
+                <a href="/#/plans" style="color:white!important;">Upgrade Your Plan</a>
             </div>
-            <br />
-            <small>
-              Unlock more powerful features with our Premium Plan. Terms & conditions apply.
-            </small>
         </div>
     </div>
 </template>

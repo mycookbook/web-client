@@ -93,7 +93,7 @@
                     <label>
                         Search Cookbook (required*)
                     </label>
-                    <input type="text" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
+                    <input type="text" placeholder="e.g vegan cookbook" />
                 </div>
             </div>
             <br />
