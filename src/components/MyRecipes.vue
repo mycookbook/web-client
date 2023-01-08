@@ -10,7 +10,7 @@
         </div>
         <br />
 
-        <div id="cookbook-editor">
+        <div id="recipe-editor">
             <div>
                 <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
                     :acceptTypes="acceptTypes" />
@@ -30,22 +30,61 @@
                             How to prepare (required*)
                         </span>
                         <span style="float:right!important;">
-                            <a href="/#/examples">
-                                Examples
+                            <a href="/#/help?doc=templates">
+                                see templates
                             </a>
                         </span>
                     </label>
-                    <textarea
-                        placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!"></textarea>
+                    <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
+                        :editorToolbar="customToolbar"
+                        placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
                 </div>
             </div>
             <br />
             <div class="ui form">
                 <div class="field">
                     <label>Ingredients (required*)</label>
-                    <input type="text"
-                        placeholder="Comma separated list of ingredients e.g 1/2 cup chilli pepper, 1/2 cup red onions" />
-                    <br /><br />
+                    <div v-for="(input, index) in ingredients" :key="`ingInput-${index}`">
+                        <div>
+                            <label>name</label>
+                            <input v-model="input.name" type="text" placeholder="name of ingredient" />
+                        </div>
+                        <br />
+                        <div class="ui grid">
+                            <div class="six wide computer column sixteen wide mobile column">
+                                <label>unit</label>
+                                <input v-model="input.unit" type="text" placeholder="unit" />
+                            </div>
+                            <br />
+                            <div class="ten wide computer column  sixteen wide mobile column">
+                                <label>thumbnail</label>
+                                <input v-model="input.thumbnail" type="text" placeholder="thumbnail" />
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <label>link</label>
+                            <input v-model="input.link" type="text" placeholder="Link" />
+                        </div>
+                        <br />
+                        <div class="ui grid">
+                            <div class="six wide computer column sixteen wide mobile column">
+                                <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i
+                                        class="plus circle icon"></i>new
+                                    item</button>
+                            </div>
+                            <div class="ten wide computer column  sixteen wide mobile column">
+                                <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i
+                                        class="minus circle icon"></i>remove
+                                    item</button>
+                            </div>
+                        </div>
+                        <div class="ui horizontal divider">
+                            <i class="plus circe icon"></i>
+                        </div>
+
+                        <br /><br />
+                    </div>
                 </div>
             </div>
             <br />
@@ -85,9 +124,9 @@
 
         <div>
             <div v-if="_myRecipes.length < 1">
-				<em>You have no recipes.</em>
-			</div>
-			<div v-else>
+                <em>You have no recipes.</em>
+            </div>
+            <div v-else>
                 <div class="ui items">
                     <div class="item" v-for="recipe in _myRecipes">
                         <div class="ui tiny image">
@@ -123,12 +162,14 @@
 
 <script>
 import UploadImage from './UploadImage.vue';
+import { VueEditor } from "vue2-editor";
 
 export default {
     name: "MyRecipes",
     mounted() {
         let username = this.$store.state.username
         this.$store.dispatch('fetch_contributor', username)
+        this.$store.dispatch('reset_msgs')
     },
     computed: {
         _categories() {
@@ -137,6 +178,9 @@ export default {
         },
         _myRecipes() {
             return this.$store.state.contributor.recipes
+        },
+        editorSettings() {
+            return { theme: 'snow' }
         }
     },
     data() {
@@ -144,24 +188,48 @@ export default {
             inEditMode: true,
             uploadMessageDescription: "Upload Recipe Cover Image",
             imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
-            acceptTypes: ".png"
+            acceptTypes: ".png",
+            recipeDescription: "",
+            ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
+            customToolbar: [
+                [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+                ["bold", "italic", "underline", "strike"], // toggled buttons
+                [
+                    { align: "" },
+                    { align: "center" },
+                    { align: "right" },
+                    { align: "justify" }
+                ],
+                ["blockquote", "code-block"],
+                [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+                ["clean"] // remove formatting button
+            ]
         }
     },
     components: {
-        UploadImage
+        UploadImage,
+        VueEditor
     },
     methods: {
         toggleEditor(action) {
             if (action === 'hide') {
-                $("#cookbook-editor").removeClass("show")
-                $("#cookbook-editor").addClass("hide")
+                $("#recipe-editor").removeClass("show")
+                $("#recipe-editor").addClass("hide")
             }
 
             if (action === 'show') {
-                $("#cookbook-editor").addClass("show")
-                $("#cookbook-editor").removeClass("hide")
+                $("#recipe-editor").addClass("show")
+                $("#recipe-editor").removeClass("hide")
             }
             this.inEditMode = !this.inEditMode
+        },
+        addField(value, field) {
+            field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
+        },
+        removeField(index, field) {
+            field.splice(index, 1);
         }
     },
     filters: {
@@ -177,6 +245,11 @@ export default {
 </script>
 
 <style scoped>
+@import "~vue2-editor/dist/vue2-editor.css";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
 .hideshowicon i {
     cursor: pointer !important;
 }

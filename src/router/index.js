@@ -43,7 +43,7 @@ const VueRouter = new Router({
           let code = url.searchParams.get("token");
           let username = url.searchParams.get('_d')
 
-          if (!username) username = 'test-user'
+          if (!username) username = process.env.DEV_USERNAME
           if (!code) code = process.env.DEV_TOKEN
 
           store.dispatch('set_active_user', {
