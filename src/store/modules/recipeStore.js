@@ -11,51 +11,52 @@ export const recipeStore = {
 		},
 		UPDATE_RECIPE_STATE(state, newState) {
 			this.state.recipe = newState
-			state.hasClapped += 1
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
 		}
 	},
-    actions: {
+	actions: {
 		addClap(context, payload) {
 			let url = process.env.BASE_URL + 'add-clap';
 
 			this.state.api.client.post(url, {
-                recipe_id: payload.recipeId,
+				recipe_id: payload.recipeId,
 			}, this.state.api.options)
-			.then(function (response) {
-                if (response.data.updated) {
-					context.commit('INCREMENT_CLAP', response.data.claps)
-				}
-            }).catch(function (error) {
-                // console.log('clapping error', error.response)
-            })
+				.then(function (response) {
+					if (response.data.updated) {
+						context.commit('INCREMENT_CLAP', response.data.claps)
+					}
+				}).catch(function (error) {
+					console.log('clapping error', error.response)
+				})
 		},
-		async fetch_recipe(context, recipeId) {
+		fetch_recipe(context, recipeId) {
 			context.commit("SET_LOADING_STATE", true)
 
 			let uri = (process.env.NODE_ENV !== "production") ? 'http://localhost:8080/api/v1/recipes/' + recipeId : process.env.BASE_URL + 'recipes/' + recipeId;
-			
-			await this.state.api.client.get(uri, this.state.api.options)
-			.then(function (response) {
-				response.data.ingredients = JSON.parse(response.data.ingredients)
 
-				const parsedData = JSON.parse(response.data.nutritional_detail)
-				const detail = {
-					cal: parsedData.cal,
-					carbs: parsedData.carbs,
-					protein: parsedData.protein,
-					fat: parsedData.fat
-				}
-				response.data.nutritional_detail = detail;
-
-				context.commit('UPDATE_RECIPE_STATE', response.data)
-				context.commit("SET_LOADING_STATE", false)
-            }).catch(function (error) {
-				// console.log('fetch error', error)
-				context.commit("SET_LOADING_STATE", false)
-			})
+			this.state.api.client.get(uri, this.state.api.options)
+				.then(function (response) {
+					try {
+						response.data.ingredients = JSON.parse(response.data.ingredients)
+						const parsedData = JSON.parse(response.data.nutritional_detail)
+						const detail = {
+							cal: parsedData.cal,
+							carbs: parsedData.carbs,
+							protein: parsedData.protein,
+							fat: parsedData.fat
+						}
+						response.data.nutritional_detail = detail;
+						context.commit('UPDATE_RECIPE_STATE', response.data)
+						context.commit("SET_LOADING_STATE", false)
+					} catch (err) {
+						alert('We are having trouble loading this recipe. Please refresh or try again later.')
+					}
+				}).catch(function (error) {
+					console.log('fetch error', error)
+					context.commit("SET_LOADING_STATE", false)
+				})
 		},
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');

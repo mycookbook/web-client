@@ -21,8 +21,8 @@
 
                 <a :href="'#/search?q=:cookbooks|categories ' + category.name">
                   {{ category.name }}
-                  </a>
-                </span>
+                </a>
+              </span>
               <span v-html="category.emoji"></span>
             </a>
           </div>
