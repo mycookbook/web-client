@@ -42,7 +42,7 @@
                     <div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="example1">
-                            <label>topic 1</label>
+                            <label>fitfam</label>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="example1">
-                            <label>topic 2</label>
+                            <label>main dishes</label>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,87 @@
                     <div>
                         <div class="ui checkbox">
                             <input type="checkbox" name="example1">
-                            <label>topic 3</label>
+                            <label>side dishes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>vegan</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>party</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>african</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>chinese</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>indian</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>canadian</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>american</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>aboriginal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>beginner</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>culnary school</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>secret recipes</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>dogs</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>cats</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="example1">
+                            <label>random stuff</label>
                         </div>
                     </div>
                 </div>

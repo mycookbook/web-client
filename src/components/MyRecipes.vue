@@ -9,17 +9,30 @@
             </div>
         </div>
         <br />
-
         <div id="recipe-editor">
-            <div>
+            <div class="ui segment">
                 <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
                     :acceptTypes="acceptTypes" />
+                <div class="ui horizontal divider">
+                    Or
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <label>stock photo image url</label>
+                        <span style="float:right!important;">
+                            <a href="https://www.dreamstime.com/stock-photos" target="_blank">
+                                STOCK PHOTOS
+                            </a>
+                        </span>
+                        <input type="text" placeholder="Paste stock photo image address here" />
+                    </div>
+                </div>
             </div>
             <div class="ui horizontal divider"></div>
             <div class="ui form">
                 <div class="field">
                     <label>Title (required*)</label>
-                    <input type="text" placeholder="Enter title" />
+                    <input type="text" placeholder="Enter recipe title" />
                 </div>
             </div>
             <br />
@@ -82,12 +95,10 @@
                         <div class="ui horizontal divider">
                             <i class="plus circe icon"></i>
                         </div>
-
-                        <br /><br />
+                        <br />
                     </div>
                 </div>
             </div>
-            <br />
             <div class="ui form">
                 <div class="field">
                     <label>
@@ -103,8 +114,12 @@
                         <span>
                             Keywords (Optional)
                         </span>
+                        <br />
+                        <small>
+                            Adding keywords is a great way to boost the visibility of your recipes
+                        </small>
                     </label>
-                    <input type="text" placeholder="Keywords help your content get seen quickly in search results" />
+                    <input type="text" placeholder="e.g main dishes, fitfam" />
                 </div>
             </div>
             <div class="ui horizontal divider"></div>
