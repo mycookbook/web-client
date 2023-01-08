@@ -2,26 +2,32 @@
   <div class="ui feed">
     <div class="event">
       <div class="label">
-        <FourWideCircularImage imgUrl="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"
+        <FourWideCircularImage
+          imgUrl="https://st4.depositphotos.com/1017986/25404/i/600/depositphotos_254046280-stock-photo-happy-male-indian-chef-in.jpg"
           imgTitle="example" />
       </div>
       <div class="content">
         <div class="summary">
-          <a>Eulah Durgan</a> added a new recipe in <a href="/#/search?q=:tags|recipes vegan">vegan</a>
+          <a href="/#/contributors/test-user">The Indian guy next door</a> added a new recipe in <a
+            href="/#/search?q=:tags|recipes vegan">vegan</a>
           <div class="date">
             2 mins ago
           </div>
         </div>
         <div class="meta">
-          <a class="like">
-            <i class="like red icon"></i> 10 claps
-          </a>
+          <span style="float:left!important;">
+            <a class="like" @click="addClap()">
+              <i class="like red icon"></i> 10 claps
+            </a>
+          </span>
+          <span style="float:right!important;">Proudly <i class="in flag" title="Nationality"></i></span>
         </div>
         <br />
         <div class="ui large image">
-          <a>
+          <a href="/#/recipes/non" title="Recipe title">
             <img
-              src="https://i0.wp.com/eatbinchi.com/wp-content/uploads/2022/06/Why-Binchi-Image.png?resize=1320%2C1320&ssl=1">
+              src="https://static5.depositphotos.com/1001001/469/i/600/depositphotos_4690741-stock-photo-chef-cooking-wok.jpg"
+              alt="">
           </a>
         </div>
         <br /><br />
@@ -36,21 +42,24 @@
       </div>
       <div class="content">
         <div class="summary">
-          <a>Ivah Becker</a> added a new recipe in <a href="/#/search?q=:tags|recipes culinary school">culinary school</a>
+          <a href="/#/contributors/test-user">Ivah Becker</a> added a new recipe in <a
+            href="/#/search?q=:tags|recipes culinary school">culinary school</a>
           <div class="date">
             4 days ago
           </div>
         </div>
         <div class="meta">
-          <a class="like">
-            <i class="like red icon"></i> 10 claps
-          </a>
+          <span style="float:left!important;">
+            <a class="like" @click="addClap()">
+              <i class="like red icon"></i> 10 claps
+            </a>
+          </span>
+          <span style="float:right!important;">Proudly <i class="ng flag" title="Nationality"></i></span>
         </div>
         <br />
         <div class="ui large image">
-          <a>
-            <img
-              src="https://i0.wp.com/eatbinchi.com/wp-content/uploads/2022/11/Asun.png">
+          <a href="/#/recipes/non" title="Recipe title">
+            <img src="https://thumbs.dreamstime.com/b/pickled-bamboo-shoots-catfish-sour-spicy-soup-thai-food-pickled-bamboo-shoots-catfish-sour-spicy-soup-thai-159694090.jpg" alt="">
           </a>
         </div>
         <br /><br />
@@ -77,10 +86,21 @@ export default {
   components: {
     Comments,
     FourWideCircularImage
+  },
+  methods: {
+    addClap() {
+      alert('tbd')
+    }
   }
 };
 </script>
 
 <style scoped>
+.meta {
+  width: 93% !important;
+}
 
+img {
+  border-radius: 8px !important;
+}
 </style>

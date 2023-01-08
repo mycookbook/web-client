@@ -118,7 +118,7 @@
                         <em>Story teller</em>
                     </div>
                     <br />
-                    <div id="stepsstyle">
+                    <div id="storyteller">
                         <br />
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
