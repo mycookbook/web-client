@@ -2,10 +2,16 @@
     <div>
         <div>
             <div>
-                <p>
-                    Using a template is a great way to help you quickly create a skeleton structure for your new recipe.
-                    To see it on action, click on the try it button.
-                </p>
+                <div class="ui small red circular label">
+                    BETA
+                </div>
+                <br /><br />
+                <div>
+                    Using a template is a great way to help you quickly create a boilerplate description for your new
+                    recipe.
+                    To see it on action, copy the contents and paste in the <a href="/#/dashboard?tab=Recipes"><b>recipe
+                            editor</b></a> page.
+                </div>
                 <div class="ui mini warning message" v-if="!isLoggedIn">
                     In order to use these templates, you need to <a href="/#/signin">signin</a>
                 </div>
@@ -14,13 +20,13 @@
             <div>
                 <div class="ui message">
                     <span style="float: right!important;">
-                        <a href="/#/dashboard?tab=Recipes" class="ui tbb button">Try it</a>
+                        <CopyCopiedButtonsWidget :htmlTagId="'stepsstyle'" />
                     </span>
                     <div class="header">
                         <em>Steps style with instructions</em>
                     </div>
                     <br />
-                    <div>
+                    <div id="stepsstyle">
                         <h4>Step 1</h4>
                         <div>
                             <p>
@@ -49,13 +55,13 @@
                 </div>
                 <div class="ui message">
                     <span style="float: right!important;">
-                        <a href="/#/dashboard?tab=Recipes" class="ui tbb button">Try it</a>
+                        <CopyCopiedButtonsWidget :htmlTagId="'liststyle'" />
                     </span>
                     <div class="header">
                         <em>List style with instructions</em>
                     </div>
                     <br />
-                    <div>
+                    <div id="liststyle">
                         <h4>Using this method</h4>
                         <div>
                             <ul>
@@ -111,6 +117,8 @@
 </template>
 
 <script>
+import CopyCopiedButtonsWidget from '../Widgets/CopyCopiedButtonsWidget.vue'
+
 export default {
     name: "Templates",
     computed: {
@@ -118,5 +126,8 @@ export default {
             return (this.$store.state.access_token);
         }
     },
+    components: {
+        CopyCopiedButtonsWidget
+    }
 };
 </script>

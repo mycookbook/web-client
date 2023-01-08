@@ -38,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0}}
+                                    My Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0}}
                                 </u>
                             </small>
                         </div>
@@ -55,6 +55,22 @@
                             <small>
                                 <u>
                                     Drafts {{ _contributor.drafts ? _contributor.drafts.length : 0 }}
+                                </u>
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Preferences' }
+                    }">
+                        <div>
+                            <small>
+                                <u>
+                                    Preferences
                                 </u>
                             </small>
                         </div>
@@ -83,7 +99,7 @@
                     }">
                         <div>
                             <small>
-                                <i class="ui terminal icon"></i> Bio
+                                <i class="ui picture icon"></i> My Profile
                             </small>
                         </div>
                     </router-link>

@@ -37,7 +37,7 @@
                     </label>
                     <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
                         :editorToolbar="customToolbar"
-                        placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!" />
+                        placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
                 </div>
             </div>
             <br />

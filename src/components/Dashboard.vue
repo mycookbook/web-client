@@ -9,13 +9,9 @@
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column"
 						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
-
 						<DashboardBreadcrumb :active="activeLink" />
-
 						<div class="ui horizontal divider"></div>
-
 						<br />
-
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
 								<div v-if="activeLink === 'Cookbooks'">
@@ -26,6 +22,12 @@
 								</div>
 								<div v-if="activeLink === 'Drafts'">
 									<MyDrafts :active_user=active_user />
+								</div>
+								<div v-if="activeLink === 'Preferences'">
+									<p>TBD</p>
+									<p>- prefered default cookbook</p>
+									<p>- prefered cover photo tool i.e image upload or imagelink from stockphoto service
+										etc</p>
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
 									<div>
