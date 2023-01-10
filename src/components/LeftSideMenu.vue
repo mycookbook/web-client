@@ -38,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    My Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0 }}
+                                    My Recipes {{ _recipes ? _recipes.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -54,7 +54,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _contributor.drafts ? _contributor.drafts.length : 0 }}
+                                    Drafts {{ _drafts ? _drafts.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -178,8 +178,25 @@
 export default {
     name: "LeftSideMenu",
     computed: {
-        _contributor() {
-            return this.$store.state.contributor
+        _recipes() {
+            let recipes = this.$store.state.contributor.recipes
+            return recipes.filter(function(recipe) {
+                return recipe.is_draft == false;
+            })
+        },
+        _drafts() {
+            let recipes = this.$store.state.contributor.recipes
+            let cookbooks = this.$store.state.contributor.cookbooks
+
+            let _recipes = recipes.filter(function (recipe) {
+                return recipe.is_draft == true;
+            })
+
+            let _cookbooks = cookbooks.filter(function (cookbook) {
+                return cookbook.is_draft == true;
+            })
+            
+            return _recipes.concat(_cookbooks)
         }
     },
     data() {

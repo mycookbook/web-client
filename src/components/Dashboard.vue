@@ -21,7 +21,7 @@
 									<MyRecipes />
 								</div>
 								<div v-if="activeLink === 'Drafts'">
-									<MyDrafts :active_user=active_user />
+									<MyDrafts />
 								</div>
 								<div v-if="activeLink === 'Preferences'">
 									<Preferences />

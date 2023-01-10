@@ -200,7 +200,10 @@ export default {
             return JSON.parse(cs)
         },
         _myRecipes() {
-            return this.$store.state.contributor.recipes
+            let recipes = this.$store.state.contributor.recipes
+            return recipes.filter(function(recipe) {
+                return recipe.is_draft == false;
+            })
         },
         editorSettings() {
             return { theme: 'snow' }
