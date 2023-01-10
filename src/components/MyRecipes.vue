@@ -38,6 +38,13 @@
             <br />
             <div class="ui form">
                 <div class="field">
+                    <label>Nationality (required*)</label>
+                    <FlagPicker />
+                </div>
+            </div>
+            <br />
+            <div class="ui form">
+                <div class="field">
                     <label>
                         <span>
                             How to prepare (required*)
@@ -178,6 +185,7 @@
 <script>
 import UploadImage from './UploadImage.vue';
 import { VueEditor } from "vue2-editor";
+import FlagPicker from './Widgets/FlagPickerWidget.vue'
 
 export default {
     name: "MyRecipes",
@@ -225,7 +233,8 @@ export default {
     },
     components: {
         UploadImage,
-        VueEditor
+        VueEditor,
+        FlagPicker
     },
     methods: {
         toggleEditor(action) {
