@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click="selectDropDown()">
         <div class="ui fluid search selection dropdown">
             <input type="hidden" name="country">
             <i class="dropdown icon"></i>
@@ -20,19 +20,9 @@
 
 <script>
 import flags from '../../../data/all.js'
-import script from '../../../scripts/script.js'
-
-$(function() {
-    $('.ui.dropdown').dropdown();
-});
 
 export default {
     name: 'FlagPickerWidget',
-    computed: {
-        fafa() {
-            console.log(flag.js)
-        }
-    },
     data() {
         return {
             flags: Object.values(flags.data)
@@ -45,6 +35,9 @@ export default {
         },
         selectCountryCode: function (code) {
             return code
+        },
+        selectDropDown() {
+            $('.ui.dropdown').dropdown();
         }
     }
 }
