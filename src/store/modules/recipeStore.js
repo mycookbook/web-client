@@ -1,3 +1,5 @@
+import { createClient } from 'pexels';
+
 export const recipeStore = {
 	state: () => ({
 		recipe: {},
@@ -15,11 +17,8 @@ export const recipeStore = {
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
 		},
-		COMMENT_POSTED(state, breadcrumb) {
-			location.reload()
-		},
-		COMMENT_DELETED(state) {
-			location.reload()
+		SET_THUMBNAIL_STATE(state, response){
+			this.state.thumbnail = response.photos;
 		}
 	},
 	actions: {
@@ -67,33 +66,13 @@ export const recipeStore = {
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');
 		},
-		post_comment(context, payload) {
-			this.state.api.client.post(
-				`${process.env.BASE_URL}comments`,
-				payload,
-				{
-					headers: {
-						'Authorization': `Bearer ${this.state.access_token}`
-					}
-				}).then(() => {
-					context.commit('COMMENT_POSTED', payload.breadcrumb);
-				}).catch((error) => {
-					context.commit('HANDLE_ERROR', error.response);
-				})
-		},
-		delete_comment(context, payload) {
-			this.state.api.client.post(
-				`${process.env.BASE_URL}comments/destroy`,
-				payload,
-				{
-					headers: {
-						'Authorization': `Bearer ${this.state.access_token}`
-					}
-				}).then(() => {
-					context.commit('COMMENT_DELETED', payload.breadcrumb);
-				}).catch((error) => {
-					context.commit('HANDLE_ERROR', error.response);
-				})
+		async fetch_ingredient_thumbnail(context, ingredient){
+			const client = createClient(process.env.PEXEL_API_KEY);
+			const query = ingredient;
+			await client.photos.search({ query, per_page: 3 })
+			.then(photos => {
+				context.commit("SET_THUMBNAIL_STATE", photos)
+			});
 		}
 	}
 }
