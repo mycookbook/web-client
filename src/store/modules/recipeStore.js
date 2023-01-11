@@ -1,3 +1,5 @@
+import { createClient } from 'pexels';
+
 export const recipeStore = {
 	state: () => ({
 		recipe: {},
@@ -15,6 +17,9 @@ export const recipeStore = {
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
+		},
+		SET_THUMBNAIL_STATE(state, response){
+			this.state.thumbnail = response.photos;
 		}
 	},
     actions: {
@@ -59,6 +64,14 @@ export const recipeStore = {
 		},
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');
+		},
+		async fetch_ingredient_thumbnail(context, ingredient){
+			const client = createClient(process.env.PEXEL_API_KEY);
+			const query = ingredient;
+			await client.photos.search({ query, per_page: 3 })
+			.then(photos => {
+				context.commit("SET_THUMBNAIL_STATE", photos)
+			});
 		}
 	}
 }

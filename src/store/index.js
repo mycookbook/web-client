@@ -47,6 +47,7 @@ export default new Vuex.Store({
 		token: process.env.VUE_APP_DEV_TOKEN,
 		imagePath: "",
 		upload_error: "",
+		thumbnail: [],
 		api: {
 			client: axios,
 			options: {
