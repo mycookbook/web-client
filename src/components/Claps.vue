@@ -1,11 +1,8 @@
 <template>
-  <div class="ui tbb fluid mini circular button" title="claps" @click="addClap()"
+  <div class="ui tbb fluid button" title="claps" @click="addClap()"
     :class="{ 'disabled': hasReachedMaximumAllowedThreshold }">
     <span>
-      <i class="ui heart icon"></i>
-    </span>
-    <span>
-      {{ totalCount | numberFormatter }} Claps
+      <i class="ui heart icon"></i> {{ totalCount | numberFormatter }}
     </span>
   </div>
 </template>

@@ -4,8 +4,8 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'SearchResults'
-                    }">
+    name: 'SearchResults'
+}">
                         <div>
                             <small><i class="ui search icon"></i>Advanced Search</small>
                         </div>
@@ -32,13 +32,13 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Recipes' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Recipes' }
+}">
                         <div>
                             <small>
                                 <u>
-                                    Recipes {{ _contributor.recipes ? _contributor.recipes.length : 0}}
+                                    My Recipes {{ _recipes ? _recipes.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -48,13 +48,29 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Drafts' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Drafts' }
+}">
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _contributor.drafts ? _contributor.drafts.length : 0 }}
+                                    Drafts {{ _drafts ? _drafts.length : 0 }}
+                                </u>
+                            </small>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+    name: 'Dashboard',
+    query: { tab: 'Preferences' }
+}">
+                        <div>
+                            <small>
+                                <u>
+                                    Preferences
                                 </u>
                             </small>
                         </div>
@@ -65,25 +81,12 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'SearchResults',
-                        query: { q: 'all' }
-                    }">
-                        <div>
-                            <h3><i class="ui hashtag icon"></i> Explore</h3>
-                        </div>
-                    </router-link>
-                </div>
-            </div>
-            <br />
-            <div class="item">
-                <div class="content">
-                    <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Profile' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Profile' }
+}">
                         <div>
                             <small>
-                                <i class="ui terminal icon"></i> Bio
+                                <i class="ui picture icon"></i> My Profile
                             </small>
                         </div>
                     </router-link>
@@ -92,9 +95,9 @@
             <div class="ui item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Notifications' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Notifications' }
+}">
                         <div>
                             <small><i class="ui bell icon"></i> Notifications 0</small>
                         </div>
@@ -104,9 +107,9 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Privacy Settings' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Privacy Settings' }
+}">
                         <div>
                             <small>
                                 <i class="ui lock icon"></i> Privacy Settings
@@ -118,9 +121,9 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Display Settings' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Display Settings' }
+}">
                         <div>
                             <small>
                                 <i class="ui puzzle icon"></i> Display Settings
@@ -132,9 +135,9 @@
             <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Redeem Points' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Redeem Points' }
+}">
                         <div>
                             <small>
                                 <i class="ui trophy icon"></i> Redeem My Points
@@ -146,9 +149,9 @@
             <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Payments & Billing' }
-                    }">
+    name: 'Dashboard',
+    query: { tab: 'Payments & Billing' }
+}">
                         <div>
                             <small>
                                 <i class="ui dollar sign icon"></i> Payments & Billing
@@ -160,17 +163,13 @@
         </div>
         <br />
         <div>
-            <div class="ui tbb tiny disabled button">
-                Advertise With Us!
+            <div class="ui circular teal button">
+                <a href="/#/contact-sales" style="color:white!important;">Advertise With Us</a>
             </div>
             <br /><br />
-            <div class="ui tbb tiny button">
-                Go Premium Now <span> </span><i class="ui trophy icon"></i>
+            <div class="ui tbb circular button">
+                <a href="/#/plans" style="color:white!important;">Upgrade Your Plan</a>
             </div>
-            <br />
-            <small>
-              Unlock more powerful features with our Premium Plan. Terms & conditions apply.
-            </small>
         </div>
     </div>
 </template>
@@ -179,8 +178,25 @@
 export default {
     name: "LeftSideMenu",
     computed: {
-        _contributor() {
-            return this.$store.state.contributor
+        _recipes() {
+            let recipes = this.$store.state.contributor.recipes
+            return recipes.filter(function(recipe) {
+                return recipe.is_draft == false;
+            })
+        },
+        _drafts() {
+            let recipes = this.$store.state.contributor.recipes
+            let cookbooks = this.$store.state.contributor.cookbooks
+
+            let _recipes = recipes.filter(function (recipe) {
+                return recipe.is_draft == true;
+            })
+
+            let _cookbooks = cookbooks.filter(function (cookbook) {
+                return cookbook.is_draft == true;
+            })
+            
+            return _recipes.concat(_cookbooks)
         }
     },
     data() {
@@ -190,4 +206,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

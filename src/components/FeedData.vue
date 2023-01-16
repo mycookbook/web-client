@@ -3,148 +3,67 @@
     <div class="event">
       <div class="label">
         <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
+          imgUrl="https://st4.depositphotos.com/1017986/25404/i/600/depositphotos_254046280-stock-photo-happy-male-indian-chef-in.jpg"
           imgTitle="example" />
       </div>
       <div class="content">
         <div class="summary">
-          <a class="user">
-            Elliot Fu
-          </a> started following you
-          <div class="date">
-            Just now
-          </div>
-        </div>
-        <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 4 Likes
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="event">
-      <div class="label">
-        <FourWideCircularImage imgUrl="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"
-          imgTitle="example" />
-      </div>
-      <div class="content">
-        <div class="summary">
-          <a>Helen Troy</a> added <a>1 item in their pantry</a>
+          <a href="/#/contributors/test-user">The Indian guy next door</a> added a new recipe in <a
+            href="/#/search?q=:tags|recipes vegan">vegan</a>
           <div class="date">
             2 mins ago
           </div>
         </div>
-        <div class="extra images">
-          <a><img
-              src="https://images.squarespace-cdn.com/content/v1/57879a6cbebafb879f256735/1579721909133-R2KSZ8VGDGBI90DYATBK/header4.jpg"></a>
-        </div>
         <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 1 Like
+          <span style="float:left!important;">
+            <a class="like" @click="addClap()">
+              <i class="like red icon"></i> 10 claps
+            </a>
+          </span>
+          <span style="float:right!important;">Proudly <i class="in flag" title="Nationality"></i></span>
+        </div>
+        <br />
+        <div class="ui large image">
+          <a href="/#/recipes/non" title="Recipe title">
+            <img
+              src="https://static5.depositphotos.com/1001001/469/i/600/depositphotos_4690741-stock-photo-chef-cooking-wok.jpg"
+              alt="">
           </a>
         </div>
+        <br /><br />
+        <Comments :comments="_recipeComments" :author_id="author_id" />
       </div>
     </div>
     <div class="event">
       <div class="label">
         <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
-          imgTitle="
-          example" />
-      </div>
-      <div class="content">
-        <div class="summary">
-          <a class="user">
-            Jenny Hess
-          </a> liked
-          <a href="/#/recipes/ea">
-            your fruit cake vegan recipe
-          </a>
-          <div class="date">
-            2 days ago
-          </div>
-        </div>
-        <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 8 Likes
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="event">
-      <div class="label">
-        <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
+          imgUrl="https://media.licdn.com/dms/image/D5603AQFBRMLrvq2DQQ/profile-displayphoto-shrink_100_100/0/1671469161332?e=1677110400&v=beta&t=uGB99noG2oNk07sqKb3s_tYLeWikGLhR1D4kl8u0gjE"
           imgTitle="example" />
       </div>
       <div class="content">
         <div class="summary">
-          <a class="user">
-            Elliot Fu
-          </a> started following you
-          <div class="date">
-            3 days ago
-          </div>
-        </div>
-        <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 4 Likes
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="event">
-      <div class="label">
-        <FourWideCircularImage imgUrl="https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg"
-          imgTitle="example" />
-      </div>
-      <div class="content">
-        <div class="summary">
-          <a>Helen Troy</a> added <a>3 items in their pantry</a>
+          <a href="/#/contributors/test-user">Ivah Becker</a> added a new recipe in <a
+            href="/#/search?q=:tags|recipes culinary school">culinary school</a>
           <div class="date">
             4 days ago
           </div>
         </div>
-        <div class="extra images">
-          <a>
-            <img
-              src="https://thumbs.dreamstime.com/b/bean-soup-meat-vegetables-served-rustic-board-garlic-traditional-balkan-soup-stew-corbast-pasulj-grah-top-179776386.jpg"></a>
-          <a><img
-              src="https://media.istockphoto.com/id/1372464974/photo/healthy-food-assortment-on-light-background.jpg?s=612x612&w=is&k=20&c=kSahI3Sw86j60HZuF_yEAFTCV-3zFI6bZ_q9I5suwLg="></a>
-          <a><img
-              src="https://media.istockphoto.com/id/1289263708/photo/fresh-homemade-tangerine-and-beet-salad-with-arugula-walnuts-and-pine-nuts-on-grey-concrete.jpg?s=612x612&w=is&k=20&c=NyAVrgPDJkCWdWIWp_80nSYv00DBLL9zoFNBEiYZtO0="></a>
-        </div>
         <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 1 Like
+          <span style="float:left!important;">
+            <a class="like" @click="addClap()">
+              <i class="like red icon"></i> 10 claps
+            </a>
+          </span>
+          <span style="float:right!important;">Proudly <i class="ng flag" title="Nationality"></i></span>
+        </div>
+        <br />
+        <div class="ui large image">
+          <a href="/#/recipes/non" title="Recipe title">
+            <img src="https://thumbs.dreamstime.com/b/pickled-bamboo-shoots-catfish-sour-spicy-soup-thai-food-pickled-bamboo-shoots-catfish-sour-spicy-soup-thai-159694090.jpg" alt="">
           </a>
         </div>
-      </div>
-    </div>
-    <div class="event">
-      <div class="label">
-        <FourWideCircularImage
-          imgUrl="https://hips.hearstapps.com/countryliving.cdnds.net/17/47/1511194376-cavachon-puppy-christmas.jpg"
-          imgTitle="
-          example" />
-      </div>
-      <div class="content">
-        <div class="summary">
-          <a class="user">
-            Jenny Hess
-          </a> liked
-          <a href="/#/recipes/ea">
-            your fruit cake vegan recipe
-          </a>
-          <div class="date">
-            1 month ago
-          </div>
-        </div>
-        <div class="meta">
-          <a class="like">
-            <i class="like icon"></i> 8 Likes
-          </a>
-        </div>
+        <br /><br />
+        <Comments :comments="_recipeComments" :author_id="author_id" />
       </div>
     </div>
   </div>
@@ -152,15 +71,36 @@
 
 <script>
 import FourWideCircularImage from './FourWideCircularImage.vue'
+import Comments from './Comments.vue';
 
 export default {
   name: "FeedData",
+  computed: {
+    _recipeComments() {
+      return []
+    },
+    author_id() {
+      return 1
+    }
+  },
   components: {
+    Comments,
     FourWideCircularImage
+  },
+  methods: {
+    addClap() {
+      alert('tbd')
+    }
   }
 };
 </script>
 
 <style scoped>
+.meta {
+  width: 93% !important;
+}
 
+img {
+  border-radius: 8px !important;
+}
 </style>

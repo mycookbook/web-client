@@ -16,24 +16,30 @@
                         <div class="ui mini orange label" v-if="draft.resource_type === 'variety'">
                             recipe variety
                         </div>
+                        <div class="ui mini label">
+                            <i class="ui clock icon"></i> {{ draft.created_at }}
+                        </div>
+                        <span style="float:right!important;cursor:pointer!important;">
+                            <i class="ui edit icon"></i>
+                            <i class="ui trash icon"></i>
+                        </span>
+                        <br /><br />
+                        <div class="ui large fluid image" v-if="draft.bookCoverImg">
+                            <img :src="draft.bookCoverImg" />
+                        </div>
+                        <div class="ui large fluid image" v-if="draft.imgUrl">
+                            <img :src="draft.imgUrl" />
+                        </div>
+                        <br />
                         <div class="content">
                             <span>
                                 <a class="header">
                                     <small>
-                                        <em>{{ draft.contents.name }}</em> <i class="ui edit icon"></i>
+                                        <em>{{ draft.name }}</em>
                                     </small>
                                 </a>
                             </span>
-                            <span style="float:right!important;cursor:pointer!important;">
-                                <i class="ui trash icon"></i>
-                            </span>
-                            <small>
-                                {{ draft.contents.description | truncate(85, '...') }}
-                            </small>
-                        </div>
-                        <br />
-                        <div class="ui mini label">
-                            <i class="ui clock icon"></i> {{ draft.created_at }}
+                            <div v-html="draft.description"></div>
                         </div>
                     </div>
                 </div>
@@ -51,11 +57,19 @@ export default {
     },
     computed: {
         _myDrafts() {
-            return this.$store.state.contributor.drafts
+            let recipes = this.$store.state.contributor.recipes
+            let cookbooks = this.$store.state.contributor.cookbooks
+
+            let _recipes = recipes.filter(function (recipe) {
+                return recipe.is_draft == true;
+            })
+
+            let _cookbooks = cookbooks.filter(function (cookbook) {
+                return cookbook.is_draft == true;
+            })
+            
+            return _recipes.concat(_cookbooks)
         }
-    },
-    props: {
-        active_user: Object
     },
     filters: {
         truncate: function (text, length, suffix) {
@@ -70,4 +84,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

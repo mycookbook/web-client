@@ -9,13 +9,9 @@
 					</div>
 					<div class="eight wide computer column sixteen wide mobile column"
 						style="border:1px solid #f1f1f1;border-radius: 8px; width: 100%; height: auto;">
-
 						<DashboardBreadcrumb :active="activeLink" />
-
 						<div class="ui horizontal divider"></div>
-
 						<br />
-
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
 								<div v-if="activeLink === 'Cookbooks'">
@@ -25,7 +21,10 @@
 									<MyRecipes />
 								</div>
 								<div v-if="activeLink === 'Drafts'">
-									<MyDrafts :active_user=active_user />
+									<MyDrafts />
+								</div>
+								<div v-if="activeLink === 'Preferences'">
+									<Preferences />
 								</div>
 								<div v-if="activeLink === 'Privacy Settings'">
 									<div>
@@ -101,6 +100,7 @@ import Profile from './Profile.vue';
 import DarkModeSwitch from 'vue-dark-mode-switch'
 import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css';
 import ThreehundredByTwofifty from './Ads/300X250.vue'
+import Preferences from './Widgets/PreferencesWidget.vue'
 
 export default {
 	name: "Dashboard",
@@ -130,7 +130,8 @@ export default {
 		MyRecipes,
 		MyDrafts,
 		Profile,
-		ThreehundredByTwofifty
+		ThreehundredByTwofifty,
+		Preferences
 	},
 	methods: {
 		onSwitched: function (isSwitched) {
