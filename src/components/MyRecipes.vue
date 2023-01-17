@@ -9,18 +9,39 @@
       </div>
     </div>
     <br />
-
     <div id="recipe-editor">
-      <div>
+      <div class="ui segment">
         <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
           :acceptTypes="acceptTypes" />
+        <div class="ui horizontal divider">
+          Or
+        </div>
+        <div class="ui form">
+          <div class="field">
+            <label>stock photo image url</label>
+            <span style="float:right!important;">
+              <a href="https://www.dreamstime.com/stock-photos" target="_blank">
+                STOCK PHOTOS
+              </a>
+            </span>
+            <input type="text" v-model="imagePath" placeholder="Paste stock photo image address here" />
+          </div>
+        </div>
       </div>
       <div class="ui horizontal divider"></div>
       <div class="ui form">
         <div class="field">
           <label>Title (required*)</label>
-          <input type="text" placeholder="Enter title" />
+          <input type="text" v-model="title" placeholder="Enter recipe title" />
         </div>
+      </div>
+      <br />
+      <div class="ui form">
+        <div class="field">
+          <label>Nationality (required*)</label>
+          <FlagPicker v-model="nationality" />
+        </div>
+
       </div>
       <br />
       <div class="ui form">
@@ -36,7 +57,7 @@
             </span>
           </label>
           <vue-editor v-model="recipeDescription" :editorOptions="editorSettings" :editorToolbar="customToolbar"
-            placeholder="A very good description will be several characters long. A well described recipe keeps your readers engaged and want to come back for more. Make it count!" />
+            placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
         </div>
       </div>
       <br />
@@ -55,15 +76,27 @@
                 <input v-model="input.unit" type="text" placeholder="unit" />
               </div>
               <br />
-              <div class="ten wide computer column  sixteen wide mobile column">
-                <label>thumbnail</label>
-                <input v-model="input.thumbnail" type="text" placeholder="thumbnail" />
-              </div>
             </div>
             <br />
-            <div>
-              <label>link</label>
-              <input v-model="input.link" type="text" placeholder="Link" />
+            <div class="ui grid">
+              <div class="six wide computer column  sixteen wide mobile column">
+                <label>enter preferred link</label>
+                <input v-model="input.thumbnail" type="text" placeholder="Enter your preferred thumbnail link" />
+              </div>
+              <div class="ten wide computer column  sixteen wide mobile column">
+                <label>thumbnail</label>
+                <button @click="getThumbnail(index, ingredients)" class="fluid ui red outline button">
+                  Quick select
+                </button>
+                <div class="ui flowing popup top left transition hidden">
+                  <div class="ui three column divided center aligned grid">
+                    <div v-for="item in thumbnailImages" class="column">
+                      <img class="imageContainer" :src="item.src.large" :alt="item.alt" />
+                      <div class="ui button" @click="onSelectImage(index, item.src.large)">Choose</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <br />
             <div class="ui grid">
@@ -81,18 +114,16 @@
             <div class="ui horizontal divider">
               <i class="plus circe icon"></i>
             </div>
-
-            <br /><br />
+            <br />
           </div>
         </div>
       </div>
-      <br />
       <div class="ui form">
         <div class="field">
           <label>
             Search Cookbook (required*)
           </label>
-          <input type="text" placeholder="Enter ISO code e.g ca for Canada, us for USA, ng for Nigeria" />
+          <input v-model="searchParameter" type="text" placeholder="e.g vegan cookbook" />
         </div>
       </div>
       <br />
@@ -102,8 +133,12 @@
             <span>
               Keywords (Optional)
             </span>
+            <br />
+            <small>
+              Adding keywords is a great way to boost the visibility of your recipes
+            </small>
           </label>
-          <input type="text" placeholder="Keywords help your content get seen quickly in search results" />
+          <input v-model="keywords" type="text" placeholder="e.g main dishes, fitfam" />
         </div>
       </div>
       <div class="ui horizontal divider"></div>
@@ -116,7 +151,6 @@
         </div>
       </div>
     </div>
-
 
 
     <div class="ui horizontal divider">
@@ -184,7 +218,14 @@ export default {
       return this.$store.state.contributor.recipes
     },
     editorSettings() {
-      return { theme: 'snow' }
+      return { theme: "snow" };
+    },
+    thumbnailImages() {
+      return this.$store.state.thumbnail;
+    },
+    getImagePath() {
+      let imgPath = this.$store.state.imagePath;
+      this.imagePath = imgPath;
     }
   },
   data() {
@@ -193,8 +234,6 @@ export default {
       uploadMessageDescription: "Upload Recipe Cover Image",
       imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
       acceptTypes: ".png",
-      recipeDescription: "",
-      ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
       customToolbar: [
         [{ header: [false, 1, 2, 3, 4, 5, 6] }],
         ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -208,13 +247,23 @@ export default {
         [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
         [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-        ["clean"] // remove formatting button
-      ]
-    }
+        ["clean"], // remove formatting button
+      ],
+      imagePath: "",
+      title: "",
+      nationality: "",
+      recipeDescription: "",
+      ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
+      searchParameter: "",
+      keywords: "",
+      //Errors
+      error: []
+    };
   },
   components: {
     UploadImage,
-    VueEditor
+    VueEditor,
+    FlagPicker,
   },
   methods: {
     toggleEditor(action) {
@@ -227,14 +276,67 @@ export default {
         $("#recipe-editor").addClass("show")
         $("#recipe-editor").removeClass("hide")
       }
-      this.inEditMode = !this.inEditMode
+      this.inEditMode = !this.inEditMode;
     },
+
     addField(value, field) {
       field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
     },
     removeField(index, field) {
-      field.splice(index, 1);
+      if (index > 0) {
+        field.splice(index, 1);
+      }
+    },
+
+    async getThumbnail(index, field) {
+      if (field[index].name) {
+        console.log('Second log' + field[index].name)
+        const ingredient = field[index].name;
+        this.$store.dispatch("fetch_ingredient_thumbnail", ingredient);
+        this.newPop();
+      }
+    },
+    onSelectImage: function (index, imgLink) {
+      this.ingredients[index].thumbnail = imgLink;
+    },
+
+    getNationality: function (country) {
+      this.nationality = country
+      console.log(this.nationality);
+    },
+
+    isvalid: function () {
+      const isallowed = true;
+
+      if (!this.imagePath) {
+        this.error.push("Please upload an image")
+        this.isallowed = false;
+      }
+      if (!this.title) {
+        this.error.push("Please enter a title for your recipe")
+        this.isallowed = false
+      }
+      if (!this.nationality) {
+        this.error.push("Please enter the nationality of your recipe")
+        this.isallowed = false;
+      }
+      if (!this.recipeDescription) {
+        this.error.push("Please state how to prepare your recipe");
+        this.isallowed = false;
+      }
+      if (!this.searchParameter) {
+        this.error.push("Please enter a search parameter");
+        this.isallowed = false;
+      }
+      return this.isallowed
+
+    },
+    newPop: function () {
+      $('.button')
+        .popup()
+        ;
     }
+
   },
   filters: {
     truncate: function (text, length, suffix) {
@@ -267,16 +369,21 @@ export default {
 }
 
 .imageContainer {
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-left: 20px;
   margin-right: 20px;
 }
 
+
 .modalContent {
   margin-top: 40px;
   margin-bottom: 30px;
   margin-left: 30px;
+}
+
+.singleOption:hover {
+  transform: translate(0, 10);
 }
 </style>
