@@ -1,6 +1,6 @@
 <template>
     <div @click="selectDropDown()">
-        <div class="ui fluid search selection dropdown">
+        <div id="nationalityDropdown" class="ui fluid search selection dropdown" @click="getValue()">
             <input type="hidden" name="country">
             <i class="dropdown icon"></i>
             <div class="default text">Select Country</div>
@@ -25,9 +25,18 @@ export default {
     name: 'FlagPickerWidget',
     data() {
         return {
-            flags: Object.values(flags.data)
+            flags: Object.values(flags.data),
+            selectedCountry: "",
         }
     },
+    watch: {
+        selectedCountry(newValue, oldValue) {
+            this.$emit("passNationality", newValue)
+        },
+        deep: true,
+        immediate: true
+    },
+
     methods: {
         generateFlagClass: function (code) {
             let class_ = code + " flag";
@@ -38,7 +47,11 @@ export default {
         },
         selectDropDown() {
             $('.ui.dropdown').dropdown();
-        }
+        },
+        getValue() {
+            const recievedCountry = ($('#nationalityDropdown').dropdown('get text'))
+            this.selectedCountry = recievedCountry.trim(" ")
+        },
     }
 }
 </script>

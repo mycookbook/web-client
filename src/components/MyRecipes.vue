@@ -39,10 +39,9 @@
       <div class="ui form">
         <div class="field">
           <label>Nationality (required*)</label>
-          <FlagPicker v-model="nationality" />
+          <FlagPicker @passNationality="nationality= $event" />   
         </div>
-
-      </div>
+      </div>  
       <br />
       <div class="ui form">
         <div class="field">
@@ -290,7 +289,6 @@ export default {
 
     async getThumbnail(index, field) {
       if (field[index].name) {
-        console.log('Second log' + field[index].name)
         const ingredient = field[index].name;
         this.$store.dispatch("fetch_ingredient_thumbnail", ingredient);
         this.newPop();
@@ -298,11 +296,6 @@ export default {
     },
     onSelectImage: function (index, imgLink) {
       this.ingredients[index].thumbnail = imgLink;
-    },
-
-    getNationality: function (country) {
-      this.nationality = country
-      console.log(this.nationality);
     },
 
     isvalid: function () {
