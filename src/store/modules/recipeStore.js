@@ -1,3 +1,4 @@
+import { data } from 'jquery';
 import { createClient } from 'pexels';
 
 export const recipeStore = {
@@ -73,6 +74,21 @@ export const recipeStore = {
 			.then(photos => {
 				context.commit("SET_THUMBNAIL_STATE", photos)
 			});
+		},
+		post_recipe(context, payload){
+			let url = process.env.BASE_URL + 'recipes/' ;
+			this.state.api.client.post(url, {
+				title: payload.title,
+				nationality: payload.nationality,
+				ingredients: payload.ingredients,
+				searchParameter: payload.searchParameter,
+				keyword: payload.keyword,
+				draft: payload.draft,
+				recipeDescription: payload.recipeDescription
+			}, this.state.api.options)
+			.then(function (response){
+				console.log(response)
+			})
 		}
 	}
 }
