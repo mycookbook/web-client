@@ -39,9 +39,9 @@
       <div class="ui form">
         <div class="field">
           <label>Nationality (required*)</label>
-          <FlagPicker @passNationality="nationality= $event" />   
+          <FlagPicker @passNationality="nationality = $event" />
         </div>
-      </div>  
+      </div>
       <br />
       <div class="ui form">
         <div class="field">
@@ -146,7 +146,7 @@
           <button class="fluid ui black outline button">save as draft</button>
         </div>
         <div class="ten wide computer column  sixteen wide mobile column">
-          <button class="fluid ui tbb button">save</button>
+          <button class="fluid ui tbb button" @click="submitButton()">save</button>
         </div>
       </div>
     </div>
@@ -255,6 +255,8 @@ export default {
       ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
       searchParameter: "",
       keywords: "",
+      draft: "false",
+       
       //Errors
       error: []
     };
@@ -328,6 +330,22 @@ export default {
       $('.button')
         .popup()
         ;
+    },
+    submitButton: function () {
+
+      const dataSend = 
+        {
+          title: this.title,
+          nationality: this.nationality,
+          ingredients: this.ingredients,
+          searchParameter: this.searchParameter,
+          keyword: this.keyword,
+          draft: this.draft,
+          recipeDescription: this.recipeDescription,
+        }
+      
+      this.$store.dispatch('post_recipe', dataSend) 
+     
     }
 
   },
