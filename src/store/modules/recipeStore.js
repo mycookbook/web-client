@@ -76,18 +76,22 @@ export const recipeStore = {
 			});
 		},
 		post_recipe(context, payload){
-			let url = process.env.BASE_URL + 'recipes/' ;
+			let url = process.env.BASE_URL + 'recipes' ;
 			this.state.api.client.post(url, {
-				title: payload.title,
-				nationality: payload.nationality,
+				cuisine: payload.title,
+				description: payload.recipeDescription,
+				imgUrl: payload.imagePath,
 				ingredients: payload.ingredients,
-				searchParameter: payload.searchParameter,
-				keyword: payload.keyword,
-				draft: payload.draft,
-				recipeDescription: payload.recipeDescription
-			}, this.state.api.options)
+				is_draft: payload.draft,
+				name: payload.title,
+				nationality: payload.nationality,
+				summary: payload.keywords,
+				cookbook_id: payload.cookbook_id	
+			}, {
+				headers: { 'Authorization': `Bearer ${process.env.DEV_TOKEN}` }
+			})
 			.then(function (response){
-				console.log(response)
+				return response.status;
 			})
 		}
 	}

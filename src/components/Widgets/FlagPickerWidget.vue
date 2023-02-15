@@ -5,7 +5,7 @@
             <i class="dropdown icon"></i>
             <div class="default text">Select Country</div>
             <div class="menu">
-                <div class="item" v-bind:data-value="selectCountryCode(f.code)" v-for="f in flags">
+                <div class="item" v-bind:data-value="selectCountryCode(f.code)" v-for="f in flags" @click="getNationalCode(f.code)">
                     <i :class="generateFlagClass(f.code)"></i>
                     <span class="capitalize">
                         {{ f.country }}
@@ -27,11 +27,15 @@ export default {
         return {
             flags: Object.values(flags.data),
             selectedCountry: "",
+            selectedCode: "",
         }
     },
     watch: {
         selectedCountry(newValue, oldValue) {
             this.$emit("passNationality", newValue)
+        },
+        selectedCode(newValue, oldValue) {
+            this.$emit("passNationalityCode", newValue)
         },
         deep: true,
         immediate: true
@@ -52,6 +56,9 @@ export default {
             const recievedCountry = ($('#nationalityDropdown').dropdown('get text'))
             this.selectedCountry = recievedCountry.trim(" ")
         },
+        getNationalCode(the_code){
+            this.selectedCode = the_code;
+        }
     }
 }
 </script>
