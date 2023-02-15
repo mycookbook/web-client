@@ -107,7 +107,7 @@ export default new Vuex.Store({
 	actions: {
 		async boot(context) {
 			const base_urls = {
-				'development': 'http://localhost:8080/api/v1/',
+				'development': 'https://api.cookbookshq.com/api/v1/',
 				'production': 'https://api.cookbookshq.com/api/v1/'
 			}
 
@@ -122,7 +122,7 @@ export default new Vuex.Store({
 			]).then(this.state.api.client.spread((definitions, cookbooks, policies) => {
 				context.commit("SET_LOADING_STATE", false)
 				context.commit('STORE_DEFINITIONS', definitions.data)
-				context.commit('STORE_COOKBOOKS', cookbooks.data.data)
+				context.commit('STORE_COOKBOOKS', cookbooks.data)
 				context.commit('STORE_POLICIES', policies.data.response)
 			})).catch(function (error) {
 				if (error.response.status === this.state.response.statuses.unauthorized) {

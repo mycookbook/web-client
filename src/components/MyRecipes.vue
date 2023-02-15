@@ -9,148 +9,159 @@
       </div>
     </div>
     <br />
-    <div id="recipe-editor">
-      <div class="ui segment">
-        <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
-          :acceptTypes="acceptTypes" />
-        <div class="ui horizontal divider">
-          Or
-        </div>
-        <div class="ui form">
-          <div class="field">
-            <label>stock photo image url</label>
-            <span style="float:right!important;">
-              <a href="https://www.dreamstime.com/stock-photos" target="_blank">
-                STOCK PHOTOS
-              </a>
-            </span>
-            <input type="text" v-model="imagePath" placeholder="Paste stock photo image address here" />
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <form @submit.prevent="handleSubmit(submitButton)">
+        <div id="recipe-editor">
+          <div class="ui segment">
+            <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
+              :acceptTypes="acceptTypes" />
+            <div class="ui horizontal divider">
+              Or
+            </div>
+            <div class="ui form">
+              <div class="field">
+                <label>stock photo image url</label>
+                <span style="float:right!important;">
+                  <a href="https://www.dreamstime.com/stock-photos" target="_blank">
+                    STOCK PHOTOS
+                  </a>
+                </span>
+                <ValidationProvider rules="required" name="image url" v-slot="{ errors }">
+                  <input type="text" v-model="imagePath" placeholder="Paste stock photo image address here" />
+                  <span class="errorText">{{ errors[0] }}</span>
+                </ValidationProvider>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="ui horizontal divider"></div>
-      <div class="ui form">
-        <div class="field">
-          <label>Title (required*)</label>
-          <input type="text" v-model="title" placeholder="Enter recipe title" />
-        </div>
-      </div>
-      <br />
-      <div class="ui form">
-        <div class="field">
-          <label>Nationality (required*)</label>
-          <FlagPicker @passNationality="nationality = $event" />
-        </div>
-      </div>
-      <br />
-      <div class="ui form">
-        <div class="field">
-          <label>
-            <span>
-              How to prepare (required*)
-            </span>
-            <span style="float:right!important;">
-              <a href="/#/examples">
-                Examples
-              </a>
-            </span>
-          </label>
-          <vue-editor v-model="recipeDescription" :editorOptions="editorSettings" :editorToolbar="customToolbar"
-            placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
-        </div>
-      </div>
-      <br />
-      <div class="ui form">
-        <div class="field">
-          <label>Ingredients (required*)</label>
-          <div v-for="(input, index) in ingredients" :key="`ingInput-${index}`">
-            <div>
-              <label>name</label>
-              <input v-model="input.name" type="text" placeholder="name of ingredient" />
-            </div>
-            <br />
-            <div class="ui grid">
-              <div class="six wide computer column sixteen wide mobile column">
-                <label>unit</label>
-                <input v-model="input.unit" type="text" placeholder="unit" />
+          <div class="ui horizontal divider"></div>
+          <div class="ui form">
+            <ValidationProvider rules="required" name="title" v-slot="{ errors }">
+              <div class="field">
+                <label>Title (required*)</label>
+                <input type="text" v-model="title" placeholder="Enter recipe title" />
+                <span class="errorText">{{ errors[0] }}</span>
               </div>
-              <br />
+            </ValidationProvider>
+          </div>
+          <br />
+          <div class="ui form">
+            <div class="field">
+              <label>Nationality (required*)</label>
+              <FlagPicker @passNationalityCode="nationality = $event" />
+              <span class="errorText">{{ nationalityError }}</span>
             </div>
-            <br />
-            <div class="ui grid">
-              <div class="six wide computer column  sixteen wide mobile column">
-                <label>enter preferred link</label>
-                <input v-model="input.thumbnail" type="text" placeholder="Enter your preferred thumbnail link" />
-              </div>
-              <div class="ten wide computer column  sixteen wide mobile column">
-                <label>thumbnail</label>
-                <button @click="getThumbnail(index, ingredients)" class="fluid ui red outline button">
-                  Quick select
-                </button>
-                <div class="ui flowing popup top left transition hidden">
-                  <div class="ui three column divided center aligned grid">
-                    <div v-for="item in thumbnailImages" class="column">
-                      <img class="imageContainer" :src="item.src.large" :alt="item.alt" />
-                      <div class="ui button" @click="onSelectImage(index, item.src.large)">Choose</div>
+          </div>
+          <br />
+          <div class="ui form">
+            <div class="field">
+              <label>
+                <span>
+                  How to prepare (required*)
+                </span>
+                <span style="float:right!important;">
+                  <a href="/#/examples">
+                    Examples
+                  </a>
+                </span>
+              </label>
+              <ValidationProvider rules="required" name="description" v-slot="{ errors }">
+                <vue-editor v-model="recipeDescription" :editorOptions="editorSettings" :editorToolbar="customToolbar"
+                  placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
+                <span class="errorText">{{ errors[0] }}</span>
+              </ValidationProvider>
+            </div>
+          </div>
+          <br />
+          <div class="ui form">
+            <div class="field">
+              <label>Ingredients (required*)</label>
+              <div>
+                <div v-for="(input, index) in ingredients" :key="`ingInput-${index}`">
+                  <div>
+                    <ValidationProvider rules="required|alpha" name="ingredient name" v-slot="{ errors }">
+                      <div>
+                        <label>name</label>
+                        <input v-model="input.name" type="text" placeholder="name of ingredient" />
+                        <span class="errorText">{{ errors[0] }}</span>
+                      </div>
+                    </ValidationProvider>
+                    <br />
+                    <div class="ui grid">
+                      <ValidationProvider rules="required|integer" name="ingredient unit" v-slot="{ errors }">
+                        <div class="six wide computer column sixteen wide mobile column">
+                          <label>unit</label>
+                          <input v-model="input.unit" type="text" placeholder="unit" />
+                          <span class="errorText">{{ errors[0] }}</span>
+                        </div>
+                      </ValidationProvider>
+                      <br />
                     </div>
+                    <br />
+                    <div class="ui grid">
+                      <div class="six wide computer column  sixteen wide mobile column">
+                        <label>thumbnail link</label>
+                        <input v-model="input.thumbnail" type="text"
+                          placeholder="Enter your preferred thumbnail link" />
+                      </div>
+                    </div>
+                    <br />
+                    <div class="ui grid">
+                      <div class="six wide computer column sixteen wide mobile column">
+                        <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i
+                            class="plus circle icon"></i>new
+                          item</button>
+                      </div>
+                      <div class="ten wide computer column  sixteen wide mobile column">
+                        <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i
+                            class="minus circle icon"></i>remove
+                          item</button>
+                      </div>
+                    </div>
+                    <div class="ui horizontal divider">
+                      <i class="plus circe icon"></i>
+                    </div>
+                    <br />
                   </div>
                 </div>
               </div>
             </div>
-            <br />
-            <div class="ui grid">
-              <div class="six wide computer column sixteen wide mobile column">
-                <button @click="addField(input, ingredients)" class="fluid ui black outline button"><i
-                    class="plus circle icon"></i>new
-                  item</button>
+          </div>
+          <div class="ui form">   
+              <div class="field">
+                <label>
+                  Search Cookbook (required*)
+                </label>
+                <CookbookSelector @passCookbookCode="cookbook_id = $event" @click="clearError('cookbookError')" />
+                <span class="errorText">{{ cookbookError }}</span>
               </div>
-              <div class="ten wide computer column  sixteen wide mobile column">
-                <button @click="removeField(index, ingredients)" class="fluid ui tbb button"><i
-                    class="minus circle icon"></i>remove
-                  item</button>
-              </div>
+          </div>
+          <br />
+          <div class="ui form">
+            <div class="field">
+              <label>
+                <span>
+                  Keywords (Optional)
+                </span>
+                <br />
+                <small>
+                  Adding keywords is a great way to boost the visibility of your recipes
+                </small>
+              </label>
+              <input v-model="keywords" type="text" placeholder="e.g main dishes, fitfam" />
             </div>
-            <div class="ui horizontal divider">
-              <i class="plus circe icon"></i>
+          </div>
+          <div class="ui horizontal divider"></div>
+          <div class="ui grid">
+            <div class="six wide computer column sixteen wide mobile column">
+              <button class="fluid ui black outline button">save as draft</button>
             </div>
-            <br />
+            <div class="ten wide computer column  sixteen wide mobile column">
+              <button class="fluid ui tbb button" type="submit">save</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="ui form">
-        <div class="field">
-          <label>
-            Search Cookbook (required*)
-          </label>
-          <input v-model="searchParameter" type="text" placeholder="e.g vegan cookbook" />
-        </div>
-      </div>
-      <br />
-      <div class="ui form">
-        <div class="field">
-          <label>
-            <span>
-              Keywords (Optional)
-            </span>
-            <br />
-            <small>
-              Adding keywords is a great way to boost the visibility of your recipes
-            </small>
-          </label>
-          <input v-model="keywords" type="text" placeholder="e.g main dishes, fitfam" />
-        </div>
-      </div>
-      <div class="ui horizontal divider"></div>
-      <div class="ui grid">
-        <div class="six wide computer column sixteen wide mobile column">
-          <button class="fluid ui black outline button">save as draft</button>
-        </div>
-        <div class="ten wide computer column  sixteen wide mobile column">
-          <button class="fluid ui tbb button" @click="submitButton()">save</button>
-        </div>
-      </div>
-    </div>
-
+      </form>
+    </ValidationObserver>
 
     <div class="ui horizontal divider">
       <i class="camera icon"></i>
@@ -199,7 +210,19 @@
 <script>
 import UploadImage from "./UploadImage.vue";
 import { VueEditor } from "vue2-editor";
-import FlagPicker from './Widgets/FlagPickerWidget.vue'
+import FlagPicker from './Widgets/FlagPickerWidget.vue';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
+import { messages } from 'vee-validate/dist/locale/en.json';
+import CookbookSelector from './Widgets/CookbookSelectorWidget';
+
+Object.keys(rules).forEach(rule => {
+  extend(rule, {
+    ...rules[rule], // copies rule configuration
+    message: messages[rule] // assign message
+  });
+})
 
 export default {
   name: "MyRecipes",
@@ -208,6 +231,7 @@ export default {
     this.$store.dispatch('fetch_contributor', username)
     this.$store.dispatch('reset_msgs')
   },
+
   computed: {
     _categories() {
       let cs = this.$store.state.cookbookStore.definitions.categories.contents
@@ -216,6 +240,11 @@ export default {
     _myRecipes() {
       return this.$store.state.contributor.recipes
     },
+
+    _allCookbooks() {
+      return this.$store.state.cookbooks
+    },
+
     editorSettings() {
       return { theme: "snow" };
     },
@@ -225,8 +254,21 @@ export default {
     getImagePath() {
       let imgPath = this.$store.state.imagePath;
       this.imagePath = imgPath;
-    }
+    },
+
   },
+
+  watch: {
+    nationality(newValue, oldValue) {
+      this.nationalityError ="";
+    },
+    cookbook_id(newValue, oldValue) {
+      this.cookbookError=""
+    },
+    deep: true,
+    immediate: true
+  },
+
   data() {
     return {
       inEditMode: true,
@@ -248,6 +290,7 @@ export default {
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
         ["clean"], // remove formatting button
       ],
+
       imagePath: "",
       title: "",
       nationality: "",
@@ -255,16 +298,21 @@ export default {
       ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
       searchParameter: "",
       keywords: "",
+      cookbook_id: "",
       draft: "false",
-       
       //Errors
-      error: []
+      error: [],
+      cookbookError: "",
+      nationalityError: "",
     };
   },
   components: {
     UploadImage,
     VueEditor,
     FlagPicker,
+    ValidationProvider,
+    ValidationObserver,
+    CookbookSelector,
   },
   methods: {
     toggleEditor(action) {
@@ -279,7 +327,6 @@ export default {
       }
       this.inEditMode = !this.inEditMode;
     },
-
     addField(value, field) {
       field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
     },
@@ -299,53 +346,51 @@ export default {
     onSelectImage: function (index, imgLink) {
       this.ingredients[index].thumbnail = imgLink;
     },
-
-    isvalid: function () {
-      const isallowed = true;
-
-      if (!this.imagePath) {
-        this.error.push("Please upload an image")
-        this.isallowed = false;
-      }
-      if (!this.title) {
-        this.error.push("Please enter a title for your recipe")
-        this.isallowed = false
-      }
-      if (!this.nationality) {
-        this.error.push("Please enter the nationality of your recipe")
-        this.isallowed = false;
-      }
-      if (!this.recipeDescription) {
-        this.error.push("Please state how to prepare your recipe");
-        this.isallowed = false;
-      }
-      if (!this.searchParameter) {
-        this.error.push("Please enter a search parameter");
-        this.isallowed = false;
-      }
-      return this.isallowed
-
-    },
     newPop: function () {
       $('.button')
         .popup()
         ;
     },
-    submitButton: function () {
 
-      const dataSend = 
-        {
-          title: this.title,
-          nationality: this.nationality,
-          ingredients: this.ingredients,
-          searchParameter: this.searchParameter,
-          keyword: this.keyword,
-          draft: this.draft,
-          recipeDescription: this.recipeDescription,
+    dropdownValidation: function () {
+      let isValid = true;
+      if (!this.nationality) {
+        this.nationalityError = "The nationality field is required"
+        isValid = false;
+      }
+      if (!this.cookbook_id) {
+        this.cookbookError = "The cookbook field is required";
+        isValid = false
+      }
+      return isValid
+    },
+
+    async submitButton() {
+      const validFile = this.dropdownValidation()
+      const dataSend =
+      {
+        title: this.title,
+        nationality: this.nationality,
+        ingredients: this.ingredients,
+        keywords: this.keywords,
+        draft: this.draft,
+        recipeDescription: this.recipeDescription,
+        imagePath: this.imagePath,
+        cookbook_id: this.cookbook_id
+      }
+        if(validFile === true){
+        const result = await this.$store.dispatch('post_recipe', dataSend)
+        console.log(result)
+        if (result === 'success'){
+          alert("Recipe has been created")
+          this.toggleEditor('hide')
+        } else{
+          alert('Problem creating recipe, please try again later')
         }
-      
-      this.$store.dispatch('post_recipe', dataSend) 
-     
+      } 
+      if(validFile===false){
+        alert('You have incomplete fields')
+      }
     }
 
   },
@@ -379,22 +424,10 @@ export default {
   display: none !important;
 }
 
-.imageContainer {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-left: 20px;
-  margin-right: 20px;
-}
 
-
-.modalContent {
-  margin-top: 40px;
-  margin-bottom: 30px;
-  margin-left: 30px;
-}
-
-.singleOption:hover {
-  transform: translate(0, 10);
+.errorText {
+  color: red;
+  font-size: small;
+  font-style: italic;
 }
 </style>
