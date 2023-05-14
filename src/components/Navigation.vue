@@ -11,7 +11,7 @@
 			<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 				<div class="selectors">
 					<div class="ui secondary menu">
-						<a class="item" title="Coming soon." href="/#/marketplace">
+						<a class="item" title="Coming soon.">
 							<i class="blue cart icon"></i> Go to Marketplace
 						</a>
 						<div v-if="isLoggedIn">
