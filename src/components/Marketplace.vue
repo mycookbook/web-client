@@ -3,10 +3,10 @@
         <Navigation />
         <br /><br />
         <div class="ui grid">
-            <div class="four wide computer column">
+            <div class="four wide computer column four wide tablet column mobile hidden">
                 <LeftSideMenu />
             </div>
-            <div class="twelve wide computer column">
+            <div class="twelve wide computer column twelve wide tablet column sixteen wide mobile column">
                 <div class="ui header">
                     Welcome to Marketplace
                 </div>
@@ -16,7 +16,7 @@
                     more.
                 </div>
                 <br />
-                <img
+                <img class="mobile hidden"
                     src="https://img.freepik.com/free-vector/designers-are-working-desing-web-page-web-design-user-interface-user-experience-content-organization_335657-4403.jpg?t=st=1684034125~exp=1684034725~hmac=fa39c37262995599f96f63c75d5954f362f321e9b3b7f61c972d03c887cf92ce" />
                 <div>
                     In order to start trading, you need to login to your cookbooks account. <a href="/#/signin">Sign in
