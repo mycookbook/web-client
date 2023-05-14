@@ -19,13 +19,13 @@
                 <img
                     src="https://img.freepik.com/free-vector/designers-are-working-desing-web-page-web-design-user-interface-user-experience-content-organization_335657-4403.jpg?t=st=1684034125~exp=1684034725~hmac=fa39c37262995599f96f63c75d5954f362f321e9b3b7f61c972d03c887cf92ce" />
                 <div>
-                    In order to start trading, you need to login to your cookbooks account. <a href="/#/signin">Sign in now
-                    </a>to start trading immediately. <a href="/#/terms-and-conditions">Terms and conditions</a> apply. To
+                    In order to start trading, you need to login to your cookbooks account. <a href="/#/signin">Sign in
+                    </a>to start trading immediately. <a href="/#/terms-and-conditions">Terms and conditions</a> apply. <br /> To
                     learn more, head on to our getting started guide.
                 </div>
-                <br /><br />
+                <br />
                 <div>
-                    <button class="ui button tbb">
+                    <button class="ui black button">
                         Getting started guide
                     </button>
                 </div>
