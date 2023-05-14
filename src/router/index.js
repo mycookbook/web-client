@@ -22,6 +22,7 @@ import ErrorPage from '@/components/ErrorPage'
 import Help from '@/components/Help'
 import auth from '../middleware/auth.js';
 import SubscriptionPlans from '@/components/Widgets/SubscriptionPlans'
+import Marketplace from '@/components/Marketplace'
 
 Vue.use(Router);
 
@@ -144,6 +145,10 @@ const VueRouter = new Router({
       path: '/plans',
       name: 'SubscriptionPlans',
       component: SubscriptionPlans
+    }, {
+      path: '/marketplace',
+      name: 'Marketplace',
+      component: Marketplace
     }, {
       path: '/errors',
       name: 'ErrorPage',
