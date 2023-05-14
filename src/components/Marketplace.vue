@@ -11,7 +11,7 @@
                     Welcome to Marketplace
                 </div>
                 <div>
-                    Marketplace provides a platform to trade merchandise for B2Bs, B2Cs and C2Cs. Examples of merchandize
+                    Marketplace is a powerful AI platform that enables B2Bs, B2Cs and C2Cs to trade merchandise. Examples of merchandise
                     that can be traded are, recipes, transfer of private cookbook ownership, ecopy of cookbooks and many
                     more.
                 </div>
