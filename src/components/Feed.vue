@@ -11,13 +11,13 @@
             <div class="ui centered header">
               <a class="following" href="/#/">Following</a>
               <a class="" style="padding-right:30px;"></a>
-              <a  class="" href="/#/foryou" style="color:black!important;">For You</a>
+              <a class="" href="/#/foryou" style="color:black!important;">For You</a>
             </div>
             <br /><br />
             <FeedData />
           </div>
           <div class="five wide computer column sixteen wide mobile column">
-            <div class="ui grid">
+            <div class="ui grid mobile hidden">
               <ThreehundredByTwofifty />
             </div>
             <div class="ui grid">
@@ -57,9 +57,10 @@ export default {
 .container {
   margin-top: 23vh;
 }
+
 .following {
   color: black;
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
   border-bottom: solid #0160CC 1px;
 }
 </style>
