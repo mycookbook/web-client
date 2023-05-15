@@ -44,16 +44,6 @@
 			</div>
 		</div>
 		<MobileNavigation />
-		<div class="ui top fixed hidden menu mobile only">
-			<div class="ui grid container">
-				<div class="ui fourteen wide mobile column">
-					<a href="/">
-						<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo"
-							style="margin-top:-6%!important;margin-left:16%!important;">
-					</a>
-				</div>
-			</div>
-		</div>
 	</div>
 </template>
 
