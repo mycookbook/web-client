@@ -3,7 +3,7 @@
         <div class="ui top fixed menu grid mobile only" v-show="isToggleOn">
             <div class="sixteen wide computer column">
                 <div class="ui grid">
-                    <div class="ui sixteen wide white menu column" style="margin-top:13vh;">
+                    <div class="ui sixteen wide white menu column" style="margin-top:6vh;">
                         <div v-if="isLoggedIn">
                             <a class="ui secondary menu item" @click="logOut()">
                                 Logout
@@ -33,11 +33,19 @@
                 </div>
             </div>
         </div>
-        <div class="ui two wide mobile column mobile only" id="hamburger-icon" @click="toggleMobileMenu()"
-            style="margin-top:-90px; margin-left: 90%;">
-            <i class="large bars icon"></i>
-        </div>
-        <br /><br />
+        <div class="ui top fixed hidden menu mobile only">
+			<div class="ui grid container">
+				<div class="ui fourteen wide mobile column">
+					<a href="/">
+						<img src="/static/transparent_logo.png" class="ui centered image" alt="cookbookinc brand logo"
+							style="margin-top:-6%!important;margin-left:16%!important;">
+					</a>
+				</div>
+				<div class="ui two wide mobile column" id="hamburger-icon" @click="toggleMobileMenu()">
+					<i class="large bars icon"></i>
+				</div>
+			</div>
+		</div>
     </div>
 </template>
     
