@@ -43,39 +43,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="ui top fixed menu grid mobile only" v-show="isMobile">
-			<div class="sixteen wide computer column">
-				<div class="ui grid">
-					<div class="ui sixteen wide white menu column" style="margin-top:8vh;">
-						<div v-if="isLoggedIn">
-							<a class="ui secondary menu item" @click="logOut()">
-								Logout
-							</a>
-						</div>
-						<div v-else>
-							<a class="ui secondary menu item" href="/#/signin">
-								Signin
-							</a>
-						</div>
-						<a class="ui secondary menu item">
-							<router-link :to="{ name: 'Dashboard' }">
-								My Dashboard
-							</router-link>
-						</a>
-						<a class="ui secondary menu item">
-							<router-link :to="{ name: 'Marketplace' }">
-								Marketplace
-							</router-link>
-						</a>
-						<a class="ui secondary menu item">
-							<router-link :to="{ name: 'UsagePolicy' }">
-								Terms & Conditions
-							</router-link>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<MobileNavigation />
 		<div class="ui top fixed hidden menu mobile only">
 			<div class="ui grid container">
 				<div class="ui fourteen wide mobile column">
@@ -84,42 +52,22 @@
 							style="margin-top:-6%!important;margin-left:16%!important;">
 					</a>
 				</div>
-				<div class="ui two wide mobile column" id="hamburger-icon" @click="toggleMobileMenu()">
-					<i class="large bars icon"></i>
-				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import MobileNavigation from "./MobileNavigation.vue";
+
 export default {
 	computed: {
-		isRegistrationRoute() {
-			return (this.$router.currentRoute.name == 'Register')
-		},
 		isLoggedIn() {
 			return (this.$store.state.access_token);
 		},
-		activeUser() {
-			return this.$store.state.username
-		}
 	},
-	data() {
-		return {
-			isMobile: false
-		}
-	},
-	methods: {
-		toggleMobileMenu: function () {
-			this.isMobile = !this.isMobile
-		},
-		comingSoon: function () {
-			alert('Coming soon.')
-		},
-		logOut: function () {
-			this.$store.dispatch('logout')
-		}
+	components: {
+		MobileNavigation
 	}
 };
 </script>
@@ -142,17 +90,8 @@ export default {
 	padding-top: 50px !important;
 }
 
-.rl-fix {
-	margin-top: 2.6% !important;
-}
-
 body {
 	background: transparent !important;
-}
-
-#hamburger-icon {
-	cursor: pointer;
-	margin-left: -15px;
 }
 
 .brand-logo {
