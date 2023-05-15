@@ -8,11 +8,12 @@
             <LeftSideMenu />
           </div>
           <div class="eight wide computer column sixteen wide mobile column">
-            <a class="ui label">
-                <em>Control what you see by <a
-                  href="/#/dashboard?tab=Preferences">choosing </a>your preffered topics</em>
-              </a>
-              <br /><br />
+            <div class="ui centered header">
+              <a class="following" href="/#/">Following</a>
+              <a class="" style="padding-right:30px;"></a>
+              <a  class="" href="/#/foryou" style="color:black!important;">For You</a>
+            </div>
+            <br /><br />
             <FeedData />
           </div>
           <div class="five wide computer column sixteen wide mobile column">
@@ -55,5 +56,10 @@ export default {
 <style scoped>
 .container {
   margin-top: 23vh;
+}
+.following {
+  color: black;
+  padding-bottom: 10px; 
+  border-bottom: solid #0160CC 1px;
 }
 </style>
