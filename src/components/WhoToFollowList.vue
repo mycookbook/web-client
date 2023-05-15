@@ -26,7 +26,7 @@ export default {
         {
           followers: '67K',
           author: "Ivah Becker",
-          avatar: "https://media.licdn.com/dms/image/D5603AQFBRMLrvq2DQQ/profile-displayphoto-shrink_100_100/0/1671469161332?e=1677110400&v=beta&t=uGB99noG2oNk07sqKb3s_tYLeWikGLhR1D4kl8u0gjE",
+          avatar: "https://st4.depositphotos.com/1017986/25404/i/600/depositphotos_254046280-stock-photo-happy-male-indian-chef-in.jpg",
           handle: "mummy-obiora",
         },
         {
