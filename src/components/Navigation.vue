@@ -26,8 +26,8 @@
 						</div>
 						<div v-else>
 							<router-link :to="{
-	name: 'Register'
-}">
+								name: 'Register'
+							}">
 								<button class="ui button tbb tablet hidden">
 									Sign in To Contribute
 								</button>
@@ -44,24 +44,33 @@
 			</div>
 		</div>
 		<div class="ui top fixed menu grid mobile only" v-show="isMobile">
-			<div class="sixteen wide column">
+			<div class="sixteen wide computer column">
 				<div class="ui grid">
-					<div class="ui sixteen wide white menu column" style="margin-top:3vh;">
+					<div class="ui sixteen wide white menu column" style="margin-top:8vh;">
+						<div v-if="isLoggedIn">
+							<a class="ui secondary menu item" @click="logOut()">
+								Logout
+							</a>
+						</div>
+						<div v-else>
+							<a class="ui secondary menu item" href="/#/signin">
+								Signin
+							</a>
+						</div>
 						<a class="ui secondary menu item">
-							<router-link :to="{ name: 'UsagePolicy' }">Usage Policy</router-link>
+							<router-link :to="{ name: 'Dashboard' }">
+								My Dashboard
+							</router-link>
 						</a>
-						<a class="ui secondary menu item" title="Coming soon."
-							href="https://www.youtube.com/channel/UCKRpHS0EFxGtgZ9l6UOsjOA/featured">
-							<div class="ui red button">
-								<i class="youtube icon"></i>
-								<small style="font-weight:300!important;">Watch lastest Videos</small>
-							</div>
+						<a class="ui secondary menu item">
+							<router-link :to="{ name: 'Marketplace' }">
+								Marketplace
+							</router-link>
 						</a>
-						<a class="ui secondary menu item" href="/register">
-							<div class="ui button tbb">
-								<i class="plus icon"></i>
-								Become a Contributor
-							</div>
+						<a class="ui secondary menu item">
+							<router-link :to="{ name: 'UsagePolicy' }">
+								Terms & Conditions
+							</router-link>
 						</a>
 					</div>
 				</div>

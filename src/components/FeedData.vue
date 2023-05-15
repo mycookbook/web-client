@@ -6,10 +6,10 @@
         <div class="twelve wide computer column">
           <div class="content">
             <div class="summary" style="margin-left:-23%!important;">
-              <a href="/#/contributors/test-user">The Indian guy next door</a> added a new recipe in <a
-                href="/#/search?q=:tags|recipes vegan">vegan
+              <a href="/#/contributors/test-user">Elton Reid</a> added a new recipe in <a
+                href="/#/search?q=:tags|recipes vegan">carribean kitchen
               </a>
-              <span style="float:right!important;">Proudly <i class="in flag" title="Nationality"></i></span>
+              <span style="float:right!important;">Proudly <i class="jm flag" title="Jamaican"></i></span>
               <div class="date">
                 2 mins ago
               </div>
@@ -38,7 +38,7 @@
               <a href="/#/contributors/test-user">Tiny Chef</a> added a new recipe in <a
                 href="/#/search?q=:tags|recipes vegan">vegan
               </a>
-              <span style="float:right!important;">Proudly <i class="ca flag" title="Canadian"></i></span>
+              <span style="float:right!important;">Proudly <i class="in flag" title="Indian"></i></span>
               <div class="date">
                 2 mins ago
               </div>
