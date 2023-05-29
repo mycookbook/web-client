@@ -68,9 +68,6 @@ export default {
     methods: {
         toggleMobileMenu: function () {
             this.isToggleOn = !this.isToggleOn
-        },
-        logOut: function () {
-            this.$store.dispatch('logout')
         }
     }
 };
