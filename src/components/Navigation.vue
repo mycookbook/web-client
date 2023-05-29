@@ -48,6 +48,7 @@
 </template>
 
 <script>
+
 import MobileNavigation from "./MobileNavigation.vue";
 
 export default {
@@ -55,6 +56,11 @@ export default {
 		isLoggedIn() {
 			return (this.$store.state.access_token);
 		},
+	},
+	methods: {
+		logOut: function () {
+			this.$store.dispatch('logout')
+		}
 	},
 	components: {
 		MobileNavigation
