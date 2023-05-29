@@ -5,9 +5,8 @@
 			<RecipeCardSkeleton />
 		</div>
 		<div v-else>
-			<br /><br /><br />
-			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'"
-				:parentSlug="recipe.cookbook.slug" :child="recipe.name" />
+			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'" :parentSlug="recipe.cookbook.slug"
+				:child="recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui grid"
@@ -30,7 +29,7 @@
 										HOW TO PREPARE
 									</span>
 									<span style="float:right;cursor: pointer!important;" @click="textToSpeech()">
-										<button class="ui right labeled icon tbb button">
+										<button class="ui right labeled icon tbb disabled button">
 											<i class="right headphone icon"></i>
 											Listen
 										</button>
@@ -41,8 +40,10 @@
 									<div v-html="recipe.description" class="ui left aligned text"></div>
 								</div>
 								<div v-else>
-									<div class="ui left aligned text">
-										Do you know how to prepare this recipe? Earn up to $5 by submitting a how to prepare instructions.
+									<div class="ui left aligned text padded">
+										<i>TODO: pop up banner to display this message in a fun way.</i>
+										<p>Do you know how to prepare this recipe? Earn up to $$$ by submitting a how to
+											prepare instructions.</p>
 									</div>
 								</div>
 							</div>
@@ -133,17 +134,21 @@ export default {
 		ingredients() {
 			const recipe = this.$store.state.recipe
 
-			let ingredients = recipe.ingredients.data
-			let ingredientsList = ""
+			let ingredients = recipe.ingredients
 
-			let line1 = "Ingredients list for " + recipe.name + "\n\n";
-			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
+			if (ingredients.hasOwnProperty('data')) {
+				let ingredientsList = ""
+				let line1 = "Ingredients list for " + recipe.name + "\n\n";
+				let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
 
-			for (let i = 0; i < ingredients.length; i++) {
-				ingredientsList += "- " + ingredients[i].unit + ' ' + ingredients[i].name + "\n"
+				for (let i = 0; i < ingredients.data.length; i++) {
+					ingredientsList += "- " + ingredients.data[i].unit + ' ' + ingredients.data[i].name + "\n"
+				}
+
+				return line1 + ingredientsList + lastLine
+			} else {
+				return "There is no ingredients on this recipe yet."
 			}
-
-			return line1 + ingredientsList + lastLine
 		}
 	},
 	data() {
