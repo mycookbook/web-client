@@ -15,7 +15,7 @@
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
 
-							<div class="ui mini images">
+							<div class="ui mini images" v-if="recipe.ingredients.data">
 								<img class="ui image" :src="ingredient.thumbnail"
 									v-for="ingredient in recipe.ingredients.data" :alt="ingredient.name"
 									:title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
@@ -37,7 +37,14 @@
 										<span style="font-size: 14px;margin-left: -5px;font-weight: lighter;"></span>
 									</span>
 								</div>
-								<div v-html="recipe.description" class="ui left aligned text"></div>
+								<div v-if="recipe.description">
+									<div v-html="recipe.description" class="ui left aligned text"></div>
+								</div>
+								<div v-else>
+									<div class="ui left aligned text">
+										Do you know how to prepare this recipe? Earn up to $5 by submitting a how to prepare instructions.
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="eight wide computer column sixteen wide mobile column">
