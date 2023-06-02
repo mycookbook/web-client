@@ -8,7 +8,7 @@
             </div>
             <div class="twelve wide computer column twelve wide tablet column sixteen wide mobile column">
                 <div class="ui header">
-                    Welcome to Marketplace
+                    Welcome to Marketplace (Coming soon)
                 </div>
                 <div>
                     Marketplace is a powerful AI platform that enables B2Bs, B2Cs and C2Cs to trade merchandise. Examples of merchandise
@@ -25,7 +25,7 @@
                 </div>
                 <br />
                 <div>
-                    <button class="ui black button">
+                    <button class="ui black disabled button">
                         Getting started guide
                     </button>
                 </div>

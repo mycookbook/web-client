@@ -16,10 +16,9 @@
 						<img :src="comment.author.avatar" />
 					</a>
 					<div class="content">
-						<router-link
-							:to="{ name: 'ContributorProfile', params: { username: comment.author.name_slug } }">
-							{{ comment.author.name }} <div class="ui tiny link label"
-								v-if="author_id === comment.user_id">OWNER</div>
+						<router-link :to="{ name: 'ContributorProfile', params: { username: comment.author.name_slug } }">
+							{{ comment.author.name }} <div class="ui tiny link label" v-if="author_id === comment.user_id">
+								OWNER</div>
 						</router-link>
 						<div class="metadata">
 							<span class="date">
@@ -41,7 +40,7 @@
 			<div class="ui horizontal divider"></div>
 			<form class="ui reply form">
 				<div class="field">
-					<textarea></textarea>
+					<input type="text" placeholder="add a comment here" />
 				</div>
 				<div class="ui tbb submit circular button" v-if="_isLoggedIn">
 					Post Comment
