@@ -37,14 +37,16 @@
               <option value="recipe">By Recipe Name</option>
               <option value="tagName">By Tag Name</option>
             </select>
-            <div class="ui tbb button" @click="searchCookbook()" title="search this cookbook">
-              <span style="padding-right:10px;">
-                Search
-              </span>
-              <span>
-                <i class="search icon" style="margin:auto!important;"></i>
-              </span>
-            </div>
+            <a :href="'/#/search?q=' + searchText">
+              <div class="ui tbb button" title="search this cookbook">
+                <span style="padding-right:10px;">
+                  Search
+                </span>
+                <span>
+                  <i class="search icon" style="margin:auto!important;"></i>
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -150,7 +152,6 @@ import Contact from './Contact.vue';
 import Bottom from './Bottom.vue';
 import CookbookPageSkeleton from './Skeletons/CookbookPageSkeleton.vue';
 import RecipesList from './RecipesList.vue'
-import SearchCookbook from './SearchCookbook.vue'
 import Breadcrumb from './Breadcrumb.vue';
 
 export default {
@@ -215,40 +216,6 @@ export default {
     showSubscriptionForm() {
       this.subscribed = !this.subscribed
     },
-    searchCookbook() {
-      let by = this.searchBy.toLowerCase()
-      let q = this.searchText.toLowerCase()
-      let loadedRecipes = this.$store.state.cookbook.data.recipes
-      let filtered = []
-
-      if (by === 'tagname') {
-        filtered = loadedRecipes.filter(function (r) {
-          return r.tags.toLowerCase().includes(q.toLowerCase())
-        })
-      }
-
-      if ((by === 'recipe' && !q) || (by === 'contributor' && !q) || (by === 'tagname' && !q)) {
-        return this.loadedRecipes
-      }
-
-      if (by === 'recipe') {
-        filtered = loadedRecipes.filter(function (r) {
-          return r.name.toLowerCase().includes(q.toLowerCase())
-        })
-      }
-
-      if (by === 'contributor') {
-        filtered = loadedRecipes.filter(function (r) {
-          let author = r.author.name.toLowerCase()
-          // alert(author)
-          return author.includes(q.toLowerCase())
-        })
-      }
-
-      this._recipes = filtered
-
-      this.scrollToElement()
-    },
     scrollToElement() {
       const el = document.getElementById("scrollIntoView");
 
@@ -276,7 +243,6 @@ export default {
   components: {
     CookbookContributors,
     CookbookPageSkeleton,
-    SearchCookbook,
     RecipesList,
     Navigation,
     Contact,
