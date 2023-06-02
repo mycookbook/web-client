@@ -19,8 +19,8 @@
       </div>
       <div v-else>
         <div class="ui divided selection list capitalize">
-          <a class="item" v-for="result in results.slice(0,5)"
-            @click="redirectTo(result.resource_type, (result.resource_type == 'cookbook') ? result.cookbook_slug : result.recipe_slug, (result.resource_type == 'cookbook') ? result.cookbook_id : result.recipe_id)">
+          <a class="item" v-for="result in results.slice(0, 5)"
+            @click="redirectTo(result.resource_type, (result.resource_type == 'cookbook') ? result.cookbook_slug : result.slug, (result.resource_type == 'cookbook') ? result.cookbook_id : result.recipe_id)">
             <div :class="getClass(result.resource_type)" style="text-transform: capitalize;">
               {{ result.resource_type }}
             </div>
@@ -28,7 +28,7 @@
               <span>
                 {{ (result.resource_type == 'cookbook') ? result.cookbook_name : result.recipe_name }}
               </span>
-              <span v-if="result.resource_type == 'recipe' && result.is_orderable ">
+              <span v-if="result.resource_type == 'recipe' && result.is_orderable">
                 <small class="ui mini label">
                   Available for placing orders
                 </small>
@@ -55,8 +55,8 @@
         </div>
         <div class="fluid ui button">
           <router-link :to="{
-          	name: 'SearchResults',
-          	query: { q: qStr }
+            name: 'SearchResults',
+            query: { q: qStr }
           }">
             View all
           </router-link>
@@ -106,7 +106,7 @@ export default {
         }).then((response) => {
           if (Object.keys(this.results).length == 0) {
             this.results = response.data.response
-            this.$store.dispatch('post_to_ml_endpoint', this.query)
+            // this.$store.dispatch('post_to_ml_endpoint', this.query)
           }
         }).catch((error) => {
           console.log('search error', error.response.data)
