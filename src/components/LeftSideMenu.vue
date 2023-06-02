@@ -92,7 +92,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class="ui item">
+            <div class="ui disabled item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -104,7 +104,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class="item">
+            <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -118,7 +118,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class="item">
+            <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -163,11 +163,11 @@
         </div>
         <br />
         <div>
-            <div class="ui circular teal button">
+            <div class="ui circular teal disabled button">
                 <a href="/#/contact-sales" style="color:white!important;">Advertise With Us</a>
             </div>
             <br /><br />
-            <div class="ui tbb circular button">
+            <div class="ui tbb circular disabled button">
                 <a href="/#/plans" style="color:white!important;">Upgrade Your Plan</a>
             </div>
         </div>
