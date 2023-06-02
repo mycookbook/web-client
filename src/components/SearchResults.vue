@@ -185,6 +185,7 @@ import AdvancedSearchFilters from './AdvancedSearchFilters.vue'
 import AdsComponent from './AdsComponent.vue'
 import Bottom from './Bottom.vue'
 import Contact from './Contact.vue';
+
 export default {
 	name: 'SearchResults',
 	mounted() {
