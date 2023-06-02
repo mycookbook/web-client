@@ -11,7 +11,7 @@
           <small>
             no results.
             <em>
-              Know how to prepare <span id="qStr">{{ qStr }}</span>? <a href="/register">Add it</a>
+              Know how to prepare <span id="qStr">{{ qStr }}</span>? <a href="/#/signin">Add it</a>
             </em>
           </small>
           <hr />

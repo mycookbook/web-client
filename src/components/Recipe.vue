@@ -5,9 +5,8 @@
 			<RecipeCardSkeleton />
 		</div>
 		<div v-else>
-			<br /><br /><br />
-			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'"
-				:parentSlug="recipe.cookbook.slug" :child="recipe.name" />
+			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'" :parentSlug="recipe.cookbook.slug"
+				:child="recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
 					<div class="ui grid"
@@ -15,7 +14,7 @@
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
 
-							<div class="ui mini images">
+							<div class="ui mini images" v-if="recipe.ingredients.data">
 								<img class="ui image" :src="ingredient.thumbnail"
 									v-for="ingredient in recipe.ingredients.data" :alt="ingredient.name"
 									:title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
@@ -30,14 +29,23 @@
 										HOW TO PREPARE
 									</span>
 									<span style="float:right;cursor: pointer!important;" @click="textToSpeech()">
-										<button class="ui right labeled icon tbb button">
+										<button class="ui right labeled icon tbb disabled button">
 											<i class="right headphone icon"></i>
 											Listen
 										</button>
 										<span style="font-size: 14px;margin-left: -5px;font-weight: lighter;"></span>
 									</span>
 								</div>
-								<div v-html="recipe.description" class="ui left aligned text"></div>
+								<div v-if="recipe.description">
+									<div v-html="recipe.description" class="ui left aligned text"></div>
+								</div>
+								<div v-else>
+									<div class="ui left aligned text padded">
+										<i>TODO: pop up banner to display this message in a fun way.</i>
+										<p>Do you know how to prepare this recipe? Earn up to $$$ by submitting a how to
+											prepare instructions.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="eight wide computer column sixteen wide mobile column">
@@ -126,17 +134,21 @@ export default {
 		ingredients() {
 			const recipe = this.$store.state.recipe
 
-			let ingredients = recipe.ingredients.data
-			let ingredientsList = ""
+			let ingredients = recipe.ingredients
 
-			let line1 = "Ingredients list for " + recipe.name + "\n\n";
-			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
+			if (ingredients.hasOwnProperty('data')) {
+				let ingredientsList = ""
+				let line1 = "Ingredients list for " + recipe.name + "\n\n";
+				let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
 
-			for (let i = 0; i < ingredients.length; i++) {
-				ingredientsList += "- " + ingredients[i].unit + ' ' + ingredients[i].name + "\n"
+				for (let i = 0; i < ingredients.data.length; i++) {
+					ingredientsList += "- " + ingredients.data[i].unit + ' ' + ingredients.data[i].name + "\n"
+				}
+
+				return line1 + ingredientsList + lastLine
+			} else {
+				return "There is no ingredients on this recipe yet."
 			}
-
-			return line1 + ingredientsList + lastLine
 		}
 	},
 	data() {
