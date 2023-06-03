@@ -26,13 +26,13 @@
                         </div>
                     </div>
                     <div class="five wide computer column sixteen wide mobile column">
-                        <div class="ui grid mobile hidden">
-                            <ThreehundredByTwofifty />
-                        </div>
                         <div class="ui grid">
                             <div class="sixteen wide computer column sixteen wide mobile column">
                                 <WhoToFollowList />
                             </div>
+                        </div>
+                        <div class="ui grid mobile hidden">
+                            <ThreehundredByTwofifty />
                         </div>
                     </div>
                 </div>

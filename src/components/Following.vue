@@ -9,13 +9,13 @@
                             <div class="summary" style="margin-left:-23%!important;">
                                 <a :href="'/#/contributors/' + _d.author.name_slug">
                                     {{ _d.author.name }}
-                                </a> added a new recipe 2 mins ago
+                                </a> added a new recipe in
                                 <a href="/#/search?q=:tags|recipes vegan">
                                     reddies patties
                                 </a>
                                 <span style="float:right!important;">Proudly <i class="jm flag" title="Jamaican"></i></span>
                                 <div class="date">
-                                    2 mins ago
+                                    {{ _d.created_at }}
                                 </div>
                             </div>
                         </div>
@@ -28,12 +28,13 @@
                     </a>
                 </div>
                 <br /><br />
-                <Comments :comments="_recipeComments" :author_id="author_id" />
+                <Comments :comments="_d.comments" :author_id="_d.author.id" />
                 <br /><br />
             </div>
         </div>
         <div v-else>
-            <p>Your session may have expired. Try <a href="" @click="logOut()">signing</a> in again.</p>
+            <p>Your session may have expired. Try <a href="" @click="logOut()">signing</a> in again. otherwise, start
+                following other contributors.</p>
         </div>
     </div>
 </template>
@@ -45,24 +46,24 @@ import Comments from './Comments.vue'
 export default {
     name: "Following",
     computed: {
-        _recipeComments() {
-            return []
-        },
-        author_id() {
-            return 1
-        },
         _datar() {
             return this.$store.state.following_data
         }
     },
     methods: {
-		logOut: function () {
-			this.$store.dispatch('logout')
-		}
-	},
+        logOut: function () {
+            this.$store.dispatch('logout')
+        }
+    },
     components: {
         FourWideCircularImage,
         Comments
     }
 };
 </script>
+<style scoped>
+.date {
+    font-weight: bold !important;
+    font-size: smaller !important;
+}
+</style>
