@@ -80,7 +80,7 @@ export default {
                 $("#foryou").addClass("active")
             }
 
-            if (t === 'fu' || t === '') {
+            if (t === 'fu' || t == "") {
                 $("#foryou").removeClass("active")
                 $("#following").addClass("active")
             }
