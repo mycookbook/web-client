@@ -93,6 +93,9 @@ export default new Vuex.Store({
 			this.state.following_data  = {}
 
 			router.push('/')
+		},
+		COMMENT_POSTED(state, breadcrumb) {
+			location.reload()
 		}
 	},
 	actions: {

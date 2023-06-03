@@ -36,7 +36,8 @@
                     </a>
                 </div>
                 <br /><br />
-                <Comments :comments="_d.comments" :author_id="_d.author.id" />
+                <Comments :comments="_d.comments" :author_id="_d.author.id" :resource_type="_d.resource_type"
+                    :resource_id="_d.id" :breadcrumb="'?v=ff'" />
                 <br /><br />
             </div>
         </div>
@@ -49,6 +50,9 @@ import Comments from './Comments.vue'
 
 export default {
     name: "Following",
+    mounted() {
+        this.$store.dispatch('fetch_following_data')
+    },
     computed: {
         _datar() {
             return this.$store.state.following_data
