@@ -42,8 +42,8 @@
 				<div class="field">
 					<input type="text" placeholder="add a comment here" v-model="new_comment" maxlength="120" />
 				</div>
-				<div class="ui tbb submit circular button" v-if="_isLoggedIn" @click="postComment()">
-					Post Comment {{ resource_type }}
+				<div class="ui tbb submit button" v-if="_isLoggedIn" @click="postComment()">
+					Post Comment
 				</div>
 				<div v-else>
 					<small>
