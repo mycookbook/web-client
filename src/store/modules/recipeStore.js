@@ -60,6 +60,20 @@ export const recipeStore = {
 		},
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');
+		},
+		post_comment(context, payload) {
+			this.state.api.client.post(
+				`${process.env.BASE_URL}comments`,
+				payload,
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				}).then((response) => {
+					context.commit('COMMENT_POSTED', payload.breadcrumb);
+				}).catch((error) => {
+					console.log('There was an error', error)
+				})
 		}
 	}
 }

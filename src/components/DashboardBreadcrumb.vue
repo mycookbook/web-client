@@ -2,6 +2,10 @@
     <div class="ui grid">
         <div class="sixteen wide computer column sixteen wide mobile column">
             <div class="ui mini breadcrumb">
+                <a class="section" href="/#/">
+                    <i class="icon home"></i> Home
+                </a>
+                <i class="right chevron icon divider"></i>
                 <a class="section">Dashboard</a>
                 <i class="right chevron icon divider"></i>
                 <div class="active section">

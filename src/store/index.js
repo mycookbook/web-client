@@ -66,7 +66,8 @@ export default new Vuex.Store({
 		access_token: process.env.VUE_APP_DEV_TOKEN,
 		active_user: {},
 		contributor: {},
-		username: null
+		username: null,
+		followind_data: {}
 	}),
 	mutations: {
 		STORE_POLICIES(state, policies) {
@@ -89,8 +90,12 @@ export default new Vuex.Store({
 		LOGOUT(state) {
 			this.state.access_token = null
 			this.state.active_user = {}
+			this.state.following_data  = {}
 
 			router.push('/')
+		},
+		COMMENT_POSTED(state, breadcrumb) {
+			location.reload()
 		}
 	},
 	actions: {
