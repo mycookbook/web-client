@@ -90,6 +90,7 @@ export default new Vuex.Store({
 		LOGOUT(state) {
 			this.state.access_token = null
 			this.state.active_user = {}
+			this.state.following_data  = {}
 
 			router.push('/')
 		}

@@ -42,6 +42,7 @@ export const contributorStore = {
                     'Authorization': `Bearer ${this.state.access_token}`
                 }
             }).then((response) => {
+                console.log('LOAD_FOLLOWING_DATA', response.data.response)
                 context.commit("LOAD_FOLLOWING_DATA", response.data)
             }).catch((error) => {
                 console.log('error', error)

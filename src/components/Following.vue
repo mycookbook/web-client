@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- {{ _datar }} -->
         <div style="margin-top:25px;" v-if="_datar">
             <div v-for="_d in _datar">
                 <div class="ui grid">
@@ -7,15 +8,22 @@
                     <div class="twelve wide computer column">
                         <div class="content">
                             <div class="summary" style="margin-left:-23%!important;">
-                                <a :href="'/#/contributors/' + _d.author.name_slug">
-                                    {{ _d.author.name }}
-                                </a> added a new recipe in
-                                <a href="/#/search?q=:tags|recipes vegan">
-                                    reddies patties
-                                </a>
-                                <span style="float:right!important;">Proudly <i class="jm flag" title="Jamaican"></i></span>
+                                <div class="ui grid">
+                                    <div class="ui twelve wide computer column">
+                                        <a :href="'/#/contributors/' + _d.author.name_slug">
+                                            {{ _d.author.name }}
+                                        </a> added this new recipe in
+                                        <a :href="'/#/cookbooks/' + _d.cookbook_meta_data[0].slug">
+                                            {{ _d.cookbook_meta_data[0].name }}
+                                        </a>
+                                    </div>
+                                    <div class="ui four wide computer column">
+                                        Proudly
+                                        <i :class="generateFlagClass(_d.proudly.flag)" :title="_d.proudly.nationality"></i>
+                                    </div>
+                                </div>
                                 <div class="date">
-                                    {{ _d.created_at }}
+                                    {{ _d.submission_date }}
                                 </div>
                             </div>
                         </div>
@@ -32,10 +40,6 @@
                 <br /><br />
             </div>
         </div>
-        <div v-else>
-            <p>Your session may have expired. Try <a href="" @click="logOut()">signing</a> in again. otherwise, start
-                following other contributors.</p>
-        </div>
     </div>
 </template>
     
@@ -51,9 +55,10 @@ export default {
         }
     },
     methods: {
-        logOut: function () {
-            this.$store.dispatch('logout')
-        }
+        generateFlagClass: function (code) {
+            let class_ = code + " flag";
+            return class_;
+        },
     },
     components: {
         FourWideCircularImage,
