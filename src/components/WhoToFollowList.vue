@@ -11,10 +11,14 @@
 </template>
 
 <script>
+import store from '@/store';
 import Follow from './Follow.vue';
 
 export default {
     name: "WhoToFollow",
+    mounted() {
+        store.dispatch('get_who_to_follow');
+    },
     computed: {
         whoToFollowList() {
             return this.$store.state.who_to_follow
@@ -26,5 +30,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

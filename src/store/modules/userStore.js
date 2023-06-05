@@ -4,24 +4,8 @@ export const userStore = {
         success: false
     }),
     mutations: {
-        LOAD_WHO_TO_FOLLOW_LIST(state) {
-            this.state.who_to_follow = [{
-                followers: '67K',
-                author: "Ivah Becker",
-                avatar: "https://st4.depositphotos.com/1017986/25404/i/600/depositphotos_254046280-stock-photo-happy-male-indian-chef-in.jpg",
-                handle: "mummy-obiora",
-            }, {
-                followers: '1M',
-                author: "Presh Amit",
-                avatar: "https://st4.depositphotos.com/1017986/25404/i/600/depositphotos_254046280-stock-photo-happy-male-indian-chef-in.jpg",
-                handle: "test-user",
-            }, {
-                followers: '10K',
-                author: "Eulah Durgan",
-                avatar: "https://miro.medium.com/fit/c/176/176/1*4AfUx9n6IbS9YdruelgsDA@2x.jpeg",
-                handle: "edmond-olson",
-            }
-            ].sort(() => Math.random() - 0.5);
+        LOAD_WHO_TO_FOLLOW_LIST(state, data) {
+            this.state.who_to_follow = data.sort(() => Math.random() - 0.5);
         }
     },
     actions: {
@@ -33,9 +17,9 @@ export const userStore = {
                     'Authorization': `Bearer ${this.state.access_token}`
                 }
             }).then(function (response) {
-                context.commit('LOAD_WHO_TO_FOLLOW_LIST')
+                context.commit('LOAD_WHO_TO_FOLLOW_LIST', response.data)
             }).catch(function (error) {
-                console.log('error', error.response)
+                console.log('error', error)
             })
         },
         update_user(context, payload) {
@@ -57,6 +41,17 @@ export const userStore = {
                 }
 
                 context.commit('SET_LOADING_STATE', false)
+            })
+        },
+        get_who_to_follow(context) {
+            this.state.api.client.get(process.env.BASE_URL + 'who-to-follow', {
+                headers: {
+                    'Authorization': `Bearer ${this.state.access_token}`
+                }
+            }).then(function (response) {
+                context.commit('LOAD_WHO_TO_FOLLOW_LIST', response.data)
+            }).catch(function (error) {
+                console.log('error', error.response)
             })
         }
     }
