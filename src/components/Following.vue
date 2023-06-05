@@ -1,7 +1,6 @@
 <template>
     <div>
-        <!-- {{ _datar }} -->
-        <div style="margin-top:25px;" v-if="_datar">
+        <div style="margin-top:25px;" v-if="_datar.length > 0">
             <div v-for="_d in _datar">
                 <div class="ui grid">
                     <FourWideCircularImage :imgUrl="_d.author.avatar" :imgTitle="'recipe submmited by' + _d.name" />
@@ -41,12 +40,16 @@
                 <br /><br />
             </div>
         </div>
+        <div v-else>
+            <RecipeCardSkeleton />
+        </div>
     </div>
 </template>
     
 <script>
 import FourWideCircularImage from './FourWideCircularImage.vue'
 import Comments from './Comments.vue'
+import RecipeCardSkeleton from './Skeletons/RecipeCardSkeleton.vue';
 
 export default {
     name: "Following",
@@ -66,6 +69,7 @@ export default {
     },
     components: {
         FourWideCircularImage,
+        RecipeCardSkeleton,
         Comments
     }
 };

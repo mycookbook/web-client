@@ -45,7 +45,9 @@ export const contributorStore = {
                 console.log('LOAD_FOLLOWING_DATA', response.data.response)
                 context.commit("LOAD_FOLLOWING_DATA", response.data)
             }).catch((error) => {
-                console.log('error', error)
+                //TODO: if the error code is 401
+                //display a pop up to tell the user to log back in
+                console.log('error', error.response.status)
             })
         }
     }

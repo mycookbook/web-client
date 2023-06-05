@@ -25,40 +25,7 @@
                         <div class="four wide column">
                             <div style="float:left;margin-left:20px!important;">
                                 <div class="ui tbb small circular button" :class="{ disabled: !_isLoggedIn }"
-                                    @click="follow()">
-                                    Follow
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-else>
-                <div class="item">
-                    <div class="ui grid">
-                        <div class="four wide column">
-                            <img class="ui mini circular image" :src="avatar" :title="author">
-                        </div>
-                        <div class="seven wide column" style="margin-left:-27px!important">
-                            <div>
-                                <small>
-                                    <b>
-                                        <router-link :to="{ name: 'ContributorProfile', params: { username: handle } }">
-                                            {{ author }}
-                                        </router-link>
-                                    </b>
-                                </small>
-                            </div>
-                            <div>
-                                <small>
-                                    {{ followers }} followers
-                                </small>
-                            </div>
-                        </div>
-                        <div class="four wide column">
-                            <div class="">
-                                <div class="ui tbb small circular button" :class="{ disabled: !_isLoggedIn }"
-                                    @click="follow()">
+                                    @click="follow(toFollow.handle)">
                                     Follow
                                 </div>
                             </div>
@@ -91,7 +58,6 @@ export default {
         followers: String,
         author: String,
         avatar: String,
-        handle: String,
         toFollowList: Array
     },
     data() {
@@ -100,14 +66,14 @@ export default {
         }
     },
     methods: {
-        follow() {
+        follow(userHandle) {
             let hasSession = this.$store.state.access_token
 
             if (!hasSession) {
                 this.$router.push('/signin')
             }
 
-            store.dispatch('followUser', {});
+            store.dispatch('follow_user', { 'following': userHandle });
         }
     },
     components: {
