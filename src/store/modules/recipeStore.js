@@ -28,7 +28,7 @@ export const recipeStore = {
 						context.commit('INCREMENT_CLAP', response.data.claps)
 					}
 				}).catch(function (error) {
-					console.log('clapping error', error.response)
+					context.commit('HANDLE_ERROR', error.response);
 				})
 		},
 		fetch_recipe(context, recipeId) {
@@ -72,11 +72,22 @@ export const recipeStore = {
 				}).then((response) => {
 					context.commit('COMMENT_POSTED', payload.breadcrumb);
 				}).catch((error) => {
-					console.log('There was an error', error)
+					context.commit('HANDLE_ERROR', error.response);
 				})
 		},
 		delete_comment(context, payload) {
-			//todo: consume delete comment endpoint
+			this.state.api.client.post(
+				`${process.env.BASE_URL}comments/destroy`,
+				payload,
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				}).then((response) => {
+					context.commit('COMMENT_DELETED', payload.breadcrumb);
+				}).catch((error) => {
+					context.commit('HANDLE_ERROR', error.response);
+				})
 		}
 	}
 }

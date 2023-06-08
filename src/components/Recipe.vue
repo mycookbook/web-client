@@ -13,12 +13,12 @@
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
-							<div v-if="recipe.ingredients.data" class="ui small info message">
+							<div v-if="recipe.ingredients.data.length > 0" class="ui small info message">
 								<em>
 									Click on the images to see or shop the Ingredient
 								</em>
 							</div>
-							<div class="ui mini images" v-if="recipe.ingredients.data">
+							<div class="ui mini images" v-if="recipe.ingredients.data.length > 0">
 								<img class="ui image" :src="ingredient.thumbnail"
 									v-for="ingredient in recipe.ingredients.data" :alt="ingredient.name"
 									:title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"

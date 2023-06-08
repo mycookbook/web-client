@@ -21,7 +21,7 @@ export const contributorStore = {
                     context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data)
                     context.commit("SET_LOADING_STATE", false)
                 }).catch(function (error) {
-                    console.log('fetch contributor error', error.response)
+                    context.commit('HANDLE_ERROR', error.response);
                 })
         },
         fetch_active_user(context, username) {
@@ -31,7 +31,7 @@ export const contributorStore = {
                 .then(function (response) {
                     context.commit("UPDATE_ACTIVE_USER", response.data)
                 }).catch(function (error) {
-                    console.log('fetch active user error', error.response)
+                    context.commit('HANDLE_ERROR', error.response);
                 })
         },
         fetch_following_data(context, token) {
@@ -45,17 +45,7 @@ export const contributorStore = {
                 console.log('LOAD_FOLLOWING_DATA', response.data.response)
                 context.commit("LOAD_FOLLOWING_DATA", response.data)
             }).catch((error) => {
-                let _m = 'Uh, oh, looks like your session has expired. Please logout and signin again.'
-
-                if (process.env.NODE_ENV === 'development') {
-                    _m = 'Developer, please obtain a new token, logout and signin again. Thank you!'
-                }
-
-                if (error.response.status === 401) {
-                    alert(_m)
-                }
-                
-                console.log('error', error.response.status)
+                context.commit('HANDLE_ERROR', error.response);
             })
         }
     }
