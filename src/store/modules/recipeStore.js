@@ -74,6 +74,9 @@ export const recipeStore = {
 				}).catch((error) => {
 					console.log('There was an error', error)
 				})
+		},
+		delete_comment(context, payload) {
+			//todo: consume delete comment endpoint
 		}
 	}
 }

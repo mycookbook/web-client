@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="ui tbb fluid button" @click="CopyContents(htmlTagId)" v-if="!isCopied" :title="tooltip">
-            <i class="ui computer icon"></i>Copy
+            <i class="ui computer icon"></i> {{ btnText }}
         </div>
-        <div class="ui disabled button" v-else>Copied</div>
+        <div class="ui disabled fluid button" v-else>Copied</div>
     </div>
 </template>
     
@@ -12,7 +12,8 @@ export default {
     name: "CopyCopiedButtonsWidget",
     props: {
         htmlTagId: String,
-        tooltip: String
+        tooltip: String,
+        btnText: String
     },
     computed: {
         isCopied() {
@@ -33,7 +34,7 @@ export default {
             document.execCommand('copy')
             window.getSelection().removeAllRanges()
             navigator.clipboard.writeText(message)
-            
+
             this.copied = true
         }
     }
