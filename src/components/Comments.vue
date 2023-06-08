@@ -25,7 +25,8 @@
 								{{ comment.created_at }}
 							</span>
 						</div>
-						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author.name_slug)">
+						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author.email)"
+							@click="deleteComment(comment.id)">
 							<i class="ui small trash icon"></i>
 						</span>
 						<div class="text">
@@ -99,6 +100,9 @@ export default {
 					'breadcrumb': this.breadcrumb
 				})
 			}
+		},
+		deleteComment(id) {
+			this.$store.dispatch('delete_comment', { 'comment-id': id })
 		}
 	}
 };
