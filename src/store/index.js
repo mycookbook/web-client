@@ -86,7 +86,7 @@ export default new Vuex.Store({
 
 			this.state.username = req.username
 
-			router.push('/')
+			router.push('/?v=fu')
 		},
 		LOGOUT(state) {
 			this.state.access_token = null

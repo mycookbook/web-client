@@ -19,7 +19,7 @@
                             <a href="" id="send-feedback">
                                 <span
                                     style="float: right!important;font-size: 12px; font-weight: lighter!important; margin-top:9px;">
-                                    <p>Send feedback<i class="comment alternate outline icon"></i></p>
+                                    <p>share feedback</p>
                                 </span>
                             </a>
                         </div>

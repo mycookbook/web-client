@@ -45,8 +45,16 @@ export const contributorStore = {
                 console.log('LOAD_FOLLOWING_DATA', response.data.response)
                 context.commit("LOAD_FOLLOWING_DATA", response.data)
             }).catch((error) => {
-                //TODO: if the error code is 401
-                //display a pop up to tell the user to log back in
+                let _m = 'Uh, oh, looks like your session has expired. Please logout and signin again.'
+
+                if (process.env.NODE_ENV === 'development') {
+                    _m = 'Developer, please obtain a new token, logout and signin again. Thank you!'
+                }
+
+                if (error.response.status === 401) {
+                    alert(_m)
+                }
+                
                 console.log('error', error.response.status)
             })
         }
