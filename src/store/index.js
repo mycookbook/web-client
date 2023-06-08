@@ -97,6 +97,30 @@ export default new Vuex.Store({
 		},
 		COMMENT_POSTED(state, breadcrumb) {
 			location.reload()
+		},
+		HANDLE_ERROR(state, errorObj) {
+			let _m = 'Uh oh, it looks like your session has expired. Please logout and signin again.'
+
+			if (process.env.NODE_ENV === 'development') {
+				_m = 'Developer, please obtain a new token and restart your dev server.'
+			}
+
+			if (errorObj.status === 401) {
+				alert(_m)
+			}
+
+			if ([400, 500, 404].includes(errorObj.status)) {
+
+				alert(errorObj.data.message)
+
+				this.state.access_token = null
+				this.state.active_user = {}
+				this.state.following_data = {}
+
+				router.push('/')
+			}
+
+			console.log('error', errorObj)
 		}
 	},
 	actions: {

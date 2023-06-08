@@ -51,17 +51,7 @@ export const userStore = {
             }).then(function (response) {
                 context.commit('LOAD_WHO_TO_FOLLOW_LIST', response.data)
             }).catch(function (error) {
-                let _m = 'Uh, oh, looks like your session has expired. Please logout and signin again.'
-
-                if (process.env.NODE_ENV === 'development') {
-                    _m = 'Developer, please obtain a new token, logout and signin again. Thank you!'
-                }
-
-                if (error.response.status === 401) {
-                    alert(_m)
-                }
-                
-                console.log('error', error.response)
+                context.commit('HANDLE_ERROR', error.response);
             })
         }
     }
