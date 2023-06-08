@@ -11,17 +11,24 @@
                     Welcome to Marketplace (Coming soon)
                 </div>
                 <div>
-                    Marketplace is a powerful AI platform that enables B2Bs, B2Cs and C2Cs to trade merchandise. Examples of merchandise
-                    that can be traded are, recipes, transfer of private cookbook ownership, ecopy of cookbooks and many
-                    more.
+                    List your business with us
+                </div>
+                <div>
+                    <ul>
+                        <li>personal chef</li>
+                        <li>professinoal chef</li>
+                        <li>party planner</li>
+                        <li>event planner</li>
+                        <li>wedding planner</li>
+                        <li>online grocery store</li>
+                    </ul>
                 </div>
                 <br />
-                <img class="mobile hidden"
-                    src="https://img.freepik.com/free-vector/designers-are-working-desing-web-page-web-design-user-interface-user-experience-content-organization_335657-4403.jpg?t=st=1684034125~exp=1684034725~hmac=fa39c37262995599f96f63c75d5954f362f321e9b3b7f61c972d03c887cf92ce" />
+
                 <div>
-                    In order to start trading, you need to login to your cookbooks account. <a href="/#/signin">Sign in
-                    </a>to start trading immediately. <a href="/#/terms-and-conditions">Terms and conditions</a> apply. <br /> To
-                    learn more, head on to our getting started guide.
+                    To get started, you need to login to your cookbooks account. <a href="/#/terms-and-conditions">Terms and
+                        conditions</a> apply.
+                    Learn more about how to best the best of this platform for your business.
                 </div>
                 <br />
                 <div>
