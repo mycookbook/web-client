@@ -4,10 +4,10 @@
             <div class="ui items">
                 <div class="item">
                     <div class="content">
-                        <h3>Trout, Sorrel Sauce, Trout Roe</h3>
+                        <h3>Breakfast for Champions_2</h3>
                         <div class="description">
                             <small>
-                                10+ people are talking about this <a href="/#/">recipe</a> already! Join in the
+                                10+ people are talking about this easy to make at home <a href="/#/">recipe</a> already! Join in the
                                 conversation,
                                 see what's cooking!
                             </small>
@@ -21,7 +21,7 @@
                 </a>
                 <a href="/#/">
                     <img
-                        src="https://images.unsplash.com/photo-1611564310694-09f3cf273450?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80">
+                        src="https://images.unsplash.com/photo-1543551659-9fe3726ffb26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80">
                 </a>
             </div>
         </div>
