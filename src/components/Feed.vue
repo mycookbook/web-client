@@ -10,7 +10,7 @@
                     <div class="eight wide computer column sixteen wide mobile column">
                         <div class="ui header" @click="toggleTab()">
                             <a class="black-text active" href="/#/?v=fu" id="foryou">
-                                For You <a class="ui red circular basic label" style="padding:7px 15px!important;">Beta</a>
+                                For You <a class="ui red circular basic tiny label" style="padding:7px 8px!important;">Beta</a>
                             </a>
                             <a class="" style="padding-right:30px;"></a>
                             <a class="black-text" href="/#/?v=ff" id="following">

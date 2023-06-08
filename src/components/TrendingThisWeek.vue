@@ -3,12 +3,12 @@
         <div class="ui list">
             <div class="item" style="background-color: rgb(244, 244, 244); padding:15px!important;">
                 <div>
-                    <i class="blue star icon"></i>
-                    <i class="blue star icon"></i>
-                    <i class="blue star icon"></i>
-                    <i class="blue star icon"></i>
-                    <i class="blue star icon"></i>
-                    <br />
+                    <i class="yellow star icon"></i>
+                    <i class="yellow star icon"></i>
+                    <i class="yellow star icon"></i>
+                    <i class="yellow star icon"></i>
+                    <i class="yellow star icon"></i>
+                    <br /><br />
                 </div>
                 <div class="content">
                     <a class="header" style="color: black!important;">Trending this
@@ -17,11 +17,11 @@
                         <div>
                             <small>Check out this week's <a href="/#/search?q=:recipes|trending">top 10 trending
                                     recipes</a>. Finding your next favorite recipe is as easy
-                                as the click of a button!
+                                as the click of a button >>>
                             </small>
                         </div>
-                        <div class="ui tbb tiny label" style="float: right;">
-                            <i class="search icon"></i> start searching
+                        <div class="ui tiny circular button" style="float: right;">
+                            <i class="search icon"></i>This button
                         </div>
                     </div>
                 </div>

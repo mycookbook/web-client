@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="ui fluid image">
-                <a class="ui red right ribbon label">
+                <a class="ui orange right ribbon label">
                     Taking Orders
                 </a>
                 <a href="/#/">
