@@ -88,7 +88,7 @@ export default {
 	},
 	methods: {
 		canDelete(commentAuthorSlug) {
-			return this.isLoggedIn && (store.state.username === commentAuthorSlug);
+			return store.state.username === commentAuthorSlug;
 		},
 		postComment() {
 			if (this.new_comment) {

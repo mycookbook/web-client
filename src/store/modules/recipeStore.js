@@ -14,6 +14,12 @@ export const recipeStore = {
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
+		},
+		COMMENT_POSTED(state, breadcrumb) {
+			location.reload()
+		},
+		COMMENT_DELETED(state) {
+			location.reload()
 		}
 	},
 	actions: {
@@ -69,7 +75,7 @@ export const recipeStore = {
 					headers: {
 						'Authorization': `Bearer ${this.state.access_token}`
 					}
-				}).then((response) => {
+				}).then(() => {
 					context.commit('COMMENT_POSTED', payload.breadcrumb);
 				}).catch((error) => {
 					context.commit('HANDLE_ERROR', error.response);
@@ -83,7 +89,7 @@ export const recipeStore = {
 					headers: {
 						'Authorization': `Bearer ${this.state.access_token}`
 					}
-				}).then((response) => {
+				}).then(() => {
 					context.commit('COMMENT_DELETED', payload.breadcrumb);
 				}).catch((error) => {
 					context.commit('HANDLE_ERROR', error.response);

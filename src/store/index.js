@@ -95,9 +95,6 @@ export default new Vuex.Store({
 
 			router.push('/')
 		},
-		COMMENT_POSTED(state, breadcrumb) {
-			location.reload()
-		},
 		HANDLE_ERROR(state, errorObj) {
 			let _m = 'Uh oh, it looks like your session has expired. Please logout and signin again.'
 
@@ -111,13 +108,13 @@ export default new Vuex.Store({
 
 			if ([400, 500, 404].includes(errorObj.status)) {
 
-				alert(errorObj.data.message)
+				alert(errorObj.data.error)
 
 				this.state.access_token = null
 				this.state.active_user = {}
 				this.state.following_data = {}
 
-				router.push('/')
+				router.push('/#/?v=fu')
 			}
 
 			console.log('error', errorObj)
