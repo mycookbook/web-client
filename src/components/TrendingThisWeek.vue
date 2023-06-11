@@ -28,7 +28,6 @@
                             }">
                                 This button
                             </router-link>
-
                         </div>
                     </div>
                 </div>

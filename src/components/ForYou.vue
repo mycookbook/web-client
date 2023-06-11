@@ -16,7 +16,7 @@
         <br /><br />
         <PeopleWithSimilarInterests />
         <div>
-            <a>back to top</a>
+            <a href="/">back to top</a>
         </div>
     </div>
 </template>
