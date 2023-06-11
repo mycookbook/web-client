@@ -24,14 +24,8 @@
                 </a>
             </div>
             <br /><br />
-            <div class="ui tbb button white-text">
-                <router-link :to="{
-                    name: 'Dashboard',
-                    query: { tab: 'Recipes' }
-                }">
-                    Create Recipe
-                </router-link>
-
+            <div class="ui tbb button">
+                <a href="/#/dashboard?tab=Recipes" style="color:white!important;">Create Recipe</a>
             </div>
         </div>
     </div>
@@ -67,8 +61,5 @@ export default {
 <style scoped>
 .container {
     margin-top: 23vh;
-},
-.white-text a {
-    color:white!important;
 }
 </style>
