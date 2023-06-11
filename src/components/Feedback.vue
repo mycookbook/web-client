@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <div class="field" v-if="submitted">
-                    <div class="ui fluid basic large label">
+                    <div class="ui fluid basic large label" @click="copyShareableLink()">
                         <div class="ui header" style="margin-left:34%;cursor:pointer;">
                             Copy shareable link
                         </div>
-                        <div class="ui header" style="margin-left:29%;cursor:pointer;color: #ccc;">
+                        <div class="ui header" style="margin-left:29%;cursor:pointer;color: #ccc;" id="shareableLink">
                             https://shorturl.at/BKPRT
                         </div>
                     </div>
@@ -57,9 +57,6 @@
                             Shareable link copied to your clipboard
                         </div>
                     </div>
-                </div>
-                <div>
-                    <a href="/#/">Dismiss</a>
                 </div>
             </div>
         </div>
@@ -86,7 +83,8 @@ export default {
             veryLikely: false,
             submitted: false,
             selectedOption: 'definitely',
-            isCopied: false
+            isCopied: false,
+            shareableLink: 'https://shorturl.at/BKPRT'
         }
     },
     methods: {
@@ -102,6 +100,13 @@ export default {
         },
         selectOption(option) {
             this.selectedOption = option
+        },
+        copyShareableLink() {
+            navigator.clipboard.writeText(this.shareableLink).then(() => {
+                this.isCopied = true
+            }, () => {
+                console.error('Failed to copy');
+            });
         }
     }
 };
