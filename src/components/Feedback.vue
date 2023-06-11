@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="showFeedbackWidget">
         <div class="ui info message">
             <div v-if="!submitted">
                 <b>Hello there, we hope you are having the best experience! How likely are you to recommend
@@ -34,6 +34,13 @@
                         Submit
                     </div>
                 </div>
+                <div class="field" v-if="stillThinking">
+                    <div class="ui fluid basic large label">
+                        <div class="ui header" style="margin-left:31%;cursor:default;">
+                            No worries, we gatchu!
+                        </div>
+                    </div>
+                </div>
                 <div class="field" v-if="submitted">
                     <div class="ui fluid basic large label">
                         <div class="ui header" style="margin-left:34%;cursor:pointer;">
@@ -51,13 +58,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="field" v-if="stillThinking">
-                    <div class="ui fluid basic large label">
-                        <div class="ui header" style="margin-left:31%;cursor:default;">
-                            No worries, we gatchu!
-                        </div>
-                    </div>
-                </div>
                 <div>
                     <a href="/#/">Dismiss</a>
                 </div>
@@ -67,14 +67,23 @@
 </template>
     
 <script>
+import store from '@/store';
 
 export default {
     name: "Feedback",
+    computed: {
+        showFeedbackWidget() {
+            if (this.$store.state.active_user.hasOwnProperty('onboarding')) {
+                return (this.$store.state.active_user.onboarding.likelihoodToShare != "definitely")
+            }
+            return true
+        }
+    },
     data() {
         return {
             stillThinking: false,
             probably: false,
-            definitely: false,
+            veryLikely: false,
             submitted: false,
             selectedOption: 'definitely',
             isCopied: false
@@ -82,13 +91,14 @@ export default {
     },
     methods: {
         submitFeedback() {
-            if (this.selectedOption === 'still-thinking') {
+            if (['still-thinking', 'probably'].includes(this.selectedOption)) {
                 this.stillThinking = !this.stillThinking
                 this.submitted = true;
             } else {
                 this.submitted = !this.submitted
             }
-            //likelihood-to-share
+
+            this.$store.dispatch('send_feedback', this.selectedOption)
         },
         selectOption(option) {
             this.selectedOption = option
