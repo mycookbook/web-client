@@ -68,7 +68,8 @@ export default new Vuex.Store({
 		contributor: {},
 		username: null,
 		followind_data: {},
-		who_to_follow: []
+		who_to_follow: [],
+		keepShowingOnboardingFeedbackWidget: true
 	}),
 	mutations: {
 		STORE_POLICIES(state, policies) {

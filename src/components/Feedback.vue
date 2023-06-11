@@ -3,7 +3,7 @@
         <div class="ui info message">
             <div v-if="!submitted">
                 <b>Hello there, we hope you are having the best experience! How likely are you to recommend
-                    this app to a friend?</b>
+                    this app to your friends?</b>
                 <br /><br />
             </div>
             <div class="ui form">
@@ -36,8 +36,11 @@
                 </div>
                 <div class="field" v-if="submitted">
                     <div class="ui fluid basic large label">
-                        <div class="ui header" style="margin-left:34%;cursor:default;">
+                        <div class="ui header" style="margin-left:34%;cursor:pointer;">
                             Copy shareable link
+                        </div>
+                        <div class="ui header" style="margin-left:29%;cursor:pointer;color: #ccc;">
+                            https://shorturl.at/BKPRT
                         </div>
                     </div>
                 </div>
@@ -85,6 +88,7 @@ export default {
             } else {
                 this.submitted = !this.submitted
             }
+            //likelihood-to-share
         },
         selectOption(option) {
             this.selectedOption = option
