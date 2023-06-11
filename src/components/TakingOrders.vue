@@ -14,7 +14,7 @@
                             <br /><br />
                             <div class="ui tbb button">
                                 <i class="ui shopping cart icon"></i>
-                                Start adding to your cart
+                                0 items in your cart
                             </div>
                         </div>
                     </div>
@@ -24,14 +24,21 @@
                 <a class="ui orange right ribbon label">
                     Available to Order
                 </a>
-                <a href="/#/">
+                <a href="/#/search?q=:recipes|sale">
                     <img
                         src="https://images.unsplash.com/photo-1641898378716-1f38ec04bb0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80">
                 </a>
             </div>
         </div>
         <br />
-        <div class="ui circular basic label" style="margin-left:45%;cursor: pointer;">see all</div>
+        <div class="ui circular basic label" style="margin-left:45%;cursor: pointer;">
+            <router-link :to="{
+                name: 'SearchResults',
+                query: { q: ':recipes|sale' }
+            }">
+                see all
+            </router-link>
+        </div>
     </div>
 </template>
     

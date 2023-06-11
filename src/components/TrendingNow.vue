@@ -4,25 +4,34 @@
             <div class="ui items">
                 <div class="item">
                     <div class="content">
-                        <h3>Breakfast for Champions_2</h3>
+                        <h3>Recipe ideas <i class="ui idea blue icon"></i></h3>
                         <div class="description">
                             <small>
-                                10+ people are talking about this easy to make at home <a href="/#/">recipe</a> already! Join in the
-                                conversation,
-                                see what's cooking!
+                                Hey, do you know how to create this recipe? Be the first to submit a mouth watery post about
+                                it!
                             </small>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ui fluid image">
+            <div class="ui fluid fluid image">
                 <a class="ui red right ribbon label">
-                    Trending now
+                    Recommended
                 </a>
                 <a href="/#/">
                     <img
                         src="https://images.unsplash.com/photo-1543551659-9fe3726ffb26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80">
                 </a>
+            </div>
+            <br /><br />
+            <div class="ui tbb button white-text">
+                <router-link :to="{
+                    name: 'Dashboard',
+                    query: { tab: 'Recipes' }
+                }">
+                    Create Recipe
+                </router-link>
+
             </div>
         </div>
     </div>
@@ -58,5 +67,8 @@ export default {
 <style scoped>
 .container {
     margin-top: 23vh;
+},
+.white-text a {
+    color:white!important;
 }
 </style>
