@@ -4,21 +4,25 @@
             <div class="ui items">
                 <div class="item">
                     <div class="content">
-                        <h3>Grilled salmon steak</h3>
+                        <h3>Yippy, <b>{{ userName }}</b></h3>
                         <div class="description">
                             <small>
-                                Skip the queue and get the ingredients of this <a>recipe</a> shipped right to your door
-                                steps in one easy step!
+                                Shop the ingredients of these mouth watery <a>recipes</a> and have them shipped right to
+                                your door
+                                step in just one easy step!
                             </small>
                             <br /><br />
-                            <div class="ui tbb button"><i class="ui shopping cart icon"></i>Add to cart</div>
+                            <div class="ui tbb button">
+                                <i class="ui shopping cart icon"></i>
+                                Start adding to your cart
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="ui fluid image">
                 <a class="ui orange right ribbon label">
-                    Taking Orders
+                    Available to Order
                 </a>
                 <a href="/#/">
                     <img
@@ -32,30 +36,15 @@
 </template>
     
 <script>
-import Navigation from './Navigation.vue';
+import store from '@/store';
 
 export default {
     name: "TakingOrders",
-    mounted() { },
     computed: {
-        example() {
-            return true
+        userName() {
+            return this.$store.state.active_user.name
         }
     },
-    props: {
-        numbers: Array
-    },
-    data() {
-        return {
-            title: 'This is an Example component'
-        }
-    },
-    filters: {
-        exampleFilter() { }
-    },
-    components: {
-        Navigation
-    }
 };
 </script>
     

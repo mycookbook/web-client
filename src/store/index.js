@@ -124,7 +124,7 @@ export default new Vuex.Store({
 			console.log('error', errorObj)
 		},
 		SHOW_FEEDBACK_WIDGET(state, choice) {
-			this.state.active_user.onboarding = { 'likehihoodToShare': choice }
+			this.state.active_user.onboarding.likehihoodToShare = choice
 		}
 	},
 	actions: {

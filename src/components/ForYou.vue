@@ -8,9 +8,9 @@
         <br />
         <div class="ui divider"></div>
         <br /><br />
-        <TrendingNow />
-        <br /><br />
         <TakingOrders />
+        <br /><br />
+        <TrendingNow />
         <br />
         <div class="ui divider"></div>
         <br /><br />
