@@ -58,9 +58,6 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <a href="/#/">Dismiss</a>
-                </div>
             </div>
         </div>
     </div>
