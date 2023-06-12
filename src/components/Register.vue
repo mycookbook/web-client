@@ -53,17 +53,9 @@ export default {
 			return this.$store.state.registerStore.success
 		}
 	},
-	data() {
-		return {
-			oauth_endpoint: {
-				'tiktok': process.env.SERVER_ENDPOINT_OAUTH
-			},
-			tiktok_client_key: process.env.TIKTOK_CLIENT_KEY
-		}
-	},
 	methods: {
 		authRedirect(provider) {
-			console.log('debugger', [process.env.VUE_SERVER_ENDPOINT_OAUTH, process.env.SERVER_ENDPOINT_OAUTH])
+			console.log('debugger', [process.env.TIKTOK_CLIENT_KEY, process.env.SERVER_ENDPOINT_OAUTH])
 			if (provider === 'magicLink') {
 				alert('This feature is limited to ONLY authorized users. Please login with TikTok instead.')
 			} else if (process.env.NODE_ENV === 'development') {
@@ -73,10 +65,10 @@ export default {
 
 				const csrfState = Math.random().toString(36).substring(2);
 
-				let url = new URL(this.oauth_endpoint[provider]);
+				let url = new URL(process.env.SERVER_ENDPOINT_OAUTH);
 
 				uri_params = {
-					'client_key': this.tiktok_client_key,
+					'client_key': process.env.TIKTOK_CLIENT_KEY,
 					'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
 					'response_type': 'code',
 					'scope': 'user.info.basic,video.list',
