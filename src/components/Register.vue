@@ -63,6 +63,7 @@ export default {
 	},
 	methods: {
 		authRedirect(provider) {
+			console.log('debugger', [process.env.VUE_SERVER_ENDPOINT_OAUTH, process.env.SERVER_ENDPOINT_OAUTH])
 			if (provider === 'magicLink') {
 				alert('This feature is limited to ONLY authorized users. Please login with TikTok instead.')
 			} else if (process.env.NODE_ENV === 'development') {
