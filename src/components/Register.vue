@@ -53,6 +53,14 @@ export default {
 			return this.$store.state.registerStore.success
 		}
 	},
+	data() {
+		return {
+			oauth_endpoint: {
+				'tiktok': process.env.SERVER_ENDPOINT_OAUTH
+			},
+			tiktok_client_key: process.env.TIKTOK_CLIENT_KEY
+		}
+	},
 	methods: {
 		authRedirect(provider) {
 			if (provider === 'magicLink') {
@@ -64,14 +72,10 @@ export default {
 
 				const csrfState = Math.random().toString(36).substring(2);
 
-				const oauth_endpoint = {
-					'tiktok': process.env.VUE_SERVER_ENDPOINT_OAUTH
-				}
-
-				let url = new URL(oauth_endpoint[provider]);
+				let url = new URL(this.oauth_endpoint[provider]);
 
 				uri_params = {
-					'client_key': process.env.VUE_TIKTOK_CLIENT_KEY,
+					'client_key': this.tiktok_client_key,
 					'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
 					'response_type': 'code',
 					'scope': 'user.info.basic,video.list',
