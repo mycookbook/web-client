@@ -65,10 +65,10 @@ export default {
 
 				const csrfState = Math.random().toString(36).substring(2);
 
-				let url = new URL(process.env.SERVER_ENDPOINT_OAUTH);
+				let url = new URL(process.env.SERVER_ENDPOINT_OAUTH.slice(1,-1));
 
 				uri_params = {
-					'client_key': process.env.TIKTOK_CLIENT_KEY,
+					'client_key': process.env.TIKTOK_CLIENT_KEY.slice(1,-1),
 					'redirect_uri': 'https://api.cookbookshq.com/callback/tiktok',
 					'response_type': 'code',
 					'scope': 'user.info.basic,video.list',
