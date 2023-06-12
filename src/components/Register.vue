@@ -60,7 +60,6 @@ export default {
 			} else if (process.env.NODE_ENV === 'development') {
 				window.location.href = process.env.APP_URL + '/#/' + provider + '/?code=&_d='
 			} else {
-				//reverting
 				let uri_params = {}
 
 				const csrfState = Math.random().toString(36).substring(2);
