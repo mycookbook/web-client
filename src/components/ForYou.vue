@@ -1,5 +1,6 @@
 <template>
     <div style="margin-top:25px;">
+        {{ dt }}
         <TrendingThisWeek />
         <br />
         <div class="ui divider"></div>
@@ -31,6 +32,11 @@ import PeopleWithSimilarInterests from './PeopleWithSimilarInterests.vue'
 
 export default {
     name: "ForYou",
+    computed: {
+        dt() {
+            return process.env.DEV_TOKEN
+        }
+    },
     components: {
         TrendingThisWeek,
         Feedback,
