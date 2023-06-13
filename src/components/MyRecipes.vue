@@ -81,7 +81,8 @@
                     <ValidationProvider rules="required|alpha" name="ingredient name" v-slot="{ errors }">
                       <div>
                         <label>name</label>
-                        <input v-model="input.name" type="text" placeholder="name of ingredient" />
+                        <input v-model="input.name" type="text" placeholder="name of ingredient"
+                          @input="searchIngredientImages(index)" />
                         <span class="errorText">{{ errors[0] }}</span>
                       </div>
                     </ValidationProvider>
@@ -90,20 +91,37 @@
                       <ValidationProvider rules="required|integer" name="ingredient unit" v-slot="{ errors }">
                         <div class="six wide computer column sixteen wide mobile column">
                           <label>unit</label>
-                          <input v-model="input.unit" type="text" placeholder="unit" />
+                          <input v-model="input.unit" type="text" placeholder="unit"
+                            @input="searchIngredientImages(index)" />
                           <span class="errorText">{{ errors[0] }}</span>
                         </div>
                       </ValidationProvider>
                       <br />
                     </div>
                     <br />
+                    <br />
                     <div class="ui grid">
-                      <div class="six wide computer column  sixteen wide mobile column">
-                        <label>thumbnail link</label>
-                        <input v-model="input.thumbnail" type="text"
-                          placeholder="Enter your preferred thumbnail link" />
+                      <div v-if="input.showImageResults" class="thumbnail-container">
+
+                        <div v-for="(result, resultIndex) in input.imageResults" :key="`result-${resultIndex}`"
+                          class="ingredient-image-result">
+                          <label>
+                            <input type="radio" :value="result" v-model="input.selectedThumbnail"
+                              @change="selectThumbnail(index, input.selectedThumbnail.src.original)" />
+                            <div class="thumbnail-wrapper">
+                              <img :src="result.src.medium" class="thumbnail-image" />
+                            </div>
+                          </label>
+                        </div>
                       </div>
                     </div>
+                    <div class="ui grid">
+                      <div class="six wide computer column sixteen wide mobile column">
+                        <label>thumbnail link</label>
+                        <input v-model="input.thumbnail" type="text" placeholder="Enter your preferred thumbnail link" />
+                      </div>
+                    </div>
+                    <br />
                     <br />
                     <div class="ui grid">
                       <div class="six wide computer column sixteen wide mobile column">
@@ -126,14 +144,14 @@
               </div>
             </div>
           </div>
-          <div class="ui form">   
-              <div class="field">
-                <label>
-                  Search Cookbook (required*)
-                </label>
-                <CookbookSelector @passCookbookCode="cookbook_id = $event" @click="clearError('cookbookError')" />
-                <span class="errorText">{{ cookbookError }}</span>
-              </div>
+          <div class="ui form">
+            <div class="field">
+              <label>
+                Search Cookbook (required*)
+              </label>
+              <CookbookSelector @passCookbookCode="cookbook_id = $event" @click="clearError('cookbookError')" />
+              <span class="errorText">{{ cookbookError }}</span>
+            </div>
           </div>
           <br />
           <div class="ui form">
@@ -203,8 +221,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -216,6 +232,7 @@ import { extend } from 'vee-validate';
 import * as rules from 'vee-validate/dist/rules';
 import { messages } from 'vee-validate/dist/locale/en.json';
 import CookbookSelector from './Widgets/CookbookSelectorWidget';
+import { mapActions } from 'vuex';
 
 Object.keys(rules).forEach(rule => {
   extend(rule, {
@@ -243,6 +260,7 @@ export default {
 
     _allCookbooks() {
       return this.$store.state.cookbooks
+      console.log()
     },
 
     editorSettings() {
@@ -260,14 +278,16 @@ export default {
 
   watch: {
     nationality(newValue, oldValue) {
-      this.nationalityError ="";
+      this.nationalityError = "";
     },
     cookbook_id(newValue, oldValue) {
-      this.cookbookError=""
+      this.cookbookError = ""
     },
     deep: true,
     immediate: true
   },
+
+
 
   data() {
     return {
@@ -314,7 +334,10 @@ export default {
     ValidationObserver,
     CookbookSelector,
   },
+
   methods: {
+    ...mapActions(['fetch_ingredient_thumbnail']), // Import the action from the store
+
     toggleEditor(action) {
       if (action === 'hide') {
         $("#recipe-editor").removeClass("show")
@@ -336,16 +359,40 @@ export default {
       }
     },
 
-    async getThumbnail(index, field) {
-      if (field[index].name) {
-        const ingredient = field[index].name;
-        this.$store.dispatch("fetch_ingredient_thumbnail", ingredient);
-        this.newPop();
+
+    selectThumbnail(index, thumbnailUrl) {
+      this.ingredients[index].thumbnail = thumbnailUrl.src.original;
+    },
+
+    async searchIngredientImages(index) {
+      const ingredient = this.ingredients[index].name;
+      const unit = this.ingredients[index].unit;
+      // Check if both name and unit are filled before making the API call
+      if (ingredient && unit) {
+        // Remove the existing imageResults property
+        this.$delete(this.ingredients[index], 'imageResults');
+
+        // Make the API call to fetch the ingredient thumbnails
+        await this.$store.dispatch('fetch_ingredient_thumbnail', ingredient);
+
+        // Retrieve the image results from the store after the action is completed
+        const response = this.$store.state.thumbnail;
+        // Extract the thumbnail URLs from the API response
+        const imageResults = response;
+        // console.log(imageResults[index].url)
+
+
+        // Update the corresponding ingredient object with the image results
+        this.$set(this.ingredients[index], 'imageResults', imageResults);
+        this.$set(this.ingredients[index], 'showImageResults', imageResults.length > 0);
       }
     },
-    onSelectImage: function (index, imgLink) {
-      this.ingredients[index].thumbnail = imgLink;
+
+    selectThumbnail(index, thumbnailUrl) {
+      this.ingredients[index].thumbnail = thumbnailUrl;
     },
+
+
     newPop: function () {
       $('.button')
         .popup()
@@ -378,17 +425,17 @@ export default {
         imagePath: this.imagePath,
         cookbook_id: this.cookbook_id
       }
-        if(validFile === true){
+      if (validFile === true) {
         const result = await this.$store.dispatch('post_recipe', dataSend)
         console.log(result)
-        if (result === 'success'){
+        if (result === 'success') {
           alert("Recipe has been created")
           this.toggleEditor('hide')
-        } else{
+        } else {
           alert('Problem creating recipe, please try again later')
         }
-      } 
-      if(validFile===false){
+      }
+      if (validFile === false) {
         alert('You have incomplete fields')
       }
     }
@@ -430,4 +477,22 @@ export default {
   font-size: small;
   font-style: italic;
 }
-</style>
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 80px;
+}
+.thumbnail-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.thumbnail-wrapper {
+  flex: 1;
+}
+.ingredient-image-result {
+  margin-right: 10px;
+  flex: 1;
+}</style>
