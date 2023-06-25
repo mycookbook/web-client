@@ -15,6 +15,7 @@ export const recipeStore = {
 		UPDATE_RECIPE_STATE(state, newState) {
 			this.state.recipe = newState
 			state.hasClapped += 1
+			state.hasClapped += 1
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
@@ -66,10 +67,10 @@ export const recipeStore = {
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');
 		},
-		async fetch_ingredient_thumbnail(context, ingredient){
+		fetch_ingredient_thumbnail(context, ingredient){
 			const client = createClient(process.env.PEXEL_API_KEY);
 			const query = ingredient;
-			await client.photos.search({ query, per_page: 3 })
+			client.photos.search({ query, per_page: 3 })
 			.then(photos => {
 				context.commit("SET_THUMBNAIL_STATE", photos)
 			});

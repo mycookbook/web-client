@@ -1,59 +1,113 @@
 <template>
-    <div>
-        <div class="ui info centered message">
-            <b>Hello there, we hope you are having the best experience! How likely are you to recommend
-                this app to a friend?
+    <div v-if="showFeedbackWidget">
+        <div class="ui info message">
+            <div v-if="!submitted">
+                <b>Hello there, we hope you are having the best experience! How likely are you to recommend
+                    this app to your friends?</b>
                 <br /><br />
-                <div class="ui form">
-                    <div class="inline fields">
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                <label>Still checking this out</label>
-                            </div>
+            </div>
+            <div class="ui form">
+                <div class="inline fields" style="margin-left:40px;" v-if="!submitted">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="feedback" value="still-thinking"
+                                @click="selectOption('still-thinking')">
+                            <label>Still checking this out</label>
                         </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                <label>Probably</label>
-                            </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="feedback" value="probably" @click="selectOption('probably')">
+                            <label>Probably</label>
                         </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                <label>Very likely!</label>
-                            </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="feedback" checked="checked" value="definitely"
+                                @click="selectOption('definitely')">
+                            <label>Very likely</label>
                         </div>
                     </div>
                 </div>
-            </b>
+                <div class="field" v-if="!submitted">
+                    <div class="ui fluid tbb button" @click="submitFeedback()">
+                        Submit
+                    </div>
+                </div>
+                <div class="field" v-if="stillThinking">
+                    <div class="ui fluid basic large label">
+                        <div class="ui header" style="margin-left:31%;cursor:default;">
+                            No worries, we gatchu!
+                        </div>
+                    </div>
+                </div>
+                <div class="field" v-if="submitted">
+                    <div class="ui fluid basic large label" @click="copyShareableLink()">
+                        <div class="ui header" style="margin-left:34%;cursor:pointer;">
+                            Copy shareable link
+                        </div>
+                        <div class="ui header" style="margin-left:29%;cursor:pointer;color: #ccc;" id="shareableLink">
+                            https://shorturl.at/BKPRT
+                        </div>
+                    </div>
+                </div>
+                <div class="field" v-if="isCopied">
+                    <div class="ui fluid basic large disabled label">
+                        <div class="ui header" style="margin-left:20%;cursor:default;">
+                            Shareable link copied to your clipboard
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
     
 <script>
+import store from '@/store';
 
 export default {
     name: "Feedback",
-    mounted() { },
     computed: {
-        example() {
+        showFeedbackWidget() {
+            if (this.$store.state.active_user.hasOwnProperty('onboarding')) {
+                return (this.$store.state.active_user.onboarding.likelihoodToShare != "definitely")
+            }
             return true
         }
     },
-    props: {
-        numbers: Array
-    },
     data() {
         return {
-            title: 'This is an Example component'
+            stillThinking: false,
+            probably: false,
+            veryLikely: false,
+            submitted: false,
+            selectedOption: 'definitely',
+            isCopied: false,
+            shareableLink: 'https://shorturl.at/BKPRT'
         }
     },
-    filters: {
-        exampleFilter() { }
-    },
-    components: {
-        Navigation
+    methods: {
+        submitFeedback() {
+            if (['still-thinking', 'probably'].includes(this.selectedOption)) {
+                this.stillThinking = !this.stillThinking
+                this.submitted = true;
+            } else {
+                this.submitted = !this.submitted
+            }
+
+            this.$store.dispatch('send_feedback', this.selectedOption)
+        },
+        selectOption(option) {
+            this.selectedOption = option
+        },
+        copyShareableLink() {
+            navigator.clipboard.writeText(this.shareableLink).then(() => {
+                this.isCopied = true
+            }, () => {
+                console.error('Failed to copy');
+            });
+        }
     }
 };
 </script>

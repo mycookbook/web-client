@@ -21,7 +21,13 @@
                             </small>
                         </div>
                         <div class="ui tiny circular button" style="float: right;">
-                            <i class="search icon"></i>This button
+                            <i class="search icon"></i>
+                            <router-link :to="{
+                                name: 'SearchResults',
+                                query: { q: ':recipes|trending' }
+                            }">
+                                This button
+                            </router-link>
                         </div>
                     </div>
                 </div>

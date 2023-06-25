@@ -2,16 +2,16 @@
   <div>
     <div class="hideshowicon">
       <div v-if="inEditMode">
-        hide editor<i class="ui chevron down icon" @click="toggleEditor('hide')"></i>
+        hide editor<i class="ui chevron up icon" @click="toggleEditor"></i>
       </div>
       <div v-else>
-        show editor<i class="ui chevron up icon" @click="toggleEditor('show')"></i>
+        add new recipe<i class="ui chevron down icon" @click="toggleEditor"></i>
       </div>
     </div>
     <br />
     <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(submitButton)">
-        <div id="recipe-editor">
+        <div id="recipe-editor" v-if="inEditMode">
           <div class="ui segment">
             <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
               :acceptTypes="acceptTypes" />
@@ -234,12 +234,6 @@ import { messages } from 'vee-validate/dist/locale/en.json';
 import CookbookSelector from './Widgets/CookbookSelectorWidget';
 import { mapActions } from 'vuex';
 
-Object.keys(rules).forEach(rule => {
-  extend(rule, {
-    ...rules[rule], // copies rule configuration
-    message: messages[rule] // assign message
-  });
-})
 
 export default {
   name: "MyRecipes",
@@ -247,6 +241,15 @@ export default {
     let username = this.$store.state.username
     this.$store.dispatch('fetch_contributor', username)
     this.$store.dispatch('reset_msgs')
+  },
+
+  created() {
+    Object.keys(rules).forEach(rule => {
+      extend(rule, {
+        ...rules[rule], // copies rule configuration
+        message: messages[rule] // assign message
+      });
+    })
   },
 
   computed: {
@@ -291,7 +294,8 @@ export default {
 
   data() {
     return {
-      inEditMode: true,
+      inEditMode: false,
+
       uploadMessageDescription: "Upload Recipe Cover Image",
       imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
       acceptTypes: ".png",
@@ -338,18 +342,10 @@ export default {
   methods: {
     ...mapActions(['fetch_ingredient_thumbnail']), // Import the action from the store
 
-    toggleEditor(action) {
-      if (action === 'hide') {
-        $("#recipe-editor").removeClass("show")
-        $("#recipe-editor").addClass("hide")
-      }
-
-      if (action === 'show') {
-        $("#recipe-editor").addClass("show")
-        $("#recipe-editor").removeClass("hide")
-      }
+    toggleEditor() {
       this.inEditMode = !this.inEditMode;
     },
+
     addField(value, field) {
       field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
     },
@@ -484,15 +480,19 @@ export default {
   object-fit: cover;
   max-height: 80px;
 }
+
 .thumbnail-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+
 .thumbnail-wrapper {
   flex: 1;
 }
+
 .ingredient-image-result {
   margin-right: 10px;
   flex: 1;
-}</style>
+}
+</style>

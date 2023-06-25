@@ -1,7 +1,7 @@
 <template>
-<div>
-	<Navigation />
-</div>
+	<div>
+		<Navigation />
+	</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ import Navigation from './Navigation.vue';
 
 export default {
 	name: "Example",
-	mounted() {},
+	mounted() { },
 	computed: {
 		example() {
 			return true
@@ -21,10 +21,10 @@ export default {
 	data() {
 		return {
 			title: 'This is an Example component'
-    	}
-  	},
+		}
+	},
 	filters: {
-		exampleFilter() {}
+		exampleFilter() { }
 	},
 	components: {
 		Navigation

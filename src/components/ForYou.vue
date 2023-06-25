@@ -8,15 +8,15 @@
         <br />
         <div class="ui divider"></div>
         <br /><br />
-        <TrendingNow />
-        <br /><br />
         <TakingOrders />
+        <br /><br />
+        <TrendingNow />
         <br />
         <div class="ui divider"></div>
         <br /><br />
         <PeopleWithSimilarInterests />
         <div>
-            <a>back to top</a>
+            <a href="/">back to top</a>
         </div>
     </div>
 </template>

@@ -5,7 +5,7 @@
                 <div class="item" v-for="toFollow in toFollowList">
                     <div class="ui grid">
                         <FourWideCircularImage :imgUrl="toFollow.avatar" :imgTitle="toFollow.author" />
-                        <div class="eight wide column" style="margin-left:-27px!important">
+                        <div class="eight wide computer column" style="margin-left:-27px!important;">
                             <div>
                                 <small>
                                     <b>
@@ -22,8 +22,8 @@
                                 </small>
                             </div>
                         </div>
-                        <div class="four wide column">
-                            <div style="float:left;margin-left:20px!important;">
+                        <div class="four wide computer column">
+                            <div>
                                 <div class="ui tbb small circular button" :class="{ disabled: !_isLoggedIn }"
                                     @click="follow(toFollow.handle)">
                                     Follow

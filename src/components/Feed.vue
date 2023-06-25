@@ -10,17 +10,12 @@
                     <div class="eight wide computer column sixteen wide mobile column">
                         <div class="ui header" @click="toggleTab()">
                             <a class="black-text active" href="/#/?v=fu" id="foryou">
-                                For You <a class="ui red circular basic tiny label" style="padding:7px 8px!important;">Beta</a>
+                                For You <a class="ui red circular basic tiny label"
+                                    style="padding:7px 8px!important;">Beta</a>
                             </a>
                             <a class="" style="padding-right:30px;"></a>
                             <a class="black-text" href="/#/?v=ff" id="following">
                                 Following
-                            </a>
-                            <a href="" id="send-feedback">
-                                <span
-                                    style="float: right!important;font-size: 12px; font-weight: lighter!important; margin-top:9px;">
-                                    <p>share feedback</p>
-                                </span>
                             </a>
                         </div>
                         <div style="color:white!important;" id="currTab">{{ currentTab }}</div>

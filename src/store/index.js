@@ -73,10 +73,10 @@ export default new Vuex.Store({
 	}),
 	mutations: {
 		STORE_POLICIES(state, policies) {
-			state.policies.cookiePolicy = policies.cookiePolicy.content
-			state.policies.usagePolicy = policies.usagePolicy.content
-			state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
-			state.policies.termsAndConditons = policies.termsAndConditions.content
+			this.state.policies.cookiePolicy = policies.cookiePolicy.content
+			this.state.policies.usagePolicy = policies.usagePolicy.content
+			this.state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
+			this.state.policies.termsAndConditons = policies.termsAndConditions.content
 		},
 		SET_LOADING_STATE(state, status) {
 			this.state.resource_isLoading = status
@@ -96,9 +96,6 @@ export default new Vuex.Store({
 
 			router.push('/')
 		},
-		COMMENT_POSTED(state, breadcrumb) {
-			location.reload()
-		},
 		HANDLE_ERROR(state, errorObj) {
 			let _m = 'Uh oh, it looks like your session has expired. Please logout and signin again.'
 
@@ -106,33 +103,30 @@ export default new Vuex.Store({
 				_m = 'Developer, please obtain a new token and restart your dev server.'
 			}
 
-			if (errorObj.status === 401) {
-				alert(_m)
+			if (errorObj.hasOwnProperty('status')) {
+				if (errorObj.status === 401) {
+					alert(_m)
+				}
+
+				if ([400, 500, 404].includes(errorObj.status)) {
+
+					alert(errorObj.data.error)
+
+					this.state.access_token = null
+					this.state.active_user = {}
+					this.state.following_data = {}
+				}
+			} else {
+				alert('Some unknown error has occured. Please logout and signin again.')
 			}
 
-			if ([400, 500, 404].includes(errorObj.status)) {
-
-				alert(errorObj.data.message)
-
-				this.state.access_token = null
-				this.state.active_user = {}
-				this.state.following_data = {}
-
-				router.push('/')
-			}
+			router.push('/#/?v=fu')
 
 			console.log('error', errorObj)
-		}
-	},
-	actions: {
-		async boot(context) {
-			const base_urls = {
-				'development': 'https://api.cookbookshq.com/api/v1/',
-				'production': 'https://api.cookbookshq.com/api/v1/'
-			}
-
-			router.push('/')
 		},
+		SHOW_FEEDBACK_WIDGET(state, choice) {
+			this.state.active_user.onboarding.likehihoodToShare = choice
+		}
 	},
 	actions: {
 		async boot(context) {
@@ -178,6 +172,20 @@ export default new Vuex.Store({
 		},
 		logout(context) {
 			context.commit("LOGOUT")
+		},
+		send_feedback(context, choice) {
+			this.state.api.client.post(process.env.BASE_URL + 'feedback',
+				{ 'choice': choice },
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				})
+				.then(function (response) {
+					context.commit("SHOW_FEEDBACK_WIDGET", choice)
+				}).catch(function (error) {
+					context.commit('HANDLE_ERROR', error.response);
+				})
 		}
 	},
 	getters: {

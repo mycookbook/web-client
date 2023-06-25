@@ -25,7 +25,7 @@
 								{{ comment.created_at }}
 							</span>
 						</div>
-						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author.email)"
+						<span style="float:right!important;cursor:pointer;" v-if="canDelete(comment.author)"
 							@click="deleteComment(comment.id)">
 							<i class="ui small trash icon"></i>
 						</span>
@@ -87,8 +87,8 @@ export default {
 		}
 	},
 	methods: {
-		canDelete(commentAuthorSlug) {
-			return this.isLoggedIn && (store.state.username === commentAuthorSlug);
+		canDelete(author) {
+			return store.state.username.trim() === author.name_slug.trim();
 		},
 		postComment() {
 			if (this.new_comment) {
