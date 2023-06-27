@@ -25,7 +25,7 @@
                         <div class="ui radio checkbox">
                             <input type="radio" name="feedback" checked="checked" value="definitely"
                                 @click="selectOption('definitely')">
-                            <label>Very likely</label>
+                            <label>Very likely (100%)</label>
                         </div>
                     </div>
                 </div>
