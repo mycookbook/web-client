@@ -15,7 +15,6 @@ export const recipeStore = {
 		UPDATE_RECIPE_STATE(state, newState) {
 			this.state.recipe = newState
 			state.hasClapped += 1
-			state.hasClapped += 1
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0

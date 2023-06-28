@@ -1,4 +1,7 @@
-module.exports = {
+var merge = require('webpack-merge')
+var prodEnv = require('./prod.env')
+
+module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   APP_URL: '"http://localhost:5001"',
   BASE_URL: '"https://api.cookbookshq.com/api/v1/"',
