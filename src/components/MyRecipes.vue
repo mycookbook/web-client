@@ -82,7 +82,7 @@
                       <div>
                         <label>name</label>
                         <input v-model="input.name" type="text" placeholder="name of ingredient"
-                          @input="searchIngredientImages(index)" />
+                          @input="debounceSearchIngredientImages(index)" />
                         <span class="errorText">{{ errors[0] }}</span>
                       </div>
                     </ValidationProvider>
@@ -92,7 +92,7 @@
                         <div class="six wide computer column sixteen wide mobile column">
                           <label>unit</label>
                           <input v-model="input.unit" type="text" placeholder="unit"
-                            @input="searchIngredientImages(index)" />
+                            @input="debounceSearchIngredientImages(index)" />
                           <span class="errorText">{{ errors[0] }}</span>
                         </div>
                       </ValidationProvider>
@@ -101,6 +101,7 @@
                     <br />
                     <br />
                     <div class="ui grid">
+                      <div v-if="input.loading" class="loading-indicator">Loading...</div>
                       <div v-if="input.showImageResults" class="thumbnail-container">
 
                         <div v-for="(result, resultIndex) in input.imageResults" :key="`result-${resultIndex}`"
@@ -113,6 +114,7 @@
                             </div>
                           </label>
                         </div>
+
                       </div>
                     </div>
                     <div class="ui grid">
@@ -233,6 +235,8 @@ import * as rules from 'vee-validate/dist/rules';
 import { messages } from 'vee-validate/dist/locale/en.json';
 import CookbookSelector from './Widgets/CookbookSelectorWidget';
 import { mapActions } from 'vuex';
+import { debounce } from 'lodash';
+import { createClient } from 'pexels';
 
 
 export default {
@@ -241,6 +245,7 @@ export default {
     let username = this.$store.state.username
     this.$store.dispatch('fetch_contributor', username)
     this.$store.dispatch('reset_msgs')
+   
   },
 
   created() {
@@ -278,6 +283,7 @@ export default {
     },
 
   },
+
 
   watch: {
     nationality(newValue, oldValue) {
@@ -319,7 +325,7 @@ export default {
       title: "",
       nationality: "",
       recipeDescription: "",
-      ingredients: [{ name: "", unit: "", thumbnail: "", link: "" }],
+      ingredients: [{ name: "", unit: "", thumbnail: "", link: "", loading: false }],
       searchParameter: "",
       keywords: "",
       cookbook_id: "",
@@ -328,6 +334,7 @@ export default {
       error: [],
       cookbookError: "",
       nationalityError: "",
+      debounceSearchIngredientImages: debounce(this.searchIngredientImages, 500), // Debounced version of the method
     };
   },
   components: {
@@ -340,14 +347,17 @@ export default {
   },
 
   methods: {
-    ...mapActions(['fetch_ingredient_thumbnail']), // Import the action from the store
-
     toggleEditor() {
       this.inEditMode = !this.inEditMode;
     },
 
     addField(value, field) {
       field.push({ value: { name: "", unit: "", thumbnail: "", link: "" } })
+      // Clear the thumbnail data for all ingredients
+      this.ingredients.forEach((ingredient, index) => {
+        this.$delete(ingredient, 'imageResults');
+        this.$delete(ingredient, 'showImageResults');
+      });
     },
     removeField(index, field) {
       if (index > 0) {
@@ -363,25 +373,47 @@ export default {
     async searchIngredientImages(index) {
       const ingredient = this.ingredients[index].name;
       const unit = this.ingredients[index].unit;
+
+
+      // Remove the existing imageResults property
+      this.$delete(this.ingredients[index], 'imageResults');
+      this.$delete(this.ingredients[index], 'showImageResults');
+
+
       // Check if both name and unit are filled before making the API call
       if (ingredient && unit) {
-        // Remove the existing imageResults property
-        this.$delete(this.ingredients[index], 'imageResults');
+        try {
+          this.$set(this.ingredients[index], 'loading', true); // Set loading state to true
+          // Make the API call to fetch the ingredient thumbnails
+          const response = await this.fetch_ingredient_thumbnail(ingredient)
+          // Extract the thumbnail URLs from the API response
+          const imageResults = response;
 
-        // Make the API call to fetch the ingredient thumbnails
-        await this.$store.dispatch('fetch_ingredient_thumbnail', ingredient);
-
-        // Retrieve the image results from the store after the action is completed
-        const response = this.$store.state.thumbnail;
-        // Extract the thumbnail URLs from the API response
-        const imageResults = response;
-        // console.log(imageResults[index].url)
-
-
-        // Update the corresponding ingredient object with the image results
-        this.$set(this.ingredients[index], 'imageResults', imageResults);
-        this.$set(this.ingredients[index], 'showImageResults', imageResults.length > 0);
+          // Update the corresponding ingredient object with the image results
+          this.$set(this.ingredients[index], 'imageResults', imageResults);
+          this.$set(this.ingredients[index], 'showImageResults', imageResults.length > 0);
+        } catch (error) {
+          console.log(error)
+        } finally {
+          this.$set(this.ingredients[index], 'loading', false);
+        }
       }
+    },
+
+    fetch_ingredient_thumbnail(ingredient) {
+      const client = createClient(process.env.PEXEL_API_KEY);
+      const query = ingredient;
+      return new Promise((resolve, reject) => {
+        client.photos.search({ query, per_page: 3 })
+          .then(photos => {
+            resolve(photos.photos)
+          })
+          .catch(error => {
+            console.log(error)
+            reject(error)
+          })
+      })
+
     },
 
     selectThumbnail(index, thumbnailUrl) {
@@ -419,18 +451,34 @@ export default {
         draft: this.draft,
         recipeDescription: this.recipeDescription,
         imagePath: this.imagePath,
-        cookbook_id: this.cookbook_id
+        cookbook_id: this.cookbook_id,
+        tags: [],
       }
+      
       if (validFile === true) {
-        const result = await this.$store.dispatch('post_recipe', dataSend)
-        console.log(result)
-        if (result === 'success') {
+        const postResponse = await this.$store.dispatch('post_recipe', dataSend)
+        const result = await postResponse
+        if (result && result.status === 201) {
           alert("Recipe has been created")
           this.toggleEditor('hide')
+          // Clear the fields
+          this.title = '';
+          this.nationality = '';
+          this.ingredients = [{ name: '', unit: '', thumbnail: '', link: '' }];
+          this.keywords = '';
+          this.draft = false;
+          this.recipeDescription = '';
+          this.imagePath = '';
+          this.cookbook_id = '';
+
+          // Reload the page
+          location.reload();
+
         } else {
-          alert('Problem creating recipe, please try again later')
+          alert('error below occured:' + response.data)
         }
-      }
+       }
+      
       if (validFile === false) {
         alert('You have incomplete fields')
       }

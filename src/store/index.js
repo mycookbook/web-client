@@ -136,7 +136,7 @@ export default new Vuex.Store({
 			}
 
 			const definitions = base_urls[process.env.NODE_ENV] + 'definitions'
-			const cookbook_resources = base_urls[process.env.NODE_ENV] + 'cookbooks'
+			const cookbook_resources = base_urls[process.env.NODE_ENV] + 'cookbooks'		
 			const policies = base_urls[process.env.NODE_ENV] + 'policies'
 
 			await this.state.api.client.all([
