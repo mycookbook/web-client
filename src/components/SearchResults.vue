@@ -47,8 +47,8 @@
 			<div class="thirteen wide computer column sixteen wide mobile column sixteen wide tablet column">
 				<div class="ui mobile hidden">
 					<div class="ui fluid action input">
-						<input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq" @keyup="searchForQuery"
-							id="sq">
+						<input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq"
+							@keyup="searchForQuery" id="sq">
 						<div class="ui tbb button" @click="searchForQuery">
 							Search
 						</div>
@@ -66,8 +66,8 @@
 				<div class="ui mobile only">
 					<div style="margin-top:-60px!important;">
 						<div class="ui fluid action input">
-							<input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq" @keyup="searchForQuery"
-								id="sq">
+							<input type="text" placeholder="Try: peppermint tea recipe" v-model="searchq"
+								@keyup="searchForQuery" id="sq">
 						</div>
 						<div>
 							<span style="float:right!important;">
@@ -88,9 +88,9 @@
 						will list all the cookbooks that matches your search query!
 						<br /><br /> <b>Neat right? Learn how to search like a pro using our homegrown</b></em>
 					<router-link :to="{
-	name: 'Help',
-	query: { doc: 'query-syntax' }
-}">
+						name: 'Help',
+						query: { doc: 'query-syntax' }
+					}">
 						query syntax
 					</router-link>
 				</div>
@@ -141,15 +141,16 @@
 						</span>
 						<span style="float:right; text-transform: lowercase;">
 							<small>
-								<span v-if="result.contains.length > 0">
+								<span v-if="result.hasOwnProperty('contains') && result.contains.length > 0">
 									includes <span style="background-color: #FFFF00;" v-for="contain in result.contains">
 										{{ contain }}
 									</span>
 								</span>
-								<span v-if="result.missing.length > 0">
+								<span v-if="result.hasOwnProperty('missing') && result.missing.length > 0">
 									: missing <span v-for="missing in result.missing"><s>
 											{{ missing }}
-										</s></span>
+										</s>
+									</span>
 								</span>
 							</small>
 						</span>
@@ -168,7 +169,7 @@
 					</div>
 					<div>
 						{{ (isCookbook(result.resource_type)) ? (result.description) : (result.summary) | truncate(180,
-		'...')
+							'...')
 						}}
 					</div>
 					<div class="margin-top-15"></div>
@@ -184,6 +185,7 @@ import AdvancedSearchFilters from './AdvancedSearchFilters.vue'
 import AdsComponent from './AdsComponent.vue'
 import Bottom from './Bottom.vue'
 import Contact from './Contact.vue';
+
 export default {
 	name: 'SearchResults',
 	mounted() {

@@ -4,8 +4,8 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'SearchResults'
-}">
+                        name: 'SearchResults'
+                    }">
                         <div>
                             <small><i class="ui search icon"></i>Advanced Search</small>
                         </div>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <br />
-            <!-- <div class="disabled item">
+            <div class="item">
                 <div class="content">
                     <router-link :to="{
                         name: 'Dashboard',
@@ -22,23 +22,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Cookbooks {{ _contributor.cookbooks ? _contributor.cookbooks.length : 0 }}
-                                </u>
-                            </small>
-                        </div>
-                    </router-link>
-                </div>
-            </div> -->
-            <div class="item">
-                <div class="content">
-                    <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Recipes' }
-}">
-                        <div>
-                            <small>
-                                <u>
-                                    My Recipes {{ _recipes ? _recipes.length : 0 }}
+                                    Cookbooks {{ _contributor.cookbooks.length }}
                                 </u>
                             </small>
                         </div>
@@ -48,13 +32,13 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Drafts' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Recipes' }
+                    }">
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _drafts ? _drafts.length : 0 }}
+                                    Recipes {{ _contributor.recipes.length }}
                                 </u>
                             </small>
                         </div>
@@ -64,13 +48,13 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Preferences' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Drafts' }
+                    }">
                         <div>
                             <small>
                                 <u>
-                                    Preferences
+                                    Drafts {{ _contributor.drafts.length }}
                                 </u>
                             </small>
                         </div>
@@ -81,12 +65,25 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Profile' }
-}">
+                        name: 'SearchResults',
+                        query: { q: 'all' }
+                    }">
+                        <div>
+                            <h3><i class="ui hashtag icon"></i> Explore</h3>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+            <br />
+            <div class="item">
+                <div class="content">
+                    <router-link :to="{
+                        name: 'Dashboard',
+                        query: { tab: 'Profile' }
+                    }">
                         <div>
                             <small>
-                                <i class="ui picture icon"></i> My Profile
+                                <i class="ui terminal icon"></i> Bio
                             </small>
                         </div>
                     </router-link>
@@ -95,9 +92,9 @@
             <div class="ui item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Notifications' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Notifications' }
+                    }">
                         <div>
                             <small><i class="ui bell icon"></i> Notifications 0</small>
                         </div>
@@ -107,9 +104,9 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Privacy Settings' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Privacy Settings' }
+                    }">
                         <div>
                             <small>
                                 <i class="ui lock icon"></i> Privacy Settings
@@ -121,9 +118,9 @@
             <div class="item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Display Settings' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Display Settings' }
+                    }">
                         <div>
                             <small>
                                 <i class="ui puzzle icon"></i> Display Settings
@@ -135,9 +132,9 @@
             <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Redeem Points' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Redeem Points' }
+                    }">
                         <div>
                             <small>
                                 <i class="ui trophy icon"></i> Redeem My Points
@@ -149,9 +146,9 @@
             <div class="disabled item">
                 <div class="content">
                     <router-link :to="{
-    name: 'Dashboard',
-    query: { tab: 'Payments & Billing' }
-}">
+                        name: 'Dashboard',
+                        query: { tab: 'Payments & Billing' }
+                    }">
                         <div>
                             <small>
                                 <i class="ui dollar sign icon"></i> Payments & Billing
@@ -163,12 +160,8 @@
         </div>
         <br />
         <div>
-            <div class="ui circular teal button">
-                <a href="/#/contact-sales" style="color:white!important;">Advertise With Us</a>
-            </div>
-            <br /><br />
-            <div class="ui tbb circular button">
-                <a href="/#/plans" style="color:white!important;">Upgrade Your Plan</a>
+            <div class="ui tbb tiny disabled button">
+                Advertise With Us!
             </div>
         </div>
     </div>
@@ -206,5 +199,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

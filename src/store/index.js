@@ -66,14 +66,16 @@ export default new Vuex.Store({
 		access_token: process.env.VUE_APP_DEV_TOKEN,
 		active_user: {},
 		contributor: {},
-		username: null
+		username: null,
+		followind_data: {},
+		who_to_follow: []
 	}),
 	mutations: {
 		STORE_POLICIES(state, policies) {
-			state.policies.cookiePolicy = policies.cookiePolicy.content
-			state.policies.usagePolicy = policies.usagePolicy.content
-			state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
-			state.policies.termsAndConditons = policies.termsAndConditions.content
+			this.state.policies.cookiePolicy = policies.cookiePolicy.content
+			this.state.policies.usagePolicy = policies.usagePolicy.content
+			this.state.policies.dataRetentionPolicy = policies.dataRetentionPolicy.content
+			this.state.policies.termsAndConditons = policies.termsAndConditions.content
 		},
 		SET_LOADING_STATE(state, status) {
 			this.state.resource_isLoading = status
@@ -84,24 +86,46 @@ export default new Vuex.Store({
 
 			this.state.username = req.username
 
-			router.push('/')
+			router.push('/?v=fu')
 		},
 		LOGOUT(state) {
 			this.state.access_token = null
 			this.state.active_user = {}
-
-			router.push('/')
-		}
-	},
-	actions: {
-		async boot(context) {
-			const base_urls = {
-				'development': 'https://api.cookbookshq.com/api/v1/',
-				'production': 'https://api.cookbookshq.com/api/v1/'
-			}
+			this.state.following_data = {}
 
 			router.push('/')
 		},
+		HANDLE_ERROR(state, errorObj) {
+			let _m = 'Uh oh, it looks like your session has expired. Please logout and signin again.'
+
+			if (process.env.NODE_ENV === 'development') {
+				_m = 'Developer, please obtain a new token and restart your dev server.'
+			}
+
+			if (errorObj.hasOwnProperty('status')) {
+				if (errorObj.status === 401) {
+					alert(_m)
+				}
+
+				if ([400, 500, 404].includes(errorObj.status)) {
+
+					alert(errorObj.data.error)
+
+					this.state.access_token = null
+					this.state.active_user = {}
+					this.state.following_data = {}
+				}
+			} else {
+				alert('Some unknown error has occured. Please logout and signin again.')
+			}
+
+			router.push('/#/?v=fu')
+
+			console.log('error', errorObj)
+		},
+		SHOW_FEEDBACK_WIDGET(state, choice) {
+			this.state.active_user.onboarding.likehihoodToShare = choice
+		}
 	},
 	actions: {
 		async boot(context) {
@@ -147,6 +171,20 @@ export default new Vuex.Store({
 		},
 		logout(context) {
 			context.commit("LOGOUT")
+		},
+		send_feedback(context, choice) {
+			this.state.api.client.post(process.env.BASE_URL + 'feedback',
+				{ 'choice': choice },
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				})
+				.then(function (response) {
+					context.commit("SHOW_FEEDBACK_WIDGET", choice)
+				}).catch(function (error) {
+					context.commit('HANDLE_ERROR', error.response);
+				})
 		}
 	},
 	getters: {

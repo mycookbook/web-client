@@ -5,42 +5,68 @@
 			<RecipeCardSkeleton />
 		</div>
 		<div v-else>
+			<!-- <div class="ui grid center">
+				<div class="ui sixteen wide computer column sixteen wide tablet column sixteen wide mobile column">
+					<AutoComplete />
+				</div>
+			</div> -->
 			<br /><br /><br />
+			<!-- <br /><br /> -->
 			<Breadcrumb :active="recipe.cookbook.name" :parentComponentName="'Cookbook'"
 				:parentSlug="recipe.cookbook.slug" :child="recipe.name" />
 			<div class="ui grid">
 				<div class="sixteen wide computer column sixteen wide mobile column">
+					<div class="ui mini images">
+						<img class="ui image" :src="ingredient.thumbnail" v-for="ingredient in recipe.ingredients"
+							:alt="ingredient.name" :title="ingredient.name" style="cursor:zoom-in"
+							@click="ingredientLink(ingredient)">
+					</div>
 					<div class="ui grid"
 						style="border:1px solid rgb(255, 255, 255);border-radius:15px!important;background-color:rgb(255, 255, 255)">
 						<div class="eight wide computer column sixteen wide mobile column ui fluid image"
 							style="height:fit-content!important">
-
-							<div class="ui mini images">
-								<img class="ui image" :src="ingredient.thumbnail"
-									v-for="ingredient in recipe.ingredients.data" :alt="ingredient.name"
-									:title="ingredient.unit + ' ' + ingredient.name" style="cursor:zoom-in"
-									@click="ingredientLink(ingredient)"
-									:style="{ 'display': 'inline-flex', 'height': '35px' }"
-									v-if="ingredient.hasOwnProperty('thumbnail') && ingredient.thumbnail != ''">
-							</div>
 							<img :src="recipe.imgUrl" :alt="recipe.name" class="zoom" />
-							<div class="talkify-section">
-								<div class="ui header padded">
-									<span>
-										HOW TO PREPARE
+							<div class="ui header padded">
+								<span>
+									HOW TO PREPARE
+								</span>
+								<span style="float:right;cursor: pointer!important;"
+									@click="textToSpeech(recipe.description)">
+									<i class="ui small play circle green icon" id="t2sIcon"></i>
+									<span style="color:green;font-size: 14px;margin-left: -5px;font-weight: lighter;">
+										Listen
 									</span>
-									<span style="float:right;cursor: pointer!important;" @click="textToSpeech()">
-										<button class="ui right labeled icon tbb button">
-											<i class="right headphone icon"></i>
-											Listen
-										</button>
-										<span style="font-size: 14px;margin-left: -5px;font-weight: lighter;"></span>
-									</span>
-								</div>
-								<div v-html="recipe.description" class="ui left aligned text"></div>
+								</span>
 							</div>
+							<div v-html="recipe.description" class="ui left aligned text"></div>
 						</div>
 						<div class="eight wide computer column sixteen wide mobile column">
+							<div class="ui grid">
+								<div class="four wide computer column sixteen wide mobile column">
+									<Claps />
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<div class="ui tbb fluid mini button"
+									:class="{disabled: !_isLoggedIn}"
+										title="Add a variation for this recipe, make it yours!"
+									>
+										<i class="ui plus icon"></i>
+										Customize
+									</div>
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<div class="ui icon tbb fluid mini button"
+										data-tooltip="click to copy the ingredients to your clipboard"
+										data-position="top left" data-inverted="" id="clipboardMsg"
+										@click="copyIngredients()">
+										<i class="ui linkify icon"></i>
+										Ingredients
+									</div>
+								</div>
+								<div class="four wide computer column sixteen wide mobile column">
+									<ReportIt />
+								</div>
+							</div>
 							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<Follow :followers="recipe.author.followers" :author="recipe.author.name"
@@ -49,22 +75,32 @@
 							</div>
 							<div class="ui horizontal divider"></div>
 							<div class="ui grid">
-								<div class="four wide computer column sixteen wide mobile column">
-									<Claps />
-								</div>
-								<div class="four wide computer column sixteen wide mobile column" id="ingredients">
-									<div class="ui hidden">{{ ingredients }}</div>
-									<CopyCopiedButtonsWidget htmlTagId="ingredients" tooltip="copy ingredients" />
-								</div>
-								<div class="eight wide computer column sixteen wide mobile column">
-									<ReportIt />
-								</div>
-							</div>
-							<div class="ui grid">
 								<div class="sixteen wide computer column sixteen wide mobile column">
 									<Comments :comments="_recipeComments" :author_id="recipe.id" />
 								</div>
 							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui grid">
+				<div class="sixteen wide computer column sixteen wide mobile column">
+					<br />
+					<div style="background-color:#1e272c;height:45px; width:20%; border-radius: 20px;">
+						<div style="padding:15px;color:white;" class="shareIcons">
+							<span style="margin-left:10px;">
+								<i class="ui twitter icon" title="click to share on twitter"></i>
+							</span>
+							<span>
+								<i class="ui paypal icon" title="we accept your kind donations"></i>
+							</span>
+							<span>
+								<i class="ui linkify icon" title="copy link to this recipe"></i>
+							</span>
+							<span>
+								<i class="ui bell icon" title="get notified when there are updates"></i>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -102,6 +138,8 @@ export default {
 	],
 	computed: {
 		recipe() {
+			let token = this.$store.state.access_token
+
 			return this.$store.state.recipe
 		},
 		isLoading() {
@@ -113,31 +151,16 @@ export default {
 			return this.recipeComments;
 		},
 		_isLoggedIn() {
-			let hasSession = (store.state.access_token !== null)
+            let hasSession = (store.state.access_token !== null)
 
-			this.isLoggedIn = true
+            this.isLoggedIn = true
 
-			if (!hasSession) {
-				this.isLoggedIn = false
-			}
+            if (!hasSession) {
+                this.isLoggedIn = false
+            }
 
-			return this.isLoggedIn
-		},
-		ingredients() {
-			const recipe = this.$store.state.recipe
-
-			let ingredients = recipe.ingredients.data
-			let ingredientsList = ""
-
-			let line1 = "Ingredients list for " + recipe.name + "\n\n";
-			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
-
-			for (let i = 0; i < ingredients.length; i++) {
-				ingredientsList += "- " + ingredients[i].unit + ' ' + ingredients[i].name + "\n"
-			}
-
-			return line1 + ingredientsList + lastLine
-		}
+            return this.isLoggedIn
+        }
 	},
 	data() {
 		return {
@@ -151,39 +174,50 @@ export default {
 		};
 	},
 	methods: {
-		textToSpeech() {
-			talkify.config.debug = false;
-			talkify.config.useSsml = false;
+		copyIngredients() {
+			const recipe = this.$store.state.recipe
 
-			talkify.config.remoteService.apiKey = process.env.TALKIFY_KEY;
-			talkify.config.ui.audioControls.enabled = true;
+			let ingredients = JSON.stringify(recipe.ingredients)
+			let ingredientsList = ""
 
-			var player = new talkify.TtsPlayer()
-				.enableTextHighlighting();
+			let line1 = "Ingredients list for " + recipe.name + "\n\n";
+			let lastLine = "\n" + "Have fun!" + "\n" + ":heart: Team CookbooksHQ";
 
-			player.forceVoice({ name: 'Zira', description: "Zira" });
+			for (let i = 0; i < recipe.ingredients.length; i++) {
+				ingredientsList += "- " + recipe.ingredients[i].name + "\n"
+			}
 
-			var playlist = new talkify.playlist()
-				.begin()
-				.usingPlayer(player)
-				.withRootSelector('.talkify-section')
-				.withTextInteraction()
-				.build();
+			let message = line1 + ingredientsList + lastLine
 
-			playlist.play();
+			navigator.clipboard.writeText(message).then(function () {
+				$("#clipboardMsg").data("tooltip", "Copied!")
+			})
+		},
+		textToSpeech(description) {
+			$("#t2sIcon").removeClass("play")
+			$("#t2sIcon").addClass("pause")
+
+			// let cleanText = description.replace(/[<div</div><p></p><h3></h3><br /><ol></ol><li><>/li>]/g, '');
+			let cleanText = "I'm still a Work In Progress!"
+			// console.log(typeof cleanText)22
+
+			const msg = new SpeechSynthesisUtterance();
+			msg.text = cleanText;
+			window.speechSynthesis.speak(msg);
+			// window.speechSynthesis.addEventListener('voiceschanged', (event) => { })
+			// onvoiceschanged = (event) => { }
+
+			// $("#t2sIcon").removeClass("pause")
+			// $("#t2sIcon").addClass("play")
 		},
 		ingredientLink(ingredient) {
 			let url = ""
-			if (!ingredient.link) {
-				let google_search_url = "https://www.google.com/search?q=" + ingredient.name;
+			let google_search_url = "https://www.google.com/search?q=" + ingredient.name;
 
-				if (ingredient.hasOwnProperty('purchaseLink')) {
-					url = ingredient.purchaseLink
-				} else {
-					url = google_search_url
-				}
+			if (ingredient.purchaseLink) {
+				url = ingredient.purchaseLink
 			} else {
-				url = ingredient.link
+				url = google_search_url
 			}
 
 			window.open(url, '_blank').focus();
@@ -200,8 +234,7 @@ export default {
 		AutoComplete,
 		Breadcrumb,
 		Comments,
-		Follow,
-		CopyCopiedButtonsWidget
+		Follow
 	},
 };
 </script>

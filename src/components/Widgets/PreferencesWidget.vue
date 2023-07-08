@@ -151,18 +151,6 @@
 
 <script>
 export default {
-    name: "Preferences",
-    mounted() { },
-    computed: {
-        example() {
-            return true
-        }
-    },
-    props: {
-        numbers: Array
-    },
-    data() {
-        return {}
-    }
+    name: "Preferences"
 }
 </script>

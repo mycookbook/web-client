@@ -14,6 +14,12 @@ export const recipeStore = {
 		},
 		RESET_HASCLAPPED(state) {
 			state.hasClapped = 0
+		},
+		COMMENT_POSTED(state, breadcrumb) {
+			location.reload()
+		},
+		COMMENT_DELETED(state) {
+			location.reload()
 		}
 	},
 	actions: {
@@ -28,7 +34,7 @@ export const recipeStore = {
 						context.commit('INCREMENT_CLAP', response.data.claps)
 					}
 				}).catch(function (error) {
-					console.log('clapping error', error.response)
+					context.commit('HANDLE_ERROR', error.response);
 				})
 		},
 		fetch_recipe(context, recipeId) {
@@ -60,6 +66,34 @@ export const recipeStore = {
 		},
 		reset_hasClapped(context) {
 			context.commit('RESET_HASCLAPPED');
+		},
+		post_comment(context, payload) {
+			this.state.api.client.post(
+				`${process.env.BASE_URL}comments`,
+				payload,
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				}).then(() => {
+					context.commit('COMMENT_POSTED', payload.breadcrumb);
+				}).catch((error) => {
+					context.commit('HANDLE_ERROR', error.response);
+				})
+		},
+		delete_comment(context, payload) {
+			this.state.api.client.post(
+				`${process.env.BASE_URL}comments/destroy`,
+				payload,
+				{
+					headers: {
+						'Authorization': `Bearer ${this.state.access_token}`
+					}
+				}).then(() => {
+					context.commit('COMMENT_DELETED', payload.breadcrumb);
+				}).catch((error) => {
+					context.commit('HANDLE_ERROR', error.response);
+				})
 		}
 	}
 }

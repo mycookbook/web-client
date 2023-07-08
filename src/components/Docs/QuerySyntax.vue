@@ -128,7 +128,7 @@
                             Example <code>:recipes|likes 0</code>
                         </ul>
                         <br />
-                        <div>
+                        <!-- <div>
                             This will return results for all recipes with 0 likes.
                             <br /><br />
                             <p>=======================================================</p>
@@ -168,7 +168,7 @@
                                     <a href="/#/search?q=:recipes|likes between:10|1000">Try it</a>
                                 </span>
                             </p>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="ui message">
                         <span style="float: right!important;">
@@ -226,7 +226,7 @@
                             Note: This syntax only returns results if you are logged in.
                         </div>
                     </div>
-                    <div class="ui message">
+                    <!-- <div class="ui message">
                         <div>
                             <p>
                                 ======================================================
@@ -261,7 +261,7 @@
                                 Sorry this expression is not available yet.
                             </p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <br />
