@@ -179,7 +179,8 @@ export default {
     name: "LeftSideMenu",
     computed: {
         _recipes() {
-            let recipes = this.$store.state.contributor.recipes
+            //let recipes = this.$store.state.contributor.recipes
+            let recipes = this.$store.state.active_user.recipes
             if (recipes) {
                 return recipes.filter(function (recipe) {
                     return recipe.is_draft == false;
@@ -190,8 +191,10 @@ export default {
 
         },
         _drafts() {
-            let recipes = this.$store.state.contributor.recipes
-            let cookbooks = this.$store.state.contributor.cookbooks
+            //let recipes = this.$store.state.contributor.recipes
+            let recipes = this.$store.state.active_user.recipes
+            //let cookbooks = this.$store.state.contributor.cookbooks
+            let cookbooks = this.$store.state.active_user.cookbooks
             let _recipes = []
             let _cookbooks = []
 

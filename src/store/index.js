@@ -131,8 +131,8 @@ export default new Vuex.Store({
 	actions: {
 		async boot(context) {
 			const base_urls = {
-				'development': 'https://api.cookbookshq.com/api/v1/',
-				'production': 'https://api.cookbookshq.com/api/v1/'
+				'development': process.env.BASE_URL,
+				'production': process.env.BASE_URL
 			}
 
 			const definitions = base_urls[process.env.NODE_ENV] + 'definitions'

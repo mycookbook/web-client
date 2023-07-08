@@ -173,7 +173,7 @@
           <div class="ui horizontal divider"></div>
           <div class="ui grid">
             <div class="six wide computer column sixteen wide mobile column">
-              <button class="fluid ui black outline button">save as draft</button>
+              <button class="fluid ui black outline button" v-bind:class="{ loading: isLoading }">save as draft</button>
             </div>
             <div class="ten wide computer column  sixteen wide mobile column">
               <button class="fluid ui tbb button" type="submit">save</button>
@@ -263,7 +263,8 @@ export default {
       return JSON.parse(cs)
     },
     _myRecipes() {
-      return this.$store.state.contributor.recipes
+      return this.$store.state.active_user.recipes
+      console.log(this.$store.state.active_user.recipes)
     },
 
     _allCookbooks() {
@@ -280,6 +281,9 @@ export default {
     getImagePath() {
       let imgPath = this.$store.state.imagePath;
       this.imagePath = imgPath;
+    },
+    isLoading(){
+      return this.$store.state.resource_isLoading
     },
 
   },
@@ -365,7 +369,6 @@ export default {
       }
     },
 
-
     selectThumbnail(index, thumbnailUrl) {
       this.ingredients[index].thumbnail = thumbnailUrl.src.original;
     },
@@ -373,13 +376,9 @@ export default {
     async searchIngredientImages(index) {
       const ingredient = this.ingredients[index].name;
       const unit = this.ingredients[index].unit;
-
-
       // Remove the existing imageResults property
       this.$delete(this.ingredients[index], 'imageResults');
       this.$delete(this.ingredients[index], 'showImageResults');
-
-
       // Check if both name and unit are filled before making the API call
       if (ingredient && unit) {
         try {
@@ -388,7 +387,6 @@ export default {
           const response = await this.fetch_ingredient_thumbnail(ingredient)
           // Extract the thumbnail URLs from the API response
           const imageResults = response;
-
           // Update the corresponding ingredient object with the image results
           this.$set(this.ingredients[index], 'imageResults', imageResults);
           this.$set(this.ingredients[index], 'showImageResults', imageResults.length > 0);
@@ -413,13 +411,11 @@ export default {
             reject(error)
           })
       })
-
     },
 
     selectThumbnail(index, thumbnailUrl) {
       this.ingredients[index].thumbnail = thumbnailUrl;
     },
-
 
     newPop: function () {
       $('.button')
@@ -470,12 +466,10 @@ export default {
           this.recipeDescription = '';
           this.imagePath = '';
           this.cookbook_id = '';
-
           // Reload the page
           location.reload();
-
         } else {
-          alert('error below occured:' + response.data)
+          console.log("Error")
         }
        }
       

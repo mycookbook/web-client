@@ -104,7 +104,6 @@ export const recipeStore = {
           return response;
         }
       } catch (error) {
-        console.log(error);
         alert("There was an error creating the recipe");
       }
     },
