@@ -173,10 +173,10 @@
           <div class="ui horizontal divider"></div>
           <div class="ui grid">
             <div class="six wide computer column sixteen wide mobile column">
-              <button class="fluid ui black outline button" v-bind:class="{ loading: isLoading }">save as draft</button>
+              <button class="fluid ui black outline button" @click="saveDrafts" >save as draft</button>
             </div>
             <div class="ten wide computer column  sixteen wide mobile column">
-              <button class="fluid ui tbb button" type="submit">save</button>
+              <button class="fluid ui tbb button" type="submit" v-bind:class="{ loading: isLoading }">save</button>
             </div>
           </div>
         </div>
@@ -263,13 +263,16 @@ export default {
       return JSON.parse(cs)
     },
     _myRecipes() {
-      return this.$store.state.active_user.recipes
-      console.log(this.$store.state.active_user.recipes)
+      if (this.$store.state.active_user.hasOwnProperty('recipes')){
+        return this.$store.state.active_user.recipes
+      } else {
+        return [];
+      }
+      
     },
 
     _allCookbooks() {
       return this.$store.state.cookbooks
-      console.log()
     },
 
     editorSettings() {
@@ -333,7 +336,6 @@ export default {
       searchParameter: "",
       keywords: "",
       cookbook_id: "",
-      draft: "false",
       //Errors
       error: [],
       cookbookError: "",
@@ -417,12 +419,6 @@ export default {
       this.ingredients[index].thumbnail = thumbnailUrl;
     },
 
-    newPop: function () {
-      $('.button')
-        .popup()
-        ;
-    },
-
     dropdownValidation: function () {
       let isValid = true;
       if (!this.nationality) {
@@ -444,7 +440,7 @@ export default {
         nationality: this.nationality,
         ingredients: this.ingredients,
         keywords: this.keywords,
-        draft: this.draft,
+        draft: "false",
         recipeDescription: this.recipeDescription,
         imagePath: this.imagePath,
         cookbook_id: this.cookbook_id,
@@ -462,7 +458,6 @@ export default {
           this.nationality = '';
           this.ingredients = [{ name: '', unit: '', thumbnail: '', link: '' }];
           this.keywords = '';
-          this.draft = false;
           this.recipeDescription = '';
           this.imagePath = '';
           this.cookbook_id = '';
@@ -476,6 +471,39 @@ export default {
       if (validFile === false) {
         alert('You have incomplete fields')
       }
+    },
+
+    async saveDrafts() {
+      const dataSend =
+      {
+        title: this.title,
+        nationality: this.nationality,
+        ingredients: this.ingredients,
+        keywords: this.keywords,
+        draft: "true",
+        recipeDescription: this.recipeDescription,
+        imagePath: this.imagePath,
+        cookbook_id: this.cookbook_id,
+        tags: [],
+      }
+        const postResponse = await this.$store.dispatch('post_recipe', dataSend)
+        const result = await postResponse
+        if (result && result.status === 201) {
+          alert("Recipe has been created")
+          this.toggleEditor('hide')
+          // Clear the fields
+          this.title = '';
+          this.nationality = '';
+          this.ingredients = [{ name: '', unit: '', thumbnail: '', link: '' }];
+          this.keywords = '';
+          this.recipeDescription = '';
+          this.imagePath = '';
+          this.cookbook_id = '';
+          // Reload the page
+          location.reload();
+        } else {
+          console.log("Error")
+        }
     }
 
   },
