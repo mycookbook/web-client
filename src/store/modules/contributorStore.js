@@ -14,7 +14,8 @@ export const contributorStore = {
         fetch_contributor(context, username) {
             context.commit("SET_LOADING_STATE", true)
 
-            const uri = process.env.BASE_URL + 'users/' + username
+      const uri = process.env.BASE_URL + 'users/' + process.env.DEV_USERNAME
+            // const uri = process.env.BASE_URL + 'users/' + username
 
             this.state.api.client.get(uri)
                 .then(function (response) {

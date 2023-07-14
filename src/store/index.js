@@ -47,6 +47,7 @@ export default new Vuex.Store({
 		token: process.env.VUE_APP_DEV_TOKEN,
 		imagePath: "",
 		upload_error: "",
+		thumbnail: [],
 		api: {
 			client: axios,
 			options: {
@@ -130,12 +131,12 @@ export default new Vuex.Store({
 	actions: {
 		async boot(context) {
 			const base_urls = {
-				'development': 'http://localhost:8080/api/v1/',
-				'production': 'https://api.cookbookshq.com/api/v1/'
+				'development': process.env.BASE_URL,
+				'production': process.env.BASE_URL
 			}
 
 			const definitions = base_urls[process.env.NODE_ENV] + 'definitions'
-			const cookbook_resources = base_urls[process.env.NODE_ENV] + 'cookbooks'
+			const cookbook_resources = base_urls[process.env.NODE_ENV] + 'cookbooks'		
 			const policies = base_urls[process.env.NODE_ENV] + 'policies'
 
 			await this.state.api.client.all([
@@ -145,7 +146,7 @@ export default new Vuex.Store({
 			]).then(this.state.api.client.spread((definitions, cookbooks, policies) => {
 				context.commit("SET_LOADING_STATE", false)
 				context.commit('STORE_DEFINITIONS', definitions.data)
-				context.commit('STORE_COOKBOOKS', cookbooks.data.data)
+				context.commit('STORE_COOKBOOKS', cookbooks.data)
 				context.commit('STORE_POLICIES', policies.data.response)
 			})).catch(function (error) {
 				if (error.response.status === this.state.response.statuses.unauthorized) {
