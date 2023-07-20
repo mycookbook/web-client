@@ -32,7 +32,8 @@ export default new Vuex.Store({
 				uri: 'https://ipinfo.io',
 				token: process.env.IPINFO_TOKEN
 			}
-		},
+		},		
+		redirectPath: null,		
 		resource_isLoading: false,
 		policies: {
 			cookiePolicy: '',
@@ -65,6 +66,7 @@ export default new Vuex.Store({
 			}
 		},
 		access_token: process.env.VUE_APP_DEV_TOKEN,
+		attempted_route: null,
 		active_user: {},
 		contributor: {},
 		username: null,
@@ -87,6 +89,11 @@ export default new Vuex.Store({
 
 			this.state.username = req.username
 
+			if (this.state.attempted_route) {
+				router.push(this.state.attempted_route)
+				this.state.attempted_route = null
+				return
+			}
 			router.push('/?v=fu')
 		},
 		LOGOUT(state) {
@@ -126,7 +133,12 @@ export default new Vuex.Store({
 		},
 		SHOW_FEEDBACK_WIDGET(state, choice) {
 			this.state.active_user.onboarding.likehihoodToShare = choice
-		}
+		},
+
+		save_attempted_route(state, route) {
+			state.attempted_route = route;
+		},
+	
 	},
 	actions: {
 		async boot(context) {
@@ -186,7 +198,7 @@ export default new Vuex.Store({
 				}).catch(function (error) {
 					context.commit('HANDLE_ERROR', error.response);
 				})
-		}
+		},
 	},
 	getters: {
 		get_cookie_policy: (store) => () => {

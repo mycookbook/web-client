@@ -42,6 +42,7 @@ const VueRouter = new Router({
                     const queryString = window.location.href;
 
                     let replaced = queryString.replace("/#/", "/");
+                    
                     let url = new URL(replaced);
                     let code = url.searchParams.get("token");
                     let username = url.searchParams.get('_d')
