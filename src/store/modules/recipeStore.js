@@ -68,6 +68,20 @@ export const recipeStore = {
           context.commit("SET_LOADING_STATE", false);
         });
     },
+
+    async fetch_recipe_raw(context, recipeId) {
+      const uri = this.state.named_urls.recipe_resources + "/" + recipeId;
+      try {
+        const response = await this.state.api.client.get(
+          uri,
+          this.state.api.options
+        );
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     reset_hasClapped(context) {
       context.commit("RESET_HASCLAPPED");
     },
@@ -97,7 +111,7 @@ export const recipeStore = {
         if (response.status === 422) {
           // Handle the error
           const error = response.error;
-         
+
           console.log(error);
           alert("There was an error creating the recipe");
         } else {
@@ -107,5 +121,64 @@ export const recipeStore = {
         alert("There was an error creating the recipe");
       }
     },
+
+    async update_recipe(context, payload) {
+      const uri =
+      process.env.BASE_URL + "recipes" +
+        "/" +
+        payload.recipeId +
+        "/edit";
+      try {
+        const response = await this.state.api.client.post(uri,
+          {
+            cuisine: payload.title,
+            description: payload.recipeDescription,
+            imgUrl: payload.imagePath,
+            ingredients: payload.ingredients,
+            is_draft: payload.draft,
+            name: payload.title,
+            nationality: payload.nationality,
+            summary: payload.keywords,
+            cookbook_id: payload.cookbook_id,
+            tags: payload.tags,
+          },
+          {
+            headers: { Authorization: `Bearer ${process.env.DEV_TOKEN}` },
+          }
+        );
+
+        if (response.status === 422) {
+          // Handle the error
+          const error = response.error;
+
+          console.log(error);
+          alert("There was an error updating the recipe");
+        } else {
+          return response;
+        }
+      } catch (error) {
+        alert("There was an error updating the recipe");
+      }
+    },
+
+    async delete_recipe(context, recipeId) {
+      const uri =
+      process.env.BASE_URL + "recipes" +
+        "/" +
+        payload.recipeId +
+        "/destroy";
+        try {
+          const response = await this.state.api.client.post(uri,
+            {},
+            {
+              headers: { Authorization: `Bearer ${process.env.DEV_TOKEN}` },
+            }
+            );
+            console.log(response)
+            
+        } catch (error) {
+          console.log(error)
+        }
+    }
   },
 };

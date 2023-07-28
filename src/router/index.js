@@ -23,6 +23,7 @@ import Help from '@/components/Help'
 import auth from '../middleware/auth.js';
 import SubscriptionPlans from '@/components/Widgets/SubscriptionPlans'
 import Marketplace from '@/components/Marketplace'
+import EditRecipe from '@/components/EditRecipe'
 
 Vue.use(Router);
 
@@ -124,7 +125,17 @@ const VueRouter = new Router({
             meta: {
                 middleware: auth,
             }
-        }, {
+        },
+        // {
+        //     path: '/dashboard/edit-recipe/:recipeId',
+        //     name: 'EditRecipe',
+        //     component: Dashboard,
+        //     props: true,
+        //     meta: {
+        //         middleware: auth,
+        //     }
+        //   },
+          {
             path: '/contributors/:username',
             name: 'ContributorProfile',
             component: ContributorProfile,
