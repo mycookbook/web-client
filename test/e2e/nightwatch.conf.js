@@ -30,8 +30,10 @@ module.exports = {
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
-        javascriptEnabled: true,
-        acceptSslCerts: true
+
+        chromeOptions: {
+          args: ['--incognito'],
+        },
       }
     },
 
