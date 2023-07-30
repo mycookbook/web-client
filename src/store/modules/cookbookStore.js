@@ -12,7 +12,7 @@ export const cookbookStore = {
     mutations: {
         STORE_COOKBOOKS(state, cookbooks) {
             state.cookbooks = cookbooks
-            localStorage.setItem("unfiltered", JSON.stringify(cookbooks)) //immutable state for filtering through cookbooks list
+            localStorage.setItem("unfiltered", JSON.stringify(cookbooks.data)) //immutable state for filtering through cookbooks list
         },
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
@@ -34,6 +34,7 @@ export const cookbookStore = {
                 state.cookbooks = filtered
             } else {
                 state.cookbooks = unfiltered
+               
                 const filtered = state.cookbooks.filter((c) => {
                     if (c.categories.length > 0) {
                         let filteredCategories = JSON.parse(JSON.stringify(c.categories))
