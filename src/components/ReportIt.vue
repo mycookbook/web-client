@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="ui red fluid button" :title="title" @click="ReportIt">
+        <div class="ui red fluid button" :title="title" @click="reportIt">
             <i class="ui bug icon"></i>
             Report it
         </div>
@@ -109,19 +109,30 @@
                         </div>
                     </div>
                     <br />
-                    <div>
+                    <div >
                         <label for="emailorphone"
                             >Please provide your email or phone number:
                             (Required*)</label
                         >
-                        <div class="field">
-                            <input
-                                type="text"
-                                v-model="formData.email"
-                                ref="emailorphone"
-                                name="emailorphone"
-                                required
-                            />
+                        <div class="ui grid">
+                            <div class="field ui email ten wide computer column sixteen wide mobile column">
+                                <input
+                                    type="text"
+                                    v-model="formData.email"
+                                    ref="emailorphone"
+                                    name="emailorphone"
+                                    required
+                                />
+                            </div>
+                            <div class="ui input six wide computer column sixteen wide mobile column">
+                                <button
+                                    class="ui tbb button otp"
+                                    @click="requestOtp"
+                                    v-bind:class="{ loading: is_loading }"
+                                >
+                                    Send Code
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <br />
@@ -133,6 +144,7 @@
                                 ref="verificationcode"
                                 v-model="formData.verification_code"
                                 name="verificationcode"
+                                required
                             />
                         </div>
                     </div>
@@ -148,10 +160,20 @@
                         <i class="close icon"></i>
                         <div>Your report was submitted.</div>
                     </div>
-                  
+
                     <div class="ui negative message" v-if="report_failed">
                         <i class="close icon"></i>
                         <div>Error sending report.</div>
+                    </div>
+
+                    <div class="ui success message" v-if="otp_success">
+                        <i class="close icon"></i>
+                        <div>OTP has been sent the number or email above.</div>
+                    </div>
+
+                    <div class="ui negative message otp" v-if="otp_failed">
+                        <i class="close icon"></i>
+                        <div>Error sending OTP.</div>
                     </div>
                     <div class="">
                         <div class="ui input">
@@ -187,10 +209,15 @@ export default {
         report_failed() {
             return this.$store.state.subscriptionStore.failed;
         },
+        otp_success() {
+            return this.$store.state.subscriptionStore.otp_success;
+        },
+        otp_failed() {
+            return this.$store.state.subscriptionStore.otp_failed;
+        },
     },
 
     data() {
-        
         return {
             showModal: false,
             title: "Use this tool if you think this recipe is any of the following; inappropriate, unauthentic, not original, stolen or a duplicate.",
@@ -210,10 +237,14 @@ export default {
     },
 
     methods: {
-        ReportIt() {
+        reportIt() {
             this.resetForm();
             this.$store.dispatch("reset_report_form");
             $(".ui.modal").modal("show");
+        },
+
+        requestOtp() {
+            store.dispatch("submit_report_otp", this.formData.email);
         },
         resetForm() {
             // Reset the form data after successful submission
@@ -289,9 +320,9 @@ export default {
     display: block;
 }
 
-.ui.modal input[name="verificationcode"] {
+.ui.modal input[name="verificationcode"], .ui.modal input[name="emailorphone"] {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid #ccc;
 }
 
@@ -316,5 +347,9 @@ export default {
 
 .message {
     margin-bottom: 20px !important;
+}
+
+.email{
+    margin-top: 12px
 }
 </style>
