@@ -43,14 +43,7 @@
 import store from '@/store'
 
 export default {
-	async mounted() {
-		try {
-          await this.$store.dispatch('boot');
-          this.getCategoryName('all');
-		} catch (error) {
-		console.error('Error during async action:', error);
-		}   
-    },
+
 	props: {
 		filters: Array
 	},

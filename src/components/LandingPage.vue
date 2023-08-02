@@ -56,9 +56,11 @@ export default {
 			}
 		},
 		cookbooks() {
-			return this.$store.state.cookbookStore.cookbooks
+			console.log(this.$store.state.cookbookStore.cookbooks)
+			return this.$store.state.cookbookStore.cookbooks.data
 		},
 		filters() {
+			
 			return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
 		}
 	},
