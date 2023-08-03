@@ -99,9 +99,9 @@ export const recipeStore = {
             is_draft: payload.draft,
             name: payload.title,
             nationality: payload.nationality,
-            summary: payload.keywords,
+            summary: payload.summary,
             cookbook_id: payload.cookbook_id,
-            tags: payload.tags,
+            tags: payload.keywords,
           },
           {
             headers: { Authorization: `Bearer ${process.env.DEV_TOKEN}` },
@@ -138,9 +138,9 @@ export const recipeStore = {
             is_draft: payload.draft,
             name: payload.title,
             nationality: payload.nationality,
-            summary: payload.keywords,
+            summary: payload.summary,
             cookbook_id: payload.cookbook_id,
-            tags: payload.tags,
+            tags: payload.keywords,
           },
           {
             headers: { Authorization: `Bearer ${process.env.DEV_TOKEN}` },
@@ -160,25 +160,5 @@ export const recipeStore = {
         alert("There was an error updating the recipe");
       }
     },
-
-    async delete_recipe(context, recipeId) {
-      const uri =
-      process.env.BASE_URL + "recipes" +
-        "/" +
-        payload.recipeId +
-        "/destroy";
-        try {
-          const response = await this.state.api.client.post(uri,
-            {},
-            {
-              headers: { Authorization: `Bearer ${process.env.DEV_TOKEN}` },
-            }
-            );
-            console.log(response)
-            
-        } catch (error) {
-          console.log(error)
-        }
-    }
   },
 };

@@ -49,6 +49,17 @@
                     </div>
                     <br />
                     <div class="ui form">
+                        <ValidationProvider :rules="{ required: true, min_words: { minWords: 50 } }" name="summary" v-slot="{ errors }">
+                            <div class="field">
+                                <label>Recipe summary</label>
+                                <textarea v-model="summary" type="text"
+                                    placeholder="please provide short desciption of recipe, must contain at least 50 words" />
+                                <span class="errorText">{{ errors[0] }}</span>
+                            </div>
+                        </ValidationProvider>
+                    </div>
+                    <br />
+                    <div class="ui form">
                         <div class="field">
                             <label>
                                 <span>
@@ -60,7 +71,7 @@
                                     </a>
                                 </span>
                             </label>
-                            <ValidationProvider rules="required" name="description" v-slot="{ errors }">
+                            <ValidationProvider :rules="{ required: true, min_words: { minWords: 100 } }" name="description" v-slot="{ errors }">
                                 <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
                                     :editorToolbar="customToolbar"
                                     placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
@@ -75,7 +86,7 @@
                             <div>
                                 <div v-for="(input, index) in ingredients" :key="`ingInput-${index}`">
                                     <div>
-                                        <ValidationProvider rules="required|alpha" name="ingredient name"
+                                        <ValidationProvider rules="required|alpha_spaces" name="ingredient name"
                                             v-slot="{ errors }">
                                             <div>
                                                 <label>name</label>
@@ -86,8 +97,7 @@
                                         </ValidationProvider>
                                         <br />
                                         <div class="ui grid">
-                                            <ValidationProvider rules="required|integer" name="ingredient unit"
-                                                v-slot="{ errors }">
+                                            <ValidationProvider rules="required" name="ingredient unit" v-slot="{ errors }">
                                                 <div class="six wide computer column sixteen wide mobile column">
                                                     <label>unit</label>
                                                     <input v-model="input.unit" type="text" placeholder="unit"
@@ -170,39 +180,16 @@
                                     Adding keywords is a great way to boost the visibility of your recipes
                                 </small>
                             </label>
-                            <input v-model="keywords" type="text" placeholder="e.g main dishes, fitfam" />
+                            <input type="text" placeholder="e.g main dishes, fitfam" />
                         </div>
                     </div>
                     <div class="ui horizontal divider"></div>
                     <div class="ui grid">
-                        <div class="six wide computer column sixteen wide mobile column">
-                            <button class="fluid ui red outline button" @click="deleteButton">delete recipe</button>
-                        </div>
                         <div class="ten wide computer column  sixteen wide mobile column">
                             <button class="fluid ui tbb button" type="submit"
-                                v-bind:class="{ loading: isLoading }">update</button>
+                                v-bind:class="{ loading: submitLoading }">update</button>
                         </div>
                     </div>
-                    <div class="ui basic modal">
-                        <div class="ui icon header">
-                            <i class="trash icon"></i>
-                            Delete Recipe
-                        </div>
-                        <div class="content">
-                            <p>are you sure you want to delete this recipe?</p>
-                        </div>
-                        <div class="actions">
-                            <div class="ui red basic cancel inverted button" @click="cancelDelete">
-                                <i class="remove icon"></i>
-                                No
-                            </div>
-                            <div class="ui green ok inverted button" @click="confirmDelete">
-                                <i class="checkmark icon"></i>
-                                Yes
-                            </div>
-                        </div>
-                    </div>
-                    <button class="ui red button" @click="deleteButton">Delete</button>
                 </div>
             </form>
         </ValidationObserver>
@@ -237,10 +224,26 @@ export default {
                 this.title = response.name;
                 this.nationality = response.nationality;
                 this.recipeDescription = response.description;
-                const ingredients = JSON.parse(response.ingredients);
-                this.ingredients = ingredients.data
+                let ingredients;
+                try {
+                    ingredients = JSON.parse(response.ingredients);
+                } catch (e) {
+                    console.error("Failed to parse ingredients", e);
+                    ingredients = response.ingredients;
+                }
+                this.ingredients = ingredients.map(ingredient => {
+                    return {
+                        name: ingredient.name || "",
+                        unit: ingredient.unit || "",
+                        thumbnail: ingredient.thumbnail || "",
+                        link: ingredient.link || "",
+                        loading: ingredient.loading || false
+                    }
+                })
                 this.keywords = response.summary;
                 this.cookbook_id = response.cookbook_id;
+                this.summary = response.summary;
+                this.keywords = response.tags;
             })
 
     },
@@ -251,6 +254,15 @@ export default {
                 ...rules[rule], // copies rule configuration
                 message: messages[rule] // assign message
             });
+        })
+
+        extend('min_words', {
+            params: ['minWords'],
+            validate: (value, { minWords }) => {
+                const words = value.trim().split(/\s+/).filter(word => word !== '');
+                return words.length >= minWords;
+            },
+            message: 'Summary must contain at least {minWords} words'
         })
     },
 
@@ -329,12 +341,14 @@ export default {
             recipeDescription: "",
             ingredients: [{ name: "", unit: "", thumbnail: "", link: "", loading: false }],
             searchParameter: "",
-            keywords: "",
+            keywords: [],
             cookbook_id: "",
             //Errors
+            submitLoading: false,
             error: [],
             cookbookError: "",
             nationalityError: "",
+            summary: "",
             debounceSearchIngredientImages: debounce(this.searchIngredientImages, 500), // Debounced version of the method
         };
     },
@@ -425,17 +439,25 @@ export default {
 
         async submitButton() {
             const validFile = this.dropdownValidation()
+            this.submitLoading = true
+            const filteredIngredients = this.ingredients.map(ingredient => {
+                return {
+                    name: ingredient.name,
+                    unit: ingredient.unit,
+                    thumbnail: ingredient.thumbnail
+                }
+            })
             const dataSend =
             {
                 title: this.title,
                 nationality: this.nationality,
-                ingredients: this.ingredients,
+                ingredients: filteredIngredients,
                 keywords: this.keywords,
                 draft: "false",
                 recipeDescription: this.recipeDescription,
                 imagePath: this.imagePath,
                 cookbook_id: this.cookbook_id,
-                tags: [],
+                summary: this.summary,
                 recipeId: this.recipeId
             }
 
@@ -447,31 +469,14 @@ export default {
                     this.$router.push({ name: 'Dashboard', query: { tab: 'Recipes' } });
                 } else {
                     console.log("Error")
+                    this.submitLoading = false
                 }
             }
             if (validFile === false) {
                 alert('You have incomplete fields')
+                this.submitLoading = false
             }
         },
-
-        deleteButton() {
-            $('.ui.basic.modal').modal('show');
-        },
-        async confirmDelete() {
-            $('.ui.basic.modal').modal('hide');
-            try {
-                await this.$store.dispatch('delete_recipe', this.recipeId);
-                alert("Recipe has been deleted")
-                this.$router.push({ name: 'Dashboard', query: { tab: 'Recipes' } });
-            } catch (error) {
-                console.error("Error in deletion", error);
-            }
-        },
-        cancelDelete() {
-            $('.ui.basic.modal').modal('hide');
-        },
-
-
     },
     filters: {
         truncate: function (text, length, suffix) {
