@@ -25,8 +25,8 @@ export const contributorStore = {
                 })
         },
         fetch_active_user(context, username) {
-            
-            const uri = process.env.BASE_URL + 'users/' + process.env.DEV_USERNAME
+            console.log(username)
+            const uri = process.env.BASE_URL + 'users/' + username
 
             this.state.api.client.get(uri)
                 .then(function (response) {
