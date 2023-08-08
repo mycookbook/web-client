@@ -56,7 +56,6 @@ export default {
 			}
 		},
 		cookbooks() {
-			console.log(this.$store.state.cookbookStore.cookbooks)
 			return this.$store.state.cookbookStore.cookbooks.data
 		},
 		filters() {
