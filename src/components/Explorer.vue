@@ -43,6 +43,7 @@
 import store from '@/store'
 
 export default {
+
 	props: {
 		filters: Array
 	},
