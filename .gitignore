@@ -1,7 +1,6 @@
 .DS_Store*
 node_modules/
 /dist/
-
 .nyc_output/
 .env
 npm-debug.log*
@@ -10,7 +9,6 @@ yarn-error.log*
 /test/unit/coverage/
 /test/e2e/reports/
 selenium-debug.log
-.env
 /coverage/
 
 # Editor directories and files

@@ -3,6 +3,11 @@ name: Nightwatch Tests
 on:
   push:
     branches:
+      - dev
+      - main
+  pull_request:
+    branches:
+      - dev
       - main
 
 jobs:
@@ -22,6 +27,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Run Nightwatch tests with coverage
+        run: npm run test:e2e:coverage
       - name: Get Chrome Version
         id: chrome_version
         run: echo ::set-output name=version::$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
