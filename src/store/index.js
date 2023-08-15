@@ -15,6 +15,7 @@ import { searchStore } from "./modules/searchStore.js";
 import { userStore } from "./modules/userStore.js";
 import router from "../router/index.js";
 import { imageUploadStore } from "./modules/imageUploadStore";
+import { dataStore } from "./modules/dataStore.js";
 
 Vue.use(Vuex);
 Vue.use(VueResource);
@@ -56,6 +57,7 @@ export default new Vuex.Store({
                 },
             },
         },
+        flags: [],
         response: {
             statuses: {
                 unauthorized: 401,
@@ -133,6 +135,9 @@ export default new Vuex.Store({
         },
         SHOW_FEEDBACK_WIDGET(state, choice) {
             this.state.active_user.onboarding.likehihoodToShare = choice;
+        },
+        STORE_FLAGS(state, flagsData) {
+            this.state.flags = flagsData;
         },
     },
     actions: {
@@ -221,6 +226,15 @@ export default new Vuex.Store({
                     context.commit("HANDLE_ERROR", error.response);
                 });
         },
+        async fetchFlags(context){
+            const flagsUrl = process.env.BASE_URL + "flags";
+            try{
+                const response = await this.state.api.client.get(flagsUrl, this.state.api.options);
+                context.commit("STORE_FLAGS", response.data.data);
+            } catch(error){
+                console.error("Error fetching flags:", error)
+            }
+        }
     },
     getters: {
         get_cookie_policy: (store) => () => {
@@ -246,6 +260,7 @@ export default new Vuex.Store({
         searchStore,
         userStore,
         imageUploadStore,
+        dataStore
     },
     plugins: [createPersistedState()],
 });

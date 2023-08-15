@@ -208,8 +208,6 @@
                 </small>
               </a>
               <span style="float: right !important; font-size: 16px">
-                <!-- <router-link :to="{ name: 'EditRecipe', params: { slug: recipe.slug } }"> -->
-                <!-- <router-link :to="`/dashboard/edit-recipe/${recipe.id}`"> -->
                 <router-link :to="{
                   name: 'Dashboard',
                   query: { tab: 'EditRecipe', recipeId: recipe.id }

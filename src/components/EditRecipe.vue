@@ -43,13 +43,14 @@
                     <div class="ui form">
                         <div class="field">
                             <label>Nationality (required*)</label>
-                            <FlagPicker @passNationalityCode="nationality = $event" />
+                            <FlagPicker ref="FlagPicker" @passNationalityCode="nationality = $event" />
                             <span class="errorText">{{ nationalityError }}</span>
                         </div>
                     </div>
                     <br />
                     <div class="ui form">
-                        <ValidationProvider :rules="{ required: true, min_words: { minWords: 50 } }" name="summary" v-slot="{ errors }">
+                        <ValidationProvider :rules="{ required: true, min_words: { minWords: 50 } }" name="summary"
+                            v-slot="{ errors }">
                             <div class="field">
                                 <label>Recipe summary</label>
                                 <textarea v-model="summary" type="text"
@@ -71,7 +72,8 @@
                                     </a>
                                 </span>
                             </label>
-                            <ValidationProvider :rules="{ required: true, min_words: { minWords: 100 } }" name="description" v-slot="{ errors }">
+                            <ValidationProvider :rules="{ required: true, min_words: { minWords: 100 } }" name="description"
+                                v-slot="{ errors }">
                                 <vue-editor v-model="recipeDescription" :editorOptions="editorSettings"
                                     :editorToolbar="customToolbar"
                                     placeholder="A very good description will be several characters long. A well detailed recipe keeps your followers engaged and keep coming back for more. Not sure how to start? Check out our sample templates." />
@@ -163,7 +165,7 @@
                             <label>
                                 Search Cookbook (required*)
                             </label>
-                            <CookbookSelector @passCookbookCode="cookbook_id = $event"
+                            <CookbookSelector ref="CookbookSelector" @passCookbookCode="cookbook_id = $event"
                                 @click="clearError('cookbookError')" />
                             <span class="errorText">{{ cookbookError }}</span>
                         </div>
@@ -228,7 +230,6 @@ export default {
                 try {
                     ingredients = JSON.parse(response.ingredients);
                 } catch (e) {
-                    console.error("Failed to parse ingredients", e);
                     ingredients = response.ingredients;
                 }
                 this.ingredients = ingredients.map(ingredient => {
@@ -244,6 +245,12 @@ export default {
                 this.cookbook_id = response.cookbook_id;
                 this.summary = response.summary;
                 this.keywords = response.tags;
+                if (this.$refs.FlagPicker) {
+                    this.$refs.FlagPicker.updateDropdownValueByCode(response.nationality);
+                }
+                if (this.$refs.CookbookSelector) {
+                    this.$refs.CookbookSelector.setSelectedCookbook(response.cookbook.name);
+                }
             })
 
     },
@@ -311,8 +318,6 @@ export default {
         deep: true,
         immediate: true
     },
-
-
 
     data() {
         return {

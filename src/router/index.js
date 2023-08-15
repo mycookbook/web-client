@@ -126,15 +126,6 @@ const VueRouter = new Router({
                 middleware: auth,
             }
         },
-        // {
-        //     path: '/dashboard/edit-recipe/:recipeId',
-        //     name: 'EditRecipe',
-        //     component: Dashboard,
-        //     props: true,
-        //     meta: {
-        //         middleware: auth,
-        //     }
-        //   },
           {
             path: '/contributors/:username',
             name: 'ContributorProfile',
