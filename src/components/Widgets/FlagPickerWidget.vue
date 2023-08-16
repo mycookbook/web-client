@@ -5,7 +5,8 @@
             <i class="dropdown icon"></i>
             <div class="default text">Select Country</div>
             <div class="menu">
-                <div class="item" v-bind:data-value="selectCountryCode(f.code)" v-for="f in flags" @click="getNationalCode(f.code)">
+                <div class="item" v-bind:data-value="selectCountryCode(f.code)" v-for="f in flags"
+                    @click="getNationalCode(f.code)">
                     <i :class="generateFlagClass(f.code)"></i>
                     <span class="capitalize">
                         {{ f.country }}
@@ -19,16 +20,23 @@
 </template>
 
 <script>
-import flags from '../../../data/all.js'
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'FlagPickerWidget',
+    computed: {
+        ...mapGetters('dataStore', ['getFlags']),
+    },
     data() {
-        return {
-            flags: Object.values(flags.data),
+        return { 
             selectedCountry: "",
             selectedCode: "",
+            flags: Object.values(this.$store.state.dataStore.flags),
         }
+    },
+    created() {
+        this.$store.dispatch("fetchFlags").then(() => {
+        });
     },
     watch: {
         selectedCountry(newValue, oldValue) {
@@ -37,8 +45,17 @@ export default {
         selectedCode(newValue, oldValue) {
             this.$emit("passNationalityCode", newValue)
         },
+        flags: {
+            immediate: true,
+            handler(newValue) {
+            },
+        },
         deep: true,
         immediate: true
+    },
+
+    mounted() {
+        $('#nationalityDropdown').dropdown();
     },
 
     methods: {
@@ -56,8 +73,28 @@ export default {
             const recievedCountry = ($('#nationalityDropdown').dropdown('get text'))
             this.selectedCountry = recievedCountry.trim(" ")
         },
-        getNationalCode(the_code){
+        getNationalCode(the_code) {
             this.selectedCode = the_code;
+        },
+        setCountry(country) {
+            this.selectedCountry = country;
+            $('#nationalityDropdown').dropdown('set selected', country);
+        },
+        getCountryByCode(code) {
+            const countryObj = this.flags.find(f => f.code === code);
+            return countryObj ? countryObj.country : '';
+        },
+        updateDropdownValueByCode(code) {
+            const countryObj = this.flags.find(f => f.id === code);
+            if (countryObj) {
+                const country = countryObj.country;
+                this.selectedCountry = country;
+                this.selectedCode = code;
+                $('#nationalityDropdown').dropdown('set selected', code);
+                $('#nationalityDropdown').dropdown('set text', `<i class="${this.generateFlagClass(code)}"></i> ${country}`);
+            } else {
+                console.log("Country not found for code: ", code);
+            }
         }
     }
 }

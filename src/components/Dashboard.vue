@@ -23,6 +23,9 @@
 								<div v-if="activeLink === 'Drafts'">
 									<MyDrafts />
 								</div>
+								<div v-if="activeLink === 'EditRecipe' && recipeId">
+									<EditRecipe :recipeId="recipeId" />
+								</div>
 								<div v-if="activeLink === 'Preferences'">
 									<Preferences />
 								</div>
@@ -100,12 +103,18 @@ import DarkModeSwitch from 'vue-dark-mode-switch'
 import 'vue-dark-mode-switch/dist/vue-dark-mode-switch.css';
 import ThreehundredByTwofifty from './Ads/300X250.vue'
 import Preferences from './Widgets/PreferencesWidget.vue'
+import EditRecipe from './EditRecipe.vue'
+
+
 
 export default {
 	name: "Dashboard",
 	computed: {
 		activeLink() {
 			return this.$route.query.tab
+		},
+		recipeId(){
+			return this.$route.query.recipeId;
 		},
 		_activeUser() {
 			return this.$store.state.active_user
@@ -130,7 +139,8 @@ export default {
 		MyDrafts,
 		Profile,
 		ThreehundredByTwofifty,
-		Preferences
+		Preferences,
+		EditRecipe,
 	},
 	methods: {
 		onSwitched: function (isSwitched) {

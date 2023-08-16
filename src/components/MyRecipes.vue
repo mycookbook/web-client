@@ -173,7 +173,7 @@
           <div class="ui horizontal divider"></div>
           <div class="ui grid">
             <div class="six wide computer column sixteen wide mobile column">
-              <button class="fluid ui black outline button" @click="saveDrafts" >save as draft</button>
+              <button class="fluid ui black outline button" @click="saveDrafts">save as draft</button>
             </div>
             <div class="ten wide computer column  sixteen wide mobile column">
               <button class="fluid ui tbb button" type="submit" v-bind:class="{ loading: isLoading }">save</button>
@@ -208,7 +208,10 @@
                 </small>
               </a>
               <span style="float: right !important; font-size: 16px">
-                <router-link :to="{ name: 'EditRecipe', params: { slug: recipe.slug } }">
+                <router-link :to="{
+                  name: 'Dashboard',
+                  query: { tab: 'EditRecipe', recipeId: recipe.id }
+                }">
                   edit
                 </router-link>
               </span>
@@ -245,7 +248,8 @@ export default {
     let username = this.$store.state.username
     this.$store.dispatch('fetch_contributor', username)
     this.$store.dispatch('reset_msgs')
-   
+    this.$store.dispatch('fetch_active_user', username)
+
   },
 
   created() {
@@ -263,12 +267,12 @@ export default {
       return JSON.parse(cs)
     },
     _myRecipes() {
-      if (this.$store.state.active_user.hasOwnProperty('recipes')){
+      if (this.$store.state.active_user.hasOwnProperty('recipes')) {
         return this.$store.state.active_user.recipes
       } else {
         return [];
       }
-      
+
     },
 
     _allCookbooks() {
@@ -285,7 +289,7 @@ export default {
       let imgPath = this.$store.state.imagePath;
       this.imagePath = imgPath;
     },
-    isLoading(){
+    isLoading() {
       return this.$store.state.resource_isLoading
     },
 
@@ -308,7 +312,6 @@ export default {
   data() {
     return {
       inEditMode: false,
-
       uploadMessageDescription: "Upload Recipe Cover Image",
       imageDimensionMsg: "Image dimension for best results (1127 x 650px)",
       acceptTypes: ".png",
@@ -446,7 +449,7 @@ export default {
         cookbook_id: this.cookbook_id,
         tags: [],
       }
-      
+
       if (validFile === true) {
         const postResponse = await this.$store.dispatch('post_recipe', dataSend)
         const result = await postResponse
@@ -466,8 +469,8 @@ export default {
         } else {
           console.log("Error")
         }
-       }
-      
+      }
+
       if (validFile === false) {
         alert('You have incomplete fields')
       }
@@ -486,24 +489,24 @@ export default {
         cookbook_id: this.cookbook_id,
         tags: [],
       }
-        const postResponse = await this.$store.dispatch('post_recipe', dataSend)
-        const result = await postResponse
-        if (result && result.status === 201) {
-          alert("Recipe has been created")
-          this.toggleEditor('hide')
-          // Clear the fields
-          this.title = '';
-          this.nationality = '';
-          this.ingredients = [{ name: '', unit: '', thumbnail: '', link: '' }];
-          this.keywords = '';
-          this.recipeDescription = '';
-          this.imagePath = '';
-          this.cookbook_id = '';
-          // Reload the page
-          location.reload();
-        } else {
-          console.log("Error")
-        }
+      const postResponse = await this.$store.dispatch('post_recipe', dataSend)
+      const result = await postResponse
+      if (result && result.status === 201) {
+        alert("Recipe has been created")
+        this.toggleEditor('hide')
+        // Clear the fields
+        this.title = '';
+        this.nationality = '';
+        this.ingredients = [{ name: '', unit: '', thumbnail: '', link: '' }];
+        this.keywords = '';
+        this.recipeDescription = '';
+        this.imagePath = '';
+        this.cookbook_id = '';
+        // Reload the page
+        location.reload();
+      } else {
+        console.log("Error")
+      }
     }
 
   },
