@@ -77,6 +77,19 @@
                     </router-link>
                 </div>
             </div>
+            <div class="item">
+                <div class="content">
+                    <div>
+                        <a href="#/help">
+                            <small>
+                                <u>
+                                    Help Docs
+                                </u>
+                            </small>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <br />
             <div class="item">
                 <div class="content">
