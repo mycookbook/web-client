@@ -140,10 +140,28 @@ export default {
                         }
                     })
 
-                    if (res.length > 0) {
-                        this.faqs = res
-                    } else {
+                    if (res.length == 0) {
                         location.reload()
+                    } else {
+                        let matches = res.map(function (d) {
+                            return d.question
+                        })
+
+                        var dedupedQuestions = matches.filter(function (d, i) {
+                            return matches.indexOf(d) === i;
+                        });
+
+                        let dedupedResults = []
+
+                        dedupedQuestions.map(function (d) {
+                            for (let i = 0; i < faqs.length; i++) {
+                                if (faqs[i].question === d) {
+                                    dedupedResults.push(faqs[i])
+                                }
+                            }
+                        })
+
+                        this.faqs = dedupedResults
                     }
                 }
             }
