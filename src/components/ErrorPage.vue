@@ -10,6 +10,10 @@
 				<div>
 					{{ _errorMessage }}
 				</div>
+				<br /><br />
+				<div>
+					Still experiencing trouble with your request? Please checkout our <a href="/#/help?doc=faqs">faq</a> page for help. 
+				</div>
 			</div>
 		</div>
 	</div>
