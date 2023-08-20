@@ -2,7 +2,7 @@
     <div>
         <div>
             <div>
-                <div class="ui small red circular label">
+                <div class="ui small red label">
                     BETA
                 </div>
                 <br /><br />
