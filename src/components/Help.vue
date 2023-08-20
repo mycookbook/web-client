@@ -51,7 +51,7 @@
                         <div class="ui category search">
                             <div class="ui icon fluid input">
                                 <input class="prompt" v-model="q" type="text" @keyup="search"
-                                    placeholder="Search Frequently Asked Questions...">
+                                    placeholder="Search Frequently Asked Questions..." maxlength="83">
                                 <i class="search icon"></i>
                             </div>
                             <div class="results"></div>
