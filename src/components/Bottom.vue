@@ -4,36 +4,39 @@
 			<div class="fourteen wide computer column mobile hidden">
 				<div class="ui secondary menu">
 					<router-link :to="{
-	name: 'UsagePolicy'
-}">
+						name: 'UsagePolicy'
+					}">
 						<a class="item" title="Cookbooks HQ Usage Policy. Property of cookbookshq.com">
 							Usage Policy
 						</a>
 					</router-link>
 					<router-link :to="{
-	name: 'TermsAndConditions'
-}">
+						name: 'TermsAndConditions'
+					}">
 						<a class="item" title="CookbooksHQ Terms And Conditions. Property of cookbookshq.com">
 							Terms &amp; Conditions
 						</a>
 					</router-link>
 					<router-link :to="{
-	name: 'DataRetentionPolicy'
-}">
+						name: 'DataRetentionPolicy'
+					}">
 						<a class="item" title="CookbooksHQ Data Retention Policy. Property of cookbookshq.com">
 							Data Retention Policy
 						</a>
 					</router-link>
 					<router-link :to="{
-	name: 'PrivacyPolicy'
-}">
+						name: 'PrivacyPolicy'
+					}">
 						<a class="item" title="CookbooksHQ Privacy Policy. Property of cookbookshq.com">
 							Privacy Policy
 						</a>
 					</router-link>
+					<a class="item" href="/#/help?doc=faqs" title="CookbooksHQ FAQs. Property of cookbookshq.com">
+						FAQs
+					</a>
 					<router-link :to="{
-	name: ''
-}">
+						name: ''
+					}">
 						<a class="item" title="API and Documentation for developers">
 							API <sup class="ui mini label beta">Beta</sup>
 						</a>
