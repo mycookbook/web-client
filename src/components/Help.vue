@@ -34,8 +34,8 @@
                     <h1 style="padding:0 5px!important;text-transform: capitalize!important;">
                         {{ pageTitle }}
                     </h1>
-                    <div v-if="helpDoc == 'query-syntax' || helpDoc == undefined">
-                        <div class="ui info message" v-if="helpDoc == 'query-syntax' || helpDoc == undefined">
+                    <div v-if="activeTab == 'query-syntax' || activeTab == undefined">
+                        <div class="ui info message" v-if="activeTab == 'query-syntax' || activeTab == undefined">
                             <p>
                                 <i class="ui warning red icon"></i>
                                 Multi syntax is not currently supported. It means that you cannot combine multiple syntaxes
@@ -44,10 +44,10 @@
                         </div>
                         <QuerySyntax />
                     </div>
-                    <div v-if="helpDoc == 'templates'">
+                    <div v-if="activeTab == 'templates'">
                         <Templates />
                     </div>
-                    <div v-if="helpDoc == 'faqs'">
+                    <div v-if="activeTab == 'faqs'">
                         <div class="ui category search">
                             <div class="ui icon fluid input">
                                 <input class="prompt" v-model="q" type="text" @keyup="search"
