@@ -75,7 +75,7 @@
                                     <li>
                                         We need access to your tiktok videos. Allow access to your
                                         videos on the tiktok login screen. Click edit access and enable the
-                                        <i><span style="background-color: yellow;">Read your public videos on
+                                        <i><span class="highlight-yellow">Read your public videos on
                                                 TikTok</span></i> button.
                                     </li>
                                 </ul>
@@ -86,8 +86,9 @@
                             <h3>Q: Someone stole my recipe from my website, how do I take it down?</h3>
                             <div>
                                 <p>
-                                    We are so sorry to hear that! Please note that we take <a
-                                        href="#/contributing-guidelines">matters of plagiarism very seriously</a>.
+                                    We are so sorry to hear that! Please note that we take matters of <a
+                                        href="/#/terms-and-conditions" class="highlight-yellow">Intellectual property
+                                        rights</a> very seriously.
                                     We do not encourage the stealing of other people's intellectual property. Kindly let us
                                     know the recipe in question by using the report recipe tool. It can be found on the top
                                     right corner on the recipe page.
@@ -277,5 +278,9 @@ export default {
 
 .showOrHide {
     display: none !important;
+}
+
+.highlight-yellow {
+    background-color: yellow;
 }
 </style>
