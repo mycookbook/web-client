@@ -60,93 +60,13 @@
                             <i>Can't find what you're looking for? <a href="mailto:cookbookshq@gmail.com">Send us an
                                     email</a></i>
                         </small>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(1)">
-                            <br /><br />
-                            <h3>Q: Why am I not able to log in with TikTok?</h3>
-                            <div>
-                                <p>
-                                    There are a few reasons why you are experiencing issues logging in to cookbooks with
-                                    your tiktok account.
-                                </p>
-                                <ul>
-                                    <li>
-                                        Your profile is private. Try making your profile public.
-                                    </li>
-                                    <li>
-                                        We need access to your tiktok videos. Allow access to your
-                                        videos on the tiktok login screen. Click edit access and enable the
-                                        <i><span class="highlight-yellow">Read your public videos on
-                                                TikTok</span></i> button.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(2)">
+                        <br />
+                        <div v-for="faq in faqs">
                             <br />
-                            <h3>Q: Someone stole my recipe from my website, how do I take it down?</h3>
-                            <div>
-                                <p>
-                                    We are so sorry to hear that! Please note that we take matters of <a
-                                        href="/#/terms-and-conditions" class="highlight-yellow">Intellectual property
-                                        rights</a> very seriously.
-                                    We do not encourage the stealing of other people's intellectual property. Kindly let us
-                                    know the recipe in question by using the report recipe tool. It can be found on the top
-                                    right corner on the recipe page.
-                                </p>
-                                <p>
-                                    Our specialists will take a look and
-                                    take it down immediately from all our servers if it violates our <a
-                                        href="#/contributing-guidelines">contributing guidelines.</a>
-                                    Thank you in advance for helping us make this
-                                    community a better place.
-                                </p>
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(3)">
-                            <br />
-                            <h3>Q: What are the terms and conditions of this website?</h3>
-                            <div>
-                                The terms and conditions can be found <a href="#/terms-and-conditions">here.</a> We
-                                encourage you to use this platform <a href="#/contributing-guidelines">responsibly.</a>
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(4)">
-                            <br />
-                            <h3>Q: What is Cookbooks?</h3>
-                            <div>
-                                We're glad you're asking! Cookbooks is a repository of recipes, food and drinks. It allows
-                                users such as your self to <a href="/#/search?q=%3Atags%7Ccookbooks%20vegan">search</a> for
-                                an unlimited number of recipes absolutely free of charge and does not require you to be a
-                                user on the platform to do so. In addition, it provides premium features that can help small
-                                business owners moneytize their goods and
-                                services.
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(5)">
-                            <br />
-                            <h3>Q: How do I create a recipe?</h3>
-                            <div>
-                                To create a recipe, you need to be <a href="/#/signin">logged in</a> using your
-                                tiktok account. You will be redirected to your dashboard page, where you can start creating
-                                recipes right away.
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(6)">
-                            <br />
-                            <h3>Q: How can I promote my grocery shop or business on this website?</h3>
-                            <div>
-                                This capability is provided as a premium feature. You will need a subscription to enable
-                                these functionalities. TBD
-                            </div>
-                        </div>
-                        <div v-if="relevant_question.length == 0 || relevant_question.includes(7)">
-                            <br />
-                            <h3>Q: How can I create an account?</h3>
-                            <div>
-                                All that you need to do in order to start creating recipes is to <a href="/#/signin">sign
-                                    in</a> with your existing
-                                TikTok account.
-                            </div>
+                            <h3>
+                                {{ faq.question }}
+                            </h3>
+                            <div v-html="faq.answer"></div>
                         </div>
                     </div>
                 </div>
@@ -197,22 +117,7 @@ export default {
         return {
             advQuery: '',
             q: '',
-            keywords: {
-                'login': [1],
-                'tiktok': [1],
-                'signin': [1],
-                'logging': [1],
-                'account': [1, 7],
-                'recipe': [2, 5],
-                'recipes': [2, 5],
-                'report': [2],
-                'plagiarism': [2],
-                'about': [4],
-                'search': [3],
-                'terms': [3],
-                'conditions': [3]
-            },
-            relevant_question: []
+            faqs: Object.values(faqs.data),
         };
     },
     methods: {
@@ -221,37 +126,24 @@ export default {
                 if (e.target.placeholder == 'Advanced Search') {
                     this.$router.push({ name: 'SearchResults', query: { q: this.advQuery } })
                 } else {
-                    if (this.q.length == 0 || this.q.length <= 3) {
-                        this.relevant_question = []
-                    } else {
-                        let words = this.q.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, ' ').split(' ')
-                        const objKeys = Object.keys(this.keywords)
+                    const words = this.q.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, ' ').split(' ')
+                    const faqs = this.faqs
+                    let res = []
 
-                        let keywords = objKeys.filter(function (i) {
-                            return words.includes(i)
-                        })
-
-                        let k = this.keywords
-
-                        let questions = []
-
-                        keywords.forEach(function (el) {
-                            if (k.hasOwnProperty(el)) {
-                                k[el].forEach(function (m) {
-                                    questions.push(m)
-                                })
+                    words.forEach(function (w) {
+                        if (w.length > 0) {
+                            for (let i = 0; i < faqs.length; i++) {
+                                if (faqs[i].keywords.includes(w)) {
+                                    res.push(faqs[i])
+                                }
                             }
-                        })
-
-                        if (questions.length > 0) {
-                            let deduped = questions.filter(function (s, index) {
-                                return questions.indexOf(s) === index;
-                            });
-
-                            this.relevant_question = deduped
-                        } else {
-                            alert('Nothing to show you!')
                         }
+                    })
+
+                    if (res.length > 0) {
+                        this.faqs = res
+                    } else {
+                        location.reload()
                     }
                 }
             }
