@@ -12,7 +12,8 @@ export const cookbookStore = {
     mutations: {
         STORE_COOKBOOKS(state, cookbooks) {
             state.cookbooks = cookbooks
-            localStorage.setItem("unfiltered", JSON.stringify(cookbooks.data)) //immutable state for filtering through cookbooks list
+           
+            localStorage.setItem("unfiltered", JSON.stringify(cookbooks)) //immutable state for filtering through cookbooks list
         },
         STORE_DEFINITIONS(state, definitions) {
             state.definitions.categories = definitions[0]
@@ -20,22 +21,21 @@ export const cookbookStore = {
         },
         SORT(state, payload) {
             const unfiltered = JSON.parse(localStorage.getItem("unfiltered"))
-
             if (payload === 'all') {
-                state.cookbooks.data = unfiltered
+                state.cookbooks = unfiltered
             } else if (payload === 'location') {
-                state.cookbooks.data = unfiltered
-                const filtered = state.cookbooks.data.filter((c) => {
+                state.cookbooks = unfiltered
+                const filtered = state.cookbooks.filter((c) => {
                     this.state.api.client
                         .get(this.state.named_urls.ipInfo.uri + '?token=' + this.state.named_urls.ipInfo.token)
                         .then(response => (localStorage.setItem('selectedFlag', response.data.country)))
                     return c.flag.flag === localStorage.getItem('selectedFlag').toLowerCase()
                 })
-                state.cookbooks.data = filtered
+                state.cookbooks = filtered
             } else {
-                state.cookbooks.data = unfiltered
+                state.cookbooks = unfiltered
               
-                const filtered = state.cookbooks.data.filter((c) => {
+                const filtered = state.cookbooks.filter((c) => {
                     if (c.categories.length > 0) {
                         let filteredCategories = JSON.parse(JSON.stringify(c.categories))
                         for (let i = 0; i < filteredCategories.length; i++) {
@@ -45,7 +45,7 @@ export const cookbookStore = {
                         }
                     }
                 })
-                state.cookbooks.data = filtered
+                state.cookbooks = filtered
             }
         },
         UPDATE_COOKBOOK_STATE(state, newState) {
