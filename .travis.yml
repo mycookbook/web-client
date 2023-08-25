@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 16
+
+cache:
+  directories:
+    - ~/.cache/Cypress
+
+before_install:
+  - nvm install 8.4
+  - nvm use 8.4
+install:
+  - npm install -f
+
+script:
+  - npm run dev & 
+  - npx wait-on https://web.cookbookshq.com/
+  - nvm install 16.10.0
+  - nvm use 16.10.0
+  - npx cypress install
+  - npm run e2e
