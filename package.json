@@ -8,7 +8,7 @@
         "dev": "node build/dev-server.js",
         "postinstall": "npm run build",
         "start": "node server.js",
-        "build": "node build/build.js --mode prod",
+        "build": "node build/build.js",
         "e2e": "node test/e2e/runner.js",
         "test": "npm run e2e",
         "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
@@ -161,10 +161,6 @@
         "webpack-dev-server": "^1.12.1",
         "webpack-hot-middleware": "^2.25.0",
         "webpack-merge": "^4.2.1"
-    },
-    "engines": {
-        "node": "8.4.0",
-        "npm": "5.3.0"
     },
     "browserslist": [
         "> 1%",
