@@ -5,8 +5,8 @@ import Vue from 'vue'
 export default class UploadService extends Vue {
     async upload(file) {
         const s3 = new aws.S3({
-            secretAccessKey: process.env.SECRET_ACCESS_KEY,
-            accessKeyId: process.env.ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
             signatureVersion: 'v4',
             region: process.env.AWS_REGION
         })

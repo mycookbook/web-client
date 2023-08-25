@@ -21,9 +21,13 @@ export const imageUploadStore = {
             const service = new UploadService()
             const response = await service.upload(file)
 
-            context.commit('RESET_MSGS')
-            context.commit('SET_IMAGEPATH', response)
-            context.commit('SET_LOADING_STATE', false)
+            if (response.code == 200) {
+                context.commit('RESET_MSGS')
+                context.commit('SET_IMAGEPATH', response)
+                context.commit('SET_LOADING_STATE', false)
+            } else {
+                context.commit('HANDLE_ERROR', response)
+            }
         },
         delete_image(context, key) {
             const service = new UploadService()
