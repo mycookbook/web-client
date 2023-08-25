@@ -16,6 +16,8 @@ export const imageUploadStore = {
     },
     actions: {
         async upload_image(context, file) {
+            console.log('process envs', process.env)
+
             context.commit('SET_LOADING_STATE', true)
 
             const service = new UploadService()
