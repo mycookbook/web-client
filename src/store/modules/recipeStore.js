@@ -110,7 +110,7 @@ export const recipeStore = {
                     },
                     {
                         headers: {
-                            Authorization: `Bearer ${process.env.DEV_TOKEN}`,
+                            Authorization: `Bearer ${this.state.access_token}`,
                         },
                     },
                 );
