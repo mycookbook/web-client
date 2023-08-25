@@ -90,7 +90,6 @@ export const recipeStore = {
         reset_hasClapped(context) {
             context.commit("RESET_HASCLAPPED");
         },
-
         async post_recipe(context, payload) {
             let url = process.env.BASE_URL + "recipes";
             try {
@@ -99,6 +98,7 @@ export const recipeStore = {
                     {
                         cuisine: payload.title,
                         description: payload.recipeDescription,
+                        summary: payload.summary,
                         imgUrl: payload.imagePath,
                         ingredients: payload.ingredients,
                         is_draft: payload.draft,
