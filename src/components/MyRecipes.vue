@@ -267,7 +267,6 @@ export default {
       return JSON.parse(cs)
     },
     _myRecipes() {
-      console.log('user', this.$store.state.active_user)
       if (this.$store.state.active_user.hasOwnProperty('recipes')) {
         return this.$store.state.active_user.recipes
       } else {
