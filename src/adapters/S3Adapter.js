@@ -1,7 +1,6 @@
 import axios from 'axios';
 import aws from 'aws-sdk';
 import Vue from 'vue'
-require('dotenv').config();
 
 export default class UploadService extends Vue {
     async upload(file) {
