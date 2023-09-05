@@ -81,6 +81,7 @@ export default new Vuex.Store({
 			this.state.resource_isLoading = status
 		},
 		SET_ACTIVE_USER(state, req) {
+            this.state.access_token = req.code;
 
             this.state.username = req.username;
 
@@ -175,6 +176,7 @@ export default new Vuex.Store({
 		searchStore,
 		userStore,
 		imageUploadStore,
+        dataStore
 	},
 	plugins: [createPersistedState()]
 });

@@ -15,9 +15,6 @@ export const contributorStore = {
             context.commit("SET_LOADING_STATE", true);
             const uri = process.env.BASE_URL + 'users/' + username
 
-      const uri = process.env.BASE_URL + 'users/' + process.env.DEV_USERNAME
-            // const uri = process.env.BASE_URL + 'users/' + username
-
             this.state.api.client.get(uri)
                 .then(function (response) {
                     context.commit("UPDATE_CONTRIBUTOR_OBJECT", response.data);

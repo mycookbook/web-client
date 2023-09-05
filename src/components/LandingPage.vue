@@ -5,7 +5,9 @@
 			<Navigation />
 			<div v-if="!userIsLoggedIn">
 				<Search />
+                {{ userIsLoggedIn }}
 			</div>
+            {{ userIsLoggedIn }}
 			<br /> <br />
 			<div v-if="!loaded()">
 				<DefaultSkeleton />
@@ -42,11 +44,11 @@ import Feed from './Feed.vue'
 export default {
 	name: "LandingPage",
 	async mounted () {
-		store.dispatch('boot')
+		this.$store.dispatch('boot')
 	},
 	computed: {
 		userIsLoggedIn() {
-			return (store.state.access_token)
+			return this.$store.state.access_token
 		}
 	},
 	methods: {

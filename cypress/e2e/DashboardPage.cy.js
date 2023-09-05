@@ -1,9 +1,5 @@
 describe("Dashboard Component", () => {
-    let baseUrl = 'http://localhost:5001'
-
-    if (process.env.NODE_ENV !== 'development') {
-        baseUrl = 'https://cookbookshq-staging-web.herokuapp.com'
-    }
+    const baseUrl = 'http://localhost:5001'
 
     it("See LeftNav menu items", () => {
         cy

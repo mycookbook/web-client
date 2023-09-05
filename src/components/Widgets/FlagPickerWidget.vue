@@ -23,12 +23,16 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'FlagPickerWidget',
+    mounted() {
+        this.$store.dispatch('fetch_flags')
+    },
     computed: {
-        ...mapGetters('dataStore', ['getFlags']),
+        flags() {
+            return Object.values(this.$store.state.dataStore.flags)
+        }
     },
     data() {
         return {
-            flags: Object.values(flags.data),
             selectedCountry: "",
             selectedCode: "",
         }

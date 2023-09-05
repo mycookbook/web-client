@@ -1,4 +1,4 @@
-describe("Cookbook Component", () => {
+describe("landing Page Component", () => {
     it("renders cookbook cards with categories", () => {
         cy.visit("/#");
 

@@ -21,7 +21,7 @@ export const imageUploadStore = {
             const response = await service.upload(file)
 
             if (response.code == 200) {
-                context.commit('RESET_MSGS')
+                // context.commit('RESET_MSGS')
                 context.commit('SET_IMAGEPATH', response)
                 context.commit('SET_LOADING_STATE', false)
             } else {
@@ -34,7 +34,7 @@ export const imageUploadStore = {
         },
         reset_msgs(context) {
             context.commit('SET_LOADING_STATE', false)
-            context.commit('RESET_MSGS')
+            // context.commit('RESET_MSGS')
         }
     }
 }
