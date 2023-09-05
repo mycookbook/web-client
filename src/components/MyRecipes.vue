@@ -2,10 +2,10 @@
     <div>
         <div>
             <div v-if="inEditMode">
-                hide editor<i class="ui chevron up icon" @click="toggleEditor"></i>
+                Collapse Editor<i class="ui chevron up icon" @click="toggleEditor"></i>
             </div>
             <div v-else>
-                add new recipe<i class="ui chevron down icon" @click="toggleEditor"></i>
+                Expand Editor<i class="ui chevron down icon" @click="toggleEditor"></i>
             </div>
         </div>
         <br />
@@ -191,12 +191,12 @@
                             <div class="ui horizontal divider"></div>
                             <div class="ui grid">
                                 <div class="six wide computer column sixteen wide mobile column">
-                                    <button class="fluid ui black outline button" @click="saveAsDraft">save as
-                                        draft</button>
+                                    <button class="fluid ui black outline button" @click="saveAsDraft">Save as
+                                        Draft</button>
                                 </div>
                                 <div class="ten wide computer column sixteen wide mobile column">
                                     <button class="fluid ui tbb button" type="submit"
-                                        v-bind:class="{ loading: submitLoading }">submit</button>
+                                        v-bind:class="{ loading: submitLoading }">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
             </div>
             <div v-else>
                 <div class="ui items">
-                    <div class="item" v-for="recipe in _myRecipes">
+                    <div class="item" v-for="recipe in _myRecipes.slice(Math.max(_myRecipes.length -5, 1)).reverse()">
                         <div class="ui tiny image">
                             <img :src="recipe.imgUrl">
                         </div>
@@ -245,22 +245,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div>
-            <div class="toast visible" v-if="isCreated">
-                <div class="toast-body">
-                    Successfully created recipe.
+                <div>
+                    <a>view all</a>
                 </div>
             </div>
-            <div class="toast visible" v-if="hasErrorOnCreate">
+        </div>
+        <div @click="hideToaster()">
+            <div class="toast visible" v-if="isCreated">
                 <div class="toast-body">
-                    An error occured, please try again.
+                    <span>Successfully created recipe</span>
+                    <span style="padding-left:12px">x</span>
+                </div>
+            </div>
+            <div class="toast visible" v-if="hasErrorOnCreateRecipe">
+                <div class="toast-body">
+                    <span>An error occured, please try again.</span>
+                    <span style="padding-left:12px">x</span>
                 </div>
             </div>
             <div class="toast visible" v-if="formHasIncompleteFields">
                 <div class="toast-body">
-                    You have incomplete fields.
+                    <span>You have incomplete fields.</span>
+                    <span style="padding-left:12px">x</span>
                 </div>
             </div>
         </div>
@@ -329,10 +335,9 @@ export default {
             return { theme: 'snow' }
         },
         isCreated() {
-            // document.getElementById("createRecipeForm").reset();
             return this.$store.state.recipeStore.isCreated
         },
-        hasErrorOnCreate() {
+        hasErrorOnCreateRecipe() {
             return this.$store.state.recipeStore.hasErrorOnCreateRecipe
         },
         formHasIncompleteFields() {
@@ -498,6 +503,18 @@ export default {
         },
         saveAsDraft() {
             this.buildDataSendAndSubmit(true)
+        },
+        hideToaster() {
+            this.$store.dispatch(
+                'reset_states', 
+                {
+                    'formHasIncompleteFields': false,
+                    'hasErrorOnCreateRecipe': false,
+                    'isCreated': false
+                }
+            )
+            this.submitLoading = false
+            location.reload()
         }
     },
     filters: {
