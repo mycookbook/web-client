@@ -13,11 +13,11 @@
             <form @submit.prevent="handleSubmit(submitButton)" id="createRecipeForm">
                 <div id="recipe-editor" v-if="inEditMode">
                     <div class="ui segment">
-                        <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
+                        <!-- <UploadImage :description="uploadMessageDescription" :imageDimensionMsg="imageDimensionMsg"
                             :acceptTypes="acceptTypes" />
                         <div class="ui horizontal divider">
                             Or
-                        </div>
+                        </div> -->
                         <div class="ui form">
                             <div class="field">
                                 <label>stock photo image url</label>
