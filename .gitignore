@@ -21,3 +21,4 @@ selenium-debug.log
 *.sln
 
 cypress/videos/
+cypress/screenshots/
