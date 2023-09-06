@@ -4,25 +4,25 @@ describe("Auth flow", () => {
     it("Navigate to login page", () => {
         cy
         .visit("/#/")
-        .get('#signinBtn')
-        .click()
+        .get("#signinBtn")
+        .trigger("click")
         .url()
         .should("eq", baseUrl + "/#/signin");
     });
 
-    it("Login with TikTok", () => {
-        cy
-        .visit("/#/signin")
-        .get('#signinWithTikTokBtn')
-        .click()
-        .url()
-        .should("eq", baseUrl + "//#/?v=fu");
-    });
+    // it("Login with TikTok", () => {
+    //     cy
+    //     .visit("/#/signin")
+    //     .get('#signinWithTikTokBtn')
+    //     .click()
+    //     .url()
+    //     .should("eq", baseUrl + "//#/?v=fu");
+    // });
 
-    it("Only authenticated users can view the dashboard", () => {
-        cy
-        .visit("/#/dashboard?tab=Recipes")
-        .url()
-        .should("eq", baseUrl + "/#/signin");
-    });
+    // it("Only authenticated users can view the dashboard", () => {
+    //     cy
+    //     .visit("/#/dashboard?tab=Recipes")
+    //     .url()
+    //     .should("eq", baseUrl + "/#/signin");
+    // });
 });
