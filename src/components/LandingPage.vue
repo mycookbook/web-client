@@ -58,7 +58,7 @@ export default {
 			}
 		},
 		cookbooks() {
-			return this.$store.state.cookbookStore.cookbooks
+			return this.$store.state.cookbookStore.cookbooks.data
 		},
 		filters() {
 			
