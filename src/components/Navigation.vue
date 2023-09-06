@@ -11,15 +11,15 @@
 			<div class="ten wide right floated tablet column ten wide computer right floated column tvn no padding">
 				<div class="selectors">
 					<div class="ui secondary menu">
-						<a class="item" title="Coming soon." href="/#/marketplace">
+						<a class="item" title="Coming soon." href="/#/marketplace" id="marketplaceNavBtn">
 							<i class="blue usd icon"></i> Go to Marketplace
 						</a>
 						<div v-if="isLoggedIn">
-							<div class="ui button tbb tablet hidden" @click="logOut()">
+							<div class="ui button tbb tablet hidden" @click="logOut()" id="logoutBtn">
 								Logout
 							</div>
 							<router-link :to="{ name: 'Dashboard', query: { tab: 'Recipes' } }">
-								<div class="ui button tbb tablet hidden">
+								<div class="ui button tbb tablet hidden" id="dashboardBtn">
 									My Dashboard
 								</div>
 							</router-link>
