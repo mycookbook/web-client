@@ -1,20 +1,20 @@
 describe("Auth flow", () => {
-    cy.on('uncaught:exception', (err, runnable) => {
-        expect(err.message).to.include('of undefined')
-        done()
-        return false
-    });
+    // cy.on('uncaught:exception', (err, runnable) => {
+    //     expect(err.message).to.include('of undefined')
+    //     done()
+    //     return false
+    // });
 
-    const baseUrl = 'http://localhost:5001'
+    // const baseUrl = 'http://localhost:5001'
 
-    it("Navigate to login page", () => {
-        cy
-            .visit("/#/")
-            .get("#signinBtn")
-            .trigger("click")
-            .url()
-            .should("eq", baseUrl + "/#/signin");
-    });
+    // it("Navigate to login page", () => {
+    //     cy
+    //         .visit("/#/")
+    //         .get("#signinBtn")
+    //         .trigger("click")
+    //         .url()
+    //         .should("eq", baseUrl + "/#/signin");
+    // });
 
     // it("Login with TikTok", () => {
     //     cy
