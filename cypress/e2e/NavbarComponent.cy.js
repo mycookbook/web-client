@@ -17,7 +17,7 @@ describe("Expected behavior when user is not authenticated", () => {
             '/#/help?doc=templates',
             '/#/cookbooks/example-slug',
             '/#/recipes/example-slug',
-            '/#/contributors/example-slug'
+            '/#/contributors/example-slug' 
         ];
 
         routes.map(function(route) {
