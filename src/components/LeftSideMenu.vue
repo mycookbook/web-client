@@ -13,22 +13,6 @@
                 </div>
             </div>
             <br />
-            <!-- <div class="disabled item">
-                <div class="content">
-                    <router-link :to="{
-                        name: 'Dashboard',
-                        query: { tab: 'Cookbooks' }
-                    }">
-                        <div>
-                            <small>
-                                <u>
-                                    Cookbooks {{ _contributor.cookbooks ? _contributor.cookbooks.length : 0 }}
-                                </u>
-                            </small>
-                        </div>
-                    </router-link>
-                </div>
-            </div> -->
             <div class="item">
                 <div class="content">
                     <router-link :to="{
@@ -38,7 +22,7 @@
                         <div>
                             <small>
                                 <u>
-                                    My Recipes {{ _recipes ? _recipes.length : 0 }}
+                                    My Recipes {{ my_recipes ? my_recipes.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -54,7 +38,7 @@
                         <div>
                             <small>
                                 <u>
-                                    Drafts {{ _drafts ? _drafts.length : 0 }}
+                                    My Drafts {{ my_drafts ? my_drafts.length : 0 }}
                                 </u>
                             </small>
                         </div>
@@ -75,19 +59,6 @@
                             </small>
                         </div>
                     </router-link>
-                </div>
-            </div>
-            <div class="item">
-                <div class="content">
-                    <div>
-                        <a href="#/help">
-                            <small>
-                                <u>
-                                    Help Docs
-                                </u>
-                            </small>
-                        </a>
-                    </div>
                 </div>
             </div>
             <br />
@@ -191,43 +162,30 @@
 export default {
     name: "LeftSideMenu",
     computed: {
-        _recipes() {
-            //let recipes = this.$store.state.contributor.recipes
-            let recipes = this.$store.state.active_user.recipes
-            if (recipes) {
-                return recipes.filter(function (recipe) {
-                    return recipe.is_draft == false;
-                })
+        my_recipes() {
+            if (this.$store.state.hasOwnProperty('active_user')) {
+                const recipes = this.$store.state.active_user.recipes
+                if (recipes) {
+                    return recipes.filter(function (recipe) {
+                        return recipe.is_draft == false;
+                    })    
+                }
             } else {
                 return []
             }
-
         },
-        _drafts() {
-            //let recipes = this.$store.state.contributor.recipes
-            let recipes = this.$store.state.active_user.recipes
-            //let cookbooks = this.$store.state.contributor.cookbooks
-            let cookbooks = this.$store.state.active_user.cookbooks
-            let _recipes = []
-            let _cookbooks = []
-
-            if (recipes) {
-                _recipes = recipes.filter(function (recipe) {
-                    return recipe.is_draft == true;
-                })
+        my_drafts() {
+            if (this.$store.state.hasOwnProperty('active_user')) {
+                const recipes = this.$store.state.active_user.recipes
+                if (recipes) {
+                    return recipes.filter(function (recipe) {
+                        return recipe.is_draft == true;
+                    })    
+                }
+            } else {
+                return []
             }
-
-            if (cookbooks) {
-                _cookbooks = cookbooks.filter(function (cookbook) {
-                    return cookbook.is_draft == true;
-                })
-            }
-
-            return _recipes.concat(_cookbooks)
         }
-    },
-    data() {
-        return {}
     },
 };
 </script>

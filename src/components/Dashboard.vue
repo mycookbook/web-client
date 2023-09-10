@@ -14,9 +14,6 @@
 						<br />
 						<div class="ui grid">
 							<div class="sixteen wide computer column sixteen wide mobile column">
-								<div v-if="activeLink === 'Cookbooks'">
-									<MyRecipes />
-								</div>
 								<div v-if="activeLink === 'Recipes'">
 									<MyRecipes />
 								</div>

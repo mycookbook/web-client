@@ -69,6 +69,14 @@ If you're interested in viewing code coverage for the tests, follow these steps:
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+### NOTES on running e2e locally
+- To install dependencies as described above, since the packages are already in the packagae.json file, simply delete the package-lock file first then update the npm version in the package.json file to 5.10.0 (DO NOT COMMIT THIS CHANGE)
+- Now run `npm i --force`
+- Finally to run the tests, 
+    - You need to use node version 16.10.0, you can swicth to this version with nvm
+    - Open a new terminal and run `npm run dev`
+    - In another terminal, `npm run e2e`
+
 ### Staging url
 https://cookbookshq-staging-web.herokuapp.com/#/
 

@@ -5,7 +5,9 @@
 			<Navigation />
 			<div v-if="!userIsLoggedIn">
 				<Search />
+                {{ userIsLoggedIn }}
 			</div>
+            {{ userIsLoggedIn }}
 			<br /> <br />
 			<div v-if="!loaded()">
 				<DefaultSkeleton />
@@ -42,25 +44,35 @@ import Feed from './Feed.vue'
 export default {
 	name: "LandingPage",
 	async mounted () {
-		store.dispatch('boot')
+		this.$store.dispatch('boot')
 	},
 	computed: {
 		userIsLoggedIn() {
-			return (store.state.access_token)
+			return this.$store.state.access_token
 		}
 	},
 	methods: {
 		loaded() {
-			if ((this.$store.state.cookbookStore.cookbooks !== undefined) && (this.$store.state.cookbookStore.definitions.categories.contents !== undefined)) {
+			if (
+                this.$store.state.cookbookStore.hasOwnProperty("cookbooks") && 
+                this.$store.state.cookbookStore.hasOwnProperty("definitions")
+            ) {
 				return true
 			}
+
+            return false
 		},
 		cookbooks() {
-			return this.$store.state.cookbookStore.cookbooks
+			return this.$store.state.cookbookStore.hasOwnProperty("cookbooks") ? 
+            this.$store.state.cookbookStore.cookbooks.data : 
+            []
 		},
 		filters() {
-			
-			return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
+            if (this.$store.state.cookbookStore.hasOwnProperty("definitions")) {
+                return JSON.parse(this.$store.state.cookbookStore.definitions.categories.contents)
+            }
+
+            return []
 		}
 	},
 	components: {
