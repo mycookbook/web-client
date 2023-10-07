@@ -5,7 +5,7 @@
 				expand to create new<i class="ui chevron down icon" @click="toggleEditor('show')"></i>
 			</div>
 			<div v-else>
-				hide editor<i class="ui chevron up icon" @click="toggleEditor('hide')"></i>
+				Hide editor<i class="ui chevron up icon" @click="toggleEditor('hide')"></i>
 			</div>
 		</div>
 		<br />
